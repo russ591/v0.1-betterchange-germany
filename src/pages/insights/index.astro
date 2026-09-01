@@ -1,0 +1,57 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
+
+const articles = (await getCollection("insights-articles")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout
+  title="Insights"
+  description="Practical thinking on Kanban, Flight Levels, agile transformation, and organisational change — written by people who have done the work."
+>
+  <Section eyebrow="insights" class="bg-neutral-50">
+    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+      Articles, guides &amp; resources
+    </h1>
+    <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
+      Practical thinking on Kanban, Flight Levels, agile transformation, and organisational change —
+      written by people who have done the work.
+    </p>
+  </Section>
+
+  <Section eyebrow={`${articles.length} article${articles.length === 1 ? "" : "s"}`}>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {articles.map((article) => <InsightsArticleCard article={article} />)}
+    </div>
+    <p class="mt-6 text-[length:var(--text-caption)] text-neutral-400">
+      Showing {articles.length} of 144 articles from the live site — the rest are migrated the same
+      way, one file per article, once you've reviewed this pattern.
+    </p>
+  </Section>
+
+  <Section tone="dark" eyebrow="Newsletter" heading="Get new articles by email">
+    <p class="max-w-xl text-[length:var(--text-body)] text-neutral-300">
+      No noise. Just useful thinking on agile, Kanban, and Flight Levels — roughly monthly.
+    </p>
+    <form class="mt-6 flex max-w-md flex-col gap-3 sm:flex-row">
+      <label class="sr-only" for="newsletter-email">Email address</label>
+      <input
+        id="newsletter-email"
+        type="email"
+        required
+        placeholder="you@company.com"
+        class="w-full rounded-[var(--radius-control)] border border-neutral-600 bg-transparent px-4 py-2.5 text-surface placeholder:text-neutral-500"
+      />
+      <button
+        type="submit"
+        class="shrink-0 rounded-[var(--radius-control)] bg-lime px-6 py-2.5 font-semibold text-ink"
+      >
+        Subscribe
+      </button>
+    </form>
+  </Section>
+</BaseLayout>

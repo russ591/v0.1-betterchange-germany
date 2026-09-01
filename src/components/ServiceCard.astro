@@ -1,0 +1,30 @@
+---
+interface Props {
+  name: string;
+  items: string[];
+  href?: string;
+}
+
+const { name, items, href } = Astro.props;
+---
+
+<div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-8 shadow-card transition-shadow hover:shadow-card-hover">
+  <h3 class="text-[length:var(--text-h4)]">{name}</h3>
+  <ul class="mt-4 space-y-2 text-[length:var(--text-small)] text-neutral-600">
+    {
+      items.map((item) => (
+        <li class="flex items-start gap-2">
+          <span aria-hidden="true" class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-lime" />
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+  {
+    href && (
+      <a href={href} class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-ink hover:underline">
+        Learn more <span aria-hidden="true">→</span>
+      </a>
+    )
+  }
+</div>

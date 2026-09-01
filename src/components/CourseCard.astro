@@ -1,0 +1,51 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Badge from "@/components/Badge.astro";
+
+// Consolidates the live site's four course-card variants (discipline list,
+// schedule table row, "related courses" card, profile-page course card)
+// into one card sharing the TrainingCourse schema (spec §4).
+interface Props {
+  course: CollectionEntry<"training-courses">;
+  categorySlug: string;
+  variant?: "card" | "row";
+}
+
+const { course, categorySlug, variant = "card" } = Astro.props;
+const href = `/training/${categorySlug}/${course.id}`;
+---
+
+{
+  variant === "row" ? (
+    <a
+      href={href}
+      class="flex flex-col gap-2 border-b border-neutral-200 py-4 transition-colors hover:bg-neutral-50 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <div>
+        <p class="font-semibold">{course.data.name}</p>
+        <p class="text-[length:var(--text-caption)] text-neutral-500">{course.data.level}</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        {course.data.formats.map((f) => (
+          <Badge format={f.type} />
+        ))}
+      </div>
+    </a>
+  ) : (
+    <a
+      href={href}
+      class="flex flex-col rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6 shadow-card transition-shadow hover:shadow-card-hover"
+    >
+      <p class="eyebrow text-neutral-500">{course.data.code}</p>
+      <h3 class="mt-2 text-[length:var(--text-h4)]">{course.data.name}</h3>
+      <p class="mt-2 line-clamp-3 text-[length:var(--text-small)] text-neutral-600">
+        {course.data.summary}
+      </p>
+      <div class="mt-4 flex flex-wrap gap-2">
+        {course.data.formats.map((f) => (
+          <Badge format={f.type} />
+        ))}
+      </div>
+    </a>
+  )
+}

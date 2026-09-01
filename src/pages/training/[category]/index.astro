@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+import CourseCard from "@/components/CourseCard.astro";
+
+export async function getStaticPaths() {
+  const categories = await getCollection("training-categories");
+  return categories.map((category) => ({
+    params: { category: category.id },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+const allCourses = await getCollection("training-courses");
+const courses = allCourses.filter((c) => c.data.category.id === category.id);
+---
+
+<BaseLayout title={category.data.name} description={category.data.description}>
+  <Section eyebrow="Training" class="bg-neutral-50">
+    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+      {category.data.name}
+    </h1>
+    <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">{category.data.description}</p>
+  </Section>
+
+  <Section eyebrow={`${courses.length} course${courses.length === 1 ? "" : "s"}`}>
+    {
+      courses.length > 0 ? (
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {courses.map((course) => (
+            <CourseCard course={course} categorySlug={category.id} />
+          ))}
+        </div>
+      ) : (
+        <p class="text-[length:var(--text-body)] text-neutral-500">
+          No courses published for this discipline yet.
+        </p>
+      )
+    }
+  </Section>
+</BaseLayout>

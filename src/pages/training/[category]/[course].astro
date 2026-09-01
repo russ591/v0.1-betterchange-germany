@@ -1,0 +1,96 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+import Badge from "@/components/Badge.astro";
+import CourseCard from "@/components/CourseCard.astro";
+import CTABanner from "@/components/CTABanner.astro";
+
+export async function getStaticPaths() {
+  const courses = await getCollection("training-courses");
+  return courses.map((course) => ({
+    params: { category: course.data.category.id, course: course.id },
+    props: { course },
+  }));
+}
+
+const { course } = Astro.props;
+const category = await getEntry(course.data.category);
+const allCourses = await getCollection("training-courses");
+const relatedCourses = allCourses.filter(
+  (c) => c.data.category.id === category.id && c.id !== course.id
+);
+---
+
+<BaseLayout title={course.data.name} description={course.data.summary}>
+  <Section eyebrow={`${category.data.name} · ${course.data.code}`} class="bg-neutral-50">
+    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+      {course.data.name}
+    </h1>
+    <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">{course.data.summary}</p>
+    <dl class="mt-8 flex flex-wrap gap-x-10 gap-y-4 text-[length:var(--text-small)]">
+      <div>
+        <dt class="text-neutral-500">Level</dt>
+        <dd class="font-semibold">{course.data.level}</dd>
+      </div>
+      <div>
+        <dt class="text-neutral-500">Duration</dt>
+        <dd class="font-semibold">{course.data.durationDays} day{course.data.durationDays === 1 ? "" : "s"}</dd>
+      </div>
+      <div>
+        <dt class="text-neutral-500">Certification</dt>
+        <dd class="font-semibold">{course.data.certification}</dd>
+      </div>
+    </dl>
+  </Section>
+
+  <Section eyebrow="Formats & pricing" heading="How to take this course">
+    <div class="grid gap-6 sm:grid-cols-3">
+      {
+        course.data.formats.map((format) => (
+          <div class="flex flex-col rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6">
+            <Badge format={format.type} />
+            <p class="mt-4 text-[length:var(--text-h4)] font-bold">{format.price}</p>
+            {format.priceNote && <p class="mt-1 text-[length:var(--text-caption)] text-neutral-500">{format.priceNote}</p>}
+            <a
+              href={`/training/register/${course.id}-${format.type}`}
+              class="mt-6 inline-flex items-center justify-center rounded-[var(--radius-control)] bg-ink px-4 py-2.5 text-sm font-semibold text-surface"
+            >
+              Register
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section eyebrow="Who is this course for?" class="bg-neutral-50">
+    <ul class="max-w-2xl space-y-2 text-[length:var(--text-body)] text-neutral-600">
+      {course.data.whoIsThisFor.map((item) => <li>{item}</li>)}
+    </ul>
+  </Section>
+
+  <Section eyebrow="What you'll learn">
+    <ul class="max-w-2xl space-y-2 text-[length:var(--text-body)] text-neutral-600">
+      {course.data.whatYoullLearn.map((item) => <li>{item}</li>)}
+    </ul>
+  </Section>
+
+  {
+    relatedCourses.length > 0 && (
+      <Section eyebrow="Related courses" class="bg-neutral-50">
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {relatedCourses.map((related) => (
+            <CourseCard course={related} categorySlug={category.id} />
+          ))}
+        </div>
+      </Section>
+    )
+  }
+
+  <CTABanner
+    heading={`More courses in ${category.data.name}`}
+    ctaLabel="View discipline"
+    ctaHref={`/training/${category.id}`}
+  />
+</BaseLayout>

@@ -1,0 +1,35 @@
+---
+// Shared section wrapper (spec §4): one consistent eyebrow-label style and
+// vertical rhythm, replacing the live site's per-page capitalisation drift
+// ("what we do" / "OUR PEOPLE" / "FLIGHT LEvels").
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
+  tone?: "light" | "dark";
+  class?: string;
+}
+
+const { eyebrow, heading, intro, tone = "light", class: className = "" } = Astro.props;
+
+const toneClasses = tone === "dark" ? "bg-ink text-surface" : "bg-surface text-ink";
+---
+
+<section class={`${toneClasses} py-[var(--spacing-section-y-sm)] sm:py-[var(--spacing-section-y)] ${className}`}>
+  <div class="mx-auto max-w-6xl px-6">
+    {
+      (eyebrow || heading || intro) && (
+        <div class="mb-12 max-w-2xl">
+          {eyebrow && <p class={`eyebrow ${tone === "dark" ? "text-lime" : ""}`}>{eyebrow}</p>}
+          {heading && <h2 class="mt-3 text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)]">{heading}</h2>}
+          {intro && (
+            <p class={`mt-4 text-[length:var(--text-body)] ${tone === "dark" ? "text-neutral-300" : "text-neutral-600"}`}>
+              {intro}
+            </p>
+          )}
+        </div>
+      )
+    }
+    <slot />
+  </div>
+</section>

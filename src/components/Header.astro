@@ -1,0 +1,66 @@
+---
+const navLinks = [
+  { href: "/services", label: "Services" },
+  { href: "/training", label: "Training" },
+  { href: "/about", label: "About" },
+  { href: "/insights", label: "Insights" },
+  { href: "/contact", label: "Contact" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-neutral-200 bg-surface/90 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <a href="/" class="text-lg font-bold tracking-tight">
+      Better <span class="text-lime bg-ink px-1">Change</span>
+    </a>
+
+    <nav aria-label="Primary" class="hidden items-center gap-8 md:flex">
+      {
+        navLinks.map((link) => {
+          const isActive =
+            link.href === "/" ? currentPath === "/" : currentPath.startsWith(link.href);
+          return (
+            <a
+              href={link.href}
+              class={`text-sm font-medium transition-colors hover:text-ink ${
+                isActive ? "text-ink" : "text-neutral-600"
+              }`}
+              aria-current={isActive ? "page" : undefined}
+            >
+              {link.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <a
+      href="/training"
+      class="hidden rounded-[var(--radius-control)] bg-ink px-5 py-2.5 text-sm font-semibold text-surface transition-colors hover:bg-neutral-800 sm:inline-flex"
+    >
+      See all training
+    </a>
+
+    <details class="md:hidden">
+      <summary
+        class="cursor-pointer list-none rounded-[var(--radius-control)] border border-neutral-300 px-3 py-2 text-sm font-medium"
+      >
+        Menu
+      </summary>
+      <nav
+        aria-label="Primary mobile"
+        class="absolute inset-x-0 top-full flex flex-col gap-1 border-b border-neutral-200 bg-surface px-6 py-4 shadow-card"
+      >
+        {
+          navLinks.map((link) => (
+            <a href={link.href} class="py-2 text-sm font-medium text-neutral-700">
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
+    </details>
+  </div>
+</header>

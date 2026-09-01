@@ -1,0 +1,66 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+
+// Spec §2 bug 1: only profiles with hasFullProfile: true get a page here —
+// this is the "resolved" behaviour, since the About index only links to
+// profiles in this set (see TeamCard.astro).
+export async function getStaticPaths() {
+  const profiles = await getCollection("coach-profiles", ({ data }) => data.hasFullProfile);
+  return profiles.map((profile) => ({
+    params: { slug: profile.id },
+    props: { profile },
+  }));
+}
+
+const { profile } = Astro.props;
+const { name, role, country, languages, bio, backgroundAndExpertise, approach, specialities } = profile.data;
+---
+
+<BaseLayout title={name} description={profile.data.summary ?? `${name} — ${role} at Better Change`}>
+  <Section eyebrow={role} class="bg-neutral-50">
+    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">{name}</h1>
+    <p class="mt-4 text-[length:var(--text-small)] text-neutral-500">
+      {country} · {languages.join(", ")}
+    </p>
+  </Section>
+
+  {
+    bio && (
+      <Section eyebrow="Bio">
+        <p class="max-w-2xl text-[length:var(--text-body)] text-neutral-600">{bio}</p>
+      </Section>
+    )
+  }
+
+  {
+    backgroundAndExpertise && (
+      <Section eyebrow="Background & expertise" class="bg-neutral-50">
+        <p class="max-w-2xl text-[length:var(--text-body)] text-neutral-600">{backgroundAndExpertise}</p>
+      </Section>
+    )
+  }
+
+  {
+    approach && (
+      <Section eyebrow="Approach">
+        <p class="max-w-2xl text-[length:var(--text-body)] text-neutral-600">{approach}</p>
+      </Section>
+    )
+  }
+
+  {
+    specialities && specialities.length > 0 && (
+      <Section eyebrow="Specialities" class="bg-neutral-50">
+        <ul class="flex flex-wrap gap-2">
+          {specialities.map((s) => (
+            <li class="rounded-[var(--radius-pill)] border border-neutral-300 px-3 py-1 text-[length:var(--text-caption)]">
+              {s}
+            </li>
+          ))}
+        </ul>
+      </Section>
+    )
+  }
+</BaseLayout>

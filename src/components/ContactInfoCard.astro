@@ -1,0 +1,34 @@
+---
+interface Props {
+  icon: "email" | "location" | "language" | "clock";
+  label: string;
+  value: string;
+  note: string;
+  href?: string;
+}
+
+const { icon, label, value, note, href } = Astro.props;
+
+const icons: Record<Props["icon"], string> = {
+  email: "✉",
+  location: "📍",
+  language: "🌐",
+  clock: "🕒",
+};
+
+const Tag = href ? "a" : "div";
+---
+
+<Tag href={href} class="flex gap-4 rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6">
+  <span
+    aria-hidden="true"
+    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-lime text-lg"
+  >
+    {icons[icon]}
+  </span>
+  <div class="min-w-0">
+    <p class="eyebrow text-neutral-500">{label}</p>
+    <p class="mt-1 font-semibold break-words">{value}</p>
+    <p class="mt-1 text-[length:var(--text-small)] text-neutral-600">{note}</p>
+  </div>
+</Tag>

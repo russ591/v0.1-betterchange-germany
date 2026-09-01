@@ -1,0 +1,20 @@
+---
+interface Props {
+  format: "in-person" | "live-online" | "self-paced";
+  class?: string;
+}
+
+const { format, class: className = "" } = Astro.props;
+
+const labels: Record<Props["format"], string> = {
+  "in-person": "In-person",
+  "live-online": "Live online",
+  "self-paced": "Self-paced",
+};
+---
+
+<span
+  class={`inline-flex items-center rounded-[var(--radius-pill)] border border-neutral-300 bg-neutral-50 px-3 py-1 text-[var(--text-caption)] font-medium text-neutral-700 ${className}`}
+>
+  {labels[format]}
+</span>

@@ -1,0 +1,47 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+// Consolidates the homepage mini-avatar and About page full-photo-plus-flag
+// treatments into one card at two densities (spec §4).
+interface Props {
+  profile: CollectionEntry<"coach-profiles">;
+  density?: "compact" | "full";
+}
+
+const { profile, density = "full" } = Astro.props;
+const { name, role, country, languages, hasFullProfile } = profile.data;
+const href = `/about/${profile.id}`;
+---
+
+<div
+  class={`rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-5 ${
+    density === "compact" ? "flex items-center gap-3" : ""
+  }`}
+>
+  <div
+    aria-hidden="true"
+    class={`flex shrink-0 items-center justify-center rounded-full bg-neutral-200 font-semibold text-neutral-500 ${
+      density === "compact" ? "h-12 w-12 text-sm" : "mb-4 h-20 w-20 text-lg"
+    }`}
+  >
+    {name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")}
+  </div>
+  <div>
+    {
+      hasFullProfile ? (
+        <a href={href} class="font-semibold hover:underline">
+          {name}
+        </a>
+      ) : (
+        <p class="font-semibold">{name}</p>
+      )
+    }
+    <p class="text-[length:var(--text-small)] text-neutral-600">{role}</p>
+    <p class="text-[length:var(--text-caption)] text-neutral-500">
+      {country} · {languages.join(", ")}
+    </p>
+  </div>
+</div>

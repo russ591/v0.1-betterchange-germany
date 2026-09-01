@@ -1,0 +1,103 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+import ContactInfoCard from "@/components/ContactInfoCard.astro";
+---
+
+<BaseLayout
+  title="Contact"
+  description="Whether you are looking for a training course, an agile coach, or a consulting partner — the best first step is a conversation."
+>
+  <Section eyebrow="contacts" class="bg-neutral-50">
+    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">Let's talk</h1>
+    <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
+      Whether you are looking for a training course, an agile coach, or a consulting partner — the
+      best first step is a conversation.
+    </p>
+  </Section>
+
+  <Section>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <ContactInfoCard
+        icon="email"
+        label="Email"
+        value="russ@betterchange.consulting"
+        note="We respond within one business day"
+        href="mailto:russ@betterchange.consulting"
+      />
+      <ContactInfoCard
+        icon="location"
+        label="Location"
+        value="Berlin, Germany"
+        note="In-person training and coaching across the Europe region. Online delivery worldwide."
+      />
+      <ContactInfoCard
+        icon="language"
+        label="Language"
+        value="English, German, Polish, Spanish, Dutch, Danish, Croatian"
+        note="All training and coaching can be delivered bilingually. Proposals available in all languages."
+      />
+      <ContactInfoCard
+        icon="clock"
+        label="Response time"
+        value="Within 1 business day"
+        note="For urgent enquiries about upcoming course dates, please email directly."
+      />
+    </div>
+
+    <!--
+      Spec §2 bug 6: the live "you will be speaking with" block shows four
+      duplicate "RH" initials instead of the actual team, plus a stray
+      quote character in the consent text. No real content was available
+      for who-you'll-speak-with, so that block is left out here rather
+      than reproducing the duplicate-initials bug or inventing names.
+    -->
+
+    <form class="mx-auto mt-16 max-w-2xl space-y-5">
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label for="name" class="text-[length:var(--text-small)] font-medium">Name</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+          />
+        </div>
+        <div>
+          <label for="email" class="text-[length:var(--text-small)] font-medium">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+          />
+        </div>
+      </div>
+      <div>
+        <label for="message" class="text-[length:var(--text-small)] font-medium">
+          Tell us what you're working on
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          rows="5"
+          required
+          class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+        ></textarea>
+      </div>
+      <label class="flex items-start gap-2 text-[length:var(--text-caption)] text-neutral-600">
+        <input type="checkbox" required class="mt-1" />
+        I agree to my data being used to respond to this enquiry, in line with the privacy policy.
+      </label>
+      <button
+        type="submit"
+        class="rounded-[var(--radius-control)] bg-ink px-6 py-3 font-semibold text-surface"
+      >
+        Send message
+      </button>
+    </form>
+  </Section>
+</BaseLayout>

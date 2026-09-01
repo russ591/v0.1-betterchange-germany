@@ -1,0 +1,24 @@
+---
+interface Props {
+  label: string;
+  value: string;
+  description: string;
+  tone?: "light" | "dark";
+}
+
+const { label, value, description, tone = "light" } = Astro.props;
+---
+
+<div
+  class={`rounded-[var(--radius-card)] border p-6 ${
+    tone === "dark" ? "border-neutral-700 bg-neutral-900" : "border-neutral-200 bg-surface"
+  }`}
+>
+  <p class={`eyebrow ${tone === "dark" ? "text-neutral-400" : "text-neutral-500"}`}>{label}</p>
+  <p class="mt-2 text-[length:var(--text-h3)] font-bold">
+    <span class={tone === "dark" ? "text-lime" : "text-ink"}>{value}</span>
+  </p>
+  <p class={`mt-1 text-[length:var(--text-small)] ${tone === "dark" ? "text-neutral-400" : "text-neutral-600"}`}>
+    {description}
+  </p>
+</div>

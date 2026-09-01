@@ -1,0 +1,46 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+import ServiceCard from "@/components/ServiceCard.astro";
+import CTABanner from "@/components/CTABanner.astro";
+import { services } from "@/data/services";
+---
+
+<BaseLayout
+  title="Services"
+  description="We work with teams, leaders, and organisations across Europe. Training, coaching, consulting, or facilitation — we bring real-world experience to every engagement."
+>
+  <Section
+    eyebrow="Agile Consulting & Training · Berlin & Europe"
+    class="bg-neutral-50"
+  >
+    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+      Services that create lasting change
+    </h1>
+    <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
+      We work with teams, leaders, and organisations across Europe. Training, coaching, consulting,
+      or facilitation — we bring real-world experience to every engagement.
+    </p>
+  </Section>
+
+  <Section>
+    <div class="grid gap-6 sm:grid-cols-2">
+      {services.map((service) => <ServiceCard name={service.name} items={service.items} />)}
+    </div>
+  </Section>
+
+  <!--
+    Spec §2 bug 9: the live "case studies" section repeats the same case
+    study three times (a dynamic-list rendering bug). No real case study
+    text was available to pull for this build, so the section is left out
+    rather than inventing content — add it here once real case studies are
+    ready to migrate.
+  -->
+
+  <CTABanner
+    heading="Let's talk about your situation."
+    body="Every engagement starts with a conversation. Tell us what you're working on."
+    ctaLabel="Contact us"
+    ctaHref="/contact"
+  />
+</BaseLayout>

@@ -1,0 +1,64 @@
+---
+import { getCollection } from "astro:content";
+
+const categories = (await getCollection("training-categories")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-neutral-200 bg-neutral-50">
+  <div class="mx-auto max-w-6xl px-6 py-16">
+    <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="lg:col-span-2">
+        <a href="/" class="text-lg font-bold tracking-tight">
+          Better <span class="bg-ink px-1 text-lime">Change</span>
+        </a>
+        <p class="mt-4 max-w-sm text-[length:var(--text-small)] text-neutral-600">
+          A European network of practitioners delivering training, coaching, and transformation —
+          in English and German.
+        </p>
+      </div>
+
+      <div>
+        <p class="eyebrow text-neutral-500">Training</p>
+        <ul class="mt-4 space-y-2 text-[length:var(--text-small)]">
+          {
+            categories.map((category) => (
+              <li>
+                <a
+                  href={`/training/${category.id}`}
+                  class="text-neutral-600 hover:text-ink"
+                >
+                  {category.data.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <p class="eyebrow text-neutral-500">Company</p>
+        <ul class="mt-4 space-y-2 text-[length:var(--text-small)]">
+          <li><a href="/services" class="text-neutral-600 hover:text-ink">Services</a></li>
+          <li><a href="/about" class="text-neutral-600 hover:text-ink">About</a></li>
+          <li><a href="/insights" class="text-neutral-600 hover:text-ink">Insights</a></li>
+          <li><a href="/contact" class="text-neutral-600 hover:text-ink">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="mt-12 flex flex-col gap-4 border-t border-neutral-200 pt-8 text-[length:var(--text-caption)] text-neutral-500 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>&copy; {year} Better Change. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="/impressum" class="hover:text-ink">Impressum</a>
+        <a href="/datenschutz" class="hover:text-ink">Datenschutz</a>
+        <a href="/agb" class="hover:text-ink">AGB</a>
+      </div>
+    </div>
+  </div>
+</footer>

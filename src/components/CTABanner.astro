@@ -1,0 +1,25 @@
+---
+import Button from "@/components/Button.astro";
+
+// Shared closing CTA banner (spec §4) — one component, swappable text, used
+// for "Let's talk about your situation", "Not sure where to start", and
+// "courses in this topic" across the live site.
+interface Props {
+  heading: string;
+  body?: string;
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+const { heading, body, ctaLabel, ctaHref } = Astro.props;
+---
+
+<section class="bg-ink py-[var(--spacing-section-y-sm)] sm:py-[var(--spacing-section-y)]">
+  <div class="mx-auto flex max-w-4xl flex-col items-start gap-6 px-6 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <h2 class="text-[length:var(--text-h3)] text-surface">{heading}</h2>
+      {body && <p class="mt-2 max-w-xl text-[length:var(--text-body)] text-neutral-300">{body}</p>}
+    </div>
+    <Button href={ctaHref} variant="primary" class="shrink-0">{ctaLabel}</Button>
+  </div>
+</section>

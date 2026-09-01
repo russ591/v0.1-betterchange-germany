@@ -1,0 +1,78 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+import StatCallout from "@/components/StatCallout.astro";
+import TeamCard from "@/components/TeamCard.astro";
+import CTABanner from "@/components/CTABanner.astro";
+
+const team = await getCollection("coach-profiles");
+
+const stats = [
+  { label: "Languages", value: "DE+", description: "All European languages spoken" },
+  { label: "Delivery", value: "EN", description: "Native English as standard" },
+  { label: "Network", value: "8+", description: "Coaches across Europe" },
+  { label: "Experience", value: "30+", description: "Years combined experience" },
+];
+---
+
+<BaseLayout
+  title="About"
+  description="Better Change is a European network of agile coaches, trainers, and consultants who have done the work themselves — and know what to do when the real world does not follow the manual."
+>
+  <Section eyebrow="About Better Change" class="bg-neutral-50">
+    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+      Practitioners, not theorists
+    </h1>
+    <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
+      Better Change is a European network of agile coaches, trainers, and consultants who have done
+      the work themselves — and know what to do when the real world does not follow the manual.
+    </p>
+  </Section>
+
+  <Section eyebrow="Our approach" heading="The real world does not follow the manual">
+    <div class="max-w-2xl space-y-4 text-[length:var(--text-body)] text-neutral-600">
+      <p>
+        Better Change was built on a simple insight: the best agile coaches are the ones who have
+        actually done it. Not just read the books and passed the exams — but navigated real
+        organisations, with real constraints, and real people who were sceptical.
+      </p>
+      <p>
+        Our network spans Europe. We work bilingually in English and German, deliver in person and
+        online, and bring 30+ years of combined practitioner experience to every engagement.
+      </p>
+      <p>
+        We are not a large consultancy. We are a deliberately small, high-quality network — which
+        means you always work with people who know their craft.
+      </p>
+    </div>
+  </Section>
+
+  <Section class="border-t border-neutral-200 bg-neutral-50 !py-16">
+    <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+      {stats.map((stat) => <StatCallout {...stat} />)}
+    </div>
+  </Section>
+
+  <Section eyebrow="Our people" heading="The team">
+    <p class="max-w-2xl text-[length:var(--text-small)] text-neutral-500">
+      Only profiles with real biography content link through to a full profile page — the rest are
+      listed here and will link through once their content is written (see the placeholder-profile
+      note in the project's audit spec, §2).
+    </p>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {team.map((profile) => <TeamCard profile={profile} />)}
+    </div>
+    <p class="mt-6 text-[length:var(--text-caption)] text-neutral-400">
+      Showing {team.length} of ~20 Fellows — the full roster (names, roles, countries, languages)
+      is migrated once available; see the review notes for what's needed.
+    </p>
+  </Section>
+
+  <CTABanner
+    heading="Not sure where to start?"
+    body="Talk to us. We'll help you find the right training or coaching approach for your situation."
+    ctaLabel="Contact us"
+    ctaHref="/contact"
+  />
+</BaseLayout>
