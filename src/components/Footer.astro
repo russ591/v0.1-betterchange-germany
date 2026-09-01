@@ -9,28 +9,28 @@ const categories = (await getCollection("training-categories")).sort(
 const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-neutral-200 bg-neutral-50">
+<footer class="bg-ink">
   <div class="mx-auto max-w-6xl px-6 py-16">
     <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
       <div class="lg:col-span-2">
         <a href="/" aria-label="Better Change home">
-          <Logo />
+          <Logo tone="light" />
         </a>
-        <p class="mt-4 max-w-sm text-[length:var(--text-small)] text-neutral-600">
+        <p class="mt-4 max-w-sm text-[length:var(--text-small)] text-neutral-400">
           A European network of practitioners delivering training, coaching, and transformation —
           in English and German.
         </p>
       </div>
 
       <div>
-        <p class="eyebrow text-neutral-500">Training</p>
+        <p class="eyebrow text-lime">Training</p>
         <ul class="mt-4 space-y-2 text-[length:var(--text-small)]">
           {
             categories.map((category) => (
               <li>
                 <a
                   href={`/training/${category.id}`}
-                  class="text-neutral-600 hover:text-ink"
+                  class="text-neutral-400 hover:text-surface"
                 >
                   {category.data.name}
                 </a>
@@ -41,24 +41,24 @@ const year = new Date().getFullYear();
       </div>
 
       <div>
-        <p class="eyebrow text-neutral-500">Company</p>
+        <p class="eyebrow text-lime">Company</p>
         <ul class="mt-4 space-y-2 text-[length:var(--text-small)]">
-          <li><a href="/services" class="text-neutral-600 hover:text-ink">Services</a></li>
-          <li><a href="/about" class="text-neutral-600 hover:text-ink">About</a></li>
-          <li><a href="/insights" class="text-neutral-600 hover:text-ink">Insights</a></li>
-          <li><a href="/contact" class="text-neutral-600 hover:text-ink">Contact</a></li>
+          <li><a href="/services" class="text-neutral-400 hover:text-surface">Services</a></li>
+          <li><a href="/about" class="text-neutral-400 hover:text-surface">About</a></li>
+          <li><a href="/insights" class="text-neutral-400 hover:text-surface">Insights</a></li>
+          <li><a href="/contact" class="text-neutral-400 hover:text-surface">Contact</a></li>
         </ul>
       </div>
     </div>
 
     <div
-      class="mt-12 flex flex-col gap-4 border-t border-neutral-200 pt-8 text-[length:var(--text-caption)] text-neutral-500 sm:flex-row sm:items-center sm:justify-between"
+      class="mt-12 flex flex-col gap-4 border-t border-neutral-800 pt-8 text-[length:var(--text-caption)] text-neutral-500 sm:flex-row sm:items-center sm:justify-between"
     >
       <p>&copy; {year} Better Change. All rights reserved.</p>
       <div class="flex gap-6">
-        <a href="/impressum" class="hover:text-ink">Impressum</a>
-        <a href="/datenschutz" class="hover:text-ink">Datenschutz</a>
-        <a href="/agb" class="hover:text-ink">AGB</a>
+        <a href="/impressum" class="hover:text-surface">Impressum</a>
+        <a href="/datenschutz" class="hover:text-surface">Datenschutz</a>
+        <a href="/agb" class="hover:text-surface">AGB</a>
       </div>
     </div>
   </div>

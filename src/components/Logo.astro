@@ -5,10 +5,11 @@
 // tricolour flag tab + "GERMANY" caption tags the regional site.
 interface Props {
   size?: "default" | "large";
+  tone?: "dark" | "light";
   class?: string;
 }
 
-const { size = "default", class: className = "" } = Astro.props;
+const { size = "default", tone = "dark", class: className = "" } = Astro.props;
 
 const dotSize = size === "large" ? "h-9 w-9" : "h-6 w-6";
 const textSize = size === "large" ? "text-3xl" : "text-lg";
@@ -16,22 +17,31 @@ const rowGap = size === "large" ? "gap-2" : "gap-1";
 const wordGap = size === "large" ? "gap-2.5" : "gap-1.5";
 const flagSize = size === "large" ? "h-4 w-[5px]" : "h-3 w-1";
 const captionSize = size === "large" ? "text-xs" : "text-[9px]";
+
+const isLight = tone === "light";
 ---
 
 <span class={`inline-flex flex-col items-end ${rowGap} ${className}`}>
   <span class={`inline-flex items-center self-start ${wordGap}`}>
     <span aria-hidden="true" class={`shrink-0 rounded-full bg-lime ${dotSize}`}></span>
-    <span class={`${textSize} whitespace-nowrap font-extrabold tracking-tight text-ink`}>
+    <span
+      class={`${textSize} whitespace-nowrap font-extrabold tracking-tight ${isLight ? "text-surface" : "text-ink"}`}
+    >
       Better<span class="italic">Change</span>
     </span>
   </span>
   <span class="inline-flex items-center gap-1.5">
-    <span aria-hidden="true" class={`flex flex-col overflow-hidden rounded-[1px] ${flagSize}`}>
-      <span class="flex-1 bg-de-black"></span>
+    <span
+      aria-hidden="true"
+      class={`flex flex-col overflow-hidden rounded-[1px] ${flagSize} ${isLight ? "ring-1 ring-white/20" : ""}`}
+    >
+      <span class={`flex-1 ${isLight ? "bg-neutral-400" : "bg-de-black"}`}></span>
       <span class="flex-1 bg-de-red"></span>
       <span class="flex-1 bg-de-gold"></span>
     </span>
-    <span class={`${captionSize} font-semibold uppercase tracking-[0.18em] text-neutral-500`}>
+    <span
+      class={`${captionSize} font-semibold uppercase tracking-[0.18em] ${isLight ? "text-neutral-400" : "text-neutral-500"}`}
+    >
       Germany
     </span>
   </span>
