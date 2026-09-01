@@ -1,0 +1,48 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+import Button from "@/components/Button.astro";
+---
+
+<BaseLayout
+  title="You're registered"
+  description="Thanks — your training registration has been received."
+>
+  <Section eyebrow="Registration confirmed" class="bg-mist-light">
+    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+      You're registered!
+    </h1>
+    <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
+      A confirmation email is on its way to you. You'll receive your invoice separately, via
+      email, within 2 business days.
+    </p>
+
+    <div class="mt-10 max-w-xl rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6">
+      <h2 class="text-[length:var(--text-h4)]">What happens next?</h2>
+      <ol class="mt-4 space-y-4 text-[length:var(--text-small)] text-neutral-600">
+        <li class="flex gap-3">
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-lime text-[length:var(--text-caption)] font-bold text-ink">
+            1
+          </span>
+          <span>You'll receive a confirmation email with your registration details.</span>
+        </li>
+        <li class="flex gap-3">
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-lime text-[length:var(--text-caption)] font-bold text-ink">
+            2
+          </span>
+          <span>We'll follow up with logistics — joining instructions or venue details — closer to the course date.</span>
+        </li>
+        <li class="flex gap-3">
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-lime text-[length:var(--text-caption)] font-bold text-ink">
+            3
+          </span>
+          <span>Your invoice will follow separately by email, within 2 business days.</span>
+        </li>
+      </ol>
+    </div>
+
+    <div class="mt-10">
+      <Button href="/training" variant="primary">Back to training overview</Button>
+    </div>
+  </Section>
+</BaseLayout>

@@ -82,8 +82,9 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
         method="POST"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
-        action="/thank-you"
+        action="/training/register/thank-you"
         class="space-y-5"
+        id="registration-form"
       >
         <input type="hidden" name="form-name" value="registration" />
         <input type="hidden" name="course" value={`${course.data.name} (${session.id})`} />
@@ -92,9 +93,23 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
             Don't fill this out if you're human: <input name="bot-field" />
           </label>
         </p>
+
+        <p class="eyebrow text-neutral-500">Booking details</p>
+
+        <div>
+          <label for="seats" class="text-[length:var(--text-small)] font-medium">Number of seats</label>
+          <select
+            id="seats"
+            name="seats"
+            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-4 py-2.5 sm:w-40"
+          >
+            {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => <option value={n}>{n}</option>)}
+          </select>
+        </div>
+
         <div class="grid gap-5 sm:grid-cols-2">
           <div>
-            <label for="name" class="text-[length:var(--text-small)] font-medium">Name</label>
+            <label for="name" class="text-[length:var(--text-small)] font-medium">Your name</label>
             <input
               id="name"
               name="name"
@@ -104,7 +119,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
             />
           </div>
           <div>
-            <label for="email" class="text-[length:var(--text-small)] font-medium">Email</label>
+            <label for="email" class="text-[length:var(--text-small)] font-medium">Your email</label>
             <input
               id="email"
               name="email"
@@ -114,6 +129,61 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
             />
           </div>
         </div>
+
+        <div>
+          <label for="phone" class="text-[length:var(--text-small)] font-medium">Phone (optional)</label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+          />
+        </div>
+
+        <label id="different-attendee-wrap" class="flex items-start gap-2 text-[length:var(--text-small)]" hidden>
+          <input type="checkbox" id="different-attendee" name="different-attendee" class="mt-1" />
+          This seat is for someone else
+        </label>
+
+        <div id="attendees-container" hidden>
+          <p class="eyebrow text-neutral-500">Attendee details</p>
+          <div class="mt-4 space-y-4">
+            {
+              Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
+                <div data-attendee-block data-attendee-index={n} hidden class="grid gap-4 sm:grid-cols-2">
+                  <p class="text-[length:var(--text-caption)] font-semibold text-neutral-500 sm:col-span-2">
+                    Attendee {n}
+                  </p>
+                  <div>
+                    <label for={`attendee-name-${n}`} class="text-[length:var(--text-small)] font-medium">
+                      Name
+                    </label>
+                    <input
+                      id={`attendee-name-${n}`}
+                      name={`attendee-name-${n}`}
+                      type="text"
+                      class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+                    />
+                  </div>
+                  <div>
+                    <label for={`attendee-email-${n}`} class="text-[length:var(--text-small)] font-medium">
+                      Email
+                    </label>
+                    <input
+                      id={`attendee-email-${n}`}
+                      name={`attendee-email-${n}`}
+                      type="email"
+                      class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+                    />
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <p class="eyebrow text-neutral-500">Billing details</p>
+
         <div>
           <label for="company" class="text-[length:var(--text-small)] font-medium">Company (optional)</label>
           <input
@@ -123,6 +193,67 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
             class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
           />
         </div>
+
+        <div>
+          <label for="address" class="text-[length:var(--text-small)] font-medium">Street and number (optional)</label>
+          <input
+            id="address"
+            name="address"
+            type="text"
+            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+          />
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-3">
+          <div>
+            <label for="postcode" class="text-[length:var(--text-small)] font-medium">Postcode (optional)</label>
+            <input
+              id="postcode"
+              name="postcode"
+              type="text"
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+            />
+          </div>
+          <div>
+            <label for="city" class="text-[length:var(--text-small)] font-medium">City (optional)</label>
+            <input
+              id="city"
+              name="city"
+              type="text"
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+            />
+          </div>
+          <div>
+            <label for="country" class="text-[length:var(--text-small)] font-medium">Country (optional)</label>
+            <input
+              id="country"
+              name="country"
+              type="text"
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="vat-id" class="text-[length:var(--text-small)] font-medium">VAT ID (optional)</label>
+          <input
+            id="vat-id"
+            name="vat-id"
+            type="text"
+            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+          />
+        </div>
+
+        <div>
+          <label for="discount-code" class="text-[length:var(--text-small)] font-medium">Discount code (optional)</label>
+          <input
+            id="discount-code"
+            name="discount-code"
+            type="text"
+            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5 sm:w-64"
+          />
+        </div>
+
         <div>
           <label for="notes" class="text-[length:var(--text-small)] font-medium">Anything we should know?</label>
           <textarea
@@ -145,4 +276,37 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
       </form>
     </div>
   </Section>
+
+  <script>
+    const seatsSelect = document.getElementById("seats") as HTMLSelectElement;
+    const differentAttendeeWrap = document.getElementById("different-attendee-wrap") as HTMLLabelElement;
+    const differentAttendeeCheckbox = document.getElementById("different-attendee") as HTMLInputElement;
+    const attendeesContainer = document.getElementById("attendees-container") as HTMLDivElement;
+    const attendeeBlocks = Array.from(
+      document.querySelectorAll<HTMLDivElement>("[data-attendee-block]")
+    );
+
+    function update() {
+      const seats = parseInt(seatsSelect.value, 10);
+
+      if (seats === 1) {
+        differentAttendeeWrap.hidden = false;
+        const showAttendee = differentAttendeeCheckbox.checked;
+        attendeesContainer.hidden = !showAttendee;
+        attendeeBlocks.forEach((block, i) => {
+          block.hidden = !(i === 0 && showAttendee);
+        });
+      } else {
+        differentAttendeeWrap.hidden = true;
+        attendeesContainer.hidden = false;
+        attendeeBlocks.forEach((block, i) => {
+          block.hidden = i >= seats;
+        });
+      }
+    }
+
+    seatsSelect.addEventListener("change", update);
+    differentAttendeeCheckbox.addEventListener("change", update);
+    update();
+  </script>
 </BaseLayout>
