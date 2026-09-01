@@ -23,11 +23,13 @@ const href = `/training/${categorySlug}/${course.id}`;
     >
       <div>
         <p class="font-semibold">{course.data.name}</p>
-        <p class="text-[length:var(--text-caption)] text-neutral-500">{course.data.level}</p>
+        {course.data.level && (
+          <p class="text-[length:var(--text-caption)] text-neutral-500">{course.data.level}</p>
+        )}
       </div>
       <div class="flex flex-wrap items-center gap-2">
         {course.data.formats.map((f) => (
-          <Badge format={f.type} />
+          <Badge format={f} />
         ))}
       </div>
     </a>
@@ -43,7 +45,7 @@ const href = `/training/${categorySlug}/${course.id}`;
       </p>
       <div class="mt-4 flex flex-wrap gap-2">
         {course.data.formats.map((f) => (
-          <Badge format={f.type} />
+          <Badge format={f} />
         ))}
       </div>
     </a>

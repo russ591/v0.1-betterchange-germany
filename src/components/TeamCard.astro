@@ -9,8 +9,9 @@ interface Props {
 }
 
 const { profile, density = "full" } = Astro.props;
-const { name, role, country, languages, hasFullProfile } = profile.data;
+const { name, role, country, languages, hasFullProfile, photo } = profile.data;
 const href = `/about/${profile.id}`;
+const avatarSize = density === "compact" ? "h-12 w-12 text-sm" : "mb-4 h-20 w-20 text-lg";
 ---
 
 <div
@@ -18,17 +19,26 @@ const href = `/about/${profile.id}`;
     density === "compact" ? "flex items-center gap-3" : ""
   }`}
 >
-  <div
-    aria-hidden="true"
-    class={`flex shrink-0 items-center justify-center rounded-full bg-neutral-200 font-semibold text-neutral-500 ${
-      density === "compact" ? "h-12 w-12 text-sm" : "mb-4 h-20 w-20 text-lg"
-    }`}
-  >
-    {name
-      .split(" ")
-      .map((n) => n[0])
-      .join("")}
-  </div>
+  {
+    photo ? (
+      <img
+        src={photo}
+        alt={name}
+        class={`shrink-0 rounded-full object-cover ${avatarSize}`}
+        loading="lazy"
+      />
+    ) : (
+      <div
+        aria-hidden="true"
+        class={`flex shrink-0 items-center justify-center rounded-full bg-neutral-200 font-semibold text-neutral-500 ${avatarSize}`}
+      >
+        {name
+          .split(" ")
+          .map((n) => n[0])
+          .join("")}
+      </div>
+    )
+  }
   <div>
     {
       hasFullProfile ? (

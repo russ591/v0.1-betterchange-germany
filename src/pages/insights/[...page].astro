@@ -1,16 +1,22 @@
 ---
+import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
 
-const articles = (await getCollection("insights-articles")).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
+export const getStaticPaths = (async ({ paginate }) => {
+  const articles = (await getCollection("insights-articles")).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+  );
+  return paginate(articles, { pageSize: 24 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
 ---
 
 <BaseLayout
-  title="Insights"
+  title={page.currentPage === 1 ? "Insights" : `Insights — page ${page.currentPage}`}
   description="Practical thinking on Kanban, Flight Levels, agile transformation, and organisational change — written by people who have done the work."
 >
   <Section eyebrow="insights" class="bg-neutral-50">
@@ -23,14 +29,33 @@ const articles = (await getCollection("insights-articles")).sort(
     </p>
   </Section>
 
-  <Section eyebrow={`${articles.length} article${articles.length === 1 ? "" : "s"}`}>
+  <Section eyebrow={`${page.total} article${page.total === 1 ? "" : "s"}`}>
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {articles.map((article) => <InsightsArticleCard article={article} />)}
+      {page.data.map((article) => <InsightsArticleCard article={article} />)}
     </div>
-    <p class="mt-6 text-[length:var(--text-caption)] text-neutral-400">
-      Showing {articles.length} of 144 articles from the live site — the rest are migrated the same
-      way, one file per article, once you've reviewed this pattern.
-    </p>
+    {
+      page.lastPage > 1 && (
+        <nav aria-label="Pagination" class="mt-10 flex items-center justify-between text-[length:var(--text-small)]">
+          {page.url.prev ? (
+            <a href={page.url.prev} class="font-semibold hover:underline">
+              ← Newer
+            </a>
+          ) : (
+            <span />
+          )}
+          <span class="text-neutral-500">
+            Page {page.currentPage} of {page.lastPage}
+          </span>
+          {page.url.next ? (
+            <a href={page.url.next} class="font-semibold hover:underline">
+              Older →
+            </a>
+          ) : (
+            <span />
+          )}
+        </nav>
+      )
+    }
   </Section>
 
   <Section tone="dark" eyebrow="Newsletter" heading="Get new articles by email">

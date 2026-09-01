@@ -1,0 +1,134 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+import Badge from "@/components/Badge.astro";
+
+export async function getStaticPaths() {
+  const sessions = await getCollection("training-schedules");
+  return sessions.map((session) => ({
+    params: { session: session.id },
+    props: { session },
+  }));
+}
+
+const { session } = Astro.props;
+const course = await getEntry(session.data.course);
+const trainer = session.data.trainer ? await getEntry(session.data.trainer) : undefined;
+
+const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" });
+---
+
+<BaseLayout
+  title={`Register — ${course.data.name}`}
+  description={`Register for ${course.data.name} — ${session.data.format}, ${session.data.location}.`}
+>
+  <Section eyebrow="Register" class="bg-neutral-50">
+    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">{course.data.name}</h1>
+    <p class="mt-4 text-[length:var(--text-small)] text-neutral-500">
+      <a href={`/training/${course.data.category.id}/${course.id}`} class="hover:underline">
+        &larr; Back to course details
+      </a>
+    </p>
+  </Section>
+
+  <Section>
+    <div class="grid gap-10 lg:grid-cols-[1fr_1.3fr]">
+      <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-neutral-50 p-6">
+        <p class="eyebrow text-neutral-500">Order summary</p>
+        <h2 class="mt-2 text-[length:var(--text-h4)]">{course.data.name}</h2>
+        <dl class="mt-6 space-y-4 text-[length:var(--text-small)]">
+          <div class="flex items-center justify-between">
+            <dt class="text-neutral-500">Format</dt>
+            <dd><Badge format={session.data.format} /></dd>
+          </div>
+          <div class="flex items-center justify-between">
+            <dt class="text-neutral-500">Date</dt>
+            <dd class="font-semibold">
+              {session.data.date ? dateFormatter.format(session.data.date) : "Start anytime"}
+            </dd>
+          </div>
+          <div class="flex items-center justify-between">
+            <dt class="text-neutral-500">Location</dt>
+            <dd class="font-semibold">{session.data.location}</dd>
+          </div>
+          {
+            trainer && (
+              <div class="flex items-center justify-between">
+                <dt class="text-neutral-500">Trainer</dt>
+                <dd class="font-semibold">{trainer.data.name}</dd>
+              </div>
+            )
+          }
+          {
+            session.data.notes && (
+              <div class="rounded-[var(--radius-control)] bg-surface p-3 text-[length:var(--text-caption)] text-neutral-500">
+                {session.data.notes}
+              </div>
+            )
+          }
+        </dl>
+        <div class="mt-6 border-t border-neutral-200 pt-4">
+          <div class="flex items-center justify-between text-[length:var(--text-h4)] font-bold">
+            <span>Total</span>
+            <span>{session.data.price}</span>
+          </div>
+          {session.data.offer && <p class="mt-1 text-[length:var(--text-caption)] text-neutral-500">{session.data.offer}</p>}
+        </div>
+      </div>
+
+      <form class="space-y-5">
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label for="name" class="text-[length:var(--text-small)] font-medium">Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+            />
+          </div>
+          <div>
+            <label for="email" class="text-[length:var(--text-small)] font-medium">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+            />
+          </div>
+        </div>
+        <div>
+          <label for="company" class="text-[length:var(--text-small)] font-medium">Company (optional)</label>
+          <input
+            id="company"
+            name="company"
+            type="text"
+            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+          />
+        </div>
+        <div>
+          <label for="notes" class="text-[length:var(--text-small)] font-medium">Anything we should know?</label>
+          <textarea
+            id="notes"
+            name="notes"
+            rows="4"
+            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+          ></textarea>
+        </div>
+        <label class="flex items-start gap-2 text-[length:var(--text-caption)] text-neutral-600">
+          <input type="checkbox" required class="mt-1" />
+          I agree to my data being used to process this registration, in line with the privacy policy.
+        </label>
+        <button
+          type="submit"
+          class="w-full rounded-[var(--radius-control)] bg-ink px-6 py-3 font-semibold text-surface sm:w-auto"
+        >
+          Confirm registration
+        </button>
+      </form>
+    </div>
+  </Section>
+</BaseLayout>

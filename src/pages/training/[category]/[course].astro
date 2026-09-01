@@ -20,27 +20,53 @@ const allCourses = await getCollection("training-courses");
 const relatedCourses = allCourses.filter(
   (c) => c.data.category.id === category.id && c.id !== course.id
 );
+
+const allSchedules = await getCollection("training-schedules");
+const upcoming = allSchedules
+  .filter((s) => s.data.course.id === course.id)
+  .sort((a, b) => (a.data.date?.valueOf() ?? 0) - (b.data.date?.valueOf() ?? 0));
+
+const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" });
 ---
 
-<BaseLayout title={course.data.name} description={course.data.summary}>
+<BaseLayout
+  title={course.data.metaTitle ?? course.data.name}
+  description={course.data.metaDescription ?? course.data.summary}
+>
   <Section eyebrow={`${category.data.name} · ${course.data.code}`} class="bg-neutral-50">
     <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
       {course.data.name}
     </h1>
     <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">{course.data.summary}</p>
     <dl class="mt-8 flex flex-wrap gap-x-10 gap-y-4 text-[length:var(--text-small)]">
-      <div>
-        <dt class="text-neutral-500">Level</dt>
-        <dd class="font-semibold">{course.data.level}</dd>
-      </div>
+      {
+        course.data.level && (
+          <div>
+            <dt class="text-neutral-500">Level</dt>
+            <dd class="font-semibold">{course.data.level}</dd>
+          </div>
+        )
+      }
       <div>
         <dt class="text-neutral-500">Duration</dt>
-        <dd class="font-semibold">{course.data.durationDays} day{course.data.durationDays === 1 ? "" : "s"}</dd>
+        <dd class="font-semibold">{course.data.durationText}</dd>
       </div>
-      <div>
-        <dt class="text-neutral-500">Certification</dt>
-        <dd class="font-semibold">{course.data.certification}</dd>
-      </div>
+      {
+        course.data.certification && (
+          <div>
+            <dt class="text-neutral-500">Certification</dt>
+            <dd class="font-semibold">{course.data.certification}</dd>
+          </div>
+        )
+      }
+      {
+        course.data.languages.length > 0 && (
+          <div>
+            <dt class="text-neutral-500">Languages</dt>
+            <dd class="font-semibold">{course.data.languages.join(", ")}</dd>
+          </div>
+        )
+      }
     </dl>
   </Section>
 
@@ -49,14 +75,18 @@ const relatedCourses = allCourses.filter(
       {
         course.data.formats.map((format) => (
           <div class="flex flex-col rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6">
-            <Badge format={format.type} />
-            <p class="mt-4 text-[length:var(--text-h4)] font-bold">{format.price}</p>
-            {format.priceNote && <p class="mt-1 text-[length:var(--text-caption)] text-neutral-500">{format.priceNote}</p>}
+            <Badge format={format} />
+            {course.data.priceFrom && (
+              <p class="mt-4 text-[length:var(--text-h4)] font-bold">From {course.data.priceFrom}</p>
+            )}
+            {course.data.specialOfferText && (
+              <p class="mt-1 text-[length:var(--text-caption)] text-neutral-500">{course.data.specialOfferText}</p>
+            )}
             <a
-              href={`/training/register/${course.id}-${format.type}`}
+              href="#upcoming-sessions"
               class="mt-6 inline-flex items-center justify-center rounded-[var(--radius-control)] bg-ink px-4 py-2.5 text-sm font-semibold text-surface"
             >
-              Register
+              See dates
             </a>
           </div>
         ))
@@ -77,8 +107,55 @@ const relatedCourses = allCourses.filter(
   </Section>
 
   {
+    upcoming.length > 0 && (
+      <Section id="upcoming-sessions" eyebrow="Upcoming sessions" class="bg-neutral-50">
+        <div class="overflow-x-auto rounded-[var(--radius-card)] border border-neutral-200 bg-surface">
+          <table class="w-full text-left text-[length:var(--text-small)]">
+            <thead>
+              <tr class="border-b border-neutral-200 text-neutral-500">
+                <th class="px-4 py-3 font-medium">Date</th>
+                <th class="px-4 py-3 font-medium">Format</th>
+                <th class="px-4 py-3 font-medium">Location</th>
+                <th class="px-4 py-3 font-medium">Price</th>
+                <th class="px-4 py-3" />
+              </tr>
+            </thead>
+            <tbody>
+              {upcoming.map((session) => (
+                <tr class="border-b border-neutral-100 last:border-0">
+                  <td class="px-4 py-3 font-medium">
+                    {session.data.date ? dateFormatter.format(session.data.date) : "Start anytime"}
+                  </td>
+                  <td class="px-4 py-3">
+                    <Badge format={session.data.format} />
+                  </td>
+                  <td class="px-4 py-3">{session.data.location}</td>
+                  <td class="px-4 py-3">
+                    {session.data.price}
+                    {session.data.offer && (
+                      <span class="block text-[length:var(--text-caption)] text-neutral-500">{session.data.offer}</span>
+                    )}
+                  </td>
+                  <td class="px-4 py-3 text-right">
+                    <a
+                      href={`/training/register/${session.id}`}
+                      class="font-semibold text-ink hover:underline"
+                    >
+                      Register →
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Section>
+    )
+  }
+
+  {
     relatedCourses.length > 0 && (
-      <Section eyebrow="Related courses" class="bg-neutral-50">
+      <Section eyebrow="Related courses" class={upcoming.length > 0 ? "" : "bg-neutral-50"}>
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {relatedCourses.map((related) => (
             <CourseCard course={related} categorySlug={category.id} />

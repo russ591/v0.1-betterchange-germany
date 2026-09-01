@@ -1,5 +1,5 @@
 ---
-import { getCollection, getEntry, render } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
@@ -13,31 +13,37 @@ export async function getStaticPaths() {
 }
 
 const { article } = Astro.props;
-const { Content } = await render(article);
-const category = await getEntry(article.data.category);
-const author = await getEntry(article.data.author);
+const author = article.data.author ? await getEntry(article.data.author) : undefined;
+const authorName = author?.data.name ?? article.data.authorName ?? "Better Change";
 
 const allArticles = await getCollection("insights-articles");
-const related = allArticles
-  .filter((a) => a.id !== article.id && a.data.category.id === category.id)
-  .slice(0, 3);
+const related = article.data.primaryCategory
+  ? allArticles
+      .filter((a) => a.id !== article.id && a.data.primaryCategory === article.data.primaryCategory)
+      .slice(0, 3)
+  : [];
 ---
 
-<BaseLayout title={article.data.title} description={article.data.excerpt}>
-  <Section eyebrow={`${category.data.name}${article.data.type === "webinar" ? " · Webinar" : ""}`} class="bg-neutral-50">
+<BaseLayout
+  title={article.data.metaTitle ?? article.data.title}
+  description={article.data.metaDescription ?? article.data.excerpt}
+>
+  <Section
+    eyebrow={[article.data.primaryCategory, article.data.contentType].filter(Boolean).join(" · ") || "Insights"}
+    class="bg-neutral-50"
+  >
     <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
       {article.data.title}
     </h1>
     <p class="mt-4 text-[length:var(--text-small)] text-neutral-500">
       {article.data.date.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}
-      · {article.data.readTime} · By {author.data.name}
+      {article.data.readTimeMinutes && ` · ${article.data.readTimeMinutes} min read`}
+      {" "}· By {authorName}
     </p>
   </Section>
 
   <Section>
-    <div class="article-body max-w-2xl text-[length:var(--text-body)] text-neutral-700">
-      <Content />
-    </div>
+    <div class="article-body max-w-2xl text-[length:var(--text-body)] text-neutral-700" set:html={article.data.bodyHtml} />
   </Section>
 
   {

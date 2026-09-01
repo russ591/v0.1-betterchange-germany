@@ -8,28 +8,78 @@ import Section from "@/components/Section.astro";
 // profiles in this set (see TeamCard.astro).
 export async function getStaticPaths() {
   const profiles = await getCollection("coach-profiles", ({ data }) => data.hasFullProfile);
+  const courses = await getCollection("training-courses");
+  // course codes in Fellows.coursesDelivered don't always match
+  // TrainingCourse.code punctuation exactly (e.g. "ICP-ACC" vs "ICPACC")
+  const normalize = (s: string) => s.replace(/[^a-z0-9]/gi, "").toUpperCase();
   return profiles.map((profile) => ({
     params: { slug: profile.id },
-    props: { profile },
+    props: {
+      profile,
+      coursesDelivered: (profile.data.coursesDelivered ?? [])
+        .map((code) => courses.find((c) => normalize(c.data.code) === normalize(code)))
+        .filter((c) => c !== undefined),
+    },
   }));
 }
 
-const { profile } = Astro.props;
-const { name, role, country, languages, bio, backgroundAndExpertise, approach, specialities } = profile.data;
+const { profile, coursesDelivered } = Astro.props;
+const {
+  name,
+  role,
+  country,
+  languages,
+  bio,
+  backgroundAndExpertise,
+  approach,
+  specialities,
+  photo,
+  linkedinUrl,
+  yearsExperience,
+  certifications,
+} = profile.data;
+
+const paragraphs = (text: string) =>
+  text
+    .split(/\n\s*\n/)
+    .map((p) => p.trim())
+    .filter(Boolean);
 ---
 
-<BaseLayout title={name} description={profile.data.summary ?? `${name} — ${role} at Better Change`}>
+<BaseLayout title={name} description={bio ? bio.slice(0, 160) : `${name} — ${role} at Better Change`}>
   <Section eyebrow={role} class="bg-neutral-50">
-    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">{name}</h1>
-    <p class="mt-4 text-[length:var(--text-small)] text-neutral-500">
-      {country} · {languages.join(", ")}
-    </p>
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-center">
+      {photo && <img src={photo} alt={name} class="h-28 w-28 shrink-0 rounded-full object-cover" />}
+      <div>
+        <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">{name}</h1>
+        <p class="mt-3 text-[length:var(--text-small)] text-neutral-500">
+          {country} · {languages.join(", ")}
+          {yearsExperience && ` · ${yearsExperience} years experience`}
+        </p>
+        {
+          linkedinUrl && (
+            <a
+              href={linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-2 inline-flex text-[length:var(--text-small)] font-semibold text-ink hover:underline"
+            >
+              LinkedIn →
+            </a>
+          )
+        }
+      </div>
+    </div>
   </Section>
 
   {
     bio && (
       <Section eyebrow="Bio">
-        <p class="max-w-2xl text-[length:var(--text-body)] text-neutral-600">{bio}</p>
+        <div class="max-w-2xl space-y-4 text-[length:var(--text-body)] text-neutral-600">
+          {paragraphs(bio).map((p) => (
+            <p>{p}</p>
+          ))}
+        </div>
       </Section>
     )
   }
@@ -37,7 +87,11 @@ const { name, role, country, languages, bio, backgroundAndExpertise, approach, s
   {
     backgroundAndExpertise && (
       <Section eyebrow="Background & expertise" class="bg-neutral-50">
-        <p class="max-w-2xl text-[length:var(--text-body)] text-neutral-600">{backgroundAndExpertise}</p>
+        <div class="max-w-2xl space-y-4 text-[length:var(--text-body)] text-neutral-600">
+          {paragraphs(backgroundAndExpertise).map((p) => (
+            <p>{p}</p>
+          ))}
+        </div>
       </Section>
     )
   }
@@ -45,7 +99,11 @@ const { name, role, country, languages, bio, backgroundAndExpertise, approach, s
   {
     approach && (
       <Section eyebrow="Approach">
-        <p class="max-w-2xl text-[length:var(--text-body)] text-neutral-600">{approach}</p>
+        <div class="max-w-2xl space-y-4 text-[length:var(--text-body)] text-neutral-600">
+          {paragraphs(approach).map((p) => (
+            <p>{p}</p>
+          ))}
+        </div>
       </Section>
     )
   }
@@ -57,6 +115,39 @@ const { name, role, country, languages, bio, backgroundAndExpertise, approach, s
           {specialities.map((s) => (
             <li class="rounded-[var(--radius-pill)] border border-neutral-300 px-3 py-1 text-[length:var(--text-caption)]">
               {s}
+            </li>
+          ))}
+        </ul>
+      </Section>
+    )
+  }
+
+  {
+    certifications && certifications.length > 0 && (
+      <Section eyebrow="Certifications">
+        <ul class="flex flex-wrap gap-2">
+          {certifications.map((c) => (
+            <li class="rounded-[var(--radius-pill)] border border-neutral-300 px-3 py-1 text-[length:var(--text-caption)]">
+              {c}
+            </li>
+          ))}
+        </ul>
+      </Section>
+    )
+  }
+
+  {
+    coursesDelivered.length > 0 && (
+      <Section eyebrow="Courses delivered" class="bg-neutral-50">
+        <ul class="flex flex-wrap gap-2">
+          {coursesDelivered.map((course) => (
+            <li>
+              <a
+                href={`/training/${course.data.category.id}/${course.id}`}
+                class="rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-3 py-1 text-[length:var(--text-caption)] font-semibold hover:border-ink"
+              >
+                {course.data.code}
+              </a>
             </li>
           ))}
         </ul>

@@ -6,7 +6,9 @@ import StatCallout from "@/components/StatCallout.astro";
 import TeamCard from "@/components/TeamCard.astro";
 import CTABanner from "@/components/CTABanner.astro";
 
-const team = await getCollection("coach-profiles");
+const team = (await getCollection("coach-profiles")).sort(
+  (a, b) => a.data.displayOrder - b.data.displayOrder || a.data.name.localeCompare(b.data.name)
+);
 
 const stats = [
   { label: "Languages", value: "DE+", description: "All European languages spoken" },
@@ -57,16 +59,11 @@ const stats = [
   <Section eyebrow="Our people" heading="The team">
     <p class="max-w-2xl text-[length:var(--text-small)] text-neutral-500">
       Only profiles with real biography content link through to a full profile page — the rest are
-      listed here and will link through once their content is written (see the placeholder-profile
-      note in the project's audit spec, §2).
+      listed here and will link through once their content is written.
     </p>
     <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {team.map((profile) => <TeamCard profile={profile} />)}
     </div>
-    <p class="mt-6 text-[length:var(--text-caption)] text-neutral-400">
-      Showing {team.length} of ~20 Fellows — the full roster (names, roles, countries, languages)
-      is migrated once available; see the review notes for what's needed.
-    </p>
   </Section>
 
   <CTABanner

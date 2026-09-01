@@ -8,14 +8,15 @@ interface Props {
   intro?: string;
   tone?: "light" | "dark";
   class?: string;
+  id?: string;
 }
 
-const { eyebrow, heading, intro, tone = "light", class: className = "" } = Astro.props;
+const { eyebrow, heading, intro, tone = "light", class: className = "", id } = Astro.props;
 
 const toneClasses = tone === "dark" ? "bg-ink text-surface" : "bg-surface text-ink";
 ---
 
-<section class={`${toneClasses} py-[var(--spacing-section-y-sm)] sm:py-[var(--spacing-section-y)] ${className}`}>
+<section id={id} class={`${toneClasses} py-[var(--spacing-section-y-sm)] sm:py-[var(--spacing-section-y)] ${className}`}>
   <div class="mx-auto max-w-6xl px-6">
     {
       (eyebrow || heading || intro) && (
