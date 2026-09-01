@@ -10,18 +10,18 @@ const { name, items, blurb, href } = Astro.props;
 ---
 
 <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-8 shadow-card transition-shadow hover:shadow-card-hover">
+  <span aria-hidden="true" class="flex h-11 w-11 items-center justify-center rounded-full bg-lime">
+    <slot name="icon" />
+  </span>
   {
     blurb ? (
       <>
-        <span aria-hidden="true" class="flex h-11 w-11 items-center justify-center rounded-full bg-lime">
-          <slot name="icon" />
-        </span>
         <h3 class="mt-4 text-[length:var(--text-h4)]">{name}</h3>
         <p class="mt-2 text-[length:var(--text-small)] text-neutral-600">{blurb}</p>
       </>
     ) : (
       <>
-        <h3 class="text-[length:var(--text-h4)]">{name}</h3>
+        <h3 class="mt-4 text-[length:var(--text-h4)]">{name}</h3>
         <ul class="mt-4 space-y-2 text-[length:var(--text-small)] text-neutral-600">
           {items?.map((item) => (
             <li class="flex items-start gap-2">

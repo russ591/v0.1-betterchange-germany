@@ -12,6 +12,9 @@ const { profile, density = "full" } = Astro.props;
 const { name, role, country, languages, hasFullProfile, photo } = profile.data;
 const href = `/about/${profile.id}`;
 const avatarSize = density === "compact" ? "h-12 w-12 text-sm" : "mb-4 h-20 w-20 text-lg";
+
+const nameParts = name.split(" ");
+const initials = nameParts.length > 1 ? nameParts[0][0] + nameParts[nameParts.length - 1][0] : nameParts[0].slice(0, 2);
 ---
 
 <div
@@ -30,12 +33,9 @@ const avatarSize = density === "compact" ? "h-12 w-12 text-sm" : "mb-4 h-20 w-20
     ) : (
       <div
         aria-hidden="true"
-        class={`flex shrink-0 items-center justify-center rounded-full bg-neutral-200 font-semibold text-neutral-500 ${avatarSize}`}
+        class={`flex shrink-0 items-center justify-center rounded-full border-[1.5px] border-lime font-bold text-ink ${avatarSize}`}
       >
-        {name
-          .split(" ")
-          .map((n) => n[0])
-          .join("")}
+        {initials}
       </div>
     )
   }

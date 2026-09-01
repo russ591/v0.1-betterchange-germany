@@ -30,7 +30,7 @@ const related = article.data.primaryCategory
 >
   <Section
     eyebrow={[article.data.primaryCategory, article.data.contentType].filter(Boolean).join(" · ") || "Insights"}
-    class="bg-neutral-50"
+    class="bg-mist-light"
   >
     <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
       {article.data.title}
@@ -48,7 +48,7 @@ const related = article.data.primaryCategory
 
   {
     related.length > 0 && (
-      <Section eyebrow="Related reading" class="bg-neutral-50">
+      <Section eyebrow="Related reading" class="bg-mist-light">
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {related.map((a) => (
             <InsightsArticleCard article={a} />

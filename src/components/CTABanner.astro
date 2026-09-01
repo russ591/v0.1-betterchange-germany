@@ -16,7 +16,9 @@ const { heading, body, ctaLabel, ctaHref, tone = "dark" } = Astro.props;
 const isDark = tone === "dark";
 ---
 
-<section class={`${isDark ? "bg-ink" : "bg-mist-light"} py-[var(--spacing-section-y-sm)] sm:py-[var(--spacing-section-y)]`}>
+<section
+  class={`${isDark ? "bg-ink" : "bg-mist-light border-t border-neutral-200"} py-[var(--spacing-section-y-sm)] sm:py-[var(--spacing-section-y)]`}
+>
   <div class="mx-auto flex max-w-4xl flex-col items-start gap-6 px-6 sm:flex-row sm:items-center sm:justify-between">
     <div>
       <h2 class={`text-[length:var(--text-h3)] ${isDark ? "text-surface" : "text-ink"}`}>{heading}</h2>

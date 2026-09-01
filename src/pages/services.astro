@@ -3,7 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import ServiceCard from "@/components/ServiceCard.astro";
 import CTABanner from "@/components/CTABanner.astro";
-import { services } from "@/data/services";
+import { services, serviceIcons } from "@/data/services";
 ---
 
 <BaseLayout
@@ -12,7 +12,7 @@ import { services } from "@/data/services";
 >
   <Section
     eyebrow="Agile Consulting & Training · Berlin & Europe"
-    class="bg-neutral-50"
+    class="bg-mist-light"
   >
     <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
       Services that create lasting change
@@ -25,7 +25,13 @@ import { services } from "@/data/services";
 
   <Section>
     <div class="grid gap-6 sm:grid-cols-2">
-      {services.map((service) => <ServiceCard name={service.name} items={service.items} />)}
+      {
+        services.map((service) => (
+          <ServiceCard name={service.name} items={service.items}>
+            <Fragment slot="icon" set:html={serviceIcons[service.name]} />
+          </ServiceCard>
+        ))
+      }
     </div>
   </Section>
 
@@ -38,6 +44,7 @@ import { services } from "@/data/services";
   -->
 
   <CTABanner
+    tone="light"
     heading="Let's talk about your situation."
     body="Every engagement starts with a conversation. Tell us what you're working on."
     ctaLabel="Contact us"

@@ -23,7 +23,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
   title={`Register — ${course.data.name}`}
   description={`Register for ${course.data.name} — ${session.data.format}, ${session.data.location}.`}
 >
-  <Section eyebrow="Register" class="bg-neutral-50">
+  <Section eyebrow="Register" class="bg-mist-light">
     <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">{course.data.name}</h1>
     <p class="mt-4 text-[length:var(--text-small)] text-neutral-500">
       <a href={`/training/${course.data.category.id}/${course.id}`} class="hover:underline">
@@ -34,7 +34,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
 
   <Section>
     <div class="grid gap-10 lg:grid-cols-[1fr_1.3fr]">
-      <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-neutral-50 p-6">
+      <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-mist-light p-6">
         <p class="eyebrow text-neutral-500">Order summary</p>
         <h2 class="mt-2 text-[length:var(--text-h4)]">{course.data.name}</h2>
         <dl class="mt-6 space-y-4 text-[length:var(--text-small)]">
