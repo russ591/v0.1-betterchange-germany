@@ -19,3 +19,7 @@ npm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# raw Wix CMS export -- contains personal phone numbers/emails (Fellows.csv);
+# generated site content lives in src/content/ and is committed normally
+scripts/wix-import/data/
