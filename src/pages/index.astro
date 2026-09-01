@@ -1,90 +1,210 @@
 ---
+import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import Button from "@/components/Button.astro";
-import StatCallout from "@/components/StatCallout.astro";
 import ServiceCard from "@/components/ServiceCard.astro";
-import TestimonialCard from "@/components/TestimonialCard.astro";
+import Badge from "@/components/Badge.astro";
+import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
 import CTABanner from "@/components/CTABanner.astro";
 import { services } from "@/data/services";
 
 const stats = [
-  { label: "Base", value: "Berlin", description: "In-person & online, Germany & Europe wide" },
-  { label: "Delivery", value: "EN+", description: "Training & coaching in English and multilingual" },
-  { label: "Network", value: "8+", description: "Expert coaches & trainers across Europe" },
   { label: "Experience", value: "30+", description: "Years combined practitioner experience" },
+  { label: "Network", value: "8+", description: "Expert coaches & trainers across Europe" },
+  { label: "Delivery", value: "EN+", description: "Training & coaching in English and multilingual" },
+  { label: "Base", value: "Berlin", description: "In-person & online, Germany & Europe wide" },
 ];
 
 const clients = ["Deutsche Telekom", "Grundfos", "Laerdal", "TC Electronic", "HelloFresh", "McKinsey", "Microsoft"];
+
+const serviceIcons: Record<string, string> = {
+  Training:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="1.8" class="h-5 w-5"><path d="M2 8l10-4 10 4-10 4-10-4Z"/><path d="M6 10.5V16c0 1.5 2.5 3 6 3s6-1.5 6-3v-5.5"/></svg>',
+  Coaching:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="1.8" class="h-5 w-5"><circle cx="8.5" cy="10" r="4"/><path d="M14 14.5c2.8.4 5 2.1 5 4.5"/><path d="M3.5 19c0-2.5 2.2-4.5 5-4.5s5 2 5 4.5"/></svg>',
+  "Consulting & Transformation":
+    '<svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="1.8" class="h-5 w-5"><path d="M4 12a8 8 0 0 1 14-5"/><path d="M18 4v4h-4"/><path d="M20 12a8 8 0 0 1-14 5"/><path d="M6 20v-4h4"/></svg>',
+  Facilitation:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="1.8" class="h-5 w-5"><rect x="3" y="4" width="7" height="7" rx="1"/><rect x="14" y="4" width="7" height="7" rx="1"/><rect x="3" y="15" width="7" height="5" rx="1"/><rect x="14" y="15" width="7" height="5" rx="1"/></svg>',
+};
+
+const categories = await getCollection("training-categories");
+const certifiedBy = [...new Set(categories.map((c) => c.data.certificationBody).filter(Boolean))];
+
+const schedules = await getCollection("training-schedules");
+const upcoming = schedules
+  .filter((s) => s.data.date)
+  .sort((a, b) => a.data.date!.valueOf() - b.data.date!.valueOf())
+  .slice(0, 5);
+const upcomingCourses = await Promise.all(
+  upcoming.map(async (session) => ({ session, course: await getEntry(session.data.course) }))
+);
+const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric" });
+
+const team = (await getCollection("coach-profiles"))
+  .sort((a, b) => a.data.displayOrder - b.data.displayOrder || a.data.name.localeCompare(b.data.name))
+  .slice(0, 7);
+
+const featuredSlugs = ["agile-coach-vs-scrum-master", "what-are-acceptance-criteria", "what-are-cross-functional-teams"];
+const allArticles = await getCollection("insights-articles");
+const featuredArticles = featuredSlugs
+  .map((slug) => allArticles.find((a) => a.id === slug))
+  .filter((a) => a !== undefined)
+  .concat(allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()))
+  .filter((a, i, arr) => arr.findIndex((x) => x.id === a.id) === i)
+  .slice(0, 3);
 ---
 
 <BaseLayout
   title="Home"
   description="Better Change is a European network of experienced trainers and coaching practitioners. We deliver Kanban, Flight Levels and Scrum training, team and leadership coaching, and organisational transformation — in English and German."
 >
-  <section class="bg-ink text-surface">
-    <div class="mx-auto max-w-6xl px-6 py-24 sm:py-32">
-      <p class="eyebrow text-lime">training, coaching &amp; Consulting · Berlin &amp; Europe</p>
-      <h1 class="mt-4 max-w-3xl text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
-        We help organisations change <span class="text-lime">●</span> for the better
-      </h1>
-      <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-300">
-        Better Change is a European network of experienced trainers and coaching practitioners. We
-        deliver Kanban, Flight Levels and Scrum training, team and leadership coaching, and
-        organisational transformation — in English and German.
-      </p>
-      <div class="mt-8 flex flex-wrap gap-4">
-        <Button href="/training" variant="primary">See all training</Button>
-        <Button href="/services" variant="secondary" class="border-surface text-surface hover:bg-surface hover:text-ink">
-          Our services
-        </Button>
+  <section class="bg-mist-light">
+    <div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+      <div class="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start">
+        <div>
+          <p class="eyebrow">training, coaching &amp; Consulting · Berlin &amp; Europe</p>
+          <h1 class="mt-4 text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+            We help organisations change <span class="text-lime">●</span> for the better
+          </h1>
+          <p class="mt-6 max-w-lg text-[length:var(--text-body)] text-neutral-600">
+            Better Change is a European network of experienced trainers and coaching practitioners.
+            We deliver Kanban, Flight Levels and Scrum training, team and leadership coaching, and
+            organisational transformation — in English and German.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <Button href="/training" variant="primary">See all training</Button>
+            <Button href="/services" variant="secondary">Our services</Button>
+          </div>
+        </div>
+
+        <div class="rounded-[var(--radius-card)] bg-surface p-6 shadow-card">
+          <div class="grid grid-cols-2 gap-3">
+            {
+              stats.map((stat) => (
+                <div class="rounded-[0.6rem] bg-mist-light p-4">
+                  <p class="eyebrow text-neutral-500">{stat.label}</p>
+                  <p class="mt-1 text-[length:var(--text-h3)] font-bold">{stat.value}</p>
+                  <p class="mt-1 text-[length:var(--text-caption)] text-neutral-500">{stat.description}</p>
+                </div>
+              ))
+            }
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 border-t border-neutral-200 pt-5">
+            {certifiedBy.map((cert) => <span class="text-[length:var(--text-caption)] font-semibold text-neutral-500">{cert}</span>)}
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <Section class="!py-16">
-    <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
-      {stats.map((stat) => <StatCallout {...stat} />)}
-    </div>
-  </Section>
-
-  <Section eyebrow="Trusted by" class="border-t border-neutral-200">
-    <ul class="flex flex-wrap items-center gap-x-10 gap-y-4 text-[length:var(--text-small)] font-semibold text-neutral-500">
+  <Section class="border-t border-neutral-200 !py-10">
+    <ul class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-[length:var(--text-small)] font-semibold text-neutral-500">
       {clients.map((client) => <li>{client}</li>)}
     </ul>
   </Section>
 
-  <Section
-    eyebrow="What we do"
-    heading="Services that create lasting change"
-    class="border-t border-neutral-200 bg-neutral-50"
-  >
+  <Section eyebrow="What we do" heading="Services that create lasting change" class="border-t border-neutral-200">
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {services.map((service) => <ServiceCard name={service.name} items={service.items} href="/services" />)}
+      {
+        services.map((service) => (
+          <ServiceCard name={service.name} blurb={service.blurb} href="/services">
+            <Fragment slot="icon" set:html={serviceIcons[service.name]} />
+          </ServiceCard>
+        ))
+      }
     </div>
   </Section>
 
-  <Section eyebrow="Our people" heading="Practitioners, not theorists">
-    <p class="max-w-2xl text-[length:var(--text-body)] text-neutral-600">
-      All of us have been there ourselves — and know what to do when the real world doesn't follow
-      the manual.
-    </p>
-    <div class="mt-8">
-      <Button href="/about" variant="link" class="group">Meet the team</Button>
+  <Section eyebrow="Upcoming courses" heading="Next open training dates" class="border-t border-neutral-200 bg-mist-light">
+    <div class="overflow-x-auto rounded-[var(--radius-card)] bg-surface">
+      <table class="w-full text-left text-[length:var(--text-small)]">
+        <thead>
+          <tr class="border-b border-neutral-200 text-neutral-500">
+            <th class="px-3 py-3 font-medium sm:px-5">Course</th>
+            <th class="px-3 py-3 font-medium sm:px-5">Date</th>
+            <th class="hidden px-3 py-3 font-medium sm:table-cell sm:px-5">Location</th>
+            <th class="px-3 py-3 font-medium sm:px-5">Format</th>
+            <th class="px-3 py-3 sm:px-5" />
+          </tr>
+        </thead>
+        <tbody>
+          {
+            upcomingCourses.map(({ session, course }) => (
+              <tr class="border-b border-neutral-100 last:border-0">
+                <td class="px-3 py-4 sm:px-5">
+                  <span class="font-semibold">{course.data.name}</span>{" "}
+                  <span class="text-[length:var(--text-caption)] text-neutral-500">{course.data.code}</span>
+                </td>
+                <td class="whitespace-nowrap px-3 py-4 sm:px-5">{dateFormatter.format(session.data.date)}</td>
+                <td class="hidden px-3 py-4 text-neutral-600 sm:table-cell sm:px-5">{session.data.location}</td>
+                <td class="px-3 py-4 sm:px-5">
+                  <Badge format={session.data.format} />
+                </td>
+                <td class="px-3 py-4 text-right sm:px-5">
+                  <a href={`/training/register/${session.id}`} class="whitespace-nowrap font-semibold hover:underline">
+                    Register →
+                  </a>
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-6 text-right">
+      <Button href="/training" variant="link" class="group">Full schedule</Button>
     </div>
   </Section>
 
-  <Section class="border-t border-neutral-200 bg-neutral-50">
-    <TestimonialCard
-      quote="Better Change brought real-world credibility to our transformation. They'd done it themselves — that made all the difference."
-      attribution="Senior Engineering Leader, DACH region"
-    />
+  <Section tone="dark" eyebrow="Our people" heading="Practitioners, not theorists">
+    <div class="flex flex-wrap gap-6">
+      {
+        team.map((profile) => (
+          <div class="flex w-24 flex-col items-center gap-2 text-center">
+            <span class="flex h-14 w-14 items-center justify-center rounded-full border-[1.5px] border-lime text-sm font-bold text-lime">
+              {(() => {
+                const parts = profile.data.name.split(" ");
+                return parts.length > 1 ? parts[0][0] + parts[parts.length - 1][0] : parts[0].slice(0, 2);
+              })()}
+            </span>
+            <span class="text-[length:var(--text-caption)] font-semibold">{profile.data.name}</span>
+            <span class="text-[length:var(--text-caption)] text-neutral-400">{profile.data.country}</span>
+          </div>
+        ))
+      }
+    </div>
+    <div class="mt-8 flex flex-wrap items-center gap-6">
+      <Button href="/about" variant="primary">Meet the full team</Button>
+      <p class="max-w-md text-[length:var(--text-small)] text-neutral-300">
+        All of us have been there ourselves — and know what to do when the real world doesn't follow
+        the manual.
+      </p>
+    </div>
+  </Section>
+
+  <Section tone="lime" eyebrow="Client perspective">
+    <blockquote class="max-w-2xl text-[length:var(--text-h3)] font-bold leading-snug">
+      “Better Change brought real-world credibility to our transformation. They'd done it themselves
+      — that made all the difference.”
+    </blockquote>
+    <cite class="mt-4 block text-[length:var(--text-small)] not-italic text-ink/65">
+      Senior Engineering Leader, DACH region
+    </cite>
+  </Section>
+
+  <Section eyebrow="Insights" heading="Articles, guides & resources" class="border-t border-neutral-200">
+    <div class="grid gap-6 sm:grid-cols-3">
+      {featuredArticles.map((article) => <InsightsArticleCard article={article} />)}
+    </div>
   </Section>
 
   <CTABanner
+    tone="light"
     heading="Not sure where to start?"
     body="Talk to us. We'll help you find the right training or coaching approach for your situation."
-    ctaLabel="Contact us"
+    ctaLabel="Get in touch"
     ctaHref="/contact"
   />
 </BaseLayout>

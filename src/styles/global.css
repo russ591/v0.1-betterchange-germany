@@ -34,6 +34,11 @@
   --color-surface: #ffffff;
   --color-surface-alt: var(--color-neutral-50);
 
+  /* Lightened, unified background shared by the hero and the upcoming-
+     courses strip -- deliberately close to white rather than the darker
+     neutral-50/100 greys used for card/strip backgrounds elsewhere */
+  --color-mist-light: #f9f8f4;
+
   /* Type */
   --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
 
@@ -104,12 +109,32 @@
 
 @layer components {
   .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
     font-size: var(--text-eyebrow);
     line-height: var(--text-eyebrow--line-height);
     letter-spacing: var(--text-eyebrow--letter-spacing);
     text-transform: uppercase;
     font-weight: 600;
     color: var(--color-neutral-600);
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 0.4em;
+    height: 0.4em;
+    min-width: 6px;
+    min-height: 6px;
+    border-radius: 50%;
+    background: var(--color-lime);
+    flex-shrink: 0;
+  }
+
+  /* used when an eyebrow sits directly on a lime background, where a lime
+     dot would disappear */
+  .eyebrow-on-lime::before {
+    background: var(--color-ink);
   }
 
   .article-body > * + * {

@@ -9,16 +9,18 @@ interface Props {
   body?: string;
   ctaLabel: string;
   ctaHref: string;
+  tone?: "dark" | "light";
 }
 
-const { heading, body, ctaLabel, ctaHref } = Astro.props;
+const { heading, body, ctaLabel, ctaHref, tone = "dark" } = Astro.props;
+const isDark = tone === "dark";
 ---
 
-<section class="bg-ink py-[var(--spacing-section-y-sm)] sm:py-[var(--spacing-section-y)]">
+<section class={`${isDark ? "bg-ink" : "bg-mist-light"} py-[var(--spacing-section-y-sm)] sm:py-[var(--spacing-section-y)]`}>
   <div class="mx-auto flex max-w-4xl flex-col items-start gap-6 px-6 sm:flex-row sm:items-center sm:justify-between">
     <div>
-      <h2 class="text-[length:var(--text-h3)] text-surface">{heading}</h2>
-      {body && <p class="mt-2 max-w-xl text-[length:var(--text-body)] text-neutral-300">{body}</p>}
+      <h2 class={`text-[length:var(--text-h3)] ${isDark ? "text-surface" : "text-ink"}`}>{heading}</h2>
+      {body && <p class={`mt-2 max-w-xl text-[length:var(--text-body)] ${isDark ? "text-neutral-300" : "text-neutral-600"}`}>{body}</p>}
     </div>
     <Button href={ctaHref} variant="primary" class="shrink-0">{ctaLabel}</Button>
   </div>

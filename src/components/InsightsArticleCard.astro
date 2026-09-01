@@ -7,18 +7,33 @@ interface Props {
 
 const { article } = Astro.props;
 const { title, date, readTimeMinutes, contentType, excerpt, primaryCategory } = article.data;
+
+// Real article photography hasn't been migrated yet -- a deterministic
+// duotone placeholder (picked from the slug) stands in so the grid has
+// visual rhythm without pretending to be real photos.
+const positions = ["30% 20%", "70% 30%", "40% 70%", "60% 60%"];
+const hash = [...article.id].reduce((sum, ch) => sum + ch.charCodeAt(0), 0);
+const position = positions[hash % positions.length];
 ---
 
 <a
   href={`/insights/${article.id}`}
-  class="flex flex-col rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6 shadow-card transition-shadow hover:shadow-card-hover"
+  class="flex flex-col overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card transition-shadow hover:shadow-card-hover"
 >
-  <p class="eyebrow text-neutral-500">
-    {date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
-    {readTimeMinutes && ` · ${readTimeMinutes} min read`}
-    {contentType && contentType !== "Blog" && ` · ${contentType}`}
-  </p>
-  <h3 class="mt-2 text-[length:var(--text-h4)]">{title}</h3>
-  <p class="mt-2 line-clamp-3 text-[length:var(--text-small)] text-neutral-600">{excerpt}</p>
-  {primaryCategory && <p class="mt-3 text-[length:var(--text-caption)] font-semibold text-neutral-400">{primaryCategory}</p>}
+  <div
+    aria-hidden="true"
+    class="relative aspect-[16/10] w-full overflow-hidden"
+    style={`background: radial-gradient(circle at ${position}, rgba(154,255,91,0.5), transparent 55%), linear-gradient(135deg, #14200c, #37452a);`}
+  >
+  </div>
+  <div class="flex flex-1 flex-col p-6">
+    <p class="eyebrow text-neutral-500">
+      {date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+      {readTimeMinutes && ` · ${readTimeMinutes} min read`}
+      {contentType && contentType !== "Blog" && ` · ${contentType}`}
+    </p>
+    <h3 class="mt-2 text-[length:var(--text-h4)]">{title}</h3>
+    <p class="mt-2 line-clamp-3 text-[length:var(--text-small)] text-neutral-600">{excerpt}</p>
+    {primaryCategory && <p class="mt-3 text-[length:var(--text-caption)] font-semibold text-neutral-400">{primaryCategory}</p>}
+  </div>
 </a>
