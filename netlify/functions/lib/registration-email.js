@@ -70,6 +70,7 @@ export function buildRegistrationEmailHtml(data) {
                   <tr><td style="padding:4px 0;color:#737373;">Booked by</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.name || "—")} (${escapeHtml(data.email || "—")})</td></tr>
                   ${data.company ? `<tr><td style="padding:4px 0;color:#737373;">Company</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.company)}</td></tr>` : ""}
                   <tr><td style="padding:4px 0;color:#737373;">Seats</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.seats || "1")}</td></tr>
+                  ${data.total ? `<tr><td style="padding:4px 0;color:#737373;">Total</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${escapeHtml(data.total)}</td></tr>` : ""}
                 </table>
 
                 ${
@@ -116,6 +117,7 @@ export function buildRegistrationEmailText(data) {
     `Booked by: ${data.name || "—"} (${data.email || "—"})`,
     data.company ? `Company: ${data.company}` : null,
     `Seats: ${data.seats || "1"}`,
+    data.total ? `Total: ${data.total}` : null,
     "",
     attendees.length ? "Attendees:" : null,
     ...attendees.map((a) => `- ${a.name || "—"} (${a.email || "—"})`),

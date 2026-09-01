@@ -17,6 +17,9 @@ const course = await getEntry(session.data.course);
 const trainer = session.data.trainer ? await getEntry(session.data.trainer) : undefined;
 
 const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" });
+
+const unitPrice = parseFloat(session.data.price.replace(/[^0-9.]/g, "")) || 0;
+const hasBulkOffer = /seats? for the price of/i.test(session.data.offer ?? "");
 ---
 
 <BaseLayout
@@ -68,11 +71,21 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
             )
           }
         </dl>
-        <div class="mt-6 border-t border-neutral-200 pt-4">
+        <div
+          class="mt-6 border-t border-neutral-200 pt-4"
+          id="order-total-block"
+          data-unit-price={unitPrice}
+          data-bulk-offer={hasBulkOffer ? "true" : "false"}
+        >
           <div class="flex items-center justify-between text-[length:var(--text-h4)] font-bold">
             <span>Total</span>
-            <span>{session.data.price}</span>
+            <span id="order-total">{session.data.price}</span>
           </div>
+          <p
+            id="discount-note"
+            class="mt-2 inline-block rounded-[var(--radius-pill)] bg-lime/20 px-2.5 py-1 text-[length:var(--text-caption)] font-semibold text-ink"
+            hidden
+          ></p>
           {session.data.offer && <p class="mt-1 text-[length:var(--text-caption)] text-neutral-500">{session.data.offer}</p>}
         </div>
       </div>
@@ -88,6 +101,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
       >
         <input type="hidden" name="form-name" value="registration" />
         <input type="hidden" name="course" value={`${course.data.name} (${session.id})`} />
+        <input type="hidden" name="total" id="total-field" value={session.data.price} />
         <p class="hidden">
           <label>
             Don't fill this out if you're human: <input name="bot-field" />
@@ -286,6 +300,37 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
       document.querySelectorAll<HTMLDivElement>("[data-attendee-block]")
     );
 
+    const orderTotalBlock = document.getElementById("order-total-block") as HTMLDivElement;
+    const orderTotalEl = document.getElementById("order-total") as HTMLSpanElement;
+    const discountNoteEl = document.getElementById("discount-note") as HTMLParagraphElement;
+    const totalField = document.getElementById("total-field") as HTMLInputElement;
+    const unitPrice = parseFloat(orderTotalBlock.dataset.unitPrice ?? "0");
+    const hasBulkOffer = orderTotalBlock.dataset.bulkOffer === "true";
+    const currencyFormatter = new Intl.NumberFormat("en-GB", {
+      style: "currency",
+      currency: "EUR",
+      maximumFractionDigits: 0,
+    });
+
+    function updateTotal(seats: number) {
+      // Every 3rd seat is free under the "3 seats for the price of 2" offer.
+      const freeSeats = hasBulkOffer ? Math.floor(seats / 3) : 0;
+      const payableSeats = seats - freeSeats;
+      const total = payableSeats * unitPrice;
+      const formattedTotal = currencyFormatter.format(total);
+
+      orderTotalEl.textContent = formattedTotal;
+      totalField.value = formattedTotal;
+
+      if (freeSeats > 0) {
+        const savings = currencyFormatter.format(freeSeats * unitPrice);
+        discountNoteEl.textContent = `Includes ${freeSeats} free seat${freeSeats > 1 ? "s" : ""} (3-for-2 offer) — you save ${savings}`;
+        discountNoteEl.hidden = false;
+      } else {
+        discountNoteEl.hidden = true;
+      }
+    }
+
     function update() {
       const seats = parseInt(seatsSelect.value, 10);
 
@@ -303,6 +348,8 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
           block.hidden = i >= seats;
         });
       }
+
+      updateTotal(seats);
     }
 
     seatsSelect.addEventListener("change", update);
