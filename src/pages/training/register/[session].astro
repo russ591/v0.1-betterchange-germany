@@ -20,6 +20,38 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
 
 const unitPrice = parseFloat(session.data.price.replace(/[^0-9.]/g, "")) || 0;
 const hasBulkOffer = /seats? for the price of/i.test(session.data.offer ?? "");
+
+const countries = [
+  "Germany",
+  "Austria",
+  "Belgium",
+  "Croatia",
+  "Czech Republic",
+  "Denmark",
+  "Estonia",
+  "Finland",
+  "France",
+  "Greece",
+  "Hungary",
+  "Ireland",
+  "Italy",
+  "Latvia",
+  "Lithuania",
+  "Luxembourg",
+  "Netherlands",
+  "Norway",
+  "Poland",
+  "Portugal",
+  "Romania",
+  "Slovakia",
+  "Slovenia",
+  "Spain",
+  "Sweden",
+  "Switzerland",
+  "United Kingdom",
+  "United States",
+  "Other",
+];
 ---
 
 <BaseLayout
@@ -108,7 +140,7 @@ const hasBulkOffer = /seats? for the price of/i.test(session.data.offer ?? "");
           </label>
         </p>
 
-        <p class="eyebrow text-neutral-500">Booking details</p>
+        <p class="eyebrow text-neutral-500">Your details</p>
 
         <div>
           <label for="seats" class="text-[length:var(--text-small)] font-medium">Number of seats</label>
@@ -154,6 +186,91 @@ const hasBulkOffer = /seats? for the price of/i.test(session.data.offer ?? "");
           />
         </div>
 
+        <p class="eyebrow text-neutral-500">Postal address</p>
+
+        <div>
+          <label for="address" class="text-[length:var(--text-small)] font-medium">Street and number</label>
+          <input
+            id="address"
+            name="address"
+            type="text"
+            required
+            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+          />
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-3">
+          <div>
+            <label for="postcode" class="text-[length:var(--text-small)] font-medium">Postcode</label>
+            <input
+              id="postcode"
+              name="postcode"
+              type="text"
+              required
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+            />
+          </div>
+          <div>
+            <label for="state" class="text-[length:var(--text-small)] font-medium">State</label>
+            <input
+              id="state"
+              name="state"
+              type="text"
+              required
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+            />
+          </div>
+          <div>
+            <label for="country" class="text-[length:var(--text-small)] font-medium">Country</label>
+            <select
+              id="country"
+              name="country"
+              required
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-4 py-2.5"
+            >
+              {
+                countries.map((country) => (
+                  <option value={country} selected={country === "Germany"}>
+                    {country}
+                  </option>
+                ))
+              }
+            </select>
+          </div>
+        </div>
+
+        <p class="eyebrow text-neutral-500">Billing details</p>
+
+        <div>
+          <label for="company" class="text-[length:var(--text-small)] font-medium">Company (optional)</label>
+          <input
+            id="company"
+            name="company"
+            type="text"
+            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+          />
+        </div>
+
+        <div>
+          <label for="vat-id" class="text-[length:var(--text-small)] font-medium">VAT ID (optional)</label>
+          <input
+            id="vat-id"
+            name="vat-id"
+            type="text"
+            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+          />
+        </div>
+
+        <div>
+          <label for="discount-code" class="text-[length:var(--text-small)] font-medium">Discount code (optional)</label>
+          <input
+            id="discount-code"
+            name="discount-code"
+            type="text"
+            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5 sm:w-64"
+          />
+        </div>
+
         <label id="different-attendee-wrap" class="flex items-start gap-2 text-[length:var(--text-small)]" hidden>
           <input type="checkbox" id="different-attendee" name="different-attendee" class="mt-1" />
           This seat is for someone else
@@ -194,78 +311,6 @@ const hasBulkOffer = /seats? for the price of/i.test(session.data.offer ?? "");
               ))
             }
           </div>
-        </div>
-
-        <p class="eyebrow text-neutral-500">Billing details</p>
-
-        <div>
-          <label for="company" class="text-[length:var(--text-small)] font-medium">Company (optional)</label>
-          <input
-            id="company"
-            name="company"
-            type="text"
-            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-          />
-        </div>
-
-        <div>
-          <label for="address" class="text-[length:var(--text-small)] font-medium">Street and number (optional)</label>
-          <input
-            id="address"
-            name="address"
-            type="text"
-            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-          />
-        </div>
-
-        <div class="grid gap-5 sm:grid-cols-3">
-          <div>
-            <label for="postcode" class="text-[length:var(--text-small)] font-medium">Postcode (optional)</label>
-            <input
-              id="postcode"
-              name="postcode"
-              type="text"
-              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-            />
-          </div>
-          <div>
-            <label for="city" class="text-[length:var(--text-small)] font-medium">City (optional)</label>
-            <input
-              id="city"
-              name="city"
-              type="text"
-              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-            />
-          </div>
-          <div>
-            <label for="country" class="text-[length:var(--text-small)] font-medium">Country (optional)</label>
-            <input
-              id="country"
-              name="country"
-              type="text"
-              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label for="vat-id" class="text-[length:var(--text-small)] font-medium">VAT ID (optional)</label>
-          <input
-            id="vat-id"
-            name="vat-id"
-            type="text"
-            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-          />
-        </div>
-
-        <div>
-          <label for="discount-code" class="text-[length:var(--text-small)] font-medium">Discount code (optional)</label>
-          <input
-            id="discount-code"
-            name="discount-code"
-            type="text"
-            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5 sm:w-64"
-          />
         </div>
 
         <div>
