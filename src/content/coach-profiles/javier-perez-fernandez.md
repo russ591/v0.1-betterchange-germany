@@ -1,16 +1,14 @@
 ---
-name: "Javier Perez Fernandez"
-role: "Fellow"
-country: "[Placeholder — to be migrated]"
+name: Javier Perez Fernandez
+firstName: Javi
+role: Better Change Coach
+country: Germany & Spain
 languages:
-  - "[Placeholder — to be migrated]"
+  - Spanish
+  - English
+  - German
+photo: https://www.betterchange-consulting.com/wp-content/uploads/2022/03/Javier-Perez-Fernandez-1-1.jpg
+linkedinUrl: https://www.linkedin.com/in/javier-perez-coach/
 hasFullProfile: false
-summary: >
-  [Placeholder — bio/background/approach/specialities are empty
-  ([PLACEHOLDER] text) on the live site today, per spec §2 bug 1. This
-  entry demonstrates the interim fix: Javier stays listed on the About
-  page as a team member, but hasFullProfile: false means his card renders
-  without a link through to a profile page, and his photo won't carry the
-  live site's mis-set alt text ("Russell Hill") — until his real content
-  is written.]
+displayOrder: 2
 ---
