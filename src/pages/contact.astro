@@ -53,7 +53,20 @@ import ContactInfoCard from "@/components/ContactInfoCard.astro";
       than reproducing the duplicate-initials bug or inventing names.
     -->
 
-    <form class="mx-auto mt-16 max-w-2xl space-y-5">
+    <form
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      action="/thank-you"
+      class="mx-auto mt-16 max-w-2xl space-y-5"
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <p class="hidden">
+        <label>
+          Don't fill this out if you're human: <input name="bot-field" />
+        </label>
+      </p>
       <div class="grid gap-5 sm:grid-cols-2">
         <div>
           <label for="name" class="text-[length:var(--text-small)] font-medium">Name</label>
