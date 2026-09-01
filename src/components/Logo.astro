@@ -1,7 +1,8 @@
 ---
-// Real wordmark: a lime dot followed by "Better" (bold) + "Change" (bold
-// italic), no gap between the two words. Matches the live betterchange-
-// consulting.com mark.
+// Wordmark: a lime dot followed by "Better" (bold) + "Change" (bold
+// italic), no gap between the two words -- matches the live betterchange-
+// consulting.com mark. Below it, right-justified under "Change", a small
+// tricolour flag tab + "GERMANY" caption tags the regional site.
 interface Props {
   size?: "default" | "large";
   class?: string;
@@ -11,11 +12,27 @@ const { size = "default", class: className = "" } = Astro.props;
 
 const dotSize = size === "large" ? "h-9 w-9" : "h-6 w-6";
 const textSize = size === "large" ? "text-3xl" : "text-lg";
+const rowGap = size === "large" ? "gap-2" : "gap-1";
+const wordGap = size === "large" ? "gap-2.5" : "gap-1.5";
+const flagSize = size === "large" ? "h-4 w-[5px]" : "h-3 w-1";
+const captionSize = size === "large" ? "text-xs" : "text-[9px]";
 ---
 
-<span class={`inline-flex items-center gap-2 ${className}`}>
-  <span aria-hidden="true" class={`shrink-0 rounded-full bg-lime ${dotSize}`}></span>
-  <span class={`${textSize} font-extrabold tracking-tight text-ink`}>
-    Better<span class="italic">Change</span>
+<span class={`inline-flex flex-col items-end ${rowGap} ${className}`}>
+  <span class={`inline-flex items-center self-start ${wordGap}`}>
+    <span aria-hidden="true" class={`shrink-0 rounded-full bg-lime ${dotSize}`}></span>
+    <span class={`${textSize} whitespace-nowrap font-extrabold tracking-tight text-ink`}>
+      Better<span class="italic">Change</span>
+    </span>
+  </span>
+  <span class="inline-flex items-center gap-1.5">
+    <span aria-hidden="true" class={`flex flex-col overflow-hidden rounded-[1px] ${flagSize}`}>
+      <span class="flex-1 bg-de-black"></span>
+      <span class="flex-1 bg-de-red"></span>
+      <span class="flex-1 bg-de-gold"></span>
+    </span>
+    <span class={`${captionSize} font-semibold uppercase tracking-[0.18em] text-neutral-500`}>
+      Germany
+    </span>
   </span>
 </span>

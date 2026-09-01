@@ -14,6 +14,12 @@
   --color-lime: #9aff5b;
   --color-ink: #0a0a0a;
 
+  /* "Germany" wordmark tag -- deliberately deep-toned rather than literal
+     flag hex, so it reads as a brand accent rather than a flag sticker */
+  --color-de-black: #101010;
+  --color-de-red: #c81e2c;
+  --color-de-gold: #eab308;
+
   --color-neutral-50: #fafafa;
   --color-neutral-100: #f2f2f2;
   --color-neutral-200: #e4e4e4;
