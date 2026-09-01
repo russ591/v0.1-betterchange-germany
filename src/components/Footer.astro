@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import Logo from "@/components/Logo.astro";
 
 const categories = (await getCollection("training-categories")).sort(
   (a, b) => a.data.order - b.data.order
@@ -12,8 +13,8 @@ const year = new Date().getFullYear();
   <div class="mx-auto max-w-6xl px-6 py-16">
     <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
       <div class="lg:col-span-2">
-        <a href="/" class="text-lg font-bold tracking-tight">
-          Better <span class="bg-ink px-1 text-lime">Change</span>
+        <a href="/" aria-label="Better Change home">
+          <Logo />
         </a>
         <p class="mt-4 max-w-sm text-[length:var(--text-small)] text-neutral-600">
           A European network of practitioners delivering training, coaching, and transformation —

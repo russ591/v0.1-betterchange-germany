@@ -1,0 +1,21 @@
+---
+// Real wordmark: a lime dot followed by "Better" (bold) + "Change" (bold
+// italic), no gap between the two words. Matches the live betterchange-
+// consulting.com mark.
+interface Props {
+  size?: "default" | "large";
+  class?: string;
+}
+
+const { size = "default", class: className = "" } = Astro.props;
+
+const dotSize = size === "large" ? "h-9 w-9" : "h-6 w-6";
+const textSize = size === "large" ? "text-3xl" : "text-lg";
+---
+
+<span class={`inline-flex items-center gap-2 ${className}`}>
+  <span aria-hidden="true" class={`shrink-0 rounded-full bg-lime ${dotSize}`}></span>
+  <span class={`${textSize} font-extrabold tracking-tight text-ink`}>
+    Better<span class="italic">Change</span>
+  </span>
+</span>

@@ -1,4 +1,6 @@
 ---
+import Logo from "@/components/Logo.astro";
+
 const navLinks = [
   { href: "/services", label: "Services" },
   { href: "/training", label: "Training" },
@@ -12,8 +14,8 @@ const currentPath = Astro.url.pathname;
 
 <header class="sticky top-0 z-50 border-b border-neutral-200 bg-surface/90 backdrop-blur">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-    <a href="/" class="text-lg font-bold tracking-tight">
-      Better <span class="text-lime bg-ink px-1">Change</span>
+    <a href="/" aria-label="Better Change home">
+      <Logo />
     </a>
 
     <nav aria-label="Primary" class="hidden items-center gap-8 md:flex">
