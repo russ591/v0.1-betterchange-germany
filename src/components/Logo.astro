@@ -11,12 +11,12 @@ interface Props {
 
 const { size = "default", tone = "dark", class: className = "" } = Astro.props;
 
-const dotSize = size === "large" ? "h-9 w-9" : size === "medium" ? "h-8 w-8" : "h-6 w-6";
-const textSize = size === "large" ? "text-3xl" : size === "medium" ? "text-2xl" : "text-lg";
+const dotSize = size === "large" ? "h-9 w-9" : size === "medium" ? "h-7 w-7" : "h-6 w-6";
+const textSize = size === "large" ? "text-3xl" : size === "medium" ? "text-xl" : "text-lg";
 const rowGap = size === "large" ? "gap-1" : size === "medium" ? "gap-0.5" : "gap-0";
 const wordGap = size === "large" ? "gap-2.5" : size === "medium" ? "gap-2" : "gap-1.5";
-const flagSize = size === "large" ? "h-[13px] w-5" : size === "medium" ? "h-3 w-[18px]" : "h-2 w-3";
-const captionSize = size === "large" ? "text-xs" : size === "medium" ? "text-[11px]" : "text-[9px]";
+const flagSize = size === "large" ? "h-[13px] w-5" : size === "medium" ? "h-[11px] w-[17px]" : "h-2 w-3";
+const captionSize = size === "large" ? "text-xs" : size === "medium" ? "text-[10px]" : "text-[9px]";
 
 const isLight = tone === "light";
 ---
