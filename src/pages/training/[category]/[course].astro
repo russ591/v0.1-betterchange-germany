@@ -1,11 +1,15 @@
 ---
 import { getCollection, getEntry } from "astro:content";
+import { Image } from "astro:assets";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import Badge from "@/components/Badge.astro";
 import CourseCard from "@/components/CourseCard.astro";
 import CTABanner from "@/components/CTABanner.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { certificationLogos } from "@/data/certifications";
+import { courseBadges } from "@/data/courseBadges";
+import { formatDetails, formatIcons } from "@/data/formatDetails";
 
 export async function getStaticPaths() {
   const courses = await getCollection("training-courses");
@@ -28,6 +32,9 @@ const upcoming = allSchedules
   .sort((a, b) => (a.data.date?.valueOf() ?? 0) - (b.data.date?.valueOf() ?? 0));
 
 const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" });
+
+const logo = category.data.certificationBody ? certificationLogos[category.data.certificationBody] : undefined;
+const badge = courseBadges[course.id];
 ---
 
 <BaseLayout
@@ -42,163 +49,256 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
     ]}
   />
 
-  <Section eyebrow={`${category.data.name} · ${course.data.code}`} class="bg-mist-light">
-    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
-      {course.data.name}
-    </h1>
-    <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">{course.data.summary}</p>
-    <dl class="mt-8 flex flex-wrap gap-x-10 gap-y-4 text-[length:var(--text-small)]">
-      {
-        course.data.level && (
-          <div>
-            <dt class="text-neutral-500">Level</dt>
-            <dd class="font-semibold">{course.data.level}</dd>
-          </div>
-        )
-      }
+  <Section class="bg-mist-light">
+    <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-start">
       <div>
-        <dt class="text-neutral-500">Duration</dt>
-        <dd class="font-semibold">{course.data.durationText}</dd>
-      </div>
-      {
-        course.data.certification && (
-          <div>
-            <dt class="text-neutral-500">Certification</dt>
-            <dd class="font-semibold">{course.data.certification}</dd>
-          </div>
-        )
-      }
-      {
-        course.data.languages.length > 0 && (
-          <div>
-            <dt class="text-neutral-500">Languages</dt>
-            <dd class="font-semibold">{course.data.languages.join(", ")}</dd>
-          </div>
-        )
-      }
-    </dl>
-  </Section>
+        <p class="eyebrow">{category.data.name} &middot; {course.data.code}</p>
+        <h1 class="mt-3 text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+          {course.data.name}
+        </h1>
+        <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">{course.data.summary}</p>
 
-  <Section eyebrow="Formats & pricing" heading="How to take this course">
-    <div class="grid gap-6 sm:grid-cols-3">
-      {
-        course.data.formats.map((format) => (
-          <div class="flex flex-col rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6">
-            <Badge format={format} />
-            {course.data.priceFrom && (
-              <>
-                <p class="mt-4 text-[length:var(--text-h4)] font-bold">From {course.data.priceFrom}</p>
-                <p class="text-[length:var(--text-caption)] text-neutral-500">excl. VAT (MwSt.)</p>
-              </>
-            )}
-            {course.data.specialOfferText && (
-              <p class="mt-1 text-[length:var(--text-caption)] text-neutral-500">{course.data.specialOfferText}</p>
-            )}
-            <a
-              href="#upcoming-sessions"
-              class="mt-6 inline-flex items-center justify-center rounded-[var(--radius-control)] bg-ink px-4 py-2.5 text-sm font-semibold text-surface"
-            >
-              See dates
+        <dl class="mt-8 flex flex-wrap gap-x-10 gap-y-4 text-[length:var(--text-small)]">
+          {
+            course.data.level && (
+              <div>
+                <dt class="text-neutral-500">Level</dt>
+                <dd class="font-semibold">{course.data.level}</dd>
+              </div>
+            )
+          }
+          <div>
+            <dt class="text-neutral-500">Duration</dt>
+            <dd class="font-semibold">{course.data.durationText}</dd>
+          </div>
+          {
+            course.data.certification && (
+              <div>
+                <dt class="text-neutral-500">Certification</dt>
+                <dd class="font-semibold">{course.data.certification}</dd>
+              </div>
+            )
+          }
+          {
+            course.data.languages.length > 0 && (
+              <div>
+                <dt class="text-neutral-500">Languages</dt>
+                <dd class="font-semibold">{course.data.languages.join(", ")}</dd>
+              </div>
+            )
+          }
+        </dl>
+
+        {
+          category.data.certificationBody && (
+            <div class="mt-7 inline-flex items-center gap-3 rounded-[var(--radius-pill)] border border-neutral-200 bg-surface px-4 py-2.5">
+              {logo ? (
+                <img src={logo.src} alt={logo.alt} class="h-4 w-auto object-contain" />
+              ) : (
+                <span class="text-[length:var(--text-caption)] font-semibold text-neutral-500">
+                  {category.data.certificationBody}
+                </span>
+              )}
+              {badge && (
+                <>
+                  <span aria-hidden="true" class="h-5 w-px bg-neutral-200" />
+                  <Image
+                    src={badge}
+                    alt={`${course.data.certification ?? course.data.code} certification`}
+                    width={56}
+                    height={56}
+                    class="h-7 w-7 rounded-full"
+                  />
+                </>
+              )}
+              <span class="text-[length:var(--text-caption)] text-neutral-500">
+                Certified by <span class="font-semibold text-ink">{category.data.certificationBody}</span>
+              </span>
+            </div>
+          )
+        }
+      </div>
+
+      <div class="lg:sticky lg:top-24">
+        <div class="overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card">
+          <div class="flex items-center gap-3.5 border-b border-neutral-200 bg-mist-light px-5 py-4">
+            {
+              badge && (
+                <Image
+                  src={badge}
+                  alt=""
+                  width={64}
+                  height={64}
+                  class="h-11 w-11 shrink-0 rounded-full"
+                />
+              )
+            }
+            <div>
+              <p class="font-semibold">Ways to join</p>
+              <p class="text-[length:var(--text-caption)] text-neutral-500">Pick a format below</p>
+            </div>
+          </div>
+
+          {
+            upcoming.length === 0 ? (
+              <div class="p-6 text-center">
+                <p class="text-[length:var(--text-small)] text-neutral-600">
+                  No sessions are currently scheduled for this course.
+                </p>
+                <a
+                  href="/contact"
+                  class="mt-4 inline-flex items-center justify-center gap-1.5 rounded-[var(--radius-control)] bg-ink px-4 py-2.5 text-sm font-semibold text-surface"
+                >
+                  Get in touch <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            ) : (
+              upcoming.map((session) => {
+                const isSelfPaced = session.data.format === "self-paced";
+                return (
+                  <a
+                    href={`/training/register/${session.id}`}
+                    class={`block border-b border-neutral-100 px-5 py-4 transition-colors last:border-0 ${
+                      isSelfPaced ? "bg-lime/10 hover:bg-lime/20" : "hover:bg-mist-light"
+                    }`}
+                  >
+                    <div class="flex items-center justify-between gap-3">
+                      <span class="font-bold">
+                        {isSelfPaced
+                          ? "Self-paced"
+                          : session.data.date
+                            ? dateFormatter.format(session.data.date)
+                            : "Start anytime"}
+                      </span>
+                      {isSelfPaced ? (
+                        <span class="inline-flex items-center rounded-[var(--radius-pill)] bg-lime/25 px-3 py-1 text-[length:var(--text-caption)] font-semibold text-ink">
+                          Always available
+                        </span>
+                      ) : (
+                        <Badge format={session.data.format} />
+                      )}
+                    </div>
+                    <p class="mt-1 text-[length:var(--text-caption)] text-neutral-500">{session.data.location}</p>
+                    <div class="mt-3 flex items-center justify-between gap-3">
+                      <span class="font-bold">
+                        {session.data.price}
+                        <span class="ml-1 text-[length:var(--text-caption)] font-normal text-neutral-500">
+                          excl. VAT
+                        </span>
+                      </span>
+                      <span class="text-[length:var(--text-small)] font-semibold text-ink">
+                        {isSelfPaced ? "Start now" : "Register"} <span aria-hidden="true">→</span>
+                      </span>
+                    </div>
+                    {session.data.offer && (
+                      <p class="mt-2 text-[length:var(--text-caption)] text-neutral-500">{session.data.offer}</p>
+                    )}
+                  </a>
+                );
+              })
+            )
+          }
+
+          <div class="px-5 py-4 text-[length:var(--text-caption)] leading-relaxed text-neutral-500">
+            <p>
+              No upfront payment needed. A VAT invoice (Rechnung) will be sent via email and you can pay by bank
+              transfer or with card.
+            </p>
+            <a href="/training/full-schedule" class="mt-2 inline-block font-semibold text-ink hover:underline">
+              See full training schedule →
             </a>
           </div>
-        ))
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section>
+    <div class="grid gap-10 sm:grid-cols-2">
+      <div>
+        <p class="eyebrow mb-5">Who is this course for?</p>
+        <ul class="space-y-3 text-[length:var(--text-body)] text-neutral-600">
+          {
+            course.data.whoIsThisFor.map((item) => (
+              <li class="flex gap-2.5">
+                <span aria-hidden="true" class="blob-dot mt-2.5 h-1.5 w-1.5 shrink-0 bg-lime" />
+                <span>{item}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow mb-5">What you'll learn</p>
+        <ul class="space-y-3 text-[length:var(--text-body)] text-neutral-600">
+          {
+            course.data.whatYoullLearn.map((item) => (
+              <li class="flex gap-2.5">
+                <span aria-hidden="true" class="blob-dot mt-2.5 h-1.5 w-1.5 shrink-0 bg-lime" />
+                <span>{item}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </Section>
+
+  <Section
+    eyebrow="How to take this course"
+    heading={course.data.formats.length > 1 ? "Choose the format that fits you" : "How this course runs"}
+    class="bg-mist-light"
+  >
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        course.data.formats.map((format) => {
+          const details = formatDetails[format];
+          return (
+            <div class="flex flex-col gap-5 rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-7 shadow-card">
+              <span
+                aria-hidden="true"
+                class="blob-dot flex h-11 w-11 items-center justify-center bg-lime"
+                set:html={formatIcons[format]}
+              />
+              <div class="flex flex-col gap-2">
+                <h3 class="text-[length:var(--text-h4)]">{details.label}</h3>
+                <p class="text-[length:var(--text-small)] leading-relaxed text-neutral-600">{details.description}</p>
+              </div>
+              <div class="flex flex-col gap-3 border-t border-neutral-100 pt-5">
+                <p class="eyebrow text-neutral-500">Included</p>
+                <div class="flex flex-wrap gap-2">
+                  {details.included.map((item) => (
+                    <span class="inline-flex items-center rounded-[var(--radius-pill)] border border-neutral-300 bg-neutral-50 px-3 py-1 text-[length:var(--text-caption)] font-medium text-neutral-700">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        })
       }
     </div>
   </Section>
 
-  <Section eyebrow="Who is this course for?" class="bg-mist-light">
-    <ul class="max-w-2xl space-y-2 text-[length:var(--text-body)] text-neutral-600">
-      {course.data.whoIsThisFor.map((item) => <li>{item}</li>)}
-    </ul>
-  </Section>
-
-  <Section eyebrow="What you'll learn">
-    <ul class="max-w-2xl space-y-2 text-[length:var(--text-body)] text-neutral-600">
-      {course.data.whatYoullLearn.map((item) => <li>{item}</li>)}
-    </ul>
-  </Section>
-
   {
-    upcoming.length > 0 && (
-      <Section id="upcoming-sessions" eyebrow="Upcoming sessions" class="bg-mist-light">
-        {/* stacked cards below sm, table from sm up -- the real content
-            (long dates, format pills, price + offer text) doesn't fit a
-            5-column table at phone widths */}
-        <div class="flex flex-col gap-3 sm:hidden">
-          {
-            upcoming.map((session) => (
-              <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-4">
-                <div class="flex items-start justify-between gap-3">
-                  <div>
-                    <p class="font-semibold">
-                      {session.data.date ? dateFormatter.format(session.data.date) : "Start anytime"}
-                    </p>
-                    <p class="mt-1 text-[length:var(--text-caption)] text-neutral-500">{session.data.location}</p>
-                  </div>
-                  <Badge format={session.data.format} />
-                </div>
-                <div class="mt-3 flex items-center justify-between gap-3 border-t border-neutral-100 pt-3">
-                  <div>
-                    <p class="font-bold">{session.data.price}</p>
-                    <p class="text-[length:var(--text-caption)] text-neutral-500">excl. VAT (MwSt.)</p>
-                    {session.data.offer && (
-                      <p class="text-[length:var(--text-caption)] text-neutral-500">{session.data.offer}</p>
-                    )}
-                  </div>
-                  <a href={`/training/register/${session.id}`} class="font-semibold text-ink hover:underline">
-                    Register →
-                  </a>
-                </div>
-              </div>
-            ))
-          }
-        </div>
-
-        <div class="hidden overflow-x-auto rounded-[var(--radius-card)] border border-neutral-200 bg-surface sm:block">
-          <table class="w-full text-left text-[length:var(--text-small)]">
-            <thead>
-              <tr class="border-b border-neutral-200 text-neutral-500">
-                <th class="px-4 py-3 font-medium">Date</th>
-                <th class="px-4 py-3 font-medium">Format</th>
-                <th class="px-4 py-3 font-medium">Location</th>
-                <th class="px-4 py-3 font-medium">Price</th>
-                <th class="px-4 py-3" />
-              </tr>
-            </thead>
-            <tbody>
-              {upcoming.map((session) => (
-                <tr class="border-b border-neutral-100 last:border-0">
-                  <td class="whitespace-nowrap px-4 py-3 font-medium">
-                    {session.data.date ? dateFormatter.format(session.data.date) : "Start anytime"}
-                  </td>
-                  <td class="px-4 py-3">
-                    <Badge format={session.data.format} />
-                  </td>
-                  <td class="px-4 py-3">{session.data.location}</td>
-                  <td class="px-4 py-3">
-                    {session.data.price}
-                    <span class="block text-[length:var(--text-caption)] text-neutral-500">excl. VAT (MwSt.)</span>
-                    {session.data.offer && (
-                      <span class="block text-[length:var(--text-caption)] text-neutral-500">{session.data.offer}</span>
-                    )}
-                  </td>
-                  <td class="px-4 py-3 text-right">
-                    <a
-                      href={`/training/register/${session.id}`}
-                      class="whitespace-nowrap font-semibold text-ink hover:underline"
-                    >
-                      Register →
-                    </a>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div class="mt-6 text-right">
-          <a href="/training/full-schedule" class="text-sm font-semibold hover:underline">
-            See full training schedule →
-          </a>
+    course.data.formats.length > 1 && (
+      <Section eyebrow="Which format?" heading="Not sure which to pick?">
+        <div class="grid divide-y divide-neutral-200 overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface sm:grid-cols-[repeat(auto-fit,minmax(220px,1fr))] sm:divide-x sm:divide-y-0">
+          {course.data.formats.map((format) => (
+            <div class="p-6">
+              <h3 class="text-[length:var(--text-small)] font-semibold">{formatDetails[format].chooseTitle}</h3>
+              <p class="mt-2 text-[length:var(--text-caption)] leading-relaxed text-neutral-600">
+                {formatDetails[format].chooseBody}
+              </p>
+            </div>
+          ))}
+          <div class="p-6">
+            <h3 class="text-[length:var(--text-small)] font-semibold">Not sure which fits best?</h3>
+            <p class="mt-2 text-[length:var(--text-caption)] leading-relaxed text-neutral-600">
+              Drop us a message and we'll help you decide — <a href="/contact" class="underline">get in touch</a>.
+            </p>
+          </div>
         </div>
       </Section>
     )
@@ -206,7 +306,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
 
   {
     relatedCourses.length > 0 && (
-      <Section eyebrow="Related courses" class={upcoming.length > 0 ? "" : "bg-mist-light"}>
+      <Section eyebrow="Related courses" class="bg-mist-light">
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {relatedCourses.map((related) => (
             <CourseCard course={related} categorySlug={category.id} />
