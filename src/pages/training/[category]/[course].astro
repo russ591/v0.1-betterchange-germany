@@ -295,7 +295,7 @@ const badge = courseBadges[course.id];
 
   {
     relatedCourses.length > 0 && (
-      <Section eyebrow="Related courses" class="bg-mist-light">
+      <Section eyebrow="Related courses" class="border-t border-neutral-200 bg-mist-light">
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {relatedCourses.map((related) => (
             <CourseCard course={related} categorySlug={category.id} />
