@@ -2,12 +2,15 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import Button from "@/components/Button.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 ---
 
 <BaseLayout
   title="You're registered"
   description="Thanks — your training registration has been received."
 >
+  <Breadcrumbs items={[{ label: "Training", href: "/training" }, { label: "Registration confirmed" }]} />
+
   <Section eyebrow="Registration confirmed" class="bg-mist-light">
     <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
       You're registered!

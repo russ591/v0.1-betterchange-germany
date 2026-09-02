@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 
 // Spec §2 bug 1: only profiles with hasFullProfile: true get a page here —
 // this is the "resolved" behaviour, since the About index only links to
@@ -47,6 +48,8 @@ const paragraphs = (text: string) =>
 ---
 
 <BaseLayout title={name} description={bio ? bio.slice(0, 160) : `${name} — ${role} at Better Change`}>
+  <Breadcrumbs items={[{ label: "About", href: "/about" }, { label: name }]} />
+
   <Section eyebrow={role} class="bg-mist-light">
     <div class="flex flex-col gap-6 sm:flex-row sm:items-center">
       {photo && <img src={photo} alt={name} class="h-28 w-28 shrink-0 rounded-full object-cover" />}

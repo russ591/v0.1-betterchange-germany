@@ -2,9 +2,12 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import Button from "@/components/Button.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 ---
 
 <BaseLayout title="Thank you" description="Thanks — we've received your message.">
+  <Breadcrumbs items={[{ label: "Thank you" }]} />
+
   <Section eyebrow="Thank you" class="bg-mist-light">
     <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
       Got it — thank you.

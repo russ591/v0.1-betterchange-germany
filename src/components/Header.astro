@@ -26,8 +26,8 @@ const currentPath = Astro.url.pathname;
           return (
             <a
               href={link.href}
-              class={`text-sm font-medium transition-colors hover:text-ink ${
-                isActive ? "text-ink" : "text-neutral-600"
+              class={`border-b-2 pb-1 text-sm font-medium transition-colors hover:text-ink ${
+                isActive ? "border-lime text-ink" : "border-transparent text-neutral-600"
               }`}
               aria-current={isActive ? "page" : undefined}
             >

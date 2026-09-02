@@ -5,6 +5,7 @@ import Section from "@/components/Section.astro";
 import StatCallout from "@/components/StatCallout.astro";
 import TeamCard from "@/components/TeamCard.astro";
 import CTABanner from "@/components/CTABanner.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 
 const team = (await getCollection("coach-profiles")).sort(
   (a, b) => a.data.displayOrder - b.data.displayOrder || a.data.name.localeCompare(b.data.name)
@@ -22,6 +23,8 @@ const stats = [
   title="About"
   description="Better Change is a European network of agile coaches, trainers, and consultants who have done the work themselves — and know what to do when the real world does not follow the manual."
 >
+  <Breadcrumbs items={[{ label: "About" }]} />
+
   <Section eyebrow="About Better Change" class="bg-mist-light">
     <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
       Practitioners, not theorists

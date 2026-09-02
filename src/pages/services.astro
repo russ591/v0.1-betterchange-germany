@@ -3,6 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import ServiceCard from "@/components/ServiceCard.astro";
 import CTABanner from "@/components/CTABanner.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { services, serviceIcons } from "@/data/services";
 ---
 
@@ -10,6 +11,8 @@ import { services, serviceIcons } from "@/data/services";
   title="Services"
   description="We work with teams, leaders, and organisations across Europe. Training, coaching, consulting, or facilitation — we bring real-world experience to every engagement."
 >
+  <Breadcrumbs items={[{ label: "Services" }]} />
+
   <Section
     eyebrow="Agile Consulting & Training · Berlin & Europe"
     class="bg-mist-light"

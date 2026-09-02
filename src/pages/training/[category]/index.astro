@@ -4,6 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import CourseCard from "@/components/CourseCard.astro";
 import { certificationLogos } from "@/data/certifications";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 
 export async function getStaticPaths() {
   const categories = await getCollection("training-categories");
@@ -21,6 +22,8 @@ const courses = allCourses
 ---
 
 <BaseLayout title={category.data.name} description={category.data.tagline}>
+  <Breadcrumbs items={[{ label: "Training", href: "/training" }, { label: category.data.name }]} />
+
   <Section eyebrow="Training" class="bg-mist-light">
     <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
       {category.data.name}

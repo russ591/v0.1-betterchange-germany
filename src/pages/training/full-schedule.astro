@@ -3,6 +3,7 @@ import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import Badge from "@/components/Badge.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 
 const categories = await getCollection("training-categories");
 const schedules = await getCollection("training-schedules");
@@ -41,6 +42,8 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
   title="Full training schedule"
   description="All upcoming Better Change training sessions across every discipline — filter by topic and country."
 >
+  <Breadcrumbs items={[{ label: "Training", href: "/training" }, { label: "Full schedule" }]} />
+
   <Section eyebrow="Training schedule" class="bg-mist-light">
     <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">All upcoming training</h1>
     <p class="mt-4 max-w-2xl text-[length:var(--text-body)] text-neutral-600">

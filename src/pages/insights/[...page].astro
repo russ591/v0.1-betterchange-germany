@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const articles = (await getCollection("insights-articles")).sort(
@@ -19,6 +20,14 @@ const { page } = Astro.props;
   title={page.currentPage === 1 ? "Insights" : `Insights — page ${page.currentPage}`}
   description="Practical thinking on Kanban, Flight Levels, agile transformation, and organisational change — written by people who have done the work."
 >
+  <Breadcrumbs
+    items={
+      page.currentPage === 1
+        ? [{ label: "Insights" }]
+        : [{ label: "Insights", href: "/insights" }, { label: `Page ${page.currentPage}` }]
+    }
+  />
+
   <Section eyebrow="insights" class="bg-mist-light">
     <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
       Articles, guides &amp; resources

@@ -2,12 +2,15 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import ContactInfoCard from "@/components/ContactInfoCard.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 ---
 
 <BaseLayout
   title="Contact"
   description="Whether you are looking for a training course, an agile coach, or a consulting partner — the best first step is a conversation."
 >
+  <Breadcrumbs items={[{ label: "Contact" }]} />
+
   <Section eyebrow="contacts" class="bg-mist-light">
     <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">Let's talk</h1>
     <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">

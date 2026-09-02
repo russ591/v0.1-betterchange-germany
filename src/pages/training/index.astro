@@ -5,6 +5,7 @@ import Section from "@/components/Section.astro";
 import CTABanner from "@/components/CTABanner.astro";
 import Button from "@/components/Button.astro";
 import { certificationLogos } from "@/data/certifications";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 
 const categories = (await getCollection("training-categories")).sort(
   (a, b) => a.data.order - b.data.order
@@ -64,6 +65,8 @@ const testimonials = [
   title="Training"
   description="Hands-on, certification-ready training in Flight Levels, Kanban, Scrum and leadership. In-person in Berlin, live online, or at your own pace."
 >
+  <Breadcrumbs items={[{ label: "Training" }]} />
+
   <Section eyebrow="better change training academy" class="bg-mist-light">
     <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
       Training that actually sticks

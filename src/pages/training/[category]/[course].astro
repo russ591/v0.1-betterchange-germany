@@ -5,6 +5,7 @@ import Section from "@/components/Section.astro";
 import Badge from "@/components/Badge.astro";
 import CourseCard from "@/components/CourseCard.astro";
 import CTABanner from "@/components/CTABanner.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 
 export async function getStaticPaths() {
   const courses = await getCollection("training-courses");
@@ -33,6 +34,14 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
   title={course.data.metaTitle ?? course.data.name}
   description={course.data.metaDescription ?? course.data.summary}
 >
+  <Breadcrumbs
+    items={[
+      { label: "Training", href: "/training" },
+      { label: category.data.name, href: `/training/${category.id}` },
+      { label: course.data.name },
+    ]}
+  />
+
   <Section eyebrow={`${category.data.name} · ${course.data.code}`} class="bg-mist-light">
     <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
       {course.data.name}

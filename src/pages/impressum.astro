@@ -1,9 +1,12 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 ---
 
 <BaseLayout title="Impressum" description="Legal notice for Better Change.">
+  <Breadcrumbs items={[{ label: "Impressum" }]} />
+
   <Section eyebrow="Legal" heading="Impressum">
     <p class="max-w-2xl text-[length:var(--text-body)] text-neutral-600">
       [Placeholder — real Impressum text to be migrated verbatim from the live site.]

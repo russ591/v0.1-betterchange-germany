@@ -3,6 +3,7 @@ import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 
 export async function getStaticPaths() {
   const articles = await getCollection("insights-articles");
@@ -28,6 +29,8 @@ const related = article.data.primaryCategory
   title={article.data.metaTitle ?? article.data.title}
   description={article.data.metaDescription ?? article.data.excerpt}
 >
+  <Breadcrumbs items={[{ label: "Insights", href: "/insights" }, { label: article.data.title }]} />
+
   <Section
     eyebrow={[article.data.primaryCategory, article.data.contentType].filter(Boolean).join(" · ") || "Insights"}
     class="bg-mist-light"

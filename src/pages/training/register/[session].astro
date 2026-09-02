@@ -3,6 +3,7 @@ import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import Badge from "@/components/Badge.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 
 export async function getStaticPaths() {
   const sessions = await getCollection("training-schedules");
@@ -14,6 +15,7 @@ export async function getStaticPaths() {
 
 const { session } = Astro.props;
 const course = await getEntry(session.data.course);
+const category = await getEntry(course.data.category);
 const trainer = session.data.trainer ? await getEntry(session.data.trainer) : undefined;
 
 const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" });
@@ -58,6 +60,15 @@ const countries = [
   title={`Register — ${course.data.name}`}
   description={`Register for ${course.data.name} — ${session.data.format}, ${session.data.location}.`}
 >
+  <Breadcrumbs
+    items={[
+      { label: "Training", href: "/training" },
+      { label: category.data.name, href: `/training/${category.id}` },
+      { label: course.data.name, href: `/training/${category.id}/${course.id}` },
+      { label: "Register" },
+    ]}
+  />
+
   <Section eyebrow="Register" class="bg-mist-light">
     <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">{course.data.name}</h1>
     <p class="mt-4 text-[length:var(--text-small)] text-neutral-500">

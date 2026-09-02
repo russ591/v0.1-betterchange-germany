@@ -1,9 +1,12 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 ---
 
 <BaseLayout title="AGB" description="Terms and conditions for Better Change.">
+  <Breadcrumbs items={[{ label: "AGB" }]} />
+
   <Section eyebrow="Legal" heading="AGB">
     <p class="max-w-2xl text-[length:var(--text-body)] text-neutral-600">
       [Placeholder — real AGB text to be migrated as a proper list, not as heading elements. Spec §2
