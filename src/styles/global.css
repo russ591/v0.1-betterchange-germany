@@ -85,6 +85,13 @@
   --shadow-card-hover: 0 4px 8px rgba(10, 10, 10, 0.06), 0 16px 32px rgba(10, 10, 10, 0.1);
 }
 
+:root {
+  /* Brand mark: a deliberately imperfect circle (not a true circle) used
+     for the logo dot and the eyebrow bullet, matching the live site's
+     hand-drawn blob mark. */
+  --blob-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50,1 C59.33,-0.33 64.33,0 72,5 C79.67,10 92.17,22.5 96,31 C99.83,39.5 97.5,47.67 95,56 C92.5,64.33 88.33,74.17 81,81 C73.67,87.83 60.67,95.83 51,97 C41.33,98.17 30.5,94 23,88 C15.5,82 9.17,69 6,61 C2.83,53 2.33,48 4,40 C5.67,32 8.33,19.5 16,13 C23.67,6.5 40.67,2.33 50,1 Z'/%3E%3C/svg%3E");
+}
+
 @layer base {
   html {
     font-family: var(--font-sans);
@@ -126,9 +133,23 @@
     height: 0.4em;
     min-width: 6px;
     min-height: 6px;
-    border-radius: 50%;
     background: var(--color-lime);
+    -webkit-mask-image: var(--blob-mask);
+    mask-image: var(--blob-mask);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
     flex-shrink: 0;
+  }
+
+  .blob-dot {
+    -webkit-mask-image: var(--blob-mask);
+    mask-image: var(--blob-mask);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
   }
 
   /* used when an eyebrow sits directly on a lime background, where a lime
