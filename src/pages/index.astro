@@ -44,6 +44,11 @@ const categories = await getCollection("training-categories");
 const certifiedBy = [
   ...new Set(categories.map((c) => c.data.certificationBody).filter((c): c is string => Boolean(c))),
 ];
+// Category id -> its certification-body logo, so a course listing can fall
+// back to the body's logo when that specific course has no round badge.
+const categoryLogoById = new Map(
+  categories.map((c) => [c.id, c.data.certificationBody ? certificationLogos[c.data.certificationBody] : undefined])
+);
 
 const schedules = await getCollection("training-schedules");
 const upcoming = schedules
@@ -51,7 +56,10 @@ const upcoming = schedules
   .sort((a, b) => a.data.date!.valueOf() - b.data.date!.valueOf())
   .slice(0, 5);
 const upcomingCourses = await Promise.all(
-  upcoming.map(async (session) => ({ session, course: await getEntry(session.data.course) }))
+  upcoming.map(async (session) => {
+    const course = await getEntry(session.data.course);
+    return { session, course, logo: courseBadges[course.id] ? undefined : categoryLogoById.get(course.data.category.id) };
+  })
 );
 
 const team = (await getCollection("coach-profiles"))
@@ -155,11 +163,17 @@ const featuredArticles = allArticles
         table at phone widths */}
     <div class="flex flex-col gap-3 sm:hidden">
       {
-        upcomingCourses.map(({ session, course }) => (
+        upcomingCourses.map(({ session, course, logo }) => (
           <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-4">
             <div class="flex items-center gap-2.5">
-              {courseBadges[course.id] && (
+              {courseBadges[course.id] ? (
                 <Image src={courseBadges[course.id]} alt="" width={40} height={40} class="h-7 w-7 shrink-0 rounded-full" />
+              ) : (
+                logo && (
+                  <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-1">
+                    <img src={logo.src} alt="" class="h-full w-full object-contain" />
+                  </span>
+                )
               )}
               <p class="font-semibold">{course.data.name}</p>
             </div>
@@ -194,11 +208,11 @@ const featuredArticles = allArticles
         </thead>
         <tbody>
           {
-            upcomingCourses.map(({ session, course }) => (
+            upcomingCourses.map(({ session, course, logo }) => (
               <tr class="border-b border-neutral-100 last:border-0">
                 <td class="px-3 py-4 sm:px-5">
                   <div class="flex items-center gap-2.5">
-                    {courseBadges[course.id] && (
+                    {courseBadges[course.id] ? (
                       <Image
                         src={courseBadges[course.id]}
                         alt=""
@@ -206,6 +220,12 @@ const featuredArticles = allArticles
                         height={40}
                         class="h-7 w-7 shrink-0 rounded-full"
                       />
+                    ) : (
+                      logo && (
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-1">
+                          <img src={logo.src} alt="" class="h-full w-full object-contain" />
+                        </span>
+                      )
                     )}
                     <span class="font-semibold">{course.data.name}</span>
                   </div>

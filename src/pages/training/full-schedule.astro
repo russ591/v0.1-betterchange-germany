@@ -5,6 +5,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import Badge from "@/components/Badge.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
 import { formatSessionDate } from "@/lib/dates";
 
@@ -21,7 +22,12 @@ const sessions = await Promise.all(
     const country = session.data.location.includes(",")
       ? session.data.location.split(",").pop()!.trim()
       : session.data.location;
-    return { session, course, category, country };
+    const logo = courseBadges[course.id]
+      ? undefined
+      : category.data.certificationBody
+        ? certificationLogos[category.data.certificationBody]
+        : undefined;
+    return { session, course, category, country, logo };
   })
 );
 
@@ -101,15 +107,21 @@ const countries = [...new Set(sessions.map((s) => s.country))].sort();
     {/* stacked cards below sm, table from sm up */}
     <div class="mt-8 flex flex-col gap-3 sm:hidden" id="schedule-list-mobile">
       {
-        sessions.map(({ session, course, category, country }) => (
+        sessions.map(({ session, course, category, country, logo }) => (
           <div
             class="schedule-row rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-4"
             data-topic={category.id}
             data-country={country}
           >
             <div class="flex items-center gap-2.5">
-              {courseBadges[course.id] && (
+              {courseBadges[course.id] ? (
                 <Image src={courseBadges[course.id]} alt="" width={40} height={40} class="h-7 w-7 shrink-0 rounded-full" />
+              ) : (
+                logo && (
+                  <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-1">
+                    <img src={logo.src} alt="" class="h-full w-full object-contain" />
+                  </span>
+                )
               )}
               <p class="font-semibold">{course.data.name}</p>
             </div>
@@ -149,7 +161,7 @@ const countries = [...new Set(sessions.map((s) => s.country))].sort();
         </thead>
         <tbody id="schedule-list-desktop">
           {
-            sessions.map(({ session, course, category, country }) => (
+            sessions.map(({ session, course, category, country, logo }) => (
               <tr
                 class="schedule-row border-b border-neutral-100 last:border-0"
                 data-topic={category.id}
@@ -157,7 +169,7 @@ const countries = [...new Set(sessions.map((s) => s.country))].sort();
               >
                 <td class="px-4 py-4">
                   <div class="flex items-center gap-2.5">
-                    {courseBadges[course.id] && (
+                    {courseBadges[course.id] ? (
                       <Image
                         src={courseBadges[course.id]}
                         alt=""
@@ -165,6 +177,12 @@ const countries = [...new Set(sessions.map((s) => s.country))].sort();
                         height={40}
                         class="h-7 w-7 shrink-0 rounded-full"
                       />
+                    ) : (
+                      logo && (
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-1">
+                          <img src={logo.src} alt="" class="h-full w-full object-contain" />
+                        </span>
+                      )
                     )}
                     <p class="font-semibold">{course.data.name}</p>
                   </div>

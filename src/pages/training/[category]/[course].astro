@@ -122,7 +122,7 @@ const badge = courseBadges[course.id];
         <div class="overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card">
           <div class="flex items-center gap-3.5 border-b border-neutral-200 bg-mist-light px-5 py-4">
             {
-              badge && (
+              badge ? (
                 <Image
                   src={badge}
                   alt=""
@@ -130,6 +130,12 @@ const badge = courseBadges[course.id];
                   height={64}
                   class="h-11 w-11 shrink-0 rounded-full"
                 />
+              ) : (
+                logo && (
+                  <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-2">
+                    <img src={logo.src} alt="" class="h-full w-full object-contain" />
+                  </span>
+                )
               )
             }
             <div>
