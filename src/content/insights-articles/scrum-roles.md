@@ -9,6 +9,7 @@ readTimeMinutes: 1
 author: gregor-heidinger
 excerpt: At the centre of each Scrum is a small team of people called the Scrum Team. The Scrum Team is made up of three key accountabilities which include the Scrum Master .
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/09/Scrum-roles.png
 metaTitle: Scrum Roles | Better Change Consulting
 metaDescription: At the centre of each Scrum is a small team of people called the Scrum Team. The Scrum Team is made up of three key accountabilities which include the...
 bodyHtml: |-

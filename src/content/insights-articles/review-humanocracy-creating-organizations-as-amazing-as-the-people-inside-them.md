@@ -10,6 +10,7 @@ readTimeMinutes: 1
 author: bent-myllerup
 excerpt: 'In "Humanocracy: Creating Organizations as Amazing as the People Inside Them," Gary Hamel and Michele Zanini offer a thought-provoking critique of traditional bureaucratic structures prevalent in medium to large-scale organisations.'
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/03/Humanocracy.png
 metaTitle: 'Review: "Humanocracy: Creating Organizations as Amazing as the People'
 metaDescription: 'In "Humanocracy: Creating Organizations as Amazing as the People Inside Them," Gary Hamel and Michele Zanini offer a thought-provoking critique of...'
 bodyHtml: |-

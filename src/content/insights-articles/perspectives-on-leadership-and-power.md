@@ -9,6 +9,7 @@ readTimeMinutes: 2
 author: bent-myllerup
 excerpt: Chris Mowles describes power as the currency of organisational life. It flows through formal hierarchies, informal networks, and unspoken agreements. The German sociologist Norbert Elias argued that power isn’t a fixed possession.
 featured: true
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/09/Power.png
 metaTitle: Perspectives on leadership and power | Better Change Consulting
 metaDescription: Chris Mowles describes power as the currency of organisational life. It flows through formal hierarchies, informal networks, and unspoken agreements....
 bodyHtml: |-

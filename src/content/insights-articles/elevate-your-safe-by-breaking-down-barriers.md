@@ -10,6 +10,7 @@ readTimeMinutes: 1
 author: jesper-orting
 excerpt: In the pursuit of organisational agility, the Scaled Agile Framework (SAFe®) above all is thought to offer a roadmap for success. However, when organisations fail to cultivate true cross-functional teams and struggle to minimise hierarchical barriers.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/05/DystopianTeam.png
 metaTitle: Elevate Your SAFe® By Breaking Down Barriers | Better Change Consultin
 metaDescription: In the pursuit of organisational agility, the Scaled Agile Framework (SAFe®) above all is thought to offer a roadmap for success. However, when...
 bodyHtml: |-

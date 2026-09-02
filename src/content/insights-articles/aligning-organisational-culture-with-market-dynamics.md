@@ -10,6 +10,7 @@ readTimeMinutes: 3
 author: garbrand-van-der-molen
 excerpt: The culture that wins early adopters is often incompatible with what the mainstream demands. Geoffrey Moore described the market chasm. This piece examines the cultural shift required to cross it — and why leaders miss it until it's too late.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/01/culture-market-fit-adopters.png
 metaTitle: The Culture That Got You Here Probably Won't Get You There | Better Ch
 metaDescription: The culture that wins early adopters is often incompatible with what the mainstream demands. Geoffrey Moore described the market chasm. This piece...
 bodyHtml: |-

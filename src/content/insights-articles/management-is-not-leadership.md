@@ -9,6 +9,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: Management and leadership are not the same activity, and treating them as interchangeable has real consequences. This post opens a series on what leadership actually requires — starting with the distinction that most organisations still do not make clearly enough.
 featured: true
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/10/Betterchange_0062.jpg
 metaTitle: Management Is Not Leadership — and Confusing the Two Costs Organisatio
 metaDescription: Management and leadership are not the same activity, and treating them as interchangeable has real consequences. This post opens a series on what...
 bodyHtml: |-

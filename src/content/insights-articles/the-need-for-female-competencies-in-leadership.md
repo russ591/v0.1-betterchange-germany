@@ -9,6 +9,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: 'Leadership selection has a persistent bias problem: we promote confidence and mistake it for competence. The traits that actually drive results — empathy, humility, clear communication — are more commonly found in women. That needs to change.'
 featured: true
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2025/03/vonecia-carswell-0aMMMUjiiEQ-unsplash.jpg
 metaTitle: Why the Best Leaders Think Differently — and What We Can Learn from Fe
 metaDescription: 'Leadership selection has a persistent bias problem: we promote confidence and mistake it for competence. The traits that actually drive results —...'
 bodyHtml: |-

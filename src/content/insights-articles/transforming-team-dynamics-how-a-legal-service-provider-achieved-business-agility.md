@@ -9,6 +9,7 @@ readTimeMinutes: 3
 author: russell-hill
 excerpt: An online legal services company grew from 50 to 350 people in three years and hit a wall. Technical outages were frequent, priorities were unclear, and coordination between teams had broken down. Here is how Flight Levels changed the picture.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/04/Screenshot-2024-04-11-at-08.43.32-e1712819668742.png
 metaTitle: 'From 50 to 350 People and Everything Started Breaking: A Flight Levels'
 metaDescription: An online legal services company grew from 50 to 350 people in three years and hit a wall. Technical outages were frequent, priorities were unclear,...
 bodyHtml: |-

@@ -10,6 +10,7 @@ readTimeMinutes: 3
 author: niels-verdonk
 excerpt: Training gives people frameworks and vocabulary. Coaching helps them apply those frameworks in their specific context. Neither alone produces the lasting change that both together can achieve — and most organisations systematically underinvest in the combination.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/09/synergy.jpg
 metaTitle: Training Without Coaching Is Theory. Coaching Without Training Is Gues
 metaDescription: Training gives people frameworks and vocabulary. Coaching helps them apply those frameworks in their specific context. Neither alone produces the...
 bodyHtml: |-

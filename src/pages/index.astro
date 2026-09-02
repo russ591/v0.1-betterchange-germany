@@ -8,6 +8,7 @@ import Badge from "@/components/Badge.astro";
 import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
 import CTABanner from "@/components/CTABanner.astro";
 import { services, serviceIcons } from "@/data/services";
+import { certificationLogos } from "@/data/certifications";
 
 const stats = [
   { label: "Experience", value: "30+", description: "Years combined practitioner experience" },
@@ -16,10 +17,30 @@ const stats = [
   { label: "Base", value: "Berlin", description: "In-person & online, Germany & Europe wide" },
 ];
 
-const clients = ["Deutsche Telekom", "Grundfos", "Laerdal", "TC Electronic", "HelloFresh", "McKinsey", "Microsoft"];
+const clients = [
+  "Deutsche Telekom",
+  "Grundfos",
+  "Laerdal",
+  "TC Electronic",
+  "HelloFresh",
+  "McKinsey",
+  "Microsoft",
+  "Kleinanzeigen",
+  "mobile.de",
+  "Cogent",
+  "Volkswagen",
+  "Axel Springer",
+  "Flightright",
+  "Aiven",
+  "Velux",
+  "Luxembourg Chamber of Commerce",
+  "Search Guard",
+];
 
 const categories = await getCollection("training-categories");
-const certifiedBy = [...new Set(categories.map((c) => c.data.certificationBody).filter(Boolean))];
+const certifiedBy = [
+  ...new Set(categories.map((c) => c.data.certificationBody).filter((c): c is string => Boolean(c))),
+];
 
 const schedules = await getCollection("training-schedules");
 const upcoming = schedules
@@ -35,13 +56,9 @@ const team = (await getCollection("coach-profiles"))
   .sort((a, b) => a.data.displayOrder - b.data.displayOrder || a.data.name.localeCompare(b.data.name))
   .slice(0, 7);
 
-const featuredSlugs = ["agile-coach-vs-scrum-master", "what-are-acceptance-criteria", "what-are-cross-functional-teams"];
 const allArticles = await getCollection("insights-articles");
-const featuredArticles = featuredSlugs
-  .map((slug) => allArticles.find((a) => a.id === slug))
-  .filter((a) => a !== undefined)
-  .concat(allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()))
-  .filter((a, i, arr) => arr.findIndex((x) => x.id === a.id) === i)
+const featuredArticles = allArticles
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 ---
 
@@ -80,8 +97,17 @@ const featuredArticles = featuredSlugs
               ))
             }
           </div>
-          <div class="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 border-t border-neutral-200 pt-5">
-            {certifiedBy.map((cert) => <span class="text-[length:var(--text-caption)] font-semibold text-neutral-500">{cert}</span>)}
+          <div class="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 border-t border-neutral-200 pt-5">
+            {
+              certifiedBy.map((cert) => {
+                const logo = certificationLogos[cert];
+                return logo ? (
+                  <img src={logo.src} alt={logo.alt} class="h-6 w-auto object-contain" />
+                ) : (
+                  <span class="text-[length:var(--text-caption)] font-semibold text-neutral-500">{cert}</span>
+                );
+              })
+            }
           </div>
         </div>
       </div>
@@ -89,9 +115,17 @@ const featuredArticles = featuredSlugs
   </section>
 
   <Section class="border-t border-neutral-200 !py-10">
-    <ul class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-[length:var(--text-small)] font-semibold text-neutral-500">
-      {clients.map((client) => <li>{client}</li>)}
-    </ul>
+    <div class="flex items-center gap-8">
+      <p class="shrink-0 text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-400">
+        Worked with
+      </p>
+      <div class="overflow-hidden" style="mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);">
+        <ul class="marquee-track flex w-max flex-nowrap items-center gap-x-14 text-[length:var(--text-small)] font-medium whitespace-nowrap text-neutral-400">
+          {clients.map((client) => <li>{client}</li>)}
+          {clients.map((client) => <li aria-hidden="true">{client}</li>)}
+        </ul>
+      </div>
+    </div>
   </Section>
 
   <Section eyebrow="What we do" heading="Services that create lasting change" class="border-t border-neutral-200">
@@ -107,10 +141,10 @@ const featuredArticles = featuredSlugs
   </Section>
 
   <Section eyebrow="Upcoming courses" heading="Next open training dates" class="border-t border-neutral-200 bg-mist-light">
-    <div class="overflow-x-auto rounded-[var(--radius-card)] bg-surface">
+    <div class="overflow-x-auto rounded-[var(--radius-card)] border border-neutral-200 bg-surface">
       <table class="w-full text-left text-[length:var(--text-small)]">
         <thead>
-          <tr class="border-b border-neutral-200 text-neutral-500">
+          <tr class="border-b border-neutral-200 bg-ink text-surface">
             <th class="px-3 py-3 font-medium sm:px-5">Course</th>
             <th class="px-3 py-3 font-medium sm:px-5">Date</th>
             <th class="hidden px-3 py-3 font-medium sm:table-cell sm:px-5">Location</th>
@@ -152,12 +186,23 @@ const featuredArticles = featuredSlugs
       {
         team.map((profile) => (
           <div class="flex w-24 flex-col items-center gap-2 text-center">
-            <span class="flex h-14 w-14 items-center justify-center rounded-full border-[1.5px] border-lime text-sm font-bold text-lime">
-              {(() => {
-                const parts = profile.data.name.split(" ");
-                return parts.length > 1 ? parts[0][0] + parts[parts.length - 1][0] : parts[0].slice(0, 2);
-              })()}
-            </span>
+            {
+              profile.data.photo ? (
+                <img
+                  src={profile.data.photo}
+                  alt={profile.data.name}
+                  class="h-14 w-14 rounded-full object-cover"
+                  loading="lazy"
+                />
+              ) : (
+                <span class="flex h-14 w-14 items-center justify-center rounded-full border-[1.5px] border-lime text-sm font-bold text-lime">
+                  {(() => {
+                    const parts = profile.data.name.split(" ");
+                    return parts.length > 1 ? parts[0][0] + parts[parts.length - 1][0] : parts[0].slice(0, 2);
+                  })()}
+                </span>
+              )
+            }
             <span class="text-[length:var(--text-caption)] font-semibold">{profile.data.name}</span>
             <span class="text-[length:var(--text-caption)] text-neutral-400">{profile.data.country}</span>
           </div>
@@ -186,6 +231,9 @@ const featuredArticles = featuredSlugs
   <Section eyebrow="Insights" heading="Articles, guides & resources" class="border-t border-neutral-200">
     <div class="grid gap-6 sm:grid-cols-3">
       {featuredArticles.map((article) => <InsightsArticleCard article={article} />)}
+    </div>
+    <div class="mt-6 text-right">
+      <Button href="/insights" variant="link" class="group">View all insights</Button>
     </div>
   </Section>
 

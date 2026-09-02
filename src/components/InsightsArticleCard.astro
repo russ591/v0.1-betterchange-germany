@@ -6,11 +6,11 @@ interface Props {
 }
 
 const { article } = Astro.props;
-const { title, date, readTimeMinutes, contentType, excerpt, primaryCategory } = article.data;
+const { title, date, readTimeMinutes, contentType, excerpt, primaryCategory, imageUrl } = article.data;
 
-// Real article photography hasn't been migrated yet -- a deterministic
-// duotone placeholder (picked from the slug) stands in so the grid has
-// visual rhythm without pretending to be real photos.
+// Real article photography exists for most articles (migrated from the Wix
+// imageUrl field); a deterministic duotone placeholder (picked from the
+// slug) stands in for the remainder, so the grid still has visual rhythm.
 const positions = ["30% 20%", "70% 30%", "40% 70%", "60% 60%"];
 const hash = [...article.id].reduce((sum, ch) => sum + ch.charCodeAt(0), 0);
 const position = positions[hash % positions.length];
@@ -20,12 +20,19 @@ const position = positions[hash % positions.length];
   href={`/insights/${article.id}`}
   class="flex flex-col overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card transition-shadow hover:shadow-card-hover"
 >
-  <div
-    aria-hidden="true"
-    class="relative aspect-[16/10] w-full overflow-hidden"
-    style={`background: radial-gradient(circle at ${position}, rgba(154,255,91,0.5), transparent 55%), linear-gradient(135deg, #14200c, #37452a);`}
-  >
-  </div>
+  {
+    imageUrl ? (
+      <div class="aspect-[16/10] w-full overflow-hidden">
+        <img src={imageUrl} alt="" class="h-full w-full object-cover" loading="lazy" />
+      </div>
+    ) : (
+      <div
+        aria-hidden="true"
+        class="relative aspect-[16/10] w-full overflow-hidden"
+        style={`background: radial-gradient(circle at ${position}, rgba(154,255,91,0.5), transparent 55%), linear-gradient(135deg, #14200c, #37452a);`}
+      />
+    )
+  }
   <div class="flex flex-1 flex-col p-6">
     <p class="eyebrow text-neutral-500">
       {date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}

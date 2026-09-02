@@ -9,6 +9,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: 'A full disclosure upfront: Bent Myllerup is a Certified Scrum Trainer who has spent twelve years certifying people in Agile. Which makes this critique of the certification industry both more uncomfortable to write and more worth reading.'
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/06/robert-anasch-y_ZPwFTCp84-unsplash.jpg
 metaTitle: 'Agile Mishap #5: The Certification Circus | Better Change Consulting'
 metaDescription: 'A full disclosure upfront: Bent Myllerup is a Certified Scrum Trainer who has spent twelve years certifying people in Agile. Which makes this critique...'
 bodyHtml: |-

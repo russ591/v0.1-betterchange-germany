@@ -9,6 +9,7 @@ readTimeMinutes: 5
 author: mogens-villadsen
 excerpt: Scrum, a highly popular and effective framework for project management, has revolutionized the way teams collaborate and deliver value. Scrum is an iterative and incremental framework that enables teams to successfully manage complex projects by promoting...
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/12/Scrum-Process.png
 metaTitle: The Scrum Process Explained | Better Change Consulting
 metaDescription: Scrum, a highly popular and effective framework for project management, has revolutionized the way teams collaborate and deliver value. Scrum is an...
 bodyHtml: |-

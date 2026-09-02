@@ -39,6 +39,22 @@ const nonEmpty = (s) => {
   return c && c.length > 0 ? c : undefined;
 };
 
+// Wix media refs look like "wix:image://v1/<mediaId>~mv2.jpg/name.jpg#..." and
+// need converting to a real static.wixstatic.com URL. Rows with no real image
+// set carry a literal "empty-transparent-background-image.png" placeholder --
+// treat that the same as no image.
+function resolveImageUrl(raw) {
+  const url = nonEmpty(raw);
+  if (!url) return undefined;
+  if (url.includes("empty-transparent-background-image")) return undefined;
+  if (url.startsWith("wix:image://")) {
+    const match = url.match(/wix:image:\/\/v\d+\/([^/]+)/);
+    return match ? `https://static.wixstatic.com/media/${match[1]}` : undefined;
+  }
+  if (url.startsWith("http://") || url.startsWith("https://")) return url;
+  return undefined;
+}
+
 const LANG_NAMES = {
   EN: "English",
   DE: "German",
@@ -326,6 +342,7 @@ for (const row of articleRows) {
     authorName: !authorIsPublished ? fellowIdToName.get(authorId) : undefined,
     excerpt: row.excerpt,
     featured: String(row.Featured).toLowerCase() === "true",
+    imageUrl: resolveImageUrl(row.imageUrl),
     metaTitle: nonEmpty(row.metaTitle),
     metaDescription: nonEmpty(row.metaDescription),
     bodyHtml: row.bodyContent,

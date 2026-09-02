@@ -10,6 +10,7 @@ readTimeMinutes: 3
 author: javier-perez-fernandez
 excerpt: 'After attending several AI adoption events organised by the Madrid Chamber of Commerce, Javier Perez Fernandez left with a consistent feeling: the most important conversation was not happening. Here are the challenges he believes organisations need to address honestly.'
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2025/12/Screenshot-2025-12-18-at-13.10.32.png
 metaTitle: What the AI Adoption Events in Madrid Didn't Talk About | Better Chang
 metaDescription: 'After attending several AI adoption events organised by the Madrid Chamber of Commerce, Javier Perez Fernandez left with a consistent feeling: the most...'
 bodyHtml: |-

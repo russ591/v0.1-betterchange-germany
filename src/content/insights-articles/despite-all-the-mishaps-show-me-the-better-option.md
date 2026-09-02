@@ -9,6 +9,7 @@ readTimeMinutes: 2
 author: bent-myllerup
 excerpt: 'This is the final blog post in my series about mishaps in applying Agile. Agile mishap #1: Do it by the book! Agile mishap #2: All frameworks are wrong but mine Agile mishap #3: The Agile...'
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/06/Good-News-Jon-Tyson-on-Unsplashed.png
 metaTitle: 'Despite All the Mishaps: Show Me the Better Option! | Better Change Co'
 metaDescription: 'This is the final blog post in my series about mishaps in applying Agile. Agile mishap #1: Do it by the book! Agile mishap #2: All frameworks are wrong...'
 bodyHtml: |-

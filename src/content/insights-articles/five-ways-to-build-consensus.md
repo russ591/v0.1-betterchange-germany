@@ -9,6 +9,7 @@ readTimeMinutes: 6
 author: mogens-villadsen
 excerpt: Consensus is an essential aspect of decision making in any group setting. It ensures that everyone's opinions and ideas are heard and considered, leading to better outcomes and a stronger sense of unity among team members.
 featured: true
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/12/Build-consensus.png
 metaTitle: Five Ways to Build Consensus | Better Change Consulting
 metaDescription: Consensus is an essential aspect of decision making in any group setting. It ensures that everyone's opinions and ideas are heard and considered,...
 bodyHtml: |-

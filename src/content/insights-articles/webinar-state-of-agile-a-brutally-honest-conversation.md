@@ -11,6 +11,7 @@ readTimeMinutes: 2
 author: bent-myllerup
 excerpt: Agile has been declared dead more times than anyone can count. Yet its principles — adaptability, collaboration, and customer focus — are more relevant than ever.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2026/01/Agile-is-Dead-again.png
 metaTitle: 'Webinar: State of Agile - A Brutally Honest Conversation | Better Chan'
 metaDescription: Agile has been declared dead more times than anyone can count. Yet its principles — adaptability, collaboration, and customer focus — are more relevant...
 bodyHtml: |-

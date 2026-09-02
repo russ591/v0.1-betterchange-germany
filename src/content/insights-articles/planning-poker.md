@@ -11,6 +11,7 @@ readTimeMinutes: 2
 author: anders-hojgaard-nielsen
 excerpt: Estimation is probably one of the most controversial topics in the Agile domain. The reason is likely related to assumptions about what these estimations are going to be used for.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/09/image.png
 metaTitle: Planning Poker | Better Change Consulting
 metaDescription: Estimation is probably one of the most controversial topics in the Agile domain. The reason is likely related to assumptions about what these...
 bodyHtml: |-

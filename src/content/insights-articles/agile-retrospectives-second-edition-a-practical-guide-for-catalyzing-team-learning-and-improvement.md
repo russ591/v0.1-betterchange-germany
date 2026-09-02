@@ -10,6 +10,7 @@ readTimeMinutes: 1
 author: joanne-perold
 excerpt: The first version of Agile Retrospectives was my guide for running retrospectives for a decade. Imagine my excitement when Esther and Diana let me know that they were going to do a second edition and that...
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/02/AgileRetrospectives-scaled.jpg
 metaTitle: 'Agile Retrospectives, Second Edition: A Practical Guide for Catalyzing'
 metaDescription: The first version of Agile Retrospectives was my guide for running retrospectives for a decade. Imagine my excitement when Esther and Diana let me know...
 bodyHtml: |-

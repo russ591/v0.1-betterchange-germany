@@ -11,6 +11,7 @@ readTimeMinutes: 3
 author: mogens-villadsen
 excerpt: Most retrospectives produce a list of actions nobody implements. The problem is usually not effort — it is structure. Here is a five-step approach that turns retrospectives from a ritual into a genuine improvement engine.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/05/mogens5209_Subject_Team_appreciating_each_other_showing_a_sense_fe7c97aa-f4a1-4323-8717-f2a0c6738c2a-e1743400965555.png
 metaTitle: How to Run a Retrospective That Actually Changes Things | Better Chang
 metaDescription: Most retrospectives produce a list of actions nobody implements. The problem is usually not effort — it is structure. Here is a five-step approach that...
 bodyHtml: |-

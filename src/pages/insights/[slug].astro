@@ -42,6 +42,18 @@ const related = article.data.primaryCategory
     </p>
   </Section>
 
+  {
+    article.data.imageUrl && (
+      <div class="mx-auto max-w-4xl px-6 pt-10">
+        <img
+          src={article.data.imageUrl}
+          alt=""
+          class="aspect-[16/9] w-full rounded-[var(--radius-card)] object-cover"
+        />
+      </div>
+    )
+  }
+
   <Section>
     <div class="article-body max-w-2xl text-[length:var(--text-body)] text-neutral-700" set:html={article.data.bodyHtml} />
   </Section>

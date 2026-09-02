@@ -9,6 +9,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: 'In a series of blog posts I am discussing the question: If it is not dead then what went wrong with Agile? Have you noticed the increasing numbers of Agile frameworks that have emerged over the past years?'
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/02/ashkan-forouzani-v31lgBn5114-unsplash-scaled.jpg
 metaTitle: 'Agile Mishap #2: All frameworks are wrong but mine | Better Change Con'
 metaDescription: 'In a series of blog posts I am discussing the question: If it is not dead then what went wrong with Agile? Have you noticed the increasing numbers of...'
 bodyHtml: |-

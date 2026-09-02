@@ -9,6 +9,7 @@ readTimeMinutes: 3
 author: niels-verdonk
 excerpt: A WhatsApp message that counts how long you have been waiting instead of how long you have left. A small, telling example of what happens when developers build exactly what was specified — and the specification missed what the user actually needed.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/12/Service.jpg
 metaTitle: Why Developers Build the Wrong Thing — and How User Stories Help | Bet
 metaDescription: A WhatsApp message that counts how long you have been waiting instead of how long you have left. A small, telling example of what happens when...
 bodyHtml: |-

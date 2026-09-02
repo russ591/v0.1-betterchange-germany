@@ -10,6 +10,7 @@ readTimeMinutes: 2
 author: mogens-villadsen
 excerpt: Governance and agility are widely treated as opposing forces. They are not — but governance designed to control people rather than enable them does undermine agility. The difference matters, and it starts at the top.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/09/Business_woman_signaling_STOP.png
 metaTitle: 'Agile Governance: Enough Structure to Enable, Not Enough to Control |'
 metaDescription: Governance and agility are widely treated as opposing forces. They are not — but governance designed to control people rather than enable them does...
 bodyHtml: |-

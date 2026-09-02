@@ -12,6 +12,7 @@ readTimeMinutes: 1
 author: konrad-pogorzala
 excerpt: In this recorded webinar, Konrad Pogorzala shows how Flight Levels create alignment and transparency across organisational levels — from operational teams to executive leadership. Practical, case-study-grounded, and worth your time.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/04/Screenshot-2024-04-11-at-08.42.54.png
 metaTitle: 'Webinar Recording: Flight Levels in Action — Konrad Pogorzala at Agile'
 metaDescription: In this recorded webinar, Konrad Pogorzala shows how Flight Levels create alignment and transparency across organisational levels — from operational...
 bodyHtml: |-

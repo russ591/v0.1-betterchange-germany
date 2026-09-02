@@ -10,6 +10,7 @@ readTimeMinutes: 3
 author: mogens-villadsen
 excerpt: Mogens Ejby Villadsen has spent twenty years helping organisations improve how teams work. His central conviction — that performance lives in the interactions between people, not in individual capability — shapes everything he does.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2025/11/MEV1.png
 metaTitle: 'Mogens Ejby Villadsen: Why Team Performance Is Mostly About the Space'
 metaDescription: Mogens Ejby Villadsen has spent twenty years helping organisations improve how teams work. His central conviction — that performance lives in the...
 bodyHtml: |-

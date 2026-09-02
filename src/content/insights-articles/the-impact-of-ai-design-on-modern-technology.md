@@ -9,6 +9,7 @@ readTimeMinutes: 3
 author: mogens-villadsen
 excerpt: Every AI system you interact with was shaped by design choices made before deployment. Those choices determine what the system does, how it behaves in edge cases, and how much you can trust its outputs.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/02/ChatGPT-Image-Mar-31-2025-08_06_07-AM.png
 metaTitle: 'AI Design: The Principles That Shape Every System You Interact With |'
 metaDescription: Every AI system you interact with was shaped by design choices made before deployment. Those choices determine what the system does, how it behaves in...
 bodyHtml: |-

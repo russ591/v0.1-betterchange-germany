@@ -10,6 +10,7 @@ readTimeMinutes: 2
 author: mogens-villadsen
 excerpt: Renovating a house with family and friends as your workforce is a coordination challenge that would make most project managers nervous. A 20-minute brainstorm and a wall of sticky notes turned out to be all the management infrastructure needed.
 featured: true
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/09/IMG_2960-scaled.jpeg
 metaTitle: How a Kanban Board on a Kitchen Wall Renovated Our House on Time and o
 metaDescription: Renovating a house with family and friends as your workforce is a coordination challenge that would make most project managers nervous. A 20-minute...
 bodyHtml: |-

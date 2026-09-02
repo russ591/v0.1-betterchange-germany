@@ -9,6 +9,7 @@ readTimeMinutes: 3
 author: niels-verdonk
 excerpt: The Product Owner role is more demanding than most job descriptions suggest. The mechanics are learnable. The judgment, communication, and stakeholder navigation that make those mechanics work are considerably harder.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/09/PO_Post.jpeg
 metaTitle: The Skills That Actually Make a Product Owner Effective | Better Chang
 metaDescription: The Product Owner role is more demanding than most job descriptions suggest. The mechanics are learnable. The judgment, communication, and stakeholder...
 bodyHtml: |-

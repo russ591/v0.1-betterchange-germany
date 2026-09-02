@@ -11,6 +11,7 @@ readTimeMinutes: 5
 author: mogens-villadsen
 excerpt: Self organizing teams are a concept that has gained significant attention in the business world in recent years. Self organizing teams are characterized by their ability to independently manage their work and make decisions collectively.
 featured: true
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/12/Self-organising.png
 metaTitle: What is Self Organizing Teams? | Better Change Consulting
 metaDescription: Self organizing teams are a concept that has gained significant attention in the business world in recent years. Self organizing teams are...
 bodyHtml: |-

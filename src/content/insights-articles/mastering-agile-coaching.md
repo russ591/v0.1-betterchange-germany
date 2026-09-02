@@ -9,6 +9,7 @@ readTimeMinutes: 2
 author: bent-myllerup
 excerpt: According to the State of Agile Coaching Report 2021 only 19% of people who consider themselves to be Agile Coaches has a master level certification in this area.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/09/BC-Workshop.jpeg
 metaTitle: Mastering Agile Coaching | Better Change Consulting
 metaDescription: According to the State of Agile Coaching Report 2021 only 19% of people who consider themselves to be Agile Coaches has a master level certification in...
 bodyHtml: |-

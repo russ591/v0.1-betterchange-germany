@@ -10,6 +10,7 @@ readTimeMinutes: 2
 author: russell-hill
 excerpt: 'Klaus Leopold''s short, sharp book makes one argument and makes it well: excellent team-level agility does not produce business agility. They are different problems that require different solutions, and most organisations are only solving one of them.'
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/04/real-en-1024x1024-1-1024x1024-1.png
 metaTitle: 'Book Review: Rethinking Agile by Klaus Leopold | Better Change Consult'
 metaDescription: 'Klaus Leopold''s short, sharp book makes one argument and makes it well: excellent team-level agility does not produce business agility. They are...'
 bodyHtml: |-

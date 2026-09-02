@@ -10,6 +10,7 @@ readTimeMinutes: 5
 author: mogens-villadsen
 excerpt: Artificial intelligence (AI) has become an integral part of our daily lives, revolutionising industries such as healthcare, finance, and transportation. If you're thinking about building your own AI team.
 featured: true
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/02/Buidling-an-AI-Team.png
 metaTitle: The Ultimate Guide to Building an AI Team | Better Change Consulting
 metaDescription: Artificial intelligence (AI) has become an integral part of our daily lives, revolutionising industries such as healthcare, finance, and...
 bodyHtml: |-

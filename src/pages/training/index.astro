@@ -4,13 +4,16 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import CTABanner from "@/components/CTABanner.astro";
 import Button from "@/components/Button.astro";
+import { certificationLogos } from "@/data/certifications";
 
 const categories = (await getCollection("training-categories")).sort(
   (a, b) => a.data.order - b.data.order
 );
 const courses = await getCollection("training-courses");
 
-const certifiedBy = [...new Set(categories.map((c) => c.data.certificationBody).filter(Boolean))];
+const certifiedBy = [
+  ...new Set(categories.map((c) => c.data.certificationBody).filter((c): c is string => Boolean(c))),
+];
 
 const formats = [
   {
@@ -69,9 +72,18 @@ const testimonials = [
       Hands-on, certification-ready training in Flight Levels, Kanban, Scrum and leadership.
       In-person in Berlin, live online, or at your own pace.
     </p>
-    <ul class="mt-8 flex flex-wrap gap-x-8 gap-y-2 text-[length:var(--text-small)] font-semibold text-neutral-500">
-      {certifiedBy.map((cert) => <li>Certified by {cert}</li>)}
-    </ul>
+    <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+      {
+        certifiedBy.map((cert) => {
+          const logo = certificationLogos[cert];
+          return logo ? (
+            <img src={logo.src} alt={logo.alt} class="h-7 w-auto object-contain" />
+          ) : (
+            <span class="text-[length:var(--text-small)] font-semibold text-neutral-500">Certified by {cert}</span>
+          );
+        })
+      }
+    </div>
   </Section>
 
   <Section eyebrow="Disciplines" heading="Six disciplines, one practitioner network">

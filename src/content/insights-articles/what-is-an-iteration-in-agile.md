@@ -10,6 +10,7 @@ readTimeMinutes: 5
 author: mogens-villadsen
 excerpt: Agile methodology has gained significant popularity in the field of project management, revolutionizing the way teams approach software development. Central to this methodology is the concept of iterations .
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/11/Iteration-2.png
 metaTitle: What is an Iteration in Agile? | Better Change Consulting
 metaDescription: Agile methodology has gained significant popularity in the field of project management, revolutionizing the way teams approach software development....
 bodyHtml: |-

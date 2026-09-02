@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import CourseCard from "@/components/CourseCard.astro";
+import { certificationLogos } from "@/data/certifications";
 
 export async function getStaticPaths() {
   const categories = await getCollection("training-categories");
@@ -28,9 +29,19 @@ const courses = allCourses
     <p class="mt-4 max-w-2xl text-[length:var(--text-body)] text-neutral-600">{category.data.description}</p>
     {
       category.data.certificationBody && (
-        <p class="mt-6 text-[length:var(--text-small)] font-semibold text-neutral-500">
-          Certified by {category.data.certificationBody}
-        </p>
+        certificationLogos[category.data.certificationBody] ? (
+          <div class="mt-6 flex items-center gap-3">
+            <img
+              src={certificationLogos[category.data.certificationBody].src}
+              alt={certificationLogos[category.data.certificationBody].alt}
+              class="h-7 w-auto object-contain"
+            />
+          </div>
+        ) : (
+          <p class="mt-6 text-[length:var(--text-small)] font-semibold text-neutral-500">
+            Certified by {category.data.certificationBody}
+          </p>
+        )
       )
     }
   </Section>

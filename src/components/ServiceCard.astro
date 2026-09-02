@@ -10,7 +10,7 @@ const { name, items, blurb, href } = Astro.props;
 ---
 
 <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-8 shadow-card transition-shadow hover:shadow-card-hover">
-  <span aria-hidden="true" class="flex h-11 w-11 items-center justify-center rounded-full bg-lime">
+  <span aria-hidden="true" class="blob-dot flex h-11 w-11 items-center justify-center bg-lime">
     <slot name="icon" />
   </span>
   {

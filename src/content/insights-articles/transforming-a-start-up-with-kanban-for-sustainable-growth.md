@@ -11,6 +11,7 @@ readTimeMinutes: 3
 author: russell-hill
 excerpt: A 45-person start-up in targeted advertising had tried Scrum for two years and concluded it was useless. The solution wasn't more Agile theory. It was focus on the organisational challenges, and deliberately push the approach to the back seat.
 featured: false
+imageUrl: https://static.wixstatic.com/media/fa07b6_d48d092b0c164d0eb2824c0a677fb8af~mv2.jpg
 metaTitle: The Start-Up That Said Agile Didn't Work — and Then Changed Its Mind |
 metaDescription: A 45-person start-up in targeted advertising had tried Scrum for two years and concluded it was useless. The solution wasn't more Agile theory. It was...
 bodyHtml: |-

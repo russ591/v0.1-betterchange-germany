@@ -109,6 +109,7 @@ const insightsArticle = defineCollection({
     authorName: z.string().optional(),
     excerpt: z.string(),
     featured: z.boolean().default(false),
+    imageUrl: z.string().optional(),
     metaTitle: z.string().optional(),
     metaDescription: z.string().optional(),
     bodyHtml: z.string(),

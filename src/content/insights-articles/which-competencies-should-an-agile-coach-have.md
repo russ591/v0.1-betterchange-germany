@@ -9,6 +9,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: Most Agile coaches know frameworks well. The ones who create durable change also understand human dynamics — trust, status, psychodynamics, and the irrational ways people actually behave. Process knowledge is necessary. It is not sufficient.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/05/Agile-versus-systemic-coach.jpg
 metaTitle: What an Agile Coach Actually Needs to Be Good At | Better Change Consu
 metaDescription: Most Agile coaches know frameworks well. The ones who create durable change also understand human dynamics — trust, status, psychodynamics, and the...
 bodyHtml: |-

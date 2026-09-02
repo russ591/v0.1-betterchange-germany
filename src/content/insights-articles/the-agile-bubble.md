@@ -9,6 +9,7 @@ readTimeMinutes: 2
 author: bent-myllerup
 excerpt: 'In a series of blog posts I am discussing the question: If it is not dead then what went wrong with Agile? In 2019, I had the experience of attending two conferences in a row.'
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/02/lanju-fotografie-muy0ywmdsPY-unsplash.jpg
 metaTitle: 'Agile mishap #3: The Agile Bubble | Better Change Consulting'
 metaDescription: 'In a series of blog posts I am discussing the question: If it is not dead then what went wrong with Agile? In 2019, I had the experience of attending...'
 bodyHtml: |-

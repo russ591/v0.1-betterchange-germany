@@ -9,6 +9,7 @@ readTimeMinutes: 6
 author: mogens-villadsen
 excerpt: Timeboxing is a fundamental concept in the Scrum framework that ensures efficient time management and promotes productivity. It involves dividing work into fixed time intervals, known as timeboxes, during which a specific set of tasks must be completed.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/11/Timeboxing.png
 metaTitle: What is Timeboxing in Scrum? | Better Change Consulting
 metaDescription: Timeboxing is a fundamental concept in the Scrum framework that ensures efficient time management and promotes productivity. It involves dividing work...
 bodyHtml: |-

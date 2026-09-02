@@ -9,6 +9,7 @@ readTimeMinutes: 5
 author: mogens-villadsen
 excerpt: 'In the agile world of Scrum, there are two key roles that play a crucial part in the success of a project: the Product Owner and the Scrum Master.'
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/12/Can-the-PO-be-the-SM.png
 metaTitle: Can the Product Owner also be the Scrum Master? | Better Change Consul
 metaDescription: 'In the agile world of Scrum, there are two key roles that play a crucial part in the success of a project: the Product Owner and the Scrum Master.'
 bodyHtml: |-

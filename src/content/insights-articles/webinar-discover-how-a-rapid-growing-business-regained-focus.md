@@ -12,6 +12,7 @@ readTimeMinutes: 2
 author: russell-hill
 excerpt: In this webinar our fellow, Russell Hill shares the journey of an online legal services company that experienced a major outage - a 'black week' - due to rapid growth and technical debt.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/04/Screenshot-2024-04-16-at-20.09.00.png
 metaTitle: 'Webinar: Discover How a Rapid Growing Business Regained Focus | Better'
 metaDescription: In this webinar our fellow, Russell Hill shares the journey of an online legal services company that experienced a major outage - a 'black week' - due...
 bodyHtml: |-

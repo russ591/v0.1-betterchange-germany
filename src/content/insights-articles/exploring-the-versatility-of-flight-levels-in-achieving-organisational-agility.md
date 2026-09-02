@@ -9,6 +9,7 @@ readTimeMinutes: 3
 author: russell-hill
 excerpt: Flight Levels is frequently described alongside Scrum and SAFe as an agile framework. It isn't — and the distinction is important. It's a thinking model for designing the coordination systems your organisation actually needs.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/04/Screenshot-2024-04-11-at-08.42.54.png
 metaTitle: Why Flight Levels Isn't a Framework — and Why That Matters | Better Ch
 metaDescription: Flight Levels is frequently described alongside Scrum and SAFe as an agile framework. It isn't — and the distinction is important. It's a thinking...
 bodyHtml: |-

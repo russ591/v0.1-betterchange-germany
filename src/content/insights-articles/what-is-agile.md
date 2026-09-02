@@ -9,6 +9,7 @@ readTimeMinutes: 3
 author: mogens-villadsen
 excerpt: Agile is one of the most used and least understood terms in modern business. It is not a methodology, not a set of tools, and not a synonym for Scrum.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/09/agile.jpeg
 metaTitle: What Is Agile? Beyond the Buzzword | Better Change Consulting
 metaDescription: Agile is one of the most used and least understood terms in modern business. It is not a methodology, not a set of tools, and not a synonym for Scrum.
 bodyHtml: |-

@@ -9,6 +9,7 @@ readTimeMinutes: 3
 author: jan-b-olsen
 excerpt: Between two thirds and three quarters of large organisations struggle to turn their strategic plans into operational reality. The plans are often good. The implementation is where things fall apart. Here is a structured approach to the gap.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2025/01/anne-nygard-Zkq09XVL3ss-unsplash-1-scaled.jpg
 metaTitle: Why Most Strategies Fail Between the Slides and the Doing | Better Cha
 metaDescription: Between two thirds and three quarters of large organisations struggle to turn their strategic plans into operational reality. The plans are often good....
 bodyHtml: |-

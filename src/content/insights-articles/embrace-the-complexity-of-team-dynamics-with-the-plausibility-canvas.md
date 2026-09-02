@@ -10,6 +10,7 @@ readTimeMinutes: 2
 author: bent-myllerup
 excerpt: Do you often find yourself in situations where you're trying to influence an team's direction, only to be met with unpredictable outcomes? The world of Agile coaching is a complex and ever-changing landscape, and success can sometimes seem elusive.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/10/Plausibility-Canvas-e1697191171174.png
 metaTitle: Embrace the complexity of team dynamics with the Plausibility Canvas |
 metaDescription: Do you often find yourself in situations where you're trying to influence an team's direction, only to be met with unpredictable outcomes? The world of...
 bodyHtml: |-

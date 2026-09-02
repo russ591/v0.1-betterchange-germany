@@ -9,6 +9,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: The year I was a sprightly 12-year-old, rocking my bell-bottoms and boogying down to the pulsating beats of disco. It was a year of glitter, grooves, and glorious gaffes.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/06/samantha-borges-VTrTQmWxiH8-unsplash-scaled.jpg
 metaTitle: 'Boogie and Backlogs: The Hilarious Parallels Between Agile and Disco |'
 metaDescription: The year I was a sprightly 12-year-old, rocking my bell-bottoms and boogying down to the pulsating beats of disco. It was a year of glitter, grooves,...
 bodyHtml: |-

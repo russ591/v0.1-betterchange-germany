@@ -9,6 +9,7 @@ readTimeMinutes: 1
 author: bent-myllerup
 excerpt: Regrettably, the hedgehog population is experiencing a decline due to challenges in their habitat. To address this, Denmark is observing an initiative today where we are conducting a hedgehog population census to enhance our understanding of these creatures.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/09/Hedgehog.jpeg
 metaTitle: Protecting the Hedgehogs | Better Change Consulting
 metaDescription: Regrettably, the hedgehog population is experiencing a decline due to challenges in their habitat. To address this, Denmark is observing an initiative...
 bodyHtml: |-

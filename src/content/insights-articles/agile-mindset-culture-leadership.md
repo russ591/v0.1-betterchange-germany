@@ -10,6 +10,7 @@ readTimeMinutes: 2
 author: jesper-orting
 excerpt: The Scaled Agile Framework is a capable tool for large-scale coordination. But SAFe implementations fail at a predictable rate when the leaders sponsoring them continue to behave in fundamentally un-agile ways. The framework is not the variable. Leadership behaviour is.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/05/DystopianTeam3.png
 metaTitle: SAFe Won't Save You If Your Leaders Aren't Actually Agile | Better Cha
 metaDescription: The Scaled Agile Framework is a capable tool for large-scale coordination. But SAFe implementations fail at a predictable rate when the leaders...
 bodyHtml: |-

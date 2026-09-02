@@ -11,6 +11,7 @@ readTimeMinutes: 5
 author: mogens-villadsen
 excerpt: In the world of Agile software development, the roles of an Agile Coach and a Scrum Master are often misunderstood or used interchangeably. While both roles are crucial for driving and implementing Agile methodologies within a...
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/11/PO-and-SM.png
 metaTitle: Agile Coach vs Scrum Master | Better Change Consulting
 metaDescription: In the world of Agile software development, the roles of an Agile Coach and a Scrum Master are often misunderstood or used interchangeably. While both...
 bodyHtml: |-

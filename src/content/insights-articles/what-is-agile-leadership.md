@@ -10,6 +10,7 @@ readTimeMinutes: 6
 author: mogens-villadsen
 excerpt: Agile leadership is a modern approach to leadership that is gaining popularity in today's fast-paced and ever-changing business environment. It is a style of leadership that emphasizes flexibility , adaptability, and responsiveness.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/12/Agile-Leadership.png
 metaTitle: What Is Agile Leadership? | Better Change Consulting
 metaDescription: Agile leadership is a modern approach to leadership that is gaining popularity in today's fast-paced and ever-changing business environment. It is a...
 bodyHtml: |-

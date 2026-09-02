@@ -10,6 +10,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: 'In a series of blog posts I am discussing the question: What went wrong with Agile? When I started applying Agile methodologies in 2006 there was one dominant framework.'
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/01/timothy-eberly-_4l76rRSsr4-unsplash.jpg
 metaTitle: 'Agile Mishap #1: Do it by the book! | Better Change Consulting'
 metaDescription: 'In a series of blog posts I am discussing the question: What went wrong with Agile? When I started applying Agile methodologies in 2006 there was one...'
 bodyHtml: |-

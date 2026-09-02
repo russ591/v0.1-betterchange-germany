@@ -9,6 +9,7 @@ readTimeMinutes: 3
 author: jan-b-olsen
 excerpt: A strategy sitting in a deck is an aspiration, not a plan. The Strategy Translation Canvas breaks strategic intent into specific, owned, measurable actions that connect to the work being done every day.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2025/01/Bridge.png
 metaTitle: 'The Strategy Translation Canvas: A Tool for Closing the Gap Between Vi'
 metaDescription: A strategy sitting in a deck is an aspiration, not a plan. The Strategy Translation Canvas breaks strategic intent into specific, owned, measurable...
 bodyHtml: |-

@@ -9,6 +9,7 @@ readTimeMinutes: 5
 author: mogens-villadsen
 excerpt: Artificial Intelligence (AI) has revolutionized the way we interact with technology, transforming various sectors and driving innovation to unprecedented levels. In this comprehensive guide.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/02/AI-In-Tech.png
 metaTitle: 'AI in Tech: A Comprehensive Guide to its impact | Better Change Consul'
 metaDescription: Artificial Intelligence (AI) has revolutionized the way we interact with technology, transforming various sectors and driving innovation to...
 bodyHtml: |-

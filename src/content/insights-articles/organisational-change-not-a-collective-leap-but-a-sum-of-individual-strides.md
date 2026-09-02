@@ -10,6 +10,7 @@ readTimeMinutes: 3
 author: garbrand-van-der-molen
 excerpt: The most overlooked insight in Cameron and Quinn's classic work on organisational culture is not the Competing Values Framework — it is the appendix. The real tool for change agents is the Management Skills Assessment Instrument, which makes transformation personal.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/01/image-1-1.png
 metaTitle: Organisational Change Doesn't Happen Collectively — It Happens Person
 metaDescription: The most overlooked insight in Cameron and Quinn's classic work on organisational culture is not the Competing Values Framework — it is the appendix....
 bodyHtml: |-

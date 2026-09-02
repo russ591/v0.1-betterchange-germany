@@ -10,6 +10,7 @@ readTimeMinutes: 2
 author: niels-verdonk
 excerpt: In the ever-evolving realm of business management, the amalgamation of Lean Thinking with Agile Product Development has become a catalyst for organizations striving to achieve operational excellence and deliver unparalleled value to their customers.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/10/Lean-flow.png
 metaTitle: The Synergy of Lean Thinking in the Agile Landscape | Better Change Co
 metaDescription: In the ever-evolving realm of business management, the amalgamation of Lean Thinking with Agile Product Development has become a catalyst for...
 bodyHtml: |-

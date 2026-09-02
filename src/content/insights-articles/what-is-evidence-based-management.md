@@ -10,6 +10,7 @@ readTimeMinutes: 5
 author: mogens-villadsen
 excerpt: Evidence-Based Management (EBM) is an approach to decision-making and problem-solving that is grounded in the careful analysis and evaluation of relevant evidence. In the realm of management, evidence refers to data, facts, research findings.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/12/Evidence-based-management.png
 metaTitle: What is Evidence-Based Management? | Better Change Consulting
 metaDescription: Evidence-Based Management (EBM) is an approach to decision-making and problem-solving that is grounded in the careful analysis and evaluation of...
 bodyHtml: |-

@@ -10,6 +10,7 @@ readTimeMinutes: 5
 author: mogens-villadsen
 excerpt: Agile transformation has become a buzzword in many organizations, promising to revolutionize the way projects are managed and executed. But what exactly is agile transformation? Agile transformation is the journey that an organization undergoes to adopt...
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/12/Agile-Transformation.png
 metaTitle: What Is Agile Transformation? | Better Change Consulting
 metaDescription: Agile transformation has become a buzzword in many organizations, promising to revolutionize the way projects are managed and executed. But what...
 bodyHtml: |-

@@ -9,6 +9,7 @@ readTimeMinutes: 2
 author: joanne-perold
 excerpt: Daniel Kahneman's Nobel Prize-winning work on human judgement has never been more relevant. In a world awash with data, AI, and algorithmic recommendations, understanding how our own thinking is wired — and where it reliably misleads us — is foundational.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/04/Thinking-fast-and-slow-Daniel-Kahneman-9780141033570_1_0.jpeg
 metaTitle: 'Book Review: Thinking, Fast and Slow — Still the Most Useful Book Abou'
 metaDescription: Daniel Kahneman's Nobel Prize-winning work on human judgement has never been more relevant. In a world awash with data, AI, and algorithmic...
 bodyHtml: |-
