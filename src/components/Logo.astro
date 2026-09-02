@@ -13,9 +13,9 @@ const { size = "default", tone = "dark", class: className = "" } = Astro.props;
 
 const dotSize = size === "large" ? "h-9 w-9" : "h-6 w-6";
 const textSize = size === "large" ? "text-3xl" : "text-lg";
-const rowGap = size === "large" ? "gap-2" : "gap-1";
+const rowGap = size === "large" ? "gap-1" : "gap-0";
 const wordGap = size === "large" ? "gap-2.5" : "gap-1.5";
-const flagSize = size === "large" ? "h-4 w-[5px]" : "h-3 w-1";
+const flagSize = size === "large" ? "h-[13px] w-5" : "h-2 w-3";
 const captionSize = size === "large" ? "text-xs" : "text-[9px]";
 
 const isLight = tone === "light";
