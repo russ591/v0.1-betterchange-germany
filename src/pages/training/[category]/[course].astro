@@ -10,6 +10,7 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
 import { formatDetails, formatIcons } from "@/data/formatDetails";
+import { formatSessionDate } from "@/lib/dates";
 
 export async function getStaticPaths() {
   const courses = await getCollection("training-courses");
@@ -30,8 +31,6 @@ const allSchedules = await getCollection("training-schedules");
 const upcoming = allSchedules
   .filter((s) => s.data.course.id === course.id)
   .sort((a, b) => (a.data.date?.valueOf() ?? 0) - (b.data.date?.valueOf() ?? 0));
-
-const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" });
 
 const logo = category.data.certificationBody ? certificationLogos[category.data.certificationBody] : undefined;
 const badge = courseBadges[course.id];
@@ -164,11 +163,7 @@ const badge = courseBadges[course.id];
                   >
                     <div class="flex items-center justify-between gap-3">
                       <span class="font-bold">
-                        {isSelfPaced
-                          ? "Self-paced"
-                          : session.data.date
-                            ? dateFormatter.format(session.data.date)
-                            : "Start anytime"}
+                        {isSelfPaced ? "Self-paced" : formatSessionDate(session, course)}
                       </span>
                       {isSelfPaced ? (
                         <span class="inline-flex items-center rounded-[var(--radius-pill)] bg-lime/25 px-3 py-1 text-[length:var(--text-caption)] font-semibold text-ink">

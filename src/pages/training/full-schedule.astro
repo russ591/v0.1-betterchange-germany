@@ -4,6 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import Badge from "@/components/Badge.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { formatSessionDate } from "@/lib/dates";
 
 const categories = await getCollection("training-categories");
 const schedules = await getCollection("training-schedules");
@@ -34,8 +35,6 @@ const topics = categories
   .sort((a, b) => a.data.order - b.data.order);
 
 const countries = [...new Set(sessions.map((s) => s.country))].sort();
-
-const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" });
 ---
 
 <BaseLayout
@@ -110,7 +109,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
             <div class="mt-3 flex items-center justify-between gap-3 border-t border-neutral-100 pt-3 text-[length:var(--text-small)]">
               <div>
                 <p class="font-semibold">
-                  {session.data.date ? dateFormatter.format(session.data.date) : "Start anytime"}
+                  {formatSessionDate(session, course)}
                 </p>
                 <p class="text-neutral-500">{country}</p>
               </div>
@@ -153,7 +152,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
                   <p class="font-semibold">{course.data.name}</p>
                 </td>
                 <td class="whitespace-nowrap px-4 py-4 font-medium">
-                  {session.data.date ? dateFormatter.format(session.data.date) : "Start anytime"}
+                  {formatSessionDate(session, course)}
                 </td>
                 <td class="px-4 py-4 text-neutral-600">{country}</td>
                 <td class="px-4 py-4">
