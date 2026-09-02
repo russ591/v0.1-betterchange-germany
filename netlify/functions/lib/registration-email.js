@@ -71,7 +71,7 @@ export function buildRegistrationEmailHtml(data) {
                   ${data.company ? `<tr><td style="padding:4px 0;color:#737373;">Company</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.company)}</td></tr>` : ""}
                   ${data.address ? `<tr><td style="padding:4px 0;color:#737373;vertical-align:top;">Address</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.address)}, ${escapeHtml(data.postcode || "")} ${escapeHtml(data.state || "")}, ${escapeHtml(data.country || "")}</td></tr>` : ""}
                   <tr><td style="padding:4px 0;color:#737373;">Seats</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.seats || "1")}</td></tr>
-                  ${data.total ? `<tr><td style="padding:4px 0;color:#737373;">Total (excl. VAT)</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${escapeHtml(data.total)}</td></tr>` : ""}
+                  ${data.total ? `<tr><td style="padding:4px 0;color:#737373;">Total excl. VAT (MwSt.)</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${escapeHtml(data.total)}</td></tr>` : ""}
                 </table>
 
                 ${
@@ -119,7 +119,7 @@ export function buildRegistrationEmailText(data) {
     data.company ? `Company: ${data.company}` : null,
     data.address ? `Address: ${data.address}, ${data.postcode || ""} ${data.state || ""}, ${data.country || ""}` : null,
     `Seats: ${data.seats || "1"}`,
-    data.total ? `Total (excl. VAT): ${data.total}` : null,
+    data.total ? `Total excl. VAT (MwSt.): ${data.total}` : null,
     "",
     attendees.length ? "Attendees:" : null,
     ...attendees.map((a) => `- ${a.name || "—"} (${a.email || "—"})`),

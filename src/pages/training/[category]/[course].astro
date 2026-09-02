@@ -79,7 +79,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
             {course.data.priceFrom && (
               <>
                 <p class="mt-4 text-[length:var(--text-h4)] font-bold">From {course.data.priceFrom}</p>
-                <p class="text-[length:var(--text-caption)] text-neutral-500">excl. VAT</p>
+                <p class="text-[length:var(--text-caption)] text-neutral-500">excl. VAT (MwSt.)</p>
               </>
             )}
             {course.data.specialOfferText && (
@@ -131,7 +131,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
                 <div class="mt-3 flex items-center justify-between gap-3 border-t border-neutral-100 pt-3">
                   <div>
                     <p class="font-bold">{session.data.price}</p>
-                    <p class="text-[length:var(--text-caption)] text-neutral-500">excl. VAT</p>
+                    <p class="text-[length:var(--text-caption)] text-neutral-500">excl. VAT (MwSt.)</p>
                     {session.data.offer && (
                       <p class="text-[length:var(--text-caption)] text-neutral-500">{session.data.offer}</p>
                     )}
@@ -168,7 +168,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: 
                   <td class="px-4 py-3">{session.data.location}</td>
                   <td class="px-4 py-3">
                     {session.data.price}
-                    <span class="block text-[length:var(--text-caption)] text-neutral-500">excl. VAT</span>
+                    <span class="block text-[length:var(--text-caption)] text-neutral-500">excl. VAT (MwSt.)</span>
                     {session.data.offer && (
                       <span class="block text-[length:var(--text-caption)] text-neutral-500">{session.data.offer}</span>
                     )}
