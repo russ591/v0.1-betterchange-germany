@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import CTABanner from "@/components/CTABanner.astro";
+import Button from "@/components/Button.astro";
 
 const categories = (await getCollection("training-categories")).sort(
   (a, b) => a.data.order - b.data.order
@@ -86,22 +87,37 @@ const formats = [
   </Section>
 
   <Section tone="dark" eyebrow="In-house training">
-    <h2 class="text-[length:var(--text-h3)]">Need private or in-house training?</h2>
-    <p class="mt-4 max-w-2xl text-[length:var(--text-body)] text-neutral-300">
-      All courses can be run exclusively for your team — in Berlin, at your location, or online.
-      Tailored to your context, delivered at your pace.
-    </p>
+    <div class="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <h2 class="text-[length:var(--text-h3)]">Need private or in-house training?</h2>
+        <p class="mt-4 max-w-2xl text-[length:var(--text-body)] text-neutral-300">
+          All courses can be run exclusively for your team — in Berlin, at your location, or online.
+          Tailored to your context, delivered at your pace.
+        </p>
+      </div>
+      <Button href="/contact" variant="primary" class="shrink-0">Talk to us</Button>
+    </div>
   </Section>
 
   <Section eyebrow="Feedback" heading="What participants say" class="bg-mist-light">
     <p class="max-w-2xl text-[length:var(--text-body)] text-neutral-600">
       Feedback from real course participants, not curated marketing copy.
     </p>
-    <div class="mt-6 flex items-center gap-3">
-      <span class="text-[length:var(--text-h3)] font-bold">4.8</span>
-      <span class="text-[length:var(--text-small)] text-neutral-600">
-        Trustpilot — verified reviews across all courses.
-      </span>
+    <div class="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-[var(--radius-card)] border border-neutral-200 bg-surface px-6 py-4">
+      <div class="flex items-center gap-3">
+        <span class="text-[length:var(--text-h3)] font-bold">4.8</span>
+        <span class="text-[length:var(--text-small)] text-neutral-600">
+          Trustpilot — verified reviews across all courses.
+        </span>
+      </div>
+      <a
+        href="https://www.trustpilot.com/review/betterchange-consulting.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-sm font-semibold hover:underline"
+      >
+        Read all reviews →
+      </a>
     </div>
   </Section>
 
