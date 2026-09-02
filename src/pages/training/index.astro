@@ -72,16 +72,19 @@ const testimonials = [
       Hands-on, certification-ready training in Flight Levels, Kanban, Scrum and leadership.
       In-person in Berlin, live online, or at your own pace.
     </p>
-    <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+    <p class="eyebrow mt-8 text-neutral-500">Certified by</p>
+    <div class="mt-3 flex flex-wrap items-center gap-x-8 gap-y-4">
       {
-        certifiedBy.map((cert) => {
-          const logo = certificationLogos[cert];
-          return logo ? (
-            <img src={logo.src} alt={logo.alt} class="h-7 w-auto object-contain" />
-          ) : (
-            <span class="text-[length:var(--text-small)] font-semibold text-neutral-500">Certified by {cert}</span>
-          );
-        })
+        certifiedBy
+          .filter((cert) => cert !== "Scaled Agile")
+          .map((cert) => {
+            const logo = certificationLogos[cert];
+            return logo ? (
+              <img src={logo.src} alt={logo.alt} class="h-7 w-auto object-contain" />
+            ) : (
+              <span class="text-[length:var(--text-small)] font-semibold text-neutral-500">Certified by {cert}</span>
+            );
+          })
       }
     </div>
   </Section>

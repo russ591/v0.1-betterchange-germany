@@ -97,17 +97,22 @@ const featuredArticles = allArticles
               ))
             }
           </div>
-          <div class="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 border-t border-neutral-200 pt-5">
-            {
-              certifiedBy.map((cert) => {
-                const logo = certificationLogos[cert];
-                return logo ? (
-                  <img src={logo.src} alt={logo.alt} class="h-6 w-auto object-contain" />
-                ) : (
-                  <span class="text-[length:var(--text-caption)] font-semibold text-neutral-500">{cert}</span>
-                );
-              })
-            }
+          <div class="mt-5 border-t border-neutral-200 pt-5">
+            <p class="eyebrow justify-center text-neutral-500">Certified by</p>
+            <div class="mt-3 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+              {
+                certifiedBy
+                  .filter((cert) => cert !== "Scaled Agile")
+                  .map((cert) => {
+                    const logo = certificationLogos[cert];
+                    return logo ? (
+                      <img src={logo.src} alt={logo.alt} class="h-6 w-auto object-contain" />
+                    ) : (
+                      <span class="text-[length:var(--text-caption)] font-semibold text-neutral-500">{cert}</span>
+                    );
+                  })
+              }
+            </div>
           </div>
         </div>
       </div>
