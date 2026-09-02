@@ -1,0 +1,237 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+import Badge from "@/components/Badge.astro";
+
+const categories = await getCollection("training-categories");
+const schedules = await getCollection("training-schedules");
+
+const now = new Date();
+const upcoming = schedules.filter((s) => !s.data.date || s.data.date >= now);
+
+const sessions = await Promise.all(
+  upcoming.map(async (session) => {
+    const course = await getEntry(session.data.course);
+    const category = await getEntry(course.data.category);
+    const country = session.data.location.includes(",")
+      ? session.data.location.split(",").pop()!.trim()
+      : session.data.location;
+    return { session, course, category, country };
+  })
+);
+
+sessions.sort((a, b) => {
+  if (!a.session.data.date && !b.session.data.date) return 0;
+  if (!a.session.data.date) return 1;
+  if (!b.session.data.date) return -1;
+  return a.session.data.date.valueOf() - b.session.data.date.valueOf();
+});
+
+const topics = categories
+  .filter((c) => sessions.some((s) => s.category.id === c.id))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const countries = [...new Set(sessions.map((s) => s.country))].sort();
+
+const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" });
+---
+
+<BaseLayout
+  title="Full training schedule"
+  description="All upcoming Better Change training sessions across every discipline — filter by topic and country."
+>
+  <Section eyebrow="Training schedule" class="bg-mist-light">
+    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">All upcoming training</h1>
+    <p class="mt-4 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
+      Next scheduled sessions across all disciplines.
+    </p>
+  </Section>
+
+  <Section>
+    <div class="space-y-4" id="schedule-filters">
+      <div>
+        <p class="text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-500">
+          Filter by topic
+        </p>
+        <div class="mt-2 flex flex-wrap gap-2">
+          {
+            topics.map((topic) => (
+              <button
+                type="button"
+                data-filter-group="topic"
+                data-filter-value={topic.id}
+                class="rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors"
+              >
+                {topic.data.name}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+      <div>
+        <p class="text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-500">
+          Filter by country
+        </p>
+        <div class="mt-2 flex flex-wrap gap-2">
+          {
+            countries.map((country) => (
+              <button
+                type="button"
+                data-filter-group="country"
+                data-filter-value={country}
+                class="rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors"
+              >
+                {country}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <p id="schedule-empty" class="mt-10 text-[length:var(--text-body)] text-neutral-500" hidden>
+      No sessions match the selected filters.
+    </p>
+
+    {/* stacked cards below sm, table from sm up */}
+    <div class="mt-8 flex flex-col gap-3 sm:hidden" id="schedule-list-mobile">
+      {
+        sessions.map(({ session, course, category, country }) => (
+          <div
+            class="schedule-row rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-4"
+            data-topic={category.id}
+            data-country={country}
+          >
+            <p class="font-semibold">{course.data.name}</p>
+            <div class="mt-2 flex flex-wrap gap-1.5">
+              <span class="rounded-[4px] border border-lime bg-lime/10 px-2 py-0.5 text-[length:var(--text-caption)] font-semibold text-ink">
+                {category.data.name.toUpperCase()}
+              </span>
+              <span class="rounded-[4px] border border-lime bg-lime/10 px-2 py-0.5 text-[length:var(--text-caption)] font-semibold text-ink">
+                {course.data.code.toUpperCase()}
+              </span>
+            </div>
+            <div class="mt-3 flex items-center justify-between gap-3 border-t border-neutral-100 pt-3 text-[length:var(--text-small)]">
+              <div>
+                <p class="font-semibold">
+                  {session.data.date ? dateFormatter.format(session.data.date) : "Start anytime"}
+                </p>
+                <p class="text-neutral-500">{country}</p>
+              </div>
+              <Badge format={session.data.format} />
+            </div>
+            <a
+              href={`/training/register/${session.id}`}
+              class="mt-3 block rounded-[var(--radius-control)] bg-ink px-4 py-2 text-center text-[length:var(--text-small)] font-semibold text-surface"
+            >
+              Book now →
+            </a>
+          </div>
+        ))
+      }
+    </div>
+
+    <div
+      id="schedule-table-desktop"
+      class="mt-8 hidden overflow-x-auto rounded-[var(--radius-card)] border border-neutral-200 bg-surface sm:block"
+    >
+      <table class="w-full text-left text-[length:var(--text-small)]">
+        <thead>
+          <tr class="border-b border-neutral-200 bg-ink text-surface">
+            <th class="px-4 py-3 font-medium">Course</th>
+            <th class="px-4 py-3 font-medium">Date</th>
+            <th class="px-4 py-3 font-medium">Country</th>
+            <th class="px-4 py-3 font-medium">Format</th>
+            <th class="px-4 py-3" />
+          </tr>
+        </thead>
+        <tbody id="schedule-list-desktop">
+          {
+            sessions.map(({ session, course, category, country }) => (
+              <tr
+                class="schedule-row border-b border-neutral-100 last:border-0"
+                data-topic={category.id}
+                data-country={country}
+              >
+                <td class="px-4 py-4">
+                  <p class="font-semibold">{course.data.name}</p>
+                  <div class="mt-1.5 flex flex-wrap gap-1.5">
+                    <span class="rounded-[4px] border border-lime bg-lime/10 px-2 py-0.5 text-[length:var(--text-caption)] font-semibold text-ink">
+                      {category.data.name.toUpperCase()}
+                    </span>
+                    <span class="rounded-[4px] border border-lime bg-lime/10 px-2 py-0.5 text-[length:var(--text-caption)] font-semibold text-ink">
+                      {course.data.code.toUpperCase()}
+                    </span>
+                  </div>
+                </td>
+                <td class="whitespace-nowrap px-4 py-4 font-medium">
+                  {session.data.date ? dateFormatter.format(session.data.date) : "Start anytime"}
+                </td>
+                <td class="px-4 py-4 text-neutral-600">{country}</td>
+                <td class="px-4 py-4">
+                  <Badge format={session.data.format} />
+                </td>
+                <td class="px-4 py-4 text-right">
+                  <a href={`/training/register/${session.id}`} class="font-semibold text-ink hover:underline">
+                    Book now →
+                  </a>
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </Section>
+
+  <script>
+    const filterButtons = Array.from(
+      document.querySelectorAll<HTMLButtonElement>("[data-filter-group]")
+    );
+    const rows = Array.from(document.querySelectorAll<HTMLElement>(".schedule-row"));
+    const emptyMessage = document.getElementById("schedule-empty") as HTMLParagraphElement;
+    const listMobile = document.getElementById("schedule-list-mobile") as HTMLDivElement;
+    const tableDesktop = document.getElementById("schedule-table-desktop") as HTMLDivElement;
+
+    const active: Record<string, Set<string>> = { topic: new Set(), country: new Set() };
+
+    function update() {
+      let visibleCount = 0;
+
+      rows.forEach((row) => {
+        const topic = row.dataset.topic ?? "";
+        const country = row.dataset.country ?? "";
+        const topicMatch = active.topic.size === 0 || active.topic.has(topic);
+        const countryMatch = active.country.size === 0 || active.country.has(country);
+        const visible = topicMatch && countryMatch;
+        row.hidden = !visible;
+        if (visible) visibleCount++;
+      });
+
+      emptyMessage.hidden = visibleCount > 0;
+      listMobile.style.display = visibleCount > 0 ? "" : "none";
+      tableDesktop.style.display = visibleCount > 0 ? "" : "none";
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const group = button.dataset.filterGroup!;
+        const value = button.dataset.filterValue!;
+        const isActive = active[group].has(value);
+
+        if (isActive) {
+          active[group].delete(value);
+          button.classList.remove("bg-lime", "border-lime", "text-ink");
+          button.classList.add("bg-surface", "border-neutral-300", "text-neutral-700");
+        } else {
+          active[group].add(value);
+          button.classList.remove("bg-surface", "border-neutral-300", "text-neutral-700");
+          button.classList.add("bg-lime", "border-lime", "text-ink");
+        }
+
+        update();
+      });
+    });
+  </script>
+</BaseLayout>
