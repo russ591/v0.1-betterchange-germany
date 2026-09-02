@@ -262,7 +262,10 @@ const badge = courseBadges[course.id];
               />
               <div class="flex flex-col gap-2">
                 <h3 class="text-[length:var(--text-h4)]">{details.label}</h3>
-                <p class="text-[length:var(--text-small)] leading-relaxed text-neutral-600">{details.description}</p>
+                <p class="text-[length:var(--text-small)] leading-relaxed text-neutral-600">
+                  {details.description}
+                  {course.data.formats.length > 1 && ` ${details.chooseIf}`}
+                </p>
               </div>
               <div class="flex flex-col gap-3 border-t border-neutral-100 pt-5">
                 <p class="eyebrow text-neutral-500">Included</p>
@@ -279,30 +282,16 @@ const badge = courseBadges[course.id];
         })
       }
     </div>
-  </Section>
 
-  {
-    course.data.formats.length > 1 && (
-      <Section eyebrow="Which format?" heading="Not sure which to pick?">
-        <div class="grid divide-y divide-neutral-200 overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface sm:grid-cols-[repeat(auto-fit,minmax(220px,1fr))] sm:divide-x sm:divide-y-0">
-          {course.data.formats.map((format) => (
-            <div class="p-6">
-              <h3 class="text-[length:var(--text-small)] font-semibold">{formatDetails[format].chooseTitle}</h3>
-              <p class="mt-2 text-[length:var(--text-caption)] leading-relaxed text-neutral-600">
-                {formatDetails[format].chooseBody}
-              </p>
-            </div>
-          ))}
-          <div class="p-6">
-            <h3 class="text-[length:var(--text-small)] font-semibold">Not sure which fits best?</h3>
-            <p class="mt-2 text-[length:var(--text-caption)] leading-relaxed text-neutral-600">
-              Drop us a message and we'll help you decide — <a href="/contact" class="underline">get in touch</a>.
-            </p>
-          </div>
-        </div>
-      </Section>
-    )
-  }
+    {
+      course.data.formats.length > 1 && (
+        <p class="mt-8 text-center text-[length:var(--text-small)] text-neutral-500">
+          Not sure which fits best? <a href="/contact" class="font-semibold text-ink underline">Get in touch</a> and
+          we'll help you decide.
+        </p>
+      )
+    }
+  </Section>
 
   {
     relatedCourses.length > 0 && (

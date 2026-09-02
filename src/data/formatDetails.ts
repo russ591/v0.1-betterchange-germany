@@ -18,32 +18,34 @@ export const formatIcons: Record<TrainingFormat, string> = {
 interface FormatCopy {
   label: string;
   description: string;
+  // Only makes sense when a course offers more than one format -- rendered
+  // as a continuation of `description`, omitted entirely on a single-format
+  // course page where there's nothing to choose between.
+  chooseIf: string;
   included: string[];
-  chooseTitle: string;
-  chooseBody: string;
 }
 
+// `description`/`chooseIf` deliberately fold in "who should choose this" --
+// that used to live in a separate "which format?" comparison section, but a
+// section built entirely from a per-format sentence didn't hold up as its
+// own piece, so the guidance now lives directly on the format it's about.
 export const formatDetails: Record<TrainingFormat, FormatCopy> = {
   "in-person": {
     label: "In-Person",
-    description: "A full cohort, in one room. Hands-on, social, interactive and trainer-led.",
+    description: "A full cohort, in one room, hands-on and trainer-led.",
+    chooseIf: "Choose this if you want live feedback and the energy of a structured group session.",
     included: ["Certification credential", "All course materials", "Small-group, trainer-led"],
-    chooseTitle: "Choose in-person if…",
-    chooseBody: "You want live feedback in the room and the energy of a structured group session.",
   },
   "live-online": {
     label: "Live Online",
-    description:
-      "The same course, delivered live over several sessions, using video calls and a shared virtual whiteboard.",
+    description: "The same course, delivered live over video calls and a shared virtual whiteboard.",
+    chooseIf: "Choose this if you want that same live, trainer-led format without travelling.",
     included: ["Certification credential", "Full digital materials", "Live trainer support"],
-    chooseTitle: "Choose live online if…",
-    chooseBody: "You want the same live, trainer-led format without travelling.",
   },
   "self-paced": {
     label: "Self-Paced, On Demand",
     description: "Work through the full curriculum on your own schedule, with trainer support on hand.",
+    chooseIf: "Choose this if your schedule doesn't allow consecutive days away, or you'd rather take your time.",
     included: ["Certification credential", "Trainer check-ins", "Indefinite access"],
-    chooseTitle: "Choose self-paced if…",
-    chooseBody: "Your schedule doesn't allow consecutive days away, or you'd rather take your time.",
   },
 };

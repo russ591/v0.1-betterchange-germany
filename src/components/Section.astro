@@ -13,8 +13,10 @@ interface Props {
 
 const { eyebrow, heading, intro, tone = "light", class: className = "", id } = Astro.props;
 
-const toneClasses =
-  tone === "dark" ? "bg-ink text-surface" : tone === "lime" ? "bg-lime text-ink" : "bg-surface text-ink";
+// "light" deliberately carries no explicit background: the body is already
+// white, and leaving it unset lets a caller's own class (e.g. bg-mist-light)
+// win instead of fighting bg-surface for the same cascade slot.
+const toneClasses = tone === "dark" ? "bg-ink text-surface" : tone === "lime" ? "bg-lime text-ink" : "text-ink";
 ---
 
 <section id={id} class={`${toneClasses} py-[var(--spacing-section-y-sm)] sm:py-[var(--spacing-section-y)] ${className}`}>
