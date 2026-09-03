@@ -99,7 +99,7 @@ const insightArticles = (
 
   <Section eyebrow="From our insights" heading="Written by the people doing the work">
     <div class="grid gap-6 sm:grid-cols-3">
-      {insightArticles.map((article) => <InsightsArticleCard article={article} />)}
+      {insightArticles.map((article) => <InsightsArticleCard article={article} showDate={false} />)}
     </div>
     <div class="mt-6 text-right">
       <Button href="/insights" variant="link" class="group">View all insights</Button>

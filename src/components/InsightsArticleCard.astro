@@ -3,9 +3,10 @@ import type { CollectionEntry } from "astro:content";
 
 interface Props {
   article: CollectionEntry<"insights-articles">;
+  showDate?: boolean;
 }
 
-const { article } = Astro.props;
+const { article, showDate = true } = Astro.props;
 const { title, date, readTimeMinutes, contentType, excerpt, primaryCategory, imageUrl } = article.data;
 
 // Real article photography exists for most articles (migrated from the Wix
@@ -35,9 +36,15 @@ const position = positions[hash % positions.length];
   }
   <div class="flex flex-1 flex-col p-6">
     <p class="eyebrow text-neutral-500">
-      {date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
-      {readTimeMinutes && ` · ${readTimeMinutes} min read`}
-      {contentType && contentType !== "Blog" && ` · ${contentType}`}
+      {
+        [
+          showDate && date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }),
+          readTimeMinutes && `${readTimeMinutes} min read`,
+          contentType && contentType !== "Blog" && contentType,
+        ]
+          .filter(Boolean)
+          .join(" · ")
+      }
     </p>
     <h3 class="mt-2 text-[length:var(--text-h4)]">{title}</h3>
     <p class="mt-2 line-clamp-3 text-[length:var(--text-small)] text-neutral-600">{excerpt}</p>
