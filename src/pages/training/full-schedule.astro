@@ -71,7 +71,7 @@ const countries = [...new Set(sessions.map((s) => s.country))].sort();
                 type="button"
                 data-filter-group="topic"
                 data-filter-value={topic.id}
-                class="rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors"
+                class="cursor-pointer rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors hover:border-ink hover:text-ink"
               >
                 {topic.data.name}
               </button>
@@ -90,7 +90,7 @@ const countries = [...new Set(sessions.map((s) => s.country))].sort();
                 type="button"
                 data-filter-group="country"
                 data-filter-value={country}
-                class="rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors"
+                class="cursor-pointer rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors hover:border-ink hover:text-ink"
               >
                 {country}
               </button>

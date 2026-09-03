@@ -43,14 +43,14 @@ function badgeFor(row: Row) {
 {
   filterable && topics.length > 1 && (
     <div class="mb-6 flex flex-wrap gap-2" id={`${id}-filters`}>
-      <button type="button" data-filter-value="all" class="schedule-filter-btn rounded-[var(--radius-pill)] border border-ink bg-ink px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-surface transition-colors">
+      <button type="button" data-filter-value="all" class="schedule-filter-btn cursor-pointer rounded-[var(--radius-pill)] border border-lime bg-lime px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-ink transition-colors">
         All disciplines
       </button>
       {topics.map((topic) => (
         <button
           type="button"
           data-filter-value={topic.id}
-          class="schedule-filter-btn rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors"
+          class="schedule-filter-btn cursor-pointer rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors hover:border-ink hover:text-ink"
         >
           {topic.data.name}
         </button>
@@ -176,11 +176,11 @@ function badgeFor(row: Row) {
         if (!btn) return;
 
         filterBar.querySelectorAll(".schedule-filter-btn").forEach((b) => {
-          b.classList.remove("bg-ink", "border-ink", "text-surface");
+          b.classList.remove("bg-lime", "border-lime", "text-ink");
           b.classList.add("bg-surface", "border-neutral-300", "text-neutral-700");
         });
         btn.classList.remove("bg-surface", "border-neutral-300", "text-neutral-700");
-        btn.classList.add("bg-ink", "border-ink", "text-surface");
+        btn.classList.add("bg-lime", "border-lime", "text-ink");
 
         const value = btn.dataset.filterValue;
         let visible = 0;
