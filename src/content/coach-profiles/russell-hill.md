@@ -6,7 +6,7 @@ country: Germany
 languages:
   - English
   - German
-photo: https://www.betterchange-consulting.com/wp-content/uploads/2022/03/Russell-Hill-1-1.jpg
+photo: /coaches/russell-hill.webp
 linkedinUrl: https://www.linkedin.com/in/russellhill/
 yearsExperience: 30+
 hasFullProfile: true

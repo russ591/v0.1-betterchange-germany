@@ -9,7 +9,7 @@ readTimeMinutes: 3
 author: konrad-pogorzala
 excerpt: A Kanban board is more than sticky notes in columns. Understanding how the board supports flow management — not just task tracking — is what separates teams that get real results from teams that just have a tidy wall.
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2022/12/Kanban.jpg
+imageUrl: /insights/kanban.webp
 metaTitle: 'Kanban Boards: More Than Sticky Notes in Columns | Better Change Consu'
 metaDescription: A Kanban board is more than sticky notes in columns. Understanding how the board supports flow management — not just task tracking — is what separates...
 bodyHtml: |-

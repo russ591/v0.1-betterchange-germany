@@ -7,7 +7,7 @@ languages:
   - Polish
   - German
   - English
-photo: https://www.betterchange-consulting.com/wp-content/uploads/2022/03/Konrad-Pogorzala-1-1.jpg
+photo: /coaches/konrad-pogorzala.webp
 linkedinUrl: https://www.linkedin.com/in/konradpogorzala/
 hasFullProfile: false
 displayOrder: 3

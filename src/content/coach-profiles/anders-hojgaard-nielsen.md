@@ -6,7 +6,7 @@ country: Denmark
 languages:
   - Danish
   - English
-photo: https://www.betterchange-consulting.com/wp-content/uploads/2022/08/Anders-circle-1-1018x1024.jpg
+photo: /coaches/anders-hojgaard-nielsen.webp
 linkedinUrl: https://www.linkedin.com/in/andershojgaardnielsen/
 hasFullProfile: false
 displayOrder: 10

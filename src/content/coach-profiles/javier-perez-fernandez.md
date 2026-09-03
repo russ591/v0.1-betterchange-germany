@@ -7,7 +7,7 @@ languages:
   - Spanish
   - English
   - German
-photo: https://www.betterchange-consulting.com/wp-content/uploads/2022/03/Javier-Perez-Fernandez-1-1.jpg
+photo: /coaches/javier-perez-fernandez.webp
 linkedinUrl: https://www.linkedin.com/in/javier-perez-coach/
 hasFullProfile: false
 displayOrder: 2

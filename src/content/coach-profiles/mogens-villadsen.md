@@ -6,7 +6,7 @@ country: Denmark
 languages:
   - Danish
   - English
-photo: https://www.betterchange-consulting.com/wp-content/uploads/2022/03/Mogens-Villadsen-2-1.jpg
+photo: /coaches/mogens-villadsen.webp
 linkedinUrl: https://www.linkedin.com/in/mogensvilladsen/
 hasFullProfile: false
 displayOrder: 10

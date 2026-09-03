@@ -6,7 +6,7 @@ country: Denmark
 languages:
   - Danish
   - English
-photo: https://www.betterchange-consulting.com/wp-content/uploads/2022/03/Jan-B.-Olsen-1.jpg
+photo: /coaches/jan-b-olsen.webp
 linkedinUrl: https://www.linkedin.com/in/janbolsen/
 hasFullProfile: false
 displayOrder: 10
