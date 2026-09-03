@@ -13,21 +13,21 @@ priceFrom: €1,295
 languages:
   - English
 whoIsThisFor:
-  - Scrum Masters, coaches, and team leads who run meetings and workshops as part of their regular role
-  - Anyone who wants to move beyond agenda management to genuine and purposeful group facilitation
-  - Consultants and change agents who design and lead workshops as part of their client practice
-  - Product Owners who need to facilitate effective backlog refinement and stakeholder sessions
-  - Practitioners whose meetings drift, drag, or fail to produce clear and agreed outcomes
-  - Those preparing for the ICAgile ICP-ATF certification examination
+  - Experienced agile coaches ready to move from team-level coaching to organisation-wide transformation
+  - Change leaders and transformation consultants guiding large-scale agile adoption across multiple business units
+  - ICP-ACC holders wanting to extend their coaching practice to the systemic and organisational level
+  - Internal change agents responsible for sustaining transformation momentum beyond the initial rollout
+  - Senior leaders and executives who sponsor or directly lead organisation-wide agile transformation
+  - Practitioners preparing for the ICAgile ICP-CAT certification examination
 whatYoullLearn:
-  - The principles of facilitation and how they differ from meeting management or training delivery
-  - How to design a workshop that reliably achieves its intended outcome — not just runs to time
-  - Facilitation techniques for groups of different sizes, energy levels, and levels of conflict
-  - How to handle difficult dynamics — silence, dominance, and resistance — without losing the group
-  - How to create psychological safety so participants say what they actually think
-  - How to assess your own facilitation practice and build a plan for continued development
-  - How to debrief a workshop so that participants leave with clarity and momentum rather than questions
-  - How to design a series of connected workshops that build on each other towards a larger outcome
+  - How to diagnose an organisation's current state and design a transformation approach that fits its actual context
+  - Systemic thinking techniques for identifying where in the organisation an intervention will have the most impact
+  - How to coach and influence senior leaders and executives who sponsor or resist organisational change
+  - How to navigate organisational politics, culture, and structure without losing sight of the transformation's purpose
+  - How to sequence a transformation so it builds momentum without overwhelming the organisation
+  - How to sustain transformation gains once the initial energy of a change programme fades
+  - How to work with resistance at an organisational rather than individual or team level
+  - The ethical and systemic principles behind the ICAgile ICP-CAT certification and how to demonstrate them in practice
 summary: Learn to navigate the complexity of organisation-wide agile change, where team-level coaching skills alone aren't enough and transformation has to be led systemically across multiple levels of the business at once. Coaching Agile Transformations builds the frameworks and judgement needed to steer large-scale change efforts — from diagnosing where an organisation actually is, to sustaining momentum once the initial energy of a transformation programme fades. Built for experienced coaches and leaders steering organisation-wide transformation, ICP-CAT is ICAgile's certification for coaching change at scale.
 sortOrder: 3
 metaTitle: ICP-CAT Coaching Agile Transformations | Better Change
