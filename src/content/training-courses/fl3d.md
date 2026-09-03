@@ -30,7 +30,7 @@ whatYoullLearn:
   - How FL3 design builds on FL2 coordination to create a coherent three-level system
   - How to use FL3 thinking to stop the organisation working on too many things simultaneously
   - What a healthy FL3 system looks like in practice and how to sustain it beyond the initial design
-summary: Design systems for strategy execution. Connect long-term vision with daily operational work and align teams with organisational objectives.
+summary: Design Flight Level 3 systems that connect long-term strategic intent directly to the daily operational work happening at Flight Level 2 — so priorities set in the boardroom actually shape what teams work on next. You'll learn to run portfolio reviews that produce real decisions rather than status updates, sequence strategic initiatives without creating bottlenecks, and stop the organisation working on too many things at once. Built for senior leaders, portfolio-level coaches, and FL2D graduates ready to connect coordination to strategy, it's the natural next step after Flight Level 2 Design.
 sortOrder: 3
 metaTitle: FL3D Flight Level 3 Design Workshop | Berlin & Online
 metaDescription: Certified Flight Level 3 Design training in Berlin and online. Master strategic execution and connect organisational goals with operational flow.

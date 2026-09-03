@@ -27,7 +27,7 @@ whatYoullLearn:
   - How to integrate AI into your existing workflow incrementally without disrupting team rhythm
   - How to use AI to analyse user feedback and surface patterns that inform prioritisation
   - What the emergence of AI means for the long-term shape and expectations of the Product Owner role
-summary: A practical course for Product Owners looking to use AI to streamline backlog management, user story writing, and stakeholder communication. Scrum Alliance certified.
+summary: Learn to use AI to accelerate user story writing without losing the human context that makes stories useful, and apply AI-assisted techniques to backlog refinement, prioritisation and gap analysis. You'll build practical prompting frameworks tailored specifically to the Product Owner role, learn to tell AI tools that support product thinking apart from ones that quietly replace it, and see how to integrate AI into your existing workflow incrementally rather than disrupting team rhythm. A one-day, hands-on course for CSPOs and A-CSPOs curious about AI but unsure where to start, it carries Scrum Alliance certification.
 sortOrder: 15
 metaTitle: AI for Product Owners | Better Change Consulting
 metaDescription: Use AI to manage your backlog and communicate with stakeholders more effectively. Practical Scrum Alliance certified training for Product Owners.

@@ -28,7 +28,7 @@ whatYoullLearn:
   - The competencies assessed in the A-CSM credential and how to demonstrate them in practice
   - How to build a self-sustaining team culture that doesn't depend on the Scrum Master's presence
   - How to measure your own coaching impact and continue developing after the course
-summary: Build on your CSM and go deeper into facilitation, coaching and navigating complex team dynamics as an experienced Scrum Master.
+summary: Move from facilitation to genuine coaching, with advanced techniques for difficult meetings, contentious retrospectives, and the conflict that comes with real team dynamics. You'll learn how to scale your Scrum Master responsibilities across multiple teams, engage senior stakeholders, and build a self-sustaining team culture that doesn't depend on your presence in the room. Designed for Certified Scrum Masters with at least a year of practice who feel stuck at facilitation level, A-CSM is the Scrum Alliance's advanced credential for practitioners ready to go deeper.
 sortOrder: 2
 metaTitle: A-CSM Advanced Certified Scrum Master | Better Change
 metaDescription: Advance your Scrum Master practice with A-CSM training. Scrum Alliance certified. In-person and online delivery available.

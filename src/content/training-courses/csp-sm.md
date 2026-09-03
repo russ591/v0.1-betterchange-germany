@@ -28,7 +28,7 @@ whatYoullLearn:
   - The evidence standards and requirements for achieving the CSP-SM credential
   - How to use experience reports and peer review to deepen reflective practice
   - How the CSP-SM credential fits into a longer-term coaching or consulting career path
-summary: The advanced Scrum Alliance certification for experienced Scrum Masters. Deepen your Scrum knowledge, develop leadership skills, and demonstrate mastery of the ScrumMaster role beyond the fundamentals.
+summary: Formally validate deep Scrum Master expertise with the most advanced credential in the Scrum Alliance ScrumMaster pathway — built for practitioners who've already worked across multiple teams or organisations over several years. You'll develop systemic thinking for diagnosing organisational agility, advanced coaching frameworks for working with leadership and executive stakeholders, and the skills to develop other Scrum Masters within your organisation. Delivered through experience reports and structured peer review, CSP-SM is designed for coaches and consultants who facilitate large-scale agile transformations and want their expertise formally recognised.
 sortOrder: 13
 metaTitle: Certified Scrum Professional ScrumMaster (CSP-SM) | Better Change Consulting
 metaDescription: Advance your Scrum Master career with CSP-SM certification. Expert-level Scrum Alliance training delivered in-person and online by Better Change.

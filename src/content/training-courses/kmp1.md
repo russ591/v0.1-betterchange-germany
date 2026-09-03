@@ -28,7 +28,7 @@ whatYoullLearn:
   - The Kanban cadences — which meetings to run, at what frequency, and what to address in each
   - How to introduce a Kanban system to a sceptical team without triggering resistance
   - What to do when the board is in place but flow still isn't improving
-summary: The foundation of the Kanban Method. Design your first Kanban system, visualise work and begin managing flow.
+summary: Learn to design a Kanban board that genuinely reflects how work moves through your team — visualising states, queues, hand-offs and bottlenecks, and understanding why constraining work in progress actually improves flow rather than restricting it. You'll cover the Kanban cadences (which meetings to run, how often, and what to address in each), how to introduce explicit policies that reduce confusion, and how to bring a sceptical team on board without triggering resistance. KMP1 is Kanban University's foundational certification, built for anyone moving from an ad hoc task board to a properly designed flow-based system.
 sortOrder: 2
 metaTitle: KMP1 Kanban System Design Training | Berlin & Online
 metaDescription: Kanban University certified KMP1 training with Russell Hill. Learn Kanban System Design in Berlin or online and earn your KMP certification.

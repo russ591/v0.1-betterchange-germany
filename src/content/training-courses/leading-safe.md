@@ -28,7 +28,7 @@ whatYoullLearn:
   - The competencies and examination requirements for the SAFe Agilist (SA) certification
   - How to build and sustain a coalition of leaders who can champion the SAFe transformation over time
   - How to measure the business outcomes of a SAFe implementation and report them credibly to the board
-summary: Understand the Scaled Agile Framework from a leadership perspective. Lead SAFe transformations and drive organisational alignment.
+summary: Understand the Scaled Agile Framework from a leadership perspective — how Programme Increment (PI) Planning works as the engine room of SAFe delivery, and how Agile Release Trains are structured and actually led. You'll learn to align strategy, portfolio management and delivery within a SAFe operating model, build a coalition of leaders who can champion the transformation over time, and measure and report its business outcomes credibly to the board. Built for business and technology leaders sponsoring a SAFe transformation, Leading SAFe 6 leads to the Scaled Agile SAFe Agilist (SA) certification.
 sortOrder: 1
 metaTitle: Leading SAFe 6 Training | SAFe Agile Certification | Better Change
 metaDescription: Leading SAFe 6 certified training in Berlin and online. Gain SAFe Agilist (SA) certification and learn to lead SAFe transformations.

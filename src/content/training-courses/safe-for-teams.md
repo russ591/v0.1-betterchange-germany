@@ -28,7 +28,7 @@ whatYoullLearn:
   - The SAFe Practitioner (SP) certification requirements and how this course prepares you for them
   - How to raise and resolve impediments through the ART so that blockers don't silently kill velocity
   - How to contribute to continuous improvement at both team level and across the Agile Release Train
-summary: Apply the Scaled Agile Framework at team level. Understand how your team fits within an Agile Release Train and how to deliver effectively.
+summary: Understand exactly where your team fits within the wider Scaled Agile Framework — the roles, events and artefacts that govern how work flows through an Agile Release Train, and how to plan and execute iterations as part of a coordinated Programme Increment. You'll learn to identify and manage dependencies with other teams, participate productively in PI Planning, and raise impediments through the ART so blockers don't silently kill velocity. Built for team members and Scrum Masters being onboarded into a SAFe environment, SAFe for Teams leads to the Scaled Agile SAFe Practitioner (SP) certification.
 sortOrder: 2
 metaTitle: SAFe for Teams Training | SAFe Practitioner | Better Change
 metaDescription: SAFe for Teams (SP) certified training in Berlin and online. Learn how to work effectively within a SAFe Agile Release Train.

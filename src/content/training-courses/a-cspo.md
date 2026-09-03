@@ -28,7 +28,7 @@ whatYoullLearn:
   - The thinking frameworks and decision-making patterns behind evidence-based product management
   - How to build a discovery practice that feeds the backlog with validated, high-value work
   - How to communicate product strategy upwards to leadership and downwards to delivery teams
-summary: Sharpen your product ownership craft with advanced techniques in vision, strategy, stakeholder alignment and evidence-based decision-making.
+summary: Develop and communicate a compelling product vision and strategy, and learn to use data and user research to make product decisions with real confidence rather than instinct alone. You'll cover advanced stakeholder alignment in complex, politically-charged environments, roadmapping that balances short-term delivery against long-term direction, and how to manage a portfolio of competing priorities without losing strategic focus. Designed for experienced Product Owners who find themselves doing backlog administration rather than product thinking, A-CSPO is the Scrum Alliance's advanced Product Owner credential.
 sortOrder: 4
 metaTitle: A-CSPO Advanced Certified Scrum Product Owner | Better Change
 metaDescription: Scrum Alliance A-CSPO training for experienced Product Owners. Deepen your practice with advanced product strategy and stakeholder skills.

@@ -28,7 +28,7 @@ whatYoullLearn:
   - How to assess your own facilitation practice and build a plan for continued development
   - How to debrief a workshop so that participants leave with clarity and momentum rather than questions
   - How to design a series of connected workshops that build on each other towards a larger outcome
-summary: Navigate the complexity of large-scale agile change. A course for coaches and leaders steering organisation-wide transformation efforts.
+summary: Learn to navigate the complexity of organisation-wide agile change, where team-level coaching skills alone aren't enough and transformation has to be led systemically across multiple levels of the business at once. Coaching Agile Transformations builds the frameworks and judgement needed to steer large-scale change efforts — from diagnosing where an organisation actually is, to sustaining momentum once the initial energy of a transformation programme fades. Built for experienced coaches and leaders steering organisation-wide transformation, ICP-CAT is ICAgile's certification for coaching change at scale.
 sortOrder: 3
 metaTitle: ICP-CAT Coaching Agile Transformations | Better Change
 metaDescription: ICAgile ICP-CAT training for coaches leading organisational transformation. In-person and online delivery.

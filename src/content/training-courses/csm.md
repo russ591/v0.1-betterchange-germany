@@ -28,7 +28,7 @@ whatYoullLearn:
   - The path to CSM certification and the next steps in the Scrum Master career track
   - How to identify and remove organisational impediments that block team progress
   - What distinguishes a great Scrum Master from someone who simply runs the ceremonies
-summary: The world's most recognised Scrum certification. Learn the Scrum framework, the Scrum Master role and how to coach high-performing teams.
+summary: Get a proper grounding in the Scrum framework and the full scope of the Scrum Master role — servant leadership, coaching, and impediment removal — not just running the ceremonies. You'll learn to facilitate effective Sprints, Reviews, Retrospectives and Planning sessions, protect your team's focus, and coach teams through the early stages of Scrum adoption. Whether you're new to the role, moving from traditional delivery, or have been doing Scrum informally and want to close the gaps, CSM is the world's most recognised Scrum certification and the standard entry point into the Scrum Master career track.
 sortOrder: 1
 metaTitle: CSM Certified Scrum Master Training | Berlin & Online
 metaDescription: Scrum Alliance certified CSM training. Become a Certified Scrum Master in 3 days. Online and in-person options with experienced trainers.

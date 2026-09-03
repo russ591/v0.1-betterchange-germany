@@ -28,7 +28,7 @@ whatYoullLearn:
   - How to measure product value and use feedback loops to guide delivery decisions
   - How to say no to stakeholders constructively — protecting focus without damaging relationships
   - What distinguishes a Product Owner who manages a backlog from one who owns a product
-summary: Develop the skills to maximise product value. Learn stakeholder management, product vision, backlog refinement and delivery flow.
+summary: Learn to articulate a product vision that genuinely aligns your team and stakeholders, and build the backlog-refinement and prioritisation skills to back it up — including how to write user stories the team can act on without constant clarification. You'll cover the Product Owner's role across Sprint Planning, Review and Retrospective, how to use feedback loops to guide delivery decisions, and how to say no to stakeholders constructively. Built for anyone taking on product ownership for the first time, or moving into agile delivery from business analysis or project management, CSPO is the Scrum Alliance's foundational Product Owner certification.
 sortOrder: 3
 metaTitle: CSPO Certified Scrum Product Owner Training | Better Change
 metaDescription: Scrum Alliance CSPO training in person and online. Learn product ownership skills to maximise team output and deliver real business value.

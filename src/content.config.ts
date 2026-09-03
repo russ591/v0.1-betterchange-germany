@@ -16,6 +16,10 @@ const trainingCategory = defineCollection({
     tagline: z.string(),
     description: z.string(),
     certificationBody: z.string().optional(),
+    // Explainer video for the category page hero. Optional -- most topics
+    // won't have one; the block simply doesn't render when it's absent.
+    videoUrl: z.string().optional(),
+    videoTitle: z.string().optional(),
     order: z.number(),
   }),
 });

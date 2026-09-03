@@ -1,10 +1,15 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
+import { Image } from "astro:assets";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
-import CourseCard from "@/components/CourseCard.astro";
-import { certificationLogos } from "@/data/certifications";
+import Badge from "@/components/Badge.astro";
+import CTABanner from "@/components/CTABanner.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { certificationLogos } from "@/data/certifications";
+import { courseBadges } from "@/data/courseBadges";
+import { levelIcons, levelPillClasses } from "@/data/levelIcons";
+import { formatSessionDate } from "@/lib/dates";
 
 export async function getStaticPaths() {
   const categories = await getCollection("training-categories");
@@ -19,49 +24,205 @@ const allCourses = await getCollection("training-courses");
 const courses = allCourses
   .filter((c) => c.data.category.id === category.id)
   .sort((a, b) => (a.data.sortOrder ?? 99) - (b.data.sortOrder ?? 99));
+
+const logo = category.data.certificationBody ? certificationLogos[category.data.certificationBody] : undefined;
+
+const allSchedules = await getCollection("training-schedules");
+const courseIds = new Set(courses.map((c) => c.id));
+const upcoming = allSchedules
+  .filter((s) => courseIds.has(s.data.course.id) && s.data.date && s.data.date >= new Date())
+  .sort((a, b) => a.data.date!.valueOf() - b.data.date!.valueOf());
+const upcomingWithCourse = await Promise.all(
+  upcoming.map(async (session) => ({ session, course: await getEntry(session.data.course) }))
+);
 ---
 
 <BaseLayout title={category.data.name} description={category.data.tagline}>
   <Breadcrumbs items={[{ label: "Training", href: "/training" }, { label: category.data.name }]} />
 
-  <Section eyebrow="Training" class="bg-mist-light">
-    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
-      {category.data.name}
-    </h1>
-    <p class="mt-4 max-w-2xl text-[length:var(--text-h4)] font-normal text-neutral-700">{category.data.tagline}</p>
-    <p class="mt-4 max-w-2xl text-[length:var(--text-body)] text-neutral-600">{category.data.description}</p>
+  <Section class="bg-mist-light">
+    <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-start">
+      <div>
+        <p class="eyebrow">Training</p>
+        <h1 class="mt-3 text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+          {category.data.name}
+        </h1>
+        <p class="mt-4 max-w-2xl text-[length:var(--text-h4)] font-medium text-neutral-700">
+          {category.data.tagline}
+        </p>
+        <p class="mt-4 max-w-2xl text-[length:var(--text-body)] text-neutral-600">{category.data.description}</p>
+
+        {
+          category.data.videoUrl && (
+            <div class="mt-8 flex items-center gap-5 rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6">
+              <a
+                href={category.data.videoUrl}
+                target="_blank"
+                rel="noopener"
+                class="flex h-[110px] w-[180px] shrink-0 items-center justify-center rounded-[0.6rem] bg-ink"
+                aria-label={category.data.videoTitle ?? "Watch the video"}
+              >
+                <span class="flex h-11 w-11 items-center justify-center rounded-full bg-surface">
+                  <svg viewBox="0 0 24 24" width="16" height="16"><path d="M6 4l14 8-14 8V4z" fill="#0a0a0a" /></svg>
+                </span>
+              </a>
+              <div>
+                <h4 class="text-[length:var(--text-small)] font-semibold">{category.data.videoTitle}</h4>
+                <a href={category.data.videoUrl} target="_blank" rel="noopener" class="mt-1 inline-block text-[length:var(--text-caption)] text-neutral-500 hover:underline">
+                  Watch on YouTube &rarr;
+                </a>
+              </div>
+            </div>
+          )
+        }
+      </div>
+
+      <div class="lg:sticky lg:top-24">
+        <div class="overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card">
+          {
+            category.data.certificationBody && (
+              <div class="flex items-center gap-3 border-b border-neutral-200 bg-mist-light px-5 py-4">
+                {logo ? (
+                  <img src={logo.src} alt={logo.alt} class="h-7 w-auto max-w-[64px] object-contain" />
+                ) : (
+                  <span class="text-[length:var(--text-small)] font-semibold text-neutral-500">
+                    {category.data.certificationBody}
+                  </span>
+                )}
+                <div>
+                  <p class="font-semibold">Certified by {category.data.certificationBody}</p>
+                  <p class="text-[length:var(--text-caption)] text-neutral-500">Choose where to start</p>
+                </div>
+              </div>
+            )
+          }
+          {
+            courses.map((course) => (
+              <a
+                href={`/training/${category.id}/${course.id}`}
+                class="flex items-center justify-between gap-3 border-b border-neutral-100 px-5 py-3.5 transition-colors last:border-0 hover:bg-mist-light"
+              >
+                <div>
+                  <p class="text-[length:var(--text-small)] font-semibold">{course.data.name}</p>
+                  <p class="text-[length:var(--text-caption)] text-neutral-500">
+                    {course.data.level}
+                    {course.data.level && " · "}
+                    {course.data.formats.length === 1 && course.data.formats[0] === "self-paced"
+                      ? "Self-paced"
+                      : `${course.data.formats.length} format${course.data.formats.length > 1 ? "s" : ""}`}
+                  </p>
+                </div>
+                {course.data.priceFrom && <span class="shrink-0 font-bold">{course.data.priceFrom}</span>}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section eyebrow={`${courses.length} course${courses.length === 1 ? "" : "s"}`} heading={`${category.data.name} training courses`}>
     {
-      category.data.certificationBody && (
-        certificationLogos[category.data.certificationBody] ? (
-          <div class="mt-6 flex items-center gap-3">
-            <img
-              src={certificationLogos[category.data.certificationBody].src}
-              alt={certificationLogos[category.data.certificationBody].alt}
-              class="h-7 w-auto object-contain"
-            />
-          </div>
-        ) : (
-          <p class="mt-6 text-[length:var(--text-small)] font-semibold text-neutral-500">
-            Certified by {category.data.certificationBody}
-          </p>
-        )
+      courses.length > 0 ? (
+        <div class="flex flex-col gap-5">
+          {courses.map((course) => {
+            const badge = courseBadges[course.id];
+            return (
+              <a
+                href={`/training/${category.id}/${course.id}`}
+                class="flex flex-col gap-5 rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6 shadow-card transition-shadow hover:shadow-card-hover sm:flex-row sm:items-start"
+              >
+                {course.data.level && (
+                  <span
+                    aria-hidden="true"
+                    class="flex h-14 w-14 shrink-0 items-center justify-center rounded-[var(--radius-control)] bg-mist-light"
+                    set:html={levelIcons[course.data.level]}
+                  />
+                )}
+                <div class="flex-1">
+                  <div class="flex flex-wrap items-center gap-2">
+                    {course.data.level && (
+                      <span class={`level-pill inline-flex items-center rounded-[var(--radius-pill)] px-3 py-1 text-[length:var(--text-caption)] font-bold uppercase tracking-[0.03em] ${levelPillClasses[course.data.level] ?? "bg-neutral-100 text-neutral-700"}`}>
+                        {course.data.level}
+                      </span>
+                    )}
+                    <span class="inline-flex items-center gap-1.5 rounded-[var(--radius-pill)] border border-neutral-200 py-0.5 pl-0.5 pr-2.5 text-[length:var(--text-caption)] font-semibold text-neutral-600">
+                      {badge ? (
+                        <Image src={badge} alt="" width={40} height={40} class="h-5 w-5 rounded-full" />
+                      ) : (
+                        logo && <img src={logo.src} alt="" class="h-5 w-5 rounded-full object-contain bg-surface p-0.5" />
+                      )}
+                      {course.data.code}
+                    </span>
+                  </div>
+                  <h3 class="mt-3 text-[length:var(--text-h4)]">{course.data.name}</h3>
+                  <p class="mt-2 max-w-3xl text-[length:var(--text-small)] leading-relaxed text-neutral-600">
+                    {course.data.summary}
+                  </p>
+                  <div class="mt-4 flex flex-wrap gap-2">
+                    {course.data.formats.map((format) => (
+                      <Badge format={format} />
+                    ))}
+                  </div>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      ) : (
+        <p class="text-[length:var(--text-body)] text-neutral-500">No courses published for this discipline yet.</p>
       )
     }
   </Section>
 
-  <Section eyebrow={`${courses.length} course${courses.length === 1 ? "" : "s"}`}>
+  <Section eyebrow={`Upcoming ${category.data.name} training`} heading="Next scheduled sessions" class="bg-mist-light">
     {
-      courses.length > 0 ? (
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {courses.map((course) => (
-            <CourseCard course={course} categorySlug={category.id} />
+      upcomingWithCourse.length > 0 ? (
+        <div class="overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface">
+          {upcomingWithCourse.map(({ session, course }) => (
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b border-neutral-100 px-5 py-4 transition-colors last:border-0 hover:bg-mist-light">
+              <div>
+                <p class="font-semibold">{course.data.name}</p>
+                <p class="text-[length:var(--text-caption)] text-neutral-500">
+                  {formatSessionDate(session, course)} &middot; {session.data.location}
+                </p>
+              </div>
+              <Badge format={session.data.format} />
+              <span class="font-bold">{session.data.price}</span>
+              <a href={`/training/register/${session.id}`} class="rounded-[var(--radius-control)] bg-ink px-4 py-2.5 text-sm font-semibold text-surface">
+                Book now &rarr;
+              </a>
+            </div>
           ))}
         </div>
       ) : (
-        <p class="text-[length:var(--text-body)] text-neutral-500">
-          No courses published for this discipline yet.
-        </p>
+        <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-10 text-center">
+          <p class="text-[length:var(--text-small)] text-neutral-600">
+            No {category.data.name} sessions are currently scheduled.
+          </p>
+          <a
+            href="/contact"
+            class="mt-4 inline-flex items-center justify-center gap-1.5 rounded-[var(--radius-control)] bg-ink px-4 py-2.5 text-sm font-semibold text-surface"
+          >
+            Get in touch <span aria-hidden="true">→</span>
+          </a>
+        </div>
       )
     }
+    <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
+      <p class="text-[length:var(--text-small)] text-neutral-600">
+        Prefer private, in-house training? <a href="/contact" class="font-semibold text-ink underline">Let us know</a>.
+      </p>
+      <a href="/training/full-schedule" class="rounded-[var(--radius-control)] border border-ink px-4 py-2.5 text-sm font-semibold text-ink">
+        See all scheduled training &rarr;
+      </a>
+    </div>
   </Section>
+
+  <CTABanner
+    tone="light"
+    heading="Let's talk about how we can help"
+    ctaLabel="Get started"
+    ctaHref="/contact"
+  />
 </BaseLayout>

@@ -28,7 +28,7 @@ whatYoullLearn:
   - The CAL-2 credential requirements and the advanced leadership competencies it formally assesses
   - How to work with paradox and uncertainty rather than defaulting to control and predictability
   - What it means to lead a learning organisation — and the practical steps that make it real
-summary: An advanced leadership programme exploring authentic leadership, organisational design and leading sustainable transformation.
+summary: Go deeper into leading and designing complex adaptive organisations — applying systemic thinking to evolve organisational structures, incentives and culture so they enable rather than constrain agility. You'll explore authentic leadership, working with your own values, style and blind spots, and learn to engage board-level stakeholders on transformation agendas that actually stick rather than fading after the initial push. Built for CAL-1 holders and senior leaders responsible for organisational design, CAL-2 is the Scrum Alliance's most advanced credential in the leadership track.
 sortOrder: 2
 metaTitle: CAL-2 Certified Agile Leader 2 Training | Better Change
 metaDescription: Scrum Alliance CAL-2 advanced leadership training. Explore authentic leadership and organisational transformation. Berlin and online.
