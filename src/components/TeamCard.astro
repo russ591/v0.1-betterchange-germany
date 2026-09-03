@@ -9,18 +9,34 @@ interface Props {
 }
 
 const { profile, density = "full" } = Astro.props;
-const { name, role, country, languages, hasFullProfile, photo } = profile.data;
-const href = `/about/${profile.id}`;
+const { name, role, country, languages, hasFullProfile, photo, linkedinUrl } = profile.data;
+
+// Every card links somewhere: to the full profile page when there is one,
+// otherwise out to the fellow's LinkedIn (new tab, since that leaves the
+// site) -- and only renders as a plain, unlinked card if neither exists.
+const href = hasFullProfile ? `/about/${profile.id}` : linkedinUrl;
+const isExternal = !hasFullProfile && Boolean(linkedinUrl);
+
 const avatarSize = density === "compact" ? "h-12 w-12 text-sm" : "mb-4 h-20 w-20 text-lg";
 
 const nameParts = name.split(" ");
 const initials = nameParts.length > 1 ? nameParts[0][0] + nameParts[nameParts.length - 1][0] : nameParts[0].slice(0, 2);
+
+// Dynamic tag: an <a> when there's somewhere to link to, otherwise a plain
+// <div> -- Astro renders a capitalised variable holding a tag name as that
+// element.
+const Wrapper = href ? "a" : "div";
+
+const cardClass = `rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-5 ${
+  density === "compact" ? "flex items-center gap-3" : "block"
+} ${href ? "shadow-card transition-shadow hover:shadow-card-hover" : ""}`;
 ---
 
-<div
-  class={`rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-5 ${
-    density === "compact" ? "flex items-center gap-3" : ""
-  }`}
+<Wrapper
+  href={href}
+  target={isExternal ? "_blank" : undefined}
+  rel={isExternal ? "noopener noreferrer" : undefined}
+  class={cardClass}
 >
   {
     photo ? (
@@ -40,18 +56,10 @@ const initials = nameParts.length > 1 ? nameParts[0][0] + nameParts[nameParts.le
     )
   }
   <div>
-    {
-      hasFullProfile ? (
-        <a href={href} class="font-semibold hover:underline">
-          {name}
-        </a>
-      ) : (
-        <p class="font-semibold">{name}</p>
-      )
-    }
+    <p class="font-semibold">{name}</p>
     <p class="text-[length:var(--text-small)] text-neutral-600">{role}</p>
     <p class="text-[length:var(--text-caption)] text-neutral-500">
       {country} · {languages.join(", ")}
     </p>
   </div>
-</div>
+</Wrapper>
