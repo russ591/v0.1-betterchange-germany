@@ -34,11 +34,37 @@ const upcoming = allSchedules
 
 const logo = category.data.certificationBody ? certificationLogos[category.data.certificationBody] : undefined;
 const badge = courseBadges[course.id];
+
+const courseModeByFormat = { "in-person": "Onsite", "live-online": "Online", "self-paced": "Online" } as const;
+const courseSchema = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: course.data.name,
+  description: course.data.summary,
+  provider: { "@type": "Organization", name: "Better Change", sameAs: Astro.site?.toString() },
+  ...(course.data.certification && { educationalCredentialAwarded: course.data.certification }),
+  hasCourseInstance: upcoming.map((session) => ({
+    "@type": "CourseInstance",
+    courseMode: courseModeByFormat[session.data.format],
+    ...(session.data.date && { startDate: session.data.date.toISOString().slice(0, 10) }),
+    ...(session.data.format === "in-person" && {
+      location: { "@type": "Place", name: session.data.location },
+    }),
+    offers: {
+      "@type": "Offer",
+      price: parseFloat(session.data.price.replace(/[^0-9.]/g, "")) || undefined,
+      priceCurrency: "EUR",
+      url: new URL(`/training/register/${session.id}`, Astro.site).toString(),
+      availability: "https://schema.org/InStock",
+    },
+  })),
+};
 ---
 
 <BaseLayout
   title={course.data.metaTitle ?? course.data.name}
   description={course.data.metaDescription ?? course.data.summary}
+  jsonLd={courseSchema}
 >
   <Breadcrumbs
     items={[

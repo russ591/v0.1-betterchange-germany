@@ -6,9 +6,36 @@ import "@/styles/global.css";
 interface Props {
   title: string;
   description: string;
+  ogImage?: string;
+  /** Extra JSON-LD object(s) for this specific page (Course, Article, etc.),
+   * rendered alongside the sitewide Organization schema below. */
+  jsonLd?: object | object[];
 }
 
-const { title, description } = Astro.props;
+const { title, description, ogImage = "/og-image.png", jsonLd } = Astro.props;
+const pageTitle = `${title} · Better Change`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = new URL(ogImage, Astro.site);
+const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+
+// Real, verifiable facts only -- no invented street address or phone number
+// (the Impressum migration still owes us those), no social links beyond
+// coaches' individual profiles which aren't the company's own presence.
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Better Change",
+  url: Astro.site?.toString(),
+  logo: new URL("/logo.png", Astro.site).toString(),
+  description:
+    "A European network of practitioners delivering agile training, coaching and organisational transformation.",
+  email: "russ@betterchange.consulting",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Berlin",
+    addressCountry: "DE",
+  },
+};
 ---
 
 <!doctype html>
@@ -17,9 +44,25 @@ const { title, description } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title} · Better Change</title>
+    <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Better Change" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content="en_GB" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} is:inline />
+    {jsonLdBlocks.map((block) => <script type="application/ld+json" set:html={JSON.stringify(block)} is:inline />)}
   </head>
   <body class="flex min-h-screen flex-col bg-surface text-ink">
     <Header />

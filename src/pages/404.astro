@@ -1,0 +1,22 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+import Button from "@/components/Button.astro";
+---
+
+<BaseLayout title="Page not found" description="The page you're looking for doesn't exist or has moved.">
+  <Section eyebrow="404" class="bg-mist-light">
+    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+      We can't find that page
+    </h1>
+    <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
+      It may have been moved or the link might be out of date. Here are some good places to start
+      instead.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <Button href="/" variant="primary">Back to home</Button>
+      <Button href="/training" variant="secondary">See all training</Button>
+      <Button href="/contact" variant="secondary">Contact us</Button>
+    </div>
+  </Section>
+</BaseLayout>

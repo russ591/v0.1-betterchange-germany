@@ -23,11 +23,28 @@ const related = article.data.primaryCategory
       .filter((a) => a.id !== article.id && a.data.primaryCategory === article.data.primaryCategory)
       .slice(0, 3)
   : [];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: article.data.title,
+  description: article.data.metaDescription ?? article.data.excerpt,
+  datePublished: article.data.date.toISOString(),
+  author: { "@type": "Person", name: authorName },
+  publisher: {
+    "@type": "Organization",
+    name: "Better Change",
+    logo: { "@type": "ImageObject", url: new URL("/logo.png", Astro.site).toString() },
+  },
+  ...(article.data.imageUrl && { image: article.data.imageUrl }),
+  mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).toString(),
+};
 ---
 
 <BaseLayout
   title={article.data.metaTitle ?? article.data.title}
   description={article.data.metaDescription ?? article.data.excerpt}
+  jsonLd={articleSchema}
 >
   <Breadcrumbs items={[{ label: "Insights", href: "/insights" }, { label: article.data.title }]} />
 
