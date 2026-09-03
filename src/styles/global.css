@@ -103,6 +103,11 @@
   body {
     font-size: var(--text-body);
     line-height: var(--text-body--line-height);
+    /* German compound words (e.g. "Verbraucherstreitbeilegung/
+       Universalschlichtungsstelle" on the legal pages) can be longer than
+       a mobile viewport with nowhere to break; without this they force the
+       whole page to scroll horizontally instead of wrapping. */
+    overflow-wrap: break-word;
   }
 
   h1,
