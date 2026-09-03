@@ -1,18 +1,19 @@
 ---
+import { getEntry, render } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
+
+const entry = await getEntry("legal-pages", "agb");
+const { Content } = await render(entry!);
 ---
 
-<BaseLayout title="AGB" description="Terms and conditions for Better Change.">
+<BaseLayout title="AGB" description="Terms and conditions for Better Change Germany.">
   <Breadcrumbs items={[{ label: "AGB" }]} />
 
-  <Section eyebrow="Legal" heading="AGB">
-    <p class="max-w-2xl text-[length:var(--text-body)] text-neutral-600">
-      [Placeholder — real AGB text to be migrated as a proper list, not as heading elements. Spec §2
-      bug 8 flags every bullet-point list item on the current page (payment methods, cancellation
-      tiers, included services) as wrongly marked up as an &lt;h2&gt; heading — migrate as real
-      &lt;ul&gt;/&lt;li&gt; markup instead.]
-    </p>
+  <Section eyebrow="Legal" heading={entry!.data.title}>
+    <div class="article-body max-w-2xl text-[length:var(--text-body)] text-neutral-700">
+      <Content />
+    </div>
   </Section>
 </BaseLayout>

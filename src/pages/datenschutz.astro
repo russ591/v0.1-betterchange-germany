@@ -1,18 +1,19 @@
 ---
+import { getEntry, render } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
+
+const entry = await getEntry("legal-pages", "datenschutz");
+const { Content } = await render(entry!);
 ---
 
-<BaseLayout title="Datenschutz" description="Privacy policy for Better Change.">
+<BaseLayout title="Datenschutz" description="Privacy policy for Better Change Germany.">
   <Breadcrumbs items={[{ label: "Datenschutz" }]} />
 
-  <Section eyebrow="Legal" heading="Datenschutz">
-    <p class="max-w-2xl text-[length:var(--text-body)] text-neutral-600">
-      [Placeholder — real Datenschutz text to be migrated verbatim from the live site. Spec §2 bug 7
-      flags an unfilled template instruction live on the current page ("Ergänzen, falls Google
-      Analytics, LinkedIn Insight Tag oder Ähnliches aktiv…") — make sure that's resolved, not
-      carried across, during migration.]
-    </p>
+  <Section eyebrow="Legal" heading={entry!.data.title}>
+    <div class="article-body max-w-2xl text-[length:var(--text-body)] text-neutral-700">
+      <Content />
+    </div>
   </Section>
 </BaseLayout>

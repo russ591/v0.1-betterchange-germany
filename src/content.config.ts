@@ -120,10 +120,22 @@ const insightsArticle = defineCollection({
   }),
 });
 
+// Impressum, Datenschutzerklärung and AGB — real legal text migrated
+// verbatim from the live .de site, kept as markdown so headings/lists
+// render through Astro's standard markdown pipeline rather than a
+// hand-transcribed HTML string.
+const legalPage = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/legal-pages" }),
+  schema: z.object({
+    title: z.string(),
+  }),
+});
+
 export const collections = {
   "training-categories": trainingCategory,
   "training-courses": trainingCourse,
   "training-schedules": trainingSchedule,
   "coach-profiles": coachProfile,
   "insights-articles": insightsArticle,
+  "legal-pages": legalPage,
 };
