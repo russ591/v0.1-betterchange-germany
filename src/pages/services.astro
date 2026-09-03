@@ -1,36 +1,76 @@
 ---
+import { getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import ServiceCard from "@/components/ServiceCard.astro";
+import Button from "@/components/Button.astro";
+import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
 import CTABanner from "@/components/CTABanner.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { services, serviceIcons } from "@/data/services";
+
+// Where each service's "Learn more" link should send a visitor -- Training
+// has its own hub page, the other three don't yet have a dedicated page so
+// they route to Contact instead.
+const serviceLinks: Record<string, { href: string; label: string }> = {
+  Training: { href: "/training", label: "See all training" },
+  Coaching: { href: "/contact", label: "Talk to us" },
+  "Consulting & Transformation": { href: "/contact", label: "Talk to us" },
+  Facilitation: { href: "/contact", label: "Talk to us" },
+};
+
+const steps = [
+  {
+    heading: "Discover",
+    body: "A conversation about where you're stuck — the team, the leadership layer, or the wider organisation — and what \"better\" would actually look like.",
+  },
+  {
+    heading: "Design",
+    body: "We shape the right mix of training, coaching or facilitation for your situation, rather than defaulting to a fixed package.",
+  },
+  {
+    heading: "Deliver",
+    body: "Hands-on work with your teams and leaders — in Berlin, on site, or online — for as long as the change needs to stick.",
+  },
+];
+
+const insightSlugs = ["what-is-a-scrum-master", "how-to-run-a-retrospective", "why-is-change-management-important"];
+const insightArticles = (
+  await Promise.all(insightSlugs.map((slug) => getEntry("insights-articles", slug)))
+).filter((article) => article !== undefined);
 ---
 
 <BaseLayout
   title="Services"
-  description="We work with teams, leaders, and organisations across Europe. Training, coaching, consulting, or facilitation — we bring real-world experience to every engagement."
+  description="Better Change is a European network of practitioners — not a large consultancy. Training, coaching, consulting and facilitation, built around your actual situation."
 >
   <Breadcrumbs items={[{ label: "Services" }]} />
 
-  <Section
-    eyebrow="Agile Consulting & Training · Berlin & Europe"
-    class="bg-mist-light"
-  >
+  <Section eyebrow="What we do" class="bg-mist-light">
     <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
-      Services that create lasting change
+      Real support, from people who've done the work
     </h1>
     <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
-      We work with teams, leaders, and organisations across Europe. Training, coaching, consulting,
-      or facilitation — we bring real-world experience to every engagement.
+      Better Change is a European network of practitioners — not a large consultancy. Training,
+      coaching, consulting and facilitation, built around your actual situation.
     </p>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <Button href="/contact" variant="primary">Contact us</Button>
+      <Button href="/training" variant="secondary">See all training</Button>
+    </div>
   </Section>
 
-  <Section>
+  <Section eyebrow="What we do" heading="Four ways we work with you">
     <div class="grid gap-6 sm:grid-cols-2">
       {
         services.map((service) => (
-          <ServiceCard name={service.name} items={service.items}>
+          <ServiceCard
+            name={service.name}
+            blurb={service.blurb}
+            items={service.items}
+            href={serviceLinks[service.name].href}
+            learnLabel={serviceLinks[service.name].label}
+          >
             <Fragment slot="icon" set:html={serviceIcons[service.name]} />
           </ServiceCard>
         ))
@@ -38,19 +78,39 @@ import { services, serviceIcons } from "@/data/services";
     </div>
   </Section>
 
-  <!--
-    Spec §2 bug 9: the live "case studies" section repeats the same case
-    study three times (a dynamic-list rendering bug). No real case study
-    text was available to pull for this build, so the section is left out
-    rather than inventing content — add it here once real case studies are
-    ready to migrate.
-  -->
+  <Section eyebrow="How it works" heading="What an engagement looks like" class="bg-mist-light">
+    <div class="grid gap-8 sm:grid-cols-3">
+      {
+        steps.map((step, i) => (
+          <div>
+            <span
+              aria-hidden="true"
+              class="blob-dot flex h-11 w-11 items-center justify-center bg-lime text-[length:var(--text-h4)] font-bold text-ink"
+            >
+              {i + 1}
+            </span>
+            <h3 class="mt-4 text-[length:var(--text-h4)]">{step.heading}</h3>
+            <p class="mt-2 text-[length:var(--text-small)] text-neutral-600">{step.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section eyebrow="From our insights" heading="Written by the people doing the work">
+    <div class="grid gap-6 sm:grid-cols-3">
+      {insightArticles.map((article) => <InsightsArticleCard article={article} />)}
+    </div>
+    <div class="mt-6 text-right">
+      <Button href="/insights" variant="link" class="group">View all insights</Button>
+    </div>
+  </Section>
 
   <CTABanner
     tone="light"
-    heading="Let's talk about your situation."
-    body="Every engagement starts with a conversation. Tell us what you're working on."
-    ctaLabel="Contact us"
+    heading="Not sure where to start?"
+    body="Talk to us. We'll help you find the right training or coaching approach for your situation."
+    ctaLabel="Get in touch"
     ctaHref="/contact"
   />
 </BaseLayout>
