@@ -1,11 +1,13 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import CTABanner from "@/components/CTABanner.astro";
 import Button from "@/components/Button.astro";
-import { certificationLogos } from "@/data/certifications";
+import ScheduleList from "@/components/ScheduleList.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { certificationLogos } from "@/data/certifications";
+import { categoryIcons } from "@/data/categoryIcons";
 
 const categories = (await getCollection("training-categories")).sort(
   (a, b) => a.data.order - b.data.order
@@ -15,6 +17,18 @@ const courses = await getCollection("training-courses");
 const certifiedBy = [
   ...new Set(categories.map((c) => c.data.certificationBody).filter((c): c is string => Boolean(c))),
 ];
+
+const schedules = await getCollection("training-schedules");
+const upcoming = schedules
+  .filter((s) => s.data.date && s.data.date >= new Date())
+  .sort((a, b) => a.data.date!.valueOf() - b.data.date!.valueOf());
+const upcomingWithCourse = await Promise.all(
+  upcoming.map(async (session) => {
+    const course = await getEntry(session.data.course);
+    const category = await getEntry(course.data.category);
+    return { session, course, category };
+  })
+);
 
 const formats = [
   {
@@ -67,12 +81,13 @@ const testimonials = [
 >
   <Breadcrumbs items={[{ label: "Training" }]} />
 
-  <Section eyebrow="better change training academy" class="bg-mist-light">
-    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+  <Section class="bg-mist-light">
+    <p class="eyebrow">Better Change Training Academy</p>
+    <h1 class="mt-4 text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
       Training that actually sticks
     </h1>
     <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
-      Hands-on, certification-ready training in Flight Levels, Kanban, Scrum and leadership.
+      Hands-on, certification-ready training in Flight Levels, Kanban, Scrum, coaching, leadership and scaling.
       In-person in Berlin, live online, or at your own pace.
     </p>
     <p class="eyebrow mt-8 text-neutral-500">Certified by</p>
@@ -98,26 +113,41 @@ const testimonials = [
         categories.map((category) => {
           const categoryCourses = courses.filter((c) => c.data.category.id === category.id);
           return (
-            <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6">
-              <h3 class="text-[length:var(--text-h4)]">{category.data.name}</h3>
+            <a
+              href={`/training/${category.id}`}
+              class="flex flex-col rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6 shadow-card transition-shadow hover:shadow-card-hover"
+            >
+              {categoryIcons[category.id] && (
+                <span aria-hidden="true" class="blob-dot flex h-11 w-11 items-center justify-center bg-lime" set:html={categoryIcons[category.id]} />
+              )}
+              <h3 class="mt-4 text-[length:var(--text-h4)]">{category.data.name}</h3>
               <p class="mt-2 text-[length:var(--text-small)] text-neutral-600">{category.data.tagline}</p>
-              <a
-                href={`/training/${category.id}`}
-                class="mt-4 inline-flex items-center gap-1 text-sm font-semibold hover:underline"
-              >
+              <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold">
                 {categoryCourses.length > 0
                   ? `${categoryCourses.length} course${categoryCourses.length === 1 ? "" : "s"}`
                   : "View discipline"}{" "}
                 <span aria-hidden="true">→</span>
-              </a>
-            </div>
+              </span>
+            </a>
           );
         })
       }
     </div>
   </Section>
 
-  <Section eyebrow="Delivery formats" heading="Choose how you learn" class="bg-mist-light">
+  <Section eyebrow="Upcoming training" heading="Next scheduled sessions, across every discipline" class="bg-mist-light">
+    <ScheduleList rows={upcomingWithCourse} id="hub-schedule" filterable emptyMessage="No sessions are currently scheduled." />
+    <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
+      <p class="text-[length:var(--text-small)] text-neutral-600">
+        Prefer private, in-house training? <a href="/contact" class="font-semibold text-ink underline">Let us know</a>.
+      </p>
+      <a href="/training/full-schedule" class="rounded-[var(--radius-control)] border border-ink px-4 py-2.5 text-sm font-semibold text-ink">
+        See full training schedule &rarr;
+      </a>
+    </div>
+  </Section>
+
+  <Section eyebrow="Delivery formats" heading="Choose how you learn">
     <div class="grid gap-6 sm:grid-cols-3">
       {
         formats.map((format) => (
