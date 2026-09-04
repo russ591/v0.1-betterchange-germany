@@ -207,7 +207,7 @@ const countries = [
             name="seats"
             class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-4 py-2.5 sm:w-40"
           >
-            {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => <option value={n}>{n}</option>)}
+            {Array.from({ length: 6 }, (_, i) => i + 1).map((n) => <option value={n}>{n}</option>)}
           </select>
         </div>
 
@@ -338,7 +338,7 @@ const countries = [
           <p class="eyebrow text-neutral-500">Attendee details</p>
           <div class="mt-4 space-y-4">
             {
-              Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
+              Array.from({ length: 6 }, (_, i) => i + 1).map((n) => (
                 <div data-attendee-block data-attendee-index={n} hidden class="grid gap-4 sm:grid-cols-2">
                   <p class="text-[length:var(--text-caption)] font-semibold text-neutral-500 sm:col-span-2">
                     Attendee {n}
