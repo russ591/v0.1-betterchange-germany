@@ -36,7 +36,7 @@ specialities:
   - Agile transformation
 certifications:
   - FL Guide®
-  - Qualified FL Coach®
+  - FL Coach®
   - KU Certified Trainer
   - ICAgile Authorised Trainer
   - Scrum Alliance CEC & CTC
