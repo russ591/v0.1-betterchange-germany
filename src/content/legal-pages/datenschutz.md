@@ -31,7 +31,7 @@ Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit
 
 ### Analyse-Tools und Tools von Drittanbietern
 
-Beim Besuch dieser Website kann Ihr Surf-Verhalten statistisch ausgewertet werden. Das geschieht vor allem mit sogenannten Analyseprogrammen. Detaillierte Informationen zu diesen Analyseprogrammen finden Sie in der folgenden Datenschutzerklärung.
+Diese Website setzt keine Analyse-Tools oder vergleichbare Tools von Drittanbietern ein. Ihr Surf-Verhalten wird nicht statistisch ausgewertet.
 
 ## 2. Hosting und Content Delivery Networks (CDN)
 
@@ -44,7 +44,7 @@ Der Einsatz des Hosters erfolgt zum Zwecke der Vertragserfüllung gegenüber uns
 Unser Hoster wird Ihre Daten nur insoweit verarbeiten, wie dies zur Erfüllung seiner Leistungspflichten erforderlich ist und unsere Weisungen in Bezug auf diese Daten befolgen.
 
 Wir setzen folgenden Hoster ein:<br />
-Wix Online Platforms Limited, 1 Grant's Row, Dublin 2 D02HX96, Ireland.
+Netlify, Inc., 44 Montgomery Street, Suite 300, San Francisco, CA 94104, USA.
 
 ## 3. Allgemeine Hinweise und Pflichtinformationen
 
@@ -104,30 +104,9 @@ Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht 
 
 ### Cookies und vergleichbare Technologien
 
-Unsere Website verwendet Cookies. Cookies sind kleine Textdateien, die beim Besuch einer Website auf Ihrem Endgerät gespeichert werden.
+Diese Website verwendet keine Cookies und keine vergleichbaren Technologien (z. B. lokale Speicherung im Browser) zu Analyse-, Marketing- oder Tracking-Zwecken. Es findet keine Einbindung von Diensten Dritter statt, die Cookies setzen würden.
 
-Wir unterscheiden zwischen technisch notwendigen Cookies und Cookies, die nur mit Ihrer Einwilligung gesetzt werden.
-
-### Technisch notwendige Cookies
-
-Diese Cookies sind für den Betrieb der Website erforderlich und können nicht deaktiviert werden. Sie dienen grundlegenden Funktionen wie der Seitennavigation, der Sicherheit und der Speicherung Ihrer Einstellungen während des Besuchs.
-
-Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am ordnungsgemäßen Betrieb der Website).
-
-Gesetzt werden unter anderem: XSRF-TOKEN, svSession, ssr-caching, hs (Wix-Plattform, Sitzungsdauer)
-
-### Analyse- und Marketing-Cookies (nur mit Einwilligung)
-
-Diese Cookies helfen uns zu verstehen, wie Besucher unsere Website nutzen, damit wir die Website verbessern können. Sie werden nur gesetzt, wenn Sie im Cookie-Banner ausdrücklich eingewilligt haben.
-
-Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung).
-
-Folgende Dienste können Cookies setzen, sofern Sie eingewilligt haben:<br />
-Wix Analytics (Anbieter: Wix.com Ltd., Tel Aviv, Israel) — Auswertung des Nutzungsverhaltens zur Verbesserung der Website.
-
-### Einwilligung widerrufen
-
-Sie können Ihre Cookie-Einwilligung jederzeit für die Zukunft widerrufen. Passen Sie dazu Ihre Einstellungen im Cookie-Banner an oder löschen Sie die gespeicherten Cookies in Ihrem Browser. Ein Widerruf berührt nicht die Rechtmäßigkeit der bis dahin erfolgten Verarbeitung.
+Sollte sich dies zukünftig ändern, etwa durch die Einbindung von Analyse-Diensten, werden wir Sie vorab um Ihre Einwilligung bitten und diese Datenschutzerklärung entsprechend aktualisieren.
 
 ### Recht auf Einschränkung der Verarbeitung
 
