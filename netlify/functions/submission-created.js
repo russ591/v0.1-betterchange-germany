@@ -7,7 +7,7 @@
 // send anything:
 //   RESEND_API_KEY   — API key from a Resend account (resend.com)
 //   REGISTRATION_FROM_EMAIL — a "from" address on a domain verified in Resend,
-//                             e.g. "Better Change Germany <russ@betterchange.consulting>"
+//                             e.g. "Better Change Germany <russ@betterchange-consulting.de>"
 //
 // Until those are set, submissions still work exactly as before (captured by
 // Netlify Forms, notification email to the site owner) — this function just
@@ -46,7 +46,7 @@ export const handler = async (event) => {
     body: JSON.stringify({
       from: fromAddress,
       to: data.email,
-      reply_to: "russ@betterchange.consulting",
+      reply_to: "russ@betterchange-consulting.de",
       subject: buildRegistrationEmailSubject(data),
       html: buildRegistrationEmailHtml(data),
       text: buildRegistrationEmailText(data),

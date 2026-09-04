@@ -50,7 +50,7 @@ Für Unternehmenskunden mit gültiger USt-IdNr. aus einem anderen EU-Mitgliedsst
 - 8–14 Tage vor Kursbeginn: 50 % des Kurspreises werden als Stornogebühr einbehalten.
 - Weniger als 7 Tage vor Kursbeginn: Der volle Kurspreis wird fällig. Eine Erstattung ist nicht möglich.
 
-Stornierungen müssen schriftlich per E-Mail an russ@betterchange.consulting erfolgen. Maßgeblich ist der Eingang der E-Mail beim Anbieter.
+Stornierungen müssen schriftlich per E-Mail an russ@betterchange-consulting.de erfolgen. Maßgeblich ist der Eingang der E-Mail beim Anbieter.
 
 ### Umbuchung
 
@@ -68,7 +68,7 @@ Verbrauchern steht grundsätzlich ein 14-tägiges Widerrufsrecht zu. Das Widerru
 
 Bei der Buchung eines Online-Kurses, der unmittelbar nach Buchung zugänglich ist, erlischt das Widerrufsrecht daher mit Beginn der Leistungserbringung. Bei der Buchung eines Präsenz- oder Online-Termins gilt das Widerrufsrecht bis 14 Tage vor Kursbeginn; im Übrigen gelten die Stornoregeln in § 5.
 
-Widerrufsbelehrung: Sie können Ihren Vertrag innerhalb von 14 Tagen ohne Angabe von Gründen widerrufen. Die Frist beginnt nach Erhalt dieser Belehrung. Zur Ausübung des Widerrufsrechts wenden Sie sich an: russ@betterchange.consulting.
+Widerrufsbelehrung: Sie können Ihren Vertrag innerhalb von 14 Tagen ohne Angabe von Gründen widerrufen. Die Frist beginnt nach Erhalt dieser Belehrung. Zur Ausübung des Widerrufsrechts wenden Sie sich an: russ@betterchange-consulting.de.
 
 ## § 7 Rechnungsstellung
 
