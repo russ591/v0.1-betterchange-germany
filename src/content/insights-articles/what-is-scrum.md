@@ -1,5 +1,6 @@
 ---
 title: What Is Scrum? A Straight Answer to the Most Common Question in Agile
+urlSlug: "what-is-scrum-a-straight-answer-to-the-most-common-question-in-agile"
 contentType: Resource
 primaryCategory: Scrum
 categories:

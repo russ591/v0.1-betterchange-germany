@@ -1,5 +1,6 @@
 ---
 title: What is a Spike in Scrum?
+urlSlug: "what-is-a-spike-in-scrum"
 contentType: Resource
 primaryCategory: Agile
 categories:

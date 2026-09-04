@@ -1,5 +1,6 @@
 ---
 title: Organisational Change Doesn't Happen Collectively — It Happens Person by Person
+urlSlug: "organisational-change-doesn't-happen-collectively-—-it-happens-person-by-person"
 contentType: Blog
 primaryCategory: Change Management
 categories:

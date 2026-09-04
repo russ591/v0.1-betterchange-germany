@@ -1,6 +1,7 @@
 ---
 name: Advanced Certified Scrum Master (A-CSM)
 code: ACSM
+urlSlug: "advanced-certified-scrum-master-(a-csm)"
 category: scrum
 level: Advanced
 durationText: "2 days ·\_4 x ½ days"

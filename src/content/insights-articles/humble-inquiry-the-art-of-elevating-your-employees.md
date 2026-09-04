@@ -1,5 +1,6 @@
 ---
 title: Humble Inquiry - The Art of Elevating Your Employees
+urlSlug: "humble-inquiry---the-art-of-elevating-your-employees"
 contentType: Blog
 primaryCategory: Leadership
 categories:

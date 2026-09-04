@@ -1,6 +1,7 @@
 ---
 name: Kanban System Improvement (KMP 2)
 code: KMP2
+urlSlug: "kanban-system-improvement-(kmp2)"
 category: kanban
 level: Advanced
 durationText: "2 days ·\_4 x ½ days"

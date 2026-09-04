@@ -1,5 +1,6 @@
 ---
 title: Navigating the Terrain - Agile Coaching vs. Systemic Coaching
+urlSlug: "navigating-the-terrain---agile-coaching-vs.-systemic-coaching"
 contentType: Blog
 primaryCategory: Coaching
 categories:

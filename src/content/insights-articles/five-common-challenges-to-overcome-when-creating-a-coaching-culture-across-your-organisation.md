@@ -1,5 +1,6 @@
 ---
 title: Five Reasons Coaching Cultures Fail — and They're Not What You Think
+urlSlug: "five-reasons-coaching-cultures-fail-—-and-they're-not-what-you-think"
 contentType: Blog
 primaryCategory: Coaching
 categories:

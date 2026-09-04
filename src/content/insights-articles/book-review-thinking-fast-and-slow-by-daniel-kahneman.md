@@ -1,5 +1,6 @@
 ---
 title: 'Book Review: Thinking, Fast and Slow — Still the Most Useful Book About Decisions You''ll Read'
+urlSlug: "book-review:-thinking,-fast-and-slow-—-still-the-most-useful-book-about-decisions-you'll-read"
 contentType: Blog
 primaryCategory: Agile
 categories:

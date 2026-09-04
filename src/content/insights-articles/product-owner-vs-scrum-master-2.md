@@ -1,5 +1,6 @@
 ---
 title: Product Owner vs Scrum Master
+urlSlug: "product-owner-vs-scrum-master"
 contentType: Resource
 primaryCategory: Scrum
 categories:

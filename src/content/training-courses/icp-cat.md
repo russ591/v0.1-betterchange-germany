@@ -1,6 +1,7 @@
 ---
 name: Coaching Agile Transformations (ICP-CAT)
 code: ICPCAT
+urlSlug: "coaching-agile-transformations-(icp-cat)"
 category: coaching
 level: Advanced
 durationText: "2 days ·\_4 x ½ days"

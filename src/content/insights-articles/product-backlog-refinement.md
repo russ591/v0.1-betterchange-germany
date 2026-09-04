@@ -1,5 +1,6 @@
 ---
 title: 'Product Backlog Refinement: The Work That Makes Sprint Planning Possible'
+urlSlug: "product-backlog-refinement:-the-work-that-makes-sprint-planning-possible"
 contentType: Resource
 primaryCategory: Scrum
 categories:

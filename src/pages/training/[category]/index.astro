@@ -10,6 +10,7 @@ import ScheduleList from "@/components/ScheduleList.astro";
 import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
 import { levelIcons, levelPillClasses } from "@/data/levelIcons";
+import { toPathSegment } from "@/lib/urlSlug";
 
 export async function getStaticPaths() {
   const categories = await getCollection("training-categories");
@@ -99,7 +100,7 @@ const upcomingWithCourse = await Promise.all(
           {
             courses.map((course) => (
               <a
-                href={`/training/${category.id}/${course.id}`}
+                href={`/training/${category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
                 class="flex items-center justify-between gap-3 border-b border-neutral-100 px-5 py-3.5 transition-colors last:border-0 hover:bg-mist-light"
               >
                 <div>
@@ -129,7 +130,7 @@ const upcomingWithCourse = await Promise.all(
             const badge = courseBadges[course.id];
             return (
               <a
-                href={`/training/${category.id}/${course.id}`}
+                href={`/training/${category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
                 class="flex flex-col gap-5 rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6 shadow-card transition-shadow hover:shadow-card-hover sm:flex-row sm:items-start"
               >
                 {course.data.level && (

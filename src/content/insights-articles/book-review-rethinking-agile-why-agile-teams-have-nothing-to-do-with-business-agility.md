@@ -1,5 +1,6 @@
 ---
 title: 'Book Review: Rethinking Agile by Klaus Leopold'
+urlSlug: "book-review:-rethinking-agile-by-klaus-leopold"
 contentType: Blog
 primaryCategory: Flight Levels
 categories:

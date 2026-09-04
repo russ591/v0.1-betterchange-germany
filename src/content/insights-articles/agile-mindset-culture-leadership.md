@@ -1,5 +1,6 @@
 ---
 title: SAFe Won't Save You If Your Leaders Aren't Actually Agile
+urlSlug: "safe-won't-save-you-if-your-leaders-aren't-actually-agile"
 contentType: Blog
 primaryCategory: Leadership
 categories:

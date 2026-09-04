@@ -1,5 +1,6 @@
 ---
 title: 'Agile Mishap #1: Do it by the book!'
+urlSlug: "agile-mishap-1:-do-it-by-the-book!"
 contentType: Blog
 primaryCategory: Change Management
 categories:

@@ -1,5 +1,6 @@
 ---
 title: Why Most Strategies Fail Between the Slides and the Doing
+urlSlug: "why-most-strategies-fail-between-the-slides-and-the-doing"
 contentType: Blog
 primaryCategory: Change Management
 categories:

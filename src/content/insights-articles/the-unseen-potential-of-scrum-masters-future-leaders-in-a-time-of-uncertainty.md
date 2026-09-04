@@ -1,5 +1,6 @@
 ---
 title: 'The Unseen Potential of Scrum Masters: Future Leaders in a Time of Uncertainty'
+urlSlug: "the-unseen-potential-of-scrum-masters:-future-leaders-in-a-time-of-uncertainty"
 contentType: Blog
 primaryCategory: Leadership
 categories:

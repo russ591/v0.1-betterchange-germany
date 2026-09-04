@@ -1,5 +1,6 @@
 ---
 title: Management Is Not Leadership — and Confusing the Two Costs Organisations Dearly
+urlSlug: "management-is-not-leadership-—-and-confusing-the-two-costs-organisations-dearly"
 contentType: Blog
 primaryCategory: Leadership
 categories:

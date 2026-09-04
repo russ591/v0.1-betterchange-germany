@@ -1,5 +1,6 @@
 ---
 title: Fostering Team Synergy, Overcoming Dysfunctions, and Building Strong Teams
+urlSlug: "fostering-team-synergy,-overcoming-dysfunctions,-and-building-strong-teams"
 contentType: Blog
 primaryCategory: Coaching
 categories:

@@ -1,5 +1,6 @@
 ---
 title: The Skills That Actually Make a Product Owner Effective
+urlSlug: "the-skills-that-actually-make-a-product-owner-effective"
 contentType: Blog
 primaryCategory: Product Development
 categories:

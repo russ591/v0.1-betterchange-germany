@@ -1,5 +1,6 @@
 ---
 title: How To Discover and Solve Impediments in Scrum?
+urlSlug: "how-to-discover-and-solve-impediments-in-scrum"
 contentType: Resource
 primaryCategory: Scrum
 categories:

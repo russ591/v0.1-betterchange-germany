@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { toPathSegment } from "@/lib/urlSlug";
 
 // Spec §2 bug 1: only profiles with hasFullProfile: true get a page here —
 // this is the "resolved" behaviour, since the About index only links to
@@ -14,7 +15,7 @@ export async function getStaticPaths() {
   // TrainingCourse.code punctuation exactly (e.g. "ICP-ACC" vs "ICPACC")
   const normalize = (s: string) => s.replace(/[^a-z0-9]/gi, "").toUpperCase();
   return profiles.map((profile) => ({
-    params: { slug: profile.id },
+    params: { slug: profile.data.urlSlug ?? profile.id },
     props: {
       profile,
       coursesDelivered: (profile.data.coursesDelivered ?? [])
@@ -146,7 +147,7 @@ const paragraphs = (text: string) =>
           {coursesDelivered.map((course) => (
             <li>
               <a
-                href={`/training/${course.data.category.id}/${course.id}`}
+                href={`/training/${course.data.category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
                 class="rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-3 py-1 text-[length:var(--text-caption)] font-semibold hover:border-ink"
               >
                 {course.data.code}

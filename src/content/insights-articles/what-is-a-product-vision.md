@@ -1,5 +1,6 @@
 ---
 title: What is a Product Vision?
+urlSlug: "what-is-a-product-vision"
 contentType: Resource
 primaryCategory: Scrum
 categories:

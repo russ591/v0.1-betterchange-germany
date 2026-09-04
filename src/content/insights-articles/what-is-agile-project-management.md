@@ -1,5 +1,6 @@
 ---
 title: What Is Agile Project Management?
+urlSlug: "what-is-agile-project-management"
 contentType: Resource
 primaryCategory: Leadership
 categories:

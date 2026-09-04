@@ -1,5 +1,6 @@
 ---
 title: 'Boogie and Backlogs: The Hilarious Parallels Between Agile and Disco'
+urlSlug: "boogie-and-backlogs:-the-hilarious-parallels-between-agile-and-disco"
 contentType: Blog
 primaryCategory: Agile
 categories:

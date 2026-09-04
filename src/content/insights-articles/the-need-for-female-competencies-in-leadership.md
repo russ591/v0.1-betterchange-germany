@@ -1,5 +1,6 @@
 ---
 title: Why the Best Leaders Think Differently — and What We Can Learn from Female Competencies
+urlSlug: "why-the-best-leaders-think-differently-—-and-what-we-can-learn-from-female-competencies"
 contentType: Blog
 primaryCategory: Leadership
 categories:

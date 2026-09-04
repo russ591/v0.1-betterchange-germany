@@ -1,5 +1,6 @@
 ---
 title: 'Burndown Charts: A Practical Guide to Sprint and Release Tracking'
+urlSlug: "burndown-charts:-a-practical-guide-to-sprint-and-release-tracking"
 contentType: Resource
 primaryCategory: Scrum
 categories:

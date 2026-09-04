@@ -1,5 +1,6 @@
 ---
 title: Agile Leadership - The Vital Role of Sense-making, Integrity, and Authenticity
+urlSlug: "agile-leadership-the-vital-role-of-sense-making-integrity-and-authenticity"
 contentType: Blog
 primaryCategory: Change Management
 categories:

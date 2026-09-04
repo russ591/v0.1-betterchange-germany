@@ -1,5 +1,6 @@
 ---
 title: Your Biggest AI Challenge Isn't Technical. It's Cultural.
+urlSlug: "your-biggest-ai-challenge-isn't-technical.-it's-cultural."
 contentType: Blog
 primaryCategory: Change Management
 categories:

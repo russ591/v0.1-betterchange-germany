@@ -1,6 +1,7 @@
 ---
 name: Certified Scrum Product Owner (CSPO)
 code: CSPO
+urlSlug: "certified-scrum-product-owner-(cspo)"
 category: scrum
 level: Practitioner
 durationText: "2 days ·\_4 x ½ days"

@@ -1,5 +1,6 @@
 ---
 title: 'SAFe: A Practical Introduction to Scaling Agile Across the Enterprise'
+urlSlug: "safe:-a-practical-introduction-to-scaling-agile-across-the-enterprise"
 contentType: Resource
 primaryCategory: Agile
 categories:

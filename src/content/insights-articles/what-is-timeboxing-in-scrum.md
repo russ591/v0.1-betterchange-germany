@@ -1,5 +1,6 @@
 ---
 title: What is Timeboxing in Scrum?
+urlSlug: "what-is-timeboxing-in-scrum"
 contentType: Resource
 primaryCategory: Scrum
 categories:

@@ -1,5 +1,6 @@
 ---
 name: Jesper Ørting
+urlSlug: "jesper-ørting"
 firstName: Jesper
 role: Better Change Coach
 country: Denmark

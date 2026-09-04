@@ -1,5 +1,6 @@
 ---
 title: What Is a Kanban Card?
+urlSlug: "what-is-a-kanban-card"
 contentType: Resource
 primaryCategory: Kanban
 categories:

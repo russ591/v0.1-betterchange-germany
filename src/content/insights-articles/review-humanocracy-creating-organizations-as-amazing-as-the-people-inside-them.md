@@ -1,5 +1,6 @@
 ---
 title: 'Review: "Humanocracy: Creating Organizations as Amazing as the People Inside Them"'
+urlSlug: "review:-\"humanocracy:-creating-organizations-as-amazing-as-the-people-inside-them\""
 contentType: Blog
 primaryCategory: Change Management
 categories:

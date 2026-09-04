@@ -1,5 +1,6 @@
 ---
 title: 'From 50 to 350 People and Everything Started Breaking: A Flight Levels Case Study'
+urlSlug: "from-50-to-350-people-and-everything-started-breaking:-a-flight-levels-case-study"
 contentType: Blog
 primaryCategory: Flight Levels
 categories:

@@ -46,6 +46,10 @@ const trainingCourse = defineCollection({
     sortOrder: z.number().optional(),
     metaTitle: z.string().optional(),
     metaDescription: z.string().optional(),
+    // URL slug from the live site's sitemap (may contain literal
+    // parentheses, e.g. "flight-level-2-design-(fl2d)"). Falls back to the
+    // content id when absent so new courses don't need to set this.
+    urlSlug: z.string().optional(),
   }),
 });
 
@@ -95,6 +99,9 @@ const coachProfile = defineCollection({
     certifications: z.array(z.string()).optional(),
     coursesDelivered: z.array(z.string()).optional(), // TrainingCourse codes
     displayOrder: z.number().default(10),
+    // URL slug from the live site's sitemap (may contain accented
+    // characters, e.g. "jesper-ørting"). Falls back to the content id.
+    urlSlug: z.string().optional(),
   }),
 });
 
@@ -117,6 +124,10 @@ const insightsArticle = defineCollection({
     metaTitle: z.string().optional(),
     metaDescription: z.string().optional(),
     bodyHtml: z.string(),
+    // URL slug from the live site's sitemap — many contain literal
+    // punctuation (colons, apostrophes, em-dashes). Falls back to the
+    // content id when absent so new articles don't need to set this.
+    urlSlug: z.string().optional(),
   }),
 });
 

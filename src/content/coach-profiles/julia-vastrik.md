@@ -1,5 +1,6 @@
 ---
 name: Julia Västrik
+urlSlug: "julia-västrik"
 firstName: Julia
 role: Better Change Coach
 country: Estonia

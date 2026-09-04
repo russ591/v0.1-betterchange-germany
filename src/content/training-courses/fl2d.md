@@ -1,6 +1,7 @@
 ---
 name: Flight Level 2 Design (FL2D)
 code: FL2D
+urlSlug: "flight-level-2-design-(fl2d)"
 category: flight-levels
 level: Practitioner
 durationText: "2 days ·\_4 x ½ days ·\_your pace"

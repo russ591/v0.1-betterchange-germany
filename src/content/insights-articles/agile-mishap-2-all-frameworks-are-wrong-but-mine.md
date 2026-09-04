@@ -1,5 +1,6 @@
 ---
 title: 'Agile Mishap #2: All frameworks are wrong but mine'
+urlSlug: "agile-mishap-2:-all-frameworks-are-wrong-but-mine"
 contentType: Blog
 primaryCategory: Agile
 categories:

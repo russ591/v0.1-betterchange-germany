@@ -1,5 +1,6 @@
 ---
 title: 'Agile Retrospectives, Second Edition: A Practical Guide for Catalyzing Team Learning and Improvement'
+urlSlug: "agile-retrospectives,-second-edition:-a-practical-guide-for-catalyzing-team-learning-and-improvement"
 contentType: Blog
 primaryCategory: Coaching
 categories:

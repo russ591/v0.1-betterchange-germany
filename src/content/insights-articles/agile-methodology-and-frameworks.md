@@ -1,5 +1,6 @@
 ---
 title: 'Agile Methodology and Frameworks: What the Umbrella Actually Covers'
+urlSlug: "agile-methodology-and-frameworks:-what-the-umbrella-actually-covers"
 contentType: Resource
 primaryCategory: Agile
 categories:

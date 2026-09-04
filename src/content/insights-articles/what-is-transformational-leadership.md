@@ -1,5 +1,6 @@
 ---
 title: What is Transformational Leadership?
+urlSlug: "what-is-transformational-leadership"
 contentType: Resource
 primaryCategory: Leadership
 categories:

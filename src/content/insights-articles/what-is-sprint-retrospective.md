@@ -1,5 +1,6 @@
 ---
 title: What is the Sprint Retrospective?
+urlSlug: "what-is-the-sprint-retrospective"
 contentType: Resource
 primaryCategory: Scrum
 categories:

@@ -1,5 +1,6 @@
 ---
 title: State of Agile - A Brutally Honest Conversation
+urlSlug: "state-of-agile---a-brutally-honest-conversation"
 contentType: Blog
 primaryCategory: Change Management
 categories:

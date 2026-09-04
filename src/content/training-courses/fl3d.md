@@ -1,6 +1,7 @@
 ---
 name: Flight Level 3 Design (FL3D)
 code: FL3D
+urlSlug: "flight-level-3-design-(fl3d)"
 category: flight-levels
 level: Advanced
 durationText: "2 days ·\_4 x ½ days ·\_your pace"

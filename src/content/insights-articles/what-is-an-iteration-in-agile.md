@@ -1,5 +1,6 @@
 ---
 title: What is an Iteration in Agile?
+urlSlug: "what-is-an-iteration-in-agile"
 contentType: Resource
 primaryCategory: Agile
 categories:

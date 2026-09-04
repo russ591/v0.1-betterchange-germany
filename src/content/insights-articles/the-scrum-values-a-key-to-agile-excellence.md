@@ -1,5 +1,6 @@
 ---
 title: 'Scrum''s Five Values: The Human Foundation Under the Framework'
+urlSlug: "scrum's-five-values:-the-human-foundation-under-the-framework"
 contentType: Resource
 primaryCategory: Agile
 categories:

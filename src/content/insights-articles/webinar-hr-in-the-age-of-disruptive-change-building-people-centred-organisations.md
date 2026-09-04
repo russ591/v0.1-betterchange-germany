@@ -1,5 +1,6 @@
 ---
 title: What HR Looks Like When It's Actually Agile
+urlSlug: "what-hr-looks-like-when-its-actually-agile"
 contentType: Blog
 primaryCategory: Change Management
 categories:

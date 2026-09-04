@@ -1,5 +1,6 @@
 ---
 title: Discover How a Rapid Growing Business Regained Focus
+urlSlug: "discover-how-a-rapid-growing-business-regained-focus"
 contentType: Blog
 primaryCategory: Flight Levels
 categories:

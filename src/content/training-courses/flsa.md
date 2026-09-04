@@ -1,6 +1,7 @@
 ---
 name: Flight Levels System Architecture (FLSA)
 code: FLSA
+urlSlug: "flight-levels-system-architecture-(flsa)"
 category: flight-levels
 level: Expert
 durationText: "2 days ·\_4 x ½ days ·\_your pace"

@@ -1,6 +1,7 @@
 ---
 name: Agile Team Facilitation (ICP-ATF)
 code: ICPATF
+urlSlug: "agile-team-facilitation-(icp-atf)"
 category: coaching
 level: Practitioner
 durationText: "2 days ·\_4 x ½ days"

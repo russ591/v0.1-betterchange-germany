@@ -1,5 +1,6 @@
 ---
 title: How to Run a Retrospective That Actually Changes Things
+urlSlug: "how-to-run-a-retrospective-that-actually-changes-things"
 contentType: Resource
 primaryCategory: Leadership
 categories:

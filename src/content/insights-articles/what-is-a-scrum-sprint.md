@@ -1,5 +1,6 @@
 ---
 title: 'The Scrum Sprint: Short, Fixed, Continuous — and More Consequential Than It Looks'
+urlSlug: "the-scrum-sprint:-short,-fixed,-continuous-—-and-more-consequential-than-it-looks"
 contentType: Resource
 primaryCategory: Scrum
 categories:

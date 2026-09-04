@@ -1,5 +1,6 @@
 ---
 title: 'The Strategy Translation Canvas: A Tool for Closing the Gap Between Vision and Execution'
+urlSlug: "the-strategy-translation-canvas:-a-tool-for-closing-the-gap-between-vision-and-execution"
 contentType: Blog
 primaryCategory: Change Management
 categories:

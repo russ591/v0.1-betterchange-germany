@@ -1,5 +1,6 @@
 ---
 name: Heidi Reidel Sørensen
+urlSlug: "heidi-reidel-sørensen"
 firstName: Heidi
 role: Better Change Coach
 country: Denmark

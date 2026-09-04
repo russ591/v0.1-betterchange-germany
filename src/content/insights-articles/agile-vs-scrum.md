@@ -1,5 +1,6 @@
 ---
 title: 'Agile vs Scrum: Clearing Up the Confusion Once and for All'
+urlSlug: "agile-vs-scrum:-clearing-up-the-confusion-once-and-for-all"
 contentType: Resource
 primaryCategory: Agile
 categories:

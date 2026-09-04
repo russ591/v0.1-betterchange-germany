@@ -1,5 +1,6 @@
 ---
 title: 'Lean vs Agile: What They Share, Where They Differ, and Why It Actually Matters'
+urlSlug: "lean-vs-agile:-what-they-share,-where-they-differ,-and-why-it-actually-matters"
 contentType: Resource
 primaryCategory: Agile
 categories:

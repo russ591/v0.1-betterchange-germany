@@ -1,5 +1,6 @@
 ---
 title: 'Scrum''s Five Events: What They Are, What They''re For, and How They Connect'
+urlSlug: "scrum's-five-events:-what-they-are,-what-they're-for,-and-how-they-connect"
 contentType: Resource
 primaryCategory: Scrum
 categories:

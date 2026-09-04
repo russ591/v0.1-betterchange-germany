@@ -1,5 +1,6 @@
 ---
 title: 'Agile mishap #3: The Agile Bubble'
+urlSlug: "agile-mishap-3:-the-agile-bubble"
 contentType: Blog
 primaryCategory: Agile
 categories:

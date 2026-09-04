@@ -1,5 +1,6 @@
 ---
 title: 'Story Points: What They Are, What They''re Not, and How to Use Them Well'
+urlSlug: "story-points:-what-they-are,-what-they're-not,-and-how-to-use-them-well"
 contentType: Resource
 primaryCategory: Agile
 categories:

@@ -1,5 +1,6 @@
 ---
 title: What are Cross Functional Teams?
+urlSlug: "what-are-cross-functional-teams"
 contentType: Resource
 primaryCategory: Leadership
 categories:

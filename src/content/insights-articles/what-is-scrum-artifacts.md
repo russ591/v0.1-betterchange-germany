@@ -1,5 +1,6 @@
 ---
 title: 'Scrum''s Three Artefacts: What They Are and Why They Matter'
+urlSlug: "scrum's-three-artefacts:-what-they-are-and-why-they-matter"
 contentType: Resource
 primaryCategory: Scrum
 categories:

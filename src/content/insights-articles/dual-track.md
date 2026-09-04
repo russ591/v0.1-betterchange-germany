@@ -1,5 +1,6 @@
 ---
 title: 'Dual Track Agile: Discover and Deliver at the Same Time'
+urlSlug: "dual-track-agile:-discover-and-deliver-at-the-same-time"
 contentType: Resource
 primaryCategory: Agile
 categories:

@@ -1,5 +1,6 @@
 ---
 title: Elevate Your SAFe® By Breaking Down Barriers
+urlSlug: "elevate-your-safe®-by-breaking-down-barriers"
 contentType: Blog
 primaryCategory: Agile
 categories:

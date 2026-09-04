@@ -1,5 +1,6 @@
 ---
 title: Can the Product Owner also be the Scrum Master?
+urlSlug: "can-the-product-owner-also-be-the-scrum-master"
 contentType: Resource
 primaryCategory: Scrum
 categories:

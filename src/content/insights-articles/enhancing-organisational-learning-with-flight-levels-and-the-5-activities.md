@@ -1,5 +1,6 @@
 ---
 title: 'Flight Levels in Practice: The Five Activities That Make It Work'
+urlSlug: "flight-levels-in-practice:-the-five-activities-that-make-it-work"
 contentType: Blog
 primaryCategory: Flight Levels
 categories:

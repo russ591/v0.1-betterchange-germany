@@ -1,5 +1,6 @@
 ---
 title: 'Agile Mishap #4: Incompetent Coaches and Trainers'
+urlSlug: "agile-mishap-4:-incompetent-coaches-and-trainers"
 contentType: Blog
 primaryCategory: Coaching
 categories:

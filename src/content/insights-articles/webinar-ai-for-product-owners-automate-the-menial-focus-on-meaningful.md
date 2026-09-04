@@ -1,5 +1,6 @@
 ---
 title: How Product Owners Can Use AI Without Losing the Plot
+urlSlug: "how-product-owners-can-use-ai-without-losing-the-plot"
 contentType: Blog
 primaryCategory: Change Management
 categories:

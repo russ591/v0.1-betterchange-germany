@@ -1,5 +1,6 @@
 ---
 title: 'The Agile Manifesto: Four Values, Twelve Principles, and Why It Still Holds Up'
+urlSlug: "the-agile-manifesto:-four-values,-twelve-principles,-and-why-it-still-holds-up"
 contentType: Resource
 primaryCategory: Agile
 categories:

@@ -1,5 +1,6 @@
 ---
 title: 'Despite All the Mishaps: Show Me the Better Option!'
+urlSlug: "despite-all-the-mishaps:-show-me-the-better-option!"
 contentType: Blog
 primaryCategory: Agile
 categories:

@@ -1,6 +1,7 @@
 ---
 name: Enterprise Scale Kanban (ESK)
 code: ESK
+urlSlug: "enterprise-scale-kanban-(esk)"
 category: kanban
 level: Practitioner
 durationText: "2 days ·\_4 x ½ days"

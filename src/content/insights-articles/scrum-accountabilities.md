@@ -1,5 +1,6 @@
 ---
 title: 'Scrum''s Three Accountabilities: What They Actually Mean'
+urlSlug: "scrum's-three-accountabilities:-what-they-actually-mean"
 contentType: Resource
 primaryCategory: Scrum
 categories:

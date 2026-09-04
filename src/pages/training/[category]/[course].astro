@@ -15,7 +15,7 @@ import { formatSessionDate } from "@/lib/dates";
 export async function getStaticPaths() {
   const courses = await getCollection("training-courses");
   return courses.map((course) => ({
-    params: { category: course.data.category.id, course: course.id },
+    params: { category: course.data.category.id, course: course.data.urlSlug ?? course.id },
     props: { course },
   }));
 }

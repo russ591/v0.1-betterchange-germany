@@ -1,5 +1,6 @@
 ---
 title: What is Kanban Flight Levels?
+urlSlug: "what-is-kanban-flight-levels"
 contentType: Resource
 primaryCategory: Kanban
 categories:

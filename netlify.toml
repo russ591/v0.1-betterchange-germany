@@ -8,3 +8,259 @@
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
+
+# --- Canonical domain -------------------------------------------------
+# betterchange-consulting.de (apex, no www) is canonical.
+[[redirects]]
+  from = "https://www.betterchange-consulting.de/*"
+  to = "https://betterchange-consulting.de/:splat"
+  status = 301
+  force = true
+
+# --- Old Wix system page ------------------------------------------------
+# /confirmation was Wix's own post-checkout page; the new registration
+# flow ends at /training/register/thank-you.
+[[redirects]]
+  from = "/confirmation"
+  to = "/training/register/thank-you"
+  status = 301
+
+# --- Superseded session date --------------------------------------------
+# The live sitemap listed the Berlin FL3D session as 17-11-2026; the
+# current content has it as 24-11-2026. Catching the old date just in
+# case it was indexed.
+[[redirects]]
+  from = "/training/register/fl3d-ber-17-11-2026"
+  to = "/training/register/fl3d-ber-24-11-2026"
+  status = 301
+
+# --- Insights articles whose live slug contains ? or # ------------------
+# `?` and `#` are reserved URL delimiters and can never appear literally
+# in a served path (a browser truncates everything after them before the
+# request even reaches the server, and even percent-encoded forms proved
+# unreliable to serve directly — see commit history). The articles below
+# are built with that character simply removed. These redirects catch
+# both the fully percent-encoded form (in case that's what search engines
+# indexed) and, where it differs, the plain truncated path a literal
+# unencoded link resolves to.
+#
+# Five "agile mishap #N" articles are deliberately NOT covered by a
+# truncated-path redirect: a literal `#` is stripped client-side by the
+# browser before the request is even sent, so all five would truncate to
+# the identical ambiguous path "/insights/agile-mishap-" — there is no
+# way to redirect that to the right one of five different articles.
+[[redirects]]
+  from = "/insights/agile-mishap-%231:-do-it-by-the-book!"
+  to = "/insights/agile-mishap-1:-do-it-by-the-book!"
+  status = 301
+
+[[redirects]]
+  from = "/insights/agile-mishap-%232:-all-frameworks-are-wrong-but-mine"
+  to = "/insights/agile-mishap-2:-all-frameworks-are-wrong-but-mine"
+  status = 301
+
+[[redirects]]
+  from = "/insights/agile-mishap-%234:-incompetent-coaches-and-trainers"
+  to = "/insights/agile-mishap-4:-incompetent-coaches-and-trainers"
+  status = 301
+
+[[redirects]]
+  from = "/insights/agile-mishap-%235:-the-certification-circus"
+  to = "/insights/agile-mishap-5:-the-certification-circus"
+  status = 301
+
+[[redirects]]
+  from = "/insights/can-the-product-owner-also-be-the-scrum-master%3F"
+  to = "/insights/can-the-product-owner-also-be-the-scrum-master"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-the-definition-of-done%3F"
+  to = "/insights/what-is-the-definition-of-done"
+  status = 301
+
+[[redirects]]
+  from = "/insights/how-to-discover-and-solve-impediments-in-scrum%3F"
+  to = "/insights/how-to-discover-and-solve-impediments-in-scrum"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-the-product-backlog%3F"
+  to = "/insights/what-is-the-product-backlog"
+  status = 301
+
+[[redirects]]
+  from = "/insights/agile-mishap-%233:-the-agile-bubble"
+  to = "/insights/agile-mishap-3:-the-agile-bubble"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-are-the-three-pillars-of-scrum%3F"
+  to = "/insights/what-are-the-three-pillars-of-scrum"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-are-cross-functional-teams%3F"
+  to = "/insights/what-are-cross-functional-teams"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-a-kanban-card%3F"
+  to = "/insights/what-is-a-kanban-card"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-a-product-goal%3F"
+  to = "/insights/what-is-a-product-goal"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-a-product-vision%3F"
+  to = "/insights/what-is-a-product-vision"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-a-scrum-master%3F-more-than-a-meeting-facilitator"
+  to = "/insights/what-is-a-scrum-master-more-than-a-meeting-facilitator"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-a-scrum-master"
+  to = "/insights/what-is-a-scrum-master-more-than-a-meeting-facilitator"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-a-spike-in-scrum%3F"
+  to = "/insights/what-is-a-spike-in-scrum"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-a-sprint-goal%3F"
+  to = "/insights/what-is-a-sprint-goal"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-agile-leadership%3F"
+  to = "/insights/what-is-agile-leadership"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-agile-project-management%3F"
+  to = "/insights/what-is-agile-project-management"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-agile-transformation%3F"
+  to = "/insights/what-is-agile-transformation"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-agile%3F-beyond-the-buzzword"
+  to = "/insights/what-is-agile-beyond-the-buzzword"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-agile"
+  to = "/insights/what-is-agile-beyond-the-buzzword"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-an-agile-organisation%3F"
+  to = "/insights/what-is-an-agile-organisation"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-an-iteration-in-agile%3F"
+  to = "/insights/what-is-an-iteration-in-agile"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-change-management%3F-a-practical-guide-to-navigating-organisational-transitions"
+  to = "/insights/what-is-change-management-a-practical-guide-to-navigating-organisational-transitions"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-change-management"
+  to = "/insights/what-is-change-management-a-practical-guide-to-navigating-organisational-transitions"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-evidence-based-management%3F"
+  to = "/insights/what-is-evidence-based-management"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-kanban-flight-levels%3F"
+  to = "/insights/what-is-kanban-flight-levels"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-leadership-development%3F"
+  to = "/insights/what-is-leadership-development"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-organisational-culture%3F"
+  to = "/insights/what-is-organisational-culture"
+  status = 301
+
+[[redirects]]
+  from = "/insights/scrum-capacity-planning:-how-much-can-the-team-actually-do-this-sprint%3F"
+  to = "/insights/scrum-capacity-planning:-how-much-can-the-team-actually-do-this-sprint"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-scrum-velocity%3F"
+  to = "/insights/what-is-scrum-velocity"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-scrum%3F-a-straight-answer-to-the-most-common-question-in-agile"
+  to = "/insights/what-is-scrum-a-straight-answer-to-the-most-common-question-in-agile"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-scrum"
+  to = "/insights/what-is-scrum-a-straight-answer-to-the-most-common-question-in-agile"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-self-organizing-teams%3F"
+  to = "/insights/what-is-self-organizing-teams"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-sprint-planning%3F"
+  to = "/insights/what-is-sprint-planning"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-the-sprint-retrospective%3F"
+  to = "/insights/what-is-the-sprint-retrospective"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-timeboxing-in-scrum%3F"
+  to = "/insights/what-is-timeboxing-in-scrum"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-transformational-leadership%3F"
+  to = "/insights/what-is-transformational-leadership"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-went-wrong-with-agile%3F-an-honest-reckoning"
+  to = "/insights/what-went-wrong-with-agile-an-honest-reckoning"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-went-wrong-with-agile"
+  to = "/insights/what-went-wrong-with-agile-an-honest-reckoning"
+  status = 301
+
+# --- Superseded percent-sign slug ---------------------------------------
+[[redirects]]
+  from = "/insights/okrs:-ambitious-goals,-honest-numbers,-and-why-70%25-is-actually-fine"
+  to = "/insights/okrs:-ambitious-goals,-honest-numbers,-and-why-70-is-actually-fine"
+  status = 301

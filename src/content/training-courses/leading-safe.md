@@ -1,6 +1,7 @@
 ---
 name: Leading SAFe 6 (SAFe-SA)
 code: LEADINGSAFE
+urlSlug: "leading-safe-6-(safe-sa)"
 category: scaling
 level: Advanced
 durationText: "2 days ·\_4 x ½ days"

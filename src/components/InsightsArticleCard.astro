@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { toPathSegment } from "@/lib/urlSlug";
 
 interface Props {
   article: CollectionEntry<"insights-articles">;
@@ -18,7 +19,7 @@ const position = positions[hash % positions.length];
 ---
 
 <a
-  href={`/insights/${article.id}`}
+  href={`/insights/${toPathSegment(article.data.urlSlug ?? article.id)}`}
   class="flex flex-col overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card transition-shadow hover:shadow-card-hover"
 >
   {

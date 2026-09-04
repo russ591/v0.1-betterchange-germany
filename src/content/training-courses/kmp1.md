@@ -1,6 +1,7 @@
 ---
 name: Kanban System Design (KMP 1)
 code: KMP1
+urlSlug: "kanban-system-design-(kmp1)"
 category: kanban
 level: Practitioner
 durationText: "2 days ·\_4 x ½ days"

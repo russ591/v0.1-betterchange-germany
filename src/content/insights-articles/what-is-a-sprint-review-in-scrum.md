@@ -1,5 +1,6 @@
 ---
 title: 'The Sprint Review: Not a Presentation, a Conversation'
+urlSlug: "the-sprint-review:-not-a-presentation,-a-conversation"
 contentType: Resource
 primaryCategory: Scrum
 categories:

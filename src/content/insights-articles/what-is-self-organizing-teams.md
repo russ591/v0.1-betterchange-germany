@@ -1,5 +1,6 @@
 ---
 title: What is Self Organizing Teams?
+urlSlug: "what-is-self-organizing-teams"
 contentType: Resource
 primaryCategory: Leadership
 categories:

@@ -1,5 +1,6 @@
 ---
 title: 'Epics in Agile: How Large Pieces of Work Get Organised and Delivered'
+urlSlug: "epics-in-agile:-how-large-pieces-of-work-get-organised-and-delivered"
 contentType: Resource
 primaryCategory: Agile
 categories:

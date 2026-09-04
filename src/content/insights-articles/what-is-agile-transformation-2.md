@@ -1,5 +1,6 @@
 ---
 title: What Is Agile Transformation?
+urlSlug: "what-is-agile-transformation"
 contentType: Resource
 primaryCategory: Leadership
 categories:

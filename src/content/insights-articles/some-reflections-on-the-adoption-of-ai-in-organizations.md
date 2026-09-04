@@ -1,5 +1,6 @@
 ---
 title: What the AI Adoption Events in Madrid Didn't Talk About
+urlSlug: "what-the-ai-adoption-events-in-madrid-didn't-talk-about"
 contentType: Blog
 primaryCategory: Change Management
 categories:

@@ -1,5 +1,6 @@
 ---
 title: 'Creating a Teal Organisation: How to Achieve a Self-Managed Workplace'
+urlSlug: "creating-a-teal-organisation:-how-to-achieve-a-self-managed-workplace"
 contentType: Resource
 primaryCategory: Leadership
 categories:

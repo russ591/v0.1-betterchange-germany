@@ -1,5 +1,6 @@
 ---
 title: 'When Employees Resist Agile: The Reasons Are More Rational Than You Think'
+urlSlug: "when-employees-resist-agile:-the-reasons-are-more-rational-than-you-think"
 contentType: Blog
 primaryCategory: Agile
 categories:

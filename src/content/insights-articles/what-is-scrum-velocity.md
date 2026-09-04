@@ -1,5 +1,6 @@
 ---
 title: What is Scrum Velocity?
+urlSlug: "what-is-scrum-velocity"
 contentType: Resource
 primaryCategory: Scrum
 categories:

@@ -1,5 +1,6 @@
 ---
 title: 'Scrum vs Kanban: Why the Question Is Based on a Flawed Premise'
+urlSlug: "scrum-vs-kanban:-why-the-question-is-based-on-a-flawed-premise"
 contentType: Resource
 primaryCategory: Kanban
 categories:

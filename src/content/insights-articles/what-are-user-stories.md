@@ -1,5 +1,6 @@
 ---
 title: User Stories - the Clue Is in the Name
+urlSlug: "user-stories-the-clue-is-in-the-name"
 contentType: Resource
 primaryCategory: Agile
 categories:

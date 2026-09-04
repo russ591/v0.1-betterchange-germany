@@ -1,5 +1,6 @@
 ---
 title: 'AI Design: The Principles That Shape Every System You Interact With'
+urlSlug: "ai-design:-the-principles-that-shape-every-system-you-interact-with"
 contentType: Resource
 primaryCategory: AI
 categories:

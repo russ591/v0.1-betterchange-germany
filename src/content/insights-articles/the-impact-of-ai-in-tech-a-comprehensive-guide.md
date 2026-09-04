@@ -1,5 +1,6 @@
 ---
 title: 'AI in Tech: A Comprehensive Guide to its impact'
+urlSlug: "ai-in-tech:-a-comprehensive-guide-to-its-impact"
 contentType: Resource
 primaryCategory: AI
 categories:

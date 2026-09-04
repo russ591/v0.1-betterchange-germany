@@ -1,5 +1,6 @@
 ---
 title: The Start-Up That Said Agile Didn't Work — and Then Changed Its Mind
+urlSlug: "the-start-up-that-said-agile-didn't-work-—-and-then-changed-its-mind"
 contentType: Blog
 primaryCategory: Flight Levels
 categories:

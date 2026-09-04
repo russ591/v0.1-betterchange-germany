@@ -1,5 +1,6 @@
 ---
 title: What are the Three Pillars of Scrum?
+urlSlug: "what-are-the-three-pillars-of-scrum"
 contentType: Resource
 primaryCategory: Scrum
 categories:

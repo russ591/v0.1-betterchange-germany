@@ -1,5 +1,6 @@
 ---
 title: Applying Agile Thinking to Your Own Career (It Works Better Than You'd Think)
+urlSlug: "applying-agile-thinking-to-your-own-career-(it-works-better-than-you'd-think)"
 contentType: Blog
 primaryCategory: Agile
 categories:

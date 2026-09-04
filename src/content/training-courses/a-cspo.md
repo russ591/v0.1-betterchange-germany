@@ -1,6 +1,7 @@
 ---
 name: Advanced Certified Scrum Product Owner (A-CSPO)
 code: ACSPO
+urlSlug: "advanced-certified-scrum-product-owner-(a-cspo)"
 category: scrum
 level: Advanced
 durationText: "2 days ·\_4 x ½ days"

@@ -1,5 +1,6 @@
 ---
 title: What is Organisational Culture?
+urlSlug: "what-is-organisational-culture"
 contentType: Resource
 primaryCategory: Leadership
 categories:

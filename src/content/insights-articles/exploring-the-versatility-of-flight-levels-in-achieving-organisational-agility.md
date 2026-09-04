@@ -1,5 +1,6 @@
 ---
 title: Why Flight Levels Isn't a Framework — and Why That Matters
+urlSlug: "why-flight-levels-isn't-a-framework-—-and-why-that-matters"
 contentType: Blog
 primaryCategory: Flight Levels
 categories:

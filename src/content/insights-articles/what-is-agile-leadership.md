@@ -1,5 +1,6 @@
 ---
 title: What Is Agile Leadership?
+urlSlug: "what-is-agile-leadership"
 contentType: Resource
 primaryCategory: Leadership
 categories:

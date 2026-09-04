@@ -1,5 +1,6 @@
 ---
 title: The Culture That Got You Here Probably Won't Get You There
+urlSlug: "the-culture-that-got-you-here-probably-won't-get-you-there"
 contentType: Blog
 primaryCategory: Change Management
 categories:

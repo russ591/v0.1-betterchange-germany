@@ -1,5 +1,6 @@
 ---
 title: Why Team Performance Is Mostly About the Space Between People
+urlSlug: "why-team-performance-is-mostly-about-the-space-between-people"
 contentType: Blog
 primaryCategory: Coaching
 categories:

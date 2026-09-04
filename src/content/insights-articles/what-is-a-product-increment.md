@@ -1,5 +1,6 @@
 ---
 title: 'The Product Increment: Scrum''s Most Important Artefact'
+urlSlug: "the-product-increment:-scrum's-most-important-artefact"
 contentType: Resource
 primaryCategory: Scrum
 categories:

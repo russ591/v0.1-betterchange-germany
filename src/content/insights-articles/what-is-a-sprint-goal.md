@@ -1,5 +1,6 @@
 ---
 title: What Is a Sprint Goal?
+urlSlug: "what-is-a-sprint-goal"
 contentType: Resource
 primaryCategory: Agile
 categories:

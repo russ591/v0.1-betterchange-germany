@@ -1,5 +1,6 @@
 ---
 title: 'Estimation in Scrum: What It''s For, How to Do It, and When to Question It'
+urlSlug: "estimation-in-scrum:-what-it's-for,-how-to-do-it,-and-when-to-question-it"
 contentType: Resource
 primaryCategory: Scrum
 categories:

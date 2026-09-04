@@ -1,5 +1,6 @@
 ---
 title: 'The Product Owner: Running a Business Within a Business'
+urlSlug: "the-product-owner:-running-a-business-within-a-business"
 contentType: Resource
 primaryCategory: Scrum
 categories:

@@ -1,6 +1,7 @@
 ---
 name: Certified Agile Leader 2 (CAL-2)
 code: CAL2
+urlSlug: "certified-agile-leader-2-(cal-2)"
 category: leadership
 level: Advanced
 durationText: "2 days ·\_4 x ½ days"

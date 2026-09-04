@@ -1,5 +1,6 @@
 ---
 title: 'Scrum Capacity Planning: How Much Can the Team Actually Do This Sprint?'
+urlSlug: "scrum-capacity-planning:-how-much-can-the-team-actually-do-this-sprint"
 contentType: Resource
 primaryCategory: Scrum
 categories:

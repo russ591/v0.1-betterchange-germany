@@ -1,5 +1,6 @@
 ---
 title: 'The Pacesetter Trap: What Happens When One Leadership Style Runs Everything'
+urlSlug: "the-pacesetter-trap:-what-happens-when-one-leadership-style-runs-everything"
 contentType: Blog
 primaryCategory: Leadership
 categories:

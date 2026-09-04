@@ -1,5 +1,6 @@
 ---
 title: What Is Leadership Development?
+urlSlug: "what-is-leadership-development"
 contentType: Resource
 primaryCategory: Leadership
 categories:

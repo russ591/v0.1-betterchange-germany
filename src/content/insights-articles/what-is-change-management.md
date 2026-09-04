@@ -1,5 +1,6 @@
 ---
 title: What Is Change Management? A Practical Guide to Navigating Organisational Transitions
+urlSlug: "what-is-change-management-a-practical-guide-to-navigating-organisational-transitions"
 contentType: Resource
 primaryCategory: Leadership
 categories:

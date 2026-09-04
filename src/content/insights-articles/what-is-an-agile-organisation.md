@@ -1,5 +1,6 @@
 ---
 title: What is an Agile Organisation?
+urlSlug: "what-is-an-agile-organisation"
 contentType: Resource
 primaryCategory: Agile
 categories:

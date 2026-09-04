@@ -1,5 +1,6 @@
 ---
 title: What Is a Scrum Master? More Than a Meeting Facilitator
+urlSlug: "what-is-a-scrum-master-more-than-a-meeting-facilitator"
 contentType: Resource
 primaryCategory: Scrum
 categories:

@@ -1,5 +1,6 @@
 ---
 title: 'OKRs: Ambitious Goals, Honest Numbers, and Why 70% Is Actually Fine'
+urlSlug: "okrs:-ambitious-goals,-honest-numbers,-and-why-70-is-actually-fine"
 contentType: Blog
 primaryCategory: Coaching
 categories:

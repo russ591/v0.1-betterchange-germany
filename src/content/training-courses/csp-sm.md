@@ -1,6 +1,7 @@
 ---
 name: Certified Scrum Professional ScrumMaster (CSP-SM)
 code: CSPSM
+urlSlug: "certified-scrum-professional-scrummaster-(csp-sm)"
 category: scrum
 level: Practitioner
 durationText: "2 days ·\_4 x ½ days"

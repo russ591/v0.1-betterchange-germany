@@ -1,5 +1,6 @@
 ---
 title: What is a Product Goal?
+urlSlug: "what-is-a-product-goal"
 contentType: Resource
 primaryCategory: Product Development
 categories:

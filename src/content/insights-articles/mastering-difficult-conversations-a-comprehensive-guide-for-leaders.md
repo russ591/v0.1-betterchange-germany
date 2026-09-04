@@ -1,5 +1,6 @@
 ---
 title: 'Difficult Conversations: A Leader''s Practical Guide to Saying the Hard Thing Well'
+urlSlug: "difficult-conversations:-a-leader's-practical-guide-to-saying-the-hard-thing-well"
 contentType: Blog
 primaryCategory: Leadership
 categories:

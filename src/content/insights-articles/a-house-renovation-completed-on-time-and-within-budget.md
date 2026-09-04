@@ -1,5 +1,6 @@
 ---
 title: How a Kanban Board on a Kitchen Wall Renovated Our House on Time and on Budget
+urlSlug: "how-a-kanban-board-on-a-kitchen-wall-renovated-our-house-on-time-and-on-budget"
 contentType: Blog
 primaryCategory: Leadership
 categories:

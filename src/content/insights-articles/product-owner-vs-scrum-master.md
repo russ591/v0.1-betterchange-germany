@@ -1,5 +1,6 @@
 ---
 title: 'Product Owner vs Scrum Master: Two Accountabilities That Should Never Be Combined'
+urlSlug: "product-owner-vs-scrum-master:-two-accountabilities-that-should-never-be-combined"
 contentType: Resource
 primaryCategory: Scrum
 categories:

@@ -1,6 +1,7 @@
 ---
 name: SAFe for Teams (SAFe-SP)
 code: SAFETEAMS
+urlSlug: "safe-for-teams-(safe-sp)"
 category: scaling
 level: Practitioner
 durationText: "2 days ·\_4 x ½ days"

@@ -8,6 +8,7 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { formatSessionDate } from "@/lib/dates";
 import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
+import { toPathSegment } from "@/lib/urlSlug";
 
 export async function getStaticPaths() {
   const sessions = await getCollection("training-schedules");
@@ -69,7 +70,7 @@ const countries = [
     items={[
       { label: "Training", href: "/training" },
       { label: category.data.name, href: `/training/${category.id}` },
-      { label: course.data.name, href: `/training/${category.id}/${course.id}` },
+      { label: course.data.name, href: `/training/${category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}` },
       { label: "Register" },
     ]}
   />
@@ -77,7 +78,7 @@ const countries = [
   <Section eyebrow="Register" class="bg-mist-light">
     <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">{course.data.name}</h1>
     <p class="mt-4 text-[length:var(--text-small)] text-neutral-500">
-      <a href={`/training/${course.data.category.id}/${course.id}`} class="hover:underline">
+      <a href={`/training/${course.data.category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`} class="hover:underline">
         &larr; Back to course details
       </a>
     </p>

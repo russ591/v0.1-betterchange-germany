@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import Badge from "@/components/Badge.astro";
+import { toPathSegment } from "@/lib/urlSlug";
 
 // Consolidates the live site's four course-card variants (discipline list,
 // schedule table row, "related courses" card, profile-page course card)
@@ -12,7 +13,7 @@ interface Props {
 }
 
 const { course, categorySlug, variant = "card" } = Astro.props;
-const href = `/training/${categorySlug}/${course.id}`;
+const href = `/training/${categorySlug}/${toPathSegment(course.data.urlSlug ?? course.id)}`;
 ---
 
 {

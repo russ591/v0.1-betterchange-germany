@@ -1,5 +1,6 @@
 ---
 title: 'Agile Mishap #5: The Certification Circus'
+urlSlug: "agile-mishap-5:-the-certification-circus"
 contentType: Blog
 primaryCategory: Agile
 categories:

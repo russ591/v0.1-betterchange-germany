@@ -1,5 +1,6 @@
 ---
 title: What is Evidence-Based Management?
+urlSlug: "what-is-evidence-based-management"
 contentType: Resource
 primaryCategory: Leadership
 categories:

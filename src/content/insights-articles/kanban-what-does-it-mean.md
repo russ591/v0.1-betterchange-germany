@@ -1,5 +1,6 @@
 ---
 title: 'Kanban: One Word, Three Completely Different Meanings'
+urlSlug: "kanban:-one-word,-three-completely-different-meanings"
 contentType: Resource
 primaryCategory: Kanban
 categories:

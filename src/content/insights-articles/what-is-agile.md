@@ -1,5 +1,6 @@
 ---
 title: What Is Agile? Beyond the Buzzword
+urlSlug: "what-is-agile-beyond-the-buzzword"
 contentType: Resource
 primaryCategory: Agile
 categories:

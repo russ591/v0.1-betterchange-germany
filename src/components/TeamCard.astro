@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { toPathSegment } from "@/lib/urlSlug";
 
 // Consolidates the homepage mini-avatar and About page full-photo-plus-flag
 // treatments into one card at two densities (spec §4).
@@ -14,7 +15,7 @@ const { name, role, country, languages, hasFullProfile, photo, linkedinUrl } = p
 // Every card links somewhere: to the full profile page when there is one,
 // otherwise out to the fellow's LinkedIn (new tab, since that leaves the
 // site) -- and only renders as a plain, unlinked card if neither exists.
-const href = hasFullProfile ? `/about/${profile.id}` : linkedinUrl;
+const href = hasFullProfile ? `/about/${toPathSegment(profile.data.urlSlug ?? profile.id)}` : linkedinUrl;
 const isExternal = !hasFullProfile && Boolean(linkedinUrl);
 
 const avatarSize = density === "compact" ? "h-12 w-12 text-sm" : "mb-4 h-20 w-20 text-lg";

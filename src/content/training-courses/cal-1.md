@@ -1,6 +1,7 @@
 ---
 name: Certified Agile Leader 1 (CAL-1)
 code: CAL1
+urlSlug: "certified-agile-leader-1-(cal-1)"
 category: leadership
 level: Practitioner
 durationText: "2 days ·\_4 x ½ days"

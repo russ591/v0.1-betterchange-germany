@@ -1,5 +1,6 @@
 ---
 name: Anders Højgaard Nielsen
+urlSlug: "anders-højgaard-nielsen"
 firstName: Anders
 role: Better Change Coach
 country: Denmark

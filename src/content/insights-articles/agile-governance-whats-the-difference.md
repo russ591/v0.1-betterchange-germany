@@ -1,5 +1,6 @@
 ---
 title: 'Agile Governance: Enough Structure to Enable, Not Enough to Control'
+urlSlug: "agile-governance:-enough-structure-to-enable,-not-enough-to-control"
 contentType: Blog
 primaryCategory: Change Management
 categories:

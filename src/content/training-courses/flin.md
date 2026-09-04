@@ -1,6 +1,7 @@
 ---
 name: Flight Levels Introduction (FLIN)
 code: FLIN
+urlSlug: "flight-levels-introduction-(flin)"
 category: flight-levels
 level: Foundation
 durationText: your pace

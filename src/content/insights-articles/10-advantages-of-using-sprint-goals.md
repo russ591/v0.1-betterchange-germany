@@ -1,5 +1,6 @@
 ---
 title: Ten Reasons Sprint Goals Are Worth the Effort
+urlSlug: "ten-reasons-sprint-goals-are-worth-the-effort"
 contentType: Blog
 primaryCategory: Coaching
 categories:

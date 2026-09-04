@@ -1,5 +1,6 @@
 ---
 title: The Hidden Ways Leaders Shape the Teams Around Them
+urlSlug: "the-hidden-ways-leaders-shape-the-teams-around-them"
 contentType: Blog
 primaryCategory: Change Management
 categories:

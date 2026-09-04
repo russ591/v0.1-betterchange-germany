@@ -1,5 +1,6 @@
 ---
 title: 'Forming, Storming, Norming, Performing: Tuckman''s Map Through Team Development'
+urlSlug: "forming,-storming,-norming,-performing:-tuckman's-map-through-team-development"
 contentType: Resource
 primaryCategory: Leadership
 categories:

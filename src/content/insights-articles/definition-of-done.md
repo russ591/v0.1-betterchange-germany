@@ -1,5 +1,6 @@
 ---
 title: What is the Definition of Done?
+urlSlug: "what-is-the-definition-of-done"
 contentType: Resource
 primaryCategory: Scrum
 categories:

@@ -1,5 +1,6 @@
 ---
 title: A Modest Manifesto for People Who Actually Change Things
+urlSlug: "a-modest-manifesto-for-people-who-actually-change-things"
 contentType: Blog
 primaryCategory: Coaching
 categories:

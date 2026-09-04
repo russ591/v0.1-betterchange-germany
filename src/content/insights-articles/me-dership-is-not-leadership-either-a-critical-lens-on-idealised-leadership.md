@@ -1,5 +1,6 @@
 ---
 title: Me-dership is not Leadership Either - A Critical Lens on Idealised Leadership
+urlSlug: "me-dership-is-not-leadership-either---a-critical-lens-on-idealised-leadership"
 contentType: Blog
 primaryCategory: Leadership
 categories:

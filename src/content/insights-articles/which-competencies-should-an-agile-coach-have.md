@@ -1,5 +1,6 @@
 ---
 title: What an Agile Coach Actually Needs to Be Good At
+urlSlug: "what-an-agile-coach-actually-needs-to-be-good-at"
 contentType: Blog
 primaryCategory: Coaching
 categories:

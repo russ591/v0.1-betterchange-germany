@@ -1,6 +1,7 @@
 ---
 name: Certified Scrum Master (CSM)
 code: CSM
+urlSlug: "certified-scrum-master-(csm)"
 category: scrum
 level: Practitioner
 durationText: "2 days ·\_4 x ½ days"

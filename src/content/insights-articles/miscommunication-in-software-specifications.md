@@ -1,5 +1,6 @@
 ---
 title: Why Developers Build the Wrong Thing — and How User Stories Help
+urlSlug: "why-developers-build-the-wrong-thing-—-and-how-user-stories-help"
 contentType: Blog
 primaryCategory: Product Development
 categories:

@@ -1,5 +1,6 @@
 ---
 title: Training Without Coaching Is Theory. Coaching Without Training Is Guesswork.
+urlSlug: "training-without-coaching-is-theory.-coaching-without-training-is-guesswork."
 contentType: Blog
 primaryCategory: Coaching
 categories:

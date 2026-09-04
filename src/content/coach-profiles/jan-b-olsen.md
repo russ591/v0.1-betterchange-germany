@@ -1,5 +1,6 @@
 ---
 name: Jan B. Olsen
+urlSlug: "jan-b.-olsen"
 firstName: Jan
 role: Better Change Coach
 country: Denmark

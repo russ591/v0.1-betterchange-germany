@@ -1,5 +1,6 @@
 ---
 title: What is Sprint Planning?
+urlSlug: "what-is-sprint-planning"
 contentType: Resource
 primaryCategory: Scrum
 categories:

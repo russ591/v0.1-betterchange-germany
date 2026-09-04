@@ -1,5 +1,6 @@
 ---
 title: 'Kanban Boards: More Than Sticky Notes in Columns'
+urlSlug: "kanban-boards:-more-than-sticky-notes-in-columns"
 contentType: Resource
 primaryCategory: Kanban
 categories:

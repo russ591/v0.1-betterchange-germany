@@ -1,5 +1,6 @@
 ---
 title: What is the Product Backlog?
+urlSlug: "what-is-the-product-backlog"
 contentType: Resource
 primaryCategory: Scrum
 categories:

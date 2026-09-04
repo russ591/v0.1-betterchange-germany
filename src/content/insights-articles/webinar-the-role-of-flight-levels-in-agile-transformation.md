@@ -1,5 +1,6 @@
 ---
 title: Flight Levels in Action - Konrad Pogorzala at Agile Boston
+urlSlug: "flight-levels-in-action-konrad-pogorzala-at-agile-boston"
 contentType: Blog
 primaryCategory: Flight Levels
 categories:

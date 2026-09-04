@@ -1,5 +1,6 @@
 ---
 title: Six Months Into Your Scaling Initiative — and the Benefits Still Haven't Appeared
+urlSlug: "six-months-into-your-scaling-initiative-—-and-the-benefits-still-haven't-appeared"
 contentType: Blog
 primaryCategory: Change Management
 categories:

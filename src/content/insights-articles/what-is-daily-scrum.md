@@ -1,5 +1,6 @@
 ---
 title: 'The Daily Scrum: Fifteen Minutes That Can Make or Break a Sprint'
+urlSlug: "the-daily-scrum:-fifteen-minutes-that-can-make-or-break-a-sprint"
 contentType: Resource
 primaryCategory: Scrum
 categories:

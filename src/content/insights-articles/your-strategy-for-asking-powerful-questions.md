@@ -1,5 +1,6 @@
 ---
 title: 'The Question Behind the Question: Karl Tomm''s Map for Coaches'
+urlSlug: "the-question-behind-the-question:-karl-tomm's-map-for-coaches"
 contentType: Blog
 primaryCategory: Coaching
 categories:
