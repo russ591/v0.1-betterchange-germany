@@ -1,10 +1,13 @@
 ---
 import { getCollection, getEntry } from "astro:content";
+import { Image } from "astro:assets";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import Badge from "@/components/Badge.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { formatSessionDate } from "@/lib/dates";
+import { certificationLogos } from "@/data/certifications";
+import { courseBadges } from "@/data/courseBadges";
 
 export async function getStaticPaths() {
   const sessions = await getCollection("training-schedules");
@@ -21,6 +24,9 @@ const trainer = session.data.trainer ? await getEntry(session.data.trainer) : un
 
 const unitPrice = parseFloat(session.data.price.replace(/[^0-9.]/g, "")) || 0;
 const hasBulkOffer = /seats? for the price of/i.test(session.data.offer ?? "");
+
+const logo = category.data.certificationBody ? certificationLogos[category.data.certificationBody] : undefined;
+const badge = courseBadges[course.id];
 
 const countries = [
   "Germany",
@@ -75,13 +81,54 @@ const countries = [
         &larr; Back to course details
       </a>
     </p>
+    {
+      category.data.certificationBody && (
+        <div class="mt-7 inline-flex items-center gap-3 rounded-[var(--radius-pill)] border border-neutral-200 bg-surface px-4 py-2.5">
+          {logo ? (
+            <img src={logo.src} alt={logo.alt} class="h-4 w-auto object-contain" />
+          ) : (
+            <span class="text-[length:var(--text-caption)] font-semibold text-neutral-500">
+              {category.data.certificationBody}
+            </span>
+          )}
+          {badge && (
+            <>
+              <span aria-hidden="true" class="h-5 w-px bg-neutral-200" />
+              <Image
+                src={badge}
+                alt={`${course.data.certification ?? course.data.code} certification`}
+                width={56}
+                height={56}
+                class="h-7 w-7 rounded-full"
+              />
+            </>
+          )}
+          <span class="text-[length:var(--text-caption)] text-neutral-500">
+            Certified by <span class="font-semibold text-ink">{category.data.certificationBody}</span>
+          </span>
+        </div>
+      )
+    }
   </Section>
 
   <Section>
     <div class="grid gap-10 lg:grid-cols-[1fr_1.3fr]">
       <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-mist-light p-6">
         <p class="eyebrow text-neutral-500">Order summary</p>
-        <h2 class="mt-2 text-[length:var(--text-h4)]">{course.data.name}</h2>
+        <div class="mt-2 flex items-center gap-3">
+          {
+            badge ? (
+              <Image src={badge} alt="" width={48} height={48} class="h-8 w-8 shrink-0 rounded-full" />
+            ) : (
+              logo && (
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-1.5">
+                  <img src={logo.src} alt="" class="h-full w-full object-contain" />
+                </span>
+              )
+            )
+          }
+          <h2 class="text-[length:var(--text-h4)]">{course.data.name}</h2>
+        </div>
         <dl class="mt-6 space-y-4 text-[length:var(--text-small)]">
           <div class="flex items-center justify-between">
             <dt class="text-neutral-500">Format</dt>
