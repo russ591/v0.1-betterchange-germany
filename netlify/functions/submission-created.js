@@ -1,18 +1,23 @@
 // Netlify's "submission-created" magic filename: this runs automatically
 // after every Netlify Forms submission on the site. We use it to send a
-// confirmation email to the person who booked a training course.
+// confirmation email to the person who booked a training course, sent via
+// Gmail SMTP (Google Workspace) using an App Password.
 //
 // Requires two environment variables to be set in the Netlify dashboard
 // (Site configuration -> Environment variables) before this can actually
 // send anything:
-//   RESEND_API_KEY   — API key from a Resend account (resend.com)
-//   REGISTRATION_FROM_EMAIL — a "from" address on a domain verified in Resend,
-//                             e.g. "Better Change Germany <russ@betterchange-consulting.de>"
+//   GMAIL_USER         — the sending mailbox, russ@betterchange-consulting.de
+//   GMAIL_APP_PASSWORD — an App Password generated for that mailbox
+//                        (Google Account -> Security -> App passwords;
+//                        requires 2-Step Verification to be turned on)
 //
 // Until those are set, submissions still work exactly as before (captured by
 // Netlify Forms, notification email to the site owner) — this function just
 // logs and exits quietly rather than sending a booker confirmation.
+import nodemailer from "nodemailer";
 import { buildRegistrationEmailHtml, buildRegistrationEmailText, buildRegistrationEmailSubject } from "./lib/registration-email.js";
+
+const FROM_ADDRESS = "Better Change Germany <russ@betterchange-consulting.de>";
 
 export const handler = async (event) => {
   const { payload } = JSON.parse(event.body);
@@ -27,35 +32,32 @@ export const handler = async (event) => {
     return { statusCode: 200, body: "ignored: no booker email present" };
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const fromAddress = process.env.REGISTRATION_FROM_EMAIL;
+  const user = process.env.GMAIL_USER;
+  const pass = process.env.GMAIL_APP_PASSWORD;
 
-  if (!apiKey || !fromAddress) {
+  if (!user || !pass) {
     console.log(
-      "submission-created: RESEND_API_KEY or REGISTRATION_FROM_EMAIL not set — skipping booker confirmation email."
+      "submission-created: GMAIL_USER or GMAIL_APP_PASSWORD not set — skipping booker confirmation email."
     );
     return { statusCode: 200, body: "skipped: email service not configured" };
   }
 
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: fromAddress,
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: { user, pass },
+  });
+
+  try {
+    await transporter.sendMail({
+      from: FROM_ADDRESS,
       to: data.email,
-      reply_to: "russ@betterchange-consulting.de",
+      replyTo: "russ@betterchange-consulting.de",
       subject: buildRegistrationEmailSubject(data),
       html: buildRegistrationEmailHtml(data),
       text: buildRegistrationEmailText(data),
-    }),
-  });
-
-  if (!response.ok) {
-    const errorBody = await response.text();
-    console.error("submission-created: Resend API error", response.status, errorBody);
+    });
+  } catch (error) {
+    console.error("submission-created: Gmail send error", error);
     return { statusCode: 200, body: "email send failed, see function logs" };
   }
 

@@ -66,7 +66,7 @@ Better Change Germany<br />
 Dessauerstr 25k<br />
 12249 Berlin<br />
 Telefon: +49 (0) 151 1564 9226<br />
-E-Mail: russ@betterchange-consulting.de
+E-Mail: office@betterchange-consulting.de
 
 Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.
 

@@ -12,7 +12,7 @@ Dessauerstr. 25k<br />
 ### Kontakt
 
 Telefon: +49 (0) 151 1564 9226<br />
-E-Mail: russ@betterchange-consulting.de
+E-Mail: office@betterchange-consulting.de
 
 ### Umsatzsteuer-ID
 
