@@ -35,10 +35,11 @@ specialities:
   - Distributed teams
   - Agile transformation
 certifications:
+  - FL Guide®
   - Qualified FL Coach®
   - KU Certified Trainer
   - ICAgile Authorised Trainer
-  - FL Guide® (in progress)
+  - Scrum Alliance CEC & CTC
 coursesDelivered:
   - KMP1
   - KMP2
