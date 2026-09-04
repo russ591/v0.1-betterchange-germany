@@ -201,7 +201,7 @@ const countries = [
         <p class="eyebrow text-neutral-500">Your details</p>
 
         <div>
-          <label for="seats" class="text-[length:var(--text-small)] font-medium">Number of seats</label>
+          <label for="seats" class="block text-[length:var(--text-small)] font-medium">Number of seats</label>
           <select
             id="seats"
             name="seats"
@@ -211,43 +211,78 @@ const countries = [
           </select>
         </div>
 
-        <div class="grid gap-5 sm:grid-cols-2">
-          <div>
-            <label for="name" class="text-[length:var(--text-small)] font-medium">Your name</label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              required
-              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-            />
-          </div>
-          <div>
-            <label for="email" class="text-[length:var(--text-small)] font-medium">Your email</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-            />
+        <div>
+          <p class="eyebrow text-neutral-500">Who's attending?</p>
+          <div class="mt-4 space-y-4">
+            {
+              Array.from({ length: 6 }, (_, i) => i + 1).map((n) => (
+                <div data-attendee-block data-attendee-index={n} hidden={n > 1} class="grid gap-4 sm:grid-cols-2">
+                  <p class="text-[length:var(--text-caption)] font-semibold text-neutral-500 sm:col-span-2">
+                    Attendee {n}
+                  </p>
+                  <div>
+                    <label for={`attendee-name-${n}`} class="block text-[length:var(--text-small)] font-medium">
+                      Attendee {n} name
+                    </label>
+                    <input
+                      id={`attendee-name-${n}`}
+                      name={`attendee-name-${n}`}
+                      type="text"
+                      required={n === 1}
+                      class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+                    />
+                  </div>
+                  <div>
+                    <label for={`attendee-email-${n}`} class="block text-[length:var(--text-small)] font-medium">
+                      Attendee {n} email
+                    </label>
+                    <input
+                      id={`attendee-email-${n}`}
+                      name={`attendee-email-${n}`}
+                      type="email"
+                      required={n === 1}
+                      class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+                    />
+                  </div>
+                </div>
+              ))
+            }
           </div>
         </div>
 
         <div>
-          <label for="phone" class="text-[length:var(--text-small)] font-medium">Phone (optional)</label>
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-          />
+          <p class="eyebrow text-neutral-500">Who's registering?</p>
+          <p class="mt-2 text-[length:var(--text-caption)] text-neutral-500">
+            Defaults to the first attendee — change this if someone else is booking.
+          </p>
+          <div class="mt-4 grid gap-5 sm:grid-cols-2">
+            <div>
+              <label for="name" class="block text-[length:var(--text-small)] font-medium">Your name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-[length:var(--text-small)] font-medium">Your email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+              />
+            </div>
+          </div>
         </div>
 
         <p class="eyebrow text-neutral-500">Postal address</p>
 
         <div>
-          <label for="address" class="text-[length:var(--text-small)] font-medium">Street and number</label>
+          <label for="address" class="block text-[length:var(--text-small)] font-medium">Street and number</label>
           <input
             id="address"
             name="address"
@@ -259,7 +294,7 @@ const countries = [
 
         <div class="grid gap-5 sm:grid-cols-3">
           <div>
-            <label for="postcode" class="text-[length:var(--text-small)] font-medium">Postcode</label>
+            <label for="postcode" class="block text-[length:var(--text-small)] font-medium">Postcode</label>
             <input
               id="postcode"
               name="postcode"
@@ -269,7 +304,7 @@ const countries = [
             />
           </div>
           <div>
-            <label for="state" class="text-[length:var(--text-small)] font-medium">State</label>
+            <label for="state" class="block text-[length:var(--text-small)] font-medium">State</label>
             <input
               id="state"
               name="state"
@@ -279,7 +314,7 @@ const countries = [
             />
           </div>
           <div>
-            <label for="country" class="text-[length:var(--text-small)] font-medium">Country</label>
+            <label for="country" class="block text-[length:var(--text-small)] font-medium">Country</label>
             <select
               id="country"
               name="country"
@@ -300,7 +335,7 @@ const countries = [
         <p class="eyebrow text-neutral-500">Billing details</p>
 
         <div>
-          <label for="company" class="text-[length:var(--text-small)] font-medium">Company (optional)</label>
+          <label for="company" class="block text-[length:var(--text-small)] font-medium">Company (optional)</label>
           <input
             id="company"
             name="company"
@@ -310,7 +345,7 @@ const countries = [
         </div>
 
         <div>
-          <label for="vat-id" class="text-[length:var(--text-small)] font-medium">VAT ID (optional)</label>
+          <label for="vat-id" class="block text-[length:var(--text-small)] font-medium">VAT ID (optional)</label>
           <input
             id="vat-id"
             name="vat-id"
@@ -320,59 +355,17 @@ const countries = [
         </div>
 
         <div>
-          <label for="discount-code" class="text-[length:var(--text-small)] font-medium">Discount code (optional)</label>
+          <label for="discount-code" class="block text-[length:var(--text-small)] font-medium">Discount code (optional)</label>
           <input
             id="discount-code"
             name="discount-code"
             type="text"
-            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5 sm:w-64"
+            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
           />
         </div>
 
-        <label id="different-attendee-wrap" class="flex items-start gap-2 text-[length:var(--text-small)]" hidden>
-          <input type="checkbox" id="different-attendee" name="different-attendee" class="mt-1" />
-          This seat is for someone else
-        </label>
-
-        <div id="attendees-container" hidden>
-          <p class="eyebrow text-neutral-500">Attendee details</p>
-          <div class="mt-4 space-y-4">
-            {
-              Array.from({ length: 6 }, (_, i) => i + 1).map((n) => (
-                <div data-attendee-block data-attendee-index={n} hidden class="grid gap-4 sm:grid-cols-2">
-                  <p class="text-[length:var(--text-caption)] font-semibold text-neutral-500 sm:col-span-2">
-                    Attendee {n}
-                  </p>
-                  <div>
-                    <label for={`attendee-name-${n}`} class="text-[length:var(--text-small)] font-medium">
-                      Attendee {n} name
-                    </label>
-                    <input
-                      id={`attendee-name-${n}`}
-                      name={`attendee-name-${n}`}
-                      type="text"
-                      class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-                    />
-                  </div>
-                  <div>
-                    <label for={`attendee-email-${n}`} class="text-[length:var(--text-small)] font-medium">
-                      Attendee {n} email
-                    </label>
-                    <input
-                      id={`attendee-email-${n}`}
-                      name={`attendee-email-${n}`}
-                      type="email"
-                      class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-                    />
-                  </div>
-                </div>
-              ))
-            }
-          </div>
-        </div>
-
         <div>
-          <label for="notes" class="text-[length:var(--text-small)] font-medium">Anything we should know?</label>
+          <label for="notes" class="block text-[length:var(--text-small)] font-medium">Anything we should know?</label>
           <textarea
             id="notes"
             name="notes"
@@ -396,9 +389,6 @@ const countries = [
 
   <script>
     const seatsSelect = document.getElementById("seats") as HTMLSelectElement;
-    const differentAttendeeWrap = document.getElementById("different-attendee-wrap") as HTMLLabelElement;
-    const differentAttendeeCheckbox = document.getElementById("different-attendee") as HTMLInputElement;
-    const attendeesContainer = document.getElementById("attendees-container") as HTMLDivElement;
     const attendeeBlocks = Array.from(
       document.querySelectorAll<HTMLDivElement>("[data-attendee-block]")
     );
@@ -434,29 +424,37 @@ const countries = [
       }
     }
 
-    function update() {
+    function updateAttendeeBlocks() {
       const seats = parseInt(seatsSelect.value, 10);
-
-      if (seats === 1) {
-        differentAttendeeWrap.hidden = false;
-        const showAttendee = differentAttendeeCheckbox.checked;
-        attendeesContainer.hidden = !showAttendee;
-        attendeeBlocks.forEach((block, i) => {
-          block.hidden = !(i === 0 && showAttendee);
-        });
-      } else {
-        differentAttendeeWrap.hidden = true;
-        attendeesContainer.hidden = false;
-        attendeeBlocks.forEach((block, i) => {
-          block.hidden = i >= seats;
-        });
-      }
-
+      attendeeBlocks.forEach((block, i) => {
+        block.hidden = i >= seats;
+      });
       updateTotal(seats);
     }
 
-    seatsSelect.addEventListener("change", update);
-    differentAttendeeCheckbox.addEventListener("change", update);
-    update();
+    seatsSelect.addEventListener("change", updateAttendeeBlocks);
+    updateAttendeeBlocks();
+
+    // Mirror attendee 1's details into the booking-contact fields until the
+    // booker explicitly edits them themselves.
+    const attendee1Name = document.getElementById("attendee-name-1") as HTMLInputElement;
+    const attendee1Email = document.getElementById("attendee-email-1") as HTMLInputElement;
+    const bookerName = document.getElementById("name") as HTMLInputElement;
+    const bookerEmail = document.getElementById("email") as HTMLInputElement;
+    let bookerNameTouched = false;
+    let bookerEmailTouched = false;
+
+    attendee1Name.addEventListener("input", () => {
+      if (!bookerNameTouched) bookerName.value = attendee1Name.value;
+    });
+    attendee1Email.addEventListener("input", () => {
+      if (!bookerEmailTouched) bookerEmail.value = attendee1Email.value;
+    });
+    bookerName.addEventListener("input", () => {
+      bookerNameTouched = true;
+    });
+    bookerEmail.addEventListener("input", () => {
+      bookerEmailTouched = true;
+    });
   </script>
 </BaseLayout>

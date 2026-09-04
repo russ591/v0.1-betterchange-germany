@@ -13,18 +13,10 @@ export function buildAttendeeList(data) {
   const seats = parseInt(data.seats, 10) || 1;
   const attendees = [];
 
-  if (seats === 1) {
-    if (data["different-attendee"] && data["attendee-name-1"]) {
-      attendees.push({ name: data["attendee-name-1"], email: data["attendee-email-1"] });
-    } else {
-      attendees.push({ name: data.name, email: data.email });
-    }
-  } else {
-    for (let i = 1; i <= seats; i++) {
-      const name = data[`attendee-name-${i}`];
-      const email = data[`attendee-email-${i}`];
-      if (name || email) attendees.push({ name, email });
-    }
+  for (let i = 1; i <= seats; i++) {
+    const name = data[`attendee-name-${i}`];
+    const email = data[`attendee-email-${i}`];
+    if (name || email) attendees.push({ name, email });
   }
 
   return attendees;
