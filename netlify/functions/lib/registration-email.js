@@ -96,17 +96,13 @@ export function buildRegistrationEmailHtml(data) {
 
                 <table role="presentation" cellpadding="0" cellspacing="0" style="border-top:1px solid #e4e4e4;padding-top:20px;">
                   <tr>
-                    <td colspan="2" style="padding-bottom:10px;">
-                      <img src="https://betterchange-consulting.de/email-logo.png" width="150" height="22" alt="Better Change" style="display:block;" />
-                    </td>
-                  </tr>
-                  <tr>
                     <td style="vertical-align:top;font-size:14px;line-height:1.6;color:#525252;">
                       <p style="margin:0;font-weight:700;color:#0a0a0a;">Russell Hill</p>
                       <p style="margin:0;">Certified Trainer and Coach</p>
                       <p style="margin:0 0 8px;color:#a3a3a3;">(FL Guide, AKT, CAL, CEC, CTC)</p>
                       <p style="margin:0;"><a href="mailto:russ@betterchange-consulting.de" style="color:#0a0a0a;text-decoration:none;">russ@betterchange-consulting.de</a></p>
-                      <p style="margin:0;">+49 151 1564 9226</p>
+                      <p style="margin:0 0 10px;">+49 151 1564 9226</p>
+                      <img src="https://betterchange-consulting.de/email-logo.png" width="150" height="22" alt="Better Change" style="display:block;" />
                     </td>
                   </tr>
                 </table>
