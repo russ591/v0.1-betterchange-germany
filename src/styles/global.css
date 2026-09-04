@@ -198,6 +198,23 @@
     list-style: decimal;
   }
 
+  .article-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-card);
+  }
+
+  .article-body iframe {
+    max-width: 100%;
+  }
+
+  .article-body iframe[src*="youtube"],
+  .article-body iframe[src*="vimeo"] {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    height: auto;
+  }
+
   .marquee-track {
     animation: marquee 36s linear infinite;
   }

@@ -76,7 +76,7 @@ const courseSchema = {
 
   <Section class="bg-mist-light">
     <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-start">
-      <div>
+      <div class="min-w-0">
         <p class="eyebrow">{category.data.name} &middot; {course.data.code}</p>
         <h1 class="mt-4 text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
           {course.data.name}
@@ -144,7 +144,7 @@ const courseSchema = {
         }
       </div>
 
-      <div class="lg:sticky lg:top-24">
+      <div class="min-w-0 lg:sticky lg:top-24">
         <div class="overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card">
           <div class="flex items-center gap-3.5 border-b border-neutral-200 bg-mist-light px-5 py-4">
             {

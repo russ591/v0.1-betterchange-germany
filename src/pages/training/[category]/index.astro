@@ -42,7 +42,7 @@ const upcomingWithCourse = await Promise.all(
 
   <Section class="bg-mist-light">
     <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-start">
-      <div>
+      <div class="min-w-0">
         <p class="eyebrow">Training</p>
         <h1 class="mt-4 text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
           {category.data.name}
@@ -77,7 +77,7 @@ const upcomingWithCourse = await Promise.all(
         }
       </div>
 
-      <div class="lg:sticky lg:top-24">
+      <div class="min-w-0 lg:sticky lg:top-24">
         <div class="overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card">
           {
             category.data.certificationBody && (
