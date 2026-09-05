@@ -1,0 +1,186 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+
+const articles = (await getCollection("insights-articles")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+// Order topics by how many articles use them, most common first — matches
+// the pattern on /training/full-schedule (filter by topic, then by a
+// second dimension).
+const topicCounts = new Map<string, number>();
+for (const a of articles) {
+  if (a.data.primaryCategory) {
+    topicCounts.set(a.data.primaryCategory, (topicCounts.get(a.data.primaryCategory) ?? 0) + 1);
+  }
+}
+const topics = [...topicCounts.keys()].sort((a, b) => topicCounts.get(b)! - topicCounts.get(a)!);
+
+const types = [...new Set(articles.map((a) => a.data.contentType).filter((t): t is string => Boolean(t)))].sort();
+---
+
+<BaseLayout
+  title="Insights"
+  description="Practical thinking on Kanban, Flight Levels, agile transformation, and organisational change — written by people who have done the work."
+>
+  <Breadcrumbs items={[{ label: "Insights" }]} />
+
+  <Section eyebrow="insights" class="bg-mist-light">
+    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+      Articles, guides &amp; resources
+    </h1>
+    <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
+      Practical thinking on Kanban, Flight Levels, agile transformation, and organisational change —
+      written by people who have done the work.
+    </p>
+  </Section>
+
+  <Section eyebrow={`${articles.length} article${articles.length === 1 ? "" : "s"}`}>
+    <div class="space-y-4" id="insights-filters">
+      <div>
+        <p class="text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-500">
+          Filter by topic
+        </p>
+        <div class="mt-2 flex flex-wrap gap-2">
+          {
+            topics.map((topic) => (
+              <button
+                type="button"
+                data-filter-group="topic"
+                data-filter-value={topic}
+                class="cursor-pointer rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors hover:border-ink hover:text-ink"
+              >
+                {topic}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+      <div>
+        <p class="text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-500">
+          Filter by type
+        </p>
+        <div class="mt-2 flex flex-wrap gap-2">
+          {
+            types.map((type) => (
+              <button
+                type="button"
+                data-filter-group="type"
+                data-filter-value={type}
+                class="cursor-pointer rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors hover:border-ink hover:text-ink"
+              >
+                {type}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <p id="insights-empty" class="mt-10 text-[length:var(--text-body)] text-neutral-500" hidden>
+      No articles match the selected filters.
+    </p>
+
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="insights-grid">
+      {
+        articles.map((article) => (
+          <div
+            class="insights-card contents"
+            data-topic={article.data.primaryCategory ?? ""}
+            data-type={article.data.contentType ?? ""}
+          >
+            <InsightsArticleCard article={article} />
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section tone="dark" eyebrow="Newsletter" heading="Get new articles by email">
+    <p class="max-w-xl text-[length:var(--text-body)] text-neutral-300">
+      No noise. Just useful thinking on agile, Kanban, and Flight Levels — roughly monthly.
+    </p>
+    <form
+      name="newsletter"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      action="/thank-you"
+      class="mt-6 flex max-w-md flex-col gap-3 sm:flex-row"
+    >
+      <input type="hidden" name="form-name" value="newsletter" />
+      <p class="hidden">
+        <label>
+          Don't fill this out if you're human: <input name="bot-field" />
+        </label>
+      </p>
+      <label class="sr-only" for="newsletter-email">Email address</label>
+      <input
+        id="newsletter-email"
+        name="email"
+        type="email"
+        required
+        placeholder="you@company.com"
+        class="w-full rounded-[var(--radius-control)] border border-neutral-600 bg-transparent px-4 py-2.5 text-surface placeholder:text-neutral-500"
+      />
+      <button
+        type="submit"
+        class="shrink-0 rounded-[var(--radius-control)] bg-lime px-6 py-2.5 font-semibold text-ink"
+      >
+        Subscribe
+      </button>
+    </form>
+  </Section>
+
+  <script>
+    const filterButtons = Array.from(
+      document.querySelectorAll<HTMLButtonElement>("[data-filter-group]")
+    );
+    const cards = Array.from(document.querySelectorAll<HTMLElement>(".insights-card"));
+    const emptyMessage = document.getElementById("insights-empty") as HTMLParagraphElement;
+    const grid = document.getElementById("insights-grid") as HTMLDivElement;
+
+    const active: Record<string, Set<string>> = { topic: new Set(), type: new Set() };
+
+    function update() {
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const topic = card.dataset.topic ?? "";
+        const type = card.dataset.type ?? "";
+        const topicMatch = active.topic.size === 0 || active.topic.has(topic);
+        const typeMatch = active.type.size === 0 || active.type.has(type);
+        const visible = topicMatch && typeMatch;
+        card.hidden = !visible;
+        if (visible) visibleCount++;
+      });
+
+      emptyMessage.hidden = visibleCount > 0;
+      grid.style.display = visibleCount > 0 ? "" : "none";
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const group = button.dataset.filterGroup!;
+        const value = button.dataset.filterValue!;
+        const isActive = active[group].has(value);
+
+        if (isActive) {
+          active[group].delete(value);
+          button.classList.remove("bg-lime", "border-lime", "text-ink");
+          button.classList.add("bg-surface", "border-neutral-300", "text-neutral-700");
+        } else {
+          active[group].add(value);
+          button.classList.remove("bg-surface", "border-neutral-300", "text-neutral-700");
+          button.classList.add("bg-lime", "border-lime", "text-ink");
+        }
+
+        update();
+      });
+    });
+  </script>
+</BaseLayout>
