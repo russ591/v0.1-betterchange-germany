@@ -108,6 +108,88 @@ export function buildRegistrationEmailHtml(data) {
 </html>`;
 }
 
+export function buildOwnerNotificationSubject(data) {
+  return `New registration: ${data.course || "a training course"} — ${data.name || "unknown"}`;
+}
+
+export function buildOwnerNotificationHtml(data) {
+  const attendees = buildAttendeeList(data);
+
+  const attendeeRows = attendees
+    .map(
+      (a) =>
+        `<tr><td style="padding:4px 0;color:#525252;">${escapeHtml(a.name || "—")}</td><td style="padding:4px 0;color:#525252;">${escapeHtml(a.email || "—")}</td></tr>`
+    )
+    .join("");
+
+  return `<!doctype html>
+<html>
+  <body style="margin:0;padding:0;background:#f9f8f4;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f9f8f4;padding:32px 16px;">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="100%" style="max-width:560px;background:#ffffff;border-radius:16px;overflow:hidden;">
+            <tr>
+              <td style="background:#0a0a0a;padding:28px 32px;">
+                <span style="color:#9aff5b;font-weight:700;font-size:15px;letter-spacing:-0.01em;">Better Change Germany</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:32px;">
+                <h1 style="margin:0 0 16px;font-size:22px;line-height:1.2;color:#0a0a0a;">New registration received</h1>
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f9f8f4;border-radius:12px;padding:20px;margin:0 0 24px;">
+                  <tr><td style="padding:4px 0;color:#737373;width:40%;">Course</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${escapeHtml(data.course || "—")}</td></tr>
+                  <tr><td style="padding:4px 0;color:#737373;">Booked by</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.name || "—")} (${escapeHtml(data.email || "—")})</td></tr>
+                  ${data.company ? `<tr><td style="padding:4px 0;color:#737373;">Company</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.company)}</td></tr>` : ""}
+                  ${data["vat-id"] ? `<tr><td style="padding:4px 0;color:#737373;">VAT ID</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data["vat-id"])}</td></tr>` : ""}
+                  ${data.address ? `<tr><td style="padding:4px 0;color:#737373;vertical-align:top;">Address</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.address)}, ${escapeHtml(data.postcode || "")} ${escapeHtml(data.state || "")}, ${escapeHtml(data.country || "")}</td></tr>` : ""}
+                  <tr><td style="padding:4px 0;color:#737373;">Seats</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.seats || "1")}</td></tr>
+                  ${data.total ? `<tr><td style="padding:4px 0;color:#737373;">Total excl. VAT (MwSt.)</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${escapeHtml(data.total)}</td></tr>` : ""}
+                  ${data["discount-code"] ? `<tr><td style="padding:4px 0;color:#737373;">Discount code</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data["discount-code"])}</td></tr>` : ""}
+                  ${data.notes ? `<tr><td style="padding:4px 0;color:#737373;vertical-align:top;">Notes</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.notes)}</td></tr>` : ""}
+                </table>
+
+                ${
+                  attendees.length
+                    ? `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 8px;">
+                  <tr><td colspan="2" style="padding:0 0 8px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#737373;">Attendees</td></tr>
+                  ${attendeeRows}
+                </table>`
+                    : ""
+                }
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>`;
+}
+
+export function buildOwnerNotificationText(data) {
+  const attendees = buildAttendeeList(data);
+  const lines = [
+    "New registration received",
+    "",
+    `Course: ${data.course || "—"}`,
+    `Booked by: ${data.name || "—"} (${data.email || "—"})`,
+    data.company ? `Company: ${data.company}` : null,
+    data["vat-id"] ? `VAT ID: ${data["vat-id"]}` : null,
+    data.address ? `Address: ${data.address}, ${data.postcode || ""} ${data.state || ""}, ${data.country || ""}` : null,
+    `Seats: ${data.seats || "1"}`,
+    data.total ? `Total excl. VAT (MwSt.): ${data.total}` : null,
+    data["discount-code"] ? `Discount code: ${data["discount-code"]}` : null,
+    data.notes ? `Notes: ${data.notes}` : null,
+    "",
+    attendees.length ? "Attendees:" : null,
+    ...attendees.map((a) => `- ${a.name || "—"} (${a.email || "—"})`),
+  ].filter((l) => l !== null);
+
+  return lines.join("\n");
+}
+
 export function buildRegistrationEmailText(data) {
   const attendees = buildAttendeeList(data);
   const firstName = (data.name || "").split(" ")[0] || "there";

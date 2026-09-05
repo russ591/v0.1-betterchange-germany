@@ -1,8 +1,11 @@
-// Local-only preview: renders the registration confirmation email to a
-// standalone HTML file so it can be screenshotted, without needing a real
-// email service configured. Not part of the site build or deploy.
+// Local-only preview: renders the registration emails (booker confirmation
+// and owner notification) to standalone HTML files so they can be
+// screenshotted, without needing a real email service configured. Not part
+// of the site build or deploy.
+//
+// Usage: node scripts/preview-registration-email.mjs <confirmation-out.html> [owner-out.html]
 import { writeFileSync } from "node:fs";
-import { buildRegistrationEmailHtml } from "../netlify/functions/lib/registration-email.js";
+import { buildRegistrationEmailHtml, buildOwnerNotificationHtml } from "../netlify/functions/lib/registration-email.js";
 
 const sampleData = {
   course: "Kanban Systems Design (KMP I) — Live Online",
@@ -22,3 +25,6 @@ const sampleData = {
 };
 
 writeFileSync(process.argv[2], buildRegistrationEmailHtml(sampleData));
+if (process.argv[3]) {
+  writeFileSync(process.argv[3], buildOwnerNotificationHtml(sampleData));
+}
