@@ -1,8 +1,13 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
-import ContactInfoCard from "@/components/ContactInfoCard.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
+
+const steps = [
+  { title: "You tell us what you need", body: "A training course, a coach, or help with a wider transformation — a couple of sentences is plenty." },
+  { title: "We reply within a business day", body: "Usually from Russell directly, with a question or two to make sure we point you at the right option." },
+  { title: "We schedule a call", body: "A short conversation to confirm scope, timing, and format — then a proposal if it's a fit." },
+];
 ---
 
 <BaseLayout
@@ -17,103 +22,105 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
       Whether you are looking for a training course, an agile coach, or a consulting partner — the
       best first step is a conversation.
     </p>
+    <div class="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-[length:var(--text-small)]">
+      <a href="mailto:office@betterchange-consulting.de" class="flex items-center gap-2 font-semibold hover:underline">
+        <span aria-hidden="true">✉</span> office@betterchange-consulting.de
+      </a>
+      <span class="flex items-center gap-2 text-neutral-600">
+        <span aria-hidden="true">📍</span> Berlin, Germany · online worldwide
+      </span>
+      <span class="flex items-center gap-2 text-neutral-600">
+        <span aria-hidden="true">🕒</span> Replies within 1 business day
+      </span>
+    </div>
   </Section>
 
   <Section>
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <ContactInfoCard
-        icon="email"
-        label="Email"
-        value="office@betterchange-consulting.de"
-        note="We respond within one business day"
-        href="mailto:office@betterchange-consulting.de"
-      />
-      <ContactInfoCard
-        icon="location"
-        label="Location"
-        value="Berlin, Germany"
-        note="In-person training and coaching across the Europe region. Online delivery worldwide."
-      />
-      <ContactInfoCard
-        icon="language"
-        label="Language"
-        value="English, German, Polish, Spanish, Dutch, Danish, Croatian"
-        note="All training and coaching can be delivered bilingually. Proposals available in all languages."
-      />
-      <ContactInfoCard
-        icon="clock"
-        label="Response time"
-        value="Within 1 business day"
-        note="For urgent enquiries about upcoming course dates, please email directly."
-      />
+    <div class="grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:items-start">
+      <div class="min-w-0">
+        <p class="eyebrow text-neutral-500">What happens next</p>
+        <ol class="mt-6 space-y-6">
+          {
+            steps.map((step, i) => (
+              <li class="flex gap-4">
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-lime text-[length:var(--text-small)] font-bold text-ink">
+                  {i + 1}
+                </span>
+                <div>
+                  <p class="font-semibold">{step.title}</p>
+                  <p class="mt-1 text-[length:var(--text-small)] text-neutral-600">{step.body}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+        <p class="mt-8 border-t border-neutral-200 pt-6 text-[length:var(--text-small)] text-neutral-600">
+          Training and coaching can be delivered bilingually in English, German, Polish, Spanish,
+          Dutch, Danish, or Croatian — proposals available in all languages.
+        </p>
+      </div>
+
+      <div class="min-w-0 rounded-[var(--radius-card)] border border-neutral-200 bg-mist-light p-6 sm:p-8">
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          action="/thank-you"
+          class="space-y-5"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="hidden">
+            <label>
+              Don't fill this out if you're human: <input name="bot-field" />
+            </label>
+          </p>
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div>
+              <label for="name" class="block text-[length:var(--text-small)] font-medium">Name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-4 py-2.5"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-[length:var(--text-small)] font-medium">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-4 py-2.5"
+              />
+            </div>
+          </div>
+          <div>
+            <label for="message" class="block text-[length:var(--text-small)] font-medium">
+              Tell us what you're working on
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              required
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-4 py-2.5"
+            ></textarea>
+          </div>
+          <label class="flex items-start gap-2 text-[length:var(--text-caption)] text-neutral-600">
+            <input type="checkbox" required class="mt-1" />
+            I agree to my data being used to respond to this enquiry, in line with the privacy policy.
+          </label>
+          <button
+            type="submit"
+            class="w-full rounded-[var(--radius-control)] bg-ink px-6 py-3 font-semibold text-surface sm:w-auto"
+          >
+            Send message
+          </button>
+        </form>
+      </div>
     </div>
-
-    <!--
-      Spec §2 bug 6: the live "you will be speaking with" block shows four
-      duplicate "RH" initials instead of the actual team, plus a stray
-      quote character in the consent text. No real content was available
-      for who-you'll-speak-with, so that block is left out here rather
-      than reproducing the duplicate-initials bug or inventing names.
-    -->
-
-    <form
-      name="contact"
-      method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
-      action="/thank-you"
-      class="mx-auto mt-16 max-w-2xl space-y-5"
-    >
-      <input type="hidden" name="form-name" value="contact" />
-      <p class="hidden">
-        <label>
-          Don't fill this out if you're human: <input name="bot-field" />
-        </label>
-      </p>
-      <div class="grid gap-5 sm:grid-cols-2">
-        <div>
-          <label for="name" class="text-[length:var(--text-small)] font-medium">Name</label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            required
-            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-          />
-        </div>
-        <div>
-          <label for="email" class="text-[length:var(--text-small)] font-medium">Email</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-          />
-        </div>
-      </div>
-      <div>
-        <label for="message" class="text-[length:var(--text-small)] font-medium">
-          Tell us what you're working on
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          rows="5"
-          required
-          class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-        ></textarea>
-      </div>
-      <label class="flex items-start gap-2 text-[length:var(--text-caption)] text-neutral-600">
-        <input type="checkbox" required class="mt-1" />
-        I agree to my data being used to respond to this enquiry, in line with the privacy policy.
-      </label>
-      <button
-        type="submit"
-        class="rounded-[var(--radius-control)] bg-ink px-6 py-3 font-semibold text-surface"
-      >
-        Send message
-      </button>
-    </form>
   </Section>
 </BaseLayout>
