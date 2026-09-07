@@ -22,6 +22,7 @@
 //                       Set to the literal string "false" once ready for
 //                       real, finalized invoices.
 import { toCountryCode } from "./country-codes.js";
+import { buildAttendeeList } from "./registration-email.js";
 
 const LEXWARE_BASE_URL = "https://api.lexware.io/v1";
 
@@ -106,6 +107,26 @@ function toLexwareDateTime(date) {
   return date.toISOString().replace("Z", "+00:00");
 }
 
+const MS_PER_DAY = 86_400_000;
+
+// Due 30 days out by default, pulled in to a week before the course starts
+// if that's sooner (so we're not still invoicing after the course has
+// begun), and pulled in further to "today" if it's already inside that
+// one-week window.
+function computeDueDate(voucherDate, sessionDateIso) {
+  const defaultDue = new Date(voucherDate.getTime() + 30 * MS_PER_DAY);
+  if (!sessionDateIso) return defaultDue;
+
+  const sessionDate = new Date(sessionDateIso);
+  if (Number.isNaN(sessionDate.getTime())) return defaultDue;
+
+  const daysUntilSession = (sessionDate.getTime() - voucherDate.getTime()) / MS_PER_DAY;
+  if (daysUntilSession >= 30) return defaultDue;
+
+  const oneWeekBefore = new Date(sessionDate.getTime() - 7 * MS_PER_DAY);
+  return oneWeekBefore.getTime() > voucherDate.getTime() ? oneWeekBefore : voucherDate;
+}
+
 function splitName(fullName) {
   const parts = (fullName || "").trim().split(/\s+/).filter(Boolean);
   if (parts.length === 0) return { lastName: "Customer" };
@@ -172,17 +193,43 @@ async function findOrCreateContact(data) {
   return createContact(data);
 }
 
+// The invoice line item and title lose the "(session-slug)" that used to
+// ride along with data.course — put the human-readable session date/
+// location and who's actually booked/attending here instead, so that
+// context isn't just discarded.
+function buildInvoiceIntroduction(data) {
+  const lines = [data.course || "Training course"];
+  if (data["session-date"]) {
+    lines.push(`${data["session-date"]}${data.location ? ` — ${data.location}` : ""}`);
+  }
+  lines.push(`Registered by: ${data.name || "—"} (${data.email || "—"})`);
+
+  const attendees = buildAttendeeList(data);
+  const soleAttendeeIsBooker =
+    attendees.length === 1 && attendees[0].name === data.name && attendees[0].email === data.email;
+  if (attendees.length && !soleAttendeeIsBooker) {
+    attendees.forEach((a, i) => {
+      const label = attendees.length > 1 ? `Attendee ${i + 1}` : "Attendee";
+      lines.push(`${label}: ${a.name || "—"} (${a.email || "—"})`);
+    });
+  }
+
+  return lines.join("\n");
+}
+
 async function createInvoice(data, contactId) {
   const testMode = isTestMode();
   const prefix = testMode ? "TEST — " : "";
   const netAmount = parseAmount(data.total);
+  const voucherDate = new Date();
 
   const noteParts = [];
   if (data["discount-code"]) noteParts.push(`Discount code entered: ${data["discount-code"]}`);
   if (data.notes) noteParts.push(data.notes);
 
   const body = {
-    voucherDate: toLexwareDateTime(new Date()),
+    voucherDate: toLexwareDateTime(voucherDate),
+    dueDate: toLexwareDateTime(computeDueDate(voucherDate, data["session-date-iso"])),
     address: {
       contactId,
       name: data.company || data.name,
@@ -209,9 +256,11 @@ async function createInvoice(data, contactId) {
     // Lexware caps `title` at 25 characters ("muss zwischen 0 und 25
     // Zeichen liegen") — nowhere near enough for a course name, which is
     // why every real invoice call has been failing. The course name goes
-    // in `introduction` instead, which has no such limit.
+    // in `introduction` instead, which has no such limit — also used to
+    // carry the session date/location and who's booked/attending, per
+    // buildInvoiceIntroduction above.
     title: `${prefix}Invoice`,
-    introduction: data.course || "Training course",
+    introduction: buildInvoiceIntroduction(data),
     remark: `${prefix}${noteParts.join(" — ") || "Payable by bank transfer, per registration terms."}`,
   };
 
@@ -275,7 +324,7 @@ export async function generateInvoicePdf(data) {
     }
 
     const pdfBuffer = await downloadFile(documentFileId);
-    return { pdfBuffer, invoiceId: invoice.id, testMode: isTestMode() };
+    return { pdfBuffer, invoiceId: invoice.id, voucherNumber: invoice.voucherNumber, testMode: isTestMode() };
   } catch (error) {
     // Log only the message (not the full Error object) so this stays one
     // short line — the stack trace adds nothing we can act on and eats

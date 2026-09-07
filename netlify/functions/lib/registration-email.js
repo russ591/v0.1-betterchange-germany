@@ -59,6 +59,7 @@ export function buildRegistrationEmailHtml(data, { invoiceAttached = false } = {
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f9f8f4;border-radius:12px;padding:20px;margin:0 0 24px;">
                   <tr><td colspan="2" style="padding:0 0 12px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#737373;">Registration summary</td></tr>
                   <tr><td style="padding:4px 0;color:#737373;width:40%;">Course</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${escapeHtml(data.course || "—")}</td></tr>
+                  ${data["session-date"] ? `<tr><td style="padding:4px 0;color:#737373;">Session</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data["session-date"])}${data.location ? ` — ${escapeHtml(data.location)}` : ""}</td></tr>` : ""}
                   <tr><td style="padding:4px 0;color:#737373;">Booked by</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.name || "—")} (${escapeHtml(data.email || "—")})</td></tr>
                   ${data.company ? `<tr><td style="padding:4px 0;color:#737373;">Company</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.company)}</td></tr>` : ""}
                   ${data.address ? `<tr><td style="padding:4px 0;color:#737373;vertical-align:top;">Address</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.address)}, ${escapeHtml(data.postcode || "")} ${escapeHtml(data.state || "")}, ${escapeHtml(data.country || "")}</td></tr>` : ""}
@@ -140,6 +141,7 @@ export function buildOwnerNotificationHtml(data) {
 
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f9f8f4;border-radius:12px;padding:20px;margin:0 0 24px;">
                   <tr><td style="padding:4px 0;color:#737373;width:40%;">Course</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${escapeHtml(data.course || "—")}</td></tr>
+                  ${data["session-date"] ? `<tr><td style="padding:4px 0;color:#737373;">Session</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data["session-date"])}${data.location ? ` — ${escapeHtml(data.location)}` : ""}</td></tr>` : ""}
                   <tr><td style="padding:4px 0;color:#737373;">Booked by</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.name || "—")} (${escapeHtml(data.email || "—")})</td></tr>
                   ${data.company ? `<tr><td style="padding:4px 0;color:#737373;">Company</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.company)}</td></tr>` : ""}
                   ${data["vat-id"] ? `<tr><td style="padding:4px 0;color:#737373;">VAT ID</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data["vat-id"])}</td></tr>` : ""}
@@ -174,6 +176,7 @@ export function buildOwnerNotificationText(data) {
     "New registration received",
     "",
     `Course: ${data.course || "—"}`,
+    data["session-date"] ? `Session: ${data["session-date"]}${data.location ? ` — ${data.location}` : ""}` : null,
     `Booked by: ${data.name || "—"} (${data.email || "—"})`,
     data.company ? `Company: ${data.company}` : null,
     data["vat-id"] ? `VAT ID: ${data["vat-id"]}` : null,
@@ -200,6 +203,7 @@ export function buildRegistrationEmailText(data, { invoiceAttached = false } = {
     "",
     "Registration summary",
     `Course: ${data.course || "—"}`,
+    data["session-date"] ? `Session: ${data["session-date"]}${data.location ? ` — ${data.location}` : ""}` : null,
     `Booked by: ${data.name || "—"} (${data.email || "—"})`,
     data.company ? `Company: ${data.company}` : null,
     data.address ? `Address: ${data.address}, ${data.postcode || ""} ${data.state || ""}, ${data.country || ""}` : null,

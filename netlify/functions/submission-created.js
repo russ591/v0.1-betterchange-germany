@@ -70,7 +70,13 @@ export const handler = async (event) => {
     : "skipped or failed — see earlier log lines";
 
   const attachments = invoiceResult
-    ? [{ filename: "invoice.pdf", content: invoiceResult.pdfBuffer, contentType: "application/pdf" }]
+    ? [
+        {
+          filename: `Invoice - ${invoiceResult.voucherNumber || invoiceResult.invoiceId}.pdf`,
+          content: invoiceResult.pdfBuffer,
+          contentType: "application/pdf",
+        },
+      ]
     : [];
   const emailOpts = { invoiceAttached: Boolean(invoiceResult) };
 

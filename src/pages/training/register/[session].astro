@@ -191,7 +191,10 @@ const countries = [
         id="registration-form"
       >
         <input type="hidden" name="form-name" value="registration" />
-        <input type="hidden" name="course" value={`${course.data.name} (${session.id})`} />
+        <input type="hidden" name="course" value={course.data.name} />
+        <input type="hidden" name="session-date" value={formatSessionDate(session, course)} />
+        <input type="hidden" name="session-date-iso" value={session.data.date?.toISOString() ?? ""} />
+        <input type="hidden" name="location" value={session.data.location} />
         <input type="hidden" name="total" id="total-field" value={session.data.price} />
         <p class="hidden">
           <label>
