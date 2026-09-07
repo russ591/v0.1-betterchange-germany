@@ -88,13 +88,22 @@ async function findContactByEmail(email) {
   return match?.id ?? null;
 }
 
+// Lexware rejects vatRegistrationId with a 406 unless the leading country
+// code is uppercase (e.g. "DE123456789", not "de123456789") — normalize
+// rather than trust however the registrant happened to type it.
+function normalizeVatId(vatId) {
+  const trimmed = (vatId || "").trim().replace(/\s+/g, "");
+  return trimmed ? trimmed.toUpperCase() : null;
+}
+
 async function createContact(data) {
   const isCompany = Boolean(data.company);
+  const vatId = normalizeVatId(data["vat-id"]);
   const body = {
     version: 0,
     roles: { customer: {} },
     ...(isCompany
-      ? { company: { name: data.company, ...(data["vat-id"] ? { vatRegistrationId: data["vat-id"] } : {}) } }
+      ? { company: { name: data.company, ...(vatId ? { vatRegistrationId: vatId } : {}) } }
       : { person: splitName(data.name) }),
     ...(data.address ? { addresses: { billing: [buildBillingAddress(data)] } } : {}),
     ...(data.email ? { emailAddresses: { business: [data.email] } } : {}),
