@@ -353,18 +353,26 @@ async function createInvoice(data, contactId) {
   return res.json();
 }
 
-// The PDF isn't always rendered synchronously with invoice creation —
-// poll briefly for files.documentFileId to appear before giving up.
+// The PDF isn't always rendered synchronously with invoice creation, and
+// neither is the human-readable voucherNumber ("BC-2026-09-3521") — the
+// creation response only reliably carries the internal UUID. Both tend to
+// land together once Lexware finishes processing, so poll briefly for
+// files.documentFileId and pull voucherNumber off that same response
+// rather than trusting whatever the initial creation call returned.
 async function getDocumentFileId(invoiceId, createdInvoice) {
-  if (createdInvoice?.files?.documentFileId) return createdInvoice.files.documentFileId;
+  if (createdInvoice?.files?.documentFileId) {
+    return { documentFileId: createdInvoice.files.documentFileId, voucherNumber: createdInvoice.voucherNumber };
+  }
 
   for (let attempt = 0; attempt < 5; attempt++) {
     await new Promise((resolve) => setTimeout(resolve, 700));
     const res = await lexwareRequest(`/invoices/${invoiceId}`);
     const json = await res.json();
-    if (json?.files?.documentFileId) return json.files.documentFileId;
+    if (json?.files?.documentFileId) {
+      return { documentFileId: json.files.documentFileId, voucherNumber: json.voucherNumber };
+    }
   }
-  return null;
+  return { documentFileId: null, voucherNumber: undefined };
 }
 
 async function downloadFile(fileId) {
@@ -398,7 +406,7 @@ export async function generateInvoicePdf(data) {
       return null;
     }
 
-    const documentFileId = await getDocumentFileId(invoice.id, invoice);
+    const { documentFileId, voucherNumber } = await getDocumentFileId(invoice.id, invoice);
 
     if (!documentFileId) {
       console.error("submission-created: finalized invoice created but PDF never rendered:", invoice.id);
@@ -406,7 +414,7 @@ export async function generateInvoicePdf(data) {
     }
 
     const pdfBuffer = await downloadFile(documentFileId);
-    return { pdfBuffer, invoiceId: invoice.id, voucherNumber: invoice.voucherNumber, testMode: isTestMode() };
+    return { pdfBuffer, invoiceId: invoice.id, voucherNumber: voucherNumber || invoice.voucherNumber, testMode: isTestMode() };
   } catch (error) {
     // Log only the message (not the full Error object) so this stays one
     // short line — the stack trace adds nothing we can act on and eats
