@@ -203,6 +203,9 @@ async function createInvoice(data, contactId) {
     ],
     totalPrice: { currency: "EUR" },
     taxConditions: { taxType: "net" },
+    // Required by Lexware even when nothing is physically shipped — a
+    // training course — so "none" is the correct shippingType here.
+    shippingConditions: { shippingType: "none" },
     // Lexware caps `title` at 25 characters ("muss zwischen 0 und 25
     // Zeichen liegen") — nowhere near enough for a course name, which is
     // why every real invoice call has been failing. The course name goes
