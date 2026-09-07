@@ -34,7 +34,7 @@ import {
   buildOwnerNotificationSubject,
 } from "./lib/registration-email.js";
 import { generateInvoicePdf } from "./lib/lexware-client.js";
-import { resolveDiscount, applyDiscountToTotal } from "./lib/discount.js";
+import { resolveDiscount, computeDiscountBreakdown } from "./lib/discount.js";
 
 const FROM_ADDRESS = "Better Change Germany <russ@betterchange-consulting.de>";
 const OWNER_ADDRESS = "russ@betterchange-consulting.de";
@@ -49,13 +49,12 @@ export const handler = async (event) => {
   const data = payload.data;
 
   // Keep the emailed summary consistent with the actual invoice — the
-  // Lexware line item shows the discount natively, so mirror the
-  // discounted total here rather than showing the pre-discount price in
-  // the email that carries that same invoice as an attachment.
+  // Lexware line item shows the discount natively. Both copies get the
+  // same Price/Discount/Total breakdown (matching the registration
+  // page's own preview); the owner's copy separately shows the raw
+  // discount-code field value it already displayed before this existed.
   const discount = resolveDiscount(data);
-  const emailData = discount
-    ? { ...data, total: `${applyDiscountToTotal(data.total, discount.percentage)} (${discount.label})` }
-    : data;
+  const discountBreakdown = discount ? computeDiscountBreakdown(data.total, discount.percentage) : null;
 
   const user = process.env.GMAIL_USER;
   const pass = process.env.GMAIL_APP_PASSWORD;
@@ -88,7 +87,7 @@ export const handler = async (event) => {
         },
       ]
     : [];
-  const emailOpts = { invoiceAttached: Boolean(invoiceResult) };
+  const emailOpts = { invoiceAttached: Boolean(invoiceResult), discountBreakdown };
 
   if (data.email) {
     try {
@@ -96,9 +95,9 @@ export const handler = async (event) => {
         from: FROM_ADDRESS,
         to: data.email,
         replyTo: OWNER_ADDRESS,
-        subject: buildRegistrationEmailSubject(emailData),
-        html: buildRegistrationEmailHtml(emailData, emailOpts),
-        text: buildRegistrationEmailText(emailData, emailOpts),
+        subject: buildRegistrationEmailSubject(data),
+        html: buildRegistrationEmailHtml(data, emailOpts),
+        text: buildRegistrationEmailText(data, emailOpts),
         attachments,
       });
       results.confirmation = "sent";
@@ -115,9 +114,9 @@ export const handler = async (event) => {
       from: FROM_ADDRESS,
       to: OWNER_ADDRESS,
       replyTo: data.email || undefined,
-      subject: buildOwnerNotificationSubject(emailData),
-      html: buildOwnerNotificationHtml(emailData),
-      text: buildOwnerNotificationText(emailData),
+      subject: buildOwnerNotificationSubject(data),
+      html: buildOwnerNotificationHtml(data, emailOpts),
+      text: buildOwnerNotificationText(data, emailOpts),
       attachments,
     });
     results.ownerNotification = "sent";

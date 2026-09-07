@@ -25,8 +25,17 @@ function formatEuro(amount) {
   );
 }
 
-export function applyDiscountToTotal(totalStr, percentage) {
+// Structured price/discount/total breakdown for the customer-facing
+// confirmation email — mirrors the registration page's own live preview
+// (Price / Discount / Total rows), and deliberately doesn't carry the
+// discount code itself; that's for the owner's copy only.
+export function computeDiscountBreakdown(totalStr, percentage) {
   const original = parseAmount(totalStr);
-  const discounted = original * (1 - percentage / 100);
-  return formatEuro(discounted);
+  const discountAmount = original * (percentage / 100);
+  const total = original - discountAmount;
+  return {
+    price: formatEuro(original),
+    discount: formatEuro(discountAmount),
+    total: formatEuro(total),
+  };
 }

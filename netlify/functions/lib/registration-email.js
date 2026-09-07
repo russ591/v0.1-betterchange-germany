@@ -26,7 +26,7 @@ export function buildRegistrationEmailSubject(data) {
   return `You're registered — ${data.course || "your training course"}`;
 }
 
-export function buildRegistrationEmailHtml(data, { invoiceAttached = false } = {}) {
+export function buildRegistrationEmailHtml(data, { invoiceAttached = false, discountBreakdown = null } = {}) {
   const attendees = buildAttendeeList(data);
   const firstName = (data.name || "").split(" ")[0] || "there";
 
@@ -64,7 +64,15 @@ export function buildRegistrationEmailHtml(data, { invoiceAttached = false } = {
                   ${data.company ? `<tr><td style="padding:4px 0;color:#737373;">Company</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.company)}</td></tr>` : ""}
                   ${data.address ? `<tr><td style="padding:4px 0;color:#737373;vertical-align:top;">Address</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.address)}, ${escapeHtml(data.postcode || "")} ${escapeHtml(data.state || "")}, ${escapeHtml(data.country || "")}</td></tr>` : ""}
                   <tr><td style="padding:4px 0;color:#737373;">Seats</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.seats || "1")}</td></tr>
-                  ${data.total ? `<tr><td style="padding:4px 0;color:#737373;">Total excl. VAT (MwSt.)</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${escapeHtml(data.total)}</td></tr>` : ""}
+                  ${
+                    discountBreakdown
+                      ? `<tr><td style="padding:4px 0;color:#737373;">Price excl. VAT (MwSt.)</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(discountBreakdown.price)}</td></tr>
+                  <tr><td style="padding:4px 0;color:#737373;">Discount</td><td style="padding:4px 0;color:#0a0a0a;">-${escapeHtml(discountBreakdown.discount)}</td></tr>
+                  <tr><td style="padding:4px 0;color:#737373;">Total excl. VAT (MwSt.)</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${escapeHtml(discountBreakdown.total)}</td></tr>`
+                      : data.total
+                        ? `<tr><td style="padding:4px 0;color:#737373;">Total excl. VAT (MwSt.)</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${escapeHtml(data.total)}</td></tr>`
+                        : ""
+                  }
                 </table>
 
                 ${
@@ -78,8 +86,8 @@ export function buildRegistrationEmailHtml(data, { invoiceAttached = false } = {
 
                 <p style="margin:0 0 12px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#737373;">What happens next?</p>
                 <ul style="margin:0 0 28px;padding-left:20px;color:#525252;font-size:15px;line-height:1.7;">
-                  <li>We'll follow up with logistics — joining instructions or venue details — closer to the course date.</li>
                   <li>${invoiceAttached ? "Your invoice is attached to this email as a PDF." : "Your invoice will follow separately by email."}</li>
+                  <li>We'll follow up with logistics (joining instructions or venue details) closer to the course date.</li>
                   <li>Questions in the meantime? Just reply to this email.</li>
                 </ul>
 
@@ -113,7 +121,7 @@ export function buildOwnerNotificationSubject(data) {
   return `New registration: ${data.course || "a training course"} — ${data.name || "unknown"}`;
 }
 
-export function buildOwnerNotificationHtml(data) {
+export function buildOwnerNotificationHtml(data, { discountBreakdown = null } = {}) {
   const attendees = buildAttendeeList(data);
 
   const attendeeRows = attendees
@@ -147,7 +155,15 @@ export function buildOwnerNotificationHtml(data) {
                   ${data["vat-id"] ? `<tr><td style="padding:4px 0;color:#737373;">VAT ID</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data["vat-id"])}</td></tr>` : ""}
                   ${data.address ? `<tr><td style="padding:4px 0;color:#737373;vertical-align:top;">Address</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.address)}, ${escapeHtml(data.postcode || "")} ${escapeHtml(data.state || "")}, ${escapeHtml(data.country || "")}</td></tr>` : ""}
                   <tr><td style="padding:4px 0;color:#737373;">Seats</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.seats || "1")}</td></tr>
-                  ${data.total ? `<tr><td style="padding:4px 0;color:#737373;">Total excl. VAT (MwSt.)</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${escapeHtml(data.total)}</td></tr>` : ""}
+                  ${
+                    discountBreakdown
+                      ? `<tr><td style="padding:4px 0;color:#737373;">Price excl. VAT (MwSt.)</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(discountBreakdown.price)}</td></tr>
+                  <tr><td style="padding:4px 0;color:#737373;">Discount</td><td style="padding:4px 0;color:#0a0a0a;">-${escapeHtml(discountBreakdown.discount)}</td></tr>
+                  <tr><td style="padding:4px 0;color:#737373;">Total excl. VAT (MwSt.)</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${escapeHtml(discountBreakdown.total)}</td></tr>`
+                      : data.total
+                        ? `<tr><td style="padding:4px 0;color:#737373;">Total excl. VAT (MwSt.)</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${escapeHtml(data.total)}</td></tr>`
+                        : ""
+                  }
                   ${data["discount-code"] ? `<tr><td style="padding:4px 0;color:#737373;">Discount code</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data["discount-code"])}</td></tr>` : ""}
                   ${data.notes ? `<tr><td style="padding:4px 0;color:#737373;vertical-align:top;">Notes</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.notes)}</td></tr>` : ""}
                 </table>
@@ -170,7 +186,7 @@ export function buildOwnerNotificationHtml(data) {
 </html>`;
 }
 
-export function buildOwnerNotificationText(data) {
+export function buildOwnerNotificationText(data, { discountBreakdown = null } = {}) {
   const attendees = buildAttendeeList(data);
   const lines = [
     "New registration received",
@@ -182,7 +198,15 @@ export function buildOwnerNotificationText(data) {
     data["vat-id"] ? `VAT ID: ${data["vat-id"]}` : null,
     data.address ? `Address: ${data.address}, ${data.postcode || ""} ${data.state || ""}, ${data.country || ""}` : null,
     `Seats: ${data.seats || "1"}`,
-    data.total ? `Total excl. VAT (MwSt.): ${data.total}` : null,
+    ...(discountBreakdown
+      ? [
+          `Price excl. VAT (MwSt.): ${discountBreakdown.price}`,
+          `Discount: -${discountBreakdown.discount}`,
+          `Total excl. VAT (MwSt.): ${discountBreakdown.total}`,
+        ]
+      : data.total
+        ? [`Total excl. VAT (MwSt.): ${data.total}`]
+        : []),
     data["discount-code"] ? `Discount code: ${data["discount-code"]}` : null,
     data.notes ? `Notes: ${data.notes}` : null,
     "",
@@ -193,7 +217,7 @@ export function buildOwnerNotificationText(data) {
   return lines.join("\n");
 }
 
-export function buildRegistrationEmailText(data, { invoiceAttached = false } = {}) {
+export function buildRegistrationEmailText(data, { invoiceAttached = false, discountBreakdown = null } = {}) {
   const attendees = buildAttendeeList(data);
   const firstName = (data.name || "").split(" ")[0] || "there";
   const lines = [
@@ -208,14 +232,22 @@ export function buildRegistrationEmailText(data, { invoiceAttached = false } = {
     data.company ? `Company: ${data.company}` : null,
     data.address ? `Address: ${data.address}, ${data.postcode || ""} ${data.state || ""}, ${data.country || ""}` : null,
     `Seats: ${data.seats || "1"}`,
-    data.total ? `Total excl. VAT (MwSt.): ${data.total}` : null,
+    ...(discountBreakdown
+      ? [
+          `Price excl. VAT (MwSt.): ${discountBreakdown.price}`,
+          `Discount: -${discountBreakdown.discount}`,
+          `Total excl. VAT (MwSt.): ${discountBreakdown.total}`,
+        ]
+      : data.total
+        ? [`Total excl. VAT (MwSt.): ${data.total}`]
+        : []),
     "",
     attendees.length ? "Attendees:" : null,
     ...attendees.map((a) => `- ${a.name || "—"} (${a.email || "—"})`),
     attendees.length ? "" : null,
     "What happens next?",
-    "- We'll follow up with logistics — joining instructions or venue details — closer to the course date.",
     invoiceAttached ? "- Your invoice is attached to this email as a PDF." : "- Your invoice will follow separately by email.",
+    "- We'll follow up with logistics (joining instructions or venue details) closer to the course date.",
     "- Questions in the meantime? Just reply to this email.",
     "",
     "Talk soon,",
