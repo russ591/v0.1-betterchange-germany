@@ -45,25 +45,38 @@ async function lexwareRequest(path, options = {}) {
 
   if (!res.ok) {
     const rawBody = await res.text().catch(() => "");
-    // Netlify's log viewer hard-truncates a single long line with no way
-    // to expand it, but it does split multi-line console output (as seen
-    // with stack traces) into separate rows — so pretty-print the JSON
-    // error body across multiple short lines rather than one long one,
-    // and log it directly here so it survives even if the caller only
-    // logs the thrown Error's own (still short) message.
-    let formattedBody = rawBody;
-    try {
-      formattedBody = JSON.stringify(JSON.parse(rawBody), null, 2);
-    } catch {
-      // not JSON — log the raw text as-is
-    }
-    console.error(
-      `Lexware API ${options.method ?? "GET"} ${path} failed: ${res.status}\n${formattedBody}`
+    throw new Error(
+      `Lexware API ${options.method ?? "GET"} ${path} failed: ${res.status} ${summarizeErrorBody(rawBody)}`
     );
-    throw new Error(`Lexware API ${options.method ?? "GET"} ${path} failed: ${res.status} (see logged body above)`);
   }
 
   return res;
+}
+
+// Netlify's log viewer hard-truncates a single long line with no way to
+// expand or scroll it (confirmed by screenshot), and a second, separate
+// console.error call logged just before this one's throw was observed to
+// go missing entirely in production — a known class of Lambda issue where
+// two rapid stdout writes right before the handler returns can lose the
+// earlier one to a flush race. So there's exactly one log line for a
+// failure (the caller's single catch-and-log of the thrown Error), and it
+// has to carry the useful part of the error on its own: pull out each
+// IssueList entry's source field + i18nKey (Lexware's validation-error
+// shape) into a short "field: reason" summary instead of dumping the raw
+// body, which is short enough to survive whatever the display's per-line
+// character budget turns out to be.
+function summarizeErrorBody(rawBody) {
+  try {
+    const parsed = JSON.parse(rawBody);
+    if (Array.isArray(parsed.IssueList) && parsed.IssueList.length > 0) {
+      return parsed.IssueList.map((issue) => `${issue.source ?? "?"}: ${issue.i18nKey ?? issue.type ?? "?"}`).join(
+        " | "
+      );
+    }
+  } catch {
+    // not JSON, or not the expected shape — fall through to raw text
+  }
+  return rawBody.slice(0, 200);
 }
 
 function parseAmount(value) {
