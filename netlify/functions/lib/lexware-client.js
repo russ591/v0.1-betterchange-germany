@@ -265,7 +265,7 @@ async function findOrCreateContact(data) {
 function buildInvoiceIntroduction(data) {
   const lines = [data.course || "Training course"];
   if (data["session-date"]) {
-    lines.push(`${data["session-date"]}${data.location ? ` — ${data.location}` : ""}`);
+    lines.push(`${data["session-date"]}${data.location ? `. ${data.location}` : ""}`);
   }
   lines.push(`Registered by: ${data.name || "—"} (${data.email || "—"})`);
 

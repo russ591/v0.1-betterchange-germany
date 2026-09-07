@@ -22,7 +22,14 @@ export function formatSessionDate(
 
   if (format === "in-person" && course.data.durationDays > 1) {
     const end = new Date(date.getTime() + (course.data.durationDays - 1) * 86_400_000);
-    return formatter.formatRange(date, end);
+    // Intl's own formatRange() renders an en-dash ("17 – 18 November
+    // 2026"); build the comma-separated form by hand instead.
+    const sameMonthAndYear = date.getMonth() === end.getMonth() && date.getFullYear() === end.getFullYear();
+    if (sameMonthAndYear) {
+      const dayOnly = new Intl.DateTimeFormat("en-GB", { day: "numeric" });
+      return `${dayOnly.format(date)}, ${formatter.format(end)}`;
+    }
+    return `${formatter.format(date)}, ${formatter.format(end)}`;
   }
 
   if (format === "live-online") {
