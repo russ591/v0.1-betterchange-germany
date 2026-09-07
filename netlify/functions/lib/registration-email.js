@@ -26,7 +26,7 @@ export function buildRegistrationEmailSubject(data) {
   return `You're registered — ${data.course || "your training course"}`;
 }
 
-export function buildRegistrationEmailHtml(data) {
+export function buildRegistrationEmailHtml(data, { invoiceAttached = false } = {}) {
   const attendees = buildAttendeeList(data);
   const firstName = (data.name || "").split(" ")[0] || "there";
 
@@ -78,7 +78,7 @@ export function buildRegistrationEmailHtml(data) {
                 <p style="margin:0 0 12px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#737373;">What happens next?</p>
                 <ul style="margin:0 0 28px;padding-left:20px;color:#525252;font-size:15px;line-height:1.7;">
                   <li>We'll follow up with logistics — joining instructions or venue details — closer to the course date.</li>
-                  <li>Your invoice will follow separately by email, within 2 business days.</li>
+                  <li>${invoiceAttached ? "Your invoice is attached to this email as a PDF." : "Your invoice will follow separately by email."}</li>
                   <li>Questions in the meantime? Just reply to this email.</li>
                 </ul>
 
@@ -190,7 +190,7 @@ export function buildOwnerNotificationText(data) {
   return lines.join("\n");
 }
 
-export function buildRegistrationEmailText(data) {
+export function buildRegistrationEmailText(data, { invoiceAttached = false } = {}) {
   const attendees = buildAttendeeList(data);
   const firstName = (data.name || "").split(" ")[0] || "there";
   const lines = [
@@ -211,7 +211,7 @@ export function buildRegistrationEmailText(data) {
     attendees.length ? "" : null,
     "What happens next?",
     "- We'll follow up with logistics — joining instructions or venue details — closer to the course date.",
-    "- Your invoice will follow separately by email, within 2 business days.",
+    invoiceAttached ? "- Your invoice is attached to this email as a PDF." : "- Your invoice will follow separately by email.",
     "- Questions in the meantime? Just reply to this email.",
     "",
     "Talk soon,",

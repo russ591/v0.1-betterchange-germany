@@ -1,10 +1,14 @@
 // Netlify's "submission-created" magic filename: this runs automatically
-// after every Netlify Forms submission on the site. We use it to send two
-// emails via Gmail SMTP (Google Workspace, using an App Password): a
-// confirmation to the person who booked, and a notification to us — both
-// sent directly by this function rather than relying on Netlify's separate
-// built-in form-notification setting, so there's a single place (this file
-// + two env vars) that controls whether registration email goes out at all.
+// after every Netlify Forms submission on the site. We use it to:
+//   1. Generate an invoice for the course price via Lexware Office
+//      (find-or-create the registrant as a contact, create the invoice,
+//      render it to PDF) — see ./lib/lexware-client.js for the API details
+//      and the LEXWARE_TEST_MODE safeguard.
+//   2. Send two emails via Gmail SMTP (Google Workspace, using an App
+//      Password): a confirmation to the person who booked, and a
+//      notification to us — both sent directly by this function rather
+//      than relying on Netlify's separate built-in form-notification
+//      setting, with the invoice PDF attached to both when available.
 //
 // Requires two environment variables to be set in the Netlify dashboard
 // (Site configuration -> Environment variables) before this can actually
@@ -16,7 +20,10 @@
 //
 // Until those are set, submissions still work exactly as before (captured
 // by Netlify Forms, visible in the dashboard) — this function just logs and
-// exits quietly rather than sending anything.
+// exits quietly rather than sending anything. Invoice generation has its
+// own independent env var (LEXWARE_API_KEY) and never blocks either email
+// from sending — a Lexware failure just means the email goes out without
+// a PDF attached (logged for follow-up).
 import nodemailer from "nodemailer";
 import {
   buildRegistrationEmailHtml,
@@ -26,6 +33,7 @@ import {
   buildOwnerNotificationText,
   buildOwnerNotificationSubject,
 } from "./lib/registration-email.js";
+import { generateInvoicePdf } from "./lib/lexware-client.js";
 
 const FROM_ADDRESS = "Better Change Germany <russ@betterchange-consulting.de>";
 const OWNER_ADDRESS = "russ@betterchange-consulting.de";
@@ -54,7 +62,17 @@ export const handler = async (event) => {
     auth: { user, pass },
   });
 
-  const results = { confirmation: "not attempted", ownerNotification: "not attempted" };
+  const results = { invoice: "not attempted", confirmation: "not attempted", ownerNotification: "not attempted" };
+
+  const invoiceResult = await generateInvoicePdf(data);
+  results.invoice = invoiceResult
+    ? `generated (${invoiceResult.testMode ? "draft, TEST_MODE" : "finalized"}, id ${invoiceResult.invoiceId})`
+    : "skipped or failed — see earlier log lines";
+
+  const attachments = invoiceResult
+    ? [{ filename: "invoice.pdf", content: invoiceResult.pdfBuffer, contentType: "application/pdf" }]
+    : [];
+  const emailOpts = { invoiceAttached: Boolean(invoiceResult) };
 
   if (data.email) {
     try {
@@ -63,8 +81,9 @@ export const handler = async (event) => {
         to: data.email,
         replyTo: OWNER_ADDRESS,
         subject: buildRegistrationEmailSubject(data),
-        html: buildRegistrationEmailHtml(data),
-        text: buildRegistrationEmailText(data),
+        html: buildRegistrationEmailHtml(data, emailOpts),
+        text: buildRegistrationEmailText(data, emailOpts),
+        attachments,
       });
       results.confirmation = "sent";
     } catch (error) {
@@ -83,6 +102,7 @@ export const handler = async (event) => {
       subject: buildOwnerNotificationSubject(data),
       html: buildOwnerNotificationHtml(data),
       text: buildOwnerNotificationText(data),
+      attachments,
     });
     results.ownerNotification = "sent";
   } catch (error) {
