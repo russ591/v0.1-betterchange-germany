@@ -54,6 +54,9 @@ export const handler = async (event) => {
   // same Price/Discount/Total breakdown (matching the registration
   // page's own preview); the owner's copy separately shows the raw
   // discount-code field value it already displayed before this existed.
+  console.log(
+    `submission-created: discount-code field received = ${JSON.stringify(data["discount-code"] ?? null)}`
+  );
   const discount = resolveDiscount(data);
   const discountBreakdown = discount ? computeDiscountBreakdown(data.total, discount.percentage) : null;
 
