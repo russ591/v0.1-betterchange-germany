@@ -47,13 +47,15 @@ async function lexwareRequest(path, options = {}) {
     const rawBody = await res.text().catch(() => "");
     const shortPath = path.split("?")[0];
     const contentType = res.headers?.get?.("content-type") ?? "?";
-    // bodyLen/contentType are here to settle, once and for all, whether
-    // Lexware itself is sending a near-empty body for this error (a plan
-    // restriction or gateway-level rejection) versus something being lost
-    // client-side — the two look identical downstream but need different
-    // fixes.
+    // Lexware's declared Content-Length vs. what we actually read tells us
+    // whether the server sent a genuinely tiny body (plan/gateway
+    // rejection) or something got cut in transit (encoding mismatch,
+    // stream abort) — the two look identical downstream but need
+    // different fixes.
+    const declaredLen = res.headers?.get?.("content-length") ?? "?";
+    const encoding = res.headers?.get?.("content-encoding") ?? "none";
     throw new Error(
-      `Lex ${res.status} ${options.method ?? "GET"} ${shortPath} len=${rawBody.length} ct=${contentType}: ${summarizeErrorBody(rawBody)}`
+      `Lex ${res.status} ${options.method ?? "GET"} ${shortPath} len=${rawBody.length}/${declaredLen} enc=${encoding} ct=${contentType}: ${summarizeErrorBody(rawBody)}`
     );
   }
 
