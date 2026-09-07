@@ -203,7 +203,12 @@ async function createInvoice(data, contactId) {
     ],
     totalPrice: { currency: "EUR" },
     taxConditions: { taxType: "net" },
-    title: `${prefix}Invoice — ${data.course || "Training course"}`,
+    // Lexware caps `title` at 25 characters ("muss zwischen 0 und 25
+    // Zeichen liegen") — nowhere near enough for a course name, which is
+    // why every real invoice call has been failing. The course name goes
+    // in `introduction` instead, which has no such limit.
+    title: `${prefix}Invoice`,
+    introduction: data.course || "Training course",
     remark: `${prefix}${noteParts.join(" — ") || "Payable by bank transfer, per registration terms."}`,
   };
 
