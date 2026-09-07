@@ -44,8 +44,23 @@ async function lexwareRequest(path, options = {}) {
   });
 
   if (!res.ok) {
-    const body = await res.text().catch(() => "");
-    throw new Error(`Lexware API ${options.method ?? "GET"} ${path} failed: ${res.status} ${body.slice(0, 500)}`);
+    const rawBody = await res.text().catch(() => "");
+    // Netlify's log viewer hard-truncates a single long line with no way
+    // to expand it, but it does split multi-line console output (as seen
+    // with stack traces) into separate rows — so pretty-print the JSON
+    // error body across multiple short lines rather than one long one,
+    // and log it directly here so it survives even if the caller only
+    // logs the thrown Error's own (still short) message.
+    let formattedBody = rawBody;
+    try {
+      formattedBody = JSON.stringify(JSON.parse(rawBody), null, 2);
+    } catch {
+      // not JSON — log the raw text as-is
+    }
+    console.error(
+      `Lexware API ${options.method ?? "GET"} ${path} failed: ${res.status}\n${formattedBody}`
+    );
+    throw new Error(`Lexware API ${options.method ?? "GET"} ${path} failed: ${res.status} (see logged body above)`);
   }
 
   return res;
