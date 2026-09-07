@@ -1,10 +1,7 @@
-// Discount codes available on the registration form. Add new codes here as
-// they're needed — each maps to the percentage taken off the invoice total.
-// Matching is case-insensitive against whatever the registrant typed into
-// the "discount code" field.
-const DISCOUNT_CODES = {
-  RUSS101: 100,
-};
+// The code -> percentage-off map lives in src/data/discountCodes.js, shared
+// with the registration page's client-side live price preview — add a new
+// code there, not here, and both sides pick it up.
+import { DISCOUNT_CODES } from "../../../src/data/discountCodes.js";
 
 export function resolveDiscount(data) {
   const enteredCode = (data["discount-code"] || "").trim().toUpperCase();

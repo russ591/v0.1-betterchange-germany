@@ -167,7 +167,19 @@ const countries = [
           data-unit-price={unitPrice}
           data-bulk-offer={hasBulkOffer ? "true" : "false"}
         >
-          <div class="flex items-center justify-between text-[length:var(--text-h4)] font-bold">
+          <div class="flex items-center justify-between text-[length:var(--text-body)] text-neutral-600">
+            <span>Price</span>
+            <span id="order-subtotal">{session.data.price}</span>
+          </div>
+          <div
+            id="discount-code-line"
+            class="mt-1 flex items-center justify-between text-[length:var(--text-body)] text-neutral-600"
+            hidden
+          >
+            <span>Discount</span>
+            <span id="order-discount-amount"></span>
+          </div>
+          <div class="mt-2 flex items-center justify-between border-t border-neutral-200 pt-2 text-[length:var(--text-h4)] font-bold">
             <span>Total</span>
             <span id="order-total">{session.data.price}</span>
           </div>
@@ -360,12 +372,22 @@ const countries = [
 
         <div>
           <label for="discount-code" class="block text-[length:var(--text-small)] font-medium">Discount code (optional)</label>
-          <input
-            id="discount-code"
-            name="discount-code"
-            type="text"
-            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-          />
+          <div class="mt-1 flex gap-2">
+            <input
+              id="discount-code"
+              name="discount-code"
+              type="text"
+              class="w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+            />
+            <button
+              type="button"
+              id="apply-discount-code"
+              class="shrink-0 rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5 font-semibold text-ink hover:bg-surface"
+            >
+              Apply
+            </button>
+          </div>
+          <p id="discount-code-feedback" class="mt-1 text-[length:var(--text-caption)]" hidden></p>
         </div>
 
         <div>
@@ -392,15 +414,24 @@ const countries = [
   </Section>
 
   <script>
+    import { DISCOUNT_CODES } from "@/data/discountCodes.js";
+    const discountCodes = DISCOUNT_CODES as Record<string, number>;
+
     const seatsSelect = document.getElementById("seats") as HTMLSelectElement;
     const attendeeBlocks = Array.from(
       document.querySelectorAll<HTMLDivElement>("[data-attendee-block]")
     );
 
     const orderTotalBlock = document.getElementById("order-total-block") as HTMLDivElement;
+    const orderSubtotalEl = document.getElementById("order-subtotal") as HTMLSpanElement;
     const orderTotalEl = document.getElementById("order-total") as HTMLSpanElement;
     const discountNoteEl = document.getElementById("discount-note") as HTMLParagraphElement;
+    const discountCodeLineEl = document.getElementById("discount-code-line") as HTMLDivElement;
+    const discountAmountEl = document.getElementById("order-discount-amount") as HTMLSpanElement;
     const totalField = document.getElementById("total-field") as HTMLInputElement;
+    const discountCodeInput = document.getElementById("discount-code") as HTMLInputElement;
+    const applyDiscountButton = document.getElementById("apply-discount-code") as HTMLButtonElement;
+    const discountFeedbackEl = document.getElementById("discount-code-feedback") as HTMLParagraphElement;
     const unitPrice = parseFloat(orderTotalBlock.dataset.unitPrice ?? "0");
     const hasBulkOffer = orderTotalBlock.dataset.bulkOffer === "true";
     const currencyFormatter = new Intl.NumberFormat("en-GB", {
@@ -409,15 +440,31 @@ const countries = [
       maximumFractionDigits: 0,
     });
 
+    // Purely a live preview for the customer — the actual discount is
+    // applied server-side (netlify/functions/lib/discount.js) against the
+    // pre-discount total submitted in the hidden "total" field, via
+    // Lexware's own line-item discount. Never bake this into totalField.
+    let appliedDiscountPercent = 0;
+
     function updateTotal(seats: number) {
       // Every 3rd seat is free under the "3 seats for the price of 2" offer.
       const freeSeats = hasBulkOffer ? Math.floor(seats / 3) : 0;
       const payableSeats = seats - freeSeats;
-      const total = payableSeats * unitPrice;
-      const formattedTotal = currencyFormatter.format(total);
+      const subtotal = payableSeats * unitPrice;
+      const formattedSubtotal = currencyFormatter.format(subtotal);
 
-      orderTotalEl.textContent = formattedTotal;
-      totalField.value = formattedTotal;
+      orderSubtotalEl.textContent = formattedSubtotal;
+      totalField.value = formattedSubtotal;
+
+      const discountAmount = subtotal * (appliedDiscountPercent / 100);
+      if (discountAmount > 0) {
+        discountAmountEl.textContent = `-${currencyFormatter.format(discountAmount)}`;
+        discountCodeLineEl.hidden = false;
+      } else {
+        discountCodeLineEl.hidden = true;
+      }
+
+      orderTotalEl.textContent = currencyFormatter.format(subtotal - discountAmount);
 
       if (freeSeats > 0) {
         const savings = currencyFormatter.format(freeSeats * unitPrice);
@@ -427,6 +474,52 @@ const countries = [
         discountNoteEl.hidden = true;
       }
     }
+
+    function showDiscountFeedback(message: string, tone: "success" | "error") {
+      discountFeedbackEl.textContent = message;
+      discountFeedbackEl.hidden = false;
+      discountFeedbackEl.classList.toggle("text-ink", tone === "success");
+      discountFeedbackEl.classList.toggle("font-semibold", tone === "success");
+      discountFeedbackEl.classList.toggle("text-de-red", tone === "error");
+    }
+
+    function applyDiscountCode() {
+      const entered = discountCodeInput.value.trim().toUpperCase();
+      if (!entered) {
+        appliedDiscountPercent = 0;
+        discountFeedbackEl.hidden = true;
+        updateTotal(parseInt(seatsSelect.value, 10));
+        return;
+      }
+
+      const percent = discountCodes[entered];
+      if (percent) {
+        appliedDiscountPercent = percent;
+        showDiscountFeedback(`Discount code ${entered} applied — ${percent}% off`, "success");
+      } else {
+        appliedDiscountPercent = 0;
+        showDiscountFeedback("Code not recognized", "error");
+      }
+      updateTotal(parseInt(seatsSelect.value, 10));
+    }
+
+    applyDiscountButton.addEventListener("click", applyDiscountCode);
+    discountCodeInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        applyDiscountCode();
+      }
+    });
+    // Typing after a code was applied invalidates that preview until
+    // "Apply" is pressed again — otherwise the discount shown could go
+    // stale relative to whatever's now in the field.
+    discountCodeInput.addEventListener("input", () => {
+      if (appliedDiscountPercent !== 0 || !discountFeedbackEl.hidden) {
+        appliedDiscountPercent = 0;
+        discountFeedbackEl.hidden = true;
+        updateTotal(parseInt(seatsSelect.value, 10));
+      }
+    });
 
     function updateAttendeeBlocks() {
       const seats = parseInt(seatsSelect.value, 10);
