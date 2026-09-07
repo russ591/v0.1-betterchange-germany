@@ -126,7 +126,15 @@ const countries = [
   </Section>
 
   <Section>
-    <div class="grid gap-10 lg:grid-cols-[1fr_1.3fr]">
+    <form
+      name="registration"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      action="/training/register/thank-you"
+      id="registration-form"
+      class="grid gap-10 lg:grid-cols-[1fr_1.3fr]"
+    >
       <div class="min-w-0 rounded-[var(--radius-card)] border border-neutral-200 bg-mist-light p-6">
         <p class="eyebrow text-neutral-500">Order summary</p>
         <div class="mt-2 flex items-center gap-3">
@@ -188,7 +196,6 @@ const countries = [
               <input
                 id="discount-code"
                 name="discount-code"
-                form="registration-form"
                 type="text"
                 placeholder="Enter code"
                 class="w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 text-[length:var(--text-small)]"
@@ -248,15 +255,7 @@ const countries = [
         </div>
       </div>
 
-      <form
-        name="registration"
-        method="POST"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-        action="/training/register/thank-you"
-        class="min-w-0 space-y-5"
-        id="registration-form"
-      >
+      <div class="min-w-0 space-y-5">
         <input type="hidden" name="form-name" value="registration" />
         <input type="hidden" name="course" value={course.data.name} />
         <input type="hidden" name="session-date" value={formatSessionDate(session, course)} />
@@ -433,8 +432,8 @@ const countries = [
         >
           Confirm registration
         </button>
-      </form>
-    </div>
+      </div>
+    </form>
   </Section>
 
   <script>
