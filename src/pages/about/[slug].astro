@@ -148,7 +148,7 @@ const paragraphs = (text: string) =>
             <li>
               <a
                 href={`/training/${course.data.category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
-                class="rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-3 py-1 text-[length:var(--text-caption)] font-semibold hover:border-ink"
+                class="rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-3 py-1 text-[length:var(--text-caption)] font-semibold transition-colors hover:border-ink hover:text-ink"
               >
                 {course.data.code}
               </a>

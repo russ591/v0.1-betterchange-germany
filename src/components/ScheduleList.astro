@@ -88,7 +88,7 @@ function badgeFor(row: Row) {
                 <span class="font-bold">{row.session.data.price}</span>
                 <a
                   href={`/training/register/${row.session.id}`}
-                  class="rounded-[var(--radius-control)] bg-ink px-4 py-2 text-center text-[length:var(--text-small)] font-semibold text-surface"
+                  class="rounded-[var(--radius-control)] bg-ink px-4 py-2 text-center text-[length:var(--text-small)] font-semibold text-surface transition-colors hover:bg-neutral-800"
                 >
                   Book now →
                 </a>
@@ -154,7 +154,7 @@ function badgeFor(row: Row) {
       <p class="text-[length:var(--text-small)] text-neutral-600">{emptyMessage}</p>
       <a
         href="/contact"
-        class="mt-4 inline-flex items-center justify-center gap-1.5 rounded-[var(--radius-control)] bg-ink px-4 py-2.5 text-sm font-semibold text-surface"
+        class="mt-4 inline-flex items-center justify-center gap-1.5 rounded-[var(--radius-control)] bg-ink px-4 py-2.5 text-sm font-semibold text-surface transition-colors hover:bg-neutral-800"
       >
         Get in touch <span aria-hidden="true">→</span>
       </a>

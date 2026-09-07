@@ -179,7 +179,7 @@ const countries = [
           <button
             type="button"
             id="toggle-discount"
-            class="text-[length:var(--text-caption)] font-semibold text-ink underline decoration-neutral-300 underline-offset-2"
+            class="cursor-pointer text-[length:var(--text-caption)] font-semibold text-ink underline decoration-neutral-300 underline-offset-2 transition-colors hover:decoration-ink"
           >
             + Have a discount code?
           </button>
@@ -195,7 +195,7 @@ const countries = [
               <button
                 type="button"
                 id="apply-discount-code"
-                class="shrink-0 rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 text-[length:var(--text-small)] font-semibold text-ink hover:bg-mist-light"
+                class="shrink-0 cursor-pointer rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 text-[length:var(--text-small)] font-semibold text-ink transition-colors hover:bg-mist-light"
               >
                 Apply
               </button>
@@ -428,7 +428,7 @@ const countries = [
         </label>
         <button
           type="submit"
-          class="w-full rounded-[var(--radius-control)] bg-ink px-6 py-3 font-semibold text-surface sm:w-auto"
+          class="w-full cursor-pointer rounded-[var(--radius-control)] bg-ink px-6 py-3 font-semibold text-surface transition-colors hover:bg-neutral-800 sm:w-auto"
         >
           Confirm registration
         </button>
