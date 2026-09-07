@@ -185,10 +185,37 @@ async function createContact(data) {
   return json.id;
 }
 
+// A VAT ID is only ever sent when a *new* contact is created — a repeat
+// registrant reusing an existing contact (found by email) would silently
+// have any newly-entered VAT ID dropped, since it's never written back to
+// their existing Lexware record. Sync it in (Lexware requires a full
+// contact PUT with the current `version` for optimistic locking — a
+// partial patch isn't accepted).
+async function syncContactVatId(contactId, vatId) {
+  const res = await lexwareRequest(`/contacts/${contactId}`);
+  const contact = await res.json();
+  if (!contact.company || contact.company.vatRegistrationId === vatId) return;
+
+  const body = { ...contact, company: { ...contact.company, vatRegistrationId: vatId } };
+  await lexwareRequest(`/contacts/${contactId}`, { method: "PUT", body: JSON.stringify(body) });
+}
+
 async function findOrCreateContact(data) {
   if (data.email) {
     const existing = await findContactByEmail(data.email);
-    if (existing) return existing;
+    if (existing) {
+      const vatId = normalizeVatId(data["vat-id"]);
+      if (vatId) {
+        try {
+          await syncContactVatId(existing, vatId);
+        } catch (error) {
+          // Non-fatal — the invoice still gets created against the
+          // existing contact, just without an updated VAT ID this time.
+          console.error("Lex fail: could not sync VAT ID onto existing contact —", error.message);
+        }
+      }
+      return existing;
+    }
   }
   return createContact(data);
 }
@@ -222,14 +249,18 @@ async function createInvoice(data, contactId) {
   const prefix = testMode ? "TEST — " : "";
   const netAmount = parseAmount(data.total);
   const voucherDate = new Date();
-
-  const noteParts = [];
-  if (data["discount-code"]) noteParts.push(`Discount code entered: ${data["discount-code"]}`);
-  if (data.notes) noteParts.push(data.notes);
+  const dueDate = computeDueDate(voucherDate, data["session-date-iso"]);
+  // Lexware's PDF renders the due date from paymentConditions.paymentTermDuration
+  // (days from voucherDate), not from a raw `dueDate` we pass — confirmed by
+  // a real test invoice showing Lexware's own 10-day default instead of our
+  // computed date. Send both: the day count Lexware actually uses, and
+  // `dueDate` as a harmless best-effort in case that changes.
+  const paymentTermDuration = Math.max(0, Math.round((dueDate.getTime() - voucherDate.getTime()) / MS_PER_DAY));
 
   const body = {
     voucherDate: toLexwareDateTime(voucherDate),
-    dueDate: toLexwareDateTime(computeDueDate(voucherDate, data["session-date-iso"])),
+    dueDate: toLexwareDateTime(dueDate),
+    paymentConditions: { paymentTermDuration },
     address: {
       contactId,
       name: data.company || data.name,
@@ -261,7 +292,10 @@ async function createInvoice(data, contactId) {
     // buildInvoiceIntroduction above.
     title: `${prefix}Invoice`,
     introduction: buildInvoiceIntroduction(data),
-    remark: `${prefix}${noteParts.join(" — ") || "Payable by bank transfer, per registration terms."}`,
+    // Discount code and free-text notes are internal (already visible in
+    // the owner-notification email) — they don't belong on a document the
+    // customer receives, so the invoice remark stays just the payment terms.
+    remark: `${prefix}Payable by bank transfer, per registration terms.`,
   };
 
   const res = await lexwareRequest(`/invoices?finalize=${testMode ? "false" : "true"}`, {
