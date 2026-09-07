@@ -109,6 +109,17 @@ function summarizeErrorBody(rawBody) {
         " | "
       );
     }
+    // A separate validation-error shape (seen on /invoices, distinct from
+    // /contacts' IssueList) — {message: "Validation failed...", details:
+    // [{violation, field, message}]}. Missing this meant every /invoices
+    // 406 logged only the generic top-level message and never the actual
+    // failing field, which is how the title/shippingConditions bugs ended
+    // up needing a full raw-body paste each time to diagnose.
+    if (Array.isArray(parsed.details) && parsed.details.length > 0) {
+      return parsed.details
+        .map((d) => `${d.field ?? "?"}${d.violation ? ` (${d.violation})` : ""}: ${d.message ?? "?"}`)
+        .join(" | ");
+    }
     if (parsed.message) return String(parsed.message).slice(0, 150);
     if (parsed.error) return String(parsed.error).slice(0, 150);
   } catch {
@@ -282,11 +293,16 @@ async function createInvoice(data, contactId) {
   // computed date. Send both: the day count Lexware actually uses, and
   // `dueDate` as a harmless best-effort in case that changes.
   const paymentTermDuration = Math.max(0, Math.round((dueDate.getTime() - voucherDate.getTime()) / MS_PER_DAY));
+  // Every documented example pairs paymentTermDuration with a label —
+  // include one defensively rather than risk a "required" validation
+  // failure for omitting it.
+  const paymentTermLabel =
+    paymentTermDuration <= 0 ? "Zahlbar sofort" : `Zahlbar innerhalb von ${paymentTermDuration} Tagen`;
 
   const body = {
     voucherDate: toLexwareDateTime(voucherDate),
     dueDate: toLexwareDateTime(dueDate),
-    paymentConditions: { paymentTermDuration },
+    paymentConditions: { paymentTermDuration, paymentTermLabel },
     address: {
       contactId,
       name: data.company || data.name,
