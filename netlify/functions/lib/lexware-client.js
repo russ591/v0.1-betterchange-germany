@@ -56,6 +56,14 @@ function parseAmount(value) {
   return Number.isFinite(n) ? n : 0;
 }
 
+// Lexware's docs specify voucherDate as yyyy-MM-ddTHH:mm:ss.SSSXXX with a
+// numeric timezone offset (e.g. "+01:00"), not the "Z" suffix
+// Date#toISOString() produces. "+00:00" is equivalent to "Z" in UTC terms
+// but matches the documented offset format.
+function toLexwareDateTime(date) {
+  return date.toISOString().replace("Z", "+00:00");
+}
+
 function splitName(fullName) {
   const parts = (fullName || "").trim().split(/\s+/).filter(Boolean);
   if (parts.length === 0) return { lastName: "Customer" };
@@ -132,7 +140,7 @@ async function createInvoice(data, contactId) {
   if (data.notes) noteParts.push(data.notes);
 
   const body = {
-    voucherDate: new Date().toISOString(),
+    voucherDate: toLexwareDateTime(new Date()),
     address: {
       contactId,
       name: data.company || data.name,
