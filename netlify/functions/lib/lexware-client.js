@@ -23,6 +23,7 @@
 //                       real, finalized invoices.
 import { toCountryCode } from "./country-codes.js";
 import { buildAttendeeList } from "./registration-email.js";
+import { resolveDiscount } from "./discount.js";
 
 const LEXWARE_BASE_URL = "https://api.lexware.io/v1";
 
@@ -285,6 +286,7 @@ async function createInvoice(data, contactId) {
   const testMode = isTestMode();
   const prefix = testMode ? "TEST — " : "";
   const netAmount = parseAmount(data.total);
+  const discount = resolveDiscount(data);
   const voucherDate = new Date();
   const dueDate = computeDueDate(voucherDate, data["session-date-iso"]);
   // Lexware's PDF renders the due date from paymentConditions.paymentTermDuration
@@ -319,6 +321,10 @@ async function createInvoice(data, contactId) {
           netAmount,
           taxRatePercentage: 19,
         },
+        // Lexware's native per-line discount — keeps the original price
+        // visible on the PDF alongside the discount, rather than us
+        // silently zeroing netAmount ourselves.
+        ...(discount ? { discountPercentage: discount.percentage } : {}),
       },
     ],
     totalPrice: { currency: "EUR" },
