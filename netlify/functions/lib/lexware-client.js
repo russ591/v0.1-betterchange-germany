@@ -45,8 +45,15 @@ async function lexwareRequest(path, options = {}) {
 
   if (!res.ok) {
     const rawBody = await res.text().catch(() => "");
+    const shortPath = path.split("?")[0];
+    const contentType = res.headers?.get?.("content-type") ?? "?";
+    // bodyLen/contentType are here to settle, once and for all, whether
+    // Lexware itself is sending a near-empty body for this error (a plan
+    // restriction or gateway-level rejection) versus something being lost
+    // client-side — the two look identical downstream but need different
+    // fixes.
     throw new Error(
-      `Lexware API ${options.method ?? "GET"} ${path} failed: ${res.status} ${summarizeErrorBody(rawBody)}`
+      `Lex ${res.status} ${options.method ?? "GET"} ${shortPath} len=${rawBody.length} ct=${contentType}: ${summarizeErrorBody(rawBody)}`
     );
   }
 
@@ -73,10 +80,15 @@ function summarizeErrorBody(rawBody) {
         " | "
       );
     }
+    if (parsed.message) return String(parsed.message).slice(0, 150);
+    if (parsed.error) return String(parsed.error).slice(0, 150);
   } catch {
     // not JSON, or not the expected shape — fall through to raw text
   }
-  return rawBody.slice(0, 200);
+  // Strip characters that make this look like a JSON object: some log
+  // viewers/aggregators auto-detect and fold `{...}`-shaped substrings,
+  // which would hide exactly the diagnostic text we need to see.
+  return rawBody.replace(/[{}"]/g, "").slice(0, 200) || "(empty body)";
 }
 
 function parseAmount(value) {
@@ -242,7 +254,10 @@ export async function generateInvoicePdf(data) {
     const pdfBuffer = await downloadFile(documentFileId);
     return { pdfBuffer, invoiceId: invoice.id, testMode: isTestMode() };
   } catch (error) {
-    console.error("submission-created: Lexware invoice generation failed", error);
+    // Log only the message (not the full Error object) so this stays one
+    // short line — the stack trace adds nothing we can act on and eats
+    // into whatever character budget the log viewer allows per line.
+    console.error("Lex fail:", error.message);
     return null;
   }
 }
