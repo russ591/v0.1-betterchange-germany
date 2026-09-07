@@ -254,10 +254,23 @@ export async function generateInvoicePdf(data) {
   try {
     const contactId = await findOrCreateContact(data);
     const invoice = await createInvoice(data, contactId);
+
+    // Lexware never renders a PDF for a draft (unfinalized) invoice —
+    // confirmed against their docs, not just a rendering delay — so
+    // LEXWARE_TEST_MODE=true invoices will reliably have no attachment.
+    // That's expected, not an error; only warn when a *finalized*
+    // invoice unexpectedly has no PDF.
+    if (isTestMode()) {
+      console.log(
+        `submission-created: invoice ${invoice.id} created as a TEST_MODE draft — Lexware doesn't render a PDF for drafts, so no attachment this time (expected; will attach once LEXWARE_TEST_MODE is "false").`
+      );
+      return null;
+    }
+
     const documentFileId = await getDocumentFileId(invoice.id, invoice);
 
     if (!documentFileId) {
-      console.error("submission-created: invoice created but PDF never rendered:", invoice.id);
+      console.error("submission-created: finalized invoice created but PDF never rendered:", invoice.id);
       return null;
     }
 
