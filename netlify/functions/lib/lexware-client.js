@@ -286,7 +286,7 @@ async function createInvoice(data, contactId) {
   const testMode = isTestMode();
   const prefix = testMode ? "TEST — " : "";
   const netAmount = parseAmount(data.total);
-  const discount = resolveDiscount(data);
+  const discount = await resolveDiscount(data);
   const voucherDate = new Date();
   const dueDate = computeDueDate(voucherDate, data["session-date-iso"]);
   // Lexware's PDF renders the due date from paymentConditions.paymentTermDuration

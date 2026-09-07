@@ -1,13 +1,15 @@
-// The code -> percentage-off map lives in src/data/discountCodes.js, shared
-// with the registration page's client-side live price preview — add a new
-// code there, not here, and both sides pick it up.
-import { DISCOUNT_CODES } from "../../../src/data/discountCodes.js";
+// Codes live in Netlify Blobs (see discount-store.js), managed from the
+// /admin dashboard — this just resolves whatever code the registrant typed
+// against that store at submission time.
+import { getCodePercentage } from "./discount-store.js";
 
-export function resolveDiscount(data) {
+export async function resolveDiscount(data) {
   const enteredCode = (data["discount-code"] || "").trim().toUpperCase();
-  if (!enteredCode || !(enteredCode in DISCOUNT_CODES)) return null;
+  if (!enteredCode) return null;
 
-  const percentage = DISCOUNT_CODES[enteredCode];
+  const percentage = await getCodePercentage(enteredCode);
+  if (!percentage) return null;
+
   return { code: enteredCode, percentage, label: `Discount code ${enteredCode} applied (${percentage}% off)` };
 }
 

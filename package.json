@@ -14,8 +14,11 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/inter": "^5.1.1",
+    "@netlify/blobs": "^10.7.13",
     "@tailwindcss/vite": "^4.0.0",
     "astro": "^5.2.0",
+    "google-auth-library": "^11.0.2",
+    "jsonwebtoken": "^9.0.3",
     "nodemailer": "^9.1.1",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.3"

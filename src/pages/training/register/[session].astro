@@ -437,9 +437,6 @@ const countries = [
   </Section>
 
   <script>
-    import { DISCOUNT_CODES } from "@/data/discountCodes.js";
-    const discountCodes = DISCOUNT_CODES as Record<string, number>;
-
     const seatsSelect = document.getElementById("seats") as HTMLSelectElement;
     const attendeeBlocks = Array.from(
       document.querySelectorAll<HTMLDivElement>("[data-attendee-block]")
@@ -520,7 +517,11 @@ const countries = [
       discountFeedbackEl.classList.toggle("text-de-red", tone === "error");
     }
 
-    function applyDiscountCode() {
+    // Codes are looked up server-side (checked against Netlify Blobs via
+    // check-discount-code.js) rather than shipped to the client as a full
+    // list — so a visitor can only ever learn whether the one code they
+    // typed is valid, never enumerate every code Russell has issued.
+    async function applyDiscountCode() {
       const entered = discountCodeInput.value.trim().toUpperCase();
       if (!entered) {
         appliedDiscountPercent = 0;
@@ -529,13 +530,27 @@ const countries = [
         return;
       }
 
-      const percent = discountCodes[entered];
-      if (percent) {
-        appliedDiscountPercent = percent;
-        showDiscountFeedback(`Discount code ${entered} applied — ${percent}% off`, "success");
-      } else {
+      applyDiscountButton.disabled = true;
+      applyDiscountButton.textContent = "Checking…";
+      try {
+        const res = await fetch("/.netlify/functions/check-discount-code", {
+          method: "POST",
+          body: JSON.stringify({ code: entered }),
+        });
+        const result = await res.json();
+        if (result.valid) {
+          appliedDiscountPercent = result.percentage;
+          showDiscountFeedback(`Discount code ${entered} applied — ${result.percentage}% off`, "success");
+        } else {
+          appliedDiscountPercent = 0;
+          showDiscountFeedback("Code not recognized", "error");
+        }
+      } catch {
         appliedDiscountPercent = 0;
-        showDiscountFeedback("Code not recognized", "error");
+        showDiscountFeedback("Couldn't check that code — try again", "error");
+      } finally {
+        applyDiscountButton.disabled = false;
+        applyDiscountButton.textContent = "Apply";
       }
       updateTotal(parseInt(seatsSelect.value, 10));
     }

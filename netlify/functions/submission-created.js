@@ -57,7 +57,7 @@ export const handler = async (event) => {
   console.log(
     `submission-created: discount-code field received = ${JSON.stringify(data["discount-code"] ?? null)}`
   );
-  const discount = resolveDiscount(data);
+  const discount = await resolveDiscount(data);
   const discountBreakdown = discount ? computeDiscountBreakdown(data.total, discount.percentage) : null;
 
   const user = process.env.GMAIL_USER;

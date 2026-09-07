@@ -1,0 +1,223 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+
+// PUBLIC_GOOGLE_CLIENT_ID is safe to ship to the client — it identifies the
+// OAuth app, not a secret. The actual gate is server-side: admin-login.js
+// only issues a session cookie for the one ADMIN_EMAIL address, regardless
+// of which Google account signs in here.
+const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
+---
+
+<BaseLayout title="Admin" description="Manage discount codes." noindex>
+  <Section eyebrow="Admin" class="bg-mist-light">
+    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">Discount codes</h1>
+  </Section>
+
+  <Section>
+    <div id="admin-login" data-google-client-id={googleClientId} class="max-w-sm">
+      <p class="text-[length:var(--text-body)] text-neutral-600">Sign in with the admin Google account to continue.</p>
+      <div id="google-signin-button" class="mt-6"></div>
+      <p id="login-error" class="mt-4 text-[length:var(--text-small)] text-de-red" hidden></p>
+    </div>
+
+    <div id="admin-dashboard" hidden>
+      <div class="flex items-center justify-between gap-4">
+        <p id="admin-email" class="text-[length:var(--text-small)] text-neutral-500"></p>
+        <button
+          type="button"
+          id="logout-button"
+          class="cursor-pointer text-[length:var(--text-small)] font-semibold text-ink underline decoration-neutral-300 underline-offset-2 transition-colors hover:decoration-ink"
+        >
+          Sign out
+        </button>
+      </div>
+
+      <div class="mt-6 overflow-hidden rounded-[var(--radius-card)] border border-neutral-200">
+        <table class="w-full text-left text-[length:var(--text-small)]">
+          <thead>
+            <tr class="border-b border-neutral-200 bg-mist-light">
+              <th class="px-4 py-3 font-medium">Code</th>
+              <th class="px-4 py-3 font-medium">Discount</th>
+              <th class="px-4 py-3"></th>
+            </tr>
+          </thead>
+          <tbody id="codes-table-body"></tbody>
+        </table>
+        <p id="codes-empty" class="p-6 text-center text-neutral-500" hidden>No discount codes yet.</p>
+      </div>
+
+      <form id="add-code-form" class="mt-6 flex flex-wrap items-end gap-3">
+        <div>
+          <label for="new-code" class="block text-[length:var(--text-caption)] font-medium">Code</label>
+          <input
+            id="new-code"
+            type="text"
+            required
+            placeholder="e.g. SPRING25"
+            class="mt-1 rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 uppercase"
+          />
+        </div>
+        <div>
+          <label for="new-percentage" class="block text-[length:var(--text-caption)] font-medium">% off</label>
+          <input
+            id="new-percentage"
+            type="number"
+            min="1"
+            max="100"
+            required
+            class="mt-1 w-24 rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2"
+          />
+        </div>
+        <button
+          type="submit"
+          class="cursor-pointer rounded-[var(--radius-control)] bg-ink px-5 py-2.5 font-semibold text-surface transition-colors hover:bg-neutral-800"
+        >
+          Save code
+        </button>
+        <p id="form-error" class="w-full text-[length:var(--text-small)] text-de-red" hidden></p>
+      </form>
+    </div>
+  </Section>
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script>
+    declare const google: any;
+
+    const loginSection = document.getElementById("admin-login") as HTMLDivElement;
+    const dashboardSection = document.getElementById("admin-dashboard") as HTMLDivElement;
+    const loginErrorEl = document.getElementById("login-error") as HTMLParagraphElement;
+    const adminEmailEl = document.getElementById("admin-email") as HTMLParagraphElement;
+    const tableBody = document.getElementById("codes-table-body") as HTMLTableSectionElement;
+    const codesEmptyEl = document.getElementById("codes-empty") as HTMLParagraphElement;
+    const addCodeForm = document.getElementById("add-code-form") as HTMLFormElement;
+    const newCodeInput = document.getElementById("new-code") as HTMLInputElement;
+    const newPercentageInput = document.getElementById("new-percentage") as HTMLInputElement;
+    const formErrorEl = document.getElementById("form-error") as HTMLParagraphElement;
+    const logoutButton = document.getElementById("logout-button") as HTMLButtonElement;
+    const clientId = loginSection.dataset.googleClientId ?? "";
+
+    function showLoginError(message: string) {
+      loginErrorEl.textContent = message;
+      loginErrorEl.hidden = false;
+    }
+
+    function renderCodes(codes: Record<string, number>) {
+      const entries = Object.entries(codes).sort(([a], [b]) => a.localeCompare(b));
+      codesEmptyEl.hidden = entries.length > 0;
+      tableBody.innerHTML = "";
+      for (const [code, percentage] of entries) {
+        const row = document.createElement("tr");
+        row.className = "border-b border-neutral-100 last:border-0";
+        row.innerHTML = `
+          <td class="px-4 py-3 font-semibold">${code}</td>
+          <td class="px-4 py-3">${percentage}%</td>
+          <td class="px-4 py-3 text-right">
+            <button type="button" data-code="${code}" class="delete-code-button cursor-pointer text-de-red underline decoration-transparent underline-offset-2 transition-colors hover:decoration-de-red">
+              Delete
+            </button>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      }
+    }
+
+    async function loadCodes() {
+      const res = await fetch("/.netlify/functions/admin-discount-codes");
+      if (!res.ok) return;
+      const { codes } = await res.json();
+      renderCodes(codes);
+    }
+
+    async function showDashboard(email: string) {
+      loginSection.hidden = true;
+      dashboardSection.hidden = false;
+      adminEmailEl.textContent = `Signed in as ${email}`;
+      await loadCodes();
+    }
+
+    async function checkSession() {
+      const res = await fetch("/.netlify/functions/admin-session");
+      const session = await res.json();
+      if (session.authenticated) {
+        await showDashboard(session.email);
+      }
+    }
+
+    async function handleCredentialResponse(response: { credential: string }) {
+      loginErrorEl.hidden = true;
+      try {
+        const res = await fetch("/.netlify/functions/admin-login", {
+          method: "POST",
+          body: JSON.stringify({ credential: response.credential }),
+        });
+        const result = await res.json();
+        if (!res.ok) {
+          showLoginError(result.error || "Sign-in failed");
+          return;
+        }
+        await showDashboard(result.email);
+      } catch {
+        showLoginError("Sign-in failed — check your connection and try again");
+      }
+    }
+
+    addCodeForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      formErrorEl.hidden = true;
+      try {
+        const res = await fetch("/.netlify/functions/admin-discount-codes", {
+          method: "POST",
+          body: JSON.stringify({
+            code: newCodeInput.value,
+            percentage: Number(newPercentageInput.value),
+          }),
+        });
+        const result = await res.json();
+        if (!res.ok) {
+          formErrorEl.textContent = result.error || "Could not save that code";
+          formErrorEl.hidden = false;
+          return;
+        }
+        renderCodes(result.codes);
+        addCodeForm.reset();
+      } catch {
+        formErrorEl.textContent = "Could not save that code — check your connection";
+        formErrorEl.hidden = false;
+      }
+    });
+
+    tableBody.addEventListener("click", async (event) => {
+      const button = (event.target as HTMLElement).closest<HTMLButtonElement>(".delete-code-button");
+      if (!button) return;
+      const code = button.dataset.code!;
+      if (!confirm(`Delete discount code ${code}?`)) return;
+
+      const res = await fetch("/.netlify/functions/admin-discount-codes", {
+        method: "DELETE",
+        body: JSON.stringify({ code }),
+      });
+      if (res.ok) {
+        const { codes } = await res.json();
+        renderCodes(codes);
+      }
+    });
+
+    logoutButton.addEventListener("click", async () => {
+      await fetch("/.netlify/functions/admin-logout", { method: "POST" });
+      dashboardSection.hidden = true;
+      loginSection.hidden = false;
+    });
+
+    window.addEventListener("load", () => {
+      if (!clientId) {
+        showLoginError("Admin sign-in is not configured yet (missing Google client ID).");
+        return;
+      }
+      google.accounts.id.initialize({ client_id: clientId, callback: handleCredentialResponse });
+      google.accounts.id.renderButton(document.getElementById("google-signin-button"), { theme: "outline", size: "large" });
+    });
+
+    checkSession();
+  </script>
+</BaseLayout>
