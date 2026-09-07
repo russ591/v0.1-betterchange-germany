@@ -30,9 +30,25 @@ function isTestMode() {
   return process.env.LEXWARE_TEST_MODE !== "false";
 }
 
-async function lexwareRequest(path, options = {}) {
+// Lexware caps requests at 2/s. A single registration can now chain 4+
+// calls (contact lookup, a VAT sync's GET+PUT, invoice create, invoice
+// poll, file download) with nothing pacing them — confirmed hitting a real
+// 429 once the VAT-sync calls were added. Enforce a minimum gap between
+// calls, module-scoped so it holds across every call in one invocation.
+let lastRequestAt = 0;
+const MIN_REQUEST_INTERVAL_MS = 550;
+
+async function throttle() {
+  const wait = lastRequestAt + MIN_REQUEST_INTERVAL_MS - Date.now();
+  if (wait > 0) await new Promise((resolve) => setTimeout(resolve, wait));
+  lastRequestAt = Date.now();
+}
+
+async function lexwareRequest(path, options = {}, retriesLeft = 2) {
   const apiKey = process.env.LEXWARE_API_KEY;
   if (!apiKey) throw new Error("LEXWARE_API_KEY is not set");
+
+  await throttle();
 
   const res = await fetch(`${LEXWARE_BASE_URL}${path}`, {
     ...options,
@@ -43,6 +59,16 @@ async function lexwareRequest(path, options = {}) {
       ...options.headers,
     },
   });
+
+  // Retry a 429 once or twice with backoff — a safety net for bursts our
+  // own throttling doesn't cover (e.g. two registrations landing close
+  // together in separate invocations).
+  if (res.status === 429 && retriesLeft > 0) {
+    const retryAfterHeader = res.headers?.get?.("retry-after");
+    const retryAfterMs = retryAfterHeader ? Number(retryAfterHeader) * 1000 : MIN_REQUEST_INTERVAL_MS * 2;
+    await new Promise((resolve) => setTimeout(resolve, Math.min(retryAfterMs, 3000)));
+    return lexwareRequest(path, options, retriesLeft - 1);
+  }
 
   if (!res.ok) {
     const rawBody = await res.text().catch(() => "");
