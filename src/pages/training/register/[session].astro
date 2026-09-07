@@ -26,6 +26,19 @@ const trainer = session.data.trainer ? await getEntry(session.data.trainer) : un
 const unitPrice = parseFloat(session.data.price.replace(/[^0-9.]/g, "")) || 0;
 const hasBulkOffer = /seats? for the price of/i.test(session.data.offer ?? "");
 
+// Exclusive end date for an all-day "Add to calendar" event — Google
+// Calendar's all-day range end is the day AFTER the event actually ends.
+// In-person sessions span course.data.durationDays consecutive days;
+// live-online/self-paced don't have a reliable end (live-online runs as
+// separate half-days across weeks), so those just get a single-day event
+// on the start date.
+const calendarEndDate = session.data.date
+  ? new Date(
+      session.data.date.getTime() +
+        (session.data.format === "in-person" ? course.data.durationDays : 1) * 86_400_000
+    )
+  : undefined;
+
 const logo = category.data.certificationBody ? certificationLogos[category.data.certificationBody] : undefined;
 const badge = courseBadges[course.id];
 
@@ -161,22 +174,68 @@ const countries = [
             )
           }
         </dl>
+
+        <div class="mt-6 border-t border-neutral-200 pt-4">
+          <button
+            type="button"
+            id="toggle-discount"
+            class="text-[length:var(--text-caption)] font-semibold text-ink underline decoration-neutral-300 underline-offset-2"
+          >
+            + Have a discount code?
+          </button>
+          <div id="discount-code-panel" class="mt-2" hidden>
+            <div class="flex gap-2">
+              <input
+                id="discount-code"
+                name="discount-code"
+                type="text"
+                placeholder="Enter code"
+                class="w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 text-[length:var(--text-small)]"
+              />
+              <button
+                type="button"
+                id="apply-discount-code"
+                class="shrink-0 rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 text-[length:var(--text-small)] font-semibold text-ink hover:bg-mist-light"
+              >
+                Apply
+              </button>
+            </div>
+            <p id="discount-code-feedback" class="mt-1 text-[length:var(--text-caption)]" hidden></p>
+          </div>
+        </div>
+
         <div
-          class="mt-6 border-t border-neutral-200 pt-4"
+          class="mt-4 border-t border-neutral-200 pt-4"
           id="order-total-block"
           data-unit-price={unitPrice}
           data-bulk-offer={hasBulkOffer ? "true" : "false"}
         >
           <div class="flex items-center justify-between text-[length:var(--text-body)] text-neutral-600">
             <span>Price</span>
+            <span>{session.data.price}</span>
+          </div>
+          <div class="mt-1 flex items-center justify-between text-[length:var(--text-body)] text-neutral-600">
+            <span>Seats</span>
+            <span id="order-seats">1</span>
+          </div>
+          <div class="mt-1 flex items-center justify-between text-[length:var(--text-body)] text-neutral-600">
+            <span>Subtotal</span>
             <span id="order-subtotal">{session.data.price}</span>
+          </div>
+          <div
+            id="offer-line"
+            class="mt-1 flex items-center justify-between text-[length:var(--text-body)] text-neutral-600"
+            hidden
+          >
+            <span>Offer (3-for-2)</span>
+            <span id="order-offer-amount"></span>
           </div>
           <div
             id="discount-code-line"
             class="mt-1 flex items-center justify-between text-[length:var(--text-body)] text-neutral-600"
             hidden
           >
-            <span>Discount</span>
+            <span id="discount-code-label">Discount code</span>
             <span id="order-discount-amount"></span>
           </div>
           <div class="mt-2 flex items-center justify-between border-t border-neutral-200 pt-2 text-[length:var(--text-h4)] font-bold">
@@ -184,11 +243,6 @@ const countries = [
             <span id="order-total">{session.data.price}</span>
           </div>
           <p class="mt-1 text-[length:var(--text-caption)] text-neutral-500">Prices exclude VAT (MwSt.)</p>
-          <p
-            id="discount-note"
-            class="mt-2 inline-block rounded-[var(--radius-pill)] bg-lime/20 px-2.5 py-1 text-[length:var(--text-caption)] font-semibold text-ink"
-            hidden
-          ></p>
           {session.data.offer && <p class="mt-1 text-[length:var(--text-caption)] text-neutral-500">{session.data.offer}</p>}
         </div>
       </div>
@@ -206,6 +260,7 @@ const countries = [
         <input type="hidden" name="course" value={course.data.name} />
         <input type="hidden" name="session-date" value={formatSessionDate(session, course)} />
         <input type="hidden" name="session-date-iso" value={session.data.date?.toISOString() ?? ""} />
+        <input type="hidden" name="session-end-date-iso" value={calendarEndDate?.toISOString() ?? ""} />
         <input type="hidden" name="location" value={session.data.location} />
         <input type="hidden" name="total" id="total-field" value={session.data.price} />
         <p class="hidden">
@@ -214,52 +269,50 @@ const countries = [
           </label>
         </p>
 
-        <p class="eyebrow text-neutral-500">Your details</p>
-
         <div>
-          <label for="seats" class="block text-[length:var(--text-small)] font-medium">Number of seats</label>
-          <select
-            id="seats"
-            name="seats"
-            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-4 py-2.5 sm:w-40"
-          >
-            {Array.from({ length: 6 }, (_, i) => i + 1).map((n) => <option value={n}>{n}</option>)}
-          </select>
-        </div>
-
-        <div>
-          <p class="eyebrow text-neutral-500">Who's attending?</p>
-          <div class="mt-4 space-y-4">
+          <div class="flex items-center justify-between">
+            <p class="eyebrow text-neutral-500">Attendees</p>
+            <div class="flex items-center gap-2">
+              <label for="seats" class="text-[length:var(--text-caption)] text-neutral-500">Seats</label>
+              <select
+                id="seats"
+                name="seats"
+                class="rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-2 py-1 text-[length:var(--text-small)]"
+              >
+                {Array.from({ length: 6 }, (_, i) => i + 1).map((n) => <option value={n}>{n}</option>)}
+              </select>
+            </div>
+          </div>
+          <div class="mt-3 divide-y divide-neutral-200 rounded-[var(--radius-control)] border border-neutral-200">
             {
               Array.from({ length: 6 }, (_, i) => i + 1).map((n) => (
-                <div data-attendee-block data-attendee-index={n} hidden={n > 1} class="grid gap-4 sm:grid-cols-2">
-                  <p class="text-[length:var(--text-caption)] font-semibold text-neutral-500 sm:col-span-2">
-                    Attendee {n}
-                  </p>
-                  <div>
-                    <label for={`attendee-name-${n}`} class="block text-[length:var(--text-small)] font-medium">
-                      Attendee {n} name
-                    </label>
-                    <input
-                      id={`attendee-name-${n}`}
-                      name={`attendee-name-${n}`}
-                      type="text"
-                      required={n === 1}
-                      class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-                    />
-                  </div>
-                  <div>
-                    <label for={`attendee-email-${n}`} class="block text-[length:var(--text-small)] font-medium">
-                      Attendee {n} email
-                    </label>
-                    <input
-                      id={`attendee-email-${n}`}
-                      name={`attendee-email-${n}`}
-                      type="email"
-                      required={n === 1}
-                      class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-                    />
-                  </div>
+                <div
+                  data-attendee-block
+                  data-attendee-index={n}
+                  hidden={n > 1}
+                  class="grid grid-cols-[auto_1fr_1fr] items-center gap-3 p-3"
+                >
+                  <span class="flex h-6 w-6 items-center justify-center rounded-full bg-mist-light text-[length:var(--text-caption)] font-semibold text-neutral-600">
+                    {n}
+                  </span>
+                  <input
+                    id={`attendee-name-${n}`}
+                    name={`attendee-name-${n}`}
+                    type="text"
+                    placeholder="Name"
+                    aria-label={`Attendee ${n} name`}
+                    required={n === 1}
+                    class="w-full rounded-[var(--radius-control)] border border-neutral-300 px-3 py-2 text-[length:var(--text-small)]"
+                  />
+                  <input
+                    id={`attendee-email-${n}`}
+                    name={`attendee-email-${n}`}
+                    type="email"
+                    placeholder="Email"
+                    aria-label={`Attendee ${n} email`}
+                    required={n === 1}
+                    class="w-full rounded-[var(--radius-control)] border border-neutral-300 px-3 py-2 text-[length:var(--text-small)]"
+                  />
                 </div>
               ))
             }
@@ -267,11 +320,11 @@ const countries = [
         </div>
 
         <div>
-          <p class="eyebrow text-neutral-500">Who's registering?</p>
+          <p class="eyebrow text-neutral-500">Your details</p>
           <p class="mt-2 text-[length:var(--text-caption)] text-neutral-500">
             Defaults to the first attendee — change this if someone else is booking.
           </p>
-          <div class="mt-4 grid gap-5 sm:grid-cols-2">
+          <div class="mt-3 grid gap-4 sm:grid-cols-2">
             <div>
               <label for="name" class="block text-[length:var(--text-small)] font-medium">Your name</label>
               <input
@@ -292,110 +345,80 @@ const countries = [
                 class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
               />
             </div>
+            <div>
+              <label for="address" class="block text-[length:var(--text-small)] font-medium">Street and number</label>
+              <input
+                id="address"
+                name="address"
+                type="text"
+                required
+                class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+              />
+            </div>
+            <div>
+              <label for="postcode" class="block text-[length:var(--text-small)] font-medium">Postcode</label>
+              <input
+                id="postcode"
+                name="postcode"
+                type="text"
+                required
+                class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+              />
+            </div>
+            <div>
+              <label for="state" class="block text-[length:var(--text-small)] font-medium">State</label>
+              <input
+                id="state"
+                name="state"
+                type="text"
+                required
+                class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+              />
+            </div>
+            <div>
+              <label for="country" class="block text-[length:var(--text-small)] font-medium">Country</label>
+              <select
+                id="country"
+                name="country"
+                required
+                class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-4 py-2.5"
+              >
+                {
+                  countries.map((country) => (
+                    <option value={country} selected={country === "Germany"}>
+                      {country}
+                    </option>
+                  ))
+                }
+              </select>
+            </div>
+            <div>
+              <label for="company" class="block text-[length:var(--text-small)] font-medium">Company (optional)</label>
+              <input
+                id="company"
+                name="company"
+                type="text"
+                class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+              />
+            </div>
+            <div>
+              <label for="vat-id" class="block text-[length:var(--text-small)] font-medium">VAT ID (optional)</label>
+              <input
+                id="vat-id"
+                name="vat-id"
+                type="text"
+                class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+              />
+            </div>
           </div>
         </div>
 
-        <p class="eyebrow text-neutral-500">Postal address</p>
-
         <div>
-          <label for="address" class="block text-[length:var(--text-small)] font-medium">Street and number</label>
-          <input
-            id="address"
-            name="address"
-            type="text"
-            required
-            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-          />
-        </div>
-
-        <div class="grid gap-5 sm:grid-cols-3">
-          <div>
-            <label for="postcode" class="block text-[length:var(--text-small)] font-medium">Postcode</label>
-            <input
-              id="postcode"
-              name="postcode"
-              type="text"
-              required
-              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-            />
-          </div>
-          <div>
-            <label for="state" class="block text-[length:var(--text-small)] font-medium">State</label>
-            <input
-              id="state"
-              name="state"
-              type="text"
-              required
-              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-            />
-          </div>
-          <div>
-            <label for="country" class="block text-[length:var(--text-small)] font-medium">Country</label>
-            <select
-              id="country"
-              name="country"
-              required
-              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-4 py-2.5"
-            >
-              {
-                countries.map((country) => (
-                  <option value={country} selected={country === "Germany"}>
-                    {country}
-                  </option>
-                ))
-              }
-            </select>
-          </div>
-        </div>
-
-        <p class="eyebrow text-neutral-500">Billing details</p>
-
-        <div>
-          <label for="company" class="block text-[length:var(--text-small)] font-medium">Company (optional)</label>
-          <input
-            id="company"
-            name="company"
-            type="text"
-            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-          />
-        </div>
-
-        <div>
-          <label for="vat-id" class="block text-[length:var(--text-small)] font-medium">VAT ID (optional)</label>
-          <input
-            id="vat-id"
-            name="vat-id"
-            type="text"
-            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-          />
-        </div>
-
-        <div>
-          <label for="discount-code" class="block text-[length:var(--text-small)] font-medium">Discount code (optional)</label>
-          <div class="mt-1 flex gap-2">
-            <input
-              id="discount-code"
-              name="discount-code"
-              type="text"
-              class="w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
-            />
-            <button
-              type="button"
-              id="apply-discount-code"
-              class="shrink-0 rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5 font-semibold text-ink hover:bg-surface"
-            >
-              Apply
-            </button>
-          </div>
-          <p id="discount-code-feedback" class="mt-1 text-[length:var(--text-caption)]" hidden></p>
-        </div>
-
-        <div>
-          <label for="notes" class="block text-[length:var(--text-small)] font-medium">Anything we should know?</label>
+          <label for="notes" class="block text-[length:var(--text-small)] font-medium">Anything we should know? (optional)</label>
           <textarea
             id="notes"
             name="notes"
-            rows="4"
+            rows="3"
             class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
           ></textarea>
         </div>
@@ -423,15 +446,20 @@ const countries = [
     );
 
     const orderTotalBlock = document.getElementById("order-total-block") as HTMLDivElement;
+    const orderSeatsEl = document.getElementById("order-seats") as HTMLSpanElement;
     const orderSubtotalEl = document.getElementById("order-subtotal") as HTMLSpanElement;
     const orderTotalEl = document.getElementById("order-total") as HTMLSpanElement;
-    const discountNoteEl = document.getElementById("discount-note") as HTMLParagraphElement;
+    const offerLineEl = document.getElementById("offer-line") as HTMLDivElement;
+    const offerAmountEl = document.getElementById("order-offer-amount") as HTMLSpanElement;
     const discountCodeLineEl = document.getElementById("discount-code-line") as HTMLDivElement;
+    const discountCodeLabelEl = document.getElementById("discount-code-label") as HTMLSpanElement;
     const discountAmountEl = document.getElementById("order-discount-amount") as HTMLSpanElement;
     const totalField = document.getElementById("total-field") as HTMLInputElement;
     const discountCodeInput = document.getElementById("discount-code") as HTMLInputElement;
     const applyDiscountButton = document.getElementById("apply-discount-code") as HTMLButtonElement;
     const discountFeedbackEl = document.getElementById("discount-code-feedback") as HTMLParagraphElement;
+    const toggleDiscountButton = document.getElementById("toggle-discount") as HTMLButtonElement;
+    const discountCodePanel = document.getElementById("discount-code-panel") as HTMLDivElement;
     const unitPrice = parseFloat(orderTotalBlock.dataset.unitPrice ?? "0");
     const hasBulkOffer = orderTotalBlock.dataset.bulkOffer === "true";
     const currencyFormatter = new Intl.NumberFormat("en-GB", {
@@ -446,33 +474,42 @@ const countries = [
     // Lexware's own line-item discount. Never bake this into totalField.
     let appliedDiscountPercent = 0;
 
+    // Two discounts can stack, applied in order: the automatic 3-for-2
+    // seat offer first, then a discount code on top of what's left —
+    // each shown as its own line so the cascade from the gross subtotal
+    // down to the final total is never a single opaque jump.
     function updateTotal(seats: number) {
+      orderSeatsEl.textContent = String(seats);
+
+      const grossSubtotal = seats * unitPrice;
+      orderSubtotalEl.textContent = currencyFormatter.format(grossSubtotal);
+
       // Every 3rd seat is free under the "3 seats for the price of 2" offer.
       const freeSeats = hasBulkOffer ? Math.floor(seats / 3) : 0;
-      const payableSeats = seats - freeSeats;
-      const subtotal = payableSeats * unitPrice;
-      const formattedSubtotal = currencyFormatter.format(subtotal);
+      const offerAmount = freeSeats * unitPrice;
+      if (offerAmount > 0) {
+        offerAmountEl.textContent = `-${currencyFormatter.format(offerAmount)}`;
+        offerLineEl.hidden = false;
+      } else {
+        offerLineEl.hidden = true;
+      }
 
-      orderSubtotalEl.textContent = formattedSubtotal;
-      totalField.value = formattedSubtotal;
+      const afterOffer = grossSubtotal - offerAmount;
+      // The hidden "total" field is what the server applies a discount
+      // code's percentage against (via Lexware's line-item discount) —
+      // post-offer, pre-code, matching this same cascade server-side.
+      totalField.value = currencyFormatter.format(afterOffer);
 
-      const discountAmount = subtotal * (appliedDiscountPercent / 100);
+      const discountAmount = afterOffer * (appliedDiscountPercent / 100);
       if (discountAmount > 0) {
+        discountCodeLabelEl.textContent = `Discount code (${appliedDiscountPercent}%)`;
         discountAmountEl.textContent = `-${currencyFormatter.format(discountAmount)}`;
         discountCodeLineEl.hidden = false;
       } else {
         discountCodeLineEl.hidden = true;
       }
 
-      orderTotalEl.textContent = currencyFormatter.format(subtotal - discountAmount);
-
-      if (freeSeats > 0) {
-        const savings = currencyFormatter.format(freeSeats * unitPrice);
-        discountNoteEl.textContent = `Includes ${freeSeats} free seat${freeSeats > 1 ? "s" : ""} (3-for-2 offer) — you save ${savings}`;
-        discountNoteEl.hidden = false;
-      } else {
-        discountNoteEl.hidden = true;
-      }
+      orderTotalEl.textContent = currencyFormatter.format(afterOffer - discountAmount);
     }
 
     function showDiscountFeedback(message: string, tone: "success" | "error") {
@@ -519,6 +556,15 @@ const countries = [
         discountFeedbackEl.hidden = true;
         updateTotal(parseInt(seatsSelect.value, 10));
       }
+    });
+
+    // Discount code lives collapsed in the order summary until asked for,
+    // so it doesn't take up space in the main form for the common case of
+    // nobody having one.
+    toggleDiscountButton.addEventListener("click", () => {
+      discountCodePanel.hidden = !discountCodePanel.hidden;
+      toggleDiscountButton.hidden = !discountCodePanel.hidden;
+      if (!discountCodePanel.hidden) discountCodeInput.focus();
     });
 
     function updateAttendeeBlocks() {

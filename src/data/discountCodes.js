@@ -10,4 +10,5 @@
 // bundler's TypeScript handling.
 export const DISCOUNT_CODES = {
   RUSS101: 100,
+  RUSS51: 50,
 };
