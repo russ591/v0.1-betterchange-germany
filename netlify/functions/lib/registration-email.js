@@ -26,7 +26,7 @@ export function buildRegistrationEmailSubject(data) {
   return `You're registered — ${data.course || "your training course"}`;
 }
 
-export function buildRegistrationEmailHtml(data, { invoiceAttached = false, discountBreakdown = null } = {}) {
+export function buildRegistrationEmailHtml(data, { invoiceAttached = false, discountBreakdown = null, calendarUrl = null } = {}) {
   const attendees = buildAttendeeList(data);
   const firstName = (data.name || "").split(" ")[0] || "there";
 
@@ -74,6 +74,16 @@ export function buildRegistrationEmailHtml(data, { invoiceAttached = false, disc
                         : ""
                   }
                 </table>
+
+                ${
+                  calendarUrl
+                    ? `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+                  <tr><td align="center">
+                    <a href="${escapeHtml(calendarUrl)}" style="display:inline-block;border:1.5px solid #0a0a0a;border-radius:999px;padding:10px 22px;font-size:14px;font-weight:600;color:#0a0a0a;text-decoration:none;">Add to Google Calendar</a>
+                  </td></tr>
+                </table>`
+                    : ""
+                }
 
                 ${
                   attendees.length
@@ -217,7 +227,7 @@ export function buildOwnerNotificationText(data, { discountBreakdown = null } = 
   return lines.join("\n");
 }
 
-export function buildRegistrationEmailText(data, { invoiceAttached = false, discountBreakdown = null } = {}) {
+export function buildRegistrationEmailText(data, { invoiceAttached = false, discountBreakdown = null, calendarUrl = null } = {}) {
   const attendees = buildAttendeeList(data);
   const firstName = (data.name || "").split(" ")[0] || "there";
   const lines = [
@@ -242,6 +252,8 @@ export function buildRegistrationEmailText(data, { invoiceAttached = false, disc
         ? [`Total excl. VAT (MwSt.): ${data.total}`]
         : []),
     "",
+    calendarUrl ? `Add to Google Calendar: ${calendarUrl}` : null,
+    calendarUrl ? "" : null,
     attendees.length ? "Attendees:" : null,
     ...attendees.map((a) => `- ${a.name || "—"} (${a.email || "—"})`),
     attendees.length ? "" : null,

@@ -35,6 +35,7 @@ import {
 } from "./lib/registration-email.js";
 import { generateInvoicePdf } from "./lib/lexware-client.js";
 import { resolveDiscount, computeDiscountBreakdown } from "./lib/discount.js";
+import { buildGoogleCalendarUrl } from "./lib/calendarLink.js";
 
 const FROM_ADDRESS = "Better Change Germany <russ@betterchange-consulting.de>";
 const OWNER_ADDRESS = "russ@betterchange-consulting.de";
@@ -88,6 +89,7 @@ export const handler = async (event) => {
       ]
     : [];
   const emailOpts = { invoiceAttached: Boolean(invoiceResult), discountBreakdown };
+  const bookerEmailOpts = { ...emailOpts, calendarUrl: buildGoogleCalendarUrl(data) };
 
   if (data.email) {
     try {
@@ -96,8 +98,8 @@ export const handler = async (event) => {
         to: data.email,
         replyTo: OWNER_ADDRESS,
         subject: buildRegistrationEmailSubject(data),
-        html: buildRegistrationEmailHtml(data, emailOpts),
-        text: buildRegistrationEmailText(data, emailOpts),
+        html: buildRegistrationEmailHtml(data, bookerEmailOpts),
+        text: buildRegistrationEmailText(data, bookerEmailOpts),
         attachments,
       });
       results.confirmation = "sent";
