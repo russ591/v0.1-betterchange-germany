@@ -119,25 +119,16 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
 
     // Set while editing an existing code — on submit, if the code name was
     // changed, the old entry is deleted after the new one saves (rather
-    // than left behind as an unrelated duplicate). Null for a plain
-    // create, including the "Duplicate" shortcut (which only pre-fills
-    // the percentage, not this).
+    // than left behind as an unrelated duplicate). Null for a plain create.
     let editingCode: string | null = null;
 
-    function enterFormMode(mode: "edit" | "duplicate", code: string, percentage: number) {
+    function enterEditMode(code: string, percentage: number) {
+      newCodeInput.value = code;
       newPercentageInput.value = String(percentage);
-      if (mode === "edit") {
-        newCodeInput.value = code;
-        editingCode = code;
-        formModeCodeEl.textContent = code;
-        formModeBanner.hidden = false;
-        saveCodeButton.textContent = "Update code";
-      } else {
-        newCodeInput.value = "";
-        editingCode = null;
-        formModeBanner.hidden = true;
-        saveCodeButton.textContent = "Save code";
-      }
+      editingCode = code;
+      formModeCodeEl.textContent = code;
+      formModeBanner.hidden = false;
+      saveCodeButton.textContent = "Update code";
       newCodeInput.focus();
       newCodeInput.scrollIntoView({ behavior: "smooth", block: "center" });
     }
@@ -162,7 +153,7 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
         <button type="button" data-code="${code}" data-percentage="${percentage}" class="edit-code-button cursor-pointer text-ink underline decoration-transparent underline-offset-2 transition-colors hover:decoration-ink">
           Edit
         </button>
-        <button type="button" data-percentage="${percentage}" class="duplicate-code-button ml-3 cursor-pointer text-ink underline decoration-transparent underline-offset-2 transition-colors hover:decoration-ink">
+        <button type="button" data-code="${code}" data-percentage="${percentage}" class="duplicate-code-button ml-3 cursor-pointer text-ink underline decoration-transparent underline-offset-2 transition-colors hover:decoration-ink">
           Duplicate
         </button>
         <button type="button" data-code="${code}" class="delete-code-button ml-3 cursor-pointer text-de-red underline decoration-transparent underline-offset-2 transition-colors hover:decoration-de-red">
@@ -303,13 +294,22 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
 
       const editButton = target.closest<HTMLButtonElement>(".edit-code-button");
       if (editButton) {
-        enterFormMode("edit", editButton.dataset.code!, Number(editButton.dataset.percentage));
+        enterEditMode(editButton.dataset.code!, Number(editButton.dataset.percentage));
         return;
       }
 
       const duplicateButton = target.closest<HTMLButtonElement>(".duplicate-code-button");
       if (duplicateButton) {
-        enterFormMode("duplicate", "", Number(duplicateButton.dataset.percentage));
+        const code = `COPY OF ${duplicateButton.dataset.code}`;
+        const percentage = Number(duplicateButton.dataset.percentage);
+        const res = await fetch("/.netlify/functions/admin-discount-codes", {
+          method: "POST",
+          body: JSON.stringify({ code, percentage }),
+        });
+        if (res.ok) {
+          const { codes } = await res.json();
+          renderCodes(codes);
+        }
         return;
       }
 
