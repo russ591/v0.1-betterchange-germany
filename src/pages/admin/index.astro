@@ -73,9 +73,22 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
             />
           </div>
           <div>
-            <label for="new-percentage" class="block text-[length:var(--text-caption)] font-medium">% off</label>
+            <p class="block text-[length:var(--text-caption)] font-medium">Discount type</p>
+            <div class="mt-2 flex gap-3 text-[length:var(--text-small)]">
+              <label class="flex items-center gap-1.5">
+                <input id="discount-type-percentage" type="radio" name="discount-type" value="percentage" checked />
+                Percentage
+              </label>
+              <label class="flex items-center gap-1.5">
+                <input id="discount-type-fixed" type="radio" name="discount-type" value="fixed" />
+                Fixed amount
+              </label>
+            </div>
+          </div>
+          <div>
+            <label for="new-discount-value" id="new-discount-value-label" class="block text-[length:var(--text-caption)] font-medium">% off</label>
             <input
-              id="new-percentage"
+              id="new-discount-value"
               type="number"
               min="1"
               max="100"
@@ -83,6 +96,20 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
               class="mt-1 w-24 rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2"
             />
           </div>
+        </div>
+
+        <div>
+          <p class="text-[length:var(--text-caption)] font-medium">Usage limit</p>
+          <label class="mt-1 flex items-center gap-2 text-[length:var(--text-small)]">
+            <input id="no-usage-limit-checkbox" type="checkbox" checked />
+            No limit
+          </label>
+          <input
+            id="new-usage-limit"
+            type="number"
+            min="0"
+            class="mt-2 w-24 rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 disabled:bg-mist-light disabled:text-neutral-400"
+          />
         </div>
 
         <div>
@@ -158,7 +185,12 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
     const codesEmptyEl = document.getElementById("codes-empty") as HTMLParagraphElement;
     const addCodeForm = document.getElementById("add-code-form") as HTMLFormElement;
     const newCodeInput = document.getElementById("new-code") as HTMLInputElement;
-    const newPercentageInput = document.getElementById("new-percentage") as HTMLInputElement;
+    const discountTypePercentageRadio = document.getElementById("discount-type-percentage") as HTMLInputElement;
+    const discountTypeFixedRadio = document.getElementById("discount-type-fixed") as HTMLInputElement;
+    const newDiscountValueInput = document.getElementById("new-discount-value") as HTMLInputElement;
+    const newDiscountValueLabel = document.getElementById("new-discount-value-label") as HTMLLabelElement;
+    const noUsageLimitCheckbox = document.getElementById("no-usage-limit-checkbox") as HTMLInputElement;
+    const newUsageLimitInput = document.getElementById("new-usage-limit") as HTMLInputElement;
     const formErrorEl = document.getElementById("form-error") as HTMLParagraphElement;
     const logoutButton = document.getElementById("logout-button") as HTMLButtonElement;
     const saveCodeButton = document.getElementById("save-code-button") as HTMLButtonElement;
@@ -171,10 +203,14 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
     const clientId = loginSection.dataset.googleClientId ?? "";
 
     interface CodeEntry {
-      percentage: number;
+      discountType: "percentage" | "fixed";
+      discountValue: number;
       createdAt: string | null;
       expiresAt: string | null;
       notes: string;
+      usageLimit: number | null;
+      usageCount: number;
+      status: "active" | "inactive";
     }
 
     // Populated on every renderCodes() call — lets Edit/Duplicate look up
@@ -195,6 +231,24 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
       expiryDateInput.disabled = noExpiryCheckbox.checked;
     }
     noExpiryCheckbox.addEventListener("change", updateExpiryRowVisibility);
+
+    // Same disabled-not-hidden pattern as the expiry date input above.
+    function updateUsageLimitRowVisibility() {
+      newUsageLimitInput.disabled = noUsageLimitCheckbox.checked;
+    }
+    noUsageLimitCheckbox.addEventListener("change", updateUsageLimitRowVisibility);
+
+    function updateDiscountValueLabel() {
+      const isFixed = discountTypeFixedRadio.checked;
+      newDiscountValueLabel.textContent = isFixed ? "€ off" : "% off";
+      if (isFixed) {
+        newDiscountValueInput.removeAttribute("max");
+      } else {
+        newDiscountValueInput.max = "100";
+      }
+    }
+    discountTypePercentageRadio.addEventListener("change", updateDiscountValueLabel);
+    discountTypeFixedRadio.addEventListener("change", updateDiscountValueLabel);
 
     function toDateInputValue(d: Date) {
       return d.toISOString().slice(0, 10);
@@ -222,13 +276,28 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
       updateExpiryRowVisibility();
     }
 
+    function setUsageLimitFields(usageLimit: number | null) {
+      if (usageLimit !== null) {
+        noUsageLimitCheckbox.checked = false;
+        newUsageLimitInput.value = String(usageLimit);
+      } else {
+        noUsageLimitCheckbox.checked = true;
+        newUsageLimitInput.value = "";
+      }
+      updateUsageLimitRowVisibility();
+    }
+
     function enterEditMode(code: string) {
       const entry = currentCodes[code];
       if (!entry) return;
       newCodeInput.value = code;
-      newPercentageInput.value = String(entry.percentage);
+      discountTypeFixedRadio.checked = entry.discountType === "fixed";
+      discountTypePercentageRadio.checked = entry.discountType !== "fixed";
+      updateDiscountValueLabel();
+      newDiscountValueInput.value = String(entry.discountValue);
       notesInput.value = entry.notes || "";
       setExpiryFields(entry.expiresAt);
+      setUsageLimitFields(entry.usageLimit);
       editingCode = code;
       formModeCodeEl.textContent = code;
       formModeBanner.hidden = false;
@@ -243,6 +312,8 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
       saveCodeButton.textContent = "Save code";
       addCodeForm.reset();
       updateExpiryRowVisibility();
+      updateUsageLimitRowVisibility();
+      updateDiscountValueLabel();
     }
 
     function showLoginError(message: string) {
@@ -256,13 +327,17 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
     // encoded in the DOM; the full entry is looked up from currentCodes
     // at click time, so arbitrary notes text never has to round-trip
     // through an HTML attribute.
-    function actionsMarkup(code: string) {
+    function actionsMarkup(code: string, status: "active" | "inactive") {
+      const toggleLabel = status === "active" ? "Deactivate" : "Activate";
       return `
         <button type="button" data-code="${code}" class="edit-code-button cursor-pointer text-ink underline decoration-transparent underline-offset-2 transition-colors hover:decoration-ink">
           Edit
         </button>
         <button type="button" data-code="${code}" class="duplicate-code-button ml-3 cursor-pointer text-ink underline decoration-transparent underline-offset-2 transition-colors hover:decoration-ink">
           Duplicate
+        </button>
+        <button type="button" data-code="${code}" class="toggle-status-button ml-3 cursor-pointer text-ink underline decoration-transparent underline-offset-2 transition-colors hover:decoration-ink">
+          ${toggleLabel}
         </button>
         <button type="button" data-code="${code}" class="delete-code-button ml-3 cursor-pointer text-de-red underline decoration-transparent underline-offset-2 transition-colors hover:decoration-de-red">
           Delete
@@ -309,6 +384,31 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
       return `<div class="mt-1 max-w-[240px] truncate text-[length:var(--text-caption)] italic text-neutral-400" title="${escapeHtml(notes)}">${escapeHtml(notes)}</div>`;
     }
 
+    const euroFormatter = new Intl.NumberFormat("en-GB", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+
+    function discountValueText(entry: CodeEntry) {
+      return entry.discountType === "fixed" ? `${euroFormatter.format(entry.discountValue)} off` : `${entry.discountValue}% off`;
+    }
+
+    // Omitted entirely for the (default, common) unlimited-use case rather
+    // than cluttering every row with "Used 3 / no limit".
+    function usageMarkup(entry: CodeEntry) {
+      if (entry.usageLimit === null) {
+        return entry.usageCount > 0
+          ? `<div class="text-[length:var(--text-caption)] text-neutral-400">Used ${entry.usageCount}</div>`
+          : "";
+      }
+      const exhausted = entry.usageCount >= entry.usageLimit;
+      const colorClass = exhausted ? "text-de-red" : "text-neutral-400";
+      const label = exhausted ? "Limit reached" : `Used ${entry.usageCount} / ${entry.usageLimit}`;
+      return `<div class="text-[length:var(--text-caption)] ${colorClass}">${label}</div>`;
+    }
+
+    function statusMarkup(status: "active" | "inactive") {
+      if (status !== "inactive") return "";
+      return `<div class="text-[length:var(--text-caption)] font-semibold text-de-red">Inactive</div>`;
+    }
+
     function renderCodes(codes: Record<string, CodeEntry>) {
       currentCodes = codes;
       // Object.entries returns keys in insertion order (oldest-added
@@ -326,7 +426,8 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
       tableBody.innerHTML = "";
       mobileList.innerHTML = "";
 
-      for (const [code, { percentage, createdAt, expiresAt, notes }] of entries) {
+      for (const [code, entry] of entries) {
+        const { createdAt, expiresAt, notes, status } = entry;
         const row = document.createElement("tr");
         row.className = "border-b border-neutral-100 last:border-0";
         row.innerHTML = `
@@ -334,10 +435,12 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
             <div class="font-semibold">${code}</div>
             ${dateMarkup(createdAt)}
             ${expiryMarkup(expiresAt)}
+            ${usageMarkup(entry)}
+            ${statusMarkup(status)}
             ${notesMarkup(notes)}
           </td>
-          <td class="px-4 py-3">${percentage}%</td>
-          <td class="px-4 py-3 text-right whitespace-nowrap">${actionsMarkup(code)}</td>
+          <td class="px-4 py-3">${discountValueText(entry)}</td>
+          <td class="px-4 py-3 text-right whitespace-nowrap">${actionsMarkup(code, status)}</td>
         `;
         tableBody.appendChild(row);
 
@@ -349,11 +452,13 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
               <span class="font-semibold">${code}</span>
               ${dateMarkup(createdAt)}
               ${expiryMarkup(expiresAt)}
+              ${usageMarkup(entry)}
+              ${statusMarkup(status)}
               ${notesMarkup(notes)}
             </div>
-            <span>${percentage}% off</span>
+            <span>${discountValueText(entry)}</span>
           </div>
-          <div class="mt-3 flex items-center gap-1 border-t border-neutral-100 pt-3">${actionsMarkup(code)}</div>
+          <div class="mt-3 flex items-center gap-1 border-t border-neutral-100 pt-3">${actionsMarkup(code, status)}</div>
         `;
         mobileList.appendChild(card);
       }
@@ -421,9 +526,12 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
           method: "POST",
           body: JSON.stringify({
             code: newCodeInput.value,
-            percentage: Number(newPercentageInput.value),
+            discountType: discountTypeFixedRadio.checked ? "fixed" : "percentage",
+            discountValue: Number(newDiscountValueInput.value),
             expiresAt: noExpiryCheckbox.checked ? null : expiryDateInput.value || null,
             notes: notesInput.value,
+            usageLimit: noUsageLimitCheckbox.checked ? null : Number(newUsageLimitInput.value),
+            status: editingCode ? currentCodes[editingCode]?.status ?? "active" : "active",
           }),
         });
         const result = await res.json();
@@ -477,9 +585,36 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
           method: "POST",
           body: JSON.stringify({
             code,
-            percentage: original.percentage,
+            discountType: original.discountType,
+            discountValue: original.discountValue,
             expiresAt: original.expiresAt,
             notes: original.notes,
+            usageLimit: original.usageLimit,
+          }),
+        });
+        if (res.ok) {
+          const { codes } = await res.json();
+          renderCodes(codes);
+        }
+        return;
+      }
+
+      const toggleStatusButton = target.closest<HTMLButtonElement>(".toggle-status-button");
+      if (toggleStatusButton) {
+        const code = toggleStatusButton.dataset.code!;
+        const entry = currentCodes[code];
+        if (!entry) return;
+        const nextStatus = entry.status === "active" ? "inactive" : "active";
+        const res = await fetch("/.netlify/functions/admin-discount-codes", {
+          method: "POST",
+          body: JSON.stringify({
+            code,
+            discountType: entry.discountType,
+            discountValue: entry.discountValue,
+            expiresAt: entry.expiresAt,
+            notes: entry.notes,
+            usageLimit: entry.usageLimit,
+            status: nextStatus,
           }),
         });
         if (res.ok) {
@@ -522,6 +657,8 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
     });
 
     updateExpiryRowVisibility();
+    updateUsageLimitRowVisibility();
+    updateDiscountValueLabel();
     checkSession();
   </script>
 </BaseLayout>
