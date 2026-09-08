@@ -183,9 +183,17 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
     }
 
     function renderCodes(codes: Record<string, CodeEntry>) {
-      const entries = Object.entries(codes).sort(
-        ([, a], [, b]) => createdAtMillis(b.createdAt) - createdAtMillis(a.createdAt)
-      );
+      // Object.entries returns keys in insertion order (oldest-added
+      // first). Two codes created at the exact same millisecond — the
+      // seeded RUSS101/RUSS51 pair both get stamped in one seed call, so
+      // this isn't just a theoretical case — would otherwise tie under
+      // Array#sort's stability and fall back to that insertion order,
+      // putting the older one on top. Reversing first means a tie instead
+      // preserves reverse-insertion order, i.e. the more recently added
+      // key wins, matching "newest on top" even for same-timestamp codes.
+      const entries = Object.entries(codes)
+        .reverse()
+        .sort(([, a], [, b]) => createdAtMillis(b.createdAt) - createdAtMillis(a.createdAt));
       codesEmptyEl.hidden = entries.length > 0;
       tableBody.innerHTML = "";
       mobileList.innerHTML = "";
