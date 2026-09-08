@@ -2,7 +2,7 @@
 // only ever answers about the one code it was asked about — it never lists
 // the full set, so a visitor can't enumerate every discount code Russell has
 // handed out by poking this endpoint.
-import { getCodePercentage } from "./lib/discount-store.js";
+import { getDiscountForCode } from "./lib/discount-store.js";
 
 export const handler = async (event) => {
   if (event.httpMethod !== "POST") {
@@ -16,10 +16,12 @@ export const handler = async (event) => {
     return { statusCode: 400, body: JSON.stringify({ error: "Invalid request body" }) };
   }
 
-  const percentage = await getCodePercentage(code);
+  const discount = await getDiscountForCode(code);
   return {
     statusCode: 200,
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(percentage ? { valid: true, percentage } : { valid: false }),
+    body: JSON.stringify(
+      discount ? { valid: true, discountType: discount.discountType, value: discount.discountValue } : { valid: false }
+    ),
   };
 };

@@ -24,24 +24,51 @@ function store() {
   return getStore(STORE_NAME);
 }
 
-// Each code is stored as { percentage, createdAt, expiresAt, notes}.
-// expiresAt is a plain "YYYY-MM-DD" (an HTML date input's native value,
-// no time/timezone attached) meaning "valid through this calendar date,
-// inclusive" — null means it never expires. Older entries written before
-// these fields existed are a bare number — normalized here (in memory
-// only) to { percentage: <that number>, createdAt: null, expiresAt: null,
-// notes: "" } so every caller can rely on the object shape; a null
-// createdAt sorts as "oldest" and just isn't shown a creation date.
+// Each code is stored as:
+//   { discountType: "percentage" | "fixed", discountValue: number,
+//     createdAt, expiresAt, notes, usageLimit, usageCount, status }
+//
+// discountValue means 0-100 for "percentage" or a euro amount for "fixed".
+// expiresAt is a plain "YYYY-MM-DD" (an HTML date input's native value, no
+// time/timezone attached) meaning "valid through this calendar date,
+// inclusive" — null means it never expires. usageLimit is null (unlimited),
+// 0 (disabled — usageCount, which starts at 0, can never be "less than" 0),
+// or a positive integer cap; usageCount only ever increases, via
+// incrementUsage(). status is "active" or "inactive" — an admin-only kill
+// switch independent of expiry/usage. Older entries are normalized here (in
+// memory only) as each of these fields was added: a bare number is a
+// pre-expiry/notes percentage-only entry; an object missing discountType/
+// discountValue but carrying the old `percentage` field predates the fixed-
+// amount option. A null createdAt sorts as "oldest" and just isn't shown a
+// creation date; the dashboard uses listCodes(), which returns every code
+// regardless of expiry/usage/status so Russell can still see, extend, or
+// re-enable one — only the customer-facing path (getDiscountForCode) enforces
+// them.
 function normalizeEntry(value) {
   if (value && typeof value === "object") {
+    const discountType = value.discountType === "fixed" ? "fixed" : "percentage";
+    const discountValue = value.discountValue ?? value.percentage ?? 0;
     return {
-      percentage: value.percentage,
+      discountType,
+      discountValue,
       createdAt: value.createdAt ?? null,
       expiresAt: value.expiresAt ?? null,
       notes: value.notes ?? "",
+      usageLimit: value.usageLimit ?? null,
+      usageCount: value.usageCount ?? 0,
+      status: value.status === "inactive" ? "inactive" : "active",
     };
   }
-  return { percentage: value, createdAt: null, expiresAt: null, notes: "" };
+  return {
+    discountType: "percentage",
+    discountValue: value,
+    createdAt: null,
+    expiresAt: null,
+    notes: "",
+    usageLimit: null,
+    usageCount: 0,
+    status: "active",
+  };
 }
 
 // Today as "YYYY-MM-DD", matching expiresAt's format — lexicographic
@@ -54,6 +81,14 @@ function isExpired(entry) {
   return Boolean(entry.expiresAt) && todayDateString() > entry.expiresAt;
 }
 
+function isUsageExhausted(entry) {
+  return entry.usageLimit !== null && entry.usageCount >= entry.usageLimit;
+}
+
+function isUsable(entry) {
+  return entry.status === "active" && !isExpired(entry) && !isUsageExhausted(entry);
+}
+
 async function readCodes() {
   const existing = await store().get(CODES_KEY, { type: "json" });
   if (existing) {
@@ -64,9 +99,10 @@ async function readCodes() {
   // migration), so the codes already handed out during earlier testing
   // keep working without Russell having to re-enter them in the admin UI.
   const now = new Date().toISOString();
+  const base = { createdAt: now, expiresAt: null, notes: "", usageLimit: null, usageCount: 0, status: "active" };
   const seeded = {
-    RUSS101: { percentage: 100, createdAt: now, expiresAt: null, notes: "" },
-    RUSS51: { percentage: 50, createdAt: now, expiresAt: null, notes: "" },
+    RUSS101: { ...base, discountType: "percentage", discountValue: 100 },
+    RUSS51: { ...base, discountType: "percentage", discountValue: 50 },
   };
   await store().setJSON(CODES_KEY, seeded);
   return seeded;
@@ -76,36 +112,72 @@ export async function listCodes() {
   return readCodes();
 }
 
-// Returns the discount percentage for a code, or null if it doesn't exist
-// or has expired — used by the customer-facing check and the invoicing
-// pipeline, both of which should treat an expired code as if it were
-// never created. The admin dashboard uses listCodes() instead, which
-// returns every code regardless of expiry so Russell can still see,
-// extend, or delete an expired one.
-export async function getCodePercentage(code) {
+// Returns { discountType, discountValue } for a code that's actually usable
+// right now (exists, active, not expired, under its usage limit), or null —
+// used by both the customer-facing live-preview check and the invoicing
+// pipeline's resolution at submission time. Deliberately doesn't return the
+// admin-only bookkeeping fields (createdAt/notes/usageCount/status).
+export async function getDiscountForCode(code) {
   const normalized = (code || "").trim().toUpperCase();
   if (!normalized) return null;
   const codes = await readCodes();
   const entry = codes[normalized];
-  if (!entry || isExpired(entry)) return null;
-  return entry.percentage;
+  if (!entry || !isUsable(entry)) return null;
+  return { discountType: entry.discountType, discountValue: entry.discountValue };
 }
 
-export async function setCode(code, { percentage, expiresAt = null, notes = "" } = {}) {
+// Records that a code was actually applied to a completed registration.
+// Called exactly once per submission (from submission-created.js, after a
+// successful resolution) — never from the live-preview check, which would
+// otherwise burn through a limited code's uses just by being typed in.
+export async function incrementUsage(code) {
+  const normalized = (code || "").trim().toUpperCase();
+  const codes = await readCodes();
+  if (!codes[normalized]) return codes;
+  codes[normalized] = { ...codes[normalized], usageCount: codes[normalized].usageCount + 1 };
+  await store().setJSON(CODES_KEY, codes);
+  return codes;
+}
+
+export async function setCode(code, { discountType, discountValue, expiresAt = null, notes = "", usageLimit = null, status = "active" } = {}) {
   const normalized = (code || "").trim().toUpperCase();
   if (!normalized) throw new Error("Code is required");
-  if (!Number.isFinite(percentage) || percentage <= 0 || percentage > 100) {
+
+  const type = discountType === "fixed" ? "fixed" : "percentage";
+  if (!Number.isFinite(discountValue) || discountValue <= 0) {
+    throw new Error(type === "percentage" ? "Percentage must be a number between 1 and 100" : "Amount must be a positive number");
+  }
+  if (type === "percentage" && discountValue > 100) {
     throw new Error("Percentage must be a number between 1 and 100");
   }
   if (expiresAt && !/^\d{4}-\d{2}-\d{2}$/.test(expiresAt)) {
     throw new Error("Expiry date must be in YYYY-MM-DD format");
   }
+  if (usageLimit !== null && (!Number.isInteger(usageLimit) || usageLimit < 0)) {
+    throw new Error("Usage limit must be a non-negative whole number, or left blank for unlimited");
+  }
+  if (status !== "active" && status !== "inactive") {
+    throw new Error('Status must be "active" or "inactive"');
+  }
+
   const codes = await readCodes();
-  // Editing an existing code (same key) keeps its original creation date;
-  // only a genuinely new key (including a legacy entry with no date yet,
-  // or a Duplicate/rename landing on a fresh name) gets stamped "now".
-  const createdAt = codes[normalized]?.createdAt || new Date().toISOString();
-  codes[normalized] = { percentage, createdAt, expiresAt: expiresAt || null, notes: notes || "" };
+  const existing = codes[normalized];
+  // Editing an existing code (same key) keeps its original creation date
+  // and accumulated usage count; only a genuinely new key (including a
+  // legacy entry with no date yet, or a Duplicate/rename landing on a
+  // fresh name) gets stamped "now" and starts its usage count at 0.
+  const createdAt = existing?.createdAt || new Date().toISOString();
+  const usageCount = existing?.usageCount ?? 0;
+  codes[normalized] = {
+    discountType: type,
+    discountValue,
+    createdAt,
+    expiresAt: expiresAt || null,
+    notes: notes || "",
+    usageLimit,
+    usageCount,
+    status,
+  };
   await store().setJSON(CODES_KEY, codes);
   return codes;
 }

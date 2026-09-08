@@ -25,9 +25,12 @@ export const handler = async (event) => {
 
     try {
       const codes = await setCode(body.code, {
-        percentage: Number(body.percentage),
+        discountType: body.discountType,
+        discountValue: Number(body.discountValue),
         expiresAt: body.expiresAt || null,
         notes: body.notes || "",
+        usageLimit: body.usageLimit === null || body.usageLimit === undefined ? null : Number(body.usageLimit),
+        status: body.status || "active",
       });
       return { statusCode: 200, headers: { "Content-Type": "application/json" }, body: JSON.stringify({ codes }) };
     } catch (error) {

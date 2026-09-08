@@ -23,7 +23,6 @@
 //                       real, finalized invoices.
 import { toCountryCode } from "./country-codes.js";
 import { buildAttendeeList } from "./registration-email.js";
-import { resolveDiscount } from "./discount.js";
 
 const LEXWARE_BASE_URL = "https://api.lexware.io/v1";
 
@@ -282,11 +281,10 @@ function buildInvoiceIntroduction(data) {
   return lines.join("\n");
 }
 
-async function createInvoice(data, contactId) {
+async function createInvoice(data, contactId, discount) {
   const testMode = isTestMode();
   const prefix = testMode ? "TEST — " : "";
   const netAmount = parseAmount(data.total);
-  const discount = await resolveDiscount(data);
   const voucherDate = new Date();
   const dueDate = computeDueDate(voucherDate, data["session-date-iso"]);
   // Lexware's PDF renders the due date from paymentConditions.paymentTermDuration
@@ -323,8 +321,10 @@ async function createInvoice(data, contactId) {
         },
         // Lexware's native per-line discount — keeps the original price
         // visible on the PDF alongside the discount, rather than us
-        // silently zeroing netAmount ourselves.
-        ...(discount ? { discountPercentage: discount.percentage } : {}),
+        // silently zeroing netAmount ourselves. Lexware only understands a
+        // percentage here, so a fixed-euro code arrives already converted
+        // (see resolveDiscount in discount.js).
+        ...(discount ? { discountPercentage: discount.percentageForLexware } : {}),
       },
     ],
     totalPrice: { currency: "EUR" },
@@ -383,8 +383,11 @@ async function downloadFile(fileId) {
 
 // Returns { pdfBuffer, invoiceId, testMode } on success, or null if
 // anything failed (logged) — invoice generation is never allowed to block
-// the registration emails from sending.
-export async function generateInvoicePdf(data) {
+// the registration emails from sending. `discount` is the already-resolved
+// result of discount.js's resolveDiscount() — resolved once by the caller
+// (submission-created.js) rather than re-resolved here, so a code's usage
+// only ever gets counted once per submission.
+export async function generateInvoicePdf(data, discount) {
   if (!process.env.LEXWARE_API_KEY) {
     console.log("submission-created: LEXWARE_API_KEY not set — skipping invoice generation.");
     return null;
@@ -392,7 +395,7 @@ export async function generateInvoicePdf(data) {
 
   try {
     const contactId = await findOrCreateContact(data);
-    const invoice = await createInvoice(data, contactId);
+    const invoice = await createInvoice(data, contactId, discount);
 
     // Lexware never renders a PDF for a draft (unfinalized) invoice —
     // confirmed against their docs, not just a rendering delay — so

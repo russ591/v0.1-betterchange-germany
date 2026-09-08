@@ -35,6 +35,7 @@ import {
 } from "./lib/registration-email.js";
 import { generateInvoicePdf } from "./lib/lexware-client.js";
 import { resolveDiscount, computeDiscountBreakdown } from "./lib/discount.js";
+import { incrementUsage } from "./lib/discount-store.js";
 import { buildGoogleCalendarUrl } from "./lib/calendarLink.js";
 
 const FROM_ADDRESS = "Better Change Germany <russ@betterchange-consulting.de>";
@@ -57,8 +58,13 @@ export const handler = async (event) => {
   console.log(
     `submission-created: discount-code field received = ${JSON.stringify(data["discount-code"] ?? null)}`
   );
+  // Resolved exactly once per submission — both the invoice's line-item
+  // discount and the emailed breakdown reuse this same result, rather than
+  // each independently re-resolving it (which would otherwise mean a
+  // limited-use code's usage count gets incremented twice per booking).
   const discount = await resolveDiscount(data);
-  const discountBreakdown = discount ? computeDiscountBreakdown(data.total, discount.percentage) : null;
+  const discountBreakdown = discount ? computeDiscountBreakdown(data.total, discount.amount) : null;
+  if (discount) await incrementUsage(discount.code);
 
   const user = process.env.GMAIL_USER;
   const pass = process.env.GMAIL_APP_PASSWORD;
@@ -77,7 +83,7 @@ export const handler = async (event) => {
 
   const results = { invoice: "not attempted", confirmation: "not attempted", ownerNotification: "not attempted" };
 
-  const invoiceResult = await generateInvoicePdf(data);
+  const invoiceResult = await generateInvoicePdf(data, discount);
   results.invoice = invoiceResult
     ? `generated (${invoiceResult.testMode ? "draft, TEST_MODE" : "finalized"}, id ${invoiceResult.invoiceId})`
     : "skipped or failed — see earlier log lines";
