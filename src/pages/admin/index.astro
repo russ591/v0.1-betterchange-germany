@@ -33,6 +33,8 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
         </button>
       </div>
 
+      <p id="dashboard-error" class="mt-4 text-[length:var(--text-small)] text-de-red" hidden></p>
+
       <div class="mt-6 overflow-hidden rounded-[var(--radius-card)] border border-neutral-200">
         <table class="w-full text-left text-[length:var(--text-small)]">
           <thead>
@@ -123,10 +125,21 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
     }
 
     async function loadCodes() {
-      const res = await fetch("/.netlify/functions/admin-discount-codes");
-      if (!res.ok) return;
-      const { codes } = await res.json();
-      renderCodes(codes);
+      const dashboardErrorEl = document.getElementById("dashboard-error") as HTMLParagraphElement;
+      try {
+        const res = await fetch("/.netlify/functions/admin-discount-codes");
+        const body = await res.json();
+        if (!res.ok) {
+          dashboardErrorEl.textContent = `Could not load codes (${res.status}): ${body.error || "unknown error"}`;
+          dashboardErrorEl.hidden = false;
+          return;
+        }
+        dashboardErrorEl.hidden = true;
+        renderCodes(body.codes);
+      } catch (error) {
+        dashboardErrorEl.textContent = `Could not load codes: ${error instanceof Error ? error.message : "network error"}`;
+        dashboardErrorEl.hidden = false;
+      }
     }
 
     async function showDashboard(email: string) {
