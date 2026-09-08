@@ -1,8 +1,15 @@
 // Discount codes used to live as a hardcoded map in src/data/discountCodes.js
 // (edited via a code change + deploy). This replaces that with a single JSON
 // blob in Netlify Blobs, so the /admin page can add/edit/remove codes without
-// touching code. Netlify Functions get Blobs access automatically at
-// runtime — no siteID/token to configure here.
+// touching code.
+//
+// Netlify Functions are documented to get Blobs access automatically at
+// runtime (no siteID/token needed) via an env var Netlify's own runtime
+// injects. On this project that ambient context isn't present — confirmed
+// in production by @netlify/blobs itself throwing MissingBlobsEnvironmentError
+// — so this falls back to explicit credentials (NETLIFY_SITE_ID +
+// NETLIFY_BLOBS_TOKEN, a personal access token) when they're set, and only
+// relies on the automatic path if they aren't.
 import { getStore } from "@netlify/blobs";
 
 const STORE_NAME = "discount-codes";
@@ -14,6 +21,11 @@ const CODES_KEY = "codes";
 const SEED_CODES = { RUSS101: 100, RUSS51: 50 };
 
 function store() {
+  const siteID = process.env.NETLIFY_SITE_ID;
+  const token = process.env.NETLIFY_BLOBS_TOKEN;
+  if (siteID && token) {
+    return getStore({ name: STORE_NAME, siteID, token });
+  }
   return getStore(STORE_NAME);
 }
 
