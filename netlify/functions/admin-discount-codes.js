@@ -24,7 +24,11 @@ export const handler = async (event) => {
     }
 
     try {
-      const codes = await setCode(body.code, Number(body.percentage));
+      const codes = await setCode(body.code, {
+        percentage: Number(body.percentage),
+        expiresAt: body.expiresAt || null,
+        notes: body.notes || "",
+      });
       return { statusCode: 200, headers: { "Content-Type": "application/json" }, body: JSON.stringify({ codes }) };
     } catch (error) {
       return { statusCode: 400, body: JSON.stringify({ error: error.message }) };

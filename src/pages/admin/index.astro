@@ -60,36 +60,86 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
         <button type="button" id="form-mode-cancel" class="cursor-pointer underline decoration-neutral-300 underline-offset-2 transition-colors hover:decoration-ink">Cancel</button>
       </p>
 
-      <form id="add-code-form" class="mt-3 flex flex-wrap items-end gap-3">
-        <div>
-          <label for="new-code" class="block text-[length:var(--text-caption)] font-medium">Code</label>
-          <input
-            id="new-code"
-            type="text"
-            required
-            placeholder="e.g. SPRING25"
-            class="mt-1 rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 uppercase"
-          />
+      <form id="add-code-form" class="mt-3 flex flex-col gap-4">
+        <div class="flex flex-wrap items-end gap-3">
+          <div>
+            <label for="new-code" class="block text-[length:var(--text-caption)] font-medium">Code</label>
+            <input
+              id="new-code"
+              type="text"
+              required
+              placeholder="e.g. SPRING25"
+              class="mt-1 rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 uppercase"
+            />
+          </div>
+          <div>
+            <label for="new-percentage" class="block text-[length:var(--text-caption)] font-medium">% off</label>
+            <input
+              id="new-percentage"
+              type="number"
+              min="1"
+              max="100"
+              required
+              class="mt-1 w-24 rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2"
+            />
+          </div>
         </div>
+
         <div>
-          <label for="new-percentage" class="block text-[length:var(--text-caption)] font-medium">% off</label>
-          <input
-            id="new-percentage"
-            type="number"
-            min="1"
-            max="100"
-            required
-            class="mt-1 w-24 rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2"
-          />
+          <p class="text-[length:var(--text-caption)] font-medium">Expiry</p>
+          <label class="mt-1 flex items-center gap-2 text-[length:var(--text-small)]">
+            <input id="no-expiry-checkbox" type="checkbox" checked />
+            No expiry
+          </label>
+          <div id="expiry-date-row" class="mt-2 flex flex-wrap items-center gap-2">
+            <input
+              id="new-expiry"
+              type="date"
+              class="rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 text-[length:var(--text-small)] disabled:bg-mist-light disabled:text-neutral-400"
+            />
+            <div class="flex flex-wrap gap-1.5">
+              {
+                [
+                  { label: "1 day", days: 1 },
+                  { label: "1 week", days: 7 },
+                  { label: "1 month", months: 1 },
+                  { label: "3 months", months: 3 },
+                  { label: "6 months", months: 6 },
+                ].map((shortcut) => (
+                  <button
+                    type="button"
+                    class="expiry-shortcut-button cursor-pointer rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-3 py-1 text-[length:var(--text-caption)] font-semibold text-neutral-700 transition-colors hover:border-ink hover:text-ink"
+                    data-days={shortcut.days}
+                    data-months={shortcut.months}
+                  >
+                    {shortcut.label}
+                  </button>
+                ))
+              }
+            </div>
+          </div>
         </div>
-        <button
-          type="submit"
-          id="save-code-button"
-          class="cursor-pointer rounded-[var(--radius-control)] bg-ink px-5 py-2.5 font-semibold text-surface transition-colors hover:bg-neutral-800"
-        >
-          Save code
-        </button>
-        <p id="form-error" class="w-full text-[length:var(--text-small)] text-de-red" hidden></p>
+
+        <div>
+          <label for="new-notes" class="block text-[length:var(--text-caption)] font-medium">Notes (optional)</label>
+          <textarea
+            id="new-notes"
+            rows="2"
+            placeholder="Who this code is for and why"
+            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 text-[length:var(--text-small)]"
+          ></textarea>
+        </div>
+
+        <div>
+          <button
+            type="submit"
+            id="save-code-button"
+            class="cursor-pointer rounded-[var(--radius-control)] bg-ink px-5 py-2.5 font-semibold text-surface transition-colors hover:bg-neutral-800"
+          >
+            Save code
+          </button>
+        </div>
+        <p id="form-error" class="text-[length:var(--text-small)] text-de-red" hidden></p>
       </form>
     </div>
   </Section>
@@ -115,16 +165,70 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
     const formModeBanner = document.getElementById("form-mode-banner") as HTMLParagraphElement;
     const formModeCodeEl = document.getElementById("form-mode-code") as HTMLSpanElement;
     const formModeCancelButton = document.getElementById("form-mode-cancel") as HTMLButtonElement;
+    const noExpiryCheckbox = document.getElementById("no-expiry-checkbox") as HTMLInputElement;
+    const expiryDateInput = document.getElementById("new-expiry") as HTMLInputElement;
+    const notesInput = document.getElementById("new-notes") as HTMLTextAreaElement;
     const clientId = loginSection.dataset.googleClientId ?? "";
+
+    interface CodeEntry {
+      percentage: number;
+      createdAt: string | null;
+      expiresAt: string | null;
+      notes: string;
+    }
+
+    // Populated on every renderCodes() call — lets Edit/Duplicate look up
+    // a code's full entry by name instead of round-tripping everything
+    // through HTML data-attributes (which gets awkward once notes is
+    // arbitrary free text that needs escaping).
+    let currentCodes: Record<string, CodeEntry> = {};
 
     // Set while editing an existing code — on submit, if the code name was
     // changed, the old entry is deleted after the new one saves (rather
     // than left behind as an unrelated duplicate). Null for a plain create.
     let editingCode: string | null = null;
 
-    function enterEditMode(code: string, percentage: number) {
+    // The date input is disabled (not hidden) while "No expiry" is
+    // checked — the shortcut buttons stay visible and clickable either
+    // way, since clicking one is exactly how you turn "no expiry" off.
+    function updateExpiryRowVisibility() {
+      expiryDateInput.disabled = noExpiryCheckbox.checked;
+    }
+    noExpiryCheckbox.addEventListener("change", updateExpiryRowVisibility);
+
+    function toDateInputValue(d: Date) {
+      return d.toISOString().slice(0, 10);
+    }
+
+    document.querySelectorAll<HTMLButtonElement>(".expiry-shortcut-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = new Date();
+        if (button.dataset.days) target.setDate(target.getDate() + Number(button.dataset.days));
+        if (button.dataset.months) target.setMonth(target.getMonth() + Number(button.dataset.months));
+        noExpiryCheckbox.checked = false;
+        updateExpiryRowVisibility();
+        expiryDateInput.value = toDateInputValue(target);
+      });
+    });
+
+    function setExpiryFields(expiresAt: string | null) {
+      if (expiresAt) {
+        noExpiryCheckbox.checked = false;
+        expiryDateInput.value = expiresAt;
+      } else {
+        noExpiryCheckbox.checked = true;
+        expiryDateInput.value = "";
+      }
+      updateExpiryRowVisibility();
+    }
+
+    function enterEditMode(code: string) {
+      const entry = currentCodes[code];
+      if (!entry) return;
       newCodeInput.value = code;
-      newPercentageInput.value = String(percentage);
+      newPercentageInput.value = String(entry.percentage);
+      notesInput.value = entry.notes || "";
+      setExpiryFields(entry.expiresAt);
       editingCode = code;
       formModeCodeEl.textContent = code;
       formModeBanner.hidden = false;
@@ -138,6 +242,7 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
       formModeBanner.hidden = true;
       saveCodeButton.textContent = "Save code";
       addCodeForm.reset();
+      updateExpiryRowVisibility();
     }
 
     function showLoginError(message: string) {
@@ -146,20 +251,29 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
     }
 
     // Shared by both the mobile cards and the desktop table row — same
-    // data-code/data-percentage attributes either way, so one click
-    // delegation on the wrapper handles both layouts identically.
-    function actionsMarkup(code: string, percentage: number) {
+    // data-code attribute either way, so one click delegation on the
+    // wrapper handles both layouts identically. Only the code name is
+    // encoded in the DOM; the full entry is looked up from currentCodes
+    // at click time, so arbitrary notes text never has to round-trip
+    // through an HTML attribute.
+    function actionsMarkup(code: string) {
       return `
-        <button type="button" data-code="${code}" data-percentage="${percentage}" class="edit-code-button cursor-pointer text-ink underline decoration-transparent underline-offset-2 transition-colors hover:decoration-ink">
+        <button type="button" data-code="${code}" class="edit-code-button cursor-pointer text-ink underline decoration-transparent underline-offset-2 transition-colors hover:decoration-ink">
           Edit
         </button>
-        <button type="button" data-code="${code}" data-percentage="${percentage}" class="duplicate-code-button ml-3 cursor-pointer text-ink underline decoration-transparent underline-offset-2 transition-colors hover:decoration-ink">
+        <button type="button" data-code="${code}" class="duplicate-code-button ml-3 cursor-pointer text-ink underline decoration-transparent underline-offset-2 transition-colors hover:decoration-ink">
           Duplicate
         </button>
         <button type="button" data-code="${code}" class="delete-code-button ml-3 cursor-pointer text-de-red underline decoration-transparent underline-offset-2 transition-colors hover:decoration-de-red">
           Delete
         </button>
       `;
+    }
+
+    function escapeHtml(text: string) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
     }
 
     const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric" });
@@ -177,12 +291,26 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
       return `<div class="text-[length:var(--text-caption)] text-neutral-400">${dateFormatter.format(new Date(createdAt))}</div>`;
     }
 
-    interface CodeEntry {
-      percentage: number;
-      createdAt: string | null;
+    // expiresAt is a plain "YYYY-MM-DD" — appending T00:00:00 parses it in
+    // the browser's local timezone rather than UTC (a bare date string
+    // parses as UTC midnight, which can display as the day before in
+    // timezones behind UTC).
+    function expiryMarkup(expiresAt: string | null) {
+      if (!expiresAt) return "";
+      const expired = new Date().toISOString().slice(0, 10) > expiresAt;
+      const formatted = dateFormatter.format(new Date(`${expiresAt}T00:00:00`));
+      const colorClass = expired ? "text-de-red" : "text-neutral-400";
+      const label = expired ? "Expired" : "Expires";
+      return `<div class="text-[length:var(--text-caption)] ${colorClass}">${label} ${formatted}</div>`;
+    }
+
+    function notesMarkup(notes: string) {
+      if (!notes) return "";
+      return `<div class="mt-1 max-w-[240px] truncate text-[length:var(--text-caption)] italic text-neutral-400" title="${escapeHtml(notes)}">${escapeHtml(notes)}</div>`;
     }
 
     function renderCodes(codes: Record<string, CodeEntry>) {
+      currentCodes = codes;
       // Object.entries returns keys in insertion order (oldest-added
       // first). Two codes created at the exact same millisecond — the
       // seeded RUSS101/RUSS51 pair both get stamped in one seed call, so
@@ -198,16 +326,18 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
       tableBody.innerHTML = "";
       mobileList.innerHTML = "";
 
-      for (const [code, { percentage, createdAt }] of entries) {
+      for (const [code, { percentage, createdAt, expiresAt, notes }] of entries) {
         const row = document.createElement("tr");
         row.className = "border-b border-neutral-100 last:border-0";
         row.innerHTML = `
           <td class="px-4 py-3">
             <div class="font-semibold">${code}</div>
             ${dateMarkup(createdAt)}
+            ${expiryMarkup(expiresAt)}
+            ${notesMarkup(notes)}
           </td>
           <td class="px-4 py-3">${percentage}%</td>
-          <td class="px-4 py-3 text-right whitespace-nowrap">${actionsMarkup(code, percentage)}</td>
+          <td class="px-4 py-3 text-right whitespace-nowrap">${actionsMarkup(code)}</td>
         `;
         tableBody.appendChild(row);
 
@@ -218,10 +348,12 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
             <div>
               <span class="font-semibold">${code}</span>
               ${dateMarkup(createdAt)}
+              ${expiryMarkup(expiresAt)}
+              ${notesMarkup(notes)}
             </div>
             <span>${percentage}% off</span>
           </div>
-          <div class="mt-3 flex items-center gap-1 border-t border-neutral-100 pt-3">${actionsMarkup(code, percentage)}</div>
+          <div class="mt-3 flex items-center gap-1 border-t border-neutral-100 pt-3">${actionsMarkup(code)}</div>
         `;
         mobileList.appendChild(card);
       }
@@ -290,6 +422,8 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
           body: JSON.stringify({
             code: newCodeInput.value,
             percentage: Number(newPercentageInput.value),
+            expiresAt: noExpiryCheckbox.checked ? null : expiryDateInput.value || null,
+            notes: notesInput.value,
           }),
         });
         const result = await res.json();
@@ -330,17 +464,23 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
 
       const editButton = target.closest<HTMLButtonElement>(".edit-code-button");
       if (editButton) {
-        enterEditMode(editButton.dataset.code!, Number(editButton.dataset.percentage));
+        enterEditMode(editButton.dataset.code!);
         return;
       }
 
       const duplicateButton = target.closest<HTMLButtonElement>(".duplicate-code-button");
       if (duplicateButton) {
+        const original = currentCodes[duplicateButton.dataset.code!];
+        if (!original) return;
         const code = `COPY OF ${duplicateButton.dataset.code}`;
-        const percentage = Number(duplicateButton.dataset.percentage);
         const res = await fetch("/.netlify/functions/admin-discount-codes", {
           method: "POST",
-          body: JSON.stringify({ code, percentage }),
+          body: JSON.stringify({
+            code,
+            percentage: original.percentage,
+            expiresAt: original.expiresAt,
+            notes: original.notes,
+          }),
         });
         if (res.ok) {
           const { codes } = await res.json();
@@ -381,6 +521,7 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
       google.accounts.id.renderButton(document.getElementById("google-signin-button"), { theme: "outline", size: "large" });
     });
 
+    updateExpiryRowVisibility();
     checkSession();
   </script>
 </BaseLayout>

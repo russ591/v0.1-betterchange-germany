@@ -24,13 +24,34 @@ function store() {
   return getStore(STORE_NAME);
 }
 
-// Each code is stored as { percentage, createdAt }. Older entries written
-// before createdAt existed are a bare number — normalized here (in memory
-// only) to { percentage: <that number>, createdAt: null } so every caller
-// can rely on the object shape; a null createdAt sorts as "oldest" and
-// just isn't shown a creation date in the dashboard.
+// Each code is stored as { percentage, createdAt, expiresAt, notes}.
+// expiresAt is a plain "YYYY-MM-DD" (an HTML date input's native value,
+// no time/timezone attached) meaning "valid through this calendar date,
+// inclusive" — null means it never expires. Older entries written before
+// these fields existed are a bare number — normalized here (in memory
+// only) to { percentage: <that number>, createdAt: null, expiresAt: null,
+// notes: "" } so every caller can rely on the object shape; a null
+// createdAt sorts as "oldest" and just isn't shown a creation date.
 function normalizeEntry(value) {
-  return value && typeof value === "object" ? value : { percentage: value, createdAt: null };
+  if (value && typeof value === "object") {
+    return {
+      percentage: value.percentage,
+      createdAt: value.createdAt ?? null,
+      expiresAt: value.expiresAt ?? null,
+      notes: value.notes ?? "",
+    };
+  }
+  return { percentage: value, createdAt: null, expiresAt: null, notes: "" };
+}
+
+// Today as "YYYY-MM-DD", matching expiresAt's format — lexicographic
+// comparison of that format sorts the same as calendar order.
+function todayDateString() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function isExpired(entry) {
+  return Boolean(entry.expiresAt) && todayDateString() > entry.expiresAt;
 }
 
 async function readCodes() {
@@ -43,7 +64,10 @@ async function readCodes() {
   // migration), so the codes already handed out during earlier testing
   // keep working without Russell having to re-enter them in the admin UI.
   const now = new Date().toISOString();
-  const seeded = { RUSS101: { percentage: 100, createdAt: now }, RUSS51: { percentage: 50, createdAt: now } };
+  const seeded = {
+    RUSS101: { percentage: 100, createdAt: now, expiresAt: null, notes: "" },
+    RUSS51: { percentage: 50, createdAt: now, expiresAt: null, notes: "" },
+  };
   await store().setJSON(CODES_KEY, seeded);
   return seeded;
 }
@@ -52,26 +76,36 @@ export async function listCodes() {
   return readCodes();
 }
 
-// Returns the discount percentage for a code, or null if it doesn't exist.
+// Returns the discount percentage for a code, or null if it doesn't exist
+// or has expired — used by the customer-facing check and the invoicing
+// pipeline, both of which should treat an expired code as if it were
+// never created. The admin dashboard uses listCodes() instead, which
+// returns every code regardless of expiry so Russell can still see,
+// extend, or delete an expired one.
 export async function getCodePercentage(code) {
   const normalized = (code || "").trim().toUpperCase();
   if (!normalized) return null;
   const codes = await readCodes();
-  return normalized in codes ? codes[normalized].percentage : null;
+  const entry = codes[normalized];
+  if (!entry || isExpired(entry)) return null;
+  return entry.percentage;
 }
 
-export async function setCode(code, percentage) {
+export async function setCode(code, { percentage, expiresAt = null, notes = "" } = {}) {
   const normalized = (code || "").trim().toUpperCase();
   if (!normalized) throw new Error("Code is required");
   if (!Number.isFinite(percentage) || percentage <= 0 || percentage > 100) {
     throw new Error("Percentage must be a number between 1 and 100");
+  }
+  if (expiresAt && !/^\d{4}-\d{2}-\d{2}$/.test(expiresAt)) {
+    throw new Error("Expiry date must be in YYYY-MM-DD format");
   }
   const codes = await readCodes();
   // Editing an existing code (same key) keeps its original creation date;
   // only a genuinely new key (including a legacy entry with no date yet,
   // or a Duplicate/rename landing on a fresh name) gets stamped "now".
   const createdAt = codes[normalized]?.createdAt || new Date().toISOString();
-  codes[normalized] = { percentage, createdAt };
+  codes[normalized] = { percentage, createdAt, expiresAt: expiresAt || null, notes: notes || "" };
   await store().setJSON(CODES_KEY, codes);
   return codes;
 }
