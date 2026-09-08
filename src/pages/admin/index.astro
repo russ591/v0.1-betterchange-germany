@@ -35,17 +35,23 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
 
       <p id="dashboard-error" class="mt-4 text-[length:var(--text-small)] text-de-red" hidden></p>
 
-      <div class="mt-6 overflow-hidden rounded-[var(--radius-card)] border border-neutral-200">
-        <table class="w-full text-left text-[length:var(--text-small)]">
-          <thead>
-            <tr class="border-b border-neutral-200 bg-mist-light">
-              <th class="px-4 py-3 font-medium">Code</th>
-              <th class="px-4 py-3 font-medium">Discount</th>
-              <th class="px-4 py-3"></th>
-            </tr>
-          </thead>
-          <tbody id="codes-table-body"></tbody>
-        </table>
+      <div class="mt-6" id="codes-list-wrapper">
+        <!-- Stacked cards below sm (the 3-action row doesn't fit a narrow
+             table without clipping); a real table from sm up. -->
+        <div class="flex flex-col gap-3 sm:hidden" id="codes-mobile-list"></div>
+
+        <div class="hidden overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 sm:block">
+          <table class="w-full text-left text-[length:var(--text-small)]">
+            <thead>
+              <tr class="border-b border-neutral-200 bg-mist-light">
+                <th class="px-4 py-3 font-medium">Code</th>
+                <th class="px-4 py-3 font-medium">Discount</th>
+                <th class="px-4 py-3"></th>
+              </tr>
+            </thead>
+            <tbody id="codes-table-body"></tbody>
+          </table>
+        </div>
         <p id="codes-empty" class="p-6 text-center text-neutral-500" hidden>No discount codes yet.</p>
       </div>
 
@@ -97,6 +103,8 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
     const loginErrorEl = document.getElementById("login-error") as HTMLParagraphElement;
     const adminEmailEl = document.getElementById("admin-email") as HTMLParagraphElement;
     const tableBody = document.getElementById("codes-table-body") as HTMLTableSectionElement;
+    const mobileList = document.getElementById("codes-mobile-list") as HTMLDivElement;
+    const codesListWrapper = document.getElementById("codes-list-wrapper") as HTMLDivElement;
     const codesEmptyEl = document.getElementById("codes-empty") as HTMLParagraphElement;
     const addCodeForm = document.getElementById("add-code-form") as HTMLFormElement;
     const newCodeInput = document.getElementById("new-code") as HTMLInputElement;
@@ -146,29 +154,49 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
       loginErrorEl.hidden = false;
     }
 
+    // Shared by both the mobile cards and the desktop table row — same
+    // data-code/data-percentage attributes either way, so one click
+    // delegation on the wrapper handles both layouts identically.
+    function actionsMarkup(code: string, percentage: number) {
+      return `
+        <button type="button" data-code="${code}" data-percentage="${percentage}" class="edit-code-button cursor-pointer text-ink underline decoration-transparent underline-offset-2 transition-colors hover:decoration-ink">
+          Edit
+        </button>
+        <button type="button" data-percentage="${percentage}" class="duplicate-code-button ml-3 cursor-pointer text-ink underline decoration-transparent underline-offset-2 transition-colors hover:decoration-ink">
+          Duplicate
+        </button>
+        <button type="button" data-code="${code}" class="delete-code-button ml-3 cursor-pointer text-de-red underline decoration-transparent underline-offset-2 transition-colors hover:decoration-de-red">
+          Delete
+        </button>
+      `;
+    }
+
     function renderCodes(codes: Record<string, number>) {
       const entries = Object.entries(codes).sort(([a], [b]) => a.localeCompare(b));
       codesEmptyEl.hidden = entries.length > 0;
       tableBody.innerHTML = "";
+      mobileList.innerHTML = "";
+
       for (const [code, percentage] of entries) {
         const row = document.createElement("tr");
         row.className = "border-b border-neutral-100 last:border-0";
         row.innerHTML = `
           <td class="px-4 py-3 font-semibold">${code}</td>
           <td class="px-4 py-3">${percentage}%</td>
-          <td class="px-4 py-3 text-right whitespace-nowrap">
-            <button type="button" data-code="${code}" data-percentage="${percentage}" class="edit-code-button cursor-pointer text-ink underline decoration-transparent underline-offset-2 transition-colors hover:decoration-ink">
-              Edit
-            </button>
-            <button type="button" data-percentage="${percentage}" class="duplicate-code-button ml-3 cursor-pointer text-ink underline decoration-transparent underline-offset-2 transition-colors hover:decoration-ink">
-              Duplicate
-            </button>
-            <button type="button" data-code="${code}" class="delete-code-button ml-3 cursor-pointer text-de-red underline decoration-transparent underline-offset-2 transition-colors hover:decoration-de-red">
-              Delete
-            </button>
-          </td>
+          <td class="px-4 py-3 text-right whitespace-nowrap">${actionsMarkup(code, percentage)}</td>
         `;
         tableBody.appendChild(row);
+
+        const card = document.createElement("div");
+        card.className = "rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-4";
+        card.innerHTML = `
+          <div class="flex items-center justify-between gap-3">
+            <span class="font-semibold">${code}</span>
+            <span>${percentage}% off</span>
+          </div>
+          <div class="mt-3 flex items-center gap-1 border-t border-neutral-100 pt-3">${actionsMarkup(code, percentage)}</div>
+        `;
+        mobileList.appendChild(card);
       }
     }
 
@@ -270,7 +298,7 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
 
     formModeCancelButton.addEventListener("click", exitFormMode);
 
-    tableBody.addEventListener("click", async (event) => {
+    codesListWrapper.addEventListener("click", async (event) => {
       const target = event.target as HTMLElement;
 
       const editButton = target.closest<HTMLButtonElement>(".edit-code-button");
