@@ -15,11 +15,6 @@ import { getStore } from "@netlify/blobs";
 const STORE_NAME = "discount-codes";
 const CODES_KEY = "codes";
 
-// Only used the one time the store is empty (first read after this
-// migration), so the codes already handed out during earlier testing keep
-// working without Russell having to re-enter them in the new admin UI.
-const SEED_CODES = { RUSS101: 100, RUSS51: 50 };
-
 function store() {
   const siteID = process.env.NETLIFY_SITE_ID;
   const token = process.env.NETLIFY_BLOBS_TOKEN;
@@ -29,11 +24,28 @@ function store() {
   return getStore(STORE_NAME);
 }
 
+// Each code is stored as { percentage, createdAt }. Older entries written
+// before createdAt existed are a bare number — normalized here (in memory
+// only) to { percentage: <that number>, createdAt: null } so every caller
+// can rely on the object shape; a null createdAt sorts as "oldest" and
+// just isn't shown a creation date in the dashboard.
+function normalizeEntry(value) {
+  return value && typeof value === "object" ? value : { percentage: value, createdAt: null };
+}
+
 async function readCodes() {
   const existing = await store().get(CODES_KEY, { type: "json" });
-  if (existing) return existing;
-  await store().setJSON(CODES_KEY, SEED_CODES);
-  return { ...SEED_CODES };
+  if (existing) {
+    return Object.fromEntries(Object.entries(existing).map(([code, value]) => [code, normalizeEntry(value)]));
+  }
+
+  // Only used the one time the store is empty (first read after this
+  // migration), so the codes already handed out during earlier testing
+  // keep working without Russell having to re-enter them in the admin UI.
+  const now = new Date().toISOString();
+  const seeded = { RUSS101: { percentage: 100, createdAt: now }, RUSS51: { percentage: 50, createdAt: now } };
+  await store().setJSON(CODES_KEY, seeded);
+  return seeded;
 }
 
 export async function listCodes() {
@@ -45,7 +57,7 @@ export async function getCodePercentage(code) {
   const normalized = (code || "").trim().toUpperCase();
   if (!normalized) return null;
   const codes = await readCodes();
-  return normalized in codes ? codes[normalized] : null;
+  return normalized in codes ? codes[normalized].percentage : null;
 }
 
 export async function setCode(code, percentage) {
@@ -55,7 +67,11 @@ export async function setCode(code, percentage) {
     throw new Error("Percentage must be a number between 1 and 100");
   }
   const codes = await readCodes();
-  codes[normalized] = percentage;
+  // Editing an existing code (same key) keeps its original creation date;
+  // only a genuinely new key (including a legacy entry with no date yet,
+  // or a Duplicate/rename landing on a fresh name) gets stamped "now".
+  const createdAt = codes[normalized]?.createdAt || new Date().toISOString();
+  codes[normalized] = { percentage, createdAt };
   await store().setJSON(CODES_KEY, codes);
   return codes;
 }

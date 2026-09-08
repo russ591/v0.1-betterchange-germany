@@ -162,17 +162,42 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
       `;
     }
 
-    function renderCodes(codes: Record<string, number>) {
-      const entries = Object.entries(codes).sort(([a], [b]) => a.localeCompare(b));
+    const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric" });
+
+    // A null createdAt (a code saved before this field existed) sorts as
+    // the oldest rather than crashing the comparator or clumping at "now".
+    function createdAtMillis(createdAt: string | null) {
+      return createdAt ? new Date(createdAt).getTime() : 0;
+    }
+
+    // Omitted entirely for legacy codes with no known creation date,
+    // rather than showing a misleading one.
+    function dateMarkup(createdAt: string | null) {
+      if (!createdAt) return "";
+      return `<div class="text-[length:var(--text-caption)] text-neutral-400">${dateFormatter.format(new Date(createdAt))}</div>`;
+    }
+
+    interface CodeEntry {
+      percentage: number;
+      createdAt: string | null;
+    }
+
+    function renderCodes(codes: Record<string, CodeEntry>) {
+      const entries = Object.entries(codes).sort(
+        ([, a], [, b]) => createdAtMillis(b.createdAt) - createdAtMillis(a.createdAt)
+      );
       codesEmptyEl.hidden = entries.length > 0;
       tableBody.innerHTML = "";
       mobileList.innerHTML = "";
 
-      for (const [code, percentage] of entries) {
+      for (const [code, { percentage, createdAt }] of entries) {
         const row = document.createElement("tr");
         row.className = "border-b border-neutral-100 last:border-0";
         row.innerHTML = `
-          <td class="px-4 py-3 font-semibold">${code}</td>
+          <td class="px-4 py-3">
+            <div class="font-semibold">${code}</div>
+            ${dateMarkup(createdAt)}
+          </td>
           <td class="px-4 py-3">${percentage}%</td>
           <td class="px-4 py-3 text-right whitespace-nowrap">${actionsMarkup(code, percentage)}</td>
         `;
@@ -182,7 +207,10 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
         card.className = "rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-4";
         card.innerHTML = `
           <div class="flex items-center justify-between gap-3">
-            <span class="font-semibold">${code}</span>
+            <div>
+              <span class="font-semibold">${code}</span>
+              ${dateMarkup(createdAt)}
+            </div>
             <span>${percentage}% off</span>
           </div>
           <div class="mt-3 flex items-center gap-1 border-t border-neutral-100 pt-3">${actionsMarkup(code, percentage)}</div>
