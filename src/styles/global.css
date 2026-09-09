@@ -1,5 +1,22 @@
 @import "tailwindcss";
-@import "@fontsource-variable/inter";
+
+/* Fontsource's own @import ships 7 unicode-range splits (cyrillic, greek,
+   vietnamese, etc.) with font-display: swap -- six of those subsets are
+   never requested on this English/German site, and swap's flash-of-
+   fallback-then-Inter reflow was a measured contributor to layout shift
+   (Lighthouse). This redeclares just the one subset actually used, with
+   font-display: optional instead: the browser waits briefly for the font
+   on a fresh visit and uses it instantly from cache on every later one,
+   but never swaps mid-render, so it can't shift the layout. */
+@font-face {
+  font-family: "Inter Variable";
+  font-style: normal;
+  font-display: optional;
+  font-weight: 100 900;
+  src: url("@fontsource-variable/inter/files/inter-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 /*
   Design tokens (spec §3).
@@ -25,7 +42,12 @@
   --color-neutral-200: #e4e4e4;
   --color-neutral-300: #cccccc;
   --color-neutral-400: #a3a3a3;
-  --color-neutral-500: #737373;
+  /* Was #737373 -- measured at 4.46:1 against --color-mist-light, just
+     short of WCAG AA's 4.5:1 for normal text (Lighthouse flagged this
+     across ~55 usages sitewide: breadcrumbs, order-summary labels,
+     captions). This nudge clears the threshold with real margin
+     (~5.4:1) while staying visually the same muted mid-grey. */
+  --color-neutral-500: #666666;
   --color-neutral-600: #525252;
   --color-neutral-700: #3a3a3a;
   --color-neutral-800: #232323;
