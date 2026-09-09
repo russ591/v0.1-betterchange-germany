@@ -9,6 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
 import { formatSessionDate } from "@/lib/dates";
+import { registrationHref, registrationLinkAttrs } from "@/lib/registrationLink";
 
 const categories = await getCollection("training-categories");
 const schedules = await getCollection("training-schedules");
@@ -137,7 +138,8 @@ const countries = [...new Set(sessions.map((s) => s.country))].sort();
               <Badge format={session.data.format} />
             </div>
             <a
-              href={`/training/register/${session.id}`}
+              href={registrationHref(session)}
+              {...registrationLinkAttrs(session)}
               class={
                 session.data.status === "sold-out"
                   ? "mt-3 block rounded-[var(--radius-control)] border border-ink px-4 py-2 text-center text-[length:var(--text-small)] font-semibold text-ink transition-colors hover:bg-mist-light"
@@ -203,7 +205,8 @@ const countries = [...new Set(sessions.map((s) => s.country))].sort();
                 </td>
                 <td class="px-4 py-4 text-right">
                   <a
-                    href={`/training/register/${session.id}`}
+                    href={registrationHref(session)}
+                    {...registrationLinkAttrs(session)}
                     class={
                       session.data.status === "sold-out"
                         ? "inline-block whitespace-nowrap rounded-[var(--radius-control)] border border-ink px-3 py-1.5 font-semibold text-ink transition-colors hover:bg-mist-light"

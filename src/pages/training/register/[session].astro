@@ -11,7 +11,11 @@ import { courseBadges } from "@/data/courseBadges";
 import { toPathSegment } from "@/lib/urlSlug";
 
 export async function getStaticPaths() {
-  const sessions = await getCollection("training-schedules");
+  // Externally-fulfilled sessions (isExternal: true) have no internal
+  // registration page at all -- their "Register" links point straight to
+  // externalUrl instead (see @/lib/registrationLink), so this page is
+  // never linked to for them and shouldn't exist to be found either.
+  const sessions = (await getCollection("training-schedules")).filter((s) => !s.data.isExternal);
   return sessions.map((session) => ({
     params: { session: session.id },
     props: { session },

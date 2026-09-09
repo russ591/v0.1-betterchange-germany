@@ -12,6 +12,7 @@ import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
 import { formatDetails, formatIcons } from "@/data/formatDetails";
 import { formatSessionDate } from "@/lib/dates";
+import { registrationHref, registrationLinkAttrs } from "@/lib/registrationLink";
 
 export async function getStaticPaths() {
   const courses = await getCollection("training-courses");
@@ -55,7 +56,7 @@ const courseSchema = {
       "@type": "Offer",
       price: parseFloat(session.data.price.replace(/[^0-9.]/g, "")) || undefined,
       priceCurrency: "EUR",
-      url: new URL(`/training/register/${session.id}`, Astro.site).toString(),
+      url: session.data.isExternal ? session.data.externalUrl! : new URL(`/training/register/${session.id}`, Astro.site).toString(),
       availability: "https://schema.org/InStock",
     },
   })),
@@ -189,7 +190,8 @@ const courseSchema = {
                 const isSelfPaced = session.data.format === "self-paced";
                 return (
                   <a
-                    href={`/training/register/${session.id}`}
+                    href={registrationHref(session)}
+                    {...registrationLinkAttrs(session)}
                     class={`block border-b border-neutral-100 px-5 py-4 transition-colors last:border-0 ${
                       isSelfPaced ? "bg-lime/10 hover:bg-lime/20" : "hover:bg-mist-light"
                     }`}

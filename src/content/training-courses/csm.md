@@ -5,7 +5,7 @@ urlSlug: "certified-scrum-master-(csm)"
 category: scrum
 level: Practitioner
 durationText: "2 days ·\_4 x ½ days"
-durationDays: 3
+durationDays: 2
 certification: CSM
 formats:
   - in-person
@@ -32,5 +32,5 @@ whatYoullLearn:
 summary: Get a proper grounding in the Scrum framework and the full scope of the Scrum Master role — servant leadership, coaching, and impediment removal — not just running the ceremonies. You'll learn to facilitate effective Sprints, Reviews, Retrospectives and Planning sessions, protect your team's focus, and coach teams through the early stages of Scrum adoption. Whether you're new to the role, moving from traditional delivery, or have been doing Scrum informally and want to close the gaps, CSM is the world's most recognised Scrum certification and the standard entry point into the Scrum Master career track.
 sortOrder: 1
 metaTitle: CSM Certified Scrum Master Training | Berlin & Online
-metaDescription: Scrum Alliance certified CSM training. Become a Certified Scrum Master in 3 days. Online and in-person options with experienced trainers.
+metaDescription: Scrum Alliance certified CSM training. Become a Certified Scrum Master in 2 days. Online and in-person options with experienced trainers.
 ---
