@@ -14,7 +14,7 @@ const { label, value, description, tone = "light" } = Astro.props;
     tone === "dark" ? "border-neutral-700 bg-neutral-900" : "border-neutral-200 bg-surface"
   }`}
 >
-  <p class={`eyebrow ${tone === "dark" ? "text-neutral-400" : "text-neutral-500"}`}>{label}</p>
+  <p class={`eyebrow ${tone === "dark" ? "text-neutral-400" : ""}`}>{label}</p>
   <p class="mt-2 text-[length:var(--text-h3)] font-bold">
     <span class={tone === "dark" ? "text-lime" : "text-ink"}>{value}</span>
   </p>
