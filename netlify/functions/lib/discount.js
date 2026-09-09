@@ -36,7 +36,14 @@ export async function resolveDiscount(data) {
     discount.discountType === "fixed"
       ? Math.min(discount.discountValue, orderTotal)
       : orderTotal * (discount.discountValue / 100);
-  const percentageForLexware = orderTotal > 0 ? Math.min(100, (amount / orderTotal) * 100) : 0;
+  // Lexware's discountPercentage field rejects more than 2 decimal places
+  // ("406: numerischer Wert außerhalb des gültigen Bereichs") — a fixed-euro
+  // code converted against a non-round order total (e.g. €84 off €2,190)
+  // otherwise produces a long repeating decimal that a plain percentage
+  // code's already-round value never hits, which is why this only ever
+  // surfaced on fixed-amount codes.
+  const rawPercentage = orderTotal > 0 ? Math.min(100, (amount / orderTotal) * 100) : 0;
+  const percentageForLexware = Math.round(rawPercentage * 100) / 100;
 
   const label =
     discount.discountType === "fixed"
