@@ -4,7 +4,7 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: "https://betterchange-consulting.de",
-  integrations: [sitemap()],
+  integrations: [sitemap({ filter: (page) => !page.includes("/admin") })],
   vite: {
     plugins: [tailwindcss()],
   },

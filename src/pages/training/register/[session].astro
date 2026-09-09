@@ -437,9 +437,6 @@ const countries = [
   </Section>
 
   <script>
-    import { DISCOUNT_CODES } from "@/data/discountCodes.js";
-    const discountCodes = DISCOUNT_CODES as Record<string, number>;
-
     const seatsSelect = document.getElementById("seats") as HTMLSelectElement;
     const attendeeBlocks = Array.from(
       document.querySelectorAll<HTMLDivElement>("[data-attendee-block]")
@@ -472,7 +469,7 @@ const countries = [
     // applied server-side (netlify/functions/lib/discount.js) against the
     // pre-discount total submitted in the hidden "total" field, via
     // Lexware's own line-item discount. Never bake this into totalField.
-    let appliedDiscountPercent = 0;
+    let appliedDiscount: { type: "percentage" | "fixed"; value: number } | null = null;
 
     // Two discounts can stack, applied in order: the automatic 3-for-2
     // seat offer first, then a discount code on top of what's left —
@@ -500,9 +497,18 @@ const countries = [
       // post-offer, pre-code, matching this same cascade server-side.
       totalField.value = currencyFormatter.format(afterOffer);
 
-      const discountAmount = afterOffer * (appliedDiscountPercent / 100);
+      let discountAmount = 0;
+      if (appliedDiscount) {
+        discountAmount =
+          appliedDiscount.type === "fixed"
+            ? Math.min(appliedDiscount.value, afterOffer)
+            : afterOffer * (appliedDiscount.value / 100);
+      }
       if (discountAmount > 0) {
-        discountCodeLabelEl.textContent = `Discount code (${appliedDiscountPercent}%)`;
+        discountCodeLabelEl.textContent =
+          appliedDiscount!.type === "fixed"
+            ? "Discount code"
+            : `Discount code (${appliedDiscount!.value}%)`;
         discountAmountEl.textContent = `-${currencyFormatter.format(discountAmount)}`;
         discountCodeLineEl.hidden = false;
       } else {
@@ -520,22 +526,44 @@ const countries = [
       discountFeedbackEl.classList.toggle("text-de-red", tone === "error");
     }
 
-    function applyDiscountCode() {
+    // Codes are looked up server-side (checked against Netlify Blobs via
+    // check-discount-code.js) rather than shipped to the client as a full
+    // list — so a visitor can only ever learn whether the one code they
+    // typed is valid, never enumerate every code Russell has issued.
+    async function applyDiscountCode() {
       const entered = discountCodeInput.value.trim().toUpperCase();
       if (!entered) {
-        appliedDiscountPercent = 0;
+        appliedDiscount = null;
         discountFeedbackEl.hidden = true;
         updateTotal(parseInt(seatsSelect.value, 10));
         return;
       }
 
-      const percent = discountCodes[entered];
-      if (percent) {
-        appliedDiscountPercent = percent;
-        showDiscountFeedback(`Discount code ${entered} applied — ${percent}% off`, "success");
-      } else {
-        appliedDiscountPercent = 0;
-        showDiscountFeedback("Code not recognized", "error");
+      applyDiscountButton.disabled = true;
+      applyDiscountButton.textContent = "Checking…";
+      try {
+        const res = await fetch("/.netlify/functions/check-discount-code", {
+          method: "POST",
+          body: JSON.stringify({ code: entered }),
+        });
+        const result = await res.json();
+        if (result.valid) {
+          appliedDiscount = { type: result.discountType, value: result.value };
+          const amountText =
+            result.discountType === "fixed"
+              ? currencyFormatter.format(result.value) + " off"
+              : `${result.value}% off`;
+          showDiscountFeedback(`Discount code ${entered} applied — ${amountText}`, "success");
+        } else {
+          appliedDiscount = null;
+          showDiscountFeedback("Code not recognized", "error");
+        }
+      } catch {
+        appliedDiscount = null;
+        showDiscountFeedback("Couldn't check that code — try again", "error");
+      } finally {
+        applyDiscountButton.disabled = false;
+        applyDiscountButton.textContent = "Apply";
       }
       updateTotal(parseInt(seatsSelect.value, 10));
     }
@@ -551,8 +579,8 @@ const countries = [
     // "Apply" is pressed again — otherwise the discount shown could go
     // stale relative to whatever's now in the field.
     discountCodeInput.addEventListener("input", () => {
-      if (appliedDiscountPercent !== 0 || !discountFeedbackEl.hidden) {
-        appliedDiscountPercent = 0;
+      if (appliedDiscount !== null || !discountFeedbackEl.hidden) {
+        appliedDiscount = null;
         discountFeedbackEl.hidden = true;
         updateTotal(parseInt(seatsSelect.value, 10));
       }

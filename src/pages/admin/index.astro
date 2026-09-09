@@ -1,0 +1,654 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+
+// PUBLIC_GOOGLE_CLIENT_ID is safe to ship to the client — it identifies the
+// OAuth app, not a secret. The actual gate is server-side: admin-login.js
+// only issues a session cookie for the one ADMIN_EMAIL address, regardless
+// of which Google account signs in here.
+const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
+---
+
+<BaseLayout title="Admin" description="Manage discount codes." noindex>
+  <Section eyebrow="Admin" class="bg-mist-light">
+    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">Discount codes</h1>
+  </Section>
+
+  <Section>
+    <div id="admin-login" data-google-client-id={googleClientId} class="max-w-sm">
+      <p class="text-[length:var(--text-body)] text-neutral-600">Sign in with the admin Google account to continue.</p>
+      <div id="google-signin-button" class="mt-6"></div>
+      <p id="login-error" class="mt-4 text-[length:var(--text-small)] text-de-red" hidden></p>
+    </div>
+
+    <div id="admin-dashboard" hidden>
+      <div class="flex items-center justify-between gap-4">
+        <p id="admin-email" class="text-[length:var(--text-small)] text-neutral-500"></p>
+        <button
+          type="button"
+          id="logout-button"
+          class="cursor-pointer text-[length:var(--text-small)] font-semibold text-ink underline decoration-neutral-300 underline-offset-2 transition-colors hover:decoration-ink"
+        >
+          Sign out
+        </button>
+      </div>
+
+      <p id="dashboard-error" class="mt-4 text-[length:var(--text-small)] text-de-red" hidden></p>
+
+      <div class="mt-6" id="codes-list-wrapper">
+        <!-- One card layout for every width — a fact grid (Created /
+             Expires / Usage / Status) always shows all four fields, with
+             the default spelled out when unset, so there's no separate
+             mobile/desktop markup to keep in sync. -->
+        <div class="flex flex-col gap-3" id="codes-list"></div>
+        <p id="codes-empty" class="p-6 text-center text-neutral-500" hidden>No discount codes yet.</p>
+      </div>
+
+      <p id="form-mode-banner" class="mt-6 text-[length:var(--text-small)] text-neutral-500" hidden>
+        Editing <span id="form-mode-code" class="font-semibold text-ink"></span> —
+        <button type="button" id="form-mode-cancel" class="cursor-pointer underline decoration-neutral-300 underline-offset-2 transition-colors hover:decoration-ink">Cancel</button>
+      </p>
+
+      <form id="add-code-form" class="mt-3 flex flex-col gap-4">
+        <div class="flex flex-wrap items-end gap-3">
+          <div>
+            <label for="new-code" class="block text-[length:var(--text-caption)] font-medium">Code</label>
+            <input
+              id="new-code"
+              type="text"
+              required
+              placeholder="e.g. SPRING25"
+              class="mt-1 rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 uppercase"
+            />
+          </div>
+          <div>
+            <p class="block text-[length:var(--text-caption)] font-medium">Discount type</p>
+            <div class="mt-2 flex gap-3 text-[length:var(--text-small)]">
+              <label class="flex items-center gap-1.5">
+                <input id="discount-type-percentage" type="radio" name="discount-type" value="percentage" checked />
+                Percentage
+              </label>
+              <label class="flex items-center gap-1.5">
+                <input id="discount-type-fixed" type="radio" name="discount-type" value="fixed" />
+                Fixed amount
+              </label>
+            </div>
+          </div>
+          <div>
+            <label for="new-discount-value" id="new-discount-value-label" class="block text-[length:var(--text-caption)] font-medium">% off</label>
+            <input
+              id="new-discount-value"
+              type="number"
+              min="1"
+              max="100"
+              required
+              class="mt-1 w-24 rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2"
+            />
+          </div>
+        </div>
+
+        <div>
+          <p class="text-[length:var(--text-caption)] font-medium">Usage limit</p>
+          <label class="mt-1 flex items-center gap-2 text-[length:var(--text-small)]">
+            <input id="no-usage-limit-checkbox" type="checkbox" checked />
+            No limit
+          </label>
+          <input
+            id="new-usage-limit"
+            type="number"
+            min="0"
+            class="mt-2 w-24 rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 disabled:bg-mist-light disabled:text-neutral-400"
+          />
+        </div>
+
+        <div>
+          <p class="text-[length:var(--text-caption)] font-medium">Expiry</p>
+          <label class="mt-1 flex items-center gap-2 text-[length:var(--text-small)]">
+            <input id="no-expiry-checkbox" type="checkbox" checked />
+            No expiry
+          </label>
+          <div id="expiry-date-row" class="mt-2 flex flex-wrap items-center gap-2">
+            <input
+              id="new-expiry"
+              type="date"
+              class="rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 text-[length:var(--text-small)] disabled:bg-mist-light disabled:text-neutral-400"
+            />
+            <div class="flex flex-wrap gap-1.5">
+              {
+                [
+                  { label: "1 day", days: 1 },
+                  { label: "1 week", days: 7 },
+                  { label: "1 month", months: 1 },
+                  { label: "3 months", months: 3 },
+                  { label: "6 months", months: 6 },
+                ].map((shortcut) => (
+                  <button
+                    type="button"
+                    class="expiry-shortcut-button cursor-pointer rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-3 py-1 text-[length:var(--text-caption)] font-semibold text-neutral-700 transition-colors hover:border-ink hover:text-ink"
+                    data-days={shortcut.days}
+                    data-months={shortcut.months}
+                  >
+                    {shortcut.label}
+                  </button>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label for="new-notes" class="block text-[length:var(--text-caption)] font-medium">Notes (optional)</label>
+          <textarea
+            id="new-notes"
+            rows="2"
+            placeholder="Who this code is for and why"
+            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 text-[length:var(--text-small)]"
+          ></textarea>
+        </div>
+
+        <div>
+          <button
+            type="submit"
+            id="save-code-button"
+            class="cursor-pointer rounded-[var(--radius-control)] bg-ink px-5 py-2.5 font-semibold text-surface transition-colors hover:bg-neutral-800"
+          >
+            Save code
+          </button>
+        </div>
+        <p id="form-error" class="text-[length:var(--text-small)] text-de-red" hidden></p>
+      </form>
+    </div>
+  </Section>
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script>
+    declare const google: any;
+
+    const loginSection = document.getElementById("admin-login") as HTMLDivElement;
+    const dashboardSection = document.getElementById("admin-dashboard") as HTMLDivElement;
+    const loginErrorEl = document.getElementById("login-error") as HTMLParagraphElement;
+    const adminEmailEl = document.getElementById("admin-email") as HTMLParagraphElement;
+    const codesListEl = document.getElementById("codes-list") as HTMLDivElement;
+    const codesListWrapper = document.getElementById("codes-list-wrapper") as HTMLDivElement;
+    const codesEmptyEl = document.getElementById("codes-empty") as HTMLParagraphElement;
+    const addCodeForm = document.getElementById("add-code-form") as HTMLFormElement;
+    const newCodeInput = document.getElementById("new-code") as HTMLInputElement;
+    const discountTypePercentageRadio = document.getElementById("discount-type-percentage") as HTMLInputElement;
+    const discountTypeFixedRadio = document.getElementById("discount-type-fixed") as HTMLInputElement;
+    const newDiscountValueInput = document.getElementById("new-discount-value") as HTMLInputElement;
+    const newDiscountValueLabel = document.getElementById("new-discount-value-label") as HTMLLabelElement;
+    const noUsageLimitCheckbox = document.getElementById("no-usage-limit-checkbox") as HTMLInputElement;
+    const newUsageLimitInput = document.getElementById("new-usage-limit") as HTMLInputElement;
+    const formErrorEl = document.getElementById("form-error") as HTMLParagraphElement;
+    const logoutButton = document.getElementById("logout-button") as HTMLButtonElement;
+    const saveCodeButton = document.getElementById("save-code-button") as HTMLButtonElement;
+    const formModeBanner = document.getElementById("form-mode-banner") as HTMLParagraphElement;
+    const formModeCodeEl = document.getElementById("form-mode-code") as HTMLSpanElement;
+    const formModeCancelButton = document.getElementById("form-mode-cancel") as HTMLButtonElement;
+    const noExpiryCheckbox = document.getElementById("no-expiry-checkbox") as HTMLInputElement;
+    const expiryDateInput = document.getElementById("new-expiry") as HTMLInputElement;
+    const notesInput = document.getElementById("new-notes") as HTMLTextAreaElement;
+    const clientId = loginSection.dataset.googleClientId ?? "";
+
+    interface CodeEntry {
+      discountType: "percentage" | "fixed";
+      discountValue: number;
+      createdAt: string | null;
+      expiresAt: string | null;
+      notes: string;
+      usageLimit: number | null;
+      usageCount: number;
+      status: "active" | "inactive";
+    }
+
+    // Populated on every renderCodes() call — lets Edit/Duplicate look up
+    // a code's full entry by name instead of round-tripping everything
+    // through HTML data-attributes (which gets awkward once notes is
+    // arbitrary free text that needs escaping).
+    let currentCodes: Record<string, CodeEntry> = {};
+
+    // Set while editing an existing code — on submit, if the code name was
+    // changed, the old entry is deleted after the new one saves (rather
+    // than left behind as an unrelated duplicate). Null for a plain create.
+    let editingCode: string | null = null;
+
+    // The date input is disabled (not hidden) while "No expiry" is
+    // checked — the shortcut buttons stay visible and clickable either
+    // way, since clicking one is exactly how you turn "no expiry" off.
+    function updateExpiryRowVisibility() {
+      expiryDateInput.disabled = noExpiryCheckbox.checked;
+    }
+    noExpiryCheckbox.addEventListener("change", updateExpiryRowVisibility);
+
+    // Same disabled-not-hidden pattern as the expiry date input above.
+    function updateUsageLimitRowVisibility() {
+      newUsageLimitInput.disabled = noUsageLimitCheckbox.checked;
+    }
+    noUsageLimitCheckbox.addEventListener("change", updateUsageLimitRowVisibility);
+
+    function updateDiscountValueLabel() {
+      const isFixed = discountTypeFixedRadio.checked;
+      newDiscountValueLabel.textContent = isFixed ? "€ off" : "% off";
+      if (isFixed) {
+        newDiscountValueInput.removeAttribute("max");
+      } else {
+        newDiscountValueInput.max = "100";
+      }
+    }
+    discountTypePercentageRadio.addEventListener("change", updateDiscountValueLabel);
+    discountTypeFixedRadio.addEventListener("change", updateDiscountValueLabel);
+
+    function toDateInputValue(d: Date) {
+      return d.toISOString().slice(0, 10);
+    }
+
+    document.querySelectorAll<HTMLButtonElement>(".expiry-shortcut-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = new Date();
+        if (button.dataset.days) target.setDate(target.getDate() + Number(button.dataset.days));
+        if (button.dataset.months) target.setMonth(target.getMonth() + Number(button.dataset.months));
+        noExpiryCheckbox.checked = false;
+        updateExpiryRowVisibility();
+        expiryDateInput.value = toDateInputValue(target);
+      });
+    });
+
+    function setExpiryFields(expiresAt: string | null) {
+      if (expiresAt) {
+        noExpiryCheckbox.checked = false;
+        expiryDateInput.value = expiresAt;
+      } else {
+        noExpiryCheckbox.checked = true;
+        expiryDateInput.value = "";
+      }
+      updateExpiryRowVisibility();
+    }
+
+    function setUsageLimitFields(usageLimit: number | null) {
+      if (usageLimit !== null) {
+        noUsageLimitCheckbox.checked = false;
+        newUsageLimitInput.value = String(usageLimit);
+      } else {
+        noUsageLimitCheckbox.checked = true;
+        newUsageLimitInput.value = "";
+      }
+      updateUsageLimitRowVisibility();
+    }
+
+    function enterEditMode(code: string) {
+      const entry = currentCodes[code];
+      if (!entry) return;
+      newCodeInput.value = code;
+      discountTypeFixedRadio.checked = entry.discountType === "fixed";
+      discountTypePercentageRadio.checked = entry.discountType !== "fixed";
+      updateDiscountValueLabel();
+      newDiscountValueInput.value = String(entry.discountValue);
+      notesInput.value = entry.notes || "";
+      setExpiryFields(entry.expiresAt);
+      setUsageLimitFields(entry.usageLimit);
+      editingCode = code;
+      formModeCodeEl.textContent = code;
+      formModeBanner.hidden = false;
+      saveCodeButton.textContent = "Update code";
+      newCodeInput.focus();
+      newCodeInput.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    function exitFormMode() {
+      editingCode = null;
+      formModeBanner.hidden = true;
+      saveCodeButton.textContent = "Save code";
+      addCodeForm.reset();
+      updateExpiryRowVisibility();
+      updateUsageLimitRowVisibility();
+      updateDiscountValueLabel();
+    }
+
+    function showLoginError(message: string) {
+      loginErrorEl.textContent = message;
+      loginErrorEl.hidden = false;
+    }
+
+    // Shared by both the mobile cards and the desktop table row — same
+    // data-code attribute either way, so one click delegation on the
+    // wrapper handles both layouts identically. Only the code name is
+    // encoded in the DOM; the full entry is looked up from currentCodes
+    // at click time, so arbitrary notes text never has to round-trip
+    // through an HTML attribute.
+    function actionsMarkup(code: string, status: "active" | "inactive") {
+      const toggleLabel = status === "active" ? "Deactivate" : "Activate";
+      return `
+        <button type="button" data-code="${code}" class="edit-code-button cursor-pointer text-ink underline decoration-transparent underline-offset-2 transition-colors hover:decoration-ink">
+          Edit
+        </button>
+        <button type="button" data-code="${code}" class="duplicate-code-button ml-3 cursor-pointer text-ink underline decoration-transparent underline-offset-2 transition-colors hover:decoration-ink">
+          Duplicate
+        </button>
+        <button type="button" data-code="${code}" class="toggle-status-button ml-3 cursor-pointer text-ink underline decoration-transparent underline-offset-2 transition-colors hover:decoration-ink">
+          ${toggleLabel}
+        </button>
+        <button type="button" data-code="${code}" class="delete-code-button ml-3 cursor-pointer text-de-red underline decoration-transparent underline-offset-2 transition-colors hover:decoration-de-red">
+          Delete
+        </button>
+      `;
+    }
+
+    function escapeHtml(text: string) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric" });
+
+    // A null createdAt (a code saved before this field existed) sorts as
+    // the oldest rather than crashing the comparator or clumping at "now".
+    function createdAtMillis(createdAt: string | null) {
+      return createdAt ? new Date(createdAt).getTime() : 0;
+    }
+
+    const euroFormatter = new Intl.NumberFormat("en-GB", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+
+    function discountValueText(entry: CodeEntry) {
+      return entry.discountType === "fixed" ? `${euroFormatter.format(entry.discountValue)} off` : `${entry.discountValue}% off`;
+    }
+
+    // expiresAt is a plain "YYYY-MM-DD" — appending T00:00:00 parses it in
+    // the browser's local timezone rather than UTC (a bare date string
+    // parses as UTC midnight, which can display as the day before in
+    // timezones behind UTC).
+    function daysUntil(dateStr: string) {
+      const today = new Date().toISOString().slice(0, 10);
+      return Math.round((new Date(`${dateStr}T00:00:00`).getTime() - new Date(`${today}T00:00:00`).getTime()) / 86400000);
+    }
+
+    type Tone = "fine" | "warn" | "crit";
+
+    // Every code always shows an expiry fact — "No expiry" is the default,
+    // not an omission — so there's never a blank where a value should be.
+    function expiryFact(expiresAt: string | null): { text: string; tone: Tone } {
+      if (!expiresAt) return { text: "No expiry", tone: "fine" };
+      const formatted = dateFormatter.format(new Date(`${expiresAt}T00:00:00`));
+      const days = daysUntil(expiresAt);
+      if (days < 0) return { text: `Expired ${formatted}`, tone: "crit" };
+      if (days <= 7) return { text: `Expires ${formatted}`, tone: "warn" };
+      return { text: `Expires ${formatted}`, tone: "fine" };
+    }
+
+    // Same always-visible treatment for usage — "unlimited" is the default.
+    function usageFact(entry: CodeEntry): { text: string; tone: Tone } {
+      if (entry.usageLimit === null) return { text: `${entry.usageCount} used · unlimited`, tone: "fine" };
+      if (entry.usageCount >= entry.usageLimit) {
+        return { text: `${entry.usageCount} of ${entry.usageLimit} — limit reached`, tone: "crit" };
+      }
+      const nearLimit = entry.usageLimit > 0 && entry.usageCount / entry.usageLimit >= 0.8;
+      return { text: `${entry.usageCount} of ${entry.usageLimit} used`, tone: nearLimit ? "warn" : "fine" };
+    }
+
+    function toneClass(tone: Tone) {
+      if (tone === "crit") return "text-de-red font-semibold";
+      if (tone === "warn") return "text-[#92660a] font-semibold";
+      return "text-neutral-400";
+    }
+
+    function statusPillMarkup(status: "active" | "inactive") {
+      return status === "inactive"
+        ? `<span class="inline-flex items-center rounded-[var(--radius-pill)] bg-de-red/10 px-2.5 py-0.5 text-[length:var(--text-caption)] font-semibold text-de-red">Inactive</span>`
+        : `<span class="inline-flex items-center rounded-[var(--radius-pill)] border border-neutral-200 bg-mist-light px-2.5 py-0.5 text-[length:var(--text-caption)] font-semibold text-neutral-600">Active</span>`;
+    }
+
+    function factMarkup(label: string, valueHtml: string) {
+      return `
+        <div>
+          <dt class="text-[length:var(--text-caption)] tracking-wide text-neutral-400 uppercase">${label}</dt>
+          <dd class="mt-0.5 text-[length:var(--text-small)]">${valueHtml}</dd>
+        </div>
+      `;
+    }
+
+    function renderCodes(codes: Record<string, CodeEntry>) {
+      currentCodes = codes;
+      // Object.entries returns keys in insertion order (oldest-added
+      // first). Two codes created at the exact same millisecond — the
+      // seeded RUSS101/RUSS51 pair both get stamped in one seed call, so
+      // this isn't just a theoretical case — would otherwise tie under
+      // Array#sort's stability and fall back to that insertion order,
+      // putting the older one on top. Reversing first means a tie instead
+      // preserves reverse-insertion order, i.e. the more recently added
+      // key wins, matching "newest on top" even for same-timestamp codes.
+      const entries = Object.entries(codes)
+        .reverse()
+        .sort(([, a], [, b]) => createdAtMillis(b.createdAt) - createdAtMillis(a.createdAt));
+      codesEmptyEl.hidden = entries.length > 0;
+      codesListEl.innerHTML = "";
+
+      for (const [code, entry] of entries) {
+        const { createdAt, notes, status } = entry;
+        const isInactive = status === "inactive";
+        const expiry = expiryFact(entry.expiresAt);
+        const usage = usageFact(entry);
+        const dimmed = isInactive ? "text-neutral-400" : "";
+
+        const card = document.createElement("article");
+        card.className = `rounded-[var(--radius-card)] border border-neutral-200 p-4 sm:p-5 ${isInactive ? "bg-neutral-100" : "bg-surface"}`;
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="font-semibold ${dimmed}">${code}</div>
+              ${notes ? `<p class="mt-1 max-w-[280px] text-[length:var(--text-caption)] italic text-neutral-400" title="${escapeHtml(notes)}">${escapeHtml(notes)}</p>` : ""}
+            </div>
+            <div class="flex flex-col items-end gap-1.5">
+              <span class="font-semibold ${dimmed}">${discountValueText(entry)}</span>
+              ${statusPillMarkup(status)}
+            </div>
+          </div>
+          <dl class="mt-4 grid grid-cols-2 gap-x-4 gap-y-2.5 sm:grid-cols-4">
+            ${factMarkup("Created", createdAt ? dateFormatter.format(new Date(createdAt)) : "—")}
+            ${factMarkup("Expires", `<span class="${toneClass(expiry.tone)}">${expiry.text}</span>`)}
+            ${factMarkup("Usage", `<span class="${toneClass(usage.tone)}">${usage.text}</span>`)}
+            ${factMarkup("Status", isInactive ? "Inactive" : "Active")}
+          </dl>
+          <div class="mt-4 flex items-center gap-1 border-t border-neutral-100 pt-3 text-[length:var(--text-small)]">${actionsMarkup(code, status)}</div>
+        `;
+        codesListEl.appendChild(card);
+      }
+    }
+
+    async function loadCodes() {
+      const dashboardErrorEl = document.getElementById("dashboard-error") as HTMLParagraphElement;
+      try {
+        const res = await fetch("/.netlify/functions/admin-discount-codes");
+        const body = await res.json();
+        if (!res.ok) {
+          dashboardErrorEl.textContent = `Could not load codes (${res.status}): ${body.error || "unknown error"}`;
+          dashboardErrorEl.hidden = false;
+          return;
+        }
+        dashboardErrorEl.hidden = true;
+        renderCodes(body.codes);
+      } catch (error) {
+        dashboardErrorEl.textContent = `Could not load codes: ${error instanceof Error ? error.message : "network error"}`;
+        dashboardErrorEl.hidden = false;
+      }
+    }
+
+    async function showDashboard(email: string) {
+      loginSection.hidden = true;
+      dashboardSection.hidden = false;
+      adminEmailEl.textContent = `Signed in as ${email}`;
+      await loadCodes();
+    }
+
+    async function checkSession() {
+      const res = await fetch("/.netlify/functions/admin-session");
+      const session = await res.json();
+      if (session.authenticated) {
+        await showDashboard(session.email);
+      }
+    }
+
+    async function handleCredentialResponse(response: { credential: string }) {
+      loginErrorEl.hidden = true;
+      try {
+        const res = await fetch("/.netlify/functions/admin-login", {
+          method: "POST",
+          body: JSON.stringify({ credential: response.credential }),
+        });
+        const result = await res.json();
+        if (!res.ok) {
+          showLoginError(result.error || "Sign-in failed");
+          return;
+        }
+        await showDashboard(result.email);
+      } catch {
+        showLoginError("Sign-in failed — check your connection and try again");
+      }
+    }
+
+    addCodeForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      formErrorEl.hidden = true;
+      const enteredCode = newCodeInput.value.trim().toUpperCase();
+      const renaming = editingCode && editingCode !== enteredCode;
+
+      try {
+        const res = await fetch("/.netlify/functions/admin-discount-codes", {
+          method: "POST",
+          body: JSON.stringify({
+            code: newCodeInput.value,
+            discountType: discountTypeFixedRadio.checked ? "fixed" : "percentage",
+            discountValue: Number(newDiscountValueInput.value),
+            expiresAt: noExpiryCheckbox.checked ? null : expiryDateInput.value || null,
+            notes: notesInput.value,
+            usageLimit: noUsageLimitCheckbox.checked ? null : Number(newUsageLimitInput.value),
+            status: editingCode ? currentCodes[editingCode]?.status ?? "active" : "active",
+          }),
+        });
+        const result = await res.json();
+        if (!res.ok) {
+          formErrorEl.textContent = result.error || "Could not save that code";
+          formErrorEl.hidden = false;
+          return;
+        }
+
+        // Renaming a code (Edit, with the code field changed) means the new
+        // name above just created a fresh entry — the old one is now a
+        // leftover duplicate under its original name and needs removing.
+        if (renaming) {
+          const deleteRes = await fetch("/.netlify/functions/admin-discount-codes", {
+            method: "DELETE",
+            body: JSON.stringify({ code: editingCode }),
+          });
+          if (deleteRes.ok) {
+            const { codes } = await deleteRes.json();
+            renderCodes(codes);
+          } else {
+            renderCodes(result.codes);
+          }
+        } else {
+          renderCodes(result.codes);
+        }
+        exitFormMode();
+      } catch {
+        formErrorEl.textContent = "Could not save that code — check your connection";
+        formErrorEl.hidden = false;
+      }
+    });
+
+    formModeCancelButton.addEventListener("click", exitFormMode);
+
+    codesListWrapper.addEventListener("click", async (event) => {
+      const target = event.target as HTMLElement;
+
+      const editButton = target.closest<HTMLButtonElement>(".edit-code-button");
+      if (editButton) {
+        enterEditMode(editButton.dataset.code!);
+        return;
+      }
+
+      const duplicateButton = target.closest<HTMLButtonElement>(".duplicate-code-button");
+      if (duplicateButton) {
+        const original = currentCodes[duplicateButton.dataset.code!];
+        if (!original) return;
+        const code = `COPY OF ${duplicateButton.dataset.code}`;
+        const res = await fetch("/.netlify/functions/admin-discount-codes", {
+          method: "POST",
+          body: JSON.stringify({
+            code,
+            discountType: original.discountType,
+            discountValue: original.discountValue,
+            expiresAt: original.expiresAt,
+            notes: original.notes,
+            usageLimit: original.usageLimit,
+          }),
+        });
+        if (res.ok) {
+          const { codes } = await res.json();
+          renderCodes(codes);
+        }
+        return;
+      }
+
+      const toggleStatusButton = target.closest<HTMLButtonElement>(".toggle-status-button");
+      if (toggleStatusButton) {
+        const code = toggleStatusButton.dataset.code!;
+        const entry = currentCodes[code];
+        if (!entry) return;
+        const nextStatus = entry.status === "active" ? "inactive" : "active";
+        const res = await fetch("/.netlify/functions/admin-discount-codes", {
+          method: "POST",
+          body: JSON.stringify({
+            code,
+            discountType: entry.discountType,
+            discountValue: entry.discountValue,
+            expiresAt: entry.expiresAt,
+            notes: entry.notes,
+            usageLimit: entry.usageLimit,
+            status: nextStatus,
+          }),
+        });
+        if (res.ok) {
+          const { codes } = await res.json();
+          renderCodes(codes);
+        }
+        return;
+      }
+
+      const deleteButton = target.closest<HTMLButtonElement>(".delete-code-button");
+      if (deleteButton) {
+        const code = deleteButton.dataset.code!;
+        if (!confirm(`Delete discount code ${code}?`)) return;
+
+        const res = await fetch("/.netlify/functions/admin-discount-codes", {
+          method: "DELETE",
+          body: JSON.stringify({ code }),
+        });
+        if (res.ok) {
+          const { codes } = await res.json();
+          renderCodes(codes);
+          if (editingCode === code) exitFormMode();
+        }
+      }
+    });
+
+    logoutButton.addEventListener("click", async () => {
+      await fetch("/.netlify/functions/admin-logout", { method: "POST" });
+      dashboardSection.hidden = true;
+      loginSection.hidden = false;
+    });
+
+    window.addEventListener("load", () => {
+      if (!clientId) {
+        showLoginError("Admin sign-in is not configured yet (missing Google client ID).");
+        return;
+      }
+      google.accounts.id.initialize({ client_id: clientId, callback: handleCredentialResponse });
+      google.accounts.id.renderButton(document.getElementById("google-signin-button"), { theme: "outline", size: "large" });
+    });
+
+    updateExpiryRowVisibility();
+    updateUsageLimitRowVisibility();
+    updateDiscountValueLabel();
+    checkSession();
+  </script>
+</BaseLayout>
