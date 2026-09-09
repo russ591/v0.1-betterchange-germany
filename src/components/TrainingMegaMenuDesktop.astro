@@ -1,10 +1,15 @@
 ---
 // Hover/focus panel shown under the "Training" nav link on desktop (see
-// Header.astro, which wraps this in a `.group` and toggles visibility with
-// group-hover/group-focus-within -- no JS needed). Each category column
-// only shows its first few courses to keep the panel a fixed height
-// regardless of how many courses a discipline has (Scrum currently has 7);
-// the rest are reachable via the category's own page.
+// Header.astro, which wraps this in a `.group` and toggles the panel's own
+// visibility with group-hover/group-focus-within -- no JS needed for that
+// part). Inside the panel: a category list on the left, and the hovered/
+// focused category's courses on the right -- each course gets a full ~360px
+// column instead of the ~200px a 3-up grid would give it, which matters
+// because real course names ("ICAgile Agile Coaching Professional
+// (ICP-ACC)") wrap badly at narrower widths. Swapping which category's
+// courses show is the one bit of actual interactivity here, handled by the
+// small inline script below (same mouseenter/click pattern already used
+// for the schedule filter buttons in ScheduleList.astro).
 import type { CollectionEntry } from "astro:content";
 import { categoryIcons } from "@/data/categoryIcons";
 import { toPathSegment } from "@/lib/urlSlug";
@@ -17,56 +22,62 @@ interface Props {
 }
 
 const { categoriesWithCourses } = Astro.props;
-const MAX_VISIBLE_COURSES = 4;
 ---
 
 <div
   class="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 opacity-0 transition-opacity duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
 >
-  <div class="w-[min(92vw,960px)] pt-3">
-    <div class="flex gap-7 rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-7 shadow-card-hover">
-      <div class="grid flex-1 grid-cols-3 gap-x-7 gap-y-6">
+  <div class="w-[min(90vw,880px)] pt-3">
+    <div class="training-mega flex overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card-hover">
+      <div class="flex w-56 shrink-0 flex-col gap-0.5 border-r border-neutral-100 bg-mist-light p-3">
         {
-          categoriesWithCourses.map(({ category, courses }) => (
-            <div class="min-w-0">
-              <a
-                href={`/training/${category.id}`}
-                class="flex items-center gap-2 text-sm font-semibold text-ink hover:text-ink"
-              >
+          categoriesWithCourses.map(({ category }, i) => (
+            <a
+              href={`/training/${category.id}`}
+              data-cat-trigger={category.id}
+              class={`mega-cat-trigger flex items-center justify-between gap-2 rounded-[var(--radius-control)] px-3 py-2.5 text-[length:var(--text-small)] font-semibold text-ink transition-colors hover:bg-surface ${
+                i === 0 ? "is-active bg-surface shadow-card" : ""
+              }`}
+            >
+              <span class="flex items-center gap-2.5">
                 {categoryIcons[category.id] && (
                   <span
                     aria-hidden="true"
-                    class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-neutral-50 [&_svg]:h-4 [&_svg]:w-4"
+                    class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface [&_svg]:h-3.5 [&_svg]:w-3.5"
                     set:html={categoryIcons[category.id]}
                   />
                 )}
                 {category.data.name}
-              </a>
-              <ul class="mt-2.5 space-y-1.5">
-                {courses.slice(0, MAX_VISIBLE_COURSES).map((course) => (
-                  <li>
-                    <a
-                      href={`/training/${category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
-                      class="text-[length:var(--text-small)] text-neutral-600 hover:text-ink hover:underline"
-                    >
-                      {course.data.name}
-                    </a>
-                  </li>
+              </span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-3.5 w-3.5 shrink-0 text-neutral-400">
+                <path d="m9 6 6 6-6 6" />
+              </svg>
+            </a>
+          ))
+        }
+      </div>
+
+      <div class="min-w-0 flex-1 p-6">
+        {
+          categoriesWithCourses.map(({ category, courses }, i) => (
+            <div class="mega-cat-panel" data-cat-panel={category.id} hidden={i !== 0}>
+              <p class="text-[length:var(--text-caption)] text-neutral-500">{category.data.tagline}</p>
+              <div class="mt-3 grid grid-cols-2 gap-x-6 gap-y-2.5">
+                {courses.map((course) => (
+                  <a
+                    href={`/training/${category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
+                    class="text-[length:var(--text-small)] text-neutral-600 hover:text-ink hover:underline"
+                  >
+                    {course.data.name}
+                  </a>
                 ))}
-                {courses.length > MAX_VISIBLE_COURSES && (
-                  <li>
-                    <a href={`/training/${category.id}`} class="text-[length:var(--text-small)] font-semibold text-ink hover:underline">
-                      +{courses.length - MAX_VISIBLE_COURSES} more &rarr;
-                    </a>
-                  </li>
-                )}
-              </ul>
+              </div>
             </div>
           ))
         }
       </div>
 
-      <div class="flex w-60 shrink-0 flex-col rounded-[var(--radius-card)] bg-ink p-5 text-surface">
+      <div class="flex w-56 shrink-0 flex-col bg-ink p-5 text-surface">
         <p class="text-[length:var(--text-caption)] font-bold uppercase tracking-[0.06em] text-lime">
           Not sure where to start?
         </p>
@@ -86,3 +97,23 @@ const MAX_VISIBLE_COURSES = 4;
     </div>
   </div>
 </div>
+
+<script>
+  document.querySelectorAll<HTMLElement>(".training-mega").forEach((menu) => {
+    const triggers = Array.from(menu.querySelectorAll<HTMLElement>(".mega-cat-trigger"));
+    const panels = Array.from(menu.querySelectorAll<HTMLElement>(".mega-cat-panel"));
+
+    function activate(id: string | undefined) {
+      if (!id) return;
+      triggers.forEach((t) => t.classList.toggle("is-active", t.dataset.catTrigger === id));
+      triggers.forEach((t) => t.classList.toggle("bg-surface", t.dataset.catTrigger === id));
+      triggers.forEach((t) => t.classList.toggle("shadow-card", t.dataset.catTrigger === id));
+      panels.forEach((p) => (p.hidden = p.dataset.catPanel !== id));
+    }
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("mouseenter", () => activate(trigger.dataset.catTrigger));
+      trigger.addEventListener("focus", () => activate(trigger.dataset.catTrigger));
+    });
+  });
+</script>
