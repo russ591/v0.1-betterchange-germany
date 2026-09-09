@@ -41,7 +41,7 @@ const categoriesWithCourses = categories.map((category) => ({
 
           if (link.mega) {
             return (
-              <div class="group">
+              <div class="group relative">
                 <a href={link.href} class={linkClass} aria-current={isActive ? "page" : undefined}>
                   {link.label}
                   <svg
