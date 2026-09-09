@@ -66,6 +66,17 @@ export const handler = async (event) => {
   const discountBreakdown = discount ? computeDiscountBreakdown(data.total, discount.amount) : null;
   if (discount) await incrementUsage(discount.code);
 
+  const results = { invoice: "not attempted", confirmation: "not attempted", ownerNotification: "not attempted" };
+
+  // Invoice generation is gated on its own LEXWARE_API_KEY (see
+  // lexware-client.js) and must run regardless of whether Gmail is
+  // configured — it used to sit after the Gmail check below, so a missing
+  // Gmail config silently skipped invoicing too, not just the emails.
+  const invoiceResult = await generateInvoicePdf(data, discount);
+  results.invoice = invoiceResult
+    ? `generated (${invoiceResult.testMode ? "draft, TEST_MODE" : "finalized"}, id ${invoiceResult.invoiceId})`
+    : "skipped or failed — see earlier log lines";
+
   const user = process.env.GMAIL_USER;
   const pass = process.env.GMAIL_APP_PASSWORD;
 
@@ -73,20 +84,15 @@ export const handler = async (event) => {
     console.log(
       "submission-created: GMAIL_USER or GMAIL_APP_PASSWORD not set — skipping registration emails."
     );
-    return { statusCode: 200, body: "skipped: email service not configured" };
+    results.confirmation = "skipped: email service not configured";
+    results.ownerNotification = "skipped: email service not configured";
+    return { statusCode: 200, body: JSON.stringify(results) };
   }
 
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: { user, pass },
   });
-
-  const results = { invoice: "not attempted", confirmation: "not attempted", ownerNotification: "not attempted" };
-
-  const invoiceResult = await generateInvoicePdf(data, discount);
-  results.invoice = invoiceResult
-    ? `generated (${invoiceResult.testMode ? "draft, TEST_MODE" : "finalized"}, id ${invoiceResult.invoiceId})`
-    : "skipped or failed — see earlier log lines";
 
   const attachments = invoiceResult
     ? [
