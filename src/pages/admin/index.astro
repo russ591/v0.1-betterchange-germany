@@ -36,22 +36,11 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
       <p id="dashboard-error" class="mt-4 text-[length:var(--text-small)] text-de-red" hidden></p>
 
       <div class="mt-6" id="codes-list-wrapper">
-        <!-- Stacked cards below sm (the 3-action row doesn't fit a narrow
-             table without clipping); a real table from sm up. -->
-        <div class="flex flex-col gap-3 sm:hidden" id="codes-mobile-list"></div>
-
-        <div class="hidden overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 sm:block">
-          <table class="w-full text-left text-[length:var(--text-small)]">
-            <thead>
-              <tr class="border-b border-neutral-200 bg-mist-light">
-                <th class="px-4 py-3 font-medium">Code</th>
-                <th class="px-4 py-3 font-medium">Discount</th>
-                <th class="px-4 py-3"></th>
-              </tr>
-            </thead>
-            <tbody id="codes-table-body"></tbody>
-          </table>
-        </div>
+        <!-- One card layout for every width — a fact grid (Created /
+             Expires / Usage / Status) always shows all four fields, with
+             the default spelled out when unset, so there's no separate
+             mobile/desktop markup to keep in sync. -->
+        <div class="flex flex-col gap-3" id="codes-list"></div>
         <p id="codes-empty" class="p-6 text-center text-neutral-500" hidden>No discount codes yet.</p>
       </div>
 
@@ -179,8 +168,7 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
     const dashboardSection = document.getElementById("admin-dashboard") as HTMLDivElement;
     const loginErrorEl = document.getElementById("login-error") as HTMLParagraphElement;
     const adminEmailEl = document.getElementById("admin-email") as HTMLParagraphElement;
-    const tableBody = document.getElementById("codes-table-body") as HTMLTableSectionElement;
-    const mobileList = document.getElementById("codes-mobile-list") as HTMLDivElement;
+    const codesListEl = document.getElementById("codes-list") as HTMLDivElement;
     const codesListWrapper = document.getElementById("codes-list-wrapper") as HTMLDivElement;
     const codesEmptyEl = document.getElementById("codes-empty") as HTMLParagraphElement;
     const addCodeForm = document.getElementById("add-code-form") as HTMLFormElement;
@@ -359,54 +347,63 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
       return createdAt ? new Date(createdAt).getTime() : 0;
     }
 
-    // Omitted entirely for legacy codes with no known creation date,
-    // rather than showing a misleading one.
-    function dateMarkup(createdAt: string | null) {
-      if (!createdAt) return "";
-      return `<div class="text-[length:var(--text-caption)] text-neutral-400">${dateFormatter.format(new Date(createdAt))}</div>`;
-    }
-
-    // expiresAt is a plain "YYYY-MM-DD" — appending T00:00:00 parses it in
-    // the browser's local timezone rather than UTC (a bare date string
-    // parses as UTC midnight, which can display as the day before in
-    // timezones behind UTC).
-    function expiryMarkup(expiresAt: string | null) {
-      if (!expiresAt) return "";
-      const expired = new Date().toISOString().slice(0, 10) > expiresAt;
-      const formatted = dateFormatter.format(new Date(`${expiresAt}T00:00:00`));
-      const colorClass = expired ? "text-de-red" : "text-neutral-400";
-      const label = expired ? "Expired" : "Expires";
-      return `<div class="text-[length:var(--text-caption)] ${colorClass}">${label} ${formatted}</div>`;
-    }
-
-    function notesMarkup(notes: string) {
-      if (!notes) return "";
-      return `<div class="mt-1 max-w-[240px] truncate text-[length:var(--text-caption)] italic text-neutral-400" title="${escapeHtml(notes)}">${escapeHtml(notes)}</div>`;
-    }
-
     const euroFormatter = new Intl.NumberFormat("en-GB", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
 
     function discountValueText(entry: CodeEntry) {
       return entry.discountType === "fixed" ? `${euroFormatter.format(entry.discountValue)} off` : `${entry.discountValue}% off`;
     }
 
-    // Omitted entirely for the (default, common) unlimited-use case rather
-    // than cluttering every row with "Used 3 / no limit".
-    function usageMarkup(entry: CodeEntry) {
-      if (entry.usageLimit === null) {
-        return entry.usageCount > 0
-          ? `<div class="text-[length:var(--text-caption)] text-neutral-400">Used ${entry.usageCount}</div>`
-          : "";
-      }
-      const exhausted = entry.usageCount >= entry.usageLimit;
-      const colorClass = exhausted ? "text-de-red" : "text-neutral-400";
-      const label = exhausted ? "Limit reached" : `Used ${entry.usageCount} / ${entry.usageLimit}`;
-      return `<div class="text-[length:var(--text-caption)] ${colorClass}">${label}</div>`;
+    // expiresAt is a plain "YYYY-MM-DD" — appending T00:00:00 parses it in
+    // the browser's local timezone rather than UTC (a bare date string
+    // parses as UTC midnight, which can display as the day before in
+    // timezones behind UTC).
+    function daysUntil(dateStr: string) {
+      const today = new Date().toISOString().slice(0, 10);
+      return Math.round((new Date(`${dateStr}T00:00:00`).getTime() - new Date(`${today}T00:00:00`).getTime()) / 86400000);
     }
 
-    function statusMarkup(status: "active" | "inactive") {
-      if (status !== "inactive") return "";
-      return `<div class="text-[length:var(--text-caption)] font-semibold text-de-red">Inactive</div>`;
+    type Tone = "fine" | "warn" | "crit";
+
+    // Every code always shows an expiry fact — "No expiry" is the default,
+    // not an omission — so there's never a blank where a value should be.
+    function expiryFact(expiresAt: string | null): { text: string; tone: Tone } {
+      if (!expiresAt) return { text: "No expiry", tone: "fine" };
+      const formatted = dateFormatter.format(new Date(`${expiresAt}T00:00:00`));
+      const days = daysUntil(expiresAt);
+      if (days < 0) return { text: `Expired ${formatted}`, tone: "crit" };
+      if (days <= 7) return { text: `Expires ${formatted}`, tone: "warn" };
+      return { text: `Expires ${formatted}`, tone: "fine" };
+    }
+
+    // Same always-visible treatment for usage — "unlimited" is the default.
+    function usageFact(entry: CodeEntry): { text: string; tone: Tone } {
+      if (entry.usageLimit === null) return { text: `${entry.usageCount} used · unlimited`, tone: "fine" };
+      if (entry.usageCount >= entry.usageLimit) {
+        return { text: `${entry.usageCount} of ${entry.usageLimit} — limit reached`, tone: "crit" };
+      }
+      const nearLimit = entry.usageLimit > 0 && entry.usageCount / entry.usageLimit >= 0.8;
+      return { text: `${entry.usageCount} of ${entry.usageLimit} used`, tone: nearLimit ? "warn" : "fine" };
+    }
+
+    function toneClass(tone: Tone) {
+      if (tone === "crit") return "text-de-red font-semibold";
+      if (tone === "warn") return "text-[#92660a] font-semibold";
+      return "text-neutral-400";
+    }
+
+    function statusPillMarkup(status: "active" | "inactive") {
+      return status === "inactive"
+        ? `<span class="inline-flex items-center rounded-[var(--radius-pill)] bg-de-red/10 px-2.5 py-0.5 text-[length:var(--text-caption)] font-semibold text-de-red">Inactive</span>`
+        : `<span class="inline-flex items-center rounded-[var(--radius-pill)] border border-neutral-200 bg-mist-light px-2.5 py-0.5 text-[length:var(--text-caption)] font-semibold text-neutral-600">Active</span>`;
+    }
+
+    function factMarkup(label: string, valueHtml: string) {
+      return `
+        <div>
+          <dt class="text-[length:var(--text-caption)] tracking-wide text-neutral-400 uppercase">${label}</dt>
+          <dd class="mt-0.5 text-[length:var(--text-small)]">${valueHtml}</dd>
+        </div>
+      `;
     }
 
     function renderCodes(codes: Record<string, CodeEntry>) {
@@ -423,44 +420,37 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? "";
         .reverse()
         .sort(([, a], [, b]) => createdAtMillis(b.createdAt) - createdAtMillis(a.createdAt));
       codesEmptyEl.hidden = entries.length > 0;
-      tableBody.innerHTML = "";
-      mobileList.innerHTML = "";
+      codesListEl.innerHTML = "";
 
       for (const [code, entry] of entries) {
-        const { createdAt, expiresAt, notes, status } = entry;
-        const row = document.createElement("tr");
-        row.className = "border-b border-neutral-100 last:border-0";
-        row.innerHTML = `
-          <td class="px-4 py-3">
-            <div class="font-semibold">${code}</div>
-            ${dateMarkup(createdAt)}
-            ${expiryMarkup(expiresAt)}
-            ${usageMarkup(entry)}
-            ${statusMarkup(status)}
-            ${notesMarkup(notes)}
-          </td>
-          <td class="px-4 py-3">${discountValueText(entry)}</td>
-          <td class="px-4 py-3 text-right whitespace-nowrap">${actionsMarkup(code, status)}</td>
-        `;
-        tableBody.appendChild(row);
+        const { createdAt, notes, status } = entry;
+        const isInactive = status === "inactive";
+        const expiry = expiryFact(entry.expiresAt);
+        const usage = usageFact(entry);
+        const dimmed = isInactive ? "text-neutral-400" : "";
 
-        const card = document.createElement("div");
-        card.className = "rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-4";
+        const card = document.createElement("article");
+        card.className = `rounded-[var(--radius-card)] border border-neutral-200 p-4 sm:p-5 ${isInactive ? "bg-neutral-100" : "bg-surface"}`;
         card.innerHTML = `
-          <div class="flex items-center justify-between gap-3">
+          <div class="flex items-start justify-between gap-3">
             <div>
-              <span class="font-semibold">${code}</span>
-              ${dateMarkup(createdAt)}
-              ${expiryMarkup(expiresAt)}
-              ${usageMarkup(entry)}
-              ${statusMarkup(status)}
-              ${notesMarkup(notes)}
+              <div class="font-semibold ${dimmed}">${code}</div>
+              ${notes ? `<p class="mt-1 max-w-[280px] text-[length:var(--text-caption)] italic text-neutral-400" title="${escapeHtml(notes)}">${escapeHtml(notes)}</p>` : ""}
             </div>
-            <span>${discountValueText(entry)}</span>
+            <div class="flex flex-col items-end gap-1.5">
+              <span class="font-semibold ${dimmed}">${discountValueText(entry)}</span>
+              ${statusPillMarkup(status)}
+            </div>
           </div>
-          <div class="mt-3 flex items-center gap-1 border-t border-neutral-100 pt-3">${actionsMarkup(code, status)}</div>
+          <dl class="mt-4 grid grid-cols-2 gap-x-4 gap-y-2.5 sm:grid-cols-4">
+            ${factMarkup("Created", createdAt ? dateFormatter.format(new Date(createdAt)) : "—")}
+            ${factMarkup("Expires", `<span class="${toneClass(expiry.tone)}">${expiry.text}</span>`)}
+            ${factMarkup("Usage", `<span class="${toneClass(usage.tone)}">${usage.text}</span>`)}
+            ${factMarkup("Status", isInactive ? "Inactive" : "Active")}
+          </dl>
+          <div class="mt-4 flex items-center gap-1 border-t border-neutral-100 pt-3 text-[length:var(--text-small)]">${actionsMarkup(code, status)}</div>
         `;
-        mobileList.appendChild(card);
+        codesListEl.appendChild(card);
       }
     }
 
