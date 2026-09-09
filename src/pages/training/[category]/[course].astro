@@ -119,7 +119,7 @@ const courseSchema = {
           category.data.certificationBody && (
             <div class="mt-7 inline-flex items-center gap-3 rounded-[var(--radius-pill)] border border-neutral-200 bg-surface px-4 py-2.5">
               {logo ? (
-                <img src={logo.src} alt={logo.alt} class="h-4 w-auto object-contain" />
+                <img src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} class="h-4 w-auto object-contain" />
               ) : (
                 <span class="text-[length:var(--text-caption)] font-semibold text-neutral-500">
                   {category.data.certificationBody}
@@ -299,7 +299,7 @@ const courseSchema = {
                 </p>
               </div>
               <div class="flex flex-col gap-3 border-t border-neutral-100 pt-5">
-                <p class="eyebrow text-neutral-500">Included</p>
+                <p class="eyebrow">Included</p>
                 <div class="flex flex-wrap gap-2">
                   {details.included.map((item) => (
                     <span class="inline-flex items-center rounded-[var(--radius-pill)] border border-neutral-300 bg-neutral-50 px-3 py-1 text-[length:var(--text-caption)] font-medium text-neutral-700">

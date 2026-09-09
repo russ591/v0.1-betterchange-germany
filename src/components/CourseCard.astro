@@ -39,7 +39,7 @@ const href = `/training/${categorySlug}/${toPathSegment(course.data.urlSlug ?? c
       href={href}
       class="flex flex-col rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6 shadow-card transition-shadow hover:shadow-card-hover"
     >
-      <p class="eyebrow text-neutral-500">{course.data.code}</p>
+      <p class="eyebrow">{course.data.code}</p>
       <h3 class="mt-2 text-[length:var(--text-h4)]">{course.data.name}</h3>
       <p class="mt-2 line-clamp-3 text-[length:var(--text-small)] text-neutral-600">
         {course.data.summary}
