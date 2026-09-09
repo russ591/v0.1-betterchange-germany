@@ -25,21 +25,33 @@ import {
   buildOwnerNotificationHtml,
   buildOwnerNotificationText,
   buildOwnerNotificationSubject,
+  buildWaitlistNotificationHtml,
+  buildWaitlistNotificationText,
+  buildWaitlistNotificationSubject,
 } from "./registration-email.js";
 import { buildGoogleCalendarUrl } from "./calendarLink.js";
 
 const FROM_ADDRESS = "Better Change Germany <russ@betterchange-consulting.de>";
 const OWNER_ADDRESS = "russ@betterchange-consulting.de";
 
+// Shared by every send path below — returns null (never throws) when Gmail
+// isn't configured, so each caller just checks for that and reports its
+// own "skipped" result rather than duplicating the GMAIL_USER/PASSWORD
+// check and transporter setup.
+function getTransporter() {
+  const user = process.env.GMAIL_USER;
+  const pass = process.env.GMAIL_APP_PASSWORD;
+  if (!user || !pass) return null;
+  return nodemailer.createTransport({ service: "gmail", auth: { user, pass } });
+}
+
 // `invoiceResult` is whatever generateInvoicePdf() returned (or null) —
 // passed straight through as an attachment when present, never re-derived.
 export async function sendRegistrationEmails(data, { discountBreakdown, invoiceResult } = {}) {
   const results = { confirmation: "not attempted", ownerNotification: "not attempted" };
 
-  const user = process.env.GMAIL_USER;
-  const pass = process.env.GMAIL_APP_PASSWORD;
-
-  if (!user || !pass) {
+  const transporter = getTransporter();
+  if (!transporter) {
     console.log(
       "submission-created: GMAIL_USER or GMAIL_APP_PASSWORD not set — skipping registration emails."
     );
@@ -47,11 +59,6 @@ export async function sendRegistrationEmails(data, { discountBreakdown, invoiceR
     results.ownerNotification = "skipped: email service not configured";
     return results;
   }
-
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: { user, pass },
-  });
 
   const attachments = invoiceResult
     ? [
@@ -102,4 +109,29 @@ export async function sendRegistrationEmails(data, { discountBreakdown, invoiceR
   }
 
   return results;
+}
+
+// Waitlist requests are intentionally minimal — one internal email so
+// Russell can reach out personally, no booker confirmation and no invoice.
+export async function sendWaitlistNotification(data) {
+  const transporter = getTransporter();
+  if (!transporter) {
+    console.log("submission-created: GMAIL_USER or GMAIL_APP_PASSWORD not set — skipping waitlist notification.");
+    return "skipped: email service not configured";
+  }
+
+  try {
+    await transporter.sendMail({
+      from: FROM_ADDRESS,
+      to: OWNER_ADDRESS,
+      replyTo: data.email || undefined,
+      subject: buildWaitlistNotificationSubject(data),
+      html: buildWaitlistNotificationHtml(data),
+      text: buildWaitlistNotificationText(data),
+    });
+    return "sent";
+  } catch (error) {
+    console.error("submission-created: waitlist notification send error", error);
+    return "failed";
+  }
 }
