@@ -62,7 +62,7 @@ const { categoriesWithCourses } = Astro.props;
           categoriesWithCourses.map(({ category, courses }, i) => (
             <div class="mega-cat-panel" data-cat-panel={category.id} hidden={i !== 0}>
               <p class="text-[length:var(--text-caption)] text-neutral-500">{category.data.tagline}</p>
-              <div class="mt-3 grid grid-cols-2 gap-x-6 gap-y-2.5">
+              <div class="mt-3 flex flex-col gap-2">
                 {courses.map((course) => (
                   <a
                     href={`/training/${category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
