@@ -1,4 +1,6 @@
 ---
+import { formatIcons } from "@/data/formatDetails";
+
 interface Props {
   format: "in-person" | "live-online" | "self-paced";
   class?: string;
@@ -11,10 +13,24 @@ const labels: Record<Props["format"], string> = {
   "live-online": "Live online",
   "self-paced": "Self-paced",
 };
+
+// In-person stays the original neutral pill (the "default" format). Live
+// online gets a lime tint -- lime is already the site's interactive/primary
+// color elsewhere (filter buttons, CTAs). Self-paced gets a gold tint --
+// de-gold was previously only a decorative flag-stripe color, so this is a
+// deliberate, small extension of its use to a second, still-schedule-related
+// context. The icons are the same ones already used in the course-detail
+// "How to take this course" sections (see ../data/formatDetails.ts).
+const styles: Record<Props["format"], string> = {
+  "in-person": "border-neutral-300 bg-neutral-50 text-neutral-700",
+  "live-online": "border-lime/60 bg-lime/20 text-ink",
+  "self-paced": "border-de-gold/50 bg-de-gold/15 text-neutral-800",
+};
 ---
 
 <span
-  class={`inline-flex items-center whitespace-nowrap rounded-[var(--radius-pill)] border border-neutral-300 bg-neutral-50 px-3 py-1 text-[var(--text-caption)] font-medium text-neutral-700 ${className}`}
+  class={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-[var(--radius-pill)] border px-3 py-1 text-[var(--text-caption)] font-medium [&_svg]:h-3.5 [&_svg]:w-3.5 [&_svg]:shrink-0 ${styles[format]} ${className}`}
 >
+  <span set:html={formatIcons[format]} />
   {labels[format]}
 </span>
