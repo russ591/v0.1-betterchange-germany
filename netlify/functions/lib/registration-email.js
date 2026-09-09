@@ -227,6 +227,60 @@ export function buildOwnerNotificationText(data, { discountBreakdown = null } = 
   return lines.join("\n");
 }
 
+// Waitlist submissions are deliberately minimal — one internal email, no
+// booker confirmation, no invoice — Russell handles the actual reply
+// himself (see waitlist-form handling in submission-created.js).
+export function buildWaitlistNotificationSubject(data) {
+  return `Waitlist: ${data.name || "someone"} wants ${data.course || "a sold-out course"}`;
+}
+
+export function buildWaitlistNotificationHtml(data) {
+  return `<!doctype html>
+<html>
+  <body style="margin:0;padding:0;background:#f9f8f4;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f9f8f4;padding:32px 16px;">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="100%" style="max-width:560px;background:#ffffff;border-radius:16px;overflow:hidden;">
+            <tr>
+              <td style="background:#0a0a0a;padding:28px 32px;">
+                <span style="color:#9aff5b;font-weight:700;font-size:15px;letter-spacing:-0.01em;">Better Change Germany</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:32px;">
+                <h1 style="margin:0 0 16px;font-size:22px;line-height:1.2;color:#0a0a0a;">New waitlist request</h1>
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f9f8f4;border-radius:12px;padding:20px;margin:0 0 8px;">
+                  <tr><td style="padding:4px 0;color:#737373;width:40%;">Course</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${escapeHtml(data.course || "—")}</td></tr>
+                  ${data["session-date"] ? `<tr><td style="padding:4px 0;color:#737373;">Session</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data["session-date"])}${data.location ? `. ${escapeHtml(data.location)}` : ""}</td></tr>` : ""}
+                  <tr><td style="padding:4px 0;color:#737373;">Name</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.name || "—")}</td></tr>
+                  <tr><td style="padding:4px 0;color:#737373;">Email</td><td style="padding:4px 0;color:#0a0a0a;"><a href="mailto:${escapeHtml(data.email || "")}" style="color:#0a0a0a;">${escapeHtml(data.email || "—")}</a></td></tr>
+                  ${data.notes ? `<tr><td style="padding:4px 0;color:#737373;vertical-align:top;">Notes</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.notes)}</td></tr>` : ""}
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>`;
+}
+
+export function buildWaitlistNotificationText(data) {
+  return [
+    "New waitlist request",
+    "",
+    `Course: ${data.course || "—"}`,
+    data["session-date"] ? `Session: ${data["session-date"]}${data.location ? `. ${data.location}` : ""}` : null,
+    `Name: ${data.name || "—"}`,
+    `Email: ${data.email || "—"}`,
+    data.notes ? `Notes: ${data.notes}` : null,
+  ]
+    .filter((l) => l !== null)
+    .join("\n");
+}
+
 export function buildRegistrationEmailText(data, { invoiceAttached = false, discountBreakdown = null, calendarUrl = null } = {}) {
   const attendees = buildAttendeeList(data);
   const firstName = (data.name || "").split(" ")[0] || "there";

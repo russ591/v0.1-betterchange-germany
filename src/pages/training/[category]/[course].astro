@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import Badge from "@/components/Badge.astro";
+import SoldOutBadge from "@/components/SoldOutBadge.astro";
 import CourseCard from "@/components/CourseCard.astro";
 import CTABanner from "@/components/CTABanner.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
@@ -197,7 +198,9 @@ const courseSchema = {
                       <span class="font-bold">
                         {isSelfPaced ? "Self-paced" : formatSessionDate(session, course)}
                       </span>
-                      {isSelfPaced ? (
+                      {session.data.status === "sold-out" ? (
+                        <SoldOutBadge />
+                      ) : isSelfPaced ? (
                         <span class="inline-flex items-center rounded-[var(--radius-pill)] bg-lime/25 px-3 py-1 text-[length:var(--text-caption)] font-semibold text-ink">
                           Always available
                         </span>
@@ -214,7 +217,8 @@ const courseSchema = {
                         </span>
                       </span>
                       <span class="text-[length:var(--text-small)] font-semibold text-ink">
-                        {isSelfPaced ? "Start now" : "Register"} <span aria-hidden="true">→</span>
+                        {session.data.status === "sold-out" ? "Join waitlist" : isSelfPaced ? "Start now" : "Register"}{" "}
+                        <span aria-hidden="true">→</span>
                       </span>
                     </div>
                     {session.data.offer && (

@@ -13,10 +13,15 @@
 import { generateInvoicePdf } from "./lib/lexware-client.js";
 import { resolveDiscount, computeDiscountBreakdown } from "./lib/discount.js";
 import { incrementUsage } from "./lib/discount-store.js";
-import { sendRegistrationEmails } from "./lib/send-registration-emails.js";
+import { sendRegistrationEmails, sendWaitlistNotification } from "./lib/send-registration-emails.js";
 
 export const handler = async (event) => {
   const { payload } = JSON.parse(event.body);
+
+  if (payload.form_name === "waitlist") {
+    const waitlist = await sendWaitlistNotification(payload.data);
+    return { statusCode: 200, body: JSON.stringify({ waitlist }) };
+  }
 
   if (payload.form_name !== "registration") {
     return { statusCode: 200, body: "ignored: not a registration submission" };

@@ -25,6 +25,7 @@ const trainer = session.data.trainer ? await getEntry(session.data.trainer) : un
 
 const unitPrice = parseFloat(session.data.price.replace(/[^0-9.]/g, "")) || 0;
 const hasBulkOffer = /seats? for the price of/i.test(session.data.offer ?? "");
+const isSoldOut = session.data.status === "sold-out";
 
 // Exclusive end date for an all-day "Add to calendar" event — Google
 // Calendar's all-day range end is the day AFTER the event actually ends.
@@ -126,15 +127,7 @@ const countries = [
   </Section>
 
   <Section>
-    <form
-      name="registration"
-      method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
-      action="/training/register/thank-you"
-      id="registration-form"
-      class="grid gap-10 lg:grid-cols-[1fr_1.3fr]"
-    >
+    <div class="grid gap-10 lg:grid-cols-[1fr_1.3fr]">
       <div class="min-w-0 rounded-[var(--radius-card)] border border-neutral-200 bg-mist-light p-6">
         <p class="eyebrow text-neutral-500">Order summary</p>
         <div class="mt-2 flex items-center gap-3">
@@ -181,9 +174,24 @@ const countries = [
               </div>
             )
           }
+          {
+            isSoldOut && (
+              <div class="flex items-center justify-between">
+                <dt class="text-neutral-500">Price</dt>
+                <dd class="font-semibold">{session.data.price}</dd>
+              </div>
+            )
+          }
         </dl>
 
-        <div class="mt-6 border-t border-neutral-200 pt-4">
+        {
+          // Always rendered (hidden, not removed, when sold out) — the
+          // page's own script unconditionally reads #order-total-block's
+          // dataset on load, so omitting this markup entirely for a
+          // sold-out session throws and kills the whole script, including
+          // the unrelated waitlist form's submit handler below.
+        }
+        <div class="mt-6 border-t border-neutral-200 pt-4" hidden={isSoldOut}>
           <button
             type="button"
             id="toggle-discount"
@@ -217,6 +225,7 @@ const countries = [
           id="order-total-block"
           data-unit-price={unitPrice}
           data-bulk-offer={hasBulkOffer ? "true" : "false"}
+          hidden={isSoldOut}
         >
           <div class="flex items-center justify-between text-[length:var(--text-body)] text-neutral-600">
             <span>Price</span>
@@ -255,7 +264,97 @@ const countries = [
         </div>
       </div>
 
-      <div class="min-w-0 space-y-5">
+      {
+        // Always rendered (hidden, not removed, when not sold out) so
+        // Netlify's build-time form detection reliably knows about the
+        // "waitlist" form even in a build where no session happens to be
+        // sold out — the same pattern as the registration form below.
+      }
+      <form
+        name="waitlist"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        id="waitlist-form"
+        class="min-w-0 space-y-5"
+        hidden={!isSoldOut}
+      >
+        <input type="hidden" name="form-name" value="waitlist" />
+          <input type="hidden" name="course" value={course.data.name} />
+          <input type="hidden" name="session-date" value={formatSessionDate(session, course)} />
+          <input type="hidden" name="location" value={session.data.location} />
+          <p class="hidden">
+            <label>
+              Don't fill this out if you're human: <input name="bot-field" />
+            </label>
+          </p>
+
+          <div class="rounded-[var(--radius-card)] bg-de-red/10 p-4">
+            <p class="font-semibold text-de-red">This session is sold out</p>
+            <p class="mt-1 text-[length:var(--text-small)] text-neutral-600">
+              All seats for {formatSessionDate(session, course)} are taken. Join the waitlist and we'll email you
+              personally the moment a spot opens up.
+            </p>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="waitlist-name" class="block text-[length:var(--text-small)] font-medium">Your name</label>
+              <input
+                id="waitlist-name"
+                name="name"
+                type="text"
+                required
+                class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+              />
+            </div>
+            <div>
+              <label for="waitlist-email" class="block text-[length:var(--text-small)] font-medium">Your email</label>
+              <input
+                id="waitlist-email"
+                name="email"
+                type="email"
+                required
+                class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+              />
+            </div>
+          </div>
+          <div>
+            <label for="waitlist-notes" class="block text-[length:var(--text-small)] font-medium">Anything we should know? (optional)</label>
+            <textarea
+              id="waitlist-notes"
+              name="notes"
+              rows="3"
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+            ></textarea>
+          </div>
+          <p id="waitlist-error" class="text-[length:var(--text-small)] text-de-red" hidden></p>
+          <button
+            type="submit"
+            id="waitlist-submit"
+            class="w-full cursor-pointer rounded-[var(--radius-control)] bg-ink px-6 py-3 font-semibold text-surface transition-colors hover:bg-neutral-800 sm:w-auto"
+          >
+            Join the waitlist
+          </button>
+      </form>
+      <p
+        id="waitlist-success"
+        class="min-w-0 rounded-[var(--radius-card)] bg-lime/15 p-4 text-[length:var(--text-small)] text-ink"
+        hidden
+      >
+        You're on the list — we'll email you the moment a seat opens up.
+      </p>
+
+      <form
+        name="registration"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        action="/training/register/thank-you"
+        id="registration-form"
+        class="min-w-0 space-y-5"
+        hidden={isSoldOut}
+      >
         <input type="hidden" name="form-name" value="registration" />
         <input type="hidden" name="course" value={course.data.name} />
         <input type="hidden" name="session-date" value={formatSessionDate(session, course)} />
@@ -432,8 +531,8 @@ const countries = [
         >
           Confirm registration
         </button>
-      </div>
-    </form>
+      </form>
+    </div>
   </Section>
 
   <script>
@@ -626,6 +725,41 @@ const countries = [
     });
     bookerEmail.addEventListener("input", () => {
       bookerEmailTouched = true;
+    });
+
+    // Intercepted via fetch (rather than a normal form POST) so a
+    // successful join can show the inline "you're on the list" message
+    // without navigating away — the sold-out registration page is often
+    // reached from a bookmarked/shared link, so staying put matters more
+    // here than it would for a one-time registration.
+    const waitlistForm = document.getElementById("waitlist-form") as HTMLFormElement;
+    const waitlistSubmitButton = document.getElementById("waitlist-submit") as HTMLButtonElement;
+    const waitlistErrorEl = document.getElementById("waitlist-error") as HTMLParagraphElement;
+    const waitlistSuccessEl = document.getElementById("waitlist-success") as HTMLParagraphElement;
+
+    waitlistForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      waitlistErrorEl.hidden = true;
+      waitlistSubmitButton.disabled = true;
+      waitlistSubmitButton.textContent = "Joining…";
+
+      try {
+        const body = new URLSearchParams(new FormData(waitlistForm) as any).toString();
+        const res = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body,
+        });
+        if (!res.ok) throw new Error(`Request failed (${res.status})`);
+
+        waitlistForm.hidden = true;
+        waitlistSuccessEl.hidden = false;
+      } catch {
+        waitlistErrorEl.textContent = "Couldn't join the waitlist — check your connection and try again.";
+        waitlistErrorEl.hidden = false;
+        waitlistSubmitButton.disabled = false;
+        waitlistSubmitButton.textContent = "Join the waitlist";
+      }
     });
   </script>
 </BaseLayout>
