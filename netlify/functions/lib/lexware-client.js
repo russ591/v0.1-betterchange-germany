@@ -177,11 +177,7 @@ function buildBillingAddress(data) {
   return {
     street: data.address,
     zip: data.postcode,
-    // The registration form collects a "state" (Bundesland/region) field,
-    // not a separate city — there is no city field to draw from. Using
-    // state here is a known, deliberate approximation until the form
-    // collects a real city.
-    city: data.state,
+    city: data.city,
     ...(countryCode ? { countryCode } : {}),
   };
 }
