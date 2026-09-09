@@ -1,15 +1,27 @@
 ---
+import { getCollection } from "astro:content";
 import Logo from "@/components/Logo.astro";
+import TrainingMegaMenuDesktop from "@/components/TrainingMegaMenuDesktop.astro";
+import TrainingMegaMenuMobile from "@/components/TrainingMegaMenuMobile.astro";
 
 const navLinks = [
   { href: "/services", label: "Services" },
-  { href: "/training", label: "Training" },
+  { href: "/training", label: "Training", mega: true },
   { href: "/about", label: "About" },
   { href: "/insights", label: "Insights" },
   { href: "/contact", label: "Contact" },
 ];
 
 const currentPath = Astro.url.pathname;
+
+const categories = (await getCollection("training-categories")).sort((a, b) => a.data.order - b.data.order);
+const allCourses = await getCollection("training-courses");
+const categoriesWithCourses = categories.map((category) => ({
+  category,
+  courses: allCourses
+    .filter((c) => c.data.category.id === category.id)
+    .sort((a, b) => (a.data.sortOrder ?? 99) - (b.data.sortOrder ?? 99)),
+}));
 ---
 
 <header class="sticky top-0 z-50 border-b border-neutral-200 bg-surface/90 backdrop-blur">
@@ -23,14 +35,32 @@ const currentPath = Astro.url.pathname;
         navLinks.map((link) => {
           const isActive =
             link.href === "/" ? currentPath === "/" : currentPath.startsWith(link.href);
+          const linkClass = `flex items-center gap-1 border-b-2 pb-1 text-sm font-medium transition-colors hover:text-ink ${
+            isActive ? "border-lime text-ink" : "border-transparent text-neutral-600"
+          }`;
+
+          if (link.mega) {
+            return (
+              <div class="group">
+                <a href={link.href} class={linkClass} aria-current={isActive ? "page" : undefined}>
+                  {link.label}
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    class="h-3.5 w-3.5 shrink-0 transition-transform group-hover:rotate-180"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </a>
+                <TrainingMegaMenuDesktop categoriesWithCourses={categoriesWithCourses} />
+              </div>
+            );
+          }
+
           return (
-            <a
-              href={link.href}
-              class={`border-b-2 pb-1 text-sm font-medium transition-colors hover:text-ink ${
-                isActive ? "border-lime text-ink" : "border-transparent text-neutral-600"
-              }`}
-              aria-current={isActive ? "page" : undefined}
-            >
+            <a href={link.href} class={linkClass} aria-current={isActive ? "page" : undefined}>
               {link.label}
             </a>
           );
@@ -57,11 +87,15 @@ const currentPath = Astro.url.pathname;
         class="absolute inset-x-0 top-full flex flex-col gap-1 border-b border-neutral-200 bg-surface px-6 py-4 shadow-card"
       >
         {
-          navLinks.map((link) => (
-            <a href={link.href} class="py-2 text-sm font-medium text-neutral-700">
-              {link.label}
-            </a>
-          ))
+          navLinks.map((link) =>
+            link.mega ? (
+              <TrainingMegaMenuMobile categoriesWithCourses={categoriesWithCourses} />
+            ) : (
+              <a href={link.href} class="py-2 text-sm font-medium text-neutral-700">
+                {link.label}
+              </a>
+            )
+          )
         }
       </nav>
     </details>
