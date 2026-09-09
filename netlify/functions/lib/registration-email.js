@@ -62,7 +62,7 @@ export function buildRegistrationEmailHtml(data, { invoiceAttached = false, disc
                   ${data["session-date"] ? `<tr><td style="padding:4px 0;color:#737373;">Session</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data["session-date"])}${data.location ? `. ${escapeHtml(data.location)}` : ""}</td></tr>` : ""}
                   <tr><td style="padding:4px 0;color:#737373;">Booked by</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.name || "—")} (${escapeHtml(data.email || "—")})</td></tr>
                   ${data.company ? `<tr><td style="padding:4px 0;color:#737373;">Company</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.company)}</td></tr>` : ""}
-                  ${data.address ? `<tr><td style="padding:4px 0;color:#737373;vertical-align:top;">Address</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.address)}, ${escapeHtml(data.postcode || "")} ${escapeHtml(data.state || "")}, ${escapeHtml(data.country || "")}</td></tr>` : ""}
+                  ${data.address ? `<tr><td style="padding:4px 0;color:#737373;vertical-align:top;">Address</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.address)}, ${escapeHtml(data.postcode || "")} ${escapeHtml(data.city || "")}, ${escapeHtml(data.country || "")}</td></tr>` : ""}
                   <tr><td style="padding:4px 0;color:#737373;">Seats</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.seats || "1")}</td></tr>
                   ${
                     discountBreakdown
@@ -163,7 +163,7 @@ export function buildOwnerNotificationHtml(data, { discountBreakdown = null } = 
                   <tr><td style="padding:4px 0;color:#737373;">Booked by</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.name || "—")} (${escapeHtml(data.email || "—")})</td></tr>
                   ${data.company ? `<tr><td style="padding:4px 0;color:#737373;">Company</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.company)}</td></tr>` : ""}
                   ${data["vat-id"] ? `<tr><td style="padding:4px 0;color:#737373;">VAT ID</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data["vat-id"])}</td></tr>` : ""}
-                  ${data.address ? `<tr><td style="padding:4px 0;color:#737373;vertical-align:top;">Address</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.address)}, ${escapeHtml(data.postcode || "")} ${escapeHtml(data.state || "")}, ${escapeHtml(data.country || "")}</td></tr>` : ""}
+                  ${data.address ? `<tr><td style="padding:4px 0;color:#737373;vertical-align:top;">Address</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.address)}, ${escapeHtml(data.postcode || "")} ${escapeHtml(data.city || "")}, ${escapeHtml(data.country || "")}</td></tr>` : ""}
                   <tr><td style="padding:4px 0;color:#737373;">Seats</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.seats || "1")}</td></tr>
                   ${
                     discountBreakdown
@@ -206,7 +206,7 @@ export function buildOwnerNotificationText(data, { discountBreakdown = null } = 
     `Booked by: ${data.name || "—"} (${data.email || "—"})`,
     data.company ? `Company: ${data.company}` : null,
     data["vat-id"] ? `VAT ID: ${data["vat-id"]}` : null,
-    data.address ? `Address: ${data.address}, ${data.postcode || ""} ${data.state || ""}, ${data.country || ""}` : null,
+    data.address ? `Address: ${data.address}, ${data.postcode || ""} ${data.city || ""}, ${data.country || ""}` : null,
     `Seats: ${data.seats || "1"}`,
     ...(discountBreakdown
       ? [
@@ -294,7 +294,7 @@ export function buildRegistrationEmailText(data, { invoiceAttached = false, disc
     data["session-date"] ? `Session: ${data["session-date"]}${data.location ? `. ${data.location}` : ""}` : null,
     `Booked by: ${data.name || "—"} (${data.email || "—"})`,
     data.company ? `Company: ${data.company}` : null,
-    data.address ? `Address: ${data.address}, ${data.postcode || ""} ${data.state || ""}, ${data.country || ""}` : null,
+    data.address ? `Address: ${data.address}, ${data.postcode || ""} ${data.city || ""}, ${data.country || ""}` : null,
     `Seats: ${data.seats || "1"}`,
     ...(discountBreakdown
       ? [

@@ -184,44 +184,8 @@ const countries = [
           }
         </dl>
 
-        {
-          // Always rendered (hidden, not removed, when sold out) — the
-          // page's own script unconditionally reads #order-total-block's
-          // dataset on load, so omitting this markup entirely for a
-          // sold-out session throws and kills the whole script, including
-          // the unrelated waitlist form's submit handler below.
-        }
-        <div class="mt-6 border-t border-neutral-200 pt-4" hidden={isSoldOut}>
-          <button
-            type="button"
-            id="toggle-discount"
-            class="cursor-pointer text-[length:var(--text-caption)] font-semibold text-ink underline decoration-neutral-300 underline-offset-2 transition-colors hover:decoration-ink"
-          >
-            + Have a discount code?
-          </button>
-          <div id="discount-code-panel" class="mt-2" hidden>
-            <div class="flex gap-2">
-              <input
-                id="discount-code"
-                name="discount-code"
-                type="text"
-                placeholder="Enter code"
-                class="w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 text-[length:var(--text-small)]"
-              />
-              <button
-                type="button"
-                id="apply-discount-code"
-                class="shrink-0 cursor-pointer rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 text-[length:var(--text-small)] font-semibold text-ink transition-colors hover:bg-mist-light"
-              >
-                Apply
-              </button>
-            </div>
-            <p id="discount-code-feedback" class="mt-1 text-[length:var(--text-caption)]" hidden></p>
-          </div>
-        </div>
-
         <div
-          class="mt-4 border-t border-neutral-200 pt-4"
+          class="mt-6 border-t border-neutral-200 pt-4"
           id="order-total-block"
           data-unit-price={unitPrice}
           data-bulk-offer={hasBulkOffer ? "true" : "false"}
@@ -369,61 +333,18 @@ const countries = [
         </p>
 
         <div>
-          <div class="flex items-center justify-between">
-            <p class="eyebrow text-neutral-500">Attendees</p>
-            <div class="flex items-center gap-2">
-              <label for="seats" class="text-[length:var(--text-caption)] text-neutral-500">Seats</label>
-              <select
-                id="seats"
-                name="seats"
-                class="rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-2 py-1 text-[length:var(--text-small)]"
-              >
-                {Array.from({ length: 6 }, (_, i) => i + 1).map((n) => <option value={n}>{n}</option>)}
-              </select>
-            </div>
+          <p class="eyebrow text-neutral-500">Booking details</p>
+          <div class="mt-3 flex items-center gap-2">
+            <label for="seats" class="text-[length:var(--text-small)] font-medium">Seats</label>
+            <select
+              id="seats"
+              name="seats"
+              class="rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-2 py-1 text-[length:var(--text-small)]"
+            >
+              {Array.from({ length: 6 }, (_, i) => i + 1).map((n) => <option value={n}>{n}</option>)}
+            </select>
           </div>
-          <div class="mt-3 divide-y divide-neutral-200 rounded-[var(--radius-control)] border border-neutral-200">
-            {
-              Array.from({ length: 6 }, (_, i) => i + 1).map((n) => (
-                <div
-                  data-attendee-block
-                  data-attendee-index={n}
-                  hidden={n > 1}
-                  class="grid grid-cols-[auto_1fr_1fr] items-center gap-3 p-3"
-                >
-                  <span class="flex h-6 w-6 items-center justify-center rounded-full bg-mist-light text-[length:var(--text-caption)] font-semibold text-neutral-600">
-                    {n}
-                  </span>
-                  <input
-                    id={`attendee-name-${n}`}
-                    name={`attendee-name-${n}`}
-                    type="text"
-                    placeholder="Name"
-                    aria-label={`Attendee ${n} name`}
-                    required={n === 1}
-                    class="w-full rounded-[var(--radius-control)] border border-neutral-300 px-3 py-2 text-[length:var(--text-small)]"
-                  />
-                  <input
-                    id={`attendee-email-${n}`}
-                    name={`attendee-email-${n}`}
-                    type="email"
-                    placeholder="Email"
-                    aria-label={`Attendee ${n} email`}
-                    required={n === 1}
-                    class="w-full rounded-[var(--radius-control)] border border-neutral-300 px-3 py-2 text-[length:var(--text-small)]"
-                  />
-                </div>
-              ))
-            }
-          </div>
-        </div>
-
-        <div>
-          <p class="eyebrow text-neutral-500">Your details</p>
-          <p class="mt-2 text-[length:var(--text-caption)] text-neutral-500">
-            Defaults to the first attendee — change this if someone else is booking.
-          </p>
-          <div class="mt-3 grid gap-4 sm:grid-cols-2">
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
             <div>
               <label for="name" class="block text-[length:var(--text-small)] font-medium">Your name</label>
               <input
@@ -465,10 +386,10 @@ const countries = [
               />
             </div>
             <div>
-              <label for="state" class="block text-[length:var(--text-small)] font-medium">State</label>
+              <label for="city" class="block text-[length:var(--text-small)] font-medium">City, State</label>
               <input
-                id="state"
-                name="state"
+                id="city"
+                name="city"
                 type="text"
                 required
                 class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
@@ -509,6 +430,78 @@ const countries = [
                 class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
               />
             </div>
+          </div>
+        </div>
+
+        <div>
+          <p class="eyebrow text-neutral-500">Attendees</p>
+          <p class="mt-2 text-[length:var(--text-caption)] text-neutral-500">
+            Attendee 1 is filled in from your booking details above — edit it if a different person is attending.
+          </p>
+          <div class="mt-3 divide-y divide-neutral-200 rounded-[var(--radius-control)] border border-neutral-200">
+            {
+              Array.from({ length: 6 }, (_, i) => i + 1).map((n) => (
+                <div
+                  data-attendee-block
+                  data-attendee-index={n}
+                  hidden={n > 1}
+                  class="grid grid-cols-[auto_1fr_1fr] items-center gap-3 p-3"
+                >
+                  <span class="flex h-6 w-6 items-center justify-center rounded-full bg-mist-light text-[length:var(--text-caption)] font-semibold text-neutral-600">
+                    {n}
+                  </span>
+                  <input
+                    id={`attendee-name-${n}`}
+                    name={`attendee-name-${n}`}
+                    type="text"
+                    placeholder="Name"
+                    aria-label={`Attendee ${n} name`}
+                    required={n === 1}
+                    class="w-full rounded-[var(--radius-control)] border border-neutral-300 px-3 py-2 text-[length:var(--text-small)]"
+                  />
+                  <input
+                    id={`attendee-email-${n}`}
+                    name={`attendee-email-${n}`}
+                    type="email"
+                    placeholder="Email"
+                    aria-label={`Attendee ${n} email`}
+                    required={n === 1}
+                    class="w-full rounded-[var(--radius-control)] border border-neutral-300 px-3 py-2 text-[length:var(--text-small)]"
+                  />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <div>
+          <div class="rounded-[var(--radius-card)] border border-neutral-300 bg-mist-light p-5">
+            <div class="flex items-center gap-2">
+              <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-lime" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#0a0a0a" stroke-width="2">
+                  <path d="M20.6 12.1 12.9 4.4a2 2 0 0 0-1.4-.6H5a1 1 0 0 0-1 1v6.5c0 .5.2 1 .6 1.4l7.7 7.7c.8.8 2 .8 2.8 0l5.5-5.5c.8-.8.8-2 0-2.8Z" />
+                  <circle cx="8" cy="8.5" r="1.2" fill="#0a0a0a" stroke="none" />
+                </svg>
+              </span>
+              <h3 class="text-[length:var(--text-small)] font-bold">Have a discount code?</h3>
+            </div>
+            <div class="mt-3 flex gap-2">
+              <input
+                id="discount-code"
+                name="discount-code"
+                type="text"
+                placeholder="Enter code"
+                class="w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 text-[length:var(--text-small)]"
+              />
+              <button
+                type="button"
+                id="apply-discount-code"
+                class="shrink-0 cursor-pointer rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 text-[length:var(--text-small)] font-semibold text-ink transition-colors hover:bg-mist-light"
+              >
+                Apply
+              </button>
+            </div>
+            <p id="discount-code-feedback" class="mt-2 text-[length:var(--text-caption)]" hidden></p>
           </div>
         </div>
 
@@ -554,8 +547,6 @@ const countries = [
     const discountCodeInput = document.getElementById("discount-code") as HTMLInputElement;
     const applyDiscountButton = document.getElementById("apply-discount-code") as HTMLButtonElement;
     const discountFeedbackEl = document.getElementById("discount-code-feedback") as HTMLParagraphElement;
-    const toggleDiscountButton = document.getElementById("toggle-discount") as HTMLButtonElement;
-    const discountCodePanel = document.getElementById("discount-code-panel") as HTMLDivElement;
     const unitPrice = parseFloat(orderTotalBlock.dataset.unitPrice ?? "0");
     const hasBulkOffer = orderTotalBlock.dataset.bulkOffer === "true";
     const currencyFormatter = new Intl.NumberFormat("en-GB", {
@@ -685,15 +676,6 @@ const countries = [
       }
     });
 
-    // Discount code lives collapsed in the order summary until asked for,
-    // so it doesn't take up space in the main form for the common case of
-    // nobody having one.
-    toggleDiscountButton.addEventListener("click", () => {
-      discountCodePanel.hidden = !discountCodePanel.hidden;
-      toggleDiscountButton.hidden = !discountCodePanel.hidden;
-      if (!discountCodePanel.hidden) discountCodeInput.focus();
-    });
-
     function updateAttendeeBlocks() {
       const seats = parseInt(seatsSelect.value, 10);
       attendeeBlocks.forEach((block, i) => {
@@ -705,26 +687,28 @@ const countries = [
     seatsSelect.addEventListener("change", updateAttendeeBlocks);
     updateAttendeeBlocks();
 
-    // Mirror attendee 1's details into the booking-contact fields until the
-    // booker explicitly edits them themselves.
+    // Mirror the booking-contact fields into attendee 1 until attendee 1
+    // is explicitly edited directly -- attendee 1 defaults to being the
+    // person booking, but someone booking on behalf of a colleague can
+    // still override it.
     const attendee1Name = document.getElementById("attendee-name-1") as HTMLInputElement;
     const attendee1Email = document.getElementById("attendee-email-1") as HTMLInputElement;
     const bookerName = document.getElementById("name") as HTMLInputElement;
     const bookerEmail = document.getElementById("email") as HTMLInputElement;
-    let bookerNameTouched = false;
-    let bookerEmailTouched = false;
+    let attendee1NameTouched = false;
+    let attendee1EmailTouched = false;
 
-    attendee1Name.addEventListener("input", () => {
-      if (!bookerNameTouched) bookerName.value = attendee1Name.value;
-    });
-    attendee1Email.addEventListener("input", () => {
-      if (!bookerEmailTouched) bookerEmail.value = attendee1Email.value;
-    });
     bookerName.addEventListener("input", () => {
-      bookerNameTouched = true;
+      if (!attendee1NameTouched) attendee1Name.value = bookerName.value;
     });
     bookerEmail.addEventListener("input", () => {
-      bookerEmailTouched = true;
+      if (!attendee1EmailTouched) attendee1Email.value = bookerEmail.value;
+    });
+    attendee1Name.addEventListener("input", () => {
+      attendee1NameTouched = true;
+    });
+    attendee1Email.addEventListener("input", () => {
+      attendee1EmailTouched = true;
     });
 
     // Intercepted via fetch (rather than a normal form POST) so a
