@@ -72,6 +72,13 @@ const trainingSchedule = defineCollection({
     offer: z.string().optional(),
     notes: z.string().optional(),
     status: z.enum(["available", "sold-out", "tbc"]).default("available"),
+    // Sessions run by a sister site (e.g. betterchange-consulting.dk/.it)
+    // that aren't fulfilled through our own registration flow at all --
+    // the register button sends people to externalUrl in a new tab
+    // instead, and the internal /training/register/[session] page isn't
+    // even generated for these (see its getStaticPaths filter).
+    isExternal: z.boolean().default(false),
+    externalUrl: z.string().url().optional(),
   }),
 });
 

@@ -9,6 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
 import { formatSessionDate } from "@/lib/dates";
+import { registrationHref, registrationLinkAttrs } from "@/lib/registrationLink";
 
 const categories = await getCollection("training-categories");
 const schedules = await getCollection("training-schedules");
@@ -91,7 +92,9 @@ const countries = [...new Set(sessions.map((s) => s.country))].sort();
                 type="button"
                 data-filter-group="country"
                 data-filter-value={country}
-                class="cursor-pointer rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors hover:border-ink hover:text-ink"
+                class={`cursor-pointer rounded-[var(--radius-pill)] border px-4 py-1.5 text-[length:var(--text-small)] font-semibold transition-colors hover:border-ink hover:text-ink ${
+                  country === "Germany" ? "border-lime bg-lime text-ink" : "border-neutral-300 bg-surface text-neutral-700"
+                }`}
               >
                 {country}
               </button>
@@ -137,7 +140,8 @@ const countries = [...new Set(sessions.map((s) => s.country))].sort();
               <Badge format={session.data.format} />
             </div>
             <a
-              href={`/training/register/${session.id}`}
+              href={registrationHref(session)}
+              {...registrationLinkAttrs(session)}
               class={
                 session.data.status === "sold-out"
                   ? "mt-3 block rounded-[var(--radius-control)] border border-ink px-4 py-2 text-center text-[length:var(--text-small)] font-semibold text-ink transition-colors hover:bg-mist-light"
@@ -203,7 +207,8 @@ const countries = [...new Set(sessions.map((s) => s.country))].sort();
                 </td>
                 <td class="px-4 py-4 text-right">
                   <a
-                    href={`/training/register/${session.id}`}
+                    href={registrationHref(session)}
+                    {...registrationLinkAttrs(session)}
                     class={
                       session.data.status === "sold-out"
                         ? "inline-block whitespace-nowrap rounded-[var(--radius-control)] border border-ink px-3 py-1.5 font-semibold text-ink transition-colors hover:bg-mist-light"
@@ -230,7 +235,11 @@ const countries = [...new Set(sessions.map((s) => s.country))].sort();
     const listMobile = document.getElementById("schedule-list-mobile") as HTMLDivElement;
     const tableDesktop = document.getElementById("schedule-table-desktop") as HTMLDivElement;
 
-    const active: Record<string, Set<string>> = { topic: new Set(), country: new Set() };
+    // Germany is pre-selected to match the site's primary audience --
+    // the button's own default lime styling above has to stay in sync
+    // with this initial active set by hand, since there's no single
+    // source of truth driving both.
+    const active: Record<string, Set<string>> = { topic: new Set(), country: new Set(["Germany"]) };
 
     function update() {
       let visibleCount = 0;
@@ -269,5 +278,7 @@ const countries = [...new Set(sessions.map((s) => s.country))].sort();
         update();
       });
     });
+
+    update();
   </script>
 </BaseLayout>
