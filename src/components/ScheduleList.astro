@@ -1,17 +1,35 @@
 ---
 // Shared "upcoming sessions" list: a real <table> on desktop (columns line
 // up naturally) and stacked cards on mobile, each row showing the course's
-// own certification badge (falling back to its category's logo). Used by
-// the category page and the training hub; the homepage and full-schedule
-// page have their own longer-standing versions of this same pattern.
+// own certification badge (falling back to its category's logo). This is
+// the single implementation behind the homepage teaser, the training hub,
+// the full schedule page, and category pages -- they used to be four
+// separate hand-written copies that drifted (different columns, only one
+// had a country filter, only two had the mobile breakpoint fix), which is
+// exactly the inconsistency this component now exists to prevent.
+//
+// Country isn't a schema field -- it's parsed off the end of the
+// free-text `location` string (e.g. "Berlin, Germany" -> "Germany"), same
+// as full-schedule.astro did before consolidation.
+//
+// Every listing here links its course title straight to the course page
+// and (when a session has one) a trainer chip tucked underneath it,
+// linking to that trainer's own profile page -- but only when they have
+// one; a trainer with no migrated profile renders as plain unlinked text
+// rather than sending a visitor off-site to LinkedIn from a browsing list.
+// Price is deliberately left out of every one of these listings; it shows
+// up once a visitor clicks through to the course or registration page.
 import type { CollectionEntry } from "astro:content";
 import { Image } from "astro:assets";
 import Badge from "@/components/Badge.astro";
 import SoldOutBadge from "@/components/SoldOutBadge.astro";
+import TrainerChip from "@/components/TrainerChip.astro";
 import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
 import { formatSessionDate } from "@/lib/dates";
 import { registrationHref, registrationLinkAttrs } from "@/lib/registrationLink";
+import { toPathSegment } from "@/lib/urlSlug";
+import { getTrainersForSessions, type TrainerEntry } from "@/lib/trainers";
 
 interface Row {
   session: CollectionEntry<"training-schedules">;
@@ -19,20 +37,61 @@ interface Row {
   category: CollectionEntry<"training-categories">;
 }
 
+type FilterKind = "topic" | "country" | "trainer";
+
 interface Props {
   rows: Row[];
-  filterable?: boolean;
+  filters?: FilterKind[];
+  defaultCountry?: string;
+  showTrainer?: boolean;
+  limit?: number;
   emptyMessage?: string;
   id?: string;
 }
 
-const { rows, filterable = false, emptyMessage = "No sessions are currently scheduled.", id = "schedule-list" } = Astro.props;
+const {
+  rows: allRows,
+  filters = [],
+  defaultCountry,
+  showTrainer = true,
+  limit,
+  emptyMessage = "No sessions are currently scheduled.",
+  id = "schedule-list",
+} = Astro.props as Props;
 
-const topics = filterable
-  ? [...new Map(rows.map((r) => [r.category.id, r.category])).values()].sort(
-      (a, b) => a.data.order - b.data.order
+const rows = limit ? allRows.slice(0, limit) : allRows;
+
+const trainerKey = (t: TrainerEntry) => (t.kind === "profile" ? t.profile.id : `name:${t.name}`);
+const trainerLabel = (t: TrainerEntry) => (t.kind === "profile" ? t.profile.data.name : t.name);
+
+const enriched = await Promise.all(
+  rows.map(async (row) => {
+    const country = row.session.data.location.includes(",")
+      ? row.session.data.location.split(",").pop()!.trim()
+      : row.session.data.location;
+    const trainers = showTrainer ? await getTrainersForSessions([row.session]) : [];
+    const coursePath = `/training/${row.category.id}/${toPathSegment(row.course.data.urlSlug ?? row.course.id)}`;
+    return { ...row, country, trainers, coursePath };
+  })
+);
+
+const showTopicFilter = filters.includes("topic") && new Set(rows.map((r) => r.category.id)).size > 1;
+const showCountryFilter = filters.includes("country") && new Set(enriched.map((r) => r.country)).size > 1;
+const showTrainerFilter =
+  filters.includes("trainer") &&
+  new Set(enriched.flatMap((r) => r.trainers).map(trainerKey)).size > 1;
+
+const topics = showTopicFilter
+  ? [...new Map(rows.map((r) => [r.category.id, r.category])).values()].sort((a, b) => a.data.order - b.data.order)
+  : [];
+const countries = showCountryFilter ? [...new Set(enriched.map((r) => r.country))].sort() : [];
+const allTrainers = showTrainerFilter
+  ? [...new Map(enriched.flatMap((r) => r.trainers).map((t) => [trainerKey(t), t])).values()].sort((a, b) =>
+      trainerLabel(a).localeCompare(trainerLabel(b))
     )
   : [];
+
+const hasAnyFilter = showTopicFilter || showCountryFilter || showTrainerFilter;
 
 function badgeFor(row: Row) {
   const badge = courseBadges[row.course.id];
@@ -40,48 +99,108 @@ function badgeFor(row: Row) {
   const logo = row.category.data.certificationBody ? certificationLogos[row.category.data.certificationBody] : undefined;
   return logo ? { kind: "logo" as const, logo } : undefined;
 }
+
+const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7.5l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 ---
 
 {
-  filterable && topics.length > 1 && (
-    <div class="mb-6 flex flex-wrap gap-2" id={`${id}-filters`}>
-      <button type="button" data-filter-value="all" class="schedule-filter-btn cursor-pointer rounded-[var(--radius-pill)] border border-lime bg-lime px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-ink transition-colors">
-        All disciplines
-      </button>
-      {topics.map((topic) => (
-        <button
-          type="button"
-          data-filter-value={topic.id}
-          class="schedule-filter-btn cursor-pointer rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors hover:border-ink hover:text-ink"
-        >
-          {topic.data.name}
-        </button>
-      ))}
+  hasAnyFilter && (
+    <div class="mb-6 space-y-3" id={`${id}-filters`}>
+      {showTopicFilter && (
+        <div class="rounded-[var(--radius-control)] border border-neutral-200 lg:border-0">
+          <button type="button" class="filter-toggle flex w-full cursor-pointer items-center justify-between gap-2 px-4 py-3 lg:hidden" data-panel={`${id}-panel-topic`} aria-expanded="false">
+            <span class="text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-500">
+              Discipline<span class="filter-summary-count font-normal normal-case tracking-normal text-neutral-400" />
+            </span>
+            <span class="chevron h-4 w-4 shrink-0 text-neutral-400 transition-transform" set:html={chevron} />
+          </button>
+          <p class="hidden px-4 pb-3 text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-500 lg:block lg:px-0 lg:pb-0">Discipline</p>
+          <div id={`${id}-panel-topic`} class="hidden flex-wrap gap-2 px-4 pb-4 pt-1 lg:flex lg:p-0 lg:pt-2">
+            {topics.map((topic) => (
+              <button type="button" data-filter-group="topic" data-filter-value={topic.id} class="filter-btn mb-2 mr-2 cursor-pointer rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors hover:border-ink hover:text-ink lg:mb-0">
+                {topic.data.name}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {showCountryFilter && (
+        <div class="rounded-[var(--radius-control)] border border-neutral-200 lg:border-0">
+          <button type="button" class="filter-toggle flex w-full cursor-pointer items-center justify-between gap-2 px-4 py-3 lg:hidden" data-panel={`${id}-panel-country`} aria-expanded="false">
+            <span class="text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-500">
+              Country<span class="filter-summary-count font-normal normal-case tracking-normal text-neutral-400" />
+            </span>
+            <span class="chevron h-4 w-4 shrink-0 text-neutral-400 transition-transform" set:html={chevron} />
+          </button>
+          <p class="hidden px-4 pb-3 text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-500 lg:block lg:px-0 lg:pb-0">Country</p>
+          <div id={`${id}-panel-country`} class="hidden flex-wrap gap-2 px-4 pb-4 pt-1 lg:flex lg:p-0 lg:pt-2">
+            {countries.map((country) => (
+              <button type="button" data-filter-group="country" data-filter-value={country} class={`filter-btn mb-2 mr-2 cursor-pointer rounded-[var(--radius-pill)] border px-4 py-1.5 text-[length:var(--text-small)] font-semibold transition-colors hover:border-ink hover:text-ink lg:mb-0 ${country === defaultCountry ? "border-lime bg-lime text-ink" : "border-neutral-300 bg-surface text-neutral-700"}`}>
+                {country}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {showTrainerFilter && (
+        <div class="rounded-[var(--radius-control)] border border-neutral-200 lg:border-0">
+          <button type="button" class="filter-toggle flex w-full cursor-pointer items-center justify-between gap-2 px-4 py-3 lg:hidden" data-panel={`${id}-panel-trainer`} aria-expanded="false">
+            <span class="text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-500">
+              Trainer<span class="filter-summary-count font-normal normal-case tracking-normal text-neutral-400" />
+            </span>
+            <span class="chevron h-4 w-4 shrink-0 text-neutral-400 transition-transform" set:html={chevron} />
+          </button>
+          <p class="hidden px-4 pb-3 text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-500 lg:block lg:px-0 lg:pb-0">Trainer</p>
+          <div id={`${id}-panel-trainer`} class="hidden flex-wrap gap-2 px-4 pb-4 pt-1 lg:flex lg:p-0 lg:pt-2">
+            {allTrainers.map((trainer) => (
+              <button type="button" data-filter-group="trainer" data-filter-value={trainerKey(trainer)} class="filter-btn mb-2 mr-2 cursor-pointer rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors hover:border-ink hover:text-ink lg:mb-0">
+                {trainerLabel(trainer)}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
 
 {
-  rows.length > 0 ? (
+  enriched.length > 0 ? (
     <Fragment>
       {/* stacked cards below lg, table from lg up -- a real desktop-width
-      screen is needed for six columns (course, date, location, format,
-      price, action) not to cramp the course name into an ugly 3-line wrap;
-      below that, the card layout has room to breathe instead. */}
+      screen is needed for this many columns not to cramp the course name
+      into an ugly 3-line wrap; below that, the card layout has room to
+      breathe instead. */}
       <div class="flex flex-col gap-3 lg:hidden" id={`${id}-mobile`}>
-        {rows.map((row) => {
+        {enriched.map((row) => {
           const b = badgeFor(row);
           return (
-            <div class="schedule-row rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-4" data-topic={row.category.id}>
-              <div class="flex items-center gap-2.5">
+            <div
+              class="schedule-row rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-4"
+              data-topic={row.category.id}
+              data-country={row.country}
+              data-trainers={row.trainers.map(trainerKey).join(" ")}
+            >
+              <div class="flex items-start gap-2.5">
                 {b?.kind === "badge" && <Image src={b.badge} alt="" width={40} height={40} class="h-7 w-7 shrink-0 rounded-full" />}
                 {b?.kind === "logo" && (
                   <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-1">
                     <img src={b.logo.src} alt="" class="h-full w-full object-contain" />
                   </span>
                 )}
-                <p class="font-semibold">{row.course.data.name}</p>
-                {row.session.data.status === "sold-out" && <SoldOutBadge />}
+                <div class="min-w-0 flex-1">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <a href={row.coursePath} class="font-semibold hover:underline">{row.course.data.name}</a>
+                    {row.session.data.status === "sold-out" && <SoldOutBadge />}
+                  </div>
+                  {row.trainers.length > 0 && (
+                    <div class="mt-1 flex flex-wrap gap-1.5">
+                      {row.trainers.map((trainer) => <TrainerChip trainer={trainer} density="plain" linkedinFallback={false} />)}
+                    </div>
+                  )}
+                </div>
               </div>
               <div class="mt-3 flex items-center justify-between gap-3 border-t border-neutral-100 pt-3 text-[length:var(--text-small)]">
                 <div>
@@ -90,20 +209,17 @@ function badgeFor(row: Row) {
                 </div>
                 <Badge format={row.session.data.format} />
               </div>
-              <div class="mt-3 flex items-center justify-between gap-3 border-t border-neutral-100 pt-3">
-                <span class="font-bold">{row.session.data.price}</span>
-                <a
-                  href={registrationHref(row.session)}
-                  {...registrationLinkAttrs(row.session)}
-                  class={
-                    row.session.data.status === "sold-out"
-                      ? "rounded-[var(--radius-control)] border border-ink px-4 py-2 text-center text-[length:var(--text-small)] font-semibold text-ink transition-colors hover:bg-mist-light"
-                      : "rounded-[var(--radius-control)] bg-ink px-4 py-2 text-center text-[length:var(--text-small)] font-semibold text-surface transition-colors hover:bg-neutral-800"
-                  }
-                >
-                  {row.session.data.status === "sold-out" ? "Join waitlist →" : "Book now →"}
-                </a>
-              </div>
+              <a
+                href={registrationHref(row.session)}
+                {...registrationLinkAttrs(row.session)}
+                class={
+                  row.session.data.status === "sold-out"
+                    ? "mt-3 block rounded-[var(--radius-control)] border border-ink px-4 py-2 text-center text-[length:var(--text-small)] font-semibold text-ink transition-colors hover:bg-mist-light"
+                    : "mt-3 block rounded-[var(--radius-control)] bg-ink px-4 py-2 text-center text-[length:var(--text-small)] font-semibold text-surface transition-colors hover:bg-neutral-800"
+                }
+              >
+                {row.session.data.status === "sold-out" ? "Join waitlist →" : "Book now →"}
+              </a>
             </div>
           );
         })}
@@ -117,25 +233,38 @@ function badgeFor(row: Row) {
               <th class="px-4 py-3 font-medium sm:px-5">Date</th>
               <th class="px-4 py-3 font-medium sm:px-5">Location</th>
               <th class="px-4 py-3 font-medium sm:px-5">Format</th>
-              <th class="px-4 py-3 font-medium sm:px-5">Price</th>
               <th class="px-4 py-3 sm:px-5" />
             </tr>
           </thead>
           <tbody>
-            {rows.map((row) => {
+            {enriched.map((row) => {
               const b = badgeFor(row);
               return (
-                <tr class="schedule-row border-b border-neutral-100 last:border-0" data-topic={row.category.id}>
+                <tr
+                  class="schedule-row border-b border-neutral-100 last:border-0"
+                  data-topic={row.category.id}
+                  data-country={row.country}
+                  data-trainers={row.trainers.map(trainerKey).join(" ")}
+                >
                   <td class="px-4 py-4 sm:px-5">
-                    <div class="flex items-center gap-2.5">
+                    <div class="flex items-start gap-2.5">
                       {b?.kind === "badge" && <Image src={b.badge} alt="" width={40} height={40} class="h-7 w-7 shrink-0 rounded-full" />}
                       {b?.kind === "logo" && (
                         <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-1">
                           <img src={b.logo.src} alt="" class="h-full w-full object-contain" />
                         </span>
                       )}
-                      <span class="font-semibold">{row.course.data.name}</span>
-                      {row.session.data.status === "sold-out" && <SoldOutBadge />}
+                      <div class="min-w-0">
+                        <div class="flex flex-wrap items-center gap-2">
+                          <a href={row.coursePath} class="font-semibold hover:underline">{row.course.data.name}</a>
+                          {row.session.data.status === "sold-out" && <SoldOutBadge />}
+                        </div>
+                        {row.trainers.length > 0 && (
+                          <div class="mt-1 flex flex-wrap gap-1.5">
+                            {row.trainers.map((trainer) => <TrainerChip trainer={trainer} density="plain" linkedinFallback={false} />)}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </td>
                   <td class="whitespace-nowrap px-4 py-4 font-medium sm:px-5">{formatSessionDate(row.session, row.course)}</td>
@@ -143,7 +272,6 @@ function badgeFor(row: Row) {
                   <td class="px-4 py-4 sm:px-5">
                     <Badge format={row.session.data.format} />
                   </td>
-                  <td class="whitespace-nowrap px-4 py-4 font-bold sm:px-5">{row.session.data.price}</td>
                   <td class="px-4 py-4 text-right sm:px-5">
                     <a
                       href={registrationHref(row.session)}
@@ -163,7 +291,7 @@ function badgeFor(row: Row) {
           </tbody>
         </table>
       </div>
-      {filterable && (
+      {hasAnyFilter && (
         <p class="mt-6 hidden text-[length:var(--text-small)] text-neutral-500" id={`${id}-empty`}>
           No sessions match this filter right now.
         </p>
@@ -183,37 +311,82 @@ function badgeFor(row: Row) {
 }
 
 {
-  filterable && topics.length > 1 && (
-    <script define:vars={{ id }}>
-      const filterBar = document.getElementById(`${id}-filters`);
+  hasAnyFilter && (
+    <script define:vars={{ id, defaultCountry }}>
+      const filterButtons = Array.from(document.querySelectorAll(`#${id}-filters [data-filter-group]`));
+      const toggleButtons = Array.from(document.querySelectorAll(`#${id}-filters .filter-toggle`));
       const rows = Array.from(document.querySelectorAll(`#${id}-mobile .schedule-row, #${id}-desktop .schedule-row`));
       const emptyMessage = document.getElementById(`${id}-empty`);
       const mobileList = document.getElementById(`${id}-mobile`);
       const desktopList = document.getElementById(`${id}-desktop`);
 
-      filterBar?.addEventListener("click", (e) => {
-        const btn = e.target.closest(".schedule-filter-btn");
-        if (!btn) return;
+      const active = {
+        topic: new Set(),
+        country: new Set(defaultCountry ? [defaultCountry] : []),
+        trainer: new Set(),
+      };
 
-        filterBar.querySelectorAll(".schedule-filter-btn").forEach((b) => {
-          b.classList.remove("bg-lime", "border-lime", "text-ink");
-          b.classList.add("bg-surface", "border-neutral-300", "text-neutral-700");
+      function updateSummaryCounts() {
+        toggleButtons.forEach((toggle) => {
+          const panel = document.getElementById(toggle.dataset.panel);
+          const group = panel?.querySelector("[data-filter-group]")?.dataset.filterGroup;
+          if (!group) return;
+          const count = active[group].size;
+          const countEl = toggle.querySelector(".filter-summary-count");
+          if (countEl) countEl.textContent = count > 0 ? ` (${count})` : "";
         });
-        btn.classList.remove("bg-surface", "border-neutral-300", "text-neutral-700");
-        btn.classList.add("bg-lime", "border-lime", "text-ink");
+      }
 
-        const value = btn.dataset.filterValue;
+      function update() {
         let visible = 0;
         rows.forEach((row) => {
-          const show = value === "all" || row.dataset.topic === value;
+          const topic = row.dataset.topic ?? "";
+          const country = row.dataset.country ?? "";
+          const trainers = (row.dataset.trainers ?? "").split(" ").filter(Boolean);
+          const topicMatch = active.topic.size === 0 || active.topic.has(topic);
+          const countryMatch = active.country.size === 0 || active.country.has(country);
+          const trainerMatch = active.trainer.size === 0 || trainers.some((t) => active.trainer.has(t));
+          const show = topicMatch && countryMatch && trainerMatch;
           row.hidden = !show;
           if (show) visible++;
         });
-
         if (emptyMessage) emptyMessage.hidden = visible > 0;
         if (mobileList) mobileList.style.display = visible > 0 ? "" : "none";
         if (desktopList) desktopList.style.display = visible > 0 ? "" : "none";
+        updateSummaryCounts();
+      }
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const group = button.dataset.filterGroup;
+          const value = button.dataset.filterValue;
+          const isActive = active[group].has(value);
+          if (isActive) {
+            active[group].delete(value);
+            button.classList.remove("bg-lime", "border-lime", "text-ink");
+            button.classList.add("bg-surface", "border-neutral-300", "text-neutral-700");
+          } else {
+            active[group].add(value);
+            button.classList.remove("bg-surface", "border-neutral-300", "text-neutral-700");
+            button.classList.add("bg-lime", "border-lime", "text-ink");
+          }
+          update();
+        });
       });
+
+      toggleButtons.forEach((toggle) => {
+        toggle.addEventListener("click", () => {
+          const panel = document.getElementById(toggle.dataset.panel);
+          if (!panel) return;
+          const isOpen = !panel.classList.contains("hidden");
+          panel.classList.toggle("hidden", isOpen);
+          panel.classList.toggle("flex", !isOpen);
+          toggle.setAttribute("aria-expanded", String(!isOpen));
+          toggle.querySelector(".chevron")?.classList.toggle("rotate-180", !isOpen);
+        });
+      });
+
+      update();
     </script>
   )
 }
