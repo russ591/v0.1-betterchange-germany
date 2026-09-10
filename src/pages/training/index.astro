@@ -143,7 +143,13 @@ const testimonials = [
   </Section>
 
   <Section eyebrow="Upcoming training" heading="Next scheduled sessions, across every discipline" class="bg-mist-light">
-    <ScheduleList rows={upcomingWithCourse} id="hub-schedule" filterable emptyMessage="No sessions are currently scheduled." />
+    <ScheduleList
+      rows={upcomingWithCourse}
+      id="hub-schedule"
+      filters={["topic", "country", "trainer"]}
+      defaultCountry="Germany"
+      emptyMessage="No sessions are currently scheduled."
+    />
     <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
       <p class="text-[length:var(--text-small)] text-neutral-600">
         Prefer private, in-house training? <a href="/contact" class="font-semibold text-ink underline">Let us know</a>.

@@ -5,9 +5,10 @@ import type { TrainerEntry } from "@/lib/trainers";
 // Compact avatar+name chip -- used wherever a trainer needs to be
 // mentioned inline rather than as a full TeamCard (the course page's
 // per-session trainer line, the registration page's "Your trainer" block).
-// A profile-backed trainer links out the same way TeamCard does (its own
-// page if it has one, otherwise LinkedIn); the rare plain-name fallback
-// (no migrated profile at all) renders as unlinked text with no avatar.
+// A profile-backed trainer links out the same way TeamCard does by
+// default (its own page if it has one, otherwise LinkedIn); the rare
+// plain-name fallback (no migrated profile at all) renders as unlinked
+// text with no avatar.
 //
 // density controls the visual style only: "chip" is the bordered pill,
 // "plain" is bare avatar+text. linkable is separate because the course
@@ -15,20 +16,30 @@ import type { TrainerEntry } from "@/lib/trainers";
 // <a> there would be invalid HTML, so that caller passes linkable={false}
 // even though it wants the "plain" look; the registration page wants the
 // same plain look but stays linkable since it isn't inside another link.
+// linkedinFallback governs only the sub-case of a linkable, profile-backed
+// trainer with no full profile page: the schedule listings (training hub,
+// full schedule) pass linkedinFallback={false} there so a browsing table
+// never sends a visitor off-site to a personal LinkedIn profile -- it
+// falls back to unlinked plain text instead, same as the no-profile-at-all
+// case. Other callers (TeamCard-adjacent contexts) keep the LinkedIn
+// fallback since linking out is the whole point there.
 interface Props {
   trainer: TrainerEntry;
   density?: "chip" | "plain";
   linkable?: boolean;
   showLabel?: boolean;
+  linkedinFallback?: boolean;
 }
 
-const { trainer, density = "chip", linkable = true, showLabel = false } = Astro.props;
+const { trainer, density = "chip", linkable = true, showLabel = false, linkedinFallback = true } = Astro.props;
 
 const href =
   linkable && trainer.kind === "profile"
     ? trainer.profile.data.hasFullProfile
       ? `/about/${toPathSegment(trainer.profile.data.urlSlug ?? trainer.profile.id)}`
-      : trainer.profile.data.linkedinUrl
+      : linkedinFallback
+        ? trainer.profile.data.linkedinUrl
+        : undefined
     : undefined;
 const isExternal = trainer.kind === "profile" && !trainer.profile.data.hasFullProfile && Boolean(trainer.profile.data.linkedinUrl);
 const Wrapper = href ? "a" : "span";
