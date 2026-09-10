@@ -38,7 +38,9 @@ const upcoming = allSchedules
 
 const logo = category.data.certificationBody ? certificationLogos[category.data.certificationBody] : undefined;
 const badge = courseBadges[course.id];
-const courseTrainers = await getTrainersForSessions(upcoming);
+const upcomingWithTrainers = await Promise.all(
+  upcoming.map(async (session) => ({ session, trainers: await getTrainersForSessions([session]) }))
+);
 
 const courseModeByFormat = { "in-person": "Onsite", "live-online": "Online", "self-paced": "Online" } as const;
 const courseSchema = {
@@ -189,7 +191,7 @@ const courseSchema = {
                 </a>
               </div>
             ) : (
-              upcoming.map((session) => {
+              upcomingWithTrainers.map(({ session, trainers }) => {
                 const isSelfPaced = session.data.format === "self-paced";
                 return (
                   <a
@@ -214,6 +216,13 @@ const courseSchema = {
                       )}
                     </div>
                     <p class="mt-1 text-[length:var(--text-caption)] text-neutral-500">{session.data.location}</p>
+                    {trainers.length > 0 && (
+                      <div class="mt-2 flex flex-wrap gap-1.5">
+                        {trainers.map((trainer) => (
+                          <TrainerChip trainer={trainer} density="inline" />
+                        ))}
+                      </div>
+                    )}
                     <div class="mt-3 flex items-center justify-between gap-3">
                       <span class="font-bold">
                         {session.data.price}
@@ -232,19 +241,6 @@ const courseSchema = {
                   </a>
                 );
               })
-            )
-          }
-
-          {
-            courseTrainers.length > 0 && (
-              <div class="border-t border-neutral-200 bg-mist-light px-5 py-4">
-                <p class="text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.06em] text-neutral-500">
-                  Delivered by
-                </p>
-                <div class="mt-2.5 flex flex-wrap gap-2">
-                  {courseTrainers.map((trainer) => <TrainerChip trainer={trainer} />)}
-                </div>
-              </div>
             )
           }
 

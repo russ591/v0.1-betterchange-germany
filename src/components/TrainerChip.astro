@@ -4,18 +4,23 @@ import type { TrainerEntry } from "@/lib/trainers";
 
 // Compact avatar+name chip -- used wherever a trainer needs to be
 // mentioned inline rather than as a full TeamCard (the course page's
-// "Delivered by" strip, the registration page's "Your trainer" block).
+// per-session trainer line, the registration page's "Your trainer" block).
 // A profile-backed trainer links out the same way TeamCard does (its own
 // page if it has one, otherwise LinkedIn); the rare plain-name fallback
 // (no migrated profile at all) renders as unlinked text with no avatar.
+//
+// density="inline" is for placement inside another link (e.g. a session
+// row that's itself an <a>) -- nesting an <a> there would be invalid HTML,
+// so it never links and renders smaller, as plain metadata.
 interface Props {
   trainer: TrainerEntry;
+  density?: "chip" | "inline";
 }
 
-const { trainer } = Astro.props;
+const { trainer, density = "chip" } = Astro.props;
 
 const href =
-  trainer.kind === "profile"
+  density === "chip" && trainer.kind === "profile"
     ? trainer.profile.data.hasFullProfile
       ? `/about/${toPathSegment(trainer.profile.data.urlSlug ?? trainer.profile.id)}`
       : trainer.profile.data.linkedinUrl
@@ -38,10 +43,14 @@ const initials =
       href={href}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      class="inline-flex items-center gap-2 rounded-[var(--radius-pill)] border border-neutral-200 bg-surface py-1 pl-1 pr-3 text-[length:var(--text-caption)] font-semibold text-ink transition-colors hover:border-ink"
+      class={
+        density === "chip"
+          ? "inline-flex items-center gap-2 rounded-[var(--radius-pill)] border border-neutral-200 bg-surface py-1 pl-1 pr-3 text-[length:var(--text-caption)] font-semibold text-ink transition-colors hover:border-ink"
+          : "inline-flex items-center gap-1.5 text-[length:var(--text-caption)] text-neutral-600"
+      }
     >
       {trainer.profile.data.photo ? (
-        <span class="relative block h-6 w-6 shrink-0 overflow-hidden rounded-full">
+        <span class={`relative block shrink-0 overflow-hidden rounded-full ${density === "chip" ? "h-6 w-6" : "h-[18px] w-[18px]"}`}>
           <img
             src={trainer.profile.data.photo}
             alt=""
@@ -52,7 +61,7 @@ const initials =
           <span
             aria-hidden="true"
             style="display:none"
-            class="absolute inset-0 items-center justify-center rounded-full border border-lime text-[10px] font-bold"
+            class={`absolute inset-0 items-center justify-center rounded-full border border-lime font-bold ${density === "chip" ? "text-[10px]" : "text-[8px]"}`}
           >
             {initials}
           </span>
@@ -60,14 +69,18 @@ const initials =
       ) : (
         <span
           aria-hidden="true"
-          class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-lime text-[10px] font-bold"
+          class={`flex shrink-0 items-center justify-center rounded-full border border-lime font-bold ${
+            density === "chip" ? "h-6 w-6 text-[10px]" : "h-[18px] w-[18px] text-[8px]"
+          }`}
         >
           {initials}
         </span>
       )}
-      {trainer.profile.data.name}
+      {density === "chip" ? trainer.profile.data.name : `Trainer: ${trainer.profile.data.name}`}
     </Wrapper>
   ) : (
-    <span class="text-[length:var(--text-caption)] text-neutral-600">{trainer.name}</span>
+    <span class="text-[length:var(--text-caption)] text-neutral-600">
+      {density === "inline" ? `Trainer: ${trainer.name}` : trainer.name}
+    </span>
   )
 }
