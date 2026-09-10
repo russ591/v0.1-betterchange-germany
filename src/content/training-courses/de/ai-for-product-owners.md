@@ -1,41 +1,45 @@
 ---
-# Phase A scaffold: placeholder text only, marked "[DE]" -- do not treat as
-# real German copy. Real, reviewed translations get slotted in during
-# Phase C (see the German-language plan doc). category/code/level/formats/
-# certification/priceFrom/languages/durationDays/sortOrder are
-# language-neutral facts (or lookup keys) and are kept identical to the
-# English entry. `name` is a proper noun/certification title (per the
-# glossary) and is likewise kept identical to English, never translated or
-# "[DE]"-prefixed.
+# Phase E: reviewed, approved German copy from
+# betterchange-de-translation-draft-all-courses.md -- description,
+# whoIsThisFor, whatYoullLearn, and the Level/Duration/Languages stat
+# values are now real German. `level`'s underlying value stays the English
+# lookup key (used by src/data/levelIcons.ts for icons/pill colours) --
+# only its displayed text is translated, via translateLevel().
+# category/code/formats/priceFrom/durationDays/sortOrder stay identical to
+# the English entry (language-neutral facts/lookup keys). No
+# `certification` field, matching the live English page -- it's
+# intentionally absent, not a missing translation. metaTitle/
+# metaDescription aren't covered by this draft and stay "[DE]" placeholder
+# pending their own pass.
 name: 'AI for Product Owners'
 code: AIPO
 category: de/scrum
 level: Practitioner
-durationText: "[DE] 2 days ·\_4 x ½ days"
+durationText: "2 Tage ·\_4 x ½ Tage"
 durationDays: 1
 formats:
   - in-person
   - live-online
 priceFrom: €350
 languages:
-  - English
+  - Englisch
 whoIsThisFor:
-  - '[DE] Product Owners who spend too much time on backlog administration and not enough on product thinking'
-  - '[DE] CSPOs and A-CSPOs exploring how AI can sharpen and accelerate their practice'
-  - '[DE] Anyone responsible for writing and refining user stories at volume or under time pressure'
-  - '[DE] Product Managers wanting to improve the quality and speed of stakeholder communication'
-  - '[DE] Those using manual or spreadsheet-based backlog management who want to modernise their approach'
-  - '[DE] Product Owners curious about AI tools but unsure which ones are worth their time'
+  - 'Product Owner, die zu viel Zeit mit Backlog-Verwaltung und zu wenig mit Produktdenken verbringen'
+  - 'CSPOs und A-CSPOs, die erkunden möchten, wie KI ihre Praxis schärfen und beschleunigen kann'
+  - 'Alle mit Verantwortung für das Schreiben und Verfeinern von User Stories in großem Umfang oder unter Zeitdruck'
+  - 'Produktmanager:innen, die Qualität und Geschwindigkeit der Stakeholder-Kommunikation verbessern wollen'
+  - 'Alle mit manueller oder tabellenbasierter Backlog-Verwaltung, die ihren Ansatz modernisieren möchten'
+  - 'Product Owner, die neugierig auf KI-Tools sind, aber unsicher, welche ihre Zeit wert sind'
 whatYoullLearn:
-  - '[DE] How to use AI to accelerate user story writing without losing the human context that makes stories useful'
-  - '[DE] Techniques for AI-assisted backlog refinement, prioritisation, and gap analysis'
-  - '[DE] How to prepare and summarise stakeholder communications more efficiently using AI'
-  - '[DE] The difference between AI tools that support product thinking and those that replace it'
-  - '[DE] Practical prompting frameworks tailored specifically to the Product Owner role'
-  - '[DE] How to integrate AI into your existing workflow incrementally without disrupting team rhythm'
-  - '[DE] How to use AI to analyse user feedback and surface patterns that inform prioritisation'
-  - '[DE] What the emergence of AI means for the long-term shape and expectations of the Product Owner role'
-summary: '[DE] Learn to use AI to accelerate user story writing without losing the human context that makes stories useful, and apply AI-assisted techniques to backlog refinement, prioritisation and gap analysis. You''ll build practical prompting frameworks tailored specifically to the Product Owner role, learn to tell AI tools that support product thinking apart from ones that quietly replace it, and see how to integrate AI into your existing workflow incrementally rather than disrupting team rhythm. A one-day, hands-on course for CSPOs and A-CSPOs curious about AI but unsure where to start, it carries Scrum Alliance certification.'
+  - 'Wie KI genutzt wird, um das Schreiben von User Stories zu beschleunigen, ohne den nützlichen menschlichen Kontext zu verlieren'
+  - 'Techniken für KI-gestütztes Backlog-Refinement, Priorisierung und Lückenanalyse'
+  - 'Wie Stakeholder-Kommunikation mit KI effizienter vorbereitet und zusammengefasst wird'
+  - 'Der Unterschied zwischen KI-Tools, die Produktdenken unterstützen, und solchen, die es ersetzen'
+  - 'Praktische Prompting-Frameworks, speziell zugeschnitten auf die Product-Owner-Rolle'
+  - 'Wie KI schrittweise in den bestehenden Workflow integriert wird, ohne den Team-Rhythmus zu stören'
+  - 'Wie KI genutzt wird, um Nutzerfeedback zu analysieren und Muster für die Priorisierung aufzudecken'
+  - 'Was das Aufkommen von KI für die langfristige Form und Erwartungen an die Product-Owner-Rolle bedeutet'
+summary: 'Lernen, mit KI das Schreiben von User Stories zu beschleunigen, ohne den menschlichen Kontext zu verlieren, der Stories nützlich macht, und KI-gestützte Techniken für Backlog-Refinement, Priorisierung und Lückenanalyse anzuwenden. Es werden praktische Prompting-Frameworks speziell für die Product-Owner-Rolle entwickelt, gelernt, KI-Tools zu unterscheiden, die Produktdenken unterstützen, von solchen, die es leise ersetzen, und gezeigt, wie KI schrittweise in den bestehenden Workflow integriert wird, ohne den Team-Rhythmus zu stören. Ein eintägiger, praxisnaher Kurs für CSPOs und A-CSPOs, die neugierig auf KI sind, aber nicht wissen, wo sie anfangen sollen, mit Scrum-Alliance-Zertifizierung.'
 sortOrder: 15
 metaTitle: '[DE] AI for Product Owners | Better Change Consulting'
 metaDescription: '[DE] Use AI to manage your backlog and communicate with stakeholders more effectively. Practical Scrum Alliance certified training for Product Owners.'

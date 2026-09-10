@@ -13,7 +13,7 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import ScheduleList from "@/components/ScheduleList.astro";
 import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
-import { levelIcons, levelPillClasses } from "@/data/levelIcons";
+import { levelIcons, levelPillClasses, translateLevel } from "@/data/levelIcons";
 import { toPathSegment } from "@/lib/urlSlug";
 import { baseSlug } from "@/lib/i18n";
 import { resolveLocale, useTranslations } from "@/i18n/utils";
@@ -112,7 +112,7 @@ const logo = category.data.certificationBody ? certificationLogos[category.data.
                 <div class="min-w-0">
                   <p class="text-[length:var(--text-small)] font-semibold">{course.data.name}</p>
                   <p class="text-[length:var(--text-caption)] text-neutral-500">
-                    {course.data.level}
+                    {course.data.level && translateLevel(course.data.level, locale)}
                     {course.data.level && " · "}
                     {course.data.formats.length === 1 && course.data.formats[0] === "self-paced"
                       ? t("badge.selfPaced")
@@ -154,7 +154,7 @@ const logo = category.data.certificationBody ? certificationLogos[category.data.
                 <div class="flex flex-wrap items-center gap-2">
                   {course.data.level && (
                     <span class={`level-pill inline-flex items-center rounded-[var(--radius-pill)] px-3 py-1 text-[length:var(--text-caption)] font-bold uppercase tracking-[0.03em] ${levelPillClasses[course.data.level] ?? "bg-neutral-100 text-neutral-700"}`}>
-                      {course.data.level}
+                      {translateLevel(course.data.level, locale)}
                     </span>
                   )}
                   <span class="inline-flex items-center gap-1.5 rounded-[var(--radius-pill)] border border-neutral-200 py-0.5 pl-0.5 pr-2.5 text-[length:var(--text-caption)] font-semibold text-neutral-600">

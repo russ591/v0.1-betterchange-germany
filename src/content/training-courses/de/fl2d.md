@@ -1,17 +1,19 @@
 ---
-# Phase A scaffold: placeholder text only, marked "[DE]" -- do not treat as
-# real German copy. Real, reviewed translations get slotted in during
-# Phase C (see the German-language plan doc). category/code/level/formats/
-# certification/priceFrom/languages/durationDays/sortOrder are
-# language-neutral facts (or lookup keys) and are kept identical to the
-# English entry. `name` is a proper noun/certification title (per the
-# glossary) and is likewise kept identical to English, never translated or
-# "[DE]"-prefixed.
+# Phase E: reviewed, approved German copy from
+# betterchange-de-translation-draft-all-courses.md -- description,
+# whoIsThisFor, whatYoullLearn, and the Level/Duration/Languages stat
+# values are now real German. `level`'s underlying value stays the English
+# lookup key (used by src/data/levelIcons.ts for icons/pill colours) --
+# only its displayed text is translated, via translateLevel().
+# category/code/certification/formats/priceFrom/durationDays/sortOrder
+# stay identical to the English entry (language-neutral facts/lookup
+# keys). specialOfferText/metaTitle/metaDescription aren't covered by
+# this draft and stay "[DE]" placeholder pending their own pass.
 name: 'Flight Level 2 Design (FL2D)'
 code: FL2D
 category: de/flight-levels
 level: Practitioner
-durationText: "[DE] 2 days ·\_4 x ½ days ·\_your pace"
+durationText: "2 Tage ·\_4 x ½ Tage ·\_im eigenen Tempo"
 durationDays: 2
 certification: FL2D
 formats:
@@ -21,25 +23,25 @@ formats:
 priceFrom: €1,890
 specialOfferText: '[DE] 🎁 Offer: 3 seats for the price of 2'
 languages:
-  - English
-  - German
+  - Englisch
+  - Deutsch
 whoIsThisFor:
-  - '[DE] Managers and team leads responsible for coordinating work across multiple teams'
-  - '[DE] Agile coaches expanding their practice beyond the team level into coordination and flow'
-  - '[DE] Scrum Masters moving into broader organisational improvement and change roles'
-  - '[DE] Anyone working on cross-team dependency management or inter-team planning and prioritisation'
-  - '[DE] Leaders who have completed FLIN or equivalent exposure and are ready to go deeper'
-  - '[DE] Consultants and coaches supporting organisations that are scaling their agile delivery capability'
+  - 'Manager:innen und Teamleitungen, die für die Koordination der Arbeit über mehrere Teams verantwortlich sind'
+  - 'Agile Coaches, die ihre Praxis über die Teamebene hinaus in Richtung Koordination und Flow erweitern'
+  - 'Scrum Master auf dem Weg zu breiteren organisatorischen Verbesserungs- und Change-Rollen'
+  - 'Alle, die an teamübergreifendem Abhängigkeitsmanagement oder Priorisierung arbeiten'
+  - 'Führungskräfte, die FLIN oder Vergleichbares absolviert haben und tiefer einsteigen möchten'
+  - 'Berater:innen und Coaches, die Organisationen beim Skalieren ihrer agilen Umsetzungsfähigkeit unterstützen'
 whatYoullLearn:
-  - '[DE] How to design a Flight Level 2 coordination system that makes cross-team work genuinely visible'
-  - '[DE] How to identify, surface, and manage dependencies at the coordination level'
-  - '[DE] How to visualise priorities and flow across teams without requiring individual teams to change their practices'
-  - '[DE] How to facilitate FL2 coordination meetings that surface blockers and drive useful decisions'
-  - '[DE] How to connect an FL2 system to portfolio-level strategy and Flight Level 3'
-  - '[DE] How to introduce an FL2 system incrementally into an organisation without costly reorganisation'
-  - '[DE] How to run a Flight Level 2 replenishment meeting that actually changes what teams work on next'
-  - '[DE] What a well-functioning FL2 system looks like after six months — and how to know if yours is working'
-summary: '[DE] Design Flight Level 2 coordination systems that make cross-team work genuinely visible — surfacing dependencies, aligning priorities, and connecting day-to-day delivery to organisational strategy, all without a costly reorganisation. You''ll learn to run the coordination meetings, visualisations, and replenishment cadences that keep an FL2 system working, whether you''re a manager coordinating multiple teams, a Scrum Master moving into broader organisational improvement, or a coach ready to go beyond the team level. It''s hands-on and highly practical, building directly on the concepts introduced in Flight Levels Introduction (FLIN).'
+  - 'Wie ein Flight-Level-2-Koordinationssystem gestaltet wird, das teamübergreifende Arbeit wirklich sichtbar macht'
+  - 'Wie Abhängigkeiten auf Koordinationsebene erkannt, sichtbar gemacht und gemanagt werden'
+  - 'Wie Prioritäten und Flow über Teams hinweg visualisiert werden, ohne dass einzelne Teams ihre Praktiken ändern müssen'
+  - 'Wie FL2-Koordinationsmeetings moderiert werden, die Blockaden aufdecken und nützliche Entscheidungen fördern'
+  - 'Wie ein FL2-System mit Portfolio-Strategie und Flight Level 3 verbunden wird'
+  - 'Wie ein FL2-System schrittweise eingeführt wird, ohne teure Reorganisation'
+  - 'Wie ein Flight-Level-2-Replenishment-Meeting durchgeführt wird, das wirklich verändert, woran Teams als Nächstes arbeiten'
+  - 'Wie ein gut funktionierendes FL2-System nach sechs Monaten aussieht und wie sich erkennen lässt, ob es funktioniert'
+summary: 'Flight-Level-2-Koordinationssysteme gestalten, die teamübergreifende Arbeit wirklich sichtbar machen, Abhängigkeiten aufdecken, Prioritäten abstimmen und die tägliche Umsetzung mit der Organisationsstrategie verbinden, ganz ohne teure Reorganisation. Es werden die Koordinationsmeetings, Visualisierungen und Nachschub-Rhythmen vermittelt, die ein FL2-System am Laufen halten, egal ob als Manager:in, die mehrere Teams koordiniert, als Scrum Master auf dem Weg zu breiterer organisatorischer Verbesserung, oder als Coach, der über die Teamebene hinausgehen will. Praxisnah und hochgradig anwendbar, direkt aufbauend auf den Konzepten aus Flight Levels Introduction (FLIN).'
 sortOrder: 2
 metaTitle: '[DE] FL2D Flight Level 2 Design Workshop | Berlin & Online'
 metaDescription: '[DE] Certified Flight Level 2 Design training in Berlin and online. Learn to design FL2 coordination systems and achieve true business agility. Delivered by a Flight Levels Guide.'

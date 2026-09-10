@@ -1,17 +1,19 @@
 ---
-# Phase A scaffold: placeholder text only, marked "[DE]" -- do not treat as
-# real German copy. Real, reviewed translations get slotted in during
-# Phase C (see the German-language plan doc). category/code/level/formats/
-# certification/priceFrom/languages/durationDays/sortOrder are
-# language-neutral facts (or lookup keys) and are kept identical to the
-# English entry. `name` is a proper noun/certification title (per the
-# glossary) and is likewise kept identical to English, never translated or
-# "[DE]"-prefixed.
+# Phase E: reviewed, approved German copy from
+# betterchange-de-translation-draft-all-courses.md -- description,
+# whoIsThisFor, whatYoullLearn, and the Level/Duration/Languages stat
+# values are now real German. `level`'s underlying value stays the English
+# lookup key (used by src/data/levelIcons.ts for icons/pill colours) --
+# only its displayed text is translated, via translateLevel().
+# category/code/certification/formats/priceFrom/durationDays/sortOrder
+# stay identical to the English entry (language-neutral facts/lookup
+# keys). metaTitle/metaDescription aren't covered by this draft and stay
+# "[DE]" placeholder pending their own pass.
 name: 'Advanced Certified Scrum Product Owner (A-CSPO)'
 code: ACSPO
 category: de/scrum
 level: Advanced
-durationText: "[DE] 2 days ·\_4 x ½ days"
+durationText: "2 Tage ·\_4 x ½ Tage"
 durationDays: 2
 certification: A-CSPO
 formats:
@@ -19,24 +21,24 @@ formats:
   - live-online
 priceFrom: €1,295
 languages:
-  - English
+  - Englisch
 whoIsThisFor:
-  - '[DE] Certified Product Owners with real delivery experience who want to sharpen their practice'
-  - '[DE] Product Owners who find themselves doing backlog administration rather than product thinking'
-  - '[DE] Those responsible for multi-product or portfolio decisions who need a more structured framework'
-  - '[DE] Product Managers wanting to formalise their approach to evidence-based product development'
-  - '[DE] Anyone preparing for the Scrum Alliance A-CSPO examination'
-  - '[DE] Leaders who need to align product strategy clearly with organisational objectives'
+  - 'Certified Product Owners mit echter Delivery-Erfahrung, die ihre Praxis schärfen wollen'
+  - 'Product Owner, die sich bei Backlog-Verwaltung statt Produktdenken wiederfinden'
+  - 'Alle mit Verantwortung für Multi-Produkt- oder Portfolio-Entscheidungen, die einen strukturierteren Rahmen brauchen'
+  - 'Produktmanager:innen, die ihren Ansatz für evidenzbasierte Produktentwicklung formalisieren wollen'
+  - 'Alle, die sich auf die A-CSPO-Prüfung der Scrum Alliance vorbereiten'
+  - 'Führungskräfte, die Produktstrategie klar mit organisatorischen Zielen abstimmen müssen'
 whatYoullLearn:
-  - '[DE] How to develop and communicate a compelling product vision and strategy'
-  - '[DE] Advanced techniques for stakeholder alignment in complex and politically charged environments'
-  - '[DE] How to use data and user research to make product decisions with greater confidence'
-  - '[DE] Product roadmapping approaches that balance short-term delivery with long-term direction'
-  - '[DE] How to manage a portfolio of competing features and priorities without losing strategic focus'
-  - '[DE] The thinking frameworks and decision-making patterns behind evidence-based product management'
-  - '[DE] How to build a discovery practice that feeds the backlog with validated, high-value work'
-  - '[DE] How to communicate product strategy upwards to leadership and downwards to delivery teams'
-summary: '[DE] Develop and communicate a compelling product vision and strategy, and learn to use data and user research to make product decisions with real confidence rather than instinct alone. You''ll cover advanced stakeholder alignment in complex, politically-charged environments, roadmapping that balances short-term delivery against long-term direction, and how to manage a portfolio of competing priorities without losing strategic focus. Designed for experienced Product Owners who find themselves doing backlog administration rather than product thinking, A-CSPO is the Scrum Alliance''s advanced Product Owner credential.'
+  - 'Wie eine überzeugende Produktvision und -strategie entwickelt und kommuniziert wird'
+  - 'Fortgeschrittene Techniken für Stakeholder-Abstimmung in komplexen, politisch aufgeladenen Umgebungen'
+  - 'Wie Daten und Nutzerforschung für Produktentscheidungen mit größerer Zuversicht genutzt werden'
+  - 'Ansätze für Produkt-Roadmapping, die kurzfristige Umsetzung mit langfristiger Ausrichtung balancieren'
+  - 'Wie ein Portfolio konkurrierender Features und Prioritäten gemanagt wird, ohne strategischen Fokus zu verlieren'
+  - 'Die Denkrahmen und Entscheidungsmuster hinter evidenzbasiertem Produktmanagement'
+  - 'Wie eine Discovery-Praxis aufgebaut wird, die den Backlog mit validierter, hochwertiger Arbeit speist'
+  - 'Wie Produktstrategie nach oben zur Führung und nach unten zu Umsetzungsteams kommuniziert wird'
+summary: 'Eine überzeugende Produktvision und -strategie entwickeln und kommunizieren, und lernen, Daten und Nutzerforschung für Produktentscheidungen mit echtem Vertrauen statt reinem Bauchgefühl zu nutzen. Behandelt wird fortgeschrittene Stakeholder-Abstimmung in komplexen, politisch aufgeladenen Umgebungen, Roadmapping, das kurzfristige Umsetzung mit langfristiger Ausrichtung balanciert, und wie ein Portfolio konkurrierender Prioritäten gemanagt wird, ohne den strategischen Fokus zu verlieren. Für erfahrene Product Owner, die sich bei Backlog-Verwaltung statt Produktdenken wiederfinden, die fortgeschrittene Product-Owner-Zertifizierung der Scrum Alliance.'
 sortOrder: 4
 metaTitle: '[DE] A-CSPO Advanced Certified Scrum Product Owner | Better Change'
 metaDescription: '[DE] Scrum Alliance A-CSPO training for experienced Product Owners. Deepen your practice with advanced product strategy and stakeholder skills.'

@@ -1,17 +1,19 @@
 ---
-# Phase A scaffold: placeholder text only, marked "[DE]" -- do not treat as
-# real German copy. Real, reviewed translations get slotted in during
-# Phase C (see the German-language plan doc). category/code/level/formats/
-# certification/priceFrom/languages/durationDays/sortOrder are
-# language-neutral facts (or lookup keys) and are kept identical to the
-# English entry. `name` is a proper noun/certification title (per the
-# glossary) and is likewise kept identical to English, never translated or
-# "[DE]"-prefixed.
+# Phase E: reviewed, approved German copy from
+# betterchange-de-translation-draft-all-courses.md -- description,
+# whoIsThisFor, whatYoullLearn, and the Level/Duration/Languages stat
+# values are now real German. `level`'s underlying value stays the English
+# lookup key (used by src/data/levelIcons.ts for icons/pill colours) --
+# only its displayed text is translated, via translateLevel().
+# category/code/certification/formats/priceFrom/durationDays/sortOrder
+# stay identical to the English entry (language-neutral facts/lookup
+# keys). metaTitle/metaDescription aren't covered by this draft and stay
+# "[DE]" placeholder pending their own pass.
 name: 'Kanban System Improvement (KMP 2)'
 code: KMP2
 category: de/kanban
 level: Advanced
-durationText: "[DE] 2 days ·\_4 x ½ days"
+durationText: "2 Tage ·\_4 x ½ Tage"
 durationDays: 2
 certification: KMP2
 formats:
@@ -19,24 +21,24 @@ formats:
   - live-online
 priceFrom: €1,295
 languages:
-  - English
+  - Englisch
 whoIsThisFor:
-  - '[DE] KMP1 holders who are ready to take their Kanban practice to the next level'
-  - '[DE] Teams that have had a Kanban system running for a while and want to improve it systematically'
-  - '[DE] Scrum Masters and coaches who want to use flow data to drive meaningful team improvements'
-  - '[DE] Managers and team leads responsible for reporting delivery performance to stakeholders'
-  - '[DE] Anyone using Kanban boards without metrics and wanting to close that gap'
-  - '[DE] Practitioners preparing for the Kanban University KMP2 certification'
+  - 'KMP1-Absolvent:innen, die bereit sind, ihre Kanban-Praxis auf die nächste Stufe zu heben'
+  - 'Teams, deren Kanban-System schon eine Weile läuft und die es systematisch verbessern wollen'
+  - 'Scrum Master und Coaches, die Flow-Daten nutzen wollen, um echte Team-Verbesserungen voranzutreiben'
+  - 'Manager:innen und Teamleitungen mit Verantwortung für Delivery-Reporting an Stakeholder'
+  - 'Alle, die Kanban-Boards ohne Metriken nutzen und diese Lücke schließen wollen'
+  - 'Praktiker:innen, die sich auf die KMP2-Zertifizierung der Kanban University vorbereiten'
 whatYoullLearn:
-  - '[DE] How to use flow metrics — cycle time, throughput, and work item age — to diagnose and improve systems'
-  - '[DE] How to run a Service Delivery Review and use data to have productive conversations with stakeholders'
-  - '[DE] How to identify systemic blockers and address them at the appropriate level'
-  - '[DE] How to use Monte Carlo simulations and probabilistic forecasting in everyday delivery planning'
-  - '[DE] How to evolve WIP limits and policies based on evidence rather than guesswork'
-  - '[DE] The feedback cadences that keep a Kanban system healthy and continuously improving'
-  - '[DE] How to use cumulative flow diagrams to spot problems before they become crises'
-  - '[DE] How to build a culture of data-led improvement that outlasts any individual team member'
-summary: '[DE] Use flow metrics — cycle time, throughput, and work item age — to diagnose exactly where an existing Kanban system is breaking down, then evolve WIP limits and policies based on evidence rather than guesswork. You''ll learn to run a Service Delivery Review that turns data into productive stakeholder conversations, use Monte Carlo simulations for probabilistic forecasting, and read cumulative flow diagrams to catch problems before they become crises. Built for KMP1 holders whose Kanban system has been running for a while and is ready for systematic, evolutionary improvement, KMP2 is Kanban University''s advanced certification.'
+  - 'Wie Flow-Metriken, Cycle Time, Durchsatz und Work Item Age zur Diagnose und Verbesserung von Systemen genutzt werden'
+  - 'Wie ein Service Delivery Review durchgeführt und Daten für produktive Stakeholder-Gespräche genutzt werden'
+  - 'Wie systemische Blockaden erkannt und auf der passenden Ebene adressiert werden'
+  - 'Wie Monte-Carlo-Simulationen und probabilistische Prognosen im Delivery-Alltag genutzt werden'
+  - 'Wie WIP-Limits und Regeln evidenzbasiert weiterentwickelt werden, statt zu raten'
+  - 'Die Feedback-Rhythmen, die ein Kanban-System gesund und kontinuierlich verbessert halten'
+  - 'Wie Cumulative-Flow-Diagramme genutzt werden, um Probleme zu erkennen, bevor sie zu Krisen werden'
+  - 'Wie eine Kultur datengetriebener Verbesserung aufgebaut wird, die über einzelne Teammitglieder hinaus Bestand hat'
+summary: 'Flow-Metriken, Cycle Time, Durchsatz und Work Item Age nutzen, um genau zu diagnostizieren, wo ein bestehendes Kanban-System an Grenzen stößt, und dann WIP-Limits und Regeln evidenzbasiert weiterentwickeln, statt zu raten. Vermittelt wird, wie ein Service Delivery Review durchgeführt wird, der Daten in produktive Stakeholder-Gespräche verwandelt, wie Monte-Carlo-Simulationen für probabilistische Prognosen genutzt werden, und wie Cumulative-Flow-Diagramme gelesen werden, um Probleme zu erkennen, bevor sie zu Krisen werden. Für KMP1-Absolvent:innen, deren Kanban-System schon eine Weile läuft und bereit für systematische, evolutionäre Verbesserung ist, die fortgeschrittene Zertifizierung der Kanban University.'
 sortOrder: 3
 metaTitle: '[DE] KMP2 Kanban System Improvement Training | Berlin & Online'
 metaDescription: '[DE] Kanban University certified KMP2 training in Berlin and online. Deepen your Kanban practice with advanced improvement techniques.'

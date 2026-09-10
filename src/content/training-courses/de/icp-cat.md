@@ -1,17 +1,22 @@
 ---
-# Phase A scaffold: placeholder text only, marked "[DE]" -- do not treat as
-# real German copy. Real, reviewed translations get slotted in during
-# Phase C (see the German-language plan doc). category/code/level/formats/
-# certification/priceFrom/languages/durationDays/sortOrder are
-# language-neutral facts (or lookup keys) and are kept identical to the
-# English entry. `name` is a proper noun/certification title (per the
-# glossary) and is likewise kept identical to English, never translated or
-# "[DE]"-prefixed.
+# Phase E: reviewed, approved German copy from
+# betterchange-de-translation-draft-all-courses.md -- description,
+# whoIsThisFor, whatYoullLearn, and the Level/Duration/Languages stat
+# values are now real German. `level`'s underlying value stays the English
+# lookup key (used by src/data/levelIcons.ts for icons/pill colours) --
+# only its displayed text is translated, via translateLevel().
+# category/code/certification/formats/priceFrom/durationDays/sortOrder
+# stay identical to the English entry (language-neutral facts/lookup
+# keys). durationText mirrors the English entry's "2 days · 4 x ½ days"
+# verbatim, even though durationDays is 3 -- an existing mismatch in the
+# English source data, not something this translation pass introduces or
+# corrects. metaTitle/metaDescription aren't covered by this draft and
+# stay "[DE]" placeholder pending their own pass.
 name: 'Coaching Agile Transformations (ICP-CAT)'
 code: ICPCAT
 category: de/coaching
 level: Advanced
-durationText: "[DE] 2 days ·\_4 x ½ days"
+durationText: "2 Tage ·\_4 x ½ Tage"
 durationDays: 3
 certification: ICP-CAT
 formats:
@@ -19,24 +24,24 @@ formats:
   - live-online
 priceFrom: €1,295
 languages:
-  - English
+  - Englisch
 whoIsThisFor:
-  - '[DE] Experienced agile coaches ready to move from team-level coaching to organisation-wide transformation'
-  - '[DE] Change leaders and transformation consultants guiding large-scale agile adoption across multiple business units'
-  - '[DE] ICP-ACC holders wanting to extend their coaching practice to the systemic and organisational level'
-  - '[DE] Internal change agents responsible for sustaining transformation momentum beyond the initial rollout'
-  - '[DE] Senior leaders and executives who sponsor or directly lead organisation-wide agile transformation'
-  - '[DE] Practitioners preparing for the ICAgile ICP-CAT certification examination'
+  - 'Erfahrene Agile Coaches, bereit für den Wechsel von Team-Coaching zu organisationsweiter Transformation'
+  - 'Change-Führungskräfte und Transformationsberater:innen, die groß angelegte agile Einführung über mehrere Geschäftsbereiche leiten'
+  - 'ICP-ACC-Absolvent:innen, die ihre Coaching-Praxis auf die systemische und organisatorische Ebene erweitern wollen'
+  - 'Interne Change Agents mit Verantwortung für die Aufrechterhaltung von Transformationsmomentum nach dem Start'
+  - 'Führungskräfte und Vorstände, die organisationsweite agile Transformation sponsern oder direkt leiten'
+  - 'Praktiker:innen, die sich auf die ICP-CAT-Zertifizierungsprüfung von ICAgile vorbereiten'
 whatYoullLearn:
-  - '[DE] How to diagnose an organisation''s current state and design a transformation approach that fits its actual context'
-  - '[DE] Systemic thinking techniques for identifying where in the organisation an intervention will have the most impact'
-  - '[DE] How to coach and influence senior leaders and executives who sponsor or resist organisational change'
-  - '[DE] How to navigate organisational politics, culture, and structure without losing sight of the transformation''s purpose'
-  - '[DE] How to sequence a transformation so it builds momentum without overwhelming the organisation'
-  - '[DE] How to sustain transformation gains once the initial energy of a change programme fades'
-  - '[DE] How to work with resistance at an organisational rather than individual or team level'
-  - '[DE] The ethical and systemic principles behind the ICAgile ICP-CAT certification and how to demonstrate them in practice'
-summary: '[DE] Learn to navigate the complexity of organisation-wide agile change, where team-level coaching skills alone aren''t enough and transformation has to be led systemically across multiple levels of the business at once. Coaching Agile Transformations builds the frameworks and judgement needed to steer large-scale change efforts — from diagnosing where an organisation actually is, to sustaining momentum once the initial energy of a transformation programme fades. Built for experienced coaches and leaders steering organisation-wide transformation, ICP-CAT is ICAgile''s certification for coaching change at scale.'
+  - 'Wie der aktuelle Zustand einer Organisation diagnostiziert und ein passender Transformationsansatz gestaltet wird'
+  - 'Systemische Denktechniken, um zu erkennen, wo eine Intervention die größte Wirkung hätte'
+  - 'Wie Führungskräfte und Vorstände gecoacht und beeinflusst werden, die organisatorischen Wandel sponsern oder blockieren'
+  - 'Wie organisatorische Politik, Kultur und Struktur navigiert werden, ohne den Zweck der Transformation aus den Augen zu verlieren'
+  - 'Wie eine Transformation sequenziert wird, damit Momentum entsteht, ohne die Organisation zu überfordern'
+  - 'Wie Transformationsergebnisse erhalten bleiben, wenn die anfängliche Energie eines Veränderungsprogramms nachlässt'
+  - 'Wie mit Widerstand auf organisatorischer statt individueller oder Teamebene umgegangen wird'
+  - 'Die ethischen und systemischen Prinzipien hinter der ICP-CAT-Zertifizierung und wie sie in der Praxis gezeigt werden'
+summary: 'Die Komplexität organisationsweiten agilen Wandels navigieren, wo Coaching-Fähigkeiten auf Teamebene allein nicht ausreichen und Transformation systemisch über mehrere Ebenen des Unternehmens gleichzeitig geführt werden muss. Coaching Agile Transformations baut die Frameworks und das Urteilsvermögen auf, die für groß angelegte Veränderungsvorhaben nötig sind, von der Diagnose, wo eine Organisation tatsächlich steht, bis zur Aufrechterhaltung von Momentum, wenn die anfängliche Energie eines Transformationsprogramms nachlässt. Für erfahrene Coaches und Führungskräfte, die organisationsweite Transformation steuern, die Zertifizierung von ICAgile für Coaching von Wandel im großen Maßstab.'
 sortOrder: 3
 metaTitle: '[DE] ICP-CAT Coaching Agile Transformations | Better Change'
 metaDescription: '[DE] ICAgile ICP-CAT training for coaches leading organisational transformation. In-person and online delivery.'

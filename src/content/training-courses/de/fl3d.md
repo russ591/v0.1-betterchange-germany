@@ -1,17 +1,19 @@
 ---
-# Phase A scaffold: placeholder text only, marked "[DE]" -- do not treat as
-# real German copy. Real, reviewed translations get slotted in during
-# Phase C (see the German-language plan doc). category/code/level/formats/
-# certification/priceFrom/languages/durationDays/sortOrder are
-# language-neutral facts (or lookup keys) and are kept identical to the
-# English entry. `name` is a proper noun/certification title (per the
-# glossary) and is likewise kept identical to English, never translated or
-# "[DE]"-prefixed.
+# Phase E: reviewed, approved German copy from
+# betterchange-de-translation-draft-all-courses.md -- description,
+# whoIsThisFor, whatYoullLearn, and the Level/Duration/Languages stat
+# values are now real German. `level`'s underlying value stays the English
+# lookup key (used by src/data/levelIcons.ts for icons/pill colours) --
+# only its displayed text is translated, via translateLevel().
+# category/code/certification/formats/priceFrom/durationDays/sortOrder
+# stay identical to the English entry (language-neutral facts/lookup
+# keys). metaTitle/metaDescription aren't covered by this draft and stay
+# "[DE]" placeholder pending their own pass.
 name: 'Flight Level 3 Design (FL3D)'
 code: FL3D
 category: de/flight-levels
 level: Advanced
-durationText: "[DE] 2 days ·\_4 x ½ days ·\_your pace"
+durationText: "2 Tage ·\_4 x ½ Tage ·\_im eigenen Tempo"
 durationDays: 2
 certification: FL3D
 formats:
@@ -20,25 +22,25 @@ formats:
   - self-paced
 priceFrom: €1,890
 languages:
-  - English
-  - German
+  - Englisch
+  - Deutsch
 whoIsThisFor:
-  - '[DE] Senior leaders and executives responsible for strategy execution across multiple business units'
-  - '[DE] Agile coaches and consultants working at the portfolio and strategic organisational level'
-  - '[DE] FL2D graduates who want to connect the coordination layer directly to organisational strategy'
-  - '[DE] Heads of product, delivery, and technology responsible for portfolio decision-making'
-  - '[DE] Anyone designing a system that connects long-term vision with daily operational work'
-  - '[DE] Leaders who want to close the gap between what is decided in the boardroom and what gets delivered'
+  - 'Führungskräfte und Vorstände, die für Strategieumsetzung über mehrere Geschäftsbereiche verantwortlich sind'
+  - 'Agile Coaches und Berater:innen, die auf Portfolio- und strategischer Organisationsebene arbeiten'
+  - 'FL2D-Absolvent:innen, die die Koordinationsebene direkt mit der Organisationsstrategie verbinden wollen'
+  - 'Leitungen aus Produkt, Delivery und Technologie mit Verantwortung für Portfolio-Entscheidungen'
+  - 'Alle, die ein System gestalten, das langfristige Vision mit täglicher operativer Arbeit verbindet'
+  - 'Führungskräfte, die die Lücke schließen wollen zwischen Vorstandsentscheidungen und tatsächlicher Umsetzung'
 whatYoullLearn:
-  - '[DE] How to design a Flight Level 3 system that connects strategic intent to operational execution'
-  - '[DE] How to make portfolio-level priorities visible, manageable, and connected to team-level work'
-  - '[DE] How to run FL3 portfolio reviews that enable real strategic decisions rather than status updates'
-  - '[DE] How to identify where strategy is being lost between leadership and execution teams'
-  - '[DE] How to sequence and manage the flow of strategic initiatives without creating bottlenecks'
-  - '[DE] How FL3 design builds on FL2 coordination to create a coherent three-level system'
-  - '[DE] How to use FL3 thinking to stop the organisation working on too many things simultaneously'
-  - '[DE] What a healthy FL3 system looks like in practice and how to sustain it beyond the initial design'
-summary: '[DE] Design Flight Level 3 systems that connect long-term strategic intent directly to the daily operational work happening at Flight Level 2 — so priorities set in the boardroom actually shape what teams work on next. You''ll learn to run portfolio reviews that produce real decisions rather than status updates, sequence strategic initiatives without creating bottlenecks, and stop the organisation working on too many things at once. Built for senior leaders, portfolio-level coaches, and FL2D graduates ready to connect coordination to strategy, it''s the natural next step after Flight Level 2 Design.'
+  - 'Wie ein Flight-Level-3-System gestaltet wird, das strategische Absicht mit operativer Umsetzung verbindet'
+  - 'Wie Portfolio-Prioritäten sichtbar, handhabbar und mit der Arbeit auf Teamebene verbunden werden'
+  - 'Wie FL3-Portfolio-Reviews durchgeführt werden, die echte strategische Entscheidungen ermöglichen'
+  - 'Wie erkannt wird, wo Strategie zwischen Führung und Umsetzungsteams verloren geht'
+  - 'Wie der Fluss strategischer Initiativen sequenziert und gesteuert wird, ohne Engpässe zu schaffen'
+  - 'Wie FL3-Design auf FL2-Koordination aufbaut, um ein kohärentes Drei-Ebenen-System zu schaffen'
+  - 'Wie FL3-Denken genutzt wird, um zu verhindern, dass die Organisation zu viel gleichzeitig macht'
+  - 'Wie ein gesundes FL3-System in der Praxis aussieht und wie es über die anfängliche Gestaltung hinaus erhalten bleibt'
+summary: 'Flight-Level-3-Systeme gestalten, die langfristige strategische Absichten direkt mit der täglichen operativen Arbeit auf Flight Level 2 verbinden, damit im Vorstand gesetzte Prioritäten tatsächlich bestimmen, woran Teams als Nächstes arbeiten. Es wird vermittelt, wie Portfolio-Reviews durchgeführt werden, die echte Entscheidungen statt Status-Updates hervorbringen, wie strategische Initiativen sequenziert werden, ohne Engpässe zu schaffen, und wie verhindert wird, dass die Organisation an zu vielen Dingen gleichzeitig arbeitet. Für erfahrene Führungskräfte, Portfolio-Coaches und FL2D-Absolvent:innen, die Koordination mit Strategie verbinden wollen, der natürliche nächste Schritt nach Flight Level 2 Design.'
 sortOrder: 3
 metaTitle: '[DE] FL3D Flight Level 3 Design Workshop | Berlin & Online'
 metaDescription: '[DE] Certified Flight Level 3 Design training in Berlin and online. Master strategic execution and connect organisational goals with operational flow.'

@@ -1,17 +1,20 @@
 ---
-# Phase A scaffold: placeholder text only, marked "[DE]" -- do not treat as
-# real German copy. Real, reviewed translations get slotted in during
-# Phase C (see the German-language plan doc). category/code/level/formats/
-# certification/priceFrom/languages/durationDays/sortOrder are
-# language-neutral facts (or lookup keys) and are kept identical to the
-# English entry. `name` is a proper noun/certification title (per the
-# glossary) and is likewise kept identical to English, never translated or
-# "[DE]"-prefixed.
+# Phase E: reviewed, approved German copy from
+# betterchange-de-translation-draft-all-courses.md -- description,
+# whoIsThisFor, whatYoullLearn, and the Level/Duration/Languages stat
+# values are now real German. `level`'s underlying value stays the English
+# lookup key (used by src/data/levelIcons.ts for icons/pill colours) --
+# only its displayed text is translated, via translateLevel().
+# category/code/certification/formats/priceFrom/durationDays/sortOrder
+# stay identical to the English entry (language-neutral facts/lookup
+# keys) -- certification was already fixed from the "CSPCM" typo in an
+# earlier pass. metaTitle/metaDescription aren't covered by this draft
+# and stay "[DE]" placeholder pending their own pass.
 name: 'Certified Scrum Professional ScrumMaster (CSP-SM)'
 code: CSPSM
 category: de/scrum
 level: Practitioner
-durationText: "[DE] 2 days ·\_4 x ½ days"
+durationText: "2 Tage ·\_4 x ½ Tage"
 durationDays: 2
 certification: CSP-SM
 formats:
@@ -19,24 +22,24 @@ formats:
   - live-online
 priceFrom: €1,295
 languages:
-  - English
+  - Englisch
 whoIsThisFor:
-  - '[DE] Experienced A-CSMs ready for the most advanced Scrum Alliance ScrumMaster credential'
-  - '[DE] Scrum Masters who have practised across multiple teams or organisations over several years'
-  - '[DE] Coaches and consultants who facilitate large-scale Scrum or agile transformations'
-  - '[DE] Leaders who maintain direct accountability for agile delivery quality across an organisation'
-  - '[DE] Practitioners wanting to formally validate deep Scrum Master expertise with a recognised credential'
-  - '[DE] Those who want structured peer-level challenge and reflection on a mature practice'
+  - 'Erfahrene A-CSMs, bereit für die fortgeschrittenste ScrumMaster-Zertifizierung der Scrum Alliance'
+  - 'Scrum Master, die über mehrere Jahre in verschiedenen Teams oder Organisationen praktiziert haben'
+  - 'Coaches und Berater:innen, die groß angelegte Scrum- oder Agile-Transformationen moderieren'
+  - 'Führungskräfte mit direkter Verantwortung für agile Delivery-Qualität in der gesamten Organisation'
+  - 'Praktiker:innen, die tiefe Scrum-Master-Expertise formal mit einer anerkannten Zertifizierung validieren wollen'
+  - 'Alle, die strukturierte Peer-Herausforderung und Reflexion für eine gereifte Praxis suchen'
 whatYoullLearn:
-  - '[DE] How to articulate and apply advanced Scrum Master competencies with rigour and consistency'
-  - '[DE] Systemic thinking approaches for diagnosing and improving organisational agility'
-  - '[DE] How to influence and lead transformation at an organisational rather than team level'
-  - '[DE] Advanced coaching frameworks for working with leadership and executive stakeholders'
-  - '[DE] How to develop other Scrum Masters and build broader coaching capability within an organisation'
-  - '[DE] The evidence standards and requirements for achieving the CSP-SM credential'
-  - '[DE] How to use experience reports and peer review to deepen reflective practice'
-  - '[DE] How the CSP-SM credential fits into a longer-term coaching or consulting career path'
-summary: '[DE] Formally validate deep Scrum Master expertise with the most advanced credential in the Scrum Alliance ScrumMaster pathway — built for practitioners who''ve already worked across multiple teams or organisations over several years. You''ll develop systemic thinking for diagnosing organisational agility, advanced coaching frameworks for working with leadership and executive stakeholders, and the skills to develop other Scrum Masters within your organisation. Delivered through experience reports and structured peer review, CSP-SM is designed for coaches and consultants who facilitate large-scale agile transformations and want their expertise formally recognised.'
+  - 'Wie fortgeschrittene Scrum-Master-Kompetenzen mit Rigorosität und Konsistenz artikuliert und angewendet werden'
+  - 'Systemische Denkansätze zur Diagnose und Verbesserung organisatorischer Agilität'
+  - 'Wie auf organisatorischer statt Teamebene Transformation beeinflusst und geführt wird'
+  - 'Fortgeschrittene Coaching-Frameworks für die Arbeit mit Führung und Vorstands-Stakeholdern'
+  - 'Wie andere Scrum Master entwickelt und breitere Coaching-Fähigkeit in der Organisation aufgebaut wird'
+  - 'Die Evidenzstandards und Anforderungen für die CSP-SM-Zertifizierung'
+  - 'Wie Erfahrungsberichte und Peer-Review genutzt werden, um reflektierte Praxis zu vertiefen'
+  - 'Wie die CSP-SM-Zertifizierung in einen längerfristigen Coaching- oder Beratungsweg passt'
+summary: 'Tiefe Scrum-Master-Expertise formal validieren mit der fortgeschrittensten Zertifizierung im ScrumMaster-Pfad der Scrum Alliance, für Praktiker:innen, die bereits über mehrere Jahre in verschiedenen Teams oder Organisationen gearbeitet haben. Entwickelt werden systemisches Denken zur Diagnose organisatorischer Agilität, fortgeschrittene Coaching-Frameworks für die Arbeit mit Führung und Vorstands-Stakeholdern, und die Fähigkeiten, andere Scrum Master innerhalb der eigenen Organisation zu entwickeln. Vermittelt durch Erfahrungsberichte und strukturierte Peer-Review, für Coaches und Berater:innen, die groß angelegte agile Transformationen moderieren und ihre Expertise formal anerkannt haben möchten.'
 sortOrder: 13
 metaTitle: '[DE] Certified Scrum Professional ScrumMaster (CSP-SM) | Better Change Consulting'
 metaDescription: '[DE] Advance your Scrum Master career with CSP-SM certification. Expert-level Scrum Alliance training delivered in-person and online by Better Change.'

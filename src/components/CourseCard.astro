@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import Badge from "@/components/Badge.astro";
 import { courseBadges } from "@/data/courseBadges";
+import { translateLevel } from "@/data/levelIcons";
 import { toPathSegment } from "@/lib/urlSlug";
 import { baseSlug } from "@/lib/i18n";
 import { resolveLocale } from "@/i18n/utils";
@@ -19,7 +20,8 @@ interface Props {
 }
 
 const { course, categorySlug, variant = "card" } = Astro.props;
-const prefix = resolveLocale(Astro.currentLocale) === "de" ? "/de" : "";
+const locale = resolveLocale(Astro.currentLocale);
+const prefix = locale === "de" ? "/de" : "";
 const href = `${prefix}/training/${baseSlug(categorySlug)}/${toPathSegment(course.data.urlSlug ?? baseSlug(course.id))}`;
 const badge = courseBadges[baseSlug(course.id)];
 ---
@@ -39,7 +41,7 @@ const badge = courseBadges[baseSlug(course.id)];
         <div>
           <p class="font-semibold">{course.data.name}</p>
           {course.data.level && (
-            <p class="text-[length:var(--text-caption)] text-neutral-500">{course.data.level}</p>
+            <p class="text-[length:var(--text-caption)] text-neutral-500">{translateLevel(course.data.level, locale)}</p>
           )}
         </div>
       </div>

@@ -1,17 +1,19 @@
 ---
-# Phase A scaffold: placeholder text only, marked "[DE]" -- do not treat as
-# real German copy. Real, reviewed translations get slotted in during
-# Phase C (see the German-language plan doc). category/code/level/formats/
-# certification/priceFrom/languages/durationDays/sortOrder are
-# language-neutral facts (or lookup keys) and are kept identical to the
-# English entry. `name` is a proper noun/certification title (per the
-# glossary) and is likewise kept identical to English, never translated or
-# "[DE]"-prefixed.
+# Phase E: reviewed, approved German copy from
+# betterchange-de-translation-draft-all-courses.md -- description,
+# whoIsThisFor, whatYoullLearn, and the Level/Duration/Languages stat
+# values are now real German. `level`'s underlying value stays the English
+# lookup key (used by src/data/levelIcons.ts for icons/pill colours) --
+# only its displayed text is translated, via translateLevel().
+# category/code/certification/formats/priceFrom/durationDays/sortOrder
+# stay identical to the English entry (language-neutral facts/lookup
+# keys). metaTitle/metaDescription aren't covered by this draft and stay
+# "[DE]" placeholder pending their own pass.
 name: 'Leading SAFe 6 (SAFe-SA)'
 code: LEADINGSAFE
 category: de/scaling
 level: Advanced
-durationText: "[DE] 2 days ·\_4 x ½ days"
+durationText: "2 Tage ·\_4 x ½ Tage"
 durationDays: 2
 certification: SAFe-SA
 formats:
@@ -19,24 +21,24 @@ formats:
   - live-online
 priceFrom: €1,295
 languages:
-  - English
+  - Englisch
 whoIsThisFor:
-  - '[DE] Business and technology leaders responsible for sponsoring or leading a SAFe transformation'
-  - '[DE] Release Train Engineers and Solution Train Engineers involved in SAFe implementation'
-  - '[DE] Managers, directors, and VPs who need to understand their role in a scaled agile organisation'
-  - '[DE] Portfolio managers and programme directors working within or planning to adopt SAFe'
-  - '[DE] Coaches and consultants supporting organisations through SAFe adoption'
-  - '[DE] Anyone preparing for the Scaled Agile SAFe Agilist (SA) certification examination'
+  - 'Business- und Technologie-Führungskräfte mit Verantwortung für das Sponsern oder Leiten einer SAFe-Transformation'
+  - 'Release Train Engineers und Solution Train Engineers, die an der SAFe-Umsetzung beteiligt sind'
+  - 'Manager:innen, Direktor:innen und Vice Presidents, die ihre Rolle in einer skalierten agilen Organisation verstehen müssen'
+  - 'Portfoliomanager:innen und Programmleitungen, die innerhalb von SAFe arbeiten oder es einführen wollen'
+  - 'Coaches und Berater:innen, die Organisationen bei der SAFe-Einführung unterstützen'
+  - 'Alle, die sich auf die SAFe-Agilist(SA)-Zertifizierungsprüfung von Scaled Agile vorbereiten'
 whatYoullLearn:
-  - '[DE] The principles and practices of the Scaled Agile Framework from a leadership perspective'
-  - '[DE] How to develop and communicate a Lean-Agile mindset consistently across a large organisation'
-  - '[DE] How Programme Increment (PI) Planning works and why it is the engine room of SAFe delivery'
-  - '[DE] How Agile Release Trains are structured and what leading them effectively actually requires'
-  - '[DE] How to align strategy, portfolio management, and delivery within a SAFe operating model'
-  - '[DE] The competencies and examination requirements for the SAFe Agilist (SA) certification'
-  - '[DE] How to build and sustain a coalition of leaders who can champion the SAFe transformation over time'
-  - '[DE] How to measure the business outcomes of a SAFe implementation and report them credibly to the board'
-summary: '[DE] Understand the Scaled Agile Framework from a leadership perspective — how Programme Increment (PI) Planning works as the engine room of SAFe delivery, and how Agile Release Trains are structured and actually led. You''ll learn to align strategy, portfolio management and delivery within a SAFe operating model, build a coalition of leaders who can champion the transformation over time, and measure and report its business outcomes credibly to the board. Built for business and technology leaders sponsoring a SAFe transformation, Leading SAFe 6 leads to the Scaled Agile SAFe Agilist (SA) certification.'
+  - 'Die Prinzipien und Praktiken des Scaled Agile Framework aus Führungsperspektive'
+  - 'Wie eine Lean-Agile-Denkweise konsequent über eine große Organisation hinweg entwickelt und kommuniziert wird'
+  - 'Wie Programme-Increment(PI)-Planning funktioniert und warum es der Maschinenraum der SAFe-Umsetzung ist'
+  - 'Wie Agile Release Trains strukturiert sind und was ihre effektive Führung tatsächlich erfordert'
+  - 'Wie Strategie, Portfoliomanagement und Umsetzung innerhalb eines SAFe-Betriebsmodells ausgerichtet werden'
+  - 'Die Kompetenzen und Prüfungsanforderungen für die SAFe-Agilist(SA)-Zertifizierung'
+  - 'Wie eine Koalition von Führungskräften aufgebaut und erhalten wird, die die SAFe-Transformation über Zeit vorantreibt'
+  - 'Wie die Geschäftsergebnisse einer SAFe-Umsetzung gemessen und glaubwürdig an den Vorstand berichtet werden'
+summary: 'Das Scaled Agile Framework aus Führungsperspektive verstehen, wie Programme-Increment(PI)-Planning als Maschinenraum der SAFe-Umsetzung funktioniert, und wie Agile Release Trains strukturiert und tatsächlich geführt werden. Vermittelt wird, wie Strategie, Portfoliomanagement und Umsetzung innerhalb eines SAFe-Betriebsmodells ausgerichtet werden, wie eine Koalition von Führungskräften aufgebaut wird, die die Transformation über Zeit vorantreibt, und wie deren Geschäftsergebnisse glaubwürdig an den Vorstand berichtet werden. Für Business- und Technologie-Führungskräfte, die eine SAFe-Transformation sponsern, Leading SAFe 6 führt zur SAFe-Agilist(SA)-Zertifizierung von Scaled Agile.'
 sortOrder: 1
 metaTitle: '[DE] Leading SAFe 6 Training | SAFe Agile Certification | Better Change'
 metaDescription: '[DE] Leading SAFe 6 certified training in Berlin and online. Gain SAFe Agilist (SA) certification and learn to lead SAFe transformations.'

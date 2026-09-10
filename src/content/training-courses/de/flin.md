@@ -1,42 +1,44 @@
 ---
-# Phase A scaffold: placeholder text only, marked "[DE]" -- do not treat as
-# real German copy. Real, reviewed translations get slotted in during
-# Phase C (see the German-language plan doc). category/code/level/formats/
-# certification/priceFrom/languages/durationDays/sortOrder are
-# language-neutral facts (or lookup keys) and are kept identical to the
-# English entry. `name` is a proper noun/certification title (per the
-# glossary) and is likewise kept identical to English, never translated or
-# "[DE]"-prefixed.
+# Phase E: reviewed, approved German copy from
+# betterchange-de-translation-draft-all-courses.md -- description,
+# whoIsThisFor, whatYoullLearn, and the Duration/Languages stat values are
+# now real German. `level`'s underlying value stays the English lookup key
+# (used by src/data/levelIcons.ts for icons/pill colours) -- only its
+# displayed text is translated, via translateLevel(). category/code/
+# certification/formats/priceFrom/durationDays/sortOrder stay identical to
+# the English entry (language-neutral facts/lookup keys). metaTitle/
+# metaDescription aren't covered by this draft and stay "[DE]" placeholder
+# pending their own pass.
 name: 'Flight Levels Introduction (FLIN)'
 code: FLIN
 category: de/flight-levels
 level: Foundation
-durationText: '[DE] your pace'
+durationText: im eigenen Tempo
 durationDays: 0
 certification: FLIN
 formats:
   - self-paced
 priceFrom: €99
 languages:
-  - English
-  - German
+  - Englisch
+  - Deutsch
 whoIsThisFor:
-  - '[DE] Anyone new to Flight Levels who wants a clear introduction before attending a deeper workshop'
-  - '[DE] Leaders and managers curious about Flight Levels but unsure whether it applies to their situation'
-  - '[DE] Practitioners working alongside Flight Levels implementations who want to understand the thinking'
-  - '[DE] Those preparing for FL2D or FL3D who want to arrive with the foundational concepts already in place'
-  - '[DE] Organisations exploring Flight Levels as an approach to improving agility beyond the team level'
-  - '[DE] Anyone who has heard about Flight Levels and wants a low-commitment way to explore the core ideas'
+  - 'Alle, die neu bei Flight Levels sind und eine klare Einführung vor einem tieferen Workshop möchten'
+  - 'Führungskräfte und Manager:innen, die neugierig auf Flight Levels sind, aber unsicher, ob es passt'
+  - 'Praktiker:innen, die neben Flight-Levels-Implementierungen arbeiten und die Denkweise verstehen wollen'
+  - 'Alle, die sich auf FL2D oder FL3D vorbereiten und vorab die Grundlagen kennen möchten'
+  - 'Organisationen, die Flight Levels als Ansatz zur Verbesserung der Agilität über Teamebene hinaus prüfen'
+  - 'Alle, die von Flight Levels gehört haben und die Kernideen unverbindlich erkunden möchten'
 whatYoullLearn:
-  - '[DE] What Flight Levels is, where it came from, and what organisational problem it is designed to solve'
-  - '[DE] The three levels of organisational agility and what is happening — and going wrong — at each one'
-  - '[DE] Why most agile performance problems are coordination and strategy problems, not team problems'
-  - '[DE] How Flight Levels thinking differs from other scaling frameworks in approach and philosophy'
-  - '[DE] The key concepts you will build on in the FL2D and FL3D workshops'
-  - '[DE] How to assess whether and how Flight Levels applies to your own current organisational context'
-  - '[DE] How to explain Flight Levels to colleagues and leaders who have never encountered it before'
-  - '[DE] What the typical first steps look like when an organisation decides to adopt Flight Levels thinking'
-summary: '[DE] Get a clear, lightweight introduction to what Flight Levels is, where it came from, and the organisational problem it''s actually designed to solve — the three levels of organisational agility, and what tends to go wrong at each one. It''s designed as an entertaining, low-commitment way to explore the core ideas before committing to a deeper workshop, whether you''re brand new to Flight Levels, preparing for FL2D or FL3D, or simply want to understand whether it applies to your own organisation. Self-paced and online, it''s the prerequisite for every other Flight Levels course we run.'
+  - 'Was Flight Levels ist, woher es kommt und welches organisatorische Problem es lösen soll'
+  - 'Die drei Ebenen organisatorischer Agilität, was auf jeder davon passiert und schiefläuft'
+  - 'Warum die meisten Agile-Performance-Probleme Koordinations- und Strategieprobleme sind, keine Teamprobleme'
+  - 'Wie sich das Flight-Levels-Denken von anderen Skalierungs-Frameworks in Ansatz und Philosophie unterscheidet'
+  - 'Die Kernkonzepte, auf denen die FL2D- und FL3D-Workshops aufbauen'
+  - 'Wie sich einschätzen lässt, ob und wie Flight Levels auf die eigene Organisation anwendbar ist'
+  - 'Wie sich Flight Levels Kolleg:innen und Führungskräften erklären lässt, die es noch nicht kennen'
+  - 'Wie typische erste Schritte aussehen, wenn eine Organisation sich für Flight-Levels-Denken entscheidet'
+summary: 'Klare, leicht zugängliche Einführung in Flight Levels, was es ist, woher es kommt, welches organisatorische Problem es tatsächlich lösen soll, die drei Ebenen organisatorischer Agilität und was auf jeder davon typischerweise schiefläuft. Der Kurs ist als unterhaltsamer, risikoarmer Einstieg gedacht, um die Kernideen zu erkunden, bevor man sich auf einen tieferen Workshop einlässt, egal ob man ganz neu bei Flight Levels ist, sich auf FL2D oder FL3D vorbereitet oder einfach verstehen möchte, ob es für die eigene Organisation relevant ist. Selbstlernkurs, online, und die Voraussetzung für jeden weiteren Flight-Levels-Kurs.'
 sortOrder: 1
 metaTitle: '[DE] FLIN Flight Levels Introduction | Self-Paced Online Course'
 metaDescription: '[DE] Start your Flight Levels journey with this self-paced online course. Learn the foundational concepts before tackling FL2D or FL3D. Enrol anytime.'

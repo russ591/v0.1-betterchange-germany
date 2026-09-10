@@ -1,17 +1,22 @@
 ---
-# Phase A scaffold: placeholder text only, marked "[DE]" -- do not treat as
-# real German copy. Real, reviewed translations get slotted in during
-# Phase C (see the German-language plan doc). category/code/level/formats/
-# certification/priceFrom/languages/durationDays/sortOrder are
-# language-neutral facts (or lookup keys) and are kept identical to the
-# English entry. `name` is a proper noun/certification title (per the
-# glossary) and is likewise kept identical to English, never translated or
-# "[DE]"-prefixed.
+# Phase E: reviewed, approved German copy from
+# betterchange-de-translation-draft-all-courses.md -- description,
+# whoIsThisFor, whatYoullLearn, and the Level/Duration/Languages stat
+# values are now real German. `level`'s underlying value stays the English
+# lookup key (used by src/data/levelIcons.ts for icons/pill colours) --
+# only its displayed text is translated, via translateLevel().
+# category/code/certification/formats/priceFrom/durationDays/sortOrder
+# stay identical to the English entry (language-neutral facts/lookup
+# keys). durationText mirrors the English entry's "2 days · 4 x ½ days"
+# verbatim, even though durationDays is 3 -- an existing mismatch in the
+# English source data, not something this translation pass introduces or
+# corrects. metaTitle/metaDescription aren't covered by this draft and
+# stay "[DE]" placeholder pending their own pass.
 name: 'ICAgile Agile Coaching Professional (ICP-ACC)'
 code: ICPACC
 category: de/coaching
 level: Advanced
-durationText: "[DE] 2 days ·\_4 x ½ days"
+durationText: "2 Tage ·\_4 x ½ Tage"
 durationDays: 3
 certification: ICP-ACC
 formats:
@@ -19,24 +24,24 @@ formats:
   - live-online
 priceFrom: €1,595
 languages:
-  - English
+  - Englisch
 whoIsThisFor:
-  - '[DE] Scrum Masters and agile practitioners ready to develop genuine professional coaching skills'
-  - '[DE] Consultants and change agents who want to shift from giving advice to building lasting capability'
-  - '[DE] Team coaches and facilitators who want a recognised qualification to back their practice'
-  - '[DE] HR and organisational development professionals working in agile environments'
-  - '[DE] Anyone who suspects they are mentoring or training when they should actually be coaching'
-  - '[DE] Practitioners preparing for the ICAgile ICP-ACC certification examination'
+  - 'Scrum Master und agile Praktiker:innen, die echte professionelle Coaching-Fähigkeiten entwickeln möchten'
+  - 'Berater:innen und Change Agents, die von Ratschlägen zum Aufbau nachhaltiger Fähigkeit wechseln wollen'
+  - 'Team-Coaches und Facilitator:innen, die eine anerkannte Qualifikation für ihre Praxis wollen'
+  - 'HR- und Organisationsentwicklungs-Fachleute, die in agilen Umgebungen arbeiten'
+  - 'Alle, die vermuten, dass sie mentoren oder trainieren, wo sie eigentlich coachen sollten'
+  - 'Praktiker:innen, die sich auf die ICP-ACC-Zertifizierungsprüfung von ICAgile vorbereiten'
 whatYoullLearn:
-  - '[DE] The difference between coaching, mentoring, teaching, and facilitation — and when to use each'
-  - '[DE] Core professional coaching competencies: active listening, powerful questioning, and sustained presence'
-  - '[DE] How to work with individuals and teams to unlock their own capacity for change and improvement'
-  - '[DE] How to navigate resistance and build genuine trust with coachees in complex environments'
-  - '[DE] The ethical principles of professional coaching and how they apply in agile and transformation contexts'
-  - '[DE] How to structure and hold a coaching conversation with clarity, focus, and purposeful intent'
-  - '[DE] How to recognise and work with your own coaching blind spots and defensive patterns'
-  - '[DE] How to build a sustainable coaching practice — whether internal or as an independent consultant'
-summary: '[DE] Learn the difference between coaching, mentoring, teaching and facilitation — and, more importantly, when to use each — through core professional coaching competencies including active listening, powerful questioning and sustained presence. You''ll practise navigating resistance and building genuine trust with coachees in complex environments, and learn to recognise your own coaching blind spots rather than defaulting to advice-giving. Built for Scrum Masters, consultants and change agents ready to shift from advice to building lasting capability, ICP-ACC is ICAgile''s flagship coaching certification.'
+  - 'Der Unterschied zwischen Coaching, Mentoring, Lehren und Facilitation, und wann was eingesetzt wird'
+  - 'Zentrale professionelle Coaching-Kompetenzen: aktives Zuhören, kraftvolles Fragen und anhaltende Präsenz'
+  - 'Wie mit Einzelpersonen und Teams gearbeitet wird, um ihre eigene Veränderungsfähigkeit freizusetzen'
+  - 'Wie mit Widerstand umgegangen und echtes Vertrauen mit Coachees in komplexen Umgebungen aufgebaut wird'
+  - 'Die ethischen Prinzipien professionellen Coachings und ihre Anwendung in agilen Transformationskontexten'
+  - 'Wie ein Coaching-Gespräch mit Klarheit, Fokus und zielgerichteter Absicht strukturiert und gehalten wird'
+  - 'Wie eigene Coaching-blinde-Flecken und Abwehrmuster erkannt und bearbeitet werden'
+  - 'Wie eine nachhaltige Coaching-Praxis aufgebaut wird, intern oder als unabhängige:r Berater:in'
+summary: 'Den Unterschied zwischen Coaching, Mentoring, Lehren und Facilitation lernen, und vor allem, wann was eingesetzt wird, durch zentrale professionelle Coaching-Kompetenzen wie aktives Zuhören, kraftvolles Fragen und anhaltende Präsenz. Geübt wird der Umgang mit Widerstand und der Aufbau echten Vertrauens mit Coachees in komplexen Umgebungen, sowie das Erkennen eigener Coaching-blinder-Flecken statt automatisch Ratschläge zu geben. Für Scrum Master, Berater:innen und Change Agents, die bereit sind, von Ratschlägen zum Aufbau nachhaltiger Fähigkeit zu wechseln, die Flaggschiff-Coaching-Zertifizierung von ICAgile.'
 sortOrder: 1
 metaTitle: '[DE] ICP-ACC Agile Coaching Training Berlin | Better Change'
 metaDescription: '[DE] ICAgile ICP-ACC certified agile coaching training in Berlin and online. Develop coaching skills to guide teams and organisations through change.'

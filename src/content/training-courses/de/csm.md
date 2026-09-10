@@ -1,17 +1,19 @@
 ---
-# Phase A scaffold: placeholder text only, marked "[DE]" -- do not treat as
-# real German copy. Real, reviewed translations get slotted in during
-# Phase C (see the German-language plan doc). category/code/level/formats/
-# certification/priceFrom/languages/durationDays/sortOrder are
-# language-neutral facts (or lookup keys) and are kept identical to the
-# English entry. `name` is a proper noun/certification title (per the
-# glossary) and is likewise kept identical to English, never translated or
-# "[DE]"-prefixed.
+# Phase E: reviewed, approved German copy from
+# betterchange-de-translation-draft-all-courses.md -- description,
+# whoIsThisFor, whatYoullLearn, and the Level/Duration/Languages stat
+# values are now real German. `level`'s underlying value stays the English
+# lookup key (used by src/data/levelIcons.ts for icons/pill colours) --
+# only its displayed text is translated, via translateLevel().
+# category/code/certification/formats/priceFrom/durationDays/sortOrder
+# stay identical to the English entry (language-neutral facts/lookup
+# keys). metaTitle/metaDescription aren't covered by this draft and stay
+# "[DE]" placeholder pending their own pass.
 name: 'Certified Scrum Master (CSM)'
 code: CSM
 category: de/scrum
 level: Practitioner
-durationText: "[DE] 2 days ·\_4 x ½ days"
+durationText: "2 Tage ·\_4 x ½ Tage"
 durationDays: 2
 certification: CSM
 formats:
@@ -19,24 +21,24 @@ formats:
   - live-online
 priceFrom: €1,295
 languages:
-  - English
+  - Englisch
 whoIsThisFor:
-  - '[DE] New team members stepping into the Scrum Master role for the first time'
-  - '[DE] Developers, testers, and analysts who want a proper grounding in the Scrum framework'
-  - '[DE] Project managers and team leads transitioning from traditional delivery approaches'
-  - '[DE] Team members who have been doing Scrum informally and want to close the gaps'
-  - '[DE] Managers who want to understand what the Scrum Master role involves and why it matters'
-  - '[DE] Anyone preparing for the Scrum Alliance CSM certification examination'
+  - 'Neue Teammitglieder, die erstmals die Scrum-Master-Rolle übernehmen'
+  - 'Entwickler:innen, Tester:innen und Analyst:innen, die eine solide Grundlage im Scrum-Framework wollen'
+  - 'Projektmanager:innen und Teamleitungen im Übergang von traditionellen Umsetzungsansätzen'
+  - 'Teammitglieder, die bisher informell Scrum praktiziert haben und Lücken schließen wollen'
+  - 'Manager:innen, die verstehen wollen, was die Scrum-Master-Rolle beinhaltet und warum sie wichtig ist'
+  - 'Alle, die sich auf die CSM-Zertifizierungsprüfung der Scrum Alliance vorbereiten'
 whatYoullLearn:
-  - '[DE] The principles behind the Scrum framework and why it is structured the way it is'
-  - '[DE] The full scope of the Scrum Master role — servant leadership, coaching, and impediment removal'
-  - '[DE] How to run effective Sprints, Reviews, Retrospectives, and Planning sessions'
-  - '[DE] How to protect the team''s focus and manage stakeholder expectations constructively'
-  - '[DE] How to coach teams through the early stages of Scrum adoption'
-  - '[DE] The path to CSM certification and the next steps in the Scrum Master career track'
-  - '[DE] How to identify and remove organisational impediments that block team progress'
-  - '[DE] What distinguishes a great Scrum Master from someone who simply runs the ceremonies'
-summary: '[DE] Get a proper grounding in the Scrum framework and the full scope of the Scrum Master role — servant leadership, coaching, and impediment removal — not just running the ceremonies. You''ll learn to facilitate effective Sprints, Reviews, Retrospectives and Planning sessions, protect your team''s focus, and coach teams through the early stages of Scrum adoption. Whether you''re new to the role, moving from traditional delivery, or have been doing Scrum informally and want to close the gaps, CSM is the world''s most recognised Scrum certification and the standard entry point into the Scrum Master career track.'
+  - 'Die Prinzipien hinter dem Scrum-Framework und warum es so strukturiert ist'
+  - 'Der volle Umfang der Scrum-Master-Rolle, Servant Leadership, Coaching und das Beseitigen von Hindernissen'
+  - 'Wie effektive Sprints, Reviews, Retrospektiven und Plannings durchgeführt werden'
+  - 'Wie der Fokus des Teams geschützt und Stakeholder-Erwartungen konstruktiv gemanagt werden'
+  - 'Wie Teams durch die frühen Phasen der Scrum-Einführung gecoacht werden'
+  - 'Der Weg zur CSM-Zertifizierung und die nächsten Schritte in der Scrum-Master-Laufbahn'
+  - 'Wie organisatorische Hindernisse erkannt und beseitigt werden, die den Teamfortschritt blockieren'
+  - 'Was einen großartigen Scrum Master von jemandem unterscheidet, der nur die Zeremonien durchführt'
+summary: 'Eine solide Grundlage im Scrum-Framework und im vollen Umfang der Scrum-Master-Rolle erhalten, Servant Leadership, Coaching und das Beseitigen von Hindernissen, nicht nur das Durchführen der Zeremonien. Vermittelt wird, wie effektive Sprints, Reviews, Retrospektiven und Plannings moderiert werden, wie der Fokus des Teams geschützt wird, und wie Teams durch die frühen Phasen der Scrum-Einführung gecoacht werden. Egal ob neu in der Rolle, aus traditioneller Umsetzung kommend, oder bisher informell Scrum praktizierend, CSM ist die weltweit anerkannteste Scrum-Zertifizierung und der Standardeinstieg in die Scrum-Master-Laufbahn.'
 sortOrder: 1
 metaTitle: '[DE] CSM Certified Scrum Master Training | Berlin & Online'
 metaDescription: '[DE] Scrum Alliance certified CSM training. Become a Certified Scrum Master in 2 days. Online and in-person options with experienced trainers.'

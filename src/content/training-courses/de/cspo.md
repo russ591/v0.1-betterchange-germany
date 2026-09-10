@@ -1,17 +1,19 @@
 ---
-# Phase A scaffold: placeholder text only, marked "[DE]" -- do not treat as
-# real German copy. Real, reviewed translations get slotted in during
-# Phase C (see the German-language plan doc). category/code/level/formats/
-# certification/priceFrom/languages/durationDays/sortOrder are
-# language-neutral facts (or lookup keys) and are kept identical to the
-# English entry. `name` is a proper noun/certification title (per the
-# glossary) and is likewise kept identical to English, never translated or
-# "[DE]"-prefixed.
+# Phase E: reviewed, approved German copy from
+# betterchange-de-translation-draft-all-courses.md -- description,
+# whoIsThisFor, whatYoullLearn, and the Level/Duration/Languages stat
+# values are now real German. `level`'s underlying value stays the English
+# lookup key (used by src/data/levelIcons.ts for icons/pill colours) --
+# only its displayed text is translated, via translateLevel().
+# category/code/certification/formats/priceFrom/durationDays/sortOrder
+# stay identical to the English entry (language-neutral facts/lookup
+# keys). metaTitle/metaDescription aren't covered by this draft and stay
+# "[DE]" placeholder pending their own pass.
 name: 'Certified Scrum Product Owner (CSPO)'
 code: CSPO
 category: de/scrum
 level: Practitioner
-durationText: "[DE] 2 days ·\_4 x ½ days"
+durationText: "2 Tage ·\_4 x ½ Tage"
 durationDays: 2
 certification: CSPO
 formats:
@@ -19,24 +21,24 @@ formats:
   - live-online
 priceFrom: €1,295
 languages:
-  - English
+  - Englisch
 whoIsThisFor:
-  - '[DE] Professionals taking on the Product Owner role for the first time'
-  - '[DE] Business analysts, product managers, and project managers moving into agile delivery'
-  - '[DE] Stakeholders who want to understand how product decisions are made in Scrum teams'
-  - '[DE] Anyone building a backlog who needs a clearer framework for managing and prioritising it'
-  - '[DE] Development team members who want to understand the Product Owner''s perspective'
-  - '[DE] Leaders responsible for defining what gets built, in what order, and why'
+  - 'Fachleute, die die Product-Owner-Rolle erstmals übernehmen'
+  - 'Business Analyst:innen, Produktmanager:innen und Projektmanager:innen im Übergang zu agiler Umsetzung'
+  - 'Stakeholder, die verstehen wollen, wie Produktentscheidungen in Scrum-Teams getroffen werden'
+  - 'Alle, die einen Backlog aufbauen und einen klareren Rahmen für dessen Management und Priorisierung brauchen'
+  - 'Entwicklungsteam-Mitglieder, die die Perspektive des Product Owners verstehen wollen'
+  - 'Führungskräfte mit Verantwortung dafür, was in welcher Reihenfolge und warum gebaut wird'
 whatYoullLearn:
-  - '[DE] How to articulate a clear product vision that genuinely aligns the team and stakeholders'
-  - '[DE] Techniques for building, refining, and prioritising a product backlog with confidence'
-  - '[DE] How to write and decompose user stories that the team can act on without constant clarification'
-  - '[DE] How to engage stakeholders and manage their expectations across the full delivery cycle'
-  - '[DE] The Product Owner''s role in Sprint Planning, Sprint Review, and Retrospective'
-  - '[DE] How to measure product value and use feedback loops to guide delivery decisions'
-  - '[DE] How to say no to stakeholders constructively — protecting focus without damaging relationships'
-  - '[DE] What distinguishes a Product Owner who manages a backlog from one who owns a product'
-summary: '[DE] Learn to articulate a product vision that genuinely aligns your team and stakeholders, and build the backlog-refinement and prioritisation skills to back it up — including how to write user stories the team can act on without constant clarification. You''ll cover the Product Owner''s role across Sprint Planning, Review and Retrospective, how to use feedback loops to guide delivery decisions, and how to say no to stakeholders constructively. Built for anyone taking on product ownership for the first time, or moving into agile delivery from business analysis or project management, CSPO is the Scrum Alliance''s foundational Product Owner certification.'
+  - 'Wie eine klare Produktvision entwickelt wird, die Team und Stakeholder wirklich ausrichtet'
+  - 'Techniken zum Aufbau, Refinement und zur Priorisierung eines Produkt-Backlogs mit Zuversicht'
+  - 'Wie User Stories geschrieben und zerlegt werden, mit denen das Team ohne ständige Rückfragen arbeiten kann'
+  - 'Wie Stakeholder eingebunden und ihre Erwartungen über den gesamten Delivery-Zyklus gemanagt werden'
+  - 'Die Rolle des Product Owners in Sprint Planning, Sprint Review und Retrospektive'
+  - 'Wie Produktwert gemessen und Feedback-Schleifen genutzt werden, um Delivery-Entscheidungen zu leiten'
+  - 'Wie Stakeholdern konstruktiv Nein gesagt wird, ohne Fokus zu verlieren oder Beziehungen zu schädigen'
+  - 'Was einen Product Owner, der einen Backlog verwaltet, von einem unterscheidet, der ein Produkt verantwortet'
+summary: 'Eine Produktvision entwickeln, die Team und Stakeholder wirklich ausrichtet, und die Fähigkeiten in Backlog-Refinement und Priorisierung aufbauen, um sie zu untermauern, einschließlich User Stories, mit denen das Team ohne ständige Rückfragen arbeiten kann. Behandelt wird die Rolle des Product Owners in Sprint Planning, Review und Retrospektive, wie Feedback-Schleifen Delivery-Entscheidungen leiten, und wie Stakeholdern konstruktiv Nein gesagt wird. Für alle, die erstmals Produktverantwortung übernehmen, oder aus Business Analysis oder Projektmanagement in agile Umsetzung wechseln, die grundlegende Product-Owner-Zertifizierung der Scrum Alliance.'
 sortOrder: 3
 metaTitle: '[DE] CSPO Certified Scrum Product Owner Training | Better Change'
 metaDescription: '[DE] Scrum Alliance CSPO training in person and online. Learn product ownership skills to maximise team output and deliver real business value.'

@@ -1,17 +1,19 @@
 ---
-# Phase A scaffold: placeholder text only, marked "[DE]" -- do not treat as
-# real German copy. Real, reviewed translations get slotted in during
-# Phase C (see the German-language plan doc). category/code/level/formats/
-# certification/priceFrom/languages/durationDays/sortOrder are
-# language-neutral facts (or lookup keys) and are kept identical to the
-# English entry. `name` is a proper noun/certification title (per the
-# glossary) and is likewise kept identical to English, never translated or
-# "[DE]"-prefixed.
+# Phase E: reviewed, approved German copy from
+# betterchange-de-translation-draft-all-courses.md -- description,
+# whoIsThisFor, whatYoullLearn, and the Level/Duration/Languages stat
+# values are now real German. `level`'s underlying value stays the English
+# lookup key (used by src/data/levelIcons.ts for icons/pill colours) --
+# only its displayed text is translated, via translateLevel().
+# category/code/certification/formats/priceFrom/durationDays/sortOrder
+# stay identical to the English entry (language-neutral facts/lookup
+# keys). metaTitle/metaDescription aren't covered by this draft and stay
+# "[DE]" placeholder pending their own pass.
 name: 'Flight Levels System Architecture (FLSA)'
 code: FLSA
 category: de/flight-levels
 level: Expert
-durationText: "[DE] 2 days ·\_4 x ½ days ·\_your pace"
+durationText: "2 Tage ·\_4 x ½ Tage ·\_im eigenen Tempo"
 durationDays: 2
 certification: FLSA
 formats:
@@ -20,25 +22,25 @@ formats:
   - self-paced
 priceFrom: €1,890
 languages:
-  - English
-  - German
+  - Englisch
+  - Deutsch
 whoIsThisFor:
-  - '[DE] Senior leaders and transformation sponsors designing organisation-wide agility at scale'
-  - '[DE] Experienced Flight Levels coaches and consultants working on systemic agile transformation'
-  - '[DE] Change executives responsible for large-scale operational or agile transformation programmes'
-  - '[DE] Heads of PMO, strategy, and transformation in large or complex organisations'
-  - '[DE] FL practitioners who have worked at FL2 or FL3 level and want a comprehensive architectural view'
-  - '[DE] Anyone tasked with designing an agile operating model that spans multiple business areas'
+  - 'Erfahrene Führungskräfte und Transformationssponsor:innen, die organisationsweite Agilität im großen Maßstab gestalten'
+  - 'Erfahrene Flight-Levels-Coaches und Berater:innen, die an systemischer agiler Transformation arbeiten'
+  - 'Change-Führungskräfte mit Verantwortung für groß angelegte operative oder agile Transformationsprogramme'
+  - 'Leitungen aus PMO, Strategie und Transformation in großen oder komplexen Organisationen'
+  - 'FL-Praktiker:innen, die auf FL2- oder FL3-Ebene gearbeitet haben und eine umfassende architektonische Sicht wollen'
+  - 'Alle, die mit der Gestaltung eines agilen Betriebsmodells über mehrere Geschäftsbereiche beauftragt sind'
 whatYoullLearn:
-  - '[DE] How to take a systemic view of an organisation and identify where interventions will have most impact'
-  - '[DE] How to design a Flight Levels architecture that addresses all three levels simultaneously'
-  - '[DE] How to sequence and prioritise transformation interventions without overwhelming the organisation'
-  - '[DE] How to align an organisation''s operating model with its strategic intent and delivery capability'
-  - '[DE] How to build the leadership capability required for sustainable agile transformation'
-  - '[DE] How to assess the effectiveness of a Flight Levels system at the whole-organisation level'
-  - '[DE] How to communicate the Flight Levels architecture to leaders who are new to the thinking'
-  - '[DE] How to sustain organisational agility over time as strategy, structure, and people change'
-summary: '[DE] Take a systemic view of your organisation and design a Flight Levels architecture that addresses strategy, coordination, and delivery simultaneously — rather than optimising one level in isolation. You''ll learn how to sequence transformation interventions so they don''t overwhelm the organisation, build the leadership capability a sustainable change effort depends on, and assess whether a Flight Levels system is actually working six months in. Aimed at senior transformation sponsors, experienced Flight Levels coaches, and practitioners who''ve worked at FL2 or FL3 and want the full architectural picture, this is the most advanced course in the Flight Levels curriculum.'
+  - 'Wie eine systemische Sicht auf eine Organisation eingenommen wird, um die wirkungsvollsten Ansatzpunkte zu erkennen'
+  - 'Wie eine Flight-Levels-Architektur gestaltet wird, die alle drei Ebenen gleichzeitig adressiert'
+  - 'Wie Transformationsmaßnahmen sequenziert und priorisiert werden, ohne die Organisation zu überfordern'
+  - 'Wie das Betriebsmodell einer Organisation mit ihrer strategischen Absicht und Umsetzungsfähigkeit in Einklang gebracht wird'
+  - 'Wie die für nachhaltige agile Transformation nötige Führungsfähigkeit aufgebaut wird'
+  - 'Wie die Wirksamkeit eines Flight-Levels-Systems auf Gesamtorganisationsebene beurteilt wird'
+  - 'Wie die Flight-Levels-Architektur Führungskräften vermittelt wird, die neu in diesem Denken sind'
+  - 'Wie organisatorische Agilität über die Zeit erhalten bleibt, während sich Strategie, Struktur und Menschen verändern'
+summary: 'Eine systemische Sicht auf die Organisation einnehmen und eine Flight-Levels-Architektur gestalten, die Strategie, Koordination und Umsetzung gleichzeitig adressiert, statt nur eine Ebene isoliert zu optimieren. Es wird vermittelt, wie Transformationsmaßnahmen sequenziert werden, ohne die Organisation zu überfordern, wie die für nachhaltigen Wandel nötige Führungsfähigkeit aufgebaut wird, und wie sich nach sechs Monaten beurteilen lässt, ob ein Flight-Levels-System tatsächlich funktioniert. Für erfahrene Transformationssponsor:innen, erfahrene Flight-Levels-Coaches und Praktiker:innen, die auf FL2- oder FL3-Ebene gearbeitet haben und das vollständige architektonische Bild wollen, der fortgeschrittenste Kurs im Flight-Levels-Curriculum.'
 sortOrder: 4
 metaTitle: '[DE] FLSA Flight Levels System Architecture | Berlin & Online'
 metaDescription: '[DE] Certified Flight Levels System Architecture training in Berlin and online. Design organisation-wide agility pragmatically and cost-effectively.'

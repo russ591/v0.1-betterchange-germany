@@ -15,6 +15,7 @@ import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
 import { getFormatDetails, formatIcons } from "@/data/formatDetails";
 import { translateOffer } from "@/data/offerCopy";
+import { translateLevel } from "@/data/levelIcons";
 import { formatSessionDate } from "@/lib/dates";
 import { registrationHref, registrationLinkAttrs } from "@/lib/registrationLink";
 import TrainerChip from "@/components/TrainerChip.astro";
@@ -63,7 +64,7 @@ const formatDetails = getFormatDetails(locale);
           course.data.level && (
             <div>
               <dt class="text-neutral-500">{t("level")}</dt>
-              <dd class="font-semibold">{course.data.level}</dd>
+              <dd class="font-semibold">{translateLevel(course.data.level, locale)}</dd>
             </div>
           )
         }

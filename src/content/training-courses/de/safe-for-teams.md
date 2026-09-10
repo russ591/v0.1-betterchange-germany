@@ -1,17 +1,19 @@
 ---
-# Phase A scaffold: placeholder text only, marked "[DE]" -- do not treat as
-# real German copy. Real, reviewed translations get slotted in during
-# Phase C (see the German-language plan doc). category/code/level/formats/
-# certification/priceFrom/languages/durationDays/sortOrder are
-# language-neutral facts (or lookup keys) and are kept identical to the
-# English entry. `name` is a proper noun/certification title (per the
-# glossary) and is likewise kept identical to English, never translated or
-# "[DE]"-prefixed.
+# Phase E: reviewed, approved German copy from
+# betterchange-de-translation-draft-all-courses.md -- description,
+# whoIsThisFor, whatYoullLearn, and the Level/Duration/Languages stat
+# values are now real German. `level`'s underlying value stays the English
+# lookup key (used by src/data/levelIcons.ts for icons/pill colours) --
+# only its displayed text is translated, via translateLevel().
+# category/code/certification/formats/priceFrom/durationDays/sortOrder
+# stay identical to the English entry (language-neutral facts/lookup
+# keys). metaTitle/metaDescription aren't covered by this draft and stay
+# "[DE]" placeholder pending their own pass.
 name: 'SAFe for Teams (SAFe-SP)'
 code: SAFETEAMS
 category: de/scaling
 level: Practitioner
-durationText: "[DE] 2 days ·\_4 x ½ days"
+durationText: "2 Tage ·\_4 x ½ Tage"
 durationDays: 2
 certification: SAFe-SP
 formats:
@@ -19,24 +21,24 @@ formats:
   - live-online
 priceFrom: €1,295
 languages:
-  - English
+  - Englisch
 whoIsThisFor:
-  - '[DE] Team members — developers, testers, designers, analysts — working in or joining a SAFe organisation'
-  - '[DE] Scrum Masters and team coaches supporting teams within an Agile Release Train'
-  - '[DE] Product Owners in SAFe contexts who want to understand how team work connects to the ART'
-  - '[DE] Anyone new to SAFe who needs a clear picture of their role before their first PI Planning'
-  - '[DE] Teams being onboarded into a SAFe environment who want a shared understanding from the start'
-  - '[DE] Those preparing for the Scaled Agile SAFe Practitioner (SP) certification examination'
+  - 'Teammitglieder, Entwickler:innen, Tester:innen, Designer:innen, Analyst:innen, die in einer SAFe-Organisation arbeiten oder einsteigen'
+  - 'Scrum Master und Team-Coaches, die Teams innerhalb eines Agile Release Trains unterstützen'
+  - 'Product Owner in SAFe-Kontexten, die verstehen wollen, wie Teamarbeit mit dem ART verbunden ist'
+  - 'Alle neu bei SAFe, die vor ihrem ersten PI-Planning ein klares Bild ihrer Rolle brauchen'
+  - 'Teams, die in eine SAFe-Umgebung eingeführt werden und ein gemeinsames Verständnis von Anfang an wollen'
+  - 'Alle, die sich auf die SAFe-Practitioner(SP)-Zertifizierungsprüfung von Scaled Agile vorbereiten'
 whatYoullLearn:
-  - '[DE] How the Scaled Agile Framework is structured and where your team fits within the overall system'
-  - '[DE] The roles, events, and artefacts that govern how work flows within an Agile Release Train'
-  - '[DE] How to plan and execute iterations as part of a coordinated Programme Increment'
-  - '[DE] How to identify, surface, and manage dependencies with other teams in the ART'
-  - '[DE] How to participate productively in PI Planning and other key ART events'
-  - '[DE] The SAFe Practitioner (SP) certification requirements and how this course prepares you for them'
-  - '[DE] How to raise and resolve impediments through the ART so that blockers don''t silently kill velocity'
-  - '[DE] How to contribute to continuous improvement at both team level and across the Agile Release Train'
-summary: '[DE] Understand exactly where your team fits within the wider Scaled Agile Framework — the roles, events and artefacts that govern how work flows through an Agile Release Train, and how to plan and execute iterations as part of a coordinated Programme Increment. You''ll learn to identify and manage dependencies with other teams, participate productively in PI Planning, and raise impediments through the ART so blockers don''t silently kill velocity. Built for team members and Scrum Masters being onboarded into a SAFe environment, SAFe for Teams leads to the Scaled Agile SAFe Practitioner (SP) certification.'
+  - 'Wie das Scaled Agile Framework strukturiert ist und wo das eigene Team im Gesamtsystem steht'
+  - 'Die Rollen, Events und Artefakte, die regeln, wie Arbeit innerhalb eines Agile Release Trains fließt'
+  - 'Wie Iterationen als Teil eines koordinierten Programme Increments geplant und umgesetzt werden'
+  - 'Wie Abhängigkeiten zu anderen Teams im ART erkannt, sichtbar gemacht und gemanagt werden'
+  - 'Wie produktiv am PI-Planning und anderen zentralen ART-Events teilgenommen wird'
+  - 'Die Anforderungen der SAFe-Practitioner(SP)-Zertifizierung und wie dieser Kurs darauf vorbereitet'
+  - 'Wie Hindernisse über den ART gemeldet und gelöst werden, damit Blockaden nicht still die Geschwindigkeit killen'
+  - 'Wie zu kontinuierlicher Verbesserung sowohl auf Teamebene als auch im gesamten Agile Release Train beigetragen wird'
+summary: 'Genau verstehen, wo das eigene Team im größeren Scaled Agile Framework steht, die Rollen, Events und Artefakte, die regeln, wie Arbeit durch einen Agile Release Train fließt, und wie Iterationen als Teil eines koordinierten Programme Increments geplant und umgesetzt werden. Vermittelt wird, wie Abhängigkeiten zu anderen Teams erkannt und gemanagt werden, wie produktiv am PI-Planning teilgenommen wird, und wie Hindernisse über den ART gemeldet werden, damit Blockaden nicht still die Geschwindigkeit killen. Für Teammitglieder und Scrum Master, die in eine SAFe-Umgebung eingeführt werden, SAFe for Teams führt zur SAFe-Practitioner(SP)-Zertifizierung von Scaled Agile.'
 sortOrder: 2
 metaTitle: '[DE] SAFe for Teams Training | SAFe Practitioner | Better Change'
 metaDescription: '[DE] SAFe for Teams (SP) certified training in Berlin and online. Learn how to work effectively within a SAFe Agile Release Train.'

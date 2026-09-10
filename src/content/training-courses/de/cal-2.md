@@ -1,17 +1,19 @@
 ---
-# Phase A scaffold: placeholder text only, marked "[DE]" -- do not treat as
-# real German copy. Real, reviewed translations get slotted in during
-# Phase C (see the German-language plan doc). category/code/level/formats/
-# certification/priceFrom/languages/durationDays/sortOrder are
-# language-neutral facts (or lookup keys) and are kept identical to the
-# English entry. `name` is a proper noun/certification title (per the
-# glossary) and is likewise kept identical to English, never translated or
-# "[DE]"-prefixed.
+# Phase E: reviewed, approved German copy from
+# betterchange-de-translation-draft-all-courses.md -- description,
+# whoIsThisFor, whatYoullLearn, and the Level/Duration/Languages stat
+# values are now real German. `level`'s underlying value stays the English
+# lookup key (used by src/data/levelIcons.ts for icons/pill colours) --
+# only its displayed text is translated, via translateLevel().
+# category/code/certification/formats/priceFrom/durationDays/sortOrder
+# stay identical to the English entry (language-neutral facts/lookup
+# keys). metaTitle/metaDescription aren't covered by this draft and stay
+# "[DE]" placeholder pending their own pass.
 name: 'Certified Agile Leader 2 (CAL-2)'
 code: CAL2
 category: de/leadership
 level: Advanced
-durationText: "[DE] 2 days ·\_4 x ½ days"
+durationText: "2 Tage ·\_4 x ½ Tage"
 durationDays: 2
 certification: CAL2
 formats:
@@ -19,24 +21,24 @@ formats:
   - live-online
 priceFrom: €1,295
 languages:
-  - English
+  - Englisch
 whoIsThisFor:
-  - '[DE] CAL-1 holders ready to go deeper into leading and designing complex adaptive organisations'
-  - '[DE] Senior leaders responsible for designing or redesigning organisational structures'
-  - '[DE] Transformation executives and change leads working on sustainable cultural change'
-  - '[DE] Leaders who want to explore authentic leadership — their own values, style, and blind spots'
-  - '[DE] Coaches and OD practitioners who support senior leaders through significant transformation'
-  - '[DE] Those working towards the most advanced Scrum Alliance certification in the leadership track'
+  - 'CAL-1-Absolvent:innen, bereit, tiefer in das Führen und Gestalten komplexer, anpassungsfähiger Organisationen einzusteigen'
+  - 'Führungskräfte mit Verantwortung für die Gestaltung oder Neugestaltung organisatorischer Strukturen'
+  - 'Transformations-Vorstände und Change-Führungskräfte, die an nachhaltigem kulturellem Wandel arbeiten'
+  - 'Führungskräfte, die authentische Führung erkunden möchten, ihre eigenen Werte, ihren Stil, ihre blinden Flecken'
+  - 'Coaches und OE-Praktiker:innen, die hochrangige Führungskräfte durch bedeutenden Wandel begleiten'
+  - 'Alle auf dem Weg zur fortgeschrittensten Zertifizierung der Scrum Alliance im Führungspfad'
 whatYoullLearn:
-  - '[DE] How to apply systemic thinking to diagnose and evolve organisational design and operating models'
-  - '[DE] How to lead sustainable transformation — the conditions that make change actually stick'
-  - '[DE] Advanced frameworks for authentic leadership and leading with genuine personal purpose'
-  - '[DE] How organisational structure, incentives, and culture either enable or constrain agility'
-  - '[DE] How to engage and influence board-level and executive stakeholders on transformation agendas'
-  - '[DE] The CAL-2 credential requirements and the advanced leadership competencies it formally assesses'
-  - '[DE] How to work with paradox and uncertainty rather than defaulting to control and predictability'
-  - '[DE] What it means to lead a learning organisation — and the practical steps that make it real'
-summary: '[DE] Go deeper into leading and designing complex adaptive organisations — applying systemic thinking to evolve organisational structures, incentives and culture so they enable rather than constrain agility. You''ll explore authentic leadership, working with your own values, style and blind spots, and learn to engage board-level stakeholders on transformation agendas that actually stick rather than fading after the initial push. Built for CAL-1 holders and senior leaders responsible for organisational design, CAL-2 is the Scrum Alliance''s most advanced credential in the leadership track.'
+  - 'Wie systemisches Denken angewendet wird, um Organisationsdesign und Betriebsmodelle zu diagnostizieren und weiterzuentwickeln'
+  - 'Wie nachhaltige Transformation geführt wird, die Bedingungen, die Veränderung wirklich Bestand geben'
+  - 'Fortgeschrittene Frameworks für authentische Führung und Führen mit echtem persönlichem Purpose'
+  - 'Wie organisatorische Struktur, Anreize und Kultur Agilität entweder ermöglichen oder einschränken'
+  - 'Wie Vorstands- und Führungsebene-Stakeholder für Transformationsagenden eingebunden und beeinflusst werden'
+  - 'Die CAL-2-Zertifizierungsanforderungen und die fortgeschrittenen Führungskompetenzen, die sie formal bewertet'
+  - 'Wie mit Paradoxie und Unsicherheit gearbeitet wird, statt automatisch auf Kontrolle und Vorhersehbarkeit zu setzen'
+  - 'Was es bedeutet, eine lernende Organisation zu führen, und welche praktischen Schritte das real machen'
+summary: 'Tiefer in das Führen und Gestalten komplexer, anpassungsfähiger Organisationen einsteigen, systemisches Denken anwenden, um organisatorische Strukturen, Anreize und Kultur so weiterzuentwickeln, dass sie Agilität ermöglichen statt einschränken. Erkundet wird authentische Führung, die Arbeit mit den eigenen Werten, dem eigenen Stil und blinden Flecken, sowie das Einbinden von Vorstands-Stakeholdern in Transformationsagenden, die wirklich Bestand haben, statt nach dem ersten Schub zu verblassen. Für CAL-1-Absolvent:innen und Führungskräfte mit Verantwortung für Organisationsdesign, die fortgeschrittenste Zertifizierung der Scrum Alliance im Führungspfad.'
 sortOrder: 2
 metaTitle: '[DE] CAL-2 Certified Agile Leader 2 Training | Better Change'
 metaDescription: '[DE] Scrum Alliance CAL-2 advanced leadership training. Explore authentic leadership and organisational transformation. Berlin and online.'
