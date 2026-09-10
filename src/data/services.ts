@@ -61,7 +61,7 @@ const servicesDe = [
   {
     icon: "coaching",
     name: "Coaching",
-    blurb: "Team-Coaching, Leadership-Coaching und Scrum-Master-Mentoring auch über längere Zeit.",
+    blurb: "Team-Coaching, Leadership-Coaching und Scrum-Master-Mentoring, auch über längere Zeit.",
     items: ["Team-Coaching", "Leadership-Coaching", "Scrum-Master-Mentoring", "Langfristige Zusammenarbeit"],
   },
   {

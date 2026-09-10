@@ -1,28 +1,26 @@
 ---
-# Phase A scaffold placeholder -- see src/content/home-page/de.md
-# heroEyebrow is the one field here that matches a translated row from the
-# draft (its "New" table: WHAT WE DO -> WAS WIR TUN, same English string as
-# this page's own heroEyebrow). Everything else below is still Phase A
-# placeholder: the draft's services-page table was written against
-# different/older hero and "How it works" copy that doesn't textually match
-# the fields actually on this page -- do not invent text for those, a fresh
-# translation pass covering the exact strings in services-page/en.md is
-# needed.
-metaDescription: "[DE] Better Change is a European network of practitioners, not a large consultancy. Training, coaching, consulting and facilitation, built around your actual situation."
+# Phase B: reviewed, approved German copy from the translation draft's
+# "Services page - UPDATED to match current live content" table
+# (betterchange-de-translation-draft-homepage-services.md), redone by the
+# Fellow reviewer after the earlier draft's services-page section turned
+# out to be stale. metaDescription reuses heroBody's translation since both
+# fields are the same English sentence in services-page/en.md. Em dashes in
+# the draft's step bodies converted to commas per CLAUDE.md's house style.
+metaDescription: "Better Change ist ein europäisches Netzwerk von Praktiker:innen, keine große Unternehmensberatung. Training, Coaching, Consulting und Facilitation, ausgerichtet an der tatsächlichen Situation."
 heroEyebrow: "Was wir tun"
-heroHeading: "[DE] Real support, from people who've done the work"
-heroBody: "[DE] Better Change is a European network of practitioners, not a large consultancy. Training, coaching, consulting and facilitation, built around your actual situation."
-servicesEyebrow: "[DE] Services"
-servicesHeading: "[DE] Four ways we work with you"
-howItWorksEyebrow: "[DE] How it works"
-howItWorksHeading: "[DE] What an engagement looks like"
+heroHeading: "Echte Unterstützung von Menschen, die es selbst gemacht haben"
+heroBody: "Better Change ist ein europäisches Netzwerk von Praktiker:innen, keine große Unternehmensberatung. Training, Coaching, Consulting und Facilitation, ausgerichtet an der tatsächlichen Situation."
+servicesEyebrow: "Leistungen"
+servicesHeading: "Vier Wege der Zusammenarbeit"
+howItWorksEyebrow: "Ablauf"
+howItWorksHeading: "Wie eine Zusammenarbeit abläuft"
 steps:
-  - heading: "[DE] Discover"
-    body: "[DE] A conversation about where you're stuck, the team, the leadership layer, or the wider organisation, and what \"better\" would actually look like."
-  - heading: "[DE] Design"
-    body: "[DE] We shape the right mix of training, coaching or facilitation for your situation, rather than defaulting to a fixed package."
-  - heading: "[DE] Deliver"
-    body: "[DE] Hands-on work with your teams and leaders, in Berlin, on site, or online, for as long as the change needs to stick."
-insightsEyebrow: "[DE] From our insights"
-insightsHeading: "[DE] Written by the people doing the work"
+  - heading: "Verstehen"
+    body: "Ein Gespräch darüber, wo es hakt, im Team, auf Führungsebene oder in der gesamten Organisation, und wie „besser\" konkret aussehen würde."
+  - heading: "Gestalten"
+    body: "Wir entwickeln die passende Mischung aus Training, Coaching oder Facilitation für die jeweilige Situation, statt auf ein starres Paket zurückzugreifen."
+  - heading: "Umsetzen"
+    body: "Praxisnahe Arbeit mit Teams und Führungskräften, in Berlin, vor Ort oder online, so lange, wie es braucht, damit die Veränderung nachhaltig wirkt."
+insightsEyebrow: "Aus unseren Insights"
+insightsHeading: "Geschrieben von den Menschen, die die Arbeit machen"
 ---

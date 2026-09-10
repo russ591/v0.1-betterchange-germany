@@ -34,7 +34,7 @@ const upcomingWithCourse = await Promise.all(
 const allTrainers = await getTrainersForSessions(schedules);
 ---
 
-<BaseLayout title="[DE] Training" description={copy.metaDescription} translations={{ en: "/training", de: "/de/training" }}>
+<BaseLayout title="Training" description={copy.metaDescription} translations={{ en: "/training", de: "/de/training" }}>
   <TrainingHubPageContent
     copy={copy}
     categories={categories}

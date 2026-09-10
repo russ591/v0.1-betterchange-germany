@@ -178,6 +178,7 @@ const deOverrides: Partial<Record<UIKey, string>> = {
     "Ein kurzes Gespräch hilft oft weiter. Wir unterstützen gerne dabei, den passenden Trainings- oder Coaching-Ansatz für die jeweilige Situation zu finden.",
 
   "certifiedBy": "Zertifiziert durch",
+  "cta.talkToUs": "Kontakt aufnehmen",
 };
 
 export const de: Record<UIKey, string> = { ...dePlaceholders, ...deOverrides };
