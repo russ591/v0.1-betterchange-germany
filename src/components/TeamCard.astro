@@ -41,12 +41,22 @@ const cardClass = `rounded-[var(--radius-card)] border border-neutral-200 bg-sur
 >
   {
     photo ? (
-      <img
-        src={photo}
-        alt={name}
-        class={`shrink-0 rounded-full object-cover ${avatarSize}`}
-        loading="lazy"
-      />
+      <span class={`relative block shrink-0 overflow-hidden rounded-full ${avatarSize}`}>
+        <img
+          src={photo}
+          alt={name}
+          class="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+        />
+        <span
+          aria-hidden="true"
+          style="display:none"
+          class="absolute inset-0 flex items-center justify-center rounded-full border-[1.5px] border-lime font-bold text-ink"
+        >
+          {initials}
+        </span>
+      </span>
     ) : (
       <div
         aria-hidden="true"

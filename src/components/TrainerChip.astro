@@ -41,7 +41,22 @@ const initials =
       class="inline-flex items-center gap-2 rounded-[var(--radius-pill)] border border-neutral-200 bg-surface py-1 pl-1 pr-3 text-[length:var(--text-caption)] font-semibold text-ink transition-colors hover:border-ink"
     >
       {trainer.profile.data.photo ? (
-        <img src={trainer.profile.data.photo} alt="" class="h-6 w-6 shrink-0 rounded-full object-cover" loading="lazy" />
+        <span class="relative block h-6 w-6 shrink-0 overflow-hidden rounded-full">
+          <img
+            src={trainer.profile.data.photo}
+            alt=""
+            class="absolute inset-0 h-full w-full object-cover"
+            loading="lazy"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+          />
+          <span
+            aria-hidden="true"
+            style="display:none"
+            class="absolute inset-0 items-center justify-center rounded-full border border-lime text-[10px] font-bold"
+          >
+            {initials}
+          </span>
+        </span>
       ) : (
         <span
           aria-hidden="true"
