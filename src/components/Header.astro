@@ -9,7 +9,9 @@ const navLinks = [
   { href: "/training", label: "Training", mega: true },
   { href: "/about", label: "About" },
   { href: "/insights", label: "Insights" },
-  { href: "/contact", label: "Contact" },
+  // Desktop already has the lime "Contact us" button; keep this entry only
+  // for the mobile menu, where that button is hidden below the sm breakpoint.
+  { href: "/contact", label: "Contact", mobileOnly: true },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -32,39 +34,41 @@ const categoriesWithCourses = categories.map((category) => ({
 
     <nav aria-label="Primary" class="hidden items-center gap-8 md:flex">
       {
-        navLinks.map((link) => {
-          const isActive =
-            link.href === "/" ? currentPath === "/" : currentPath.startsWith(link.href);
-          const linkClass = `flex items-center gap-1 border-b-2 pb-1 text-sm font-medium transition-colors hover:text-ink ${
-            isActive ? "border-lime text-ink" : "border-transparent text-neutral-600"
-          }`;
+        navLinks
+          .filter((link) => !link.mobileOnly)
+          .map((link) => {
+            const isActive =
+              link.href === "/" ? currentPath === "/" : currentPath.startsWith(link.href);
+            const linkClass = `flex items-center gap-1 border-b-2 pb-1 text-sm font-medium transition-colors hover:text-ink ${
+              isActive ? "border-lime text-ink" : "border-transparent text-neutral-600"
+            }`;
 
-          if (link.mega) {
+            if (link.mega) {
+              return (
+                <div class="group relative">
+                  <a href={link.href} class={linkClass} aria-current={isActive ? "page" : undefined}>
+                    {link.label}
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="h-3.5 w-3.5 shrink-0 transition-transform group-hover:rotate-180"
+                    >
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </a>
+                  <TrainingMegaMenuDesktop categoriesWithCourses={categoriesWithCourses} />
+                </div>
+              );
+            }
+
             return (
-              <div class="group relative">
-                <a href={link.href} class={linkClass} aria-current={isActive ? "page" : undefined}>
-                  {link.label}
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    class="h-3.5 w-3.5 shrink-0 transition-transform group-hover:rotate-180"
-                  >
-                    <path d="m6 9 6 6 6-6" />
-                  </svg>
-                </a>
-                <TrainingMegaMenuDesktop categoriesWithCourses={categoriesWithCourses} />
-              </div>
+              <a href={link.href} class={linkClass} aria-current={isActive ? "page" : undefined}>
+                {link.label}
+              </a>
             );
-          }
-
-          return (
-            <a href={link.href} class={linkClass} aria-current={isActive ? "page" : undefined}>
-              {link.label}
-            </a>
-          );
-        })
+          })
       }
     </nav>
 
