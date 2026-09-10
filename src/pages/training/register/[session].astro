@@ -118,7 +118,7 @@ const countries = [
                 alt={`${course.data.certification ?? course.data.code} certification`}
                 width={56}
                 height={56}
-                class="h-7 w-7 rounded-full"
+                class="h-7 w-7 shrink-0 rounded-full object-contain p-0.5"
               />
             </>
           )}
@@ -137,7 +137,9 @@ const countries = [
         <div class="mt-2 flex items-center gap-3">
           {
             badge ? (
-              <Image src={badge} alt="" width={48} height={48} class="h-8 w-8 shrink-0 rounded-full" />
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-1.5">
+                <Image src={badge} alt="" width={48} height={48} class="h-full w-full object-contain" />
+              </span>
             ) : (
               logo && (
                 <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-1.5">

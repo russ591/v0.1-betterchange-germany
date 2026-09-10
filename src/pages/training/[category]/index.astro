@@ -149,7 +149,7 @@ const upcomingWithCourse = await Promise.all(
                     )}
                     <span class="inline-flex items-center gap-1.5 rounded-[var(--radius-pill)] border border-neutral-200 py-0.5 pl-0.5 pr-2.5 text-[length:var(--text-caption)] font-semibold text-neutral-600">
                       {badge ? (
-                        <Image src={badge} alt="" width={40} height={40} class="h-5 w-5 rounded-full" />
+                        <Image src={badge} alt="" width={40} height={40} class="h-5 w-5 rounded-full object-contain bg-surface p-0.5" />
                       ) : (
                         logo && <img src={logo.src} alt="" class="h-5 w-5 rounded-full object-contain bg-surface p-0.5" />
                       )}

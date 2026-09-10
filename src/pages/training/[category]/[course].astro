@@ -134,7 +134,7 @@ const courseSchema = {
                     alt={`${course.data.certification ?? course.data.code} certification`}
                     width={56}
                     height={56}
-                    class="h-7 w-7 rounded-full"
+                    class="h-7 w-7 shrink-0 rounded-full object-contain p-0.5"
                   />
                 </>
               )}
@@ -151,13 +151,9 @@ const courseSchema = {
           <div class="flex items-center gap-3.5 border-b border-neutral-200 bg-mist-light px-5 py-4">
             {
               badge ? (
-                <Image
-                  src={badge}
-                  alt=""
-                  width={64}
-                  height={64}
-                  class="h-11 w-11 shrink-0 rounded-full"
-                />
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-2">
+                  <Image src={badge} alt="" width={64} height={64} class="h-full w-full object-contain" />
+                </span>
               ) : (
                 logo && (
                   <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-2">
