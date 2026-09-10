@@ -264,3 +264,38 @@
   from = "/insights/okrs:-ambitious-goals,-honest-numbers,-and-why-70%25-is-actually-fine"
   to = "/insights/okrs:-ambitious-goals,-honest-numbers,-and-why-70-is-actually-fine"
   status = 301
+
+# --- Insights articles whose live slug contained an em dash --------------
+# House style no longer uses the em dash character anywhere in site text
+# (see CLAUDE.md), so the six urlSlugs below had their embedded "—"
+# removed. The percent-encoded form is what a browser actually requests
+# and what search engines would have indexed.
+[[redirects]]
+  from = "/insights/five-reasons-coaching-cultures-fail-%E2%80%94-and-they're-not-what-you-think"
+  to = "/insights/five-reasons-coaching-cultures-fail-and-they're-not-what-you-think"
+  status = 301
+
+[[redirects]]
+  from = "/insights/organisational-change-doesn't-happen-collectively-%E2%80%94-it-happens-person-by-person"
+  to = "/insights/organisational-change-doesn't-happen-collectively-it-happens-person-by-person"
+  status = 301
+
+[[redirects]]
+  from = "/insights/six-months-into-your-scaling-initiative-%E2%80%94-and-the-benefits-still-haven't-appeared"
+  to = "/insights/six-months-into-your-scaling-initiative-and-the-benefits-still-haven't-appeared"
+  status = 301
+
+[[redirects]]
+  from = "/insights/the-start-up-that-said-agile-didn't-work-%E2%80%94-and-then-changed-its-mind"
+  to = "/insights/the-start-up-that-said-agile-didn't-work-and-then-changed-its-mind"
+  status = 301
+
+[[redirects]]
+  from = "/insights/management-is-not-leadership-%E2%80%94-and-confusing-the-two-costs-organisations-dearly"
+  to = "/insights/management-is-not-leadership-and-confusing-the-two-costs-organisations-dearly"
+  status = 301
+
+[[redirects]]
+  from = "/insights/why-developers-build-the-wrong-thing-%E2%80%94-and-how-user-stories-help"
+  to = "/insights/why-developers-build-the-wrong-thing-and-how-user-stories-help"
+  status = 301

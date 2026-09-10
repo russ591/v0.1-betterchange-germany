@@ -81,8 +81,8 @@ const countries = [
 ---
 
 <BaseLayout
-  title={`Register — ${course.data.name}`}
-  description={`Register for ${course.data.name} — ${session.data.format}, ${session.data.location}.`}
+  title={`Register, ${course.data.name}`}
+  description={`Register for ${course.data.name}, ${session.data.format}, ${session.data.location}.`}
 >
   <Breadcrumbs
     items={[
@@ -310,7 +310,7 @@ const countries = [
         class="min-w-0 rounded-[var(--radius-card)] bg-lime/15 p-4 text-[length:var(--text-small)] text-ink"
         hidden
       >
-        You're on the list — we'll email you the moment a seat opens up.
+        You're on the list. We'll email you the moment a seat opens up.
       </p>
 
       <form
@@ -440,7 +440,7 @@ const countries = [
         <div>
           <p class="eyebrow">Attendees</p>
           <p class="mt-2 text-[length:var(--text-caption)] text-neutral-500">
-            Attendee 1 is filled in from your booking details above — edit it if a different person is attending.
+            Attendee 1 is filled in from your booking details above. Edit it if a different person is attending.
           </p>
           <div class="mt-3 divide-y divide-neutral-200 rounded-[var(--radius-control)] border border-neutral-200">
             {
@@ -647,14 +647,14 @@ const countries = [
             result.discountType === "fixed"
               ? currencyFormatter.format(result.value) + " off"
               : `${result.value}% off`;
-          showDiscountFeedback(`Discount code ${entered} applied — ${amountText}`, "success");
+          showDiscountFeedback(`Discount code ${entered} applied, ${amountText}`, "success");
         } else {
           appliedDiscount = null;
           showDiscountFeedback("Code not recognized", "error");
         }
       } catch {
         appliedDiscount = null;
-        showDiscountFeedback("Couldn't check that code — try again", "error");
+        showDiscountFeedback("Couldn't check that code. Try again", "error");
       } finally {
         applyDiscountButton.disabled = false;
         applyDiscountButton.textContent = "Apply";
@@ -743,7 +743,7 @@ const countries = [
         waitlistForm.hidden = true;
         waitlistSuccessEl.hidden = false;
       } catch {
-        waitlistErrorEl.textContent = "Couldn't join the waitlist — check your connection and try again.";
+        waitlistErrorEl.textContent = "Couldn't join the waitlist. Check your connection and try again.";
         waitlistErrorEl.hidden = false;
         waitlistSubmitButton.disabled = false;
         waitlistSubmitButton.textContent = "Join the waitlist";

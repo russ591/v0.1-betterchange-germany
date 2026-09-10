@@ -48,7 +48,7 @@ const paragraphs = (text: string) =>
     .filter(Boolean);
 ---
 
-<BaseLayout title={name} description={bio ? bio.slice(0, 160) : `${name} — ${role} at Better Change`}>
+<BaseLayout title={name} description={bio ? bio.slice(0, 160) : `${name}, ${role} at Better Change`}>
   <Breadcrumbs items={[{ label: "About", href: "/about" }, { label: name }]} />
 
   <Section eyebrow={role} class="bg-mist-light">
