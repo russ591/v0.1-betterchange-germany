@@ -220,6 +220,8 @@ const topics = [...topicCounts.keys()].sort((a, b) => topicCounts.get(b)! - topi
         ))
       }
     </div>
+
+    <nav aria-label="Insights pagination" id="insights-pagination" class="mt-10 flex items-center justify-center gap-1"></nav>
   </Section>
 
   <Section tone="dark" eyebrow="Newsletter" heading="Get new articles by email">
@@ -259,6 +261,8 @@ const topics = [...topicCounts.keys()].sort((a, b) => topicCounts.get(b)! - topi
   </Section>
 
   <script>
+    const PAGE_SIZE = 12;
+
     const filterButtons = Array.from(
       document.querySelectorAll<HTMLButtonElement>("[data-filter-group]")
     );
@@ -266,26 +270,87 @@ const topics = [...topicCounts.keys()].sort((a, b) => topicCounts.get(b)! - topi
     const emptyMessage = document.getElementById("insights-empty") as HTMLParagraphElement;
     const grid = document.getElementById("insights-grid") as HTMLDivElement;
     const searchInput = document.getElementById("insights-search") as HTMLInputElement | null;
+    const pagination = document.getElementById("insights-pagination") as HTMLElement;
 
     const searchText = new Map(cards.map((card) => [card, card.textContent?.toLowerCase() ?? ""]));
 
     const active: Record<string, Set<string>> = { topic: new Set() };
     let query = "";
+    let currentPage = 1;
+
+    // Windowed page list, e.g. current=5, total=17 -> [1, "…", 4, 5, 6, "…", 17].
+    function pageList(current: number, total: number): (number | "…")[] {
+      const keep = new Set([1, total, current - 1, current, current + 1]);
+      const sorted = [...keep].filter((p) => p >= 1 && p <= total).sort((a, b) => a - b);
+      const result: (number | "…")[] = [];
+      let prev = 0;
+      for (const p of sorted) {
+        if (prev && p - prev > 1) result.push("…");
+        result.push(p);
+        prev = p;
+      }
+      return result;
+    }
+
+    function renderPagination(totalMatching: number) {
+      pagination.innerHTML = "";
+      const totalPages = Math.max(1, Math.ceil(totalMatching / PAGE_SIZE));
+      if (totalPages <= 1) return;
+
+      const makeButton = (label: string, page: number, variant: "nav" | "page" | "active") => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = label;
+        const base = "flex h-9 min-w-9 cursor-pointer items-center justify-center rounded-[var(--radius-control)] px-3 text-[length:var(--text-small)] font-semibold transition-colors";
+        btn.className =
+          variant === "active"
+            ? `${base} bg-ink text-surface`
+            : `${base} text-neutral-700 hover:bg-mist-light`;
+        btn.addEventListener("click", () => {
+          currentPage = page;
+          update();
+          document.getElementById("insights-filters")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+        return btn;
+      };
+
+      if (currentPage > 1) pagination.appendChild(makeButton("‹ Prev", currentPage - 1, "nav"));
+
+      for (const p of pageList(currentPage, totalPages)) {
+        if (p === "…") {
+          const span = document.createElement("span");
+          span.textContent = "…";
+          span.className = "flex h-9 min-w-9 items-center justify-center text-neutral-400";
+          pagination.appendChild(span);
+        } else {
+          pagination.appendChild(makeButton(String(p), p, p === currentPage ? "active" : "page"));
+        }
+      }
+
+      if (currentPage < totalPages) pagination.appendChild(makeButton("Next ›", currentPage + 1, "nav"));
+    }
 
     function update() {
-      let visibleCount = 0;
-
-      cards.forEach((card) => {
+      const matching = cards.filter((card) => {
         const topic = card.dataset.topic ?? "";
         const topicMatch = active.topic.size === 0 || active.topic.has(topic);
         const searchMatch = query === "" || (searchText.get(card) ?? "").includes(query);
-        const visible = topicMatch && searchMatch;
-        card.hidden = !visible;
-        if (visible) visibleCount++;
+        return topicMatch && searchMatch;
       });
 
-      emptyMessage.hidden = visibleCount > 0;
-      grid.style.display = visibleCount > 0 ? "" : "none";
+      const totalPages = Math.max(1, Math.ceil(matching.length / PAGE_SIZE));
+      if (currentPage > totalPages) currentPage = totalPages;
+
+      const start = (currentPage - 1) * PAGE_SIZE;
+      const visible = new Set(matching.slice(start, start + PAGE_SIZE));
+
+      cards.forEach((card) => {
+        card.hidden = !visible.has(card);
+      });
+
+      emptyMessage.hidden = matching.length > 0;
+      grid.style.display = matching.length > 0 ? "" : "none";
+      renderPagination(matching.length);
     }
 
     filterButtons.forEach((button) => {
@@ -304,13 +369,17 @@ const topics = [...topicCounts.keys()].sort((a, b) => topicCounts.get(b)! - topi
           button.classList.add("bg-lime", "border-lime", "text-ink");
         }
 
+        currentPage = 1;
         update();
       });
     });
 
     searchInput?.addEventListener("input", () => {
       query = searchInput.value.trim().toLowerCase();
+      currentPage = 1;
       update();
     });
+
+    update();
   </script>
 </BaseLayout>
