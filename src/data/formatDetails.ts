@@ -4,6 +4,8 @@
 // once and reused everywhere a course lists that format -- only the
 // course-specific copy (summary, whoIsThisFor, whatYoullLearn) lives in the
 // content collection.
+import type { Locale } from "@/lib/i18n";
+
 export type TrainingFormat = "in-person" | "live-online" | "self-paced";
 
 export const formatIcons: Record<TrainingFormat, string> = {
@@ -29,7 +31,7 @@ interface FormatCopy {
 // that used to live in a separate "which format?" comparison section, but a
 // section built entirely from a per-format sentence didn't hold up as its
 // own piece, so the guidance now lives directly on the format it's about.
-export const formatDetails: Record<TrainingFormat, FormatCopy> = {
+const formatDetailsEn: Record<TrainingFormat, FormatCopy> = {
   "in-person": {
     label: "In-Person",
     description: "A full cohort, in one room, hands-on and trainer-led.",
@@ -49,3 +51,35 @@ export const formatDetails: Record<TrainingFormat, FormatCopy> = {
     included: ["Certification credential", "Trainer check-ins", "Indefinite access"],
   },
 };
+
+// Phase D: reviewed, approved German copy from
+// betterchange-de-translation-draft-course-template.md. The draft gives
+// description+chooseIf as one combined sentence pair per format; split here
+// along the same boundary as the English fields. chooseIf is phrased as an
+// impersonal "Ideal für alle, die..." rather than a literal "Choose this if
+// you..." translation, per the site's collective-address house style.
+const formatDetailsDe: Record<TrainingFormat, FormatCopy> = {
+  "in-person": {
+    label: "Vor Ort",
+    description: "Eine vollständige Gruppe, in einem Raum, praxisnah und trainergeführt.",
+    chooseIf: "Ideal für alle, die direktes Feedback und die Energie einer strukturierten Gruppensitzung schätzen.",
+    included: ["Zertifizierungsnachweis", "Alle Kursunterlagen", "Kleingruppe, trainergeführt"],
+  },
+  "live-online": {
+    label: "Live Online",
+    description: "Derselbe Kurs, live per Videocall und gemeinsamem virtuellem Whiteboard.",
+    chooseIf: "Ideal für alle, die dasselbe Live-Format ohne Anreise bevorzugen.",
+    included: ["Zertifizierungsnachweis", "Vollständige digitale Unterlagen", "Live-Unterstützung durch den Trainer"],
+  },
+  "self-paced": {
+    label: "Selbstlernkurs (On Demand)",
+    description:
+      "Den gesamten Kursinhalt im eigenen Tempo bearbeiten, mit Unterstützung durch den Trainer bzw. die Trainerin.",
+    chooseIf: "Ideal, wenn zusammenhängende Tage nicht möglich sind oder mehr Zeit gewünscht ist.",
+    included: ["Zertifizierungsnachweis", "Regelmäßige Check-ins mit dem Trainer", "Zeitlich unbegrenzter Zugang"],
+  },
+};
+
+export function getFormatDetails(locale: Locale): Record<TrainingFormat, FormatCopy> {
+  return locale === "de" ? formatDetailsDe : formatDetailsEn;
+}

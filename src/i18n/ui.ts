@@ -164,9 +164,18 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "schedule.filterDiscipline": "Disziplin",
   "schedule.filterCountry": "Land",
   "schedule.filterTrainer": "Trainer:in",
+  "schedule.exclVat": "zzgl. MwSt.",
+  "schedule.startNow": "Jetzt starten",
+  "schedule.alwaysAvailable": "Jederzeit verfügbar",
+  "schedule.waysToJoin": "Teilnahmemöglichkeiten",
+  "schedule.pickFormat": "Format auswählen",
+  "schedule.paymentNote":
+    "Keine Vorauszahlung nötig. Eine Rechnung mit ausgewiesener MwSt. wird per E-Mail zugestellt; die Zahlung ist per Überweisung oder Karte möglich.",
+  "schedule.noSessionsForCourse": "Für diesen Kurs sind derzeit keine Termine geplant.",
 
   "badge.inPerson": "Vor Ort",
   "badge.liveOnline": "Live online",
+  "badge.selfPaced": "Selbstlernkurs (online)",
 
   "trainers.eyebrow": "Unsere Trainer:innen",
   "trainers.heading": "Die Trainer:innen im Überblick",
@@ -182,9 +191,27 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "cta.closingHeading": "Unsicher, wo der richtige Startpunkt liegt?",
   "cta.closingBody":
     "Ein kurzes Gespräch hilft oft weiter. Wir unterstützen gerne dabei, den passenden Trainings- oder Coaching-Ansatz für die jeweilige Situation zu finden.",
+  "cta.moreCoursesInPrefix": "Weitere Kurse im Bereich",
+  "cta.viewDiscipline": "Zur Übersicht",
 
   "training.courseSingular": "Kurs",
   "training.coursePlural": "Kurse",
+
+  "course.whoFor": "Für wen ist dieser Kurs geeignet?",
+  "course.whatLearn": "Lerninhalte",
+  "course.howToTake": "Kursformate",
+  "course.chooseFormat": "Das passende Format wählen",
+  "course.howThisRuns": "Ablauf des Kurses",
+  "course.included": "Inklusive",
+  "course.notSureFormat": "Unsicher, was am besten passt?",
+  "course.notSureFormatTrailing": "gemeinsam lässt sich die passende Option finden.",
+  "course.relatedCourses": "Verwandte Kurse",
+  "course.trainerLabel": "Trainer:in:",
+
+  "level": "Niveau",
+  "duration": "Dauer",
+  "certification": "Zertifizierung",
+  "languages": "Sprachen",
 
   "certifiedBy": "Zertifiziert durch",
   "cta.talkToUs": "Kontakt aufnehmen",

@@ -13,7 +13,8 @@ import CTABanner from "@/components/CTABanner.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
-import { formatDetails, formatIcons } from "@/data/formatDetails";
+import { getFormatDetails, formatIcons } from "@/data/formatDetails";
+import { translateOffer } from "@/data/offerCopy";
 import { formatSessionDate } from "@/lib/dates";
 import { registrationHref, registrationLinkAttrs } from "@/lib/registrationLink";
 import TrainerChip from "@/components/TrainerChip.astro";
@@ -37,6 +38,7 @@ const categorySlug = baseSlug(category.id);
 
 const logo = category.data.certificationBody ? certificationLogos[category.data.certificationBody] : undefined;
 const badge = courseBadges[baseSlug(course.id)];
+const formatDetails = getFormatDetails(locale);
 ---
 
 <Breadcrumbs
@@ -208,7 +210,9 @@ const badge = courseBadges[baseSlug(course.id)];
                     </span>
                   </div>
                   {session.data.offer && (
-                    <p class="mt-2 text-[length:var(--text-caption)] text-neutral-500">{session.data.offer}</p>
+                    <p class="mt-2 text-[length:var(--text-caption)] text-neutral-500">
+                      {translateOffer(session.data.offer, locale)}
+                    </p>
                   )}
                 </a>
               );
