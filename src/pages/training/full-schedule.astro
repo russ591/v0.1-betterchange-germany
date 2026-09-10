@@ -108,8 +108,10 @@ const countries = [...new Set(sessions.map((s) => s.country))].sort();
       No sessions match the selected filters.
     </p>
 
-    {/* stacked cards below sm, table from sm up */}
-    <div class="mt-8 flex flex-col gap-3 sm:hidden" id="schedule-list-mobile">
+    {/* stacked cards below lg, table from lg up -- see ScheduleList.astro's
+    comment: six columns need real desktop width or the course name wraps
+    into an ugly 3-line mess */}
+    <div class="mt-8 flex flex-col gap-3 lg:hidden" id="schedule-list-mobile">
       {
         sessions.map(({ session, course, category, country, logo }) => (
           <div
@@ -153,7 +155,7 @@ const countries = [...new Set(sessions.map((s) => s.country))].sort();
 
     <div
       id="schedule-table-desktop"
-      class="mt-8 hidden overflow-x-auto rounded-[var(--radius-card)] border border-neutral-200 bg-surface sm:block"
+      class="mt-8 hidden overflow-x-auto rounded-[var(--radius-card)] border border-neutral-200 bg-surface lg:block"
     >
       <table class="w-full text-left text-[length:var(--text-small)]">
         <thead>
