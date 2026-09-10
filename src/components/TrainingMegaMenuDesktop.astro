@@ -12,9 +12,11 @@
 // interactivity here, handled by the small inline script below (same
 // mouseenter/click pattern already used for the schedule filter buttons in
 // ScheduleList.astro).
+import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { categoryIcons } from "@/data/categoryIcons";
 import { certificationLogos } from "@/data/certifications";
+import { courseBadges } from "@/data/courseBadges";
 import { toPathSegment } from "@/lib/urlSlug";
 
 interface Props {
@@ -26,9 +28,8 @@ interface Props {
 
 const { categoriesWithCourses } = Astro.props;
 
-// One certification-body logo per category, keyed by category id, so each
-// course row in the panel can show the body that actually certifies it
-// without a per-course lookup.
+// Fallback certification-body logo per category, keyed by category id, for
+// the rare course with no specific badge in courseBadges.
 const logoByCategory = Object.fromEntries(
   categoriesWithCourses.map(({ category }) => [
     category.id,
@@ -126,16 +127,22 @@ const logoByCategory = Object.fromEntries(
                     href={`/training/${category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
                     class="flex items-center gap-2.5 text-[length:var(--text-small)] text-neutral-600 hover:text-ink hover:underline"
                   >
-                    {logoByCategory[category.id] && (
+                    {courseBadges[course.id] ? (
                       <span class="flex h-5 w-8 shrink-0 items-center justify-center">
-                        <img
-                          src={logoByCategory[category.id]!.src}
-                          alt=""
-                          width={logoByCategory[category.id]!.width}
-                          height={logoByCategory[category.id]!.height}
-                          class="max-h-4 max-w-full object-contain"
-                        />
+                        <Image src={courseBadges[course.id]} alt="" width={32} height={20} class="max-h-4 max-w-full object-contain" />
                       </span>
+                    ) : (
+                      logoByCategory[category.id] && (
+                        <span class="flex h-5 w-8 shrink-0 items-center justify-center">
+                          <img
+                            src={logoByCategory[category.id]!.src}
+                            alt=""
+                            width={logoByCategory[category.id]!.width}
+                            height={logoByCategory[category.id]!.height}
+                            class="max-h-4 max-w-full object-contain"
+                          />
+                        </span>
+                      )
                     )}
                     <span class="min-w-0 flex-1 truncate">{course.data.name}</span>
                   </a>
@@ -154,7 +161,7 @@ const logoByCategory = Object.fromEntries(
           Talk to us about your team's situation
         </h3>
         <p class="mt-2 flex-1 text-[length:var(--text-caption)] text-neutral-300">
-          We'll help you pick the right discipline and format — in-person, live online, or self-paced.
+          We'll help you pick the right discipline and format, in-person, live online, or self-paced.
         </p>
         <a
           href="/contact"

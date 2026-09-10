@@ -84,7 +84,7 @@ const recentArticles = allArticles
 const hasSidebar = upcomingSessions.length > 0 || recentArticles.length > 0;
 ---
 
-<BaseLayout title={name} description={bio ? bio.slice(0, 160) : `${name} — ${role} at Better Change`}>
+<BaseLayout title={name} description={bio ? bio.slice(0, 160) : `${name}, ${role} at Better Change`}>
   <Breadcrumbs items={[{ label: "About", href: "/about" }, { label: name }]} />
 
   <Section class="bg-mist-light">
@@ -173,8 +173,11 @@ const hasSidebar = upcomingSessions.length > 0 || recentArticles.length > 0;
                     <li>
                       <a
                         href={`/training/${course.data.category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
-                        class="rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-2.5 py-1 text-[length:var(--text-caption)] font-semibold transition-colors hover:border-ink hover:text-ink"
+                        class="flex items-center gap-1.5 rounded-[var(--radius-pill)] border border-neutral-300 bg-surface py-1 pl-1 pr-2.5 text-[length:var(--text-caption)] font-semibold transition-colors hover:border-ink hover:text-ink"
                       >
+                        {courseBadges[course.id] && (
+                          <Image src={courseBadges[course.id]} alt="" width={28} height={28} class="h-5 w-auto max-w-[36px] shrink-0 object-contain" />
+                        )}
                         {course.data.code}
                       </a>
                     </li>
@@ -201,11 +204,11 @@ const hasSidebar = upcomingSessions.length > 0 || recentArticles.length > 0;
                       class="flex flex-col gap-2 py-3 first:pt-0 last:pb-0 transition-colors hover:bg-mist-light lg:flex-row lg:items-center lg:gap-3"
                     >
                       <div class="flex min-w-0 flex-1 items-center gap-3">
-                        {b?.kind === "badge" && <Image src={b.badge} alt="" width={36} height={36} class="h-8 w-8 shrink-0 rounded-full" />}
+                        {b?.kind === "badge" && (
+                          <Image src={b.badge} alt="" width={36} height={36} class="h-8 w-auto max-w-[56px] shrink-0 object-contain" />
+                        )}
                         {b?.kind === "logo" && (
-                          <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-mist-light p-1">
-                            <img src={b.logo.src} alt="" class="h-full w-full object-contain" />
-                          </span>
+                          <img src={b.logo.src} alt="" class="h-8 w-auto max-w-[56px] shrink-0 object-contain" />
                         )}
                         <div class="min-w-0 flex-1">
                           <p class="text-[length:var(--text-small)] font-semibold leading-snug">{course.data.name}</p>

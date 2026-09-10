@@ -16,7 +16,7 @@ metaDescription: Between two thirds and three quarters of large organisations st
 bodyHtml: |-
   <p>The strategy work is finished. The deck is polished. The leadership team is aligned. And then, quietly, nothing changes.</p>
 
-  <p>This is not a cynical caricature — it describes the experience of the majority of large organisations that invest in formal strategic planning. Gartner's research put the figure at 59% of CEOs identifying strategy execution as one of their top internal challenges. The problem is not usually that the strategy is wrong. The problem is that organisations are better at articulating direction than at operationalising it.</p>
+  <p>This is not a cynical caricature. It describes the experience of the majority of large organisations that invest in formal strategic planning. Gartner's research put the figure at 59% of CEOs identifying strategy execution as one of their top internal challenges. The problem is not usually that the strategy is wrong. The problem is that organisations are better at articulating direction than at operationalising it.</p>
 
   <h2>Why implementation is harder than planning</h2>
 
@@ -28,17 +28,17 @@ bodyHtml: |-
 
   <p>Before any implementation activity begins, the broad strategic objectives need to be translated into specific, owned initiatives that teams can actually act on. This is harder than it sounds. "Become the leading provider of X in the European market" is a strategic intention. It becomes actionable only when it is broken into specific workstreams, assigned to people with the authority to drive them, supported by realistic timelines, and connected to the resources required.</p>
 
-  <p>Communication channels and reporting mechanisms also need to be established at this stage — not as bureaucratic overhead, but as the infrastructure that makes progress visible. Implementation without visibility is implementation without accountability.</p>
+  <p>Communication channels and reporting mechanisms also need to be established at this stage, not as bureaucratic overhead, but as the infrastructure that makes progress visible. Implementation without visibility is implementation without accountability.</p>
 
   <h2>Phase 2: Building the implementation framework</h2>
 
-  <p>Once the stage is set, the work of breaking objectives into measurable initiatives begins. This phase produces the dashboards, review cadences, and risk management processes that will govern the implementation. Success metrics need to be defined at this stage — not just outcome metrics ("revenue grew by X%") but leading indicators that tell you whether you are on track before the outcome is determined ("new customer acquisition is trending at Y%").</p>
+  <p>Once the stage is set, the work of breaking objectives into measurable initiatives begins. This phase produces the dashboards, review cadences, and risk management processes that will govern the implementation. Success metrics need to be defined at this stage, not just outcome metrics ("revenue grew by X%") but leading indicators that tell you whether you are on track before the outcome is determined ("new customer acquisition is trending at Y%").</p>
 
   <p>The test of a good implementation framework is whether it makes problems visible early enough to do something about them. A dashboard that tells you six months in that the implementation has failed is not useful. A dashboard that flags in month two that two of the five workstreams are behind and explains why is.</p>
 
   <h2>Phase 3: Igniting action and sustaining momentum</h2>
 
-  <p>The transition from planning to execution is where most strategies go quiet. Early wins are disproportionately valuable here — not because they demonstrate ultimate success, but because they demonstrate that the strategy is real and that progress is possible. Celebrating early wins keeps energy in the system at the moment when it is most likely to dissipate.</p>
+  <p>The transition from planning to execution is where most strategies go quiet. Early wins are disproportionately valuable here, not because they demonstrate ultimate success, but because they demonstrate that the strategy is real and that progress is possible. Celebrating early wins keeps energy in the system at the moment when it is most likely to dissipate.</p>
 
   <p>Stakeholder communication during this phase should be frequent and specific. "The strategy is on track" is not useful information. "We have completed the first two milestones of the customer experience workstream, and the third is expected by end of quarter" is.</p>
 
@@ -48,5 +48,5 @@ bodyHtml: |-
 
   <p>Three tools are consistently useful across all phases: a Strategy Translation Canvas that makes explicit the connection between high-level goals and specific activities; an Implementation Dashboard that tracks progress and surfaces problems; and a Risk Management Framework that identifies, assesses, and mitigates the most predictable obstacles before they become crises.</p>
 
-  <p>None of this is complicated in concept. The difficulty is in the discipline — in maintaining the rigor of the process when the work gets hard and the original momentum fades. That is where implementation ultimately lives or dies.</p>
+  <p>None of this is complicated in concept. The difficulty is in the discipline, in maintaining the rigor of the process when the work gets hard and the original momentum fades. That is where implementation ultimately lives or dies.</p>
 ---

@@ -29,7 +29,7 @@ whatYoullLearn:
   - How to sustain transformation gains once the initial energy of a change programme fades
   - How to work with resistance at an organisational rather than individual or team level
   - The ethical and systemic principles behind the ICAgile ICP-CAT certification and how to demonstrate them in practice
-summary: Learn to navigate the complexity of organisation-wide agile change, where team-level coaching skills alone aren't enough and transformation has to be led systemically across multiple levels of the business at once. Coaching Agile Transformations builds the frameworks and judgement needed to steer large-scale change efforts — from diagnosing where an organisation actually is, to sustaining momentum once the initial energy of a transformation programme fades. Built for experienced coaches and leaders steering organisation-wide transformation, ICP-CAT is ICAgile's certification for coaching change at scale.
+summary: Learn to navigate the complexity of organisation-wide agile change, where team-level coaching skills alone aren't enough and transformation has to be led systemically across multiple levels of the business at once. Coaching Agile Transformations builds the frameworks and judgement needed to steer large-scale change efforts, from diagnosing where an organisation actually is, to sustaining momentum once the initial energy of a transformation programme fades. Built for experienced coaches and leaders steering organisation-wide transformation, ICP-CAT is ICAgile's certification for coaching change at scale.
 sortOrder: 3
 metaTitle: ICP-CAT Coaching Agile Transformations | Better Change
 metaDescription: ICAgile ICP-CAT training for coaches leading organisational transformation. In-person and online delivery.

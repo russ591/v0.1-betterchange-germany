@@ -109,15 +109,20 @@ const categoryTrainers = await getTrainersForSessions(allSchedules.filter((s) =>
                 href={`/training/${category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
                 class="flex items-center justify-between gap-3 border-b border-neutral-100 px-5 py-3.5 transition-colors last:border-0 hover:bg-mist-light"
               >
-                <div>
-                  <p class="text-[length:var(--text-small)] font-semibold">{course.data.name}</p>
-                  <p class="text-[length:var(--text-caption)] text-neutral-500">
-                    {course.data.level}
-                    {course.data.level && " · "}
-                    {course.data.formats.length === 1 && course.data.formats[0] === "self-paced"
-                      ? "Self-paced"
-                      : `${course.data.formats.length} format${course.data.formats.length > 1 ? "s" : ""}`}
-                  </p>
+                <div class="flex min-w-0 items-center gap-3">
+                  {courseBadges[course.id] && (
+                    <Image src={courseBadges[course.id]} alt="" width={48} height={48} class="h-9 w-auto max-w-[56px] shrink-0 object-contain" />
+                  )}
+                  <div class="min-w-0">
+                    <p class="text-[length:var(--text-small)] font-semibold">{course.data.name}</p>
+                    <p class="text-[length:var(--text-caption)] text-neutral-500">
+                      {course.data.level}
+                      {course.data.level && " · "}
+                      {course.data.formats.length === 1 && course.data.formats[0] === "self-paced"
+                        ? "Self-paced"
+                        : `${course.data.formats.length} format${course.data.formats.length > 1 ? "s" : ""}`}
+                    </p>
+                  </div>
                 </div>
                 {course.data.priceFrom && <span class="shrink-0 font-bold">{course.data.priceFrom}</span>}
               </a>
@@ -155,9 +160,9 @@ const categoryTrainers = await getTrainersForSessions(allSchedules.filter((s) =>
                     )}
                     <span class="inline-flex items-center gap-1.5 rounded-[var(--radius-pill)] border border-neutral-200 py-0.5 pl-0.5 pr-2.5 text-[length:var(--text-caption)] font-semibold text-neutral-600">
                       {badge ? (
-                        <Image src={badge} alt="" width={40} height={40} class="h-5 w-5 rounded-full" />
+                        <Image src={badge} alt="" width={40} height={40} class="h-5 w-auto max-w-[36px] object-contain" />
                       ) : (
-                        logo && <img src={logo.src} alt="" class="h-5 w-5 rounded-full object-contain bg-surface p-0.5" />
+                        logo && <img src={logo.src} alt="" class="h-5 w-auto max-w-[36px] object-contain" />
                       )}
                       {course.data.code}
                     </span>

@@ -4,9 +4,11 @@
 // "Training" reveals the 6 categories, tapping a category reveals its
 // courses -- all native <details>/<summary>, no JS, matching the same
 // pattern already used for the drawer itself.
+import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { categoryIcons } from "@/data/categoryIcons";
 import { certificationLogos } from "@/data/certifications";
+import { courseBadges } from "@/data/courseBadges";
 import { toPathSegment } from "@/lib/urlSlug";
 
 interface Props {
@@ -18,7 +20,8 @@ interface Props {
 
 const { categoriesWithCourses } = Astro.props;
 
-// One certification-body logo per category, keyed by category id -- see
+// Fallback certification-body logo per category, keyed by category id, for
+// the rare course with no specific badge in courseBadges -- see
 // TrainingMegaMenuDesktop.astro, which shows the same icon next to each
 // course row on desktop.
 const logoByCategory = Object.fromEntries(
@@ -95,16 +98,22 @@ const logoByCategory = Object.fromEntries(
                 href={`/training/${category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
                 class="flex items-center gap-2 py-1.5 text-[length:var(--text-caption)] text-neutral-600"
               >
-                {logoByCategory[category.id] && (
+                {courseBadges[course.id] ? (
                   <span class="flex h-4 w-6 shrink-0 items-center justify-center">
-                    <img
-                      src={logoByCategory[category.id]!.src}
-                      alt=""
-                      width={logoByCategory[category.id]!.width}
-                      height={logoByCategory[category.id]!.height}
-                      class="max-h-3.5 max-w-full object-contain"
-                    />
+                    <Image src={courseBadges[course.id]} alt="" width={24} height={16} class="max-h-3.5 max-w-full object-contain" />
                   </span>
+                ) : (
+                  logoByCategory[category.id] && (
+                    <span class="flex h-4 w-6 shrink-0 items-center justify-center">
+                      <img
+                        src={logoByCategory[category.id]!.src}
+                        alt=""
+                        width={logoByCategory[category.id]!.width}
+                        height={logoByCategory[category.id]!.height}
+                        class="max-h-3.5 max-w-full object-contain"
+                      />
+                    </span>
+                  )
                 )}
                 <span class="min-w-0 flex-1 truncate">{course.data.name}</span>
               </a>

@@ -49,7 +49,7 @@ const countries = [...new Set(sessions.map((s) => s.country))].sort();
 
 <BaseLayout
   title="Full training schedule"
-  description="All upcoming Better Change training sessions across every discipline — filter by topic and country."
+  description="All upcoming Better Change training sessions across every discipline. Filter by topic and country."
 >
   <Breadcrumbs items={[{ label: "Training", href: "/training" }, { label: "Full schedule" }]} />
 
@@ -119,13 +119,9 @@ const countries = [...new Set(sessions.map((s) => s.country))].sort();
           >
             <div class="flex items-center gap-2.5">
               {courseBadges[course.id] ? (
-                <Image src={courseBadges[course.id]} alt="" width={40} height={40} class="h-7 w-7 shrink-0 rounded-full" />
+                <Image src={courseBadges[course.id]} alt="" width={40} height={40} class="h-7 w-auto max-w-[48px] shrink-0 object-contain" />
               ) : (
-                logo && (
-                  <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-1">
-                    <img src={logo.src} alt="" class="h-full w-full object-contain" />
-                  </span>
-                )
+                logo && <img src={logo.src} alt="" class="h-7 w-auto max-w-[48px] shrink-0 object-contain" />
               )}
               <p class="font-semibold">{course.data.name}</p>
               {session.data.status === "sold-out" && <SoldOutBadge />}
@@ -180,19 +176,9 @@ const countries = [...new Set(sessions.map((s) => s.country))].sort();
                 <td class="px-4 py-4">
                   <div class="flex items-center gap-2.5">
                     {courseBadges[course.id] ? (
-                      <Image
-                        src={courseBadges[course.id]}
-                        alt=""
-                        width={40}
-                        height={40}
-                        class="h-7 w-7 shrink-0 rounded-full"
-                      />
+                      <Image src={courseBadges[course.id]} alt="" width={40} height={40} class="h-7 w-auto max-w-[48px] shrink-0 object-contain" />
                     ) : (
-                      logo && (
-                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-1">
-                          <img src={logo.src} alt="" class="h-full w-full object-contain" />
-                        </span>
-                      )
+                      logo && <img src={logo.src} alt="" class="h-7 w-auto max-w-[48px] shrink-0 object-contain" />
                     )}
                     <p class="font-semibold">{course.data.name}</p>
                     {session.data.status === "sold-out" && <SoldOutBadge />}
