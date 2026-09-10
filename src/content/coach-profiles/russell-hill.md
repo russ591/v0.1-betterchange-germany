@@ -1,7 +1,7 @@
 ---
 name: Russell Hill
 firstName: Russ
-role: Qualified Flight Levels® Trainer & Coach · Better Change
+role: Flight Levels® Trainer & Coach
 country: Germany
 languages:
   - English
