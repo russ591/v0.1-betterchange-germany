@@ -105,16 +105,13 @@ const clients = [
 </section>
 
 <Section class="border-t border-neutral-200 !py-10">
-  <div class="flex items-center gap-8">
+  <div class="flex flex-wrap items-center gap-x-8 gap-y-4">
     <p class="shrink-0 text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-600">
       {copy.workedWithLabel}
     </p>
-    <div class="overflow-hidden" style="mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);">
-      <ul class="marquee-track flex w-max flex-nowrap items-center gap-x-14 text-[length:var(--text-small)] font-medium whitespace-nowrap text-neutral-600">
-        {clients.map((client) => <li>{client}</li>)}
-        {clients.map((client) => <li aria-hidden="true">{client}</li>)}
-      </ul>
-    </div>
+    <ul class="flex flex-wrap items-center gap-x-14 gap-y-3 text-[length:var(--text-small)] font-medium text-neutral-600">
+      {clients.map((client) => <li>{client}</li>)}
+    </ul>
   </div>
 </Section>
 
