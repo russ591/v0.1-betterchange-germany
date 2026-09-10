@@ -11,8 +11,7 @@ const allArticles = (await getCollection("insights-articles")).sort(
 );
 
 // Resolve each article's author once, up front -- the same lookup feeds
-// the card byline, the "Filter by Fellow" chips, and each card's
-// data-author attribute below.
+// the card byline everywhere below.
 const articles = await Promise.all(
   allArticles.map(async (article) => {
     const profile = article.data.author ? await getEntry(article.data.author) : undefined;
@@ -60,18 +59,6 @@ for (const { article } of articles) {
   }
 }
 const topics = [...topicCounts.keys()].sort((a, b) => topicCounts.get(b)! - topicCounts.get(a)!);
-
-// Same idea for Fellows: most-published first.
-const fellowCounts = new Map<string, { name: string; photo?: string; count: number }>();
-for (const { author } of articles) {
-  if (!author) continue;
-  const existing = fellowCounts.get(author.id);
-  if (existing) existing.count++;
-  else fellowCounts.set(author.id, { name: author.name, photo: author.photo, count: 1 });
-}
-const fellows = [...fellowCounts.entries()]
-  .map(([id, v]) => ({ id, ...v }))
-  .sort((a, b) => b.count - a.count);
 ---
 
 <BaseLayout
@@ -218,35 +205,6 @@ const fellows = [...fellowCounts.entries()]
           }
         </div>
       </div>
-
-      {
-        fellows.length > 0 && (
-          <div>
-            <p class="text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-500">
-              Filter by Fellow
-            </p>
-            <div class="mt-2 flex flex-wrap gap-2">
-              {fellows.map((fellow) => (
-                <button
-                  type="button"
-                  data-filter-group="author"
-                  data-filter-value={fellow.id}
-                  class="flex cursor-pointer items-center gap-2 rounded-[var(--radius-pill)] border border-neutral-300 bg-surface py-1 pl-1 pr-3.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors hover:border-ink hover:text-ink"
-                >
-                  {fellow.photo ? (
-                    <img src={fellow.photo} alt="" class="h-6 w-6 shrink-0 rounded-full object-cover" />
-                  ) : (
-                    <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-neutral-200 text-[9px] font-semibold text-neutral-600">
-                      {initials(fellow.name)}
-                    </span>
-                  )}
-                  {fellow.name}
-                </button>
-              ))}
-            </div>
-          </div>
-        )
-      }
     </div>
 
     <p id="insights-empty" class="mt-10 text-[length:var(--text-body)] text-neutral-500" hidden>
@@ -256,11 +214,7 @@ const fellows = [...fellowCounts.entries()]
     <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="insights-grid">
       {
         gridArticles.map(({ article, author }) => (
-          <div
-            class="insights-card contents"
-            data-topic={article.data.primaryCategory ?? ""}
-            data-author={author?.id ?? ""}
-          >
+          <div class="insights-card contents" data-topic={article.data.primaryCategory ?? ""}>
             <InsightsArticleCard article={article} author={author} />
           </div>
         ))
@@ -315,7 +269,7 @@ const fellows = [...fellowCounts.entries()]
 
     const searchText = new Map(cards.map((card) => [card, card.textContent?.toLowerCase() ?? ""]));
 
-    const active: Record<string, Set<string>> = { topic: new Set(), author: new Set() };
+    const active: Record<string, Set<string>> = { topic: new Set() };
     let query = "";
 
     function update() {
@@ -323,11 +277,9 @@ const fellows = [...fellowCounts.entries()]
 
       cards.forEach((card) => {
         const topic = card.dataset.topic ?? "";
-        const author = card.dataset.author ?? "";
         const topicMatch = active.topic.size === 0 || active.topic.has(topic);
-        const authorMatch = active.author.size === 0 || active.author.has(author);
         const searchMatch = query === "" || (searchText.get(card) ?? "").includes(query);
-        const visible = topicMatch && authorMatch && searchMatch;
+        const visible = topicMatch && searchMatch;
         card.hidden = !visible;
         if (visible) visibleCount++;
       });
