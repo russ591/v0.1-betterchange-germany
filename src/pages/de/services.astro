@@ -1,0 +1,16 @@
+---
+import { getEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ServicesPageContent from "@/components/pages/ServicesPageContent.astro";
+
+const copy = (await getEntry("services-page", "de"))!.data;
+
+const insightSlugs = ["what-is-a-scrum-master", "how-to-run-a-retrospective", "why-is-change-management-important"];
+const insightArticles = (
+  await Promise.all(insightSlugs.map((slug) => getEntry("insights-articles", slug)))
+).filter((article) => article !== undefined);
+---
+
+<BaseLayout title="[DE] Services" description={copy.metaDescription} translations={{ en: "/services", de: "/de/services" }}>
+  <ServicesPageContent copy={copy} insightArticles={insightArticles} />
+</BaseLayout>

@@ -1,6 +1,7 @@
 ---
 import { toPathSegment } from "@/lib/urlSlug";
 import type { TrainerEntry } from "@/lib/trainers";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
 
 // Compact avatar+name chip -- used wherever a trainer needs to be
 // mentioned inline rather than as a full TeamCard (the course page's
@@ -23,6 +24,8 @@ interface Props {
 }
 
 const { trainer, density = "chip", linkable = true, showLabel = false } = Astro.props;
+const t = useTranslations(resolveLocale(Astro.currentLocale));
+const trainerLabel = (name: string) => `${t("course.trainerLabel")} ${name}`;
 
 const href =
   linkable && trainer.kind === "profile"
@@ -81,11 +84,11 @@ const initials =
           {initials}
         </span>
       )}
-      {showLabel ? `Trainer: ${trainer.profile.data.name}` : trainer.profile.data.name}
+      {showLabel ? trainerLabel(trainer.profile.data.name) : trainer.profile.data.name}
     </Wrapper>
   ) : (
     <span class="text-[length:var(--text-caption)] text-neutral-600">
-      {showLabel ? `Trainer: ${trainer.name}` : trainer.name}
+      {showLabel ? trainerLabel(trainer.name) : trainer.name}
     </span>
   )
 }

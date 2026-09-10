@@ -1,0 +1,83 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import CoursePageContent from "@/components/pages/CoursePageContent.astro";
+import { toPathSegment } from "@/lib/urlSlug";
+import { localeOfId, baseSlug } from "@/lib/i18n";
+import { getTrainersForSessions } from "@/lib/trainers";
+
+export async function getStaticPaths() {
+  const courses = await getCollection("training-courses", (c) => localeOfId(c.id) === "de");
+  return courses.map((course) => ({
+    // German entries never set their own urlSlug (see the course generator
+    // script) -- the path segment is always the shared base slug.
+    params: { category: baseSlug(course.data.category.id), course: baseSlug(course.id) },
+    props: { course },
+  }));
+}
+
+const { course } = Astro.props;
+const category = await getEntry(course.data.category);
+const allCourses = await getCollection("training-courses", (c) => localeOfId(c.id) === "de");
+const relatedCourses = allCourses.filter((c) => c.data.category.id === category.id && c.id !== course.id);
+
+const allSchedules = await getCollection("training-schedules");
+const upcoming = allSchedules
+  .filter((s) => baseSlug(s.data.course.id) === baseSlug(course.id))
+  .sort((a, b) => (a.data.date?.valueOf() ?? 0) - (b.data.date?.valueOf() ?? 0));
+const upcomingWithTrainers = await Promise.all(
+  upcoming.map(async (session) => ({ session, trainers: await getTrainersForSessions([session]) }))
+);
+
+const courseModeByFormat = { "in-person": "Onsite", "live-online": "Online", "self-paced": "Online" } as const;
+const courseSchema = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: course.data.name,
+  description: course.data.summary,
+  provider: { "@type": "Organization", name: "Better Change", sameAs: Astro.site?.toString() },
+  ...(course.data.certification && { educationalCredentialAwarded: course.data.certification }),
+  hasCourseInstance: upcoming.map((session) => ({
+    "@type": "CourseInstance",
+    courseMode: courseModeByFormat[session.data.format],
+    ...(session.data.date && { startDate: session.data.date.toISOString().slice(0, 10) }),
+    ...(session.data.format === "in-person" && {
+      location: { "@type": "Place", name: session.data.location },
+    }),
+    offers: {
+      "@type": "Offer",
+      price: parseFloat(session.data.price.replace(/[^0-9.]/g, "")) || undefined,
+      priceCurrency: "EUR",
+      url: session.data.isExternal ? session.data.externalUrl! : new URL(`/training/register/${session.id}`, Astro.site).toString(),
+      availability: "https://schema.org/InStock",
+    },
+  })),
+};
+
+const categorySlug = baseSlug(category.id);
+const courseSlug = baseSlug(course.id);
+
+// The English counterpart may have a real urlSlug (special characters,
+// parentheses) that differs from the plain base slug -- look it up rather
+// than assuming it matches, so the switcher/hreflang land on a real URL.
+const enCourse = await getEntry("training-courses", courseSlug);
+const enCourseSlug = toPathSegment(enCourse?.data.urlSlug ?? courseSlug);
+---
+
+<BaseLayout
+  title={course.data.metaTitle ?? course.data.name}
+  description={course.data.metaDescription ?? course.data.summary}
+  jsonLd={courseSchema}
+  translations={{
+    en: `/training/${categorySlug}/${enCourseSlug}`,
+    de: `/de/training/${categorySlug}/${courseSlug}`,
+  }}
+>
+  <CoursePageContent
+    course={course}
+    category={category}
+    relatedCourses={relatedCourses}
+    upcoming={upcoming}
+    upcomingWithTrainers={upcomingWithTrainers}
+  />
+</BaseLayout>

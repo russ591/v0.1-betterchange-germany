@@ -1,53 +1,16 @@
 ---
 import { getCollection, getEntry } from "astro:content";
-import { Image } from "astro:assets";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Section from "@/components/Section.astro";
-import Button from "@/components/Button.astro";
-import ServiceCard from "@/components/ServiceCard.astro";
-import Badge from "@/components/Badge.astro";
-import SoldOutBadge from "@/components/SoldOutBadge.astro";
-import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
-import CTABanner from "@/components/CTABanner.astro";
-import { services, serviceIcons } from "@/data/services";
+import HomePageContent from "@/components/pages/HomePageContent.astro";
 import { certificationLogos } from "@/data/certifications";
-import { courseBadges } from "@/data/courseBadges";
-import { formatSessionDate } from "@/lib/dates";
-import { registrationHref, registrationLinkAttrs } from "@/lib/registrationLink";
+import { localeOfId } from "@/lib/i18n";
 
-const stats = [
-  { label: "Experience", value: "30+", description: "Years combined practitioner experience" },
-  { label: "Network", value: "8+", description: "Expert coaches & trainers across Europe" },
-  { label: "Delivery", value: "EN+", description: "Training & coaching in English and multilingual" },
-  { label: "Base", value: "Berlin", description: "In-person & online, Germany & Europe wide" },
-];
+const copy = (await getEntry("home-page", "en"))!.data;
 
-const clients = [
-  "Deutsche Telekom",
-  "Grundfos",
-  "Laerdal",
-  "TC Electronic",
-  "HelloFresh",
-  "McKinsey",
-  "Microsoft",
-  "Kleinanzeigen",
-  "mobile.de",
-  "Cogent",
-  "Volkswagen",
-  "Axel Springer",
-  "Flightright",
-  "Aiven",
-  "Velux",
-  "Luxembourg Chamber of Commerce",
-  "Search Guard",
-];
-
-const categories = await getCollection("training-categories");
+const categories = await getCollection("training-categories", (c) => localeOfId(c.id) === "en");
 const certifiedBy = [
   ...new Set(categories.map((c) => c.data.certificationBody).filter((c): c is string => Boolean(c))),
 ];
-// Category id -> its certification-body logo, so a course listing can fall
-// back to the body's logo when that specific course has no round badge.
 const categoryLogoById = new Map(
   categories.map((c) => [c.id, c.data.certificationBody ? certificationLogos[c.data.certificationBody] : undefined])
 );
@@ -60,7 +23,7 @@ const upcoming = schedules
 const upcomingCourses = await Promise.all(
   upcoming.map(async (session) => {
     const course = await getEntry(session.data.course);
-    return { session, course, logo: courseBadges[course.id] ? undefined : categoryLogoById.get(course.data.category.id) };
+    return { session, course, logo: categoryLogoById.get(course.data.category.id) };
   })
 );
 
@@ -69,267 +32,15 @@ const team = (await getCollection("coach-profiles"))
   .slice(0, 7);
 
 const allArticles = await getCollection("insights-articles");
-const featuredArticles = allArticles
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3);
+const featuredArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
 ---
 
-<BaseLayout
-  title="Home"
-  description="Better Change is a European network of experienced trainers and coaching practitioners. We deliver Kanban, Flight Levels and Scrum training, team and leadership coaching, and organisational transformation — in English and German."
->
-  <section class="bg-mist-light">
-    <div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
-      <div class="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start">
-        <div class="min-w-0">
-          <p class="eyebrow">training, coaching &amp; Consulting · Berlin &amp; Europe</p>
-          <h1 class="mt-4 text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
-            We help organisations change{" "}
-            <span aria-hidden="true" class="blob-dot inline-block h-[0.5em] w-[0.5em] bg-lime align-middle"></span>{" "}
-            for the better
-          </h1>
-          <p class="mt-6 max-w-lg text-[length:var(--text-body)] text-neutral-600">
-            Better Change is a European network of experienced trainers and coaching practitioners.
-            We deliver Kanban, Flight Levels and Scrum training, team and leadership coaching, and
-            organisational transformation — in English and German.
-          </p>
-          <div class="mt-8 flex flex-wrap gap-4">
-            <Button href="/training" variant="primary">See all training</Button>
-            <Button href="/services" variant="secondary">Our services</Button>
-          </div>
-        </div>
-
-        <div class="min-w-0 rounded-[var(--radius-card)] bg-surface p-6 shadow-card">
-          <div class="grid grid-cols-2 gap-3">
-            {
-              stats.map((stat) => (
-                <div class="rounded-[0.6rem] bg-mist-light p-4">
-                  <p class="eyebrow">{stat.label}</p>
-                  <p class="mt-1 text-[length:var(--text-h3)] font-bold">{stat.value}</p>
-                  <p class="mt-1 text-[length:var(--text-caption)] text-neutral-600">{stat.description}</p>
-                </div>
-              ))
-            }
-          </div>
-          <div class="mt-5 border-t border-neutral-200 pt-5">
-            <p class="eyebrow justify-center">Certified by</p>
-            <div class="mt-3 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-              {
-                certifiedBy
-                  .filter((cert) => cert !== "Scaled Agile")
-                  .map((cert) => {
-                    const logo = certificationLogos[cert];
-                    return logo ? (
-                      <img src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} class="h-6 w-auto object-contain" />
-                    ) : (
-                      <span class="text-[length:var(--text-caption)] font-semibold text-neutral-500">{cert}</span>
-                    );
-                  })
-              }
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <Section class="border-t border-neutral-200 !py-10">
-    <div class="flex items-center gap-8">
-      <p class="shrink-0 text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-600">
-        Worked with
-      </p>
-      <div class="overflow-hidden" style="mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);">
-        <ul class="marquee-track flex w-max flex-nowrap items-center gap-x-14 text-[length:var(--text-small)] font-medium whitespace-nowrap text-neutral-600">
-          {clients.map((client) => <li>{client}</li>)}
-          {clients.map((client) => <li aria-hidden="true">{client}</li>)}
-        </ul>
-      </div>
-    </div>
-  </Section>
-
-  <Section eyebrow="What we do" heading="Services that create lasting change" class="border-t border-neutral-200">
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {
-        services.map((service) => (
-          <ServiceCard name={service.name} blurb={service.blurb} href="/services">
-            <Fragment slot="icon" set:html={serviceIcons[service.name]} />
-          </ServiceCard>
-        ))
-      }
-    </div>
-  </Section>
-
-  <Section eyebrow="Upcoming courses" heading="Next open training dates" class="border-t border-neutral-200 bg-mist-light">
-    {/* stacked cards below sm, table from sm up -- the real content
-        (long dates, format pills, location) doesn't fit a 5-column
-        table at phone widths */}
-    <div class="flex flex-col gap-3 sm:hidden">
-      {
-        upcomingCourses.map(({ session, course, logo }) => (
-          <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-4">
-            <div class="flex items-center gap-2.5">
-              {courseBadges[course.id] ? (
-                <Image src={courseBadges[course.id]} alt="" width={40} height={40} class="h-7 w-7 shrink-0 rounded-full" />
-              ) : (
-                logo && (
-                  <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-1">
-                    <img src={logo.src} alt="" class="h-full w-full object-contain" />
-                  </span>
-                )
-              )}
-              <p class="font-semibold">{course.data.name}</p>
-              {session.data.status === "sold-out" && <SoldOutBadge />}
-            </div>
-            <div class="mt-3 flex items-center justify-between gap-3 border-t border-neutral-100 pt-3 text-[length:var(--text-small)]">
-              <div>
-                <p class="font-semibold">{formatSessionDate(session, course, "short")}</p>
-                <p class="text-neutral-500">{session.data.location}</p>
-              </div>
-              <Badge format={session.data.format} />
-            </div>
-            <a
-              href={registrationHref(session)}
-              {...registrationLinkAttrs(session)}
-              class={
-                session.data.status === "sold-out"
-                  ? "mt-3 block rounded-[var(--radius-control)] border border-ink px-4 py-2 text-center text-[length:var(--text-small)] font-semibold text-ink transition-colors hover:bg-mist-light"
-                  : "mt-3 block rounded-[var(--radius-control)] bg-ink px-4 py-2 text-center text-[length:var(--text-small)] font-semibold text-surface transition-colors hover:bg-neutral-800"
-              }
-            >
-              {session.data.status === "sold-out" ? "Join waitlist →" : "Register →"}
-            </a>
-          </div>
-        ))
-      }
-    </div>
-
-    <div class="hidden overflow-x-auto rounded-[var(--radius-card)] border border-neutral-200 bg-surface sm:block">
-      <table class="w-full text-left text-[length:var(--text-small)]">
-        <thead>
-          <tr class="border-b border-neutral-200 bg-ink text-surface">
-            <th class="px-3 py-3 font-medium sm:px-5">Course</th>
-            <th class="px-3 py-3 font-medium sm:px-5">Date</th>
-            <th class="px-3 py-3 font-medium sm:px-5">Location</th>
-            <th class="px-3 py-3 font-medium sm:px-5">Format</th>
-            <th class="px-3 py-3 sm:px-5" />
-          </tr>
-        </thead>
-        <tbody>
-          {
-            upcomingCourses.map(({ session, course, logo }) => (
-              <tr class="border-b border-neutral-100 last:border-0">
-                <td class="px-3 py-4 sm:px-5">
-                  <div class="flex items-center gap-2.5">
-                    {courseBadges[course.id] ? (
-                      <Image
-                        src={courseBadges[course.id]}
-                        alt=""
-                        width={40}
-                        height={40}
-                        class="h-7 w-7 shrink-0 rounded-full"
-                      />
-                    ) : (
-                      logo && (
-                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-1">
-                          <img src={logo.src} alt="" class="h-full w-full object-contain" />
-                        </span>
-                      )
-                    )}
-                    <span class="font-semibold">{course.data.name}</span>
-                    {session.data.status === "sold-out" && <SoldOutBadge />}
-                  </div>
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 sm:px-5">{formatSessionDate(session, course, "short")}</td>
-                <td class="px-3 py-4 text-neutral-600 sm:px-5">{session.data.location}</td>
-                <td class="px-3 py-4 sm:px-5">
-                  <Badge format={session.data.format} />
-                </td>
-                <td class="px-3 py-4 text-right sm:px-5">
-                  <a
-                    href={registrationHref(session)}
-                    {...registrationLinkAttrs(session)}
-                    class={
-                      session.data.status === "sold-out"
-                        ? "inline-block whitespace-nowrap rounded-[var(--radius-control)] border border-ink px-3 py-1.5 font-semibold text-ink transition-colors hover:bg-mist-light"
-                        : "whitespace-nowrap font-semibold hover:underline"
-                    }
-                  >
-                    {session.data.status === "sold-out" ? "Join waitlist →" : "Register →"}
-                  </a>
-                </td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
-    </div>
-    <div class="mt-6 text-right">
-      <Button href="/training/full-schedule" variant="link" class="group">Full schedule</Button>
-    </div>
-  </Section>
-
-  <Section tone="dark" eyebrow="Our people" heading="Practitioners, not theorists">
-    <div class="flex flex-wrap gap-6">
-      {
-        team.map((profile) => (
-          <div class="flex w-24 flex-col items-center gap-2 text-center">
-            {
-              profile.data.photo ? (
-                <img
-                  src={profile.data.photo}
-                  alt={profile.data.name}
-                  class="h-14 w-14 rounded-full object-cover"
-                  loading="lazy"
-                />
-              ) : (
-                <span class="flex h-14 w-14 items-center justify-center rounded-full border-[1.5px] border-lime text-sm font-bold text-lime">
-                  {(() => {
-                    const parts = profile.data.name.split(" ");
-                    return parts.length > 1 ? parts[0][0] + parts[parts.length - 1][0] : parts[0].slice(0, 2);
-                  })()}
-                </span>
-              )
-            }
-            <span class="text-[length:var(--text-caption)] font-semibold">{profile.data.name}</span>
-            <span class="text-[length:var(--text-caption)] text-neutral-400">{profile.data.country}</span>
-          </div>
-        ))
-      }
-    </div>
-    <div class="mt-8 flex flex-wrap items-center gap-6">
-      <Button href="/about" variant="primary">Meet the full team</Button>
-      <p class="max-w-md text-[length:var(--text-small)] text-neutral-300">
-        All of us have been there ourselves — and know what to do when the real world doesn't follow
-        the manual.
-      </p>
-    </div>
-
-    <div class="mt-12 border-t border-neutral-800 pt-10">
-      <p class="eyebrow text-lime">Client perspective</p>
-      <blockquote class="mt-3 max-w-2xl text-[length:var(--text-h3)] font-bold leading-snug text-lime">
-        “Better Change brought real-world credibility to our transformation. They'd done it themselves
-        — that made all the difference.”
-      </blockquote>
-      <cite class="mt-4 block text-[length:var(--text-small)] not-italic text-neutral-400">
-        Senior Engineering Leader, DACH region
-      </cite>
-    </div>
-  </Section>
-
-  <Section eyebrow="Insights" heading="Articles, guides & resources" class="border-t border-neutral-200">
-    <div class="grid gap-6 sm:grid-cols-3">
-      {featuredArticles.map((article) => <InsightsArticleCard article={article} />)}
-    </div>
-    <div class="mt-6 text-right">
-      <Button href="/insights" variant="link" class="group">View all insights</Button>
-    </div>
-  </Section>
-
-  <CTABanner
-    tone="light"
-    heading="Not sure where to start?"
-    body="Talk to us. We'll help you find the right training or coaching approach for your situation."
-    ctaLabel="Get in touch"
-    ctaHref="/contact"
+<BaseLayout title="Home" description={copy.metaDescription} translations={{ en: "/", de: "/de/" }}>
+  <HomePageContent
+    copy={copy}
+    certifiedBy={certifiedBy}
+    upcomingCourses={upcomingCourses}
+    team={team}
+    featuredArticles={featuredArticles}
   />
 </BaseLayout>

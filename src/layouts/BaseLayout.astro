@@ -1,6 +1,7 @@
 ---
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import { resolveLocale } from "@/i18n/utils";
 import "@/styles/global.css";
 
 interface Props {
@@ -12,9 +13,16 @@ interface Props {
   jsonLd?: object | object[];
   /** Keeps a page out of search results — the /admin dashboard. */
   noindex?: boolean;
+  /** Present only on pages that have a German/English counterpart -- maps
+   * each available locale to that locale's absolute path for this same
+   * page. Drives both the hreflang tags below and the header's language
+   * switcher. Omitted entirely on pages that don't have a translation
+   * (About, Insights, Contact, legal pages, ...). */
+  translations?: Partial<Record<"en" | "de", string>>;
 }
 
-const { title, description, ogImage = "/og-image.png", jsonLd, noindex = false } = Astro.props;
+const { title, description, ogImage = "/og-image.png", jsonLd, noindex = false, translations } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
 const pageTitle = `${title} · Better Change`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const ogImageUrl = new URL(ogImage, Astro.site);
@@ -41,7 +49,7 @@ const organizationSchema = {
 ---
 
 <!doctype html>
-<html lang="en-GB">
+<html lang={locale === "de" ? "de" : "en-GB"}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -51,13 +59,25 @@ const organizationSchema = {
     <link rel="canonical" href={canonicalUrl} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
 
+    {
+      // hreflang: tells search engines the English and German URLs are
+      // linked translations of the same page, not duplicate content.
+      // x-default points at English since that's this site's default
+      // locale for a visitor with no language preference match.
+      translations &&
+        Object.entries(translations).map(([lang, href]) => (
+          <link rel="alternate" hreflang={lang} href={new URL(href, Astro.site)} />
+        ))
+    }
+    {translations?.en && <link rel="alternate" hreflang="x-default" href={new URL(translations.en, Astro.site)} />}
+
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Better Change" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale" content={locale === "de" ? "de_DE" : "en_GB"} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
@@ -68,7 +88,7 @@ const organizationSchema = {
     {jsonLdBlocks.map((block) => <script type="application/ld+json" set:html={JSON.stringify(block)} is:inline />)}
   </head>
   <body class="flex min-h-screen flex-col bg-surface text-ink">
-    <Header />
+    <Header translations={translations} />
     <main class="flex-1">
       <slot />
     </main>

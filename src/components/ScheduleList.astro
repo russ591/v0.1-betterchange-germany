@@ -12,6 +12,8 @@ import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
 import { formatSessionDate } from "@/lib/dates";
 import { registrationHref, registrationLinkAttrs } from "@/lib/registrationLink";
+import { baseSlug } from "@/lib/i18n";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
 
 interface Row {
   session: CollectionEntry<"training-schedules">;
@@ -26,7 +28,8 @@ interface Props {
   id?: string;
 }
 
-const { rows, filterable = false, emptyMessage = "No sessions are currently scheduled.", id = "schedule-list" } = Astro.props;
+const t = useTranslations(resolveLocale(Astro.currentLocale));
+const { rows, filterable = false, emptyMessage = t("schedule.noSessions"), id = "schedule-list" } = Astro.props;
 
 const topics = filterable
   ? [...new Map(rows.map((r) => [r.category.id, r.category])).values()].sort(
@@ -35,7 +38,7 @@ const topics = filterable
   : [];
 
 function badgeFor(row: Row) {
-  const badge = courseBadges[row.course.id];
+  const badge = courseBadges[baseSlug(row.course.id)];
   if (badge) return { kind: "badge" as const, badge };
   const logo = row.category.data.certificationBody ? certificationLogos[row.category.data.certificationBody] : undefined;
   return logo ? { kind: "logo" as const, logo } : undefined;
@@ -46,7 +49,7 @@ function badgeFor(row: Row) {
   filterable && topics.length > 1 && (
     <div class="mb-6 flex flex-wrap gap-2" id={`${id}-filters`}>
       <button type="button" data-filter-value="all" class="schedule-filter-btn cursor-pointer rounded-[var(--radius-pill)] border border-lime bg-lime px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-ink transition-colors">
-        All disciplines
+        {t("schedule.allDisciplines")}
       </button>
       {topics.map((topic) => (
         <button
@@ -98,7 +101,7 @@ function badgeFor(row: Row) {
                       : "rounded-[var(--radius-control)] bg-ink px-4 py-2 text-center text-[length:var(--text-small)] font-semibold text-surface transition-colors hover:bg-neutral-800"
                   }
                 >
-                  {row.session.data.status === "sold-out" ? "Join waitlist →" : "Book now →"}
+                  {row.session.data.status === "sold-out" ? `${t("schedule.joinWaitlist")} →` : `${t("schedule.bookNow")} →`}
                 </a>
               </div>
             </div>
@@ -110,11 +113,11 @@ function badgeFor(row: Row) {
         <table class="w-full text-left text-[length:var(--text-small)]">
           <thead>
             <tr class="border-b border-neutral-200 bg-ink text-surface">
-              <th class="px-4 py-3 font-medium sm:px-5">Course</th>
-              <th class="px-4 py-3 font-medium sm:px-5">Date</th>
-              <th class="px-4 py-3 font-medium sm:px-5">Location</th>
-              <th class="px-4 py-3 font-medium sm:px-5">Format</th>
-              <th class="px-4 py-3 font-medium sm:px-5">Price</th>
+              <th class="px-4 py-3 font-medium sm:px-5">{t("schedule.course")}</th>
+              <th class="px-4 py-3 font-medium sm:px-5">{t("schedule.date")}</th>
+              <th class="px-4 py-3 font-medium sm:px-5">{t("schedule.location")}</th>
+              <th class="px-4 py-3 font-medium sm:px-5">{t("schedule.format")}</th>
+              <th class="px-4 py-3 font-medium sm:px-5">{t("schedule.price")}</th>
               <th class="px-4 py-3 sm:px-5" />
             </tr>
           </thead>
@@ -151,7 +154,7 @@ function badgeFor(row: Row) {
                           : "whitespace-nowrap font-semibold text-ink hover:underline"
                       }
                     >
-                      {row.session.data.status === "sold-out" ? "Join waitlist →" : "Book now →"}
+                      {row.session.data.status === "sold-out" ? `${t("schedule.joinWaitlist")} →` : `${t("schedule.bookNow")} →`}
                     </a>
                   </td>
                 </tr>
@@ -162,7 +165,7 @@ function badgeFor(row: Row) {
       </div>
       {filterable && (
         <p class="mt-6 hidden text-[length:var(--text-small)] text-neutral-500" id={`${id}-empty`}>
-          No sessions match this filter right now.
+          {t("schedule.noSessionsFilter")}
         </p>
       )}
     </Fragment>
@@ -173,7 +176,7 @@ function badgeFor(row: Row) {
         href="/contact"
         class="mt-4 inline-flex items-center justify-center gap-1.5 rounded-[var(--radius-control)] bg-ink px-4 py-2.5 text-sm font-semibold text-surface transition-colors hover:bg-neutral-800"
       >
-        Get in touch <span aria-hidden="true">→</span>
+        {t("schedule.getInTouch")} <span aria-hidden="true">→</span>
       </a>
     </div>
   )

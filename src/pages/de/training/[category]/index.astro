@@ -1,0 +1,42 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import CategoryPageContent from "@/components/pages/CategoryPageContent.astro";
+import { localeOfId, baseSlug, localizedCourse } from "@/lib/i18n";
+import { getTrainersForSessions } from "@/lib/trainers";
+
+export async function getStaticPaths() {
+  const categories = await getCollection("training-categories", (c) => localeOfId(c.id) === "de");
+  return categories.map((category) => ({
+    params: { category: baseSlug(category.id) },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+const allCourses = await getCollection("training-courses", (c) => localeOfId(c.id) === "de");
+const courses = allCourses
+  .filter((c) => c.data.category.id === category.id)
+  .sort((a, b) => (a.data.sortOrder ?? 99) - (b.data.sortOrder ?? 99));
+
+const allSchedules = await getCollection("training-schedules");
+const courseSlugs = new Set(courses.map((c) => baseSlug(c.id)));
+const upcoming = allSchedules
+  .filter((s) => courseSlugs.has(baseSlug(s.data.course.id)) && s.data.date && s.data.date >= new Date())
+  .sort((a, b) => a.data.date!.valueOf() - b.data.date!.valueOf());
+const upcomingWithCourse = await Promise.all(
+  upcoming.map(async (session) => ({ session, course: await localizedCourse(session.data.course, "de"), category }))
+);
+
+const categoryTrainers = await getTrainersForSessions(allSchedules.filter((s) => courseSlugs.has(baseSlug(s.data.course.id))));
+
+const slug = baseSlug(category.id);
+---
+
+<BaseLayout
+  title={category.data.name}
+  description={category.data.tagline}
+  translations={{ en: `/training/${slug}`, de: `/de/training/${slug}` }}
+>
+  <CategoryPageContent category={category} courses={courses} upcomingWithCourse={upcomingWithCourse} categoryTrainers={categoryTrainers} />
+</BaseLayout>

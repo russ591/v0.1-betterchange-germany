@@ -1,4 +1,6 @@
 ---
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+
 interface Crumb {
   label: string;
   href?: string;
@@ -9,8 +11,11 @@ interface Props {
 }
 
 const { items } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const homeHref = locale === "de" ? "/de/" : "/";
 
-const trail = [{ label: "Home", href: "/" }, ...items];
+const trail = [{ label: t("breadcrumb.home"), href: homeHref }, ...items];
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",

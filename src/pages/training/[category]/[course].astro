@@ -1,23 +1,13 @@
 ---
 import { getCollection, getEntry } from "astro:content";
-import { Image } from "astro:assets";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Section from "@/components/Section.astro";
-import Badge from "@/components/Badge.astro";
-import SoldOutBadge from "@/components/SoldOutBadge.astro";
-import CourseCard from "@/components/CourseCard.astro";
-import CTABanner from "@/components/CTABanner.astro";
-import Breadcrumbs from "@/components/Breadcrumbs.astro";
-import { certificationLogos } from "@/data/certifications";
-import { courseBadges } from "@/data/courseBadges";
-import { formatDetails, formatIcons } from "@/data/formatDetails";
-import { formatSessionDate } from "@/lib/dates";
-import { registrationHref, registrationLinkAttrs } from "@/lib/registrationLink";
-import TrainerChip from "@/components/TrainerChip.astro";
+import CoursePageContent from "@/components/pages/CoursePageContent.astro";
+import { toPathSegment } from "@/lib/urlSlug";
+import { localeOfId, baseSlug } from "@/lib/i18n";
 import { getTrainersForSessions } from "@/lib/trainers";
 
 export async function getStaticPaths() {
-  const courses = await getCollection("training-courses");
+  const courses = await getCollection("training-courses", (c) => localeOfId(c.id) === "en");
   return courses.map((course) => ({
     params: { category: course.data.category.id, course: course.data.urlSlug ?? course.id },
     props: { course },
@@ -26,18 +16,13 @@ export async function getStaticPaths() {
 
 const { course } = Astro.props;
 const category = await getEntry(course.data.category);
-const allCourses = await getCollection("training-courses");
-const relatedCourses = allCourses.filter(
-  (c) => c.data.category.id === category.id && c.id !== course.id
-);
+const allCourses = await getCollection("training-courses", (c) => localeOfId(c.id) === "en");
+const relatedCourses = allCourses.filter((c) => c.data.category.id === category.id && c.id !== course.id);
 
 const allSchedules = await getCollection("training-schedules");
 const upcoming = allSchedules
-  .filter((s) => s.data.course.id === course.id)
+  .filter((s) => baseSlug(s.data.course.id) === baseSlug(course.id))
   .sort((a, b) => (a.data.date?.valueOf() ?? 0) - (b.data.date?.valueOf() ?? 0));
-
-const logo = category.data.certificationBody ? certificationLogos[category.data.certificationBody] : undefined;
-const badge = courseBadges[course.id];
 const upcomingWithTrainers = await Promise.all(
   upcoming.map(async (session) => ({ session, trainers: await getTrainersForSessions([session]) }))
 );
@@ -66,294 +51,30 @@ const courseSchema = {
     },
   })),
 };
+
+const categorySlug = baseSlug(category.id);
+const courseSlug = toPathSegment(course.data.urlSlug ?? baseSlug(course.id));
+
+// The German counterpart never sets its own urlSlug (see the course
+// generator script), so it always falls back to the shared base slug --
+// no lookup needed to build the /de path for the switcher/hreflang.
+const deCourseSlug = toPathSegment(baseSlug(course.id));
 ---
 
 <BaseLayout
   title={course.data.metaTitle ?? course.data.name}
   description={course.data.metaDescription ?? course.data.summary}
   jsonLd={courseSchema}
+  translations={{
+    en: `/training/${categorySlug}/${courseSlug}`,
+    de: `/de/training/${categorySlug}/${deCourseSlug}`,
+  }}
 >
-  <Breadcrumbs
-    items={[
-      { label: "Training", href: "/training" },
-      { label: category.data.name, href: `/training/${category.id}` },
-      { label: course.data.name },
-    ]}
-  />
-
-  <Section class="bg-mist-light">
-    <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-start">
-      <div class="min-w-0">
-        <p class="eyebrow">{category.data.name} &middot; {course.data.code}</p>
-        <h1 class="mt-4 text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
-          {course.data.name}
-        </h1>
-        <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">{course.data.summary}</p>
-
-        <dl class="mt-8 flex flex-wrap gap-x-10 gap-y-4 text-[length:var(--text-small)]">
-          {
-            course.data.level && (
-              <div>
-                <dt class="text-neutral-500">Level</dt>
-                <dd class="font-semibold">{course.data.level}</dd>
-              </div>
-            )
-          }
-          <div>
-            <dt class="text-neutral-500">Duration</dt>
-            <dd class="font-semibold">{course.data.durationText}</dd>
-          </div>
-          {
-            course.data.certification && (
-              <div>
-                <dt class="text-neutral-500">Certification</dt>
-                <dd class="font-semibold">{course.data.certification}</dd>
-              </div>
-            )
-          }
-          {
-            course.data.languages.length > 0 && (
-              <div>
-                <dt class="text-neutral-500">Languages</dt>
-                <dd class="font-semibold">{course.data.languages.join(", ")}</dd>
-              </div>
-            )
-          }
-        </dl>
-
-        {
-          category.data.certificationBody && (
-            <div class="mt-7 inline-flex items-center gap-3 rounded-[var(--radius-pill)] border border-neutral-200 bg-surface px-4 py-2.5">
-              {logo ? (
-                <img src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} class="h-4 w-auto object-contain" />
-              ) : (
-                <span class="text-[length:var(--text-caption)] font-semibold text-neutral-500">
-                  {category.data.certificationBody}
-                </span>
-              )}
-              {badge && (
-                <>
-                  <span aria-hidden="true" class="h-5 w-px bg-neutral-200" />
-                  <Image
-                    src={badge}
-                    alt={`${course.data.certification ?? course.data.code} certification`}
-                    width={56}
-                    height={56}
-                    class="h-7 w-7 rounded-full"
-                  />
-                </>
-              )}
-              <span class="text-[length:var(--text-caption)] text-neutral-500">
-                Certified by <span class="font-semibold text-ink">{category.data.certificationBody}</span>
-              </span>
-            </div>
-          )
-        }
-      </div>
-
-      <div class="min-w-0 lg:sticky lg:top-24">
-        <div class="overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card">
-          <div class="flex items-center gap-3.5 border-b border-neutral-200 bg-mist-light px-5 py-4">
-            {
-              badge ? (
-                <Image
-                  src={badge}
-                  alt=""
-                  width={64}
-                  height={64}
-                  class="h-11 w-11 shrink-0 rounded-full"
-                />
-              ) : (
-                logo && (
-                  <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-2">
-                    <img src={logo.src} alt="" class="h-full w-full object-contain" />
-                  </span>
-                )
-              )
-            }
-            <div>
-              <p class="font-semibold">Ways to join</p>
-              <p class="text-[length:var(--text-caption)] text-neutral-500">Pick a format below</p>
-            </div>
-          </div>
-
-          {
-            upcoming.length === 0 ? (
-              <div class="p-6 text-center">
-                <p class="text-[length:var(--text-small)] text-neutral-600">
-                  No sessions are currently scheduled for this course.
-                </p>
-                <a
-                  href="/contact"
-                  class="mt-4 inline-flex items-center justify-center gap-1.5 rounded-[var(--radius-control)] bg-ink px-4 py-2.5 text-sm font-semibold text-surface transition-colors hover:bg-neutral-800"
-                >
-                  Get in touch <span aria-hidden="true">→</span>
-                </a>
-              </div>
-            ) : (
-              upcomingWithTrainers.map(({ session, trainers }) => {
-                const isSelfPaced = session.data.format === "self-paced";
-                return (
-                  <a
-                    href={registrationHref(session)}
-                    {...registrationLinkAttrs(session)}
-                    class={`block border-b border-neutral-100 px-5 py-4 transition-colors last:border-0 ${
-                      isSelfPaced ? "bg-lime/10 hover:bg-lime/20" : "hover:bg-mist-light"
-                    }`}
-                  >
-                    <div class="flex items-center justify-between gap-3">
-                      <span class="font-bold">
-                        {isSelfPaced ? "Self-paced" : formatSessionDate(session, course)}
-                      </span>
-                      {session.data.status === "sold-out" ? (
-                        <SoldOutBadge />
-                      ) : isSelfPaced ? (
-                        <span class="inline-flex items-center rounded-[var(--radius-pill)] bg-lime/25 px-3 py-1 text-[length:var(--text-caption)] font-semibold text-ink">
-                          Always available
-                        </span>
-                      ) : (
-                        <Badge format={session.data.format} />
-                      )}
-                    </div>
-                    <p class="mt-1 text-[length:var(--text-caption)] text-neutral-500">{session.data.location}</p>
-                    {trainers.length > 0 && (
-                      <div class="mt-2 flex flex-wrap gap-1.5">
-                        {trainers.map((trainer) => (
-                          <TrainerChip trainer={trainer} density="plain" linkable={false} showLabel />
-                        ))}
-                      </div>
-                    )}
-                    <div class="mt-3 flex items-center justify-between gap-3">
-                      <span class="font-bold">
-                        {session.data.price}
-                        <span class="ml-1 text-[length:var(--text-caption)] font-normal text-neutral-500">
-                          excl. VAT
-                        </span>
-                      </span>
-                      <span class="text-[length:var(--text-small)] font-semibold text-ink">
-                        {session.data.status === "sold-out" ? "Join waitlist" : isSelfPaced ? "Start now" : "Register"}{" "}
-                        <span aria-hidden="true">→</span>
-                      </span>
-                    </div>
-                    {session.data.offer && (
-                      <p class="mt-2 text-[length:var(--text-caption)] text-neutral-500">{session.data.offer}</p>
-                    )}
-                  </a>
-                );
-              })
-            )
-          }
-
-          <div class="px-5 py-4 text-[length:var(--text-caption)] leading-relaxed text-neutral-500">
-            <p>
-              No upfront payment needed. A VAT invoice (Rechnung) will be sent via email and you can pay by bank
-              transfer or with card.
-            </p>
-            <a href="/training/full-schedule" class="mt-2 inline-block font-semibold text-ink hover:underline">
-              See full training schedule →
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </Section>
-
-  <Section>
-    <div class="grid gap-10 sm:grid-cols-2">
-      <div>
-        <p class="eyebrow mb-5">Who is this course for?</p>
-        <ul class="space-y-3 text-[length:var(--text-body)] text-neutral-600">
-          {
-            course.data.whoIsThisFor.map((item) => (
-              <li class="flex gap-2.5">
-                <span aria-hidden="true" class="blob-dot mt-2.5 h-1.5 w-1.5 shrink-0 bg-lime" />
-                <span>{item}</span>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-      <div>
-        <p class="eyebrow mb-5">What you'll learn</p>
-        <ul class="space-y-3 text-[length:var(--text-body)] text-neutral-600">
-          {
-            course.data.whatYoullLearn.map((item) => (
-              <li class="flex gap-2.5">
-                <span aria-hidden="true" class="blob-dot mt-2.5 h-1.5 w-1.5 shrink-0 bg-lime" />
-                <span>{item}</span>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </div>
-  </Section>
-
-  <Section
-    eyebrow="How to take this course"
-    heading={course.data.formats.length > 1 ? "Choose the format that fits you" : "How this course runs"}
-    class="bg-mist-light"
-  >
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        course.data.formats.map((format) => {
-          const details = formatDetails[format];
-          return (
-            <div class="flex flex-col gap-5 rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-7 shadow-card">
-              <span
-                aria-hidden="true"
-                class="blob-dot flex h-11 w-11 items-center justify-center bg-lime"
-                set:html={formatIcons[format]}
-              />
-              <div class="flex flex-col gap-2">
-                <h3 class="text-[length:var(--text-h4)]">{details.label}</h3>
-                <p class="text-[length:var(--text-small)] leading-relaxed text-neutral-600">
-                  {details.description}
-                  {course.data.formats.length > 1 && ` ${details.chooseIf}`}
-                </p>
-              </div>
-              <div class="flex flex-col gap-3 border-t border-neutral-100 pt-5">
-                <p class="eyebrow">Included</p>
-                <div class="flex flex-wrap gap-2">
-                  {details.included.map((item) => (
-                    <span class="inline-flex items-center rounded-[var(--radius-pill)] border border-neutral-300 bg-neutral-50 px-3 py-1 text-[length:var(--text-caption)] font-medium text-neutral-700">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          );
-        })
-      }
-    </div>
-
-    {
-      course.data.formats.length > 1 && (
-        <p class="mt-8 text-center text-[length:var(--text-small)] text-neutral-500">
-          Not sure which fits best? <a href="/contact" class="font-semibold text-ink underline">Get in touch</a> and
-          we'll help you decide.
-        </p>
-      )
-    }
-  </Section>
-
-  {
-    relatedCourses.length > 0 && (
-      <Section eyebrow="Related courses" class="border-t border-neutral-200">
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {relatedCourses.map((related) => (
-            <CourseCard course={related} categorySlug={category.id} />
-          ))}
-        </div>
-      </Section>
-    )
-  }
-
-  <CTABanner
-    tone="light"
-    heading={`More courses in ${category.data.name}`}
-    ctaLabel="View discipline"
-    ctaHref={`/training/${category.id}`}
+  <CoursePageContent
+    course={course}
+    category={category}
+    relatedCourses={relatedCourses}
+    upcoming={upcoming}
+    upcomingWithTrainers={upcomingWithTrainers}
   />
 </BaseLayout>

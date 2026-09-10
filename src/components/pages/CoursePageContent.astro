@@ -1,0 +1,323 @@
+---
+// Shared body for /training/[category]/[course] (English) and
+// /de/training/[category]/[course] (German) -- see CategoryPageContent.astro
+// for the same split pattern. Locale is read directly off the current
+// request rather than passed as a prop.
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import Section from "@/components/Section.astro";
+import Badge from "@/components/Badge.astro";
+import SoldOutBadge from "@/components/SoldOutBadge.astro";
+import CourseCard from "@/components/CourseCard.astro";
+import CTABanner from "@/components/CTABanner.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { certificationLogos } from "@/data/certifications";
+import { courseBadges } from "@/data/courseBadges";
+import { formatDetails, formatIcons } from "@/data/formatDetails";
+import { formatSessionDate } from "@/lib/dates";
+import { registrationHref, registrationLinkAttrs } from "@/lib/registrationLink";
+import TrainerChip from "@/components/TrainerChip.astro";
+import { baseSlug } from "@/lib/i18n";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+import type { TrainerEntry } from "@/lib/trainers";
+
+interface Props {
+  course: CollectionEntry<"training-courses">;
+  category: CollectionEntry<"training-categories">;
+  relatedCourses: CollectionEntry<"training-courses">[];
+  upcoming: CollectionEntry<"training-schedules">[];
+  upcomingWithTrainers: { session: CollectionEntry<"training-schedules">; trainers: TrainerEntry[] }[];
+}
+
+const { course, category, relatedCourses, upcoming, upcomingWithTrainers } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const prefix = locale === "de" ? "/de" : "";
+const categorySlug = baseSlug(category.id);
+
+const logo = category.data.certificationBody ? certificationLogos[category.data.certificationBody] : undefined;
+const badge = courseBadges[baseSlug(course.id)];
+---
+
+<Breadcrumbs
+  items={[
+    { label: t("nav.training"), href: `${prefix}/training` },
+    { label: category.data.name, href: `${prefix}/training/${categorySlug}` },
+    { label: course.data.name },
+  ]}
+/>
+
+<Section class="bg-mist-light">
+  <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-start">
+    <div class="min-w-0">
+      <p class="eyebrow">{category.data.name} &middot; {course.data.code}</p>
+      <h1 class="mt-4 text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+        {course.data.name}
+      </h1>
+      <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">{course.data.summary}</p>
+
+      <dl class="mt-8 flex flex-wrap gap-x-10 gap-y-4 text-[length:var(--text-small)]">
+        {
+          course.data.level && (
+            <div>
+              <dt class="text-neutral-500">{t("level")}</dt>
+              <dd class="font-semibold">{course.data.level}</dd>
+            </div>
+          )
+        }
+        <div>
+          <dt class="text-neutral-500">{t("duration")}</dt>
+          <dd class="font-semibold">{course.data.durationText}</dd>
+        </div>
+        {
+          course.data.certification && (
+            <div>
+              <dt class="text-neutral-500">{t("certification")}</dt>
+              <dd class="font-semibold">{course.data.certification}</dd>
+            </div>
+          )
+        }
+        {
+          course.data.languages.length > 0 && (
+            <div>
+              <dt class="text-neutral-500">{t("languages")}</dt>
+              <dd class="font-semibold">{course.data.languages.join(", ")}</dd>
+            </div>
+          )
+        }
+      </dl>
+
+      {
+        category.data.certificationBody && (
+          <div class="mt-7 inline-flex items-center gap-3 rounded-[var(--radius-pill)] border border-neutral-200 bg-surface px-4 py-2.5">
+            {logo ? (
+              <img src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} class="h-4 w-auto object-contain" />
+            ) : (
+              <span class="text-[length:var(--text-caption)] font-semibold text-neutral-500">
+                {category.data.certificationBody}
+              </span>
+            )}
+            {badge && (
+              <>
+                <span aria-hidden="true" class="h-5 w-px bg-neutral-200" />
+                <Image
+                  src={badge}
+                  alt={`${course.data.certification ?? course.data.code} certification`}
+                  width={56}
+                  height={56}
+                  class="h-7 w-7 rounded-full"
+                />
+              </>
+            )}
+            <span class="text-[length:var(--text-caption)] text-neutral-500">
+              {t("certifiedBy")} <span class="font-semibold text-ink">{category.data.certificationBody}</span>
+            </span>
+          </div>
+        )
+      }
+    </div>
+
+    <div class="min-w-0 lg:sticky lg:top-24">
+      <div class="overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card">
+        <div class="flex items-center gap-3.5 border-b border-neutral-200 bg-mist-light px-5 py-4">
+          {
+            badge ? (
+              <Image
+                src={badge}
+                alt=""
+                width={64}
+                height={64}
+                class="h-11 w-11 shrink-0 rounded-full"
+              />
+            ) : (
+              logo && (
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-2">
+                  <img src={logo.src} alt="" class="h-full w-full object-contain" />
+                </span>
+              )
+            )
+          }
+          <div>
+            <p class="font-semibold">{t("schedule.waysToJoin")}</p>
+            <p class="text-[length:var(--text-caption)] text-neutral-500">{t("schedule.pickFormat")}</p>
+          </div>
+        </div>
+
+        {
+          upcoming.length === 0 ? (
+            <div class="p-6 text-center">
+              <p class="text-[length:var(--text-small)] text-neutral-600">{t("schedule.noSessionsForCourse")}</p>
+              <a
+                href={`/contact`}
+                class="mt-4 inline-flex items-center justify-center gap-1.5 rounded-[var(--radius-control)] bg-ink px-4 py-2.5 text-sm font-semibold text-surface transition-colors hover:bg-neutral-800"
+              >
+                {t("schedule.getInTouch")} <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          ) : (
+            upcomingWithTrainers.map(({ session, trainers }) => {
+              const isSelfPaced = session.data.format === "self-paced";
+              return (
+                <a
+                  href={registrationHref(session)}
+                  {...registrationLinkAttrs(session)}
+                  class={`block border-b border-neutral-100 px-5 py-4 transition-colors last:border-0 ${
+                    isSelfPaced ? "bg-lime/10 hover:bg-lime/20" : "hover:bg-mist-light"
+                  }`}
+                >
+                  <div class="flex items-center justify-between gap-3">
+                    <span class="font-bold">
+                      {isSelfPaced ? t("badge.selfPaced") : formatSessionDate(session, course)}
+                    </span>
+                    {session.data.status === "sold-out" ? (
+                      <SoldOutBadge />
+                    ) : isSelfPaced ? (
+                      <span class="inline-flex items-center rounded-[var(--radius-pill)] bg-lime/25 px-3 py-1 text-[length:var(--text-caption)] font-semibold text-ink">
+                        {t("schedule.alwaysAvailable")}
+                      </span>
+                    ) : (
+                      <Badge format={session.data.format} />
+                    )}
+                  </div>
+                  <p class="mt-1 text-[length:var(--text-caption)] text-neutral-500">{session.data.location}</p>
+                  {trainers.length > 0 && (
+                    <div class="mt-2 flex flex-wrap gap-1.5">
+                      {trainers.map((trainer) => (
+                        <TrainerChip trainer={trainer} density="plain" linkable={false} showLabel />
+                      ))}
+                    </div>
+                  )}
+                  <div class="mt-3 flex items-center justify-between gap-3">
+                    <span class="font-bold">
+                      {session.data.price}
+                      <span class="ml-1 text-[length:var(--text-caption)] font-normal text-neutral-500">
+                        {t("schedule.exclVat")}
+                      </span>
+                    </span>
+                    <span class="text-[length:var(--text-small)] font-semibold text-ink">
+                      {session.data.status === "sold-out"
+                        ? t("schedule.joinWaitlist")
+                        : isSelfPaced
+                          ? t("schedule.startNow")
+                          : t("schedule.register")}{" "}
+                      <span aria-hidden="true">→</span>
+                    </span>
+                  </div>
+                  {session.data.offer && (
+                    <p class="mt-2 text-[length:var(--text-caption)] text-neutral-500">{session.data.offer}</p>
+                  )}
+                </a>
+              );
+            })
+          )
+        }
+
+        <div class="px-5 py-4 text-[length:var(--text-caption)] leading-relaxed text-neutral-500">
+          <p>{t("schedule.paymentNote")}</p>
+          <a href={`/training/full-schedule`} class="mt-2 inline-block font-semibold text-ink hover:underline">
+            {t("schedule.seeFullSchedule")} →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<Section>
+  <div class="grid gap-10 sm:grid-cols-2">
+    <div>
+      <p class="eyebrow mb-5">{t("course.whoFor")}</p>
+      <ul class="space-y-3 text-[length:var(--text-body)] text-neutral-600">
+        {
+          course.data.whoIsThisFor.map((item) => (
+            <li class="flex gap-2.5">
+              <span aria-hidden="true" class="blob-dot mt-2.5 h-1.5 w-1.5 shrink-0 bg-lime" />
+              <span>{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow mb-5">{t("course.whatLearn")}</p>
+      <ul class="space-y-3 text-[length:var(--text-body)] text-neutral-600">
+        {
+          course.data.whatYoullLearn.map((item) => (
+            <li class="flex gap-2.5">
+              <span aria-hidden="true" class="blob-dot mt-2.5 h-1.5 w-1.5 shrink-0 bg-lime" />
+              <span>{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</Section>
+
+<Section
+  eyebrow={t("course.howToTake")}
+  heading={course.data.formats.length > 1 ? t("course.chooseFormat") : t("course.howThisRuns")}
+  class="bg-mist-light"
+>
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      course.data.formats.map((format) => {
+        const details = formatDetails[format];
+        return (
+          <div class="flex flex-col gap-5 rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-7 shadow-card">
+            <span
+              aria-hidden="true"
+              class="blob-dot flex h-11 w-11 items-center justify-center bg-lime"
+              set:html={formatIcons[format]}
+            />
+            <div class="flex flex-col gap-2">
+              <h3 class="text-[length:var(--text-h4)]">{details.label}</h3>
+              <p class="text-[length:var(--text-small)] leading-relaxed text-neutral-600">
+                {details.description}
+                {course.data.formats.length > 1 && ` ${details.chooseIf}`}
+              </p>
+            </div>
+            <div class="flex flex-col gap-3 border-t border-neutral-100 pt-5">
+              <p class="eyebrow">{t("course.included")}</p>
+              <div class="flex flex-wrap gap-2">
+                {details.included.map((item) => (
+                  <span class="inline-flex items-center rounded-[var(--radius-pill)] border border-neutral-300 bg-neutral-50 px-3 py-1 text-[length:var(--text-caption)] font-medium text-neutral-700">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+
+  {
+    course.data.formats.length > 1 && (
+      <p class="mt-8 text-center text-[length:var(--text-small)] text-neutral-500">
+        {t("course.notSureFormat")} <a href={`/contact`} class="font-semibold text-ink underline">{t("schedule.getInTouch")}</a>{" "}
+        {t("course.notSureFormatTrailing")}
+      </p>
+    )
+  }
+</Section>
+
+{
+  relatedCourses.length > 0 && (
+    <Section eyebrow={t("course.relatedCourses")} class="border-t border-neutral-200">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {relatedCourses.map((related) => (
+          <CourseCard course={related} categorySlug={categorySlug} />
+        ))}
+      </div>
+    </Section>
+  )
+}
+
+<CTABanner
+  tone="light"
+  heading={`${t("cta.moreCoursesInPrefix")} ${category.data.name}`}
+  ctaLabel={t("cta.viewDiscipline")}
+  ctaHref={`${prefix}/training/${categorySlug}`}
+/>

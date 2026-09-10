@@ -4,13 +4,18 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { toPathSegment } from "@/lib/urlSlug";
+import { localeOfId } from "@/lib/i18n";
 
 // Spec §2 bug 1: only profiles with hasFullProfile: true get a page here —
 // this is the "resolved" behaviour, since the About index only links to
 // profiles in this set (see TeamCard.astro).
 export async function getStaticPaths() {
   const profiles = await getCollection("coach-profiles", ({ data }) => data.hasFullProfile);
-  const courses = await getCollection("training-courses");
+  // The About page itself isn't translated (see the German-language plan
+  // doc's ~30-page scope) -- only ever link out to the English course
+  // pages, not the German placeholder entries the courses collection now
+  // also contains.
+  const courses = await getCollection("training-courses", (c) => localeOfId(c.id) === "en");
   // course codes in Fellows.coursesDelivered don't always match
   // TrainingCourse.code punctuation exactly (e.g. "ICP-ACC" vs "ICPACC")
   const normalize = (s: string) => s.replace(/[^a-z0-9]/gi, "").toUpperCase();

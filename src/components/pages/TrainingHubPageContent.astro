@@ -1,0 +1,169 @@
+---
+// Shared body for /training (English) and /de/training (German) -- see
+// CategoryPageContent.astro for the same split pattern.
+import type { CollectionEntry } from "astro:content";
+import Section from "@/components/Section.astro";
+import CTABanner from "@/components/CTABanner.astro";
+import Button from "@/components/Button.astro";
+import ScheduleList from "@/components/ScheduleList.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { certificationLogos } from "@/data/certifications";
+import { categoryIcons } from "@/data/categoryIcons";
+import MeetTheTrainers from "@/components/MeetTheTrainers.astro";
+import { baseSlug } from "@/lib/i18n";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+import type { TrainerEntry } from "@/lib/trainers";
+
+interface Props {
+  copy: CollectionEntry<"training-hub-page">["data"];
+  categories: CollectionEntry<"training-categories">[];
+  courses: CollectionEntry<"training-courses">[];
+  certifiedBy: string[];
+  upcomingWithCourse: {
+    session: CollectionEntry<"training-schedules">;
+    course: CollectionEntry<"training-courses">;
+    category: CollectionEntry<"training-categories">;
+  }[];
+  allTrainers: TrainerEntry[];
+}
+
+const { copy, categories, courses, certifiedBy, upcomingWithCourse, allTrainers } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const prefix = locale === "de" ? "/de" : "";
+---
+
+<Breadcrumbs items={[{ label: t("nav.training") }]} />
+
+<Section class="bg-mist-light">
+  <p class="eyebrow">{copy.heroEyebrow}</p>
+  <h1 class="mt-4 text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">{copy.heroHeading}</h1>
+  <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">{copy.heroBody}</p>
+  <p class="eyebrow mt-8">{t("certifiedBy")}</p>
+  <div class="mt-3 flex flex-wrap items-center gap-x-8 gap-y-4">
+    {
+      certifiedBy
+        .filter((cert) => cert !== "Scaled Agile")
+        .map((cert) => {
+          const logo = certificationLogos[cert];
+          return logo ? (
+            <img src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} class="h-7 w-auto object-contain" />
+          ) : (
+            <span class="text-[length:var(--text-small)] font-semibold text-neutral-500">{t("certifiedBy")} {cert}</span>
+          );
+        })
+    }
+  </div>
+</Section>
+
+<Section eyebrow={copy.disciplinesEyebrow} heading={copy.disciplinesHeading}>
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      categories.map((category) => {
+        const slug = baseSlug(category.id);
+        const categoryCourses = courses.filter((c) => c.data.category.id === category.id);
+        return (
+          <a
+            href={`${prefix}/training/${slug}`}
+            class="flex flex-col rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6 shadow-card transition-shadow hover:shadow-card-hover"
+          >
+            {categoryIcons[slug] && (
+              <span aria-hidden="true" class="blob-dot flex h-11 w-11 items-center justify-center bg-lime" set:html={categoryIcons[slug]} />
+            )}
+            <h3 class="mt-4 text-[length:var(--text-h4)]">{category.data.name}</h3>
+            <p class="mt-2 text-[length:var(--text-small)] text-neutral-600">{category.data.tagline}</p>
+            <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold">
+              {categoryCourses.length > 0
+                ? `${categoryCourses.length} ${categoryCourses.length === 1 ? t("training.courseSingular") : t("training.coursePlural")}`
+                : t("cta.viewDiscipline")}{" "}
+              <span aria-hidden="true">→</span>
+            </span>
+          </a>
+        );
+      })
+    }
+  </div>
+</Section>
+
+<Section eyebrow={copy.upcomingEyebrow} heading={copy.upcomingHeading} class="bg-mist-light">
+  <ScheduleList rows={upcomingWithCourse} id="hub-schedule" filterable emptyMessage={t("schedule.noSessions")} />
+  <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
+    <p class="text-[length:var(--text-small)] text-neutral-600">
+      {t("schedule.preferInHouse")} <a href={`/contact`} class="font-semibold text-ink underline">{t("schedule.letUsKnow")}</a>.
+    </p>
+    <a href={`/training/full-schedule`} class="rounded-[var(--radius-control)] border border-ink px-4 py-2.5 text-sm font-semibold text-ink">
+      {t("schedule.seeFullSchedule")} &rarr;
+    </a>
+  </div>
+</Section>
+
+<Section eyebrow={copy.formatsEyebrow} heading={copy.formatsHeading}>
+  <div class="grid gap-6 sm:grid-cols-3">
+    {
+      copy.formats.map((format) => (
+        <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6">
+          <h3 class="text-[length:var(--text-h4)]">{format.name}</h3>
+          <p class="mt-2 text-[length:var(--text-small)] text-neutral-600">{format.description}</p>
+        </div>
+      ))
+    }
+  </div>
+</Section>
+
+<MeetTheTrainers trainers={allTrainers} class="bg-mist-light" />
+
+<Section tone="dark" eyebrow={copy.inHouseEyebrow}>
+  <div class="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <h2 class="text-[length:var(--text-h3)]">{copy.inHouseHeading}</h2>
+      <p class="mt-4 max-w-2xl text-[length:var(--text-body)] text-neutral-300">{copy.inHouseBody}</p>
+    </div>
+    <Button href={`/contact`} variant="primary" class="shrink-0">{t("cta.talkToUs")}</Button>
+  </div>
+</Section>
+
+<Section eyebrow={copy.feedbackEyebrow} heading={copy.feedbackHeading} class="bg-mist-light">
+  <p class="max-w-2xl text-[length:var(--text-body)] text-neutral-600">{copy.feedbackIntro}</p>
+
+  <div class="mt-8 grid gap-6 sm:grid-cols-3">
+    {
+      copy.testimonials.map((testimonial) => (
+        <div class="flex flex-col rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6 shadow-card">
+          <div class="flex gap-0.5 text-lime" aria-hidden="true">
+            {Array.from({ length: 5 }).map(() => (
+              <svg viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+                <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z" />
+              </svg>
+            ))}
+          </div>
+          <p class="mt-4 flex-1 text-[length:var(--text-body)] text-ink">"{testimonial.quote}"</p>
+          <div class="mt-6 border-t border-neutral-100 pt-4">
+            <p class="text-[length:var(--text-small)] font-semibold">
+              {testimonial.role}, {testimonial.location}
+            </p>
+            <p class="mt-1 text-[length:var(--text-caption)] text-neutral-500">
+              {testimonial.course} · {testimonial.format}
+            </p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-[var(--radius-card)] border border-neutral-200 bg-surface px-6 py-4">
+    <div class="flex items-center gap-3">
+      <span class="text-[length:var(--text-h3)] font-bold">{copy.ratingValue}</span>
+      <span class="text-[length:var(--text-small)] text-neutral-600">{copy.ratingLabel}</span>
+    </div>
+    <a
+      href="https://www.trustpilot.com/review/betterchange-consulting.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-sm font-semibold hover:underline"
+    >
+      {t("cta.readAllReviews")} →
+    </a>
+  </div>
+</Section>
+
+<CTABanner tone="light" heading={t("cta.closingHeading")} body={t("cta.closingBody")} ctaLabel={t("nav.contactCta")} ctaHref={`/contact`} />

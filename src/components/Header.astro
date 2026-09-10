@@ -3,38 +3,64 @@ import { getCollection } from "astro:content";
 import Logo from "@/components/Logo.astro";
 import TrainingMegaMenuDesktop from "@/components/TrainingMegaMenuDesktop.astro";
 import TrainingMegaMenuMobile from "@/components/TrainingMegaMenuMobile.astro";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { localeOfId } from "@/lib/i18n";
 
+interface Props {
+  /** Same shape as BaseLayout's own prop -- passed straight through so the
+   * language switcher can link to the exact equivalent page rather than
+   * just the other language's homepage. Absent on pages with no German
+   * counterpart, where the switcher falls back to each locale's home. */
+  translations?: Partial<Record<"en" | "de", string>>;
+}
+
+const { translations } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const prefix = locale === "de" ? "/de" : "";
+
+// Only Services and Training have German pages so far (see the
+// German-language plan doc's ~30-page scope) -- About/Insights/Contact
+// stay English-only regardless of which language the visitor is browsing
+// in, so their links never get the /de prefix.
 const navLinks = [
-  { href: "/services", label: "Services" },
-  { href: "/training", label: "Training", mega: true },
-  { href: "/about", label: "About" },
-  { href: "/insights", label: "Insights" },
-  { href: "/contact", label: "Contact" },
+  { href: "/services", label: t("nav.services"), translated: true },
+  { href: "/training", label: t("nav.training"), mega: true, translated: true },
+  { href: "/about", label: t("nav.about"), translated: false },
+  { href: "/insights", label: t("nav.insights"), translated: false },
+  { href: "/contact", label: t("nav.contact"), translated: false },
 ];
 
 const currentPath = Astro.url.pathname;
 
-const categories = (await getCollection("training-categories")).sort((a, b) => a.data.order - b.data.order);
-const allCourses = await getCollection("training-courses");
+const categories = (await getCollection("training-categories", (c) => localeOfId(c.id) === locale)).sort(
+  (a, b) => a.data.order - b.data.order
+);
+const allCourses = await getCollection("training-courses", (c) => localeOfId(c.id) === locale);
 const categoriesWithCourses = categories.map((category) => ({
   category,
   courses: allCourses
     .filter((c) => c.data.category.id === category.id)
     .sort((a, b) => (a.data.sortOrder ?? 99) - (b.data.sortOrder ?? 99)),
 }));
+
+// Falls back to each locale's homepage when the current page has no
+// translation counterpart (translations prop omitted entirely).
+const enHref = translations?.en ?? "/";
+const deHref = translations?.de ?? "/de/";
 ---
 
 <header class="sticky top-0 z-50 border-b border-neutral-200 bg-surface/90 backdrop-blur">
-  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-    <a href="/">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
+    <a href={prefix || "/"}>
       <Logo size="medium" />
     </a>
 
     <nav aria-label="Primary" class="hidden items-center gap-8 md:flex">
       {
         navLinks.map((link) => {
-          const isActive =
-            link.href === "/" ? currentPath === "/" : currentPath.startsWith(link.href);
+          const href = link.translated ? `${prefix}${link.href}` : link.href;
+          const isActive = href === "/" ? currentPath === "/" : currentPath.startsWith(href);
           const linkClass = `flex items-center gap-1 border-b-2 pb-1 text-sm font-medium transition-colors hover:text-ink ${
             isActive ? "border-lime text-ink" : "border-transparent text-neutral-600"
           }`;
@@ -42,7 +68,7 @@ const categoriesWithCourses = categories.map((category) => ({
           if (link.mega) {
             return (
               <div class="group relative">
-                <a href={link.href} class={linkClass} aria-current={isActive ? "page" : undefined}>
+                <a href={href} class={linkClass} aria-current={isActive ? "page" : undefined}>
                   {link.label}
                   <svg
                     viewBox="0 0 24 24"
@@ -60,7 +86,7 @@ const categoriesWithCourses = categories.map((category) => ({
           }
 
           return (
-            <a href={link.href} class={linkClass} aria-current={isActive ? "page" : undefined}>
+            <a href={href} class={linkClass} aria-current={isActive ? "page" : undefined}>
               {link.label}
             </a>
           );
@@ -68,36 +94,77 @@ const categoriesWithCourses = categories.map((category) => ({
       }
     </nav>
 
-    <a
-      href="/contact"
-      class="hidden items-center gap-1.5 rounded-[var(--radius-pill)] bg-lime px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-lime/85 sm:inline-flex"
-    >
-      Contact us
-      <span aria-hidden="true">→</span>
-    </a>
+    <div class="flex items-center gap-3">
+      <div
+        class="hidden items-center gap-0.5 rounded-[var(--radius-pill)] border border-neutral-300 p-0.5 text-xs font-semibold sm:flex"
+        aria-label={t("nav.langSwitcherLabel")}
+      >
+        <a
+          href={enHref}
+          aria-current={locale === "en" ? "true" : undefined}
+          class={`rounded-[var(--radius-pill)] px-2.5 py-1 transition-colors ${
+            locale === "en" ? "bg-ink text-surface" : "text-neutral-600 hover:text-ink"
+          }`}
+        >
+          EN
+        </a>
+        <a
+          href={deHref}
+          aria-current={locale === "de" ? "true" : undefined}
+          class={`rounded-[var(--radius-pill)] px-2.5 py-1 transition-colors ${
+            locale === "de" ? "bg-ink text-surface" : "text-neutral-600 hover:text-ink"
+          }`}
+        >
+          DE
+        </a>
+      </div>
 
-    <details class="md:hidden">
-      <summary
-        class="cursor-pointer list-none rounded-[var(--radius-control)] border border-neutral-300 px-3 py-2 text-sm font-medium transition-colors hover:bg-mist-light"
+      <a
+        href={`/contact`}
+        class="hidden items-center gap-1.5 rounded-[var(--radius-pill)] bg-lime px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-lime/85 sm:inline-flex"
       >
-        Menu
-      </summary>
-      <nav
-        aria-label="Primary mobile"
-        class="absolute inset-x-0 top-full flex flex-col gap-1 border-b border-neutral-200 bg-surface px-6 py-4 shadow-card"
-      >
-        {
-          navLinks.map((link) =>
-            link.mega ? (
-              <TrainingMegaMenuMobile categoriesWithCourses={categoriesWithCourses} />
-            ) : (
-              <a href={link.href} class="py-2 text-sm font-medium text-neutral-700">
-                {link.label}
-              </a>
-            )
-          )
-        }
-      </nav>
-    </details>
+        {t("nav.contactCta")}
+        <span aria-hidden="true">→</span>
+      </a>
+
+      <details class="md:hidden">
+        <summary
+          class="cursor-pointer list-none rounded-[var(--radius-control)] border border-neutral-300 px-3 py-2 text-sm font-medium transition-colors hover:bg-mist-light"
+        >
+          {t("nav.menu")}
+        </summary>
+        <nav
+          aria-label="Primary mobile"
+          class="absolute inset-x-0 top-full flex flex-col gap-1 border-b border-neutral-200 bg-surface px-6 py-4 shadow-card"
+        >
+          {
+            navLinks.map((link) => {
+              const href = link.translated ? `${prefix}${link.href}` : link.href;
+              return link.mega ? (
+                <TrainingMegaMenuMobile categoriesWithCourses={categoriesWithCourses} />
+              ) : (
+                <a href={href} class="py-2 text-sm font-medium text-neutral-700">
+                  {link.label}
+                </a>
+              );
+            })
+          }
+          <div class="mt-2 flex items-center gap-0.5 self-start rounded-[var(--radius-pill)] border border-neutral-300 p-0.5 text-xs font-semibold">
+            <a
+              href={enHref}
+              class={`rounded-[var(--radius-pill)] px-2.5 py-1 ${locale === "en" ? "bg-ink text-surface" : "text-neutral-600"}`}
+            >
+              EN
+            </a>
+            <a
+              href={deHref}
+              class={`rounded-[var(--radius-pill)] px-2.5 py-1 ${locale === "de" ? "bg-ink text-surface" : "text-neutral-600"}`}
+            >
+              DE
+            </a>
+          </div>
+        </nav>
+      </details>
+    </div>
   </div>
 </header>

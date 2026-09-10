@@ -1,0 +1,46 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import HomePageContent from "@/components/pages/HomePageContent.astro";
+import { certificationLogos } from "@/data/certifications";
+import { localeOfId, localizedCourse } from "@/lib/i18n";
+
+const copy = (await getEntry("home-page", "de"))!.data;
+
+const categories = await getCollection("training-categories", (c) => localeOfId(c.id) === "de");
+const certifiedBy = [
+  ...new Set(categories.map((c) => c.data.certificationBody).filter((c): c is string => Boolean(c))),
+];
+const categoryLogoById = new Map(
+  categories.map((c) => [c.id, c.data.certificationBody ? certificationLogos[c.data.certificationBody] : undefined])
+);
+
+const schedules = await getCollection("training-schedules");
+const upcoming = schedules
+  .filter((s) => s.data.date && s.data.date >= new Date())
+  .sort((a, b) => a.data.date!.valueOf() - b.data.date!.valueOf())
+  .slice(0, 5);
+const upcomingCourses = await Promise.all(
+  upcoming.map(async (session) => {
+    const course = await localizedCourse(session.data.course, "de");
+    return { session, course, logo: categoryLogoById.get(course.data.category.id) };
+  })
+);
+
+const team = (await getCollection("coach-profiles"))
+  .sort((a, b) => a.data.displayOrder - b.data.displayOrder || a.data.name.localeCompare(b.data.name))
+  .slice(0, 7);
+
+const allArticles = await getCollection("insights-articles");
+const featuredArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
+---
+
+<BaseLayout title="[DE] Home" description={copy.metaDescription} translations={{ en: "/", de: "/de/" }}>
+  <HomePageContent
+    copy={copy}
+    certifiedBy={certifiedBy}
+    upcomingCourses={upcomingCourses}
+    team={team}
+    featuredArticles={featuredArticles}
+  />
+</BaseLayout>

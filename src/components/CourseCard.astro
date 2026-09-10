@@ -2,18 +2,23 @@
 import type { CollectionEntry } from "astro:content";
 import Badge from "@/components/Badge.astro";
 import { toPathSegment } from "@/lib/urlSlug";
+import { baseSlug } from "@/lib/i18n";
+import { resolveLocale } from "@/i18n/utils";
 
 // Consolidates the live site's four course-card variants (discipline list,
 // schedule table row, "related courses" card, profile-page course card)
 // into one card sharing the TrainingCourse schema (spec §4).
 interface Props {
   course: CollectionEntry<"training-courses">;
+  /** Language-neutral or locale-prefixed category slug -- either works,
+   * baseSlug() strips a "de/" prefix if present. */
   categorySlug: string;
   variant?: "card" | "row";
 }
 
 const { course, categorySlug, variant = "card" } = Astro.props;
-const href = `/training/${categorySlug}/${toPathSegment(course.data.urlSlug ?? course.id)}`;
+const prefix = resolveLocale(Astro.currentLocale) === "de" ? "/de" : "";
+const href = `${prefix}/training/${baseSlug(categorySlug)}/${toPathSegment(course.data.urlSlug ?? baseSlug(course.id))}`;
 ---
 
 {

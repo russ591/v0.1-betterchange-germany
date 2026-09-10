@@ -1,0 +1,46 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import TrainingHubPageContent from "@/components/pages/TrainingHubPageContent.astro";
+import { localeOfId, localizedCourse } from "@/lib/i18n";
+import { getTrainersForSessions } from "@/lib/trainers";
+
+const copy = (await getEntry("training-hub-page", "de"))!.data;
+
+const categories = (await getCollection("training-categories", (c) => localeOfId(c.id) === "de")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+const courses = await getCollection("training-courses", (c) => localeOfId(c.id) === "de");
+
+const certifiedBy = [
+  ...new Set(categories.map((c) => c.data.certificationBody).filter((c): c is string => Boolean(c))),
+];
+
+const schedules = await getCollection("training-schedules");
+const upcoming = schedules
+  .filter((s) => s.data.date && s.data.date >= new Date())
+  .sort((a, b) => a.data.date!.valueOf() - b.data.date!.valueOf());
+const upcomingWithCourse = await Promise.all(
+  upcoming.map(async (session) => {
+    const course = await localizedCourse(session.data.course, "de");
+    const category = await getEntry(course.data.category);
+    return { session, course, category };
+  })
+);
+
+// Every trainer currently delivering anything, sitewide -- not scoped to
+// "upcoming" like the schedule above, so a self-paced course's trainer
+// (no date at all) still shows up.
+const allTrainers = await getTrainersForSessions(schedules);
+---
+
+<BaseLayout title="[DE] Training" description={copy.metaDescription} translations={{ en: "/training", de: "/de/training" }}>
+  <TrainingHubPageContent
+    copy={copy}
+    categories={categories}
+    courses={courses}
+    certifiedBy={certifiedBy}
+    upcomingWithCourse={upcomingWithCourse}
+    allTrainers={allTrainers}
+  />
+</BaseLayout>

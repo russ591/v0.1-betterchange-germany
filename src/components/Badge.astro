@@ -1,5 +1,6 @@
 ---
 import { formatIcons } from "@/data/formatDetails";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
 
 interface Props {
   format: "in-person" | "live-online" | "self-paced";
@@ -7,11 +8,12 @@ interface Props {
 }
 
 const { format, class: className = "" } = Astro.props;
+const t = useTranslations(resolveLocale(Astro.currentLocale));
 
 const labels: Record<Props["format"], string> = {
-  "in-person": "In-person",
-  "live-online": "Live online",
-  "self-paced": "Self-paced",
+  "in-person": t("badge.inPerson"),
+  "live-online": t("badge.liveOnline"),
+  "self-paced": t("badge.selfPaced"),
 };
 
 // In-person gets the lime tint -- lime is already the site's interactive/

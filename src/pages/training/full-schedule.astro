@@ -10,8 +10,13 @@ import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
 import { formatSessionDate } from "@/lib/dates";
 import { registrationHref, registrationLinkAttrs } from "@/lib/registrationLink";
+import { localeOfId } from "@/lib/i18n";
 
-const categories = await getCollection("training-categories");
+// This page isn't translated (see the German-language plan doc's ~30-page
+// scope) -- filter out the German placeholder categories the collection
+// now also contains, or the topic filter below would show 12 entries
+// instead of 6.
+const categories = await getCollection("training-categories", (c) => localeOfId(c.id) === "en");
 const schedules = await getCollection("training-schedules");
 
 const now = new Date();

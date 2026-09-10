@@ -151,6 +151,82 @@ const legalPage = defineCollection({
   }),
 });
 
+// German-language scaffold (phase A): page-level prose for the three
+// hand-built marketing pages (home, services, training hub) that isn't
+// otherwise sourced from a content collection. One entry per language --
+// "en.md" and "de.md" -- rather than the locale-subfolder convention used
+// by training-categories/training-courses, since each of these collections
+// only ever holds a single page's two language variants, not a list.
+const homePage = defineCollection({
+  loader: glob({ pattern: "*.md", base: "./src/content/home-page" }),
+  schema: z.object({
+    metaDescription: z.string(),
+    heroEyebrow: z.string(),
+    heroHeadingLead: z.string(),
+    heroHeadingTrail: z.string(),
+    heroBody: z.string(),
+    stats: z.array(z.object({ label: z.string(), value: z.string(), description: z.string() })),
+    workedWithLabel: z.string(),
+    servicesEyebrow: z.string(),
+    servicesHeading: z.string(),
+    upcomingEyebrow: z.string(),
+    upcomingHeading: z.string(),
+    teamEyebrow: z.string(),
+    teamHeading: z.string(),
+    teamBody: z.string(),
+    quoteEyebrow: z.string(),
+    quoteText: z.string(),
+    quoteCite: z.string(),
+    insightsEyebrow: z.string(),
+    insightsHeading: z.string(),
+  }),
+});
+
+const servicesPage = defineCollection({
+  loader: glob({ pattern: "*.md", base: "./src/content/services-page" }),
+  schema: z.object({
+    metaDescription: z.string(),
+    heroEyebrow: z.string(),
+    heroHeading: z.string(),
+    heroBody: z.string(),
+    servicesEyebrow: z.string(),
+    servicesHeading: z.string(),
+    howItWorksEyebrow: z.string(),
+    howItWorksHeading: z.string(),
+    steps: z.array(z.object({ heading: z.string(), body: z.string() })),
+    insightsEyebrow: z.string(),
+    insightsHeading: z.string(),
+  }),
+});
+
+const trainingHubPage = defineCollection({
+  loader: glob({ pattern: "*.md", base: "./src/content/training-hub-page" }),
+  schema: z.object({
+    metaDescription: z.string(),
+    heroEyebrow: z.string(),
+    heroHeading: z.string(),
+    heroBody: z.string(),
+    disciplinesEyebrow: z.string(),
+    disciplinesHeading: z.string(),
+    upcomingEyebrow: z.string(),
+    upcomingHeading: z.string(),
+    formatsEyebrow: z.string(),
+    formatsHeading: z.string(),
+    formats: z.array(z.object({ name: z.string(), description: z.string() })),
+    inHouseEyebrow: z.string(),
+    inHouseHeading: z.string(),
+    inHouseBody: z.string(),
+    feedbackEyebrow: z.string(),
+    feedbackHeading: z.string(),
+    feedbackIntro: z.string(),
+    testimonials: z.array(
+      z.object({ quote: z.string(), role: z.string(), location: z.string(), course: z.string(), format: z.string() })
+    ),
+    ratingValue: z.string(),
+    ratingLabel: z.string(),
+  }),
+});
+
 export const collections = {
   "training-categories": trainingCategory,
   "training-courses": trainingCourse,
@@ -158,4 +234,7 @@ export const collections = {
   "coach-profiles": coachProfile,
   "insights-articles": insightsArticle,
   "legal-pages": legalPage,
+  "home-page": homePage,
+  "services-page": servicesPage,
+  "training-hub-page": trainingHubPage,
 };
