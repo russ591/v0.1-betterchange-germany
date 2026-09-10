@@ -1,0 +1,58 @@
+---
+import { toPathSegment } from "@/lib/urlSlug";
+import type { TrainerEntry } from "@/lib/trainers";
+
+// Compact avatar+name chip -- used wherever a trainer needs to be
+// mentioned inline rather than as a full TeamCard (the course page's
+// "Delivered by" strip, the registration page's "Your trainer" block).
+// A profile-backed trainer links out the same way TeamCard does (its own
+// page if it has one, otherwise LinkedIn); the rare plain-name fallback
+// (no migrated profile at all) renders as unlinked text with no avatar.
+interface Props {
+  trainer: TrainerEntry;
+}
+
+const { trainer } = Astro.props;
+
+const href =
+  trainer.kind === "profile"
+    ? trainer.profile.data.hasFullProfile
+      ? `/about/${toPathSegment(trainer.profile.data.urlSlug ?? trainer.profile.id)}`
+      : trainer.profile.data.linkedinUrl
+    : undefined;
+const isExternal = trainer.kind === "profile" && !trainer.profile.data.hasFullProfile && Boolean(trainer.profile.data.linkedinUrl);
+const Wrapper = href ? "a" : "span";
+
+const initials =
+  trainer.kind === "profile"
+    ? (() => {
+        const parts = trainer.profile.data.name.split(" ");
+        return parts.length > 1 ? parts[0][0] + parts[parts.length - 1][0] : parts[0].slice(0, 2);
+      })()
+    : "";
+---
+
+{
+  trainer.kind === "profile" ? (
+    <Wrapper
+      href={href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      class="inline-flex items-center gap-2 rounded-[var(--radius-pill)] border border-neutral-200 bg-surface py-1 pl-1 pr-3 text-[length:var(--text-caption)] font-semibold text-ink transition-colors hover:border-ink"
+    >
+      {trainer.profile.data.photo ? (
+        <img src={trainer.profile.data.photo} alt="" class="h-6 w-6 shrink-0 rounded-full object-cover" loading="lazy" />
+      ) : (
+        <span
+          aria-hidden="true"
+          class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-lime text-[10px] font-bold"
+        >
+          {initials}
+        </span>
+      )}
+      {trainer.profile.data.name}
+    </Wrapper>
+  ) : (
+    <span class="text-[length:var(--text-caption)] text-neutral-600">{trainer.name}</span>
+  )
+}

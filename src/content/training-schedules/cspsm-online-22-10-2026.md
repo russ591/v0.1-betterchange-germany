@@ -3,7 +3,8 @@ course: csp-sm
 date: '2026-10-22T01:00:00Z'
 format: live-online
 location: Online
-trainer: giuseppe-de-simone
+trainers:
+  - giuseppe-de-simone
 price: €2,200–€2,500
 status: available
 isExternal: true

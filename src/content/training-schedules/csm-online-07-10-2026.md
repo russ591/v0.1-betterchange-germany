@@ -3,7 +3,9 @@ course: csm
 date: '2026-10-07T01:00:00Z'
 format: live-online
 location: Online
-trainerName: Niels Verdonk & Nino Zeljko
+trainers:
+  - niels-verdonk
+  - nino-zeljko
 price: from €1,095
 status: available
 isExternal: true

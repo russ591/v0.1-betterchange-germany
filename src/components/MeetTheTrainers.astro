@@ -1,0 +1,34 @@
+---
+// Option B: a dedicated "Meet the trainers" section -- full TeamCards
+// (same visual language as the About page's team grid) for every trainer
+// who has a migrated profile, plus a plain trailing mention for the rare
+// trainerName-only fallback. Renders nothing when there's no one to show
+// (e.g. a course with no scheduled sessions yet).
+import Section from "@/components/Section.astro";
+import TeamCard from "@/components/TeamCard.astro";
+import type { TrainerEntry } from "@/lib/trainers";
+
+interface Props {
+  trainers: TrainerEntry[];
+  class?: string;
+}
+
+const { trainers, class: className = "" } = Astro.props;
+const profiles = trainers.filter((t) => t.kind === "profile");
+const plainNames = trainers.filter((t) => t.kind === "name");
+---
+
+{
+  trainers.length > 0 && (
+    <Section eyebrow="Your trainers" heading="Meet the trainers" class={className}>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {profiles.map((t) => t.kind === "profile" && <TeamCard profile={t.profile} />)}
+      </div>
+      {plainNames.length > 0 && (
+        <p class="mt-6 text-[length:var(--text-small)] text-neutral-500">
+          Also delivered by: {plainNames.map((t) => (t.kind === "name" ? t.name : "")).join(", ")}
+        </p>
+      )}
+    </Section>
+  )
+}
