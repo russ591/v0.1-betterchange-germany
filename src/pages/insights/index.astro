@@ -1,20 +1,71 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { toPathSegment } from "@/lib/urlSlug";
 
-const articles = (await getCollection("insights-articles")).sort(
+const allArticles = (await getCollection("insights-articles")).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
+
+// Resolve each article's author once, up front -- the same lookup feeds
+// the card byline everywhere below.
+const articles = await Promise.all(
+  allArticles.map(async (article) => {
+    const profile = article.data.author ? await getEntry(article.data.author) : undefined;
+    const author = profile
+      ? { id: profile.id, name: profile.data.name, photo: profile.data.photo }
+      : article.data.authorName
+        ? { id: article.data.authorName, name: article.data.authorName, photo: undefined }
+        : undefined;
+    return { article, author };
+  })
+);
+
+const initials = (name: string) =>
+  name
+    .split(" ")
+    .map((w) => w[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+
+// Duotone placeholder for articles without real photography -- same
+// deterministic pattern as InsightsArticleCard, used here for the bespoke
+// spotlight cards below.
+const positions = ["30% 20%", "70% 30%", "40% 70%", "60% 60%"];
+const placeholderStyle = (id: string) => {
+  const hash = [...id].reduce((sum, ch) => sum + ch.charCodeAt(0), 0);
+  const position = positions[hash % positions.length];
+  return `background: radial-gradient(circle at ${position}, rgba(154,255,91,0.5), transparent 55%), linear-gradient(135deg, #14200c, #37452a);`;
+};
+
+// Curated via the `featured` flag migrated from the old site. Rather than
+// always showing the same 3, this rotates through the flagged pool once a
+// day: a 3-wide window keyed off the UTC day number, so every flagged
+// article gets a turn in the hero over time instead of the newest 3
+// permanently crowding out the rest. (This is a static build, so "today"
+// is the day of the last deploy -- see the note where this page is wired
+// up for what that means in practice.) Falls back to the most recent
+// articles overall when fewer than 3 are flagged, so the row is never
+// sparse; a pool that small isn't worth rotating.
+const featuredPool = articles.filter((a) => a.article.data.featured);
+const dayNumber = Math.floor(Date.now() / 86_400_000);
+const spotlight =
+  featuredPool.length >= 3
+    ? [0, 1, 2].map((i) => featuredPool[(dayNumber + i) % featuredPool.length])
+    : articles.slice(0, 3);
+const spotlightIds = new Set(spotlight.map((a) => a.article.id));
+const gridArticles = articles.filter((a) => !spotlightIds.has(a.article.id));
 
 // Order topics by how many articles use them, most common first — matches
 // the filter pattern on /training/full-schedule.
 const topicCounts = new Map<string, number>();
-for (const a of articles) {
-  if (a.data.primaryCategory) {
-    topicCounts.set(a.data.primaryCategory, (topicCounts.get(a.data.primaryCategory) ?? 0) + 1);
+for (const { article } of articles) {
+  if (article.data.primaryCategory) {
+    topicCounts.set(article.data.primaryCategory, (topicCounts.get(article.data.primaryCategory) ?? 0) + 1);
   }
 }
 const topics = [...topicCounts.keys()].sort((a, b) => topicCounts.get(b)! - topicCounts.get(a)!);
@@ -36,24 +87,133 @@ const topics = [...topicCounts.keys()].sort((a, b) => topicCounts.get(b)! - topi
     </p>
   </Section>
 
-  <Section eyebrow={`${articles.length} article${articles.length === 1 ? "" : "s"}`}>
-    <div id="insights-filters">
-      <p class="text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-500">
-        Filter by topic
-      </p>
-      <div class="mt-2 flex flex-wrap gap-2">
+  <Section eyebrow="Featured">
+    <div class="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
+      {
+        spotlight[0] && (
+          <a
+            href={`/insights/${toPathSegment(spotlight[0].article.data.urlSlug ?? spotlight[0].article.id)}`}
+            class="flex flex-col overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card transition-shadow hover:shadow-card-hover"
+          >
+            {spotlight[0].article.data.imageUrl ? (
+              <div class="aspect-[16/9] w-full overflow-hidden">
+                <img src={spotlight[0].article.data.imageUrl} alt="" class="h-full w-full object-cover" />
+              </div>
+            ) : (
+              <div aria-hidden="true" class="aspect-[16/9] w-full" style={placeholderStyle(spotlight[0].article.id)} />
+            )}
+            <div class="flex flex-1 flex-col p-7">
+              <p class="eyebrow">
+                {[
+                  spotlight[0].article.data.date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }),
+                  spotlight[0].article.data.readTimeMinutes && `${spotlight[0].article.data.readTimeMinutes} min read`,
+                ]
+                  .filter(Boolean)
+                  .join(" · ")}
+              </p>
+              <h2 class="mt-2 text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)]">{spotlight[0].article.data.title}</h2>
+              <p class="mt-3 max-w-xl text-[length:var(--text-body)] text-neutral-600">{spotlight[0].article.data.excerpt}</p>
+              {spotlight[0].author && (
+                <div class="mt-auto flex items-center gap-2 pt-5">
+                  {spotlight[0].author.photo ? (
+                    <img src={spotlight[0].author.photo} alt="" class="h-9 w-9 shrink-0 rounded-full object-cover" />
+                  ) : (
+                    <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-neutral-200 text-[11px] font-semibold text-neutral-600">
+                      {initials(spotlight[0].author.name)}
+                    </span>
+                  )}
+                  <span class="text-[length:var(--text-small)] font-semibold text-neutral-700">{spotlight[0].author.name}</span>
+                </div>
+              )}
+            </div>
+          </a>
+        )
+      }
+
+      <div class="flex flex-col gap-6">
         {
-          topics.map((topic) => (
-            <button
-              type="button"
-              data-filter-group="topic"
-              data-filter-value={topic}
-              class="cursor-pointer rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors hover:border-ink hover:text-ink"
+          spotlight.slice(1, 3).map(({ article, author }) => (
+            <a
+              href={`/insights/${toPathSegment(article.data.urlSlug ?? article.id)}`}
+              class="flex overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card transition-shadow hover:shadow-card-hover"
             >
-              {topic}
-            </button>
+              {article.data.imageUrl ? (
+                <div class="w-2/5 shrink-0 overflow-hidden">
+                  <img src={article.data.imageUrl} alt="" class="h-full w-full object-cover" />
+                </div>
+              ) : (
+                <div aria-hidden="true" class="w-2/5 shrink-0" style={placeholderStyle(article.id)} />
+              )}
+              <div class="flex flex-1 flex-col justify-center p-5">
+                <p class="eyebrow">
+                  {[
+                    article.data.date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }),
+                    article.data.readTimeMinutes && `${article.data.readTimeMinutes} min read`,
+                  ]
+                    .filter(Boolean)
+                    .join(" · ")}
+                </p>
+                <h3 class="mt-1.5 text-[length:var(--text-small)] font-semibold leading-snug">{article.data.title}</h3>
+                {author && (
+                  <div class="mt-3 flex items-center gap-2">
+                    {author.photo ? (
+                      <img src={author.photo} alt="" class="h-6 w-6 shrink-0 rounded-full object-cover" />
+                    ) : (
+                      <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-neutral-200 text-[9px] font-semibold text-neutral-600">
+                        {initials(author.name)}
+                      </span>
+                    )}
+                    <span class="text-[length:var(--text-caption)] font-semibold text-neutral-700">{author.name}</span>
+                  </div>
+                )}
+              </div>
+            </a>
           ))
         }
+      </div>
+    </div>
+  </Section>
+
+  <Section eyebrow={`${gridArticles.length} article${gridArticles.length === 1 ? "" : "s"}`}>
+    <div id="insights-filters" class="space-y-6">
+      <div class="relative max-w-md">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400"
+        >
+          <circle cx="11" cy="11" r="7" />
+          <path d="m21 21-4.3-4.3" />
+        </svg>
+        <label for="insights-search" class="sr-only">Search articles</label>
+        <input
+          id="insights-search"
+          type="search"
+          placeholder="Search articles…"
+          class="w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface py-2.5 pl-9 pr-3 text-[length:var(--text-small)] placeholder:text-neutral-400 focus:border-ink focus:outline-none"
+        />
+      </div>
+
+      <div>
+        <p class="text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-500">
+          Filter by topic
+        </p>
+        <div class="mt-2 flex flex-wrap gap-2">
+          {
+            topics.map((topic) => (
+              <button
+                type="button"
+                data-filter-group="topic"
+                data-filter-value={topic}
+                class="cursor-pointer rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors hover:border-ink hover:text-ink"
+              >
+                {topic}
+              </button>
+            ))
+          }
+        </div>
       </div>
     </div>
 
@@ -63,13 +223,15 @@ const topics = [...topicCounts.keys()].sort((a, b) => topicCounts.get(b)! - topi
 
     <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="insights-grid">
       {
-        articles.map((article) => (
+        gridArticles.map(({ article, author }) => (
           <div class="insights-card contents" data-topic={article.data.primaryCategory ?? ""}>
-            <InsightsArticleCard article={article} />
+            <InsightsArticleCard article={article} author={author} />
           </div>
         ))
       }
     </div>
+
+    <nav aria-label="Insights pagination" id="insights-pagination" class="mt-10 flex items-center justify-center gap-1"></nav>
   </Section>
 
   <Section tone="dark" eyebrow="Newsletter" heading="Get new articles by email">
@@ -109,27 +271,96 @@ const topics = [...topicCounts.keys()].sort((a, b) => topicCounts.get(b)! - topi
   </Section>
 
   <script>
+    const PAGE_SIZE = 12;
+
     const filterButtons = Array.from(
       document.querySelectorAll<HTMLButtonElement>("[data-filter-group]")
     );
     const cards = Array.from(document.querySelectorAll<HTMLElement>(".insights-card"));
     const emptyMessage = document.getElementById("insights-empty") as HTMLParagraphElement;
     const grid = document.getElementById("insights-grid") as HTMLDivElement;
+    const searchInput = document.getElementById("insights-search") as HTMLInputElement | null;
+    const pagination = document.getElementById("insights-pagination") as HTMLElement;
+
+    const searchText = new Map(cards.map((card) => [card, card.textContent?.toLowerCase() ?? ""]));
 
     const active: Record<string, Set<string>> = { topic: new Set() };
+    let query = "";
+    let currentPage = 1;
+
+    // Windowed page list, e.g. current=5, total=17 -> [1, "…", 4, 5, 6, "…", 17].
+    function pageList(current: number, total: number): (number | "…")[] {
+      const keep = new Set([1, total, current - 1, current, current + 1]);
+      const sorted = [...keep].filter((p) => p >= 1 && p <= total).sort((a, b) => a - b);
+      const result: (number | "…")[] = [];
+      let prev = 0;
+      for (const p of sorted) {
+        if (prev && p - prev > 1) result.push("…");
+        result.push(p);
+        prev = p;
+      }
+      return result;
+    }
+
+    function renderPagination(totalMatching: number) {
+      pagination.innerHTML = "";
+      const totalPages = Math.max(1, Math.ceil(totalMatching / PAGE_SIZE));
+      if (totalPages <= 1) return;
+
+      const makeButton = (label: string, page: number, variant: "nav" | "page" | "active") => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = label;
+        const base = "flex h-9 min-w-9 cursor-pointer items-center justify-center rounded-[var(--radius-control)] px-3 text-[length:var(--text-small)] font-semibold transition-colors";
+        btn.className =
+          variant === "active"
+            ? `${base} bg-ink text-surface`
+            : `${base} text-neutral-700 hover:bg-mist-light`;
+        btn.addEventListener("click", () => {
+          currentPage = page;
+          update();
+          document.getElementById("insights-filters")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+        return btn;
+      };
+
+      if (currentPage > 1) pagination.appendChild(makeButton("‹ Prev", currentPage - 1, "nav"));
+
+      for (const p of pageList(currentPage, totalPages)) {
+        if (p === "…") {
+          const span = document.createElement("span");
+          span.textContent = "…";
+          span.className = "flex h-9 min-w-9 items-center justify-center text-neutral-400";
+          pagination.appendChild(span);
+        } else {
+          pagination.appendChild(makeButton(String(p), p, p === currentPage ? "active" : "page"));
+        }
+      }
+
+      if (currentPage < totalPages) pagination.appendChild(makeButton("Next ›", currentPage + 1, "nav"));
+    }
 
     function update() {
-      let visibleCount = 0;
-
-      cards.forEach((card) => {
+      const matching = cards.filter((card) => {
         const topic = card.dataset.topic ?? "";
-        const visible = active.topic.size === 0 || active.topic.has(topic);
-        card.hidden = !visible;
-        if (visible) visibleCount++;
+        const topicMatch = active.topic.size === 0 || active.topic.has(topic);
+        const searchMatch = query === "" || (searchText.get(card) ?? "").includes(query);
+        return topicMatch && searchMatch;
       });
 
-      emptyMessage.hidden = visibleCount > 0;
-      grid.style.display = visibleCount > 0 ? "" : "none";
+      const totalPages = Math.max(1, Math.ceil(matching.length / PAGE_SIZE));
+      if (currentPage > totalPages) currentPage = totalPages;
+
+      const start = (currentPage - 1) * PAGE_SIZE;
+      const visible = new Set(matching.slice(start, start + PAGE_SIZE));
+
+      cards.forEach((card) => {
+        card.hidden = !visible.has(card);
+      });
+
+      emptyMessage.hidden = matching.length > 0;
+      grid.style.display = matching.length > 0 ? "" : "none";
+      renderPagination(matching.length);
     }
 
     filterButtons.forEach((button) => {
@@ -148,8 +379,17 @@ const topics = [...topicCounts.keys()].sort((a, b) => topicCounts.get(b)! - topi
           button.classList.add("bg-lime", "border-lime", "text-ink");
         }
 
+        currentPage = 1;
         update();
       });
     });
+
+    searchInput?.addEventListener("input", () => {
+      query = searchInput.value.trim().toLowerCase();
+      currentPage = 1;
+      update();
+    });
+
+    update();
   </script>
 </BaseLayout>
