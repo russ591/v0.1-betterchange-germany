@@ -131,15 +131,11 @@ const dePlaceholders: Record<UIKey, string> = Object.fromEntries(
 ) as Record<UIKey, string>;
 
 // Reviewed, approved German copy (Phase B), from
-// betterchange-de-translation-draft-homepage-services.md. House style:
+// betterchange-de-translation-draft-homepage-services.md and
+// betterchange-de-translation-draft-training-hub.md. House style:
 // impersonal/collective address (no "Sie"/"Du"), colon-form gender-inclusive
 // language (Trainer:innen), and several terms kept as English loanwords
 // (Training, Leadership, Facilitation, Coaching, course/certification codes).
-//
-// schedule.bookNow is inferred from the draft's "Register" (schedule.register)
-// rather than given its own row -- same booking action, reusing the one
-// approved word for consistency rather than leaving one of the two identical
-// buttons in English. Flag if a dedicated translation should differ.
 const deOverrides: Partial<Record<UIKey, string>> = {
   "nav.services": "Leistungen",
   "nav.training": "Training",
@@ -158,24 +154,37 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "schedule.date": "Datum",
   "schedule.location": "Ort",
   "schedule.format": "Format",
-  "schedule.bookNow": "Anmelden",
+  "schedule.bookNow": "Jetzt buchen",
   "schedule.register": "Anmelden",
   "schedule.fullSchedule": "Alle Termine",
   "schedule.getInTouch": "Kontakt aufnehmen",
+  "schedule.seeFullSchedule": "Gesamten Trainingsplan ansehen",
+  "schedule.preferInHouse": "Lieber privates Inhouse-Training?",
+  "schedule.letUsKnow": "Kontakt aufnehmen",
+  "schedule.filterDiscipline": "Disziplin",
+  "schedule.filterCountry": "Land",
+  "schedule.filterTrainer": "Trainer:in",
 
   "badge.inPerson": "Vor Ort",
   "badge.liveOnline": "Live online",
+
+  "trainers.eyebrow": "Unsere Trainer:innen",
+  "trainers.heading": "Die Trainer:innen im Überblick",
 
   "megaMenu.trainingHome": "Training-Startseite",
 
   "cta.seeAllTraining": "Alle Trainings ansehen",
   "cta.ourServices": "Unsere Leistungen",
   "cta.meetFullTeam": "Das ganze Team kennenlernen",
+  "cta.readAllReviews": "Alle Bewertungen lesen",
   "cta.viewAllInsights": "Alle Insights ansehen",
   "cta.learnMore": "Mehr erfahren",
   "cta.closingHeading": "Unsicher, wo der richtige Startpunkt liegt?",
   "cta.closingBody":
     "Ein kurzes Gespräch hilft oft weiter. Wir unterstützen gerne dabei, den passenden Trainings- oder Coaching-Ansatz für die jeweilige Situation zu finden.",
+
+  "training.courseSingular": "Kurs",
+  "training.coursePlural": "Kurse",
 
   "certifiedBy": "Zertifiziert durch",
   "cta.talkToUs": "Kontakt aufnehmen",
