@@ -12,6 +12,7 @@ readTimeMinutes: 3
 author: nino-zeljko
 excerpt: Tired of change initiatives that fizzle out? This webinar with Nino Zeljko explores why organizations struggle with change — and how to build genuinely adaptive ones.
 featured: false
+imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2026/04/Learning-how-to-change-is-more-important-than-the-change-itself-300x148.png
 metaTitle: 'Webinar Recording: Why Organizations Struggle with Change — and How to Build Adaptive Ones'
 metaDescription: Tired of change initiatives that fizzle out? This webinar with Nino Zeljko explores why organizations struggle with change — and how to build adaptive ones.
 bodyHtml: |-
