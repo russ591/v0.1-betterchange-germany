@@ -2,16 +2,19 @@
 // Hover/focus panel shown under the "Training" nav link on desktop (see
 // Header.astro, which wraps this in a `.group` and toggles the panel's own
 // visibility with group-hover/group-focus-within -- no JS needed for that
-// part). Inside the panel: a category list on the left, and the hovered/
-// focused category's courses on the right -- each course gets a full ~360px
-// column instead of the ~200px a 3-up grid would give it, which matters
-// because real course names ("ICAgile Agile Coaching Professional
-// (ICP-ACC)") wrap badly at narrower widths. Swapping which category's
-// courses show is the one bit of actual interactivity here, handled by the
-// small inline script below (same mouseenter/click pattern already used
-// for the schedule filter buttons in ScheduleList.astro).
+// part). Inside the panel: a category list on the left (with "Training
+// Home" pinned above it as its own trigger/panel pair, active by default),
+// and the hovered/focused item's content on the right -- Training Home
+// shows a mini grid of all six disciplines, any other category shows its
+// full-width course list, each course row wide enough for real course names
+// ("ICAgile Agile Coaching Professional (ICP-ACC)") without wrapping.
+// Swapping which item's content shows is the one bit of actual
+// interactivity here, handled by the small inline script below (same
+// mouseenter/click pattern already used for the schedule filter buttons in
+// ScheduleList.astro).
 import type { CollectionEntry } from "astro:content";
 import { categoryIcons } from "@/data/categoryIcons";
+import { certificationLogos } from "@/data/certifications";
 import { toPathSegment } from "@/lib/urlSlug";
 
 interface Props {
@@ -22,17 +25,28 @@ interface Props {
 }
 
 const { categoriesWithCourses } = Astro.props;
+
+// One certification-body logo per category, keyed by category id, so each
+// course row in the panel can show the body that actually certifies it
+// without a per-course lookup.
+const logoByCategory = Object.fromEntries(
+  categoriesWithCourses.map(({ category }) => [
+    category.id,
+    category.data.certificationBody ? certificationLogos[category.data.certificationBody] : undefined,
+  ])
+);
 ---
 
 <div
   class="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 opacity-0 transition-opacity duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
 >
-  <div class="w-[min(90vw,880px)] pt-3">
+  <div class="w-[min(92vw,960px)] pt-3">
     <div class="training-mega flex overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card-hover">
       <div class="flex w-56 shrink-0 flex-col gap-0.5 border-r border-neutral-100 bg-mist-light p-3">
         <a
           href="/training"
-          class="flex items-center justify-between gap-2 rounded-[var(--radius-control)] px-3 py-2.5 text-[length:var(--text-small)] font-semibold text-ink transition-colors hover:bg-surface"
+          data-cat-trigger="__home"
+          class="mega-cat-trigger is-active flex items-center justify-between gap-2 rounded-[var(--radius-control)] bg-surface px-3 py-2.5 text-[length:var(--text-small)] font-semibold text-ink shadow-card transition-colors hover:bg-surface"
         >
           <span class="flex items-center gap-2.5">
             <span
@@ -54,13 +68,11 @@ const { categoriesWithCourses } = Astro.props;
         </a>
         <div class="my-1 border-t border-neutral-200"></div>
         {
-          categoriesWithCourses.map(({ category }, i) => (
+          categoriesWithCourses.map(({ category }) => (
             <a
               href={`/training/${category.id}`}
               data-cat-trigger={category.id}
-              class={`mega-cat-trigger flex items-center justify-between gap-2 rounded-[var(--radius-control)] px-3 py-2.5 text-[length:var(--text-small)] font-semibold text-ink transition-colors hover:bg-surface ${
-                i === 0 ? "is-active bg-surface shadow-card" : ""
-              }`}
+              class="mega-cat-trigger flex items-center justify-between gap-2 rounded-[var(--radius-control)] px-3 py-2.5 text-[length:var(--text-small)] font-semibold text-ink transition-colors hover:bg-surface"
             >
               <span class="flex items-center gap-2.5">
                 {categoryIcons[category.id] && (
@@ -80,18 +92,52 @@ const { categoriesWithCourses } = Astro.props;
         }
       </div>
 
-      <div class="min-w-0 flex-1 p-6">
+      <div class="min-w-0 flex-1 px-5 py-6">
+        <div class="mega-cat-panel" data-cat-panel="__home">
+          <p class="text-[length:var(--text-caption)] text-neutral-500">Six disciplines, one practitioner network.</p>
+          <div class="mt-3 grid grid-cols-2 gap-3">
+            {
+              categoriesWithCourses.map(({ category, courses }) => (
+                <a
+                  href={`/training/${category.id}`}
+                  class="flex flex-col gap-2 rounded-[var(--radius-control)] border border-neutral-200 p-3 transition-colors hover:border-neutral-400 hover:shadow-card"
+                >
+                  {categoryIcons[category.id] && (
+                    <span
+                      aria-hidden="true"
+                      class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-lime [&_svg]:h-4 [&_svg]:w-4"
+                      set:html={categoryIcons[category.id]}
+                    />
+                  )}
+                  <span class="text-[length:var(--text-small)] font-semibold text-ink">{category.data.name}</span>
+                  <span class="text-[length:var(--text-caption)] text-neutral-500">{courses.length} courses &rarr;</span>
+                </a>
+              ))
+            }
+          </div>
+        </div>
         {
-          categoriesWithCourses.map(({ category, courses }, i) => (
-            <div class="mega-cat-panel" data-cat-panel={category.id} hidden={i !== 0}>
+          categoriesWithCourses.map(({ category, courses }) => (
+            <div class="mega-cat-panel" data-cat-panel={category.id} hidden>
               <p class="text-[length:var(--text-caption)] text-neutral-500">{category.data.tagline}</p>
               <div class="mt-3 flex flex-col gap-2">
                 {courses.map((course) => (
                   <a
                     href={`/training/${category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
-                    class="text-[length:var(--text-small)] text-neutral-600 hover:text-ink hover:underline"
+                    class="flex items-center gap-2.5 text-[length:var(--text-small)] text-neutral-600 hover:text-ink hover:underline"
                   >
-                    {course.data.name}
+                    {logoByCategory[category.id] && (
+                      <span class="flex h-5 w-8 shrink-0 items-center justify-center">
+                        <img
+                          src={logoByCategory[category.id]!.src}
+                          alt=""
+                          width={logoByCategory[category.id]!.width}
+                          height={logoByCategory[category.id]!.height}
+                          class="max-h-4 max-w-full object-contain"
+                        />
+                      </span>
+                    )}
+                    <span class="min-w-0 flex-1 truncate">{course.data.name}</span>
                   </a>
                 ))}
               </div>

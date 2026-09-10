@@ -6,6 +6,7 @@
 // pattern already used for the drawer itself.
 import type { CollectionEntry } from "astro:content";
 import { categoryIcons } from "@/data/categoryIcons";
+import { certificationLogos } from "@/data/certifications";
 import { toPathSegment } from "@/lib/urlSlug";
 
 interface Props {
@@ -16,6 +17,16 @@ interface Props {
 }
 
 const { categoriesWithCourses } = Astro.props;
+
+// One certification-body logo per category, keyed by category id -- see
+// TrainingMegaMenuDesktop.astro, which shows the same icon next to each
+// course row on desktop.
+const logoByCategory = Object.fromEntries(
+  categoriesWithCourses.map(({ category }) => [
+    category.id,
+    category.data.certificationBody ? certificationLogos[category.data.certificationBody] : undefined,
+  ])
+);
 ---
 
 <details class="group/training border-b border-neutral-100">
@@ -78,13 +89,24 @@ const { categoriesWithCourses } = Astro.props;
               <path d="m6 9 6 6 6-6" />
             </svg>
           </summary>
-          <div class="space-y-0.5 py-1.5 pl-[34px]">
+          <div class="space-y-0.5 py-1.5 pl-6">
             {courses.map((course) => (
               <a
                 href={`/training/${category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
-                class="block py-1.5 text-[length:var(--text-caption)] text-neutral-600"
+                class="flex items-center gap-2 py-1.5 text-[length:var(--text-caption)] text-neutral-600"
               >
-                {course.data.name}
+                {logoByCategory[category.id] && (
+                  <span class="flex h-4 w-6 shrink-0 items-center justify-center">
+                    <img
+                      src={logoByCategory[category.id]!.src}
+                      alt=""
+                      width={logoByCategory[category.id]!.width}
+                      height={logoByCategory[category.id]!.height}
+                      class="max-h-3.5 max-w-full object-contain"
+                    />
+                  </span>
+                )}
+                <span class="min-w-0 flex-1 truncate">{course.data.name}</span>
               </a>
             ))}
           </div>
