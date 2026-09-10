@@ -1,7 +1,15 @@
 ---
 # Phase A scaffold placeholder -- see src/content/home-page/de.md
+# heroEyebrow is the one field here that matches a translated row from the
+# draft (its "New" table: WHAT WE DO -> WAS WIR TUN, same English string as
+# this page's own heroEyebrow). Everything else below is still Phase A
+# placeholder: the draft's services-page table was written against
+# different/older hero and "How it works" copy that doesn't textually match
+# the fields actually on this page -- do not invent text for those, a fresh
+# translation pass covering the exact strings in services-page/en.md is
+# needed.
 metaDescription: "[DE] Better Change is a European network of practitioners, not a large consultancy. Training, coaching, consulting and facilitation, built around your actual situation."
-heroEyebrow: "[DE] What we do"
+heroEyebrow: "Was wir tun"
 heroHeading: "[DE] Real support, from people who've done the work"
 heroBody: "[DE] Better Change is a European network of practitioners, not a large consultancy. Training, coaching, consulting and facilitation, built around your actual situation."
 servicesEyebrow: "[DE] Services"
