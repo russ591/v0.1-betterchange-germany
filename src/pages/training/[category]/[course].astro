@@ -120,21 +120,15 @@ const courseSchema = {
           category.data.certificationBody && (
             <div class="mt-7 flex items-center gap-5 rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-5 shadow-card">
               {badge ? (
-                <span class="flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-mist-light p-2.5">
-                  <Image
-                    src={badge}
-                    alt={`${course.data.certification ?? course.data.code} certification badge`}
-                    width={120}
-                    height={120}
-                    class="h-full w-full object-contain"
-                  />
-                </span>
+                <Image
+                  src={badge}
+                  alt={`${course.data.certification ?? course.data.code} certification badge`}
+                  width={120}
+                  height={120}
+                  class="h-20 w-auto max-w-[140px] shrink-0 object-contain"
+                />
               ) : (
-                logo && (
-                  <span class="flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-mist-light p-3">
-                    <img src={logo.src} alt="" class="h-full w-full object-contain" />
-                  </span>
-                )
+                logo && <img src={logo.src} alt="" class="h-20 w-auto max-w-[140px] shrink-0 object-contain" />
               )}
               <div class="min-w-0">
                 <p class="eyebrow">Certified by</p>
@@ -159,15 +153,9 @@ const courseSchema = {
           <div class="flex items-center gap-3.5 border-b border-neutral-200 bg-mist-light px-5 py-4">
             {
               badge ? (
-                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-2">
-                  <Image src={badge} alt="" width={64} height={64} class="h-full w-full object-contain" />
-                </span>
+                <Image src={badge} alt="" width={64} height={64} class="h-11 w-auto max-w-[80px] shrink-0 object-contain" />
               ) : (
-                logo && (
-                  <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-2">
-                    <img src={logo.src} alt="" class="h-full w-full object-contain" />
-                  </span>
-                )
+                logo && <img src={logo.src} alt="" class="h-11 w-auto max-w-[80px] shrink-0 object-contain" />
               )
             }
             <div>

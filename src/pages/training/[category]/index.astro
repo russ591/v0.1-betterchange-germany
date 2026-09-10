@@ -105,9 +105,7 @@ const upcomingWithCourse = await Promise.all(
               >
                 <div class="flex min-w-0 items-center gap-3">
                   {courseBadges[course.id] && (
-                    <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-mist-light p-1.5">
-                      <Image src={courseBadges[course.id]} alt="" width={48} height={48} class="h-full w-full object-contain" />
-                    </span>
+                    <Image src={courseBadges[course.id]} alt="" width={48} height={48} class="h-9 w-auto max-w-[56px] shrink-0 object-contain" />
                   )}
                   <div class="min-w-0">
                     <p class="text-[length:var(--text-small)] font-semibold">{course.data.name}</p>
@@ -156,9 +154,9 @@ const upcomingWithCourse = await Promise.all(
                     )}
                     <span class="inline-flex items-center gap-1.5 rounded-[var(--radius-pill)] border border-neutral-200 py-0.5 pl-0.5 pr-2.5 text-[length:var(--text-caption)] font-semibold text-neutral-600">
                       {badge ? (
-                        <Image src={badge} alt="" width={40} height={40} class="h-5 w-5 rounded-full object-contain bg-surface p-0.5" />
+                        <Image src={badge} alt="" width={40} height={40} class="h-5 w-auto max-w-[36px] object-contain" />
                       ) : (
-                        logo && <img src={logo.src} alt="" class="h-5 w-5 rounded-full object-contain bg-surface p-0.5" />
+                        logo && <img src={logo.src} alt="" class="h-5 w-auto max-w-[36px] object-contain" />
                       )}
                       {course.data.code}
                     </span>

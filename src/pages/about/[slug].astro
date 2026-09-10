@@ -153,9 +153,7 @@ const paragraphs = (text: string) =>
                 class="flex items-center gap-1.5 rounded-[var(--radius-pill)] border border-neutral-300 bg-surface py-1 pl-1 pr-3 text-[length:var(--text-caption)] font-semibold transition-colors hover:border-ink hover:text-ink"
               >
                 {courseBadges[course.id] && (
-                  <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-mist-light">
-                    <Image src={courseBadges[course.id]} alt="" width={28} height={28} class="h-full w-full object-contain" />
-                  </span>
+                  <Image src={courseBadges[course.id]} alt="" width={28} height={28} class="h-5 w-auto max-w-[36px] shrink-0 object-contain" />
                 )}
                 {course.data.code}
               </a>
