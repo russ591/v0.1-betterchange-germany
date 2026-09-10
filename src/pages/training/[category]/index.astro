@@ -48,7 +48,7 @@ const categoryTrainers = await getTrainersForSessions(allSchedules.filter((s) =>
   <Breadcrumbs items={[{ label: "Training", href: "/training" }, { label: category.data.name }]} />
 
   <Section class="bg-mist-light">
-    <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-start">
+    <div class="grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-start">
       <div class="min-w-0">
         <p class="eyebrow">Training</p>
         <h1 class="mt-4 text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
@@ -84,7 +84,7 @@ const categoryTrainers = await getTrainersForSessions(allSchedules.filter((s) =>
         }
       </div>
 
-      <div class="min-w-0 lg:sticky lg:top-24">
+      <div class="min-w-0 md:sticky md:top-24">
         <div class="overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card">
           {
             category.data.certificationBody && (

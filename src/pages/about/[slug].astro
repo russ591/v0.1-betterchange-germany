@@ -119,7 +119,7 @@ const hasSidebar = upcomingSessions.length > 0 || recentArticles.length > 0;
   </Section>
 
   <Section>
-    <div class={hasSidebar ? "grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:items-start" : ""}>
+    <div class={hasSidebar ? "grid gap-10 md:grid-cols-[1.5fr_1fr] md:items-start" : ""}>
       <!-- Main narrative -->
       <div class="min-w-0 space-y-10">
         {bio && (
@@ -188,7 +188,7 @@ const hasSidebar = upcomingSessions.length > 0 || recentArticles.length > 0;
 
       <!-- Right rail: upcoming training + recent articles, above the fold -->
       {hasSidebar && (
-        <div class="order-first min-w-0 space-y-6 lg:order-last lg:sticky lg:top-24">
+        <div class="order-first min-w-0 space-y-6 md:order-last md:sticky md:top-24">
           {upcomingSessions.length > 0 && (
             <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-5 shadow-card">
               <p class="text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.06em] text-neutral-500">Upcoming training</p>
@@ -198,19 +198,21 @@ const hasSidebar = upcomingSessions.length > 0 || recentArticles.length > 0;
                   return (
                     <a
                       href={`/training/${category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
-                      class="flex items-center gap-3 py-3 first:pt-0 last:pb-0 transition-colors hover:bg-mist-light"
+                      class="flex flex-col gap-2 py-3 first:pt-0 last:pb-0 transition-colors hover:bg-mist-light lg:flex-row lg:items-center lg:gap-3"
                     >
-                      {b?.kind === "badge" && <Image src={b.badge} alt="" width={36} height={36} class="h-8 w-8 shrink-0 rounded-full" />}
-                      {b?.kind === "logo" && (
-                        <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-mist-light p-1">
-                          <img src={b.logo.src} alt="" class="h-full w-full object-contain" />
-                        </span>
-                      )}
-                      <div class="min-w-0 flex-1">
-                        <p class="truncate text-[length:var(--text-small)] font-semibold">{course.data.name}</p>
-                        <p class="text-[length:var(--text-caption)] text-neutral-500">{formatSessionDate(session, course, "short")}</p>
+                      <div class="flex min-w-0 flex-1 items-center gap-3">
+                        {b?.kind === "badge" && <Image src={b.badge} alt="" width={36} height={36} class="h-8 w-8 shrink-0 rounded-full" />}
+                        {b?.kind === "logo" && (
+                          <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-mist-light p-1">
+                            <img src={b.logo.src} alt="" class="h-full w-full object-contain" />
+                          </span>
+                        )}
+                        <div class="min-w-0 flex-1">
+                          <p class="text-[length:var(--text-small)] font-semibold leading-snug">{course.data.name}</p>
+                          <p class="text-[length:var(--text-caption)] text-neutral-500">{formatSessionDate(session, course, "short")}</p>
+                        </div>
                       </div>
-                      <span class="shrink-0 text-[length:var(--text-caption)] font-semibold text-ink">Find out more →</span>
+                      <span class="shrink-0 self-end text-[length:var(--text-caption)] font-semibold text-ink lg:self-auto">Find out more →</span>
                     </a>
                   );
                 })}
