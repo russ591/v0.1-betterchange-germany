@@ -9,30 +9,30 @@ categories:
 date: '2022-10-08T00:00:00Z'
 readTimeMinutes: 2
 authorName: Jakob Verner Christensen
-excerpt: Dual Track Agile separates discovery — the work of figuring out what to build — from delivery, the work of building it. Running both tracks simultaneously sounds complicated, but it solves a real problem that single-track teams constantly bump into.
+excerpt: Dual Track Agile separates discovery, the work of figuring out what to build, from delivery, the work of building it. Running both tracks simultaneously sounds complicated, but it solves a real problem that single-track teams constantly bump into.
 featured: false
 metaTitle: 'Dual Track Agile: Discover and Deliver at the Same Time | Better Chang'
-metaDescription: Dual Track Agile separates discovery — the work of figuring out what to build — from delivery, the work of building it. Running both tracks...
+metaDescription: Dual Track Agile separates discovery, the work of figuring out what to build, from delivery, the work of building it. Running both tracks...
 bodyHtml: |-
-  <p>In standard Agile development, a team tends to discover and deliver sequentially: figure out what to build, then build it. The problem is that in complex products, "figuring out what to build" is never really finished. By the time the delivery track completes something, the discovery that should inform the next piece of work has often not been done yet — or was done too early and is already stale.</p>
+  <p>In standard Agile development, a team tends to discover and deliver sequentially: figure out what to build, then build it. The problem is that in complex products, "figuring out what to build" is never really finished. By the time the delivery track completes something, the discovery that should inform the next piece of work has often not been done yet, or was done too early and is already stale.</p>
 
   <p>Dual Track Agile addresses this directly by running discovery and delivery as two simultaneous, continuous activities rather than as separate phases.</p>
 
   <h2>The Discovery Track</h2>
 
-  <p>The Discovery Track is responsible for validating product ideas before they enter the delivery process. This includes user research, prototyping, data analysis, and any activity that helps the team understand whether a proposed piece of functionality is genuinely worth building — and if so, what it should actually do.</p>
+  <p>The Discovery Track is responsible for validating product ideas before they enter the delivery process. This includes user research, prototyping, data analysis, and any activity that helps the team understand whether a proposed piece of functionality is genuinely worth building, and if so, what it should actually do.</p>
 
-  <p>The critical shift from traditional approaches is that discovery is continuous rather than front-loaded. Rather than a single discovery phase at the start of a project, the Discovery Track operates throughout the product's life, constantly feeding validated ideas into the delivery pipeline. This means delivery work is always connected to current understanding of what users actually need — not to assumptions made six months ago.</p>
+  <p>The critical shift from traditional approaches is that discovery is continuous rather than front-loaded. Rather than a single discovery phase at the start of a project, the Discovery Track operates throughout the product's life, constantly feeding validated ideas into the delivery pipeline. This means delivery work is always connected to current understanding of what users actually need, not to assumptions made six months ago.</p>
 
   <h2>The Delivery Track</h2>
 
-  <p>The Delivery Track is responsible for building, testing, and shipping the features that have been validated by discovery. Work enters the Delivery Track from the backlog — but only once it has been validated. This is the key constraint. Items that have not passed through the Discovery Track do not enter delivery. The backlog only contains things the team has genuine reason to believe are worth building.</p>
+  <p>The Delivery Track is responsible for building, testing, and shipping the features that have been validated by discovery. Work enters the Delivery Track from the backlog, but only once it has been validated. This is the key constraint. Items that have not passed through the Discovery Track do not enter delivery. The backlog only contains things the team has genuine reason to believe are worth building.</p>
 
   <p>This constraint can feel restrictive at first, particularly for stakeholders who are used to requesting features and having them begin immediately. In practice, it reduces the amount of time spent building things that turn out not to work, which is a far more expensive problem than the delay introduced by proper discovery.</p>
 
   <h2>How the two tracks interact</h2>
 
-  <p>The tracks run simultaneously but are not independent. The Delivery Track provides feedback — through user testing, release data, and stakeholder response — that informs what the Discovery Track investigates next. The Discovery Track provides validated work items that give the Delivery Track a clear, justified backlog to draw from.</p>
+  <p>The tracks run simultaneously but are not independent. The Delivery Track provides feedback, through user testing, release data, and stakeholder response, that informs what the Discovery Track investigates next. The Discovery Track provides validated work items that give the Delivery Track a clear, justified backlog to draw from.</p>
 
   <p>The loops between the tracks are what make the system valuable. Without them, you have two teams working in parallel but not actually learning from each other.</p>
 

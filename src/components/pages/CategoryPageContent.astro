@@ -42,7 +42,7 @@ const logo = category.data.certificationBody ? certificationLogos[category.data.
 <Breadcrumbs items={[{ label: t("nav.training"), href: `${prefix}/training` }, { label: category.data.name }]} />
 
 <Section class="bg-mist-light">
-  <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-start">
+  <div class="grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-start">
     <div class="min-w-0">
       <p class="eyebrow">{t("training.eyebrowLabel")}</p>
       <h1 class="mt-4 text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
@@ -78,7 +78,7 @@ const logo = category.data.certificationBody ? certificationLogos[category.data.
       }
     </div>
 
-    <div class="min-w-0 lg:sticky lg:top-24">
+    <div class="min-w-0 md:sticky md:top-24">
       <div class="overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card">
         {
           category.data.certificationBody && (
@@ -103,15 +103,22 @@ const logo = category.data.certificationBody ? certificationLogos[category.data.
               href={`${prefix}/training/${categorySlug}/${toPathSegment(course.data.urlSlug ?? baseSlug(course.id))}`}
               class="flex items-center justify-between gap-3 border-b border-neutral-100 px-5 py-3.5 transition-colors last:border-0 hover:bg-mist-light"
             >
-              <div>
-                <p class="text-[length:var(--text-small)] font-semibold">{course.data.name}</p>
-                <p class="text-[length:var(--text-caption)] text-neutral-500">
-                  {course.data.level}
-                  {course.data.level && " · "}
-                  {course.data.formats.length === 1 && course.data.formats[0] === "self-paced"
-                    ? t("badge.selfPaced")
-                    : `${course.data.formats.length} ${course.data.formats.length > 1 ? t("training.formatPlural") : t("training.formatSingular")}`}
-                </p>
+              <div class="flex min-w-0 items-center gap-3">
+                {courseBadges[baseSlug(course.id)] && (
+                  <span class="flex h-9 w-9 shrink-0 items-center justify-center">
+                    <Image src={courseBadges[baseSlug(course.id)]} alt="" width={48} height={48} class="h-full w-full object-contain" />
+                  </span>
+                )}
+                <div class="min-w-0">
+                  <p class="text-[length:var(--text-small)] font-semibold">{course.data.name}</p>
+                  <p class="text-[length:var(--text-caption)] text-neutral-500">
+                    {course.data.level}
+                    {course.data.level && " · "}
+                    {course.data.formats.length === 1 && course.data.formats[0] === "self-paced"
+                      ? t("badge.selfPaced")
+                      : `${course.data.formats.length} ${course.data.formats.length > 1 ? t("training.formatPlural") : t("training.formatSingular")}`}
+                  </p>
+                </div>
               </div>
               {course.data.priceFrom && <span class="shrink-0 font-bold">{course.data.priceFrom}</span>}
             </a>
@@ -152,9 +159,15 @@ const logo = category.data.certificationBody ? certificationLogos[category.data.
                   )}
                   <span class="inline-flex items-center gap-1.5 rounded-[var(--radius-pill)] border border-neutral-200 py-0.5 pl-0.5 pr-2.5 text-[length:var(--text-caption)] font-semibold text-neutral-600">
                     {badge ? (
-                      <Image src={badge} alt="" width={40} height={40} class="h-5 w-5 rounded-full" />
+                      <span class="flex h-5 w-5 shrink-0 items-center justify-center">
+                        <Image src={badge} alt="" width={40} height={40} class="h-full w-full object-contain" />
+                      </span>
                     ) : (
-                      logo && <img src={logo.src} alt="" class="h-5 w-5 rounded-full object-contain bg-surface p-0.5" />
+                      logo && (
+                        <span class="flex h-5 w-5 shrink-0 items-center justify-center">
+                          <img src={logo.src} alt="" class="h-full w-full object-contain" />
+                        </span>
+                      )
                     )}
                     {course.data.code}
                   </span>

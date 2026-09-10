@@ -17,19 +17,19 @@ metaDescription: Renovating a house with family and friends as your workforce is
 bodyHtml: |-
   <p>When my wife and I took over our new home, the list of things that needed doing before we could move in was substantial. The workforce we had available was willing but varied: family and friends with different skills, different amounts of available time, and no project management background whatsoever. Coordinating them felt like a problem that could easily go wrong.</p>
 
-  <p>We decided to try something simple. In twenty minutes of brainstorming, we wrote every task we could identify on sticky notes — painting ceilings, fitting skirting boards, installing panels, tiling, everything — and put them on a wall in swimlanes representing different rooms. Alternating colours made it immediately clear which room each task belonged to.</p>
+  <p>We decided to try something simple. In twenty minutes of brainstorming, we wrote every task we could identify on sticky notes, painting ceilings, fitting skirting boards, installing panels, tiling, everything, and put them on a wall in swimlanes representing different rooms. Alternating colours made it immediately clear which room each task belonged to.</p>
 
   <p>That board ran the renovation. What followed was more organised, more collaborative, and more satisfying than either of us expected.</p>
 
   <h2>What the board actually did</h2>
 
-  <p>The board did something that all the best coordination systems do: it made the work visible and self-explanatory. Each task had a clear action verb — one of our friends arrived on the first day, looked at the board, and said "Yay, all stickies have verbs!" She could see immediately what needed doing and find a task that matched her skills without any briefing from us.</p>
+  <p>The board did something that all the best coordination systems do: it made the work visible and self-explanatory. Each task had a clear action verb. One of our friends arrived on the first day, looked at the board, and said "Yay, all stickies have verbs!" She could see immediately what needed doing and find a task that matched her skills without any briefing from us.</p>
 
-  <p>This turned out to be the most important feature of the whole system. We did not have time to explain, assign, and manage. Our friends and family did not want to be managed — they wanted to be useful. The board gave them the information they needed to be useful independently.</p>
+  <p>This turned out to be the most important feature of the whole system. We did not have time to explain, assign, and manage. Our friends and family did not want to be managed. They wanted to be useful. The board gave them the information they needed to be useful independently.</p>
 
   <h2>The satisfaction of moving a note</h2>
 
-  <p>Something unexpected happened as the renovation progressed. People became genuinely motivated by the act of moving a sticky note from "In Progress" to "Finished." My daughter-in-law, when she completed her first task and moved the note across the board, said: "This is so satisfying — moving the note!"</p>
+  <p>Something unexpected happened as the renovation progressed. People became genuinely motivated by the act of moving a sticky note from "In Progress" to "Finished." My daughter-in-law, when she completed her first task and moved the note across the board, said: "This is so satisfying, moving the note!"</p>
 
   <p>This small ritual of progress proved to be a powerful motivator. Progress was visible. Each completed task was a concrete contribution to a shared goal that everyone could see. The house was literally coming together, note by note, and everyone who had contributed could see their part in it.</p>
 

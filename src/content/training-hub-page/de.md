@@ -18,10 +18,10 @@ formats:
   - name: "[DE] Live online"
     description: "[DE] The same workshop run remotely with the full group. Interactive, facilitated, and structured over the same number of days."
   - name: "[DE] In-person"
-    description: "[DE] Full-day classroom workshops in Berlin. The most immersive format — live exercises, group dynamics, and direct trainer access."
+    description: "[DE] Full-day classroom workshops in Berlin. The most immersive format, live exercises, group dynamics, and direct trainer access."
 inHouseEyebrow: "[DE] In-house training"
 inHouseHeading: "[DE] Need private or in-house training?"
-inHouseBody: "[DE] All courses can be run exclusively for your team — in Berlin, at your location, or online. Tailored to your context, delivered at your pace."
+inHouseBody: "[DE] All courses can be run exclusively for your team, in Berlin, at your location, or online. Tailored to your context, delivered at your pace."
 feedbackEyebrow: "[DE] Feedback"
 feedbackHeading: "[DE] What participants say"
 feedbackIntro: "[DE] Feedback from real course participants, not curated marketing copy."
@@ -31,7 +31,7 @@ testimonials:
     location: Berlin
     course: FL2D
     format: In-person
-  - quote: "[DE] KMP1 completely changed how I think about visualising work. Done in the best possible way — tools I used immediately."
+  - quote: "[DE] KMP1 completely changed how I think about visualising work. Done in the best possible way. Tools I used immediately."
     role: "[DE] Agile Coach"
     location: Amsterdam
     course: KMP1
@@ -42,5 +42,5 @@ testimonials:
     course: ICP-ACC
     format: In-person
 ratingValue: "4.8"
-ratingLabel: "[DE] Trustpilot — verified reviews across all courses."
+ratingLabel: "[DE] Trustpilot. Verified reviews across all courses."
 ---

@@ -22,7 +22,7 @@ export const en = {
   "breadcrumb.home": "Home",
 
   "footer.tagline":
-    "A European network of practitioners delivering training, coaching, and transformation — in English and German.",
+    "A European network of practitioners delivering training, coaching, and transformation, in English and German.",
   "footer.trainingHeading": "Training",
   "footer.companyHeading": "Company",
   "footer.rights": "All rights reserved.",
@@ -52,6 +52,9 @@ export const en = {
   "schedule.pickFormat": "Pick a format below",
   "schedule.paymentNote":
     "No upfront payment needed. A VAT invoice (Rechnung) will be sent via email and you can pay by bank transfer or with card.",
+  "schedule.filterDiscipline": "Discipline",
+  "schedule.filterCountry": "Country",
+  "schedule.filterTrainer": "Trainer",
 
   "badge.inPerson": "In-person",
   "badge.liveOnline": "Live online",
@@ -67,7 +70,7 @@ export const en = {
   "megaMenu.notSureWhereToStart": "Not sure where to start?",
   "megaMenu.talkToUsAboutTeam": "Talk to us about your team's situation",
   "megaMenu.helpText":
-    "We'll help you pick the right discipline and format — in-person, live online, or self-paced.",
+    "We'll help you pick the right discipline and format, in-person, live online, or self-paced.",
 
   "certifiedBy": "Certified by",
 

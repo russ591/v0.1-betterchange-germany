@@ -16,12 +16,12 @@ languages:
 whoIsThisFor:
   - Certified Scrum Masters with at least a year of real practice who want to go deeper
   - Scrum Masters who feel stuck at facilitation level and want to develop genuine coaching skills
-  - Experienced practitioners facing complex team dynamics — conflict, resistance, or disengagement
+  - Experienced practitioners facing complex team dynamics, conflict, resistance, or disengagement
   - Those moving from team-level work to supporting multiple teams or organisational change
   - Scrum Masters preparing for the Scrum Alliance A-CSM examination
   - Anyone wanting a more structured understanding of how to grow a high-performing team culture
 whatYoullLearn:
-  - How to move from facilitation to genuine coaching — and when each approach is appropriate
+  - How to move from facilitation to genuine coaching, and when each approach is appropriate
   - Advanced facilitation techniques for difficult meetings and contentious retrospectives
   - How to navigate conflict within and around teams in a way that builds rather than damages trust
   - How to scale Scrum Master responsibilities when supporting multiple teams simultaneously

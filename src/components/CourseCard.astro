@@ -1,6 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import Badge from "@/components/Badge.astro";
+import { courseBadges } from "@/data/courseBadges";
 import { toPathSegment } from "@/lib/urlSlug";
 import { baseSlug } from "@/lib/i18n";
 import { resolveLocale } from "@/i18n/utils";
@@ -19,6 +21,7 @@ interface Props {
 const { course, categorySlug, variant = "card" } = Astro.props;
 const prefix = resolveLocale(Astro.currentLocale) === "de" ? "/de" : "";
 const href = `${prefix}/training/${baseSlug(categorySlug)}/${toPathSegment(course.data.urlSlug ?? baseSlug(course.id))}`;
+const badge = courseBadges[baseSlug(course.id)];
 ---
 
 {
@@ -27,11 +30,18 @@ const href = `${prefix}/training/${baseSlug(categorySlug)}/${toPathSegment(cours
       href={href}
       class="flex flex-col gap-2 border-b border-neutral-200 py-4 transition-colors hover:bg-neutral-50 sm:flex-row sm:items-center sm:justify-between"
     >
-      <div>
-        <p class="font-semibold">{course.data.name}</p>
-        {course.data.level && (
-          <p class="text-[length:var(--text-caption)] text-neutral-500">{course.data.level}</p>
+      <div class="flex items-center gap-3">
+        {badge && (
+          <span class="flex h-9 w-9 shrink-0 items-center justify-center">
+            <Image src={badge} alt="" width={48} height={48} class="h-full w-full object-contain" />
+          </span>
         )}
+        <div>
+          <p class="font-semibold">{course.data.name}</p>
+          {course.data.level && (
+            <p class="text-[length:var(--text-caption)] text-neutral-500">{course.data.level}</p>
+          )}
+        </div>
       </div>
       <div class="flex flex-wrap items-center gap-2">
         {course.data.formats.map((f) => (
@@ -44,7 +54,14 @@ const href = `${prefix}/training/${baseSlug(categorySlug)}/${toPathSegment(cours
       href={href}
       class="flex flex-col rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6 shadow-card transition-shadow hover:shadow-card-hover"
     >
-      <p class="eyebrow">{course.data.code}</p>
+      <div class="flex items-center gap-2.5">
+        {badge && (
+          <span class="flex h-8 w-8 shrink-0 items-center justify-center">
+            <Image src={badge} alt="" width={48} height={48} class="h-full w-full object-contain" />
+          </span>
+        )}
+        <p class="eyebrow">{course.data.code}</p>
+      </div>
       <h3 class="mt-2 text-[length:var(--text-h4)]">{course.data.name}</h3>
       <p class="mt-2 line-clamp-3 text-[length:var(--text-small)] text-neutral-600">
         {course.data.summary}

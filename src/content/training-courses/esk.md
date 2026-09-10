@@ -22,7 +22,7 @@ whoIsThisFor:
   - KMP2 holders ready to apply Kanban principles at enterprise level
 whatYoullLearn:
   - How to design a Kanban system that spans multiple teams, departments, and value streams
-  - Portfolio Kanban — managing the flow of strategic work from idea through to delivery
+  - Portfolio Kanban, managing the flow of strategic work from idea through to delivery
   - How to create meaningful visibility across an enterprise without imposing process on individual teams
   - How flight levels thinking connects strategy, coordination, and operational delivery in a Kanban context
   - Advanced flow metrics for managing performance at the portfolio and enterprise level

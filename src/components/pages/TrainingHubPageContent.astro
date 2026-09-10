@@ -86,7 +86,13 @@ const prefix = locale === "de" ? "/de" : "";
 </Section>
 
 <Section eyebrow={copy.upcomingEyebrow} heading={copy.upcomingHeading} class="bg-mist-light">
-  <ScheduleList rows={upcomingWithCourse} id="hub-schedule" filterable emptyMessage={t("schedule.noSessions")} />
+  <ScheduleList
+    rows={upcomingWithCourse}
+    id="hub-schedule"
+    filters={["topic", "country", "trainer"]}
+    defaultCountry="Germany"
+    emptyMessage={t("schedule.noSessions")}
+  />
   <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
     <p class="text-[length:var(--text-small)] text-neutral-600">
       {t("schedule.preferInHouse")} <a href={`/contact`} class="font-semibold text-ink underline">{t("schedule.letUsKnow")}</a>.

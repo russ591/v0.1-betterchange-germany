@@ -26,9 +26,11 @@ const prefix = locale === "de" ? "/de" : "";
 const navLinks = [
   { href: "/services", label: t("nav.services"), translated: true },
   { href: "/training", label: t("nav.training"), mega: true, translated: true },
-  { href: "/about", label: t("nav.about"), translated: false },
   { href: "/insights", label: t("nav.insights"), translated: false },
-  { href: "/contact", label: t("nav.contact"), translated: false },
+  { href: "/about", label: t("nav.about"), translated: false },
+  // Desktop already has the lime "Contact us" button; keep this entry only
+  // for the mobile menu, where that button is hidden below the sm breakpoint.
+  { href: "/contact", label: t("nav.contact"), translated: false, mobileOnly: true },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -58,39 +60,41 @@ const deHref = translations?.de ?? "/de/";
 
     <nav aria-label="Primary" class="hidden items-center gap-8 md:flex">
       {
-        navLinks.map((link) => {
-          const href = link.translated ? `${prefix}${link.href}` : link.href;
-          const isActive = href === "/" ? currentPath === "/" : currentPath.startsWith(href);
-          const linkClass = `flex items-center gap-1 border-b-2 pb-1 text-sm font-medium transition-colors hover:text-ink ${
-            isActive ? "border-lime text-ink" : "border-transparent text-neutral-600"
-          }`;
+        navLinks
+          .filter((link) => !link.mobileOnly)
+          .map((link) => {
+            const href = link.translated ? `${prefix}${link.href}` : link.href;
+            const isActive = href === "/" ? currentPath === "/" : currentPath.startsWith(href);
+            const linkClass = `flex items-center gap-1 border-b-2 pb-1 text-sm font-medium transition-colors hover:text-ink ${
+              isActive ? "border-lime text-ink" : "border-transparent text-neutral-600"
+            }`;
 
-          if (link.mega) {
+            if (link.mega) {
+              return (
+                <div class="group relative">
+                  <a href={href} class={linkClass} aria-current={isActive ? "page" : undefined}>
+                    {link.label}
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="h-3.5 w-3.5 shrink-0 transition-transform group-hover:rotate-180"
+                    >
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </a>
+                  <TrainingMegaMenuDesktop categoriesWithCourses={categoriesWithCourses} />
+                </div>
+              );
+            }
+
             return (
-              <div class="group relative">
-                <a href={href} class={linkClass} aria-current={isActive ? "page" : undefined}>
-                  {link.label}
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    class="h-3.5 w-3.5 shrink-0 transition-transform group-hover:rotate-180"
-                  >
-                    <path d="m6 9 6 6 6-6" />
-                  </svg>
-                </a>
-                <TrainingMegaMenuDesktop categoriesWithCourses={categoriesWithCourses} />
-              </div>
+              <a href={href} class={linkClass} aria-current={isActive ? "page" : undefined}>
+                {link.label}
+              </a>
             );
-          }
-
-          return (
-            <a href={href} class={linkClass} aria-current={isActive ? "page" : undefined}>
-              {link.label}
-            </a>
-          );
-        })
+          })
       }
     </nav>
 

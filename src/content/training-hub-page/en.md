@@ -15,10 +15,10 @@ formats:
   - name: Live online
     description: The same workshop run remotely with the full group. Interactive, facilitated, and structured over the same number of days.
   - name: In-person
-    description: Full-day classroom workshops in Berlin. The most immersive format — live exercises, group dynamics, and direct trainer access.
+    description: Full-day classroom workshops in Berlin. The most immersive format, live exercises, group dynamics, and direct trainer access.
 inHouseEyebrow: In-house training
 inHouseHeading: Need private or in-house training?
-inHouseBody: All courses can be run exclusively for your team — in Berlin, at your location, or online. Tailored to your context, delivered at your pace.
+inHouseBody: All courses can be run exclusively for your team, in Berlin, at your location, or online. Tailored to your context, delivered at your pace.
 feedbackEyebrow: Feedback
 feedbackHeading: What participants say
 feedbackIntro: Feedback from real course participants, not curated marketing copy.
@@ -28,7 +28,7 @@ testimonials:
     location: Berlin
     course: FL2D
     format: In-person
-  - quote: KMP1 completely changed how I think about visualising work. Done in the best possible way — tools I used immediately.
+  - quote: KMP1 completely changed how I think about visualising work. Done in the best possible way. Tools I used immediately.
     role: Agile Coach
     location: Amsterdam
     course: KMP1
@@ -39,5 +39,5 @@ testimonials:
     course: ICP-ACC
     format: In-person
 ratingValue: "4.8"
-ratingLabel: Trustpilot — verified reviews across all courses.
+ratingLabel: Trustpilot. Verified reviews across all courses.
 ---

@@ -48,7 +48,7 @@ const badge = courseBadges[baseSlug(course.id)];
 />
 
 <Section class="bg-mist-light">
-  <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-start">
+  <div class="grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-start">
     <div class="min-w-0">
       <p class="eyebrow">{category.data.name} &middot; {course.data.code}</p>
       <h1 class="mt-4 text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
@@ -89,49 +89,53 @@ const badge = courseBadges[baseSlug(course.id)];
 
       {
         category.data.certificationBody && (
-          <div class="mt-7 inline-flex items-center gap-3 rounded-[var(--radius-pill)] border border-neutral-200 bg-surface px-4 py-2.5">
-            {logo ? (
-              <img src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} class="h-4 w-auto object-contain" />
-            ) : (
-              <span class="text-[length:var(--text-caption)] font-semibold text-neutral-500">
-                {category.data.certificationBody}
-              </span>
-            )}
-            {badge && (
-              <>
-                <span aria-hidden="true" class="h-5 w-px bg-neutral-200" />
+          <div class="mt-7 flex items-center gap-5 rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-5 shadow-card">
+            {badge ? (
+              <span class="flex h-20 w-20 shrink-0 items-center justify-center">
                 <Image
                   src={badge}
-                  alt={`${course.data.certification ?? course.data.code} certification`}
-                  width={56}
-                  height={56}
-                  class="h-7 w-7 rounded-full"
+                  alt={`${course.data.certification ?? course.data.code} certification badge`}
+                  width={120}
+                  height={120}
+                  class="h-full w-full object-contain"
                 />
-              </>
+              </span>
+            ) : (
+              logo && (
+                <span class="flex h-20 w-20 shrink-0 items-center justify-center">
+                  <img src={logo.src} alt="" class="h-full w-full object-contain" />
+                </span>
+              )
             )}
-            <span class="text-[length:var(--text-caption)] text-neutral-500">
-              {t("certifiedBy")} <span class="font-semibold text-ink">{category.data.certificationBody}</span>
-            </span>
+            <div class="min-w-0">
+              <p class="eyebrow">{t("certifiedBy")}</p>
+              <p class="mt-1 text-[length:var(--text-h4)] font-semibold text-ink">{category.data.certificationBody}</p>
+              {logo && (
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={logo.width}
+                  height={logo.height}
+                  class="mt-2.5 h-6 w-auto object-contain"
+                />
+              )}
+            </div>
           </div>
         )
       }
     </div>
 
-    <div class="min-w-0 lg:sticky lg:top-24">
+    <div class="min-w-0 md:sticky md:top-24">
       <div class="overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card">
         <div class="flex items-center gap-3.5 border-b border-neutral-200 bg-mist-light px-5 py-4">
           {
             badge ? (
-              <Image
-                src={badge}
-                alt=""
-                width={64}
-                height={64}
-                class="h-11 w-11 shrink-0 rounded-full"
-              />
+              <span class="flex h-11 w-11 shrink-0 items-center justify-center">
+                <Image src={badge} alt="" width={64} height={64} class="h-full w-full object-contain" />
+              </span>
             ) : (
               logo && (
-                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-2">
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center">
                   <img src={logo.src} alt="" class="h-full w-full object-contain" />
                 </span>
               )

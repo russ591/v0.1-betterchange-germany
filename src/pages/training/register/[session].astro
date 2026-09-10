@@ -83,8 +83,8 @@ const countries = [
 ---
 
 <BaseLayout
-  title={`Register — ${course.data.name}`}
-  description={`Register for ${course.data.name} — ${session.data.format}, ${session.data.location}.`}
+  title={`Register, ${course.data.name}`}
+  description={`Register for ${course.data.name}, ${session.data.format}, ${session.data.location}.`}
 >
   <Breadcrumbs
     items={[
@@ -115,13 +115,15 @@ const countries = [
           {badge && (
             <>
               <span aria-hidden="true" class="h-5 w-px bg-neutral-200" />
-              <Image
-                src={badge}
-                alt={`${course.data.certification ?? course.data.code} certification`}
-                width={56}
-                height={56}
-                class="h-7 w-7 rounded-full"
-              />
+              <span class="flex h-7 w-7 shrink-0 items-center justify-center">
+                <Image
+                  src={badge}
+                  alt={`${course.data.certification ?? course.data.code} certification`}
+                  width={56}
+                  height={56}
+                  class="h-full w-full object-contain"
+                />
+              </span>
             </>
           )}
           <span class="text-[length:var(--text-caption)] text-neutral-500">
@@ -133,16 +135,18 @@ const countries = [
   </Section>
 
   <Section>
-    <div class="grid gap-10 lg:grid-cols-[1fr_1.3fr]">
+    <div class="grid gap-10 md:grid-cols-[1fr_1.3fr]">
       <div class="min-w-0 rounded-[var(--radius-card)] border border-neutral-200 bg-mist-light p-6">
         <p class="eyebrow">Order summary</p>
         <div class="mt-2 flex items-center gap-3">
           {
             badge ? (
-              <Image src={badge} alt="" width={48} height={48} class="h-8 w-8 shrink-0 rounded-full" />
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center">
+                <Image src={badge} alt="" width={48} height={48} class="h-full w-full object-contain" />
+              </span>
             ) : (
               logo && (
-                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface p-1.5">
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center">
                   <img src={logo.src} alt="" class="h-full w-full object-contain" />
                 </span>
               )
@@ -317,7 +321,7 @@ const countries = [
         class="min-w-0 rounded-[var(--radius-card)] bg-lime/15 p-4 text-[length:var(--text-small)] text-ink"
         hidden
       >
-        You're on the list — we'll email you the moment a seat opens up.
+        You're on the list. We'll email you the moment a seat opens up.
       </p>
 
       <form
@@ -447,7 +451,7 @@ const countries = [
         <div>
           <p class="eyebrow">Attendees</p>
           <p class="mt-2 text-[length:var(--text-caption)] text-neutral-500">
-            Attendee 1 is filled in from your booking details above — edit it if a different person is attending.
+            Attendee 1 is filled in from your booking details above. Edit it if a different person is attending.
           </p>
           <div class="mt-3 divide-y divide-neutral-200 rounded-[var(--radius-control)] border border-neutral-200">
             {
@@ -654,14 +658,14 @@ const countries = [
             result.discountType === "fixed"
               ? currencyFormatter.format(result.value) + " off"
               : `${result.value}% off`;
-          showDiscountFeedback(`Discount code ${entered} applied — ${amountText}`, "success");
+          showDiscountFeedback(`Discount code ${entered} applied, ${amountText}`, "success");
         } else {
           appliedDiscount = null;
           showDiscountFeedback("Code not recognized", "error");
         }
       } catch {
         appliedDiscount = null;
-        showDiscountFeedback("Couldn't check that code — try again", "error");
+        showDiscountFeedback("Couldn't check that code. Try again", "error");
       } finally {
         applyDiscountButton.disabled = false;
         applyDiscountButton.textContent = "Apply";
@@ -750,7 +754,7 @@ const countries = [
         waitlistForm.hidden = true;
         waitlistSuccessEl.hidden = false;
       } catch {
-        waitlistErrorEl.textContent = "Couldn't join the waitlist — check your connection and try again.";
+        waitlistErrorEl.textContent = "Couldn't join the waitlist. Check your connection and try again.";
         waitlistErrorEl.hidden = false;
         waitlistSubmitButton.disabled = false;
         waitlistSubmitButton.textContent = "Join the waitlist";

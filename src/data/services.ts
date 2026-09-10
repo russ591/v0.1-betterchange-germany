@@ -23,7 +23,7 @@ const servicesEn = [
   {
     icon: "training",
     name: "Training",
-    blurb: "Kanban, Flight Levels and Scrum courses — in-person in Berlin, live online, or self-paced.",
+    blurb: "Kanban, Flight Levels and Scrum courses, in-person in Berlin, live online, or self-paced.",
     items: ["Kanban KMP1 · KMP2", "Flight Levels FL2D · FL3D · FLSA", "ICP-ACC", "In-house delivery"],
   },
   {
