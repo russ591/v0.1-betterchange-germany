@@ -11,6 +11,8 @@ import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
 import { levelIcons, levelPillClasses } from "@/data/levelIcons";
 import { toPathSegment } from "@/lib/urlSlug";
+import MeetTheTrainers from "@/components/MeetTheTrainers.astro";
+import { getTrainersForSessions } from "@/lib/trainers";
 
 export async function getStaticPaths() {
   const categories = await getCollection("training-categories");
@@ -36,6 +38,10 @@ const upcoming = allSchedules
 const upcomingWithCourse = await Promise.all(
   upcoming.map(async (session) => ({ session, course: await getEntry(session.data.course), category }))
 );
+
+// Not scoped to "upcoming" -- a self-paced course's trainer (no date at
+// all) should still show up here.
+const categoryTrainers = await getTrainersForSessions(allSchedules.filter((s) => courseIds.has(s.data.course.id)));
 ---
 
 <BaseLayout title={category.data.name} description={category.data.tagline}>
@@ -175,6 +181,8 @@ const upcomingWithCourse = await Promise.all(
       )
     }
   </Section>
+
+  <MeetTheTrainers trainers={categoryTrainers} />
 
   <Section eyebrow={`Upcoming ${category.data.name} training`} heading="Next scheduled sessions" class="bg-mist-light">
     <ScheduleList

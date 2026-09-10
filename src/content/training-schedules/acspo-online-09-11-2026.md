@@ -3,7 +3,8 @@ course: a-cspo
 date: '2026-11-09T01:00:00Z'
 format: live-online
 location: Online
-trainer: giuseppe-de-simone
+trainers:
+  - giuseppe-de-simone
 price: €1,300–€1,600
 status: available
 isExternal: true

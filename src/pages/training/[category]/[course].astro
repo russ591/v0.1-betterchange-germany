@@ -13,6 +13,8 @@ import { courseBadges } from "@/data/courseBadges";
 import { formatDetails, formatIcons } from "@/data/formatDetails";
 import { formatSessionDate } from "@/lib/dates";
 import { registrationHref, registrationLinkAttrs } from "@/lib/registrationLink";
+import TrainerChip from "@/components/TrainerChip.astro";
+import { getTrainersForSessions } from "@/lib/trainers";
 
 export async function getStaticPaths() {
   const courses = await getCollection("training-courses");
@@ -36,6 +38,9 @@ const upcoming = allSchedules
 
 const logo = category.data.certificationBody ? certificationLogos[category.data.certificationBody] : undefined;
 const badge = courseBadges[course.id];
+const upcomingWithTrainers = await Promise.all(
+  upcoming.map(async (session) => ({ session, trainers: await getTrainersForSessions([session]) }))
+);
 
 const courseModeByFormat = { "in-person": "Onsite", "live-online": "Online", "self-paced": "Online" } as const;
 const courseSchema = {
@@ -186,7 +191,7 @@ const courseSchema = {
                 </a>
               </div>
             ) : (
-              upcoming.map((session) => {
+              upcomingWithTrainers.map(({ session, trainers }) => {
                 const isSelfPaced = session.data.format === "self-paced";
                 return (
                   <a
@@ -211,6 +216,13 @@ const courseSchema = {
                       )}
                     </div>
                     <p class="mt-1 text-[length:var(--text-caption)] text-neutral-500">{session.data.location}</p>
+                    {trainers.length > 0 && (
+                      <div class="mt-2 flex flex-wrap gap-1.5">
+                        {trainers.map((trainer) => (
+                          <TrainerChip trainer={trainer} density="plain" linkable={false} showLabel />
+                        ))}
+                      </div>
+                    )}
                     <div class="mt-3 flex items-center justify-between gap-3">
                       <span class="font-bold">
                         {session.data.price}

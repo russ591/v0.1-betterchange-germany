@@ -63,10 +63,12 @@ const trainingSchedule = defineCollection({
     date: z.coerce.date().optional(), // absent for self-paced (start anytime)
     format: z.enum(["in-person", "live-online", "self-paced"]),
     location: z.string(),
-    // Reference when the trainer has a migrated profile, plain name
-    // otherwise (some trainer IDs in the source data don't map to a
-    // published Fellow).
-    trainer: reference("coach-profiles").optional(),
+    // Multiple trainers can co-teach a session (several of the
+    // non-Germany sister-site sessions are run by two people). Plain
+    // trainerName stays as a rare fallback for a trainer with no
+    // migrated profile at all -- every trainer in the data today has
+    // one, so trainers should be preferred whenever possible.
+    trainers: z.array(reference("coach-profiles")).optional(),
     trainerName: z.string().optional(),
     price: z.string(),
     offer: z.string().optional(),
