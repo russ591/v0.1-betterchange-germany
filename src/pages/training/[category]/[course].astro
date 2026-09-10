@@ -219,7 +219,7 @@ const courseSchema = {
                     {trainers.length > 0 && (
                       <div class="mt-2 flex flex-wrap gap-1.5">
                         {trainers.map((trainer) => (
-                          <TrainerChip trainer={trainer} density="inline" />
+                          <TrainerChip trainer={trainer} density="plain" linkable={false} showLabel />
                         ))}
                       </div>
                     )}

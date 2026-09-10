@@ -9,18 +9,23 @@ import type { TrainerEntry } from "@/lib/trainers";
 // page if it has one, otherwise LinkedIn); the rare plain-name fallback
 // (no migrated profile at all) renders as unlinked text with no avatar.
 //
-// density="inline" is for placement inside another link (e.g. a session
-// row that's itself an <a>) -- nesting an <a> there would be invalid HTML,
-// so it never links and renders smaller, as plain metadata.
+// density controls the visual style only: "chip" is the bordered pill,
+// "plain" is bare avatar+text. linkable is separate because the course
+// page nests this inside a session row that's itself an <a> -- nesting an
+// <a> there would be invalid HTML, so that caller passes linkable={false}
+// even though it wants the "plain" look; the registration page wants the
+// same plain look but stays linkable since it isn't inside another link.
 interface Props {
   trainer: TrainerEntry;
-  density?: "chip" | "inline";
+  density?: "chip" | "plain";
+  linkable?: boolean;
+  showLabel?: boolean;
 }
 
-const { trainer, density = "chip" } = Astro.props;
+const { trainer, density = "chip", linkable = true, showLabel = false } = Astro.props;
 
 const href =
-  density === "chip" && trainer.kind === "profile"
+  linkable && trainer.kind === "profile"
     ? trainer.profile.data.hasFullProfile
       ? `/about/${toPathSegment(trainer.profile.data.urlSlug ?? trainer.profile.id)}`
       : trainer.profile.data.linkedinUrl
@@ -46,7 +51,7 @@ const initials =
       class={
         density === "chip"
           ? "inline-flex items-center gap-2 rounded-[var(--radius-pill)] border border-neutral-200 bg-surface py-1 pl-1 pr-3 text-[length:var(--text-caption)] font-semibold text-ink transition-colors hover:border-ink"
-          : "inline-flex items-center gap-1.5 text-[length:var(--text-caption)] text-neutral-600"
+          : `inline-flex items-center gap-1.5 text-[length:var(--text-caption)] text-neutral-600 ${href ? "hover:text-ink hover:underline" : ""}`
       }
     >
       {trainer.profile.data.photo ? (
@@ -76,11 +81,11 @@ const initials =
           {initials}
         </span>
       )}
-      {density === "chip" ? trainer.profile.data.name : `Trainer: ${trainer.profile.data.name}`}
+      {showLabel ? `Trainer: ${trainer.profile.data.name}` : trainer.profile.data.name}
     </Wrapper>
   ) : (
     <span class="text-[length:var(--text-caption)] text-neutral-600">
-      {density === "inline" ? `Trainer: ${trainer.name}` : trainer.name}
+      {showLabel ? `Trainer: ${trainer.name}` : trainer.name}
     </span>
   )
 }
