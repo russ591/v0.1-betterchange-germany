@@ -45,33 +45,35 @@ const servicesEn = [
   },
 ];
 
-// Phase B: name + items are reviewed, approved German copy from the
+// Phase B: name, blurb and items are reviewed, approved German copy from the
 // translation draft (betterchange-de-translation-draft-homepage-services.md).
-// `blurb` wasn't covered by that draft, so it keeps its "[DE]" placeholder
-// until a follow-up translation pass covers it -- do not invent text there.
+// The draft's homepage table rows combine name + blurb with em dashes
+// ("Training - Kanban, ... - in-person..."); split apart here into the two
+// fields, with the em dashes converted to commas/full stops per CLAUDE.md's
+// house style.
 const servicesDe = [
   {
     icon: "training",
     name: "Training",
-    blurb: "[DE] Kanban, Flight Levels and Scrum courses, in-person in Berlin, live online, or self-paced.",
+    blurb: "Kanban-, Flight Levels- und Scrum-Kurse, vor Ort in Berlin, live online oder im Selbststudium.",
     items: ["Kanban KMP1 · KMP2", "Flight Levels FL2D · FL3D · FLSA", "ICP-ACC", "Inhouse-Training"],
   },
   {
     icon: "coaching",
     name: "Coaching",
-    blurb: "[DE] Team coaching, leadership coaching and Scrum Master mentoring, for long-term engagements.",
+    blurb: "Team-Coaching, Leadership-Coaching und Scrum-Master-Mentoring auch über längere Zeit.",
     items: ["Team-Coaching", "Leadership-Coaching", "Scrum-Master-Mentoring", "Langfristige Zusammenarbeit"],
   },
   {
     icon: "consulting",
     name: "Consulting & Transformation",
-    blurb: "[DE] Flight Levels design, portfolio management and strategy activation across the organisation.",
+    blurb: "Flight-Levels-Design, Portfoliomanagement und Strategieaktivierung für die gesamte Organisation.",
     items: ["Flight-Levels-Design", "Portfoliomanagement", "Strategieaktivierung", "Unternehmensweite Transformation"],
   },
   {
     icon: "facilitation",
     name: "Facilitation",
-    blurb: "[DE] Retrospectives, design sprints and user story mapping, run by expert facilitators.",
+    blurb: "Retrospectives, Design Sprints und User Story Mapping, durchgeführt von erfahrenen Facilitator:innen.",
     items: ["Retrospectives", "Design Sprints", "User Story Mapping", "Leadership-Workshops"],
   },
 ];

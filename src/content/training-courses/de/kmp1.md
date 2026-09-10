@@ -4,8 +4,10 @@
 # Phase C (see the German-language plan doc). category/code/level/formats/
 # certification/priceFrom/languages/durationDays/sortOrder are
 # language-neutral facts (or lookup keys) and are kept identical to the
-# English entry.
-name: '[DE] Kanban System Design (KMP 1)'
+# English entry. `name` is a proper noun/certification title (per the
+# glossary) and is likewise kept identical to English, never translated or
+# "[DE]"-prefixed.
+name: 'Kanban System Design (KMP 1)'
 code: KMP1
 category: de/kanban
 level: Practitioner

@@ -176,6 +176,8 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "cta.closingHeading": "Unsicher, wo der richtige Startpunkt liegt?",
   "cta.closingBody":
     "Ein kurzes Gespräch hilft oft weiter. Wir unterstützen gerne dabei, den passenden Trainings- oder Coaching-Ansatz für die jeweilige Situation zu finden.",
+
+  "certifiedBy": "Zertifiziert durch",
 };
 
 export const de: Record<UIKey, string> = { ...dePlaceholders, ...deOverrides };

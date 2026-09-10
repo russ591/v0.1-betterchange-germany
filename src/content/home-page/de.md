@@ -1,11 +1,10 @@
 ---
 # Phase B: reviewed, approved German copy from the translation draft
 # (betterchange-de-translation-draft-homepage-services.md), placed field by
-# field. Fields the draft didn't cover (workedWithLabel, servicesEyebrow,
-# upcomingEyebrow, insightsHeading) keep their "[DE]" placeholder until a
-# follow-up translation pass covers them -- do not invent text for those.
-# Stat "value"s are short factual badges (not prose) and stay identical to
-# the English entry.
+# field. workedWithLabel/servicesEyebrow/upcomingEyebrow/insightsHeading were
+# added in the draft's follow-up "New" table (small eyebrow labels missed in
+# the original extraction). Stat "value"s are short factual badges (not
+# prose) and stay identical to the English entry.
 metaDescription: "Better Change ist ein europäisches Netzwerk erfahrener Trainer:innen und Coaching-Praktiker:innen. Wir bieten Kanban-, Flight Levels- und Scrum-Training, Team- und Leadership-Coaching sowie organisatorische Transformation an, auf Englisch und Deutsch."
 heroEyebrow: "Training, Coaching & Consulting · Berlin & Europa"
 heroHeadingLead: "Wir helfen Organisationen,"
@@ -24,10 +23,10 @@ stats:
   - label: "Standort"
     value: Berlin
     description: "Vor Ort & online, deutschland- und europaweit"
-workedWithLabel: "[DE] Worked with"
-servicesEyebrow: "[DE] What we do"
+workedWithLabel: "Referenzen"
+servicesEyebrow: "Was wir tun"
 servicesHeading: "Leistungen, die nachhaltige Veränderung schaffen"
-upcomingEyebrow: "[DE] Upcoming courses"
+upcomingEyebrow: "Anstehende Kurse"
 upcomingHeading: "Nächste Trainingstermine"
 teamEyebrow: "Unser Team"
 teamHeading: "Praktiker:innen, keine Theoretiker:innen"
@@ -36,5 +35,5 @@ quoteEyebrow: "Kundenstimmen"
 quoteText: "Better Change hat unserer Transformation echte Praxisglaubwürdigkeit verliehen. Sie hatten es selbst schon gemacht, das hat den entscheidenden Unterschied gemacht."
 quoteCite: "Senior Engineering Leader, DACH-Region"
 insightsEyebrow: "Insights"
-insightsHeading: "[DE] Articles, guides & resources"
+insightsHeading: "Artikel, Leitfäden & Ressourcen"
 ---
