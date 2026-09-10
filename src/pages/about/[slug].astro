@@ -176,7 +176,9 @@ const hasSidebar = upcomingSessions.length > 0 || recentArticles.length > 0;
                         class="flex items-center gap-1.5 rounded-[var(--radius-pill)] border border-neutral-300 bg-surface py-1 pl-1 pr-2.5 text-[length:var(--text-caption)] font-semibold transition-colors hover:border-ink hover:text-ink"
                       >
                         {courseBadges[course.id] && (
-                          <Image src={courseBadges[course.id]} alt="" width={28} height={28} class="h-5 w-auto max-w-[36px] shrink-0 object-contain" />
+                          <span class="flex h-5 w-5 shrink-0 items-center justify-center">
+                            <Image src={courseBadges[course.id]} alt="" width={28} height={28} class="h-full w-full object-contain" />
+                          </span>
                         )}
                         {course.data.code}
                       </a>
@@ -205,10 +207,14 @@ const hasSidebar = upcomingSessions.length > 0 || recentArticles.length > 0;
                     >
                       <div class="flex min-w-0 flex-1 items-center gap-3">
                         {b?.kind === "badge" && (
-                          <Image src={b.badge} alt="" width={36} height={36} class="h-8 w-auto max-w-[56px] shrink-0 object-contain" />
+                          <span class="flex h-8 w-8 shrink-0 items-center justify-center">
+                            <Image src={b.badge} alt="" width={36} height={36} class="h-full w-full object-contain" />
+                          </span>
                         )}
                         {b?.kind === "logo" && (
-                          <img src={b.logo.src} alt="" class="h-8 w-auto max-w-[56px] shrink-0 object-contain" />
+                          <span class="flex h-8 w-8 shrink-0 items-center justify-center">
+                            <img src={b.logo.src} alt="" class="h-full w-full object-contain" />
+                          </span>
                         )}
                         <div class="min-w-0 flex-1">
                           <p class="text-[length:var(--text-small)] font-semibold leading-snug">{course.data.name}</p>
