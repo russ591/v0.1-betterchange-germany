@@ -6,8 +6,7 @@ import type { Locale } from "@/lib/i18n";
 // compact icon-card teaser -- not new marketing copy, just a shorter format
 // of what's already in `items`. `icon` is a stable, language-neutral key
 // shared with serviceIcons below (and with services.astro's serviceLinks
-// map) so lookups keep working once `name` gets a "[DE] " placeholder on
-// the German variant.
+// map) so lookups keep working regardless of `name`'s language.
 export const serviceIcons: Record<string, string> = {
   training:
     '<svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="1.8" class="h-5 w-5"><path d="M2 8l10-4 10 4-10 4-10-4Z"/><path d="M6 10.5V16c0 1.5 2.5 3 6 3s6-1.5 6-3v-5.5"/></svg>',
@@ -46,15 +45,36 @@ const servicesEn = [
   },
 ];
 
-// Phase A scaffold: placeholder text only, marked "[DE]" -- see the
-// German-language plan doc. Real, reviewed translations get slotted in
-// during Phase C.
-const servicesDe = servicesEn.map((service) => ({
-  icon: service.icon,
-  name: `[DE] ${service.name}`,
-  blurb: `[DE] ${service.blurb}`,
-  items: service.items.map((item) => `[DE] ${item}`),
-}));
+// Phase B: name + items are reviewed, approved German copy from the
+// translation draft (betterchange-de-translation-draft-homepage-services.md).
+// `blurb` wasn't covered by that draft, so it keeps its "[DE]" placeholder
+// until a follow-up translation pass covers it -- do not invent text there.
+const servicesDe = [
+  {
+    icon: "training",
+    name: "Training",
+    blurb: "[DE] Kanban, Flight Levels and Scrum courses, in-person in Berlin, live online, or self-paced.",
+    items: ["Kanban KMP1 · KMP2", "Flight Levels FL2D · FL3D · FLSA", "ICP-ACC", "Inhouse-Training"],
+  },
+  {
+    icon: "coaching",
+    name: "Coaching",
+    blurb: "[DE] Team coaching, leadership coaching and Scrum Master mentoring, for long-term engagements.",
+    items: ["Team-Coaching", "Leadership-Coaching", "Scrum-Master-Mentoring", "Langfristige Zusammenarbeit"],
+  },
+  {
+    icon: "consulting",
+    name: "Consulting & Transformation",
+    blurb: "[DE] Flight Levels design, portfolio management and strategy activation across the organisation.",
+    items: ["Flight-Levels-Design", "Portfoliomanagement", "Strategieaktivierung", "Unternehmensweite Transformation"],
+  },
+  {
+    icon: "facilitation",
+    name: "Facilitation",
+    blurb: "[DE] Retrospectives, design sprints and user story mapping, run by expert facilitators.",
+    items: ["Retrospectives", "Design Sprints", "User Story Mapping", "Leadership-Workshops"],
+  },
+];
 
 export function getServices(locale: Locale) {
   return locale === "de" ? servicesDe : servicesEn;

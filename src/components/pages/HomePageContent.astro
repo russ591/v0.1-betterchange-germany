@@ -173,7 +173,7 @@ const clients = [
   <div class="mt-12 border-t border-neutral-800 pt-10">
     <p class="eyebrow text-lime">{copy.quoteEyebrow}</p>
     <blockquote class="mt-3 max-w-2xl text-[length:var(--text-h3)] font-bold leading-snug text-lime">
-      “{copy.quoteText}”
+      {locale === "de" ? "„" : "“"}{copy.quoteText}{locale === "de" ? "“" : "”"}
     </blockquote>
     <cite class="mt-4 block text-[length:var(--text-small)] not-italic text-neutral-400">{copy.quoteCite}</cite>
   </div>

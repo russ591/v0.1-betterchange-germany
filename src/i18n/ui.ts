@@ -4,11 +4,13 @@
 // content collections instead.
 //
 // English values here are the real copy, copied verbatim from what was
-// already hardcoded in each component. German values are a deliberate,
-// clearly-flagged placeholder ("[DE] " + the English string) rather than a
-// translation -- see the German-language plan doc: Claude Code builds the
-// scaffold in this phase, real reviewed German copy is slotted in later.
-// Do not replace the placeholders with invented German text.
+// already hardcoded in each component. German values default to a
+// deliberate, clearly-flagged placeholder ("[DE] " + the English string)
+// rather than an invented translation; `deOverrides` below replaces that
+// placeholder with reviewed, approved copy key by key as each translation
+// pass lands (see the German-language plan doc). Keys not yet in
+// `deOverrides` still fall back to the "[DE] " placeholder -- do not
+// invent text for those.
 export const en = {
   "nav.services": "Services",
   "nav.training": "Training",
@@ -124,8 +126,58 @@ function placeholder(value: string): string {
   return `[DE] ${value}`;
 }
 
-export const de: Record<UIKey, string> = Object.fromEntries(
+const dePlaceholders: Record<UIKey, string> = Object.fromEntries(
   (Object.entries(en) as [UIKey, string][]).map(([key, value]) => [key, placeholder(value)])
 ) as Record<UIKey, string>;
+
+// Reviewed, approved German copy (Phase B), from
+// betterchange-de-translation-draft-homepage-services.md. House style:
+// impersonal/collective address (no "Sie"/"Du"), colon-form gender-inclusive
+// language (Trainer:innen), and several terms kept as English loanwords
+// (Training, Leadership, Facilitation, Coaching, course/certification codes).
+//
+// schedule.bookNow is inferred from the draft's "Register" (schedule.register)
+// rather than given its own row -- same booking action, reusing the one
+// approved word for consistency rather than leaving one of the two identical
+// buttons in English. Flag if a dedicated translation should differ.
+const deOverrides: Partial<Record<UIKey, string>> = {
+  "nav.services": "Leistungen",
+  "nav.training": "Training",
+  "nav.about": "Über uns",
+  "nav.insights": "Insights",
+  "nav.contact": "Kontakt",
+  "nav.contactCta": "Kontakt",
+
+  "footer.tagline":
+    "Ein europäisches Netzwerk von Praktiker:innen für Training, Coaching und Transformation, auf Englisch und Deutsch.",
+  "footer.trainingHeading": "Training",
+  "footer.companyHeading": "Unternehmen",
+  "footer.rights": "Alle Rechte vorbehalten.",
+
+  "schedule.course": "Kurs",
+  "schedule.date": "Datum",
+  "schedule.location": "Ort",
+  "schedule.format": "Format",
+  "schedule.bookNow": "Anmelden",
+  "schedule.register": "Anmelden",
+  "schedule.fullSchedule": "Alle Termine",
+  "schedule.getInTouch": "Kontakt aufnehmen",
+
+  "badge.inPerson": "Vor Ort",
+  "badge.liveOnline": "Live online",
+
+  "megaMenu.trainingHome": "Training-Startseite",
+
+  "cta.seeAllTraining": "Alle Trainings ansehen",
+  "cta.ourServices": "Unsere Leistungen",
+  "cta.meetFullTeam": "Das ganze Team kennenlernen",
+  "cta.viewAllInsights": "Alle Insights ansehen",
+  "cta.learnMore": "Mehr erfahren",
+  "cta.closingHeading": "Unsicher, wo der richtige Startpunkt liegt?",
+  "cta.closingBody":
+    "Ein kurzes Gespräch hilft oft weiter. Wir unterstützen gerne dabei, den passenden Trainings- oder Coaching-Ansatz für die jeweilige Situation zu finden.",
+};
+
+export const de: Record<UIKey, string> = { ...dePlaceholders, ...deOverrides };
 
 export const ui = { en, de };

@@ -1,37 +1,40 @@
 ---
-# Phase A scaffold: placeholder text only, marked "[DE]" -- do not treat as
-# real German copy. Real, reviewed translations get slotted in during
-# Phase C (see the German-language plan doc). Stat "value"s are short
-# factual badges (not prose) and are kept identical to the English entry.
-metaDescription: "[DE] Better Change is a European network of experienced trainers and coaching practitioners. We deliver Kanban, Flight Levels and Scrum training, team and leadership coaching, and organisational transformation, in English and German."
-heroEyebrow: "[DE] training, coaching & Consulting · Berlin & Europe"
-heroHeadingLead: "[DE] We help organisations change"
-heroHeadingTrail: "[DE] for the better"
-heroBody: "[DE] Better Change is a European network of experienced trainers and coaching practitioners. We deliver Kanban, Flight Levels and Scrum training, team and leadership coaching, and organisational transformation, in English and German."
+# Phase B: reviewed, approved German copy from the translation draft
+# (betterchange-de-translation-draft-homepage-services.md), placed field by
+# field. Fields the draft didn't cover (workedWithLabel, servicesEyebrow,
+# upcomingEyebrow, insightsHeading) keep their "[DE]" placeholder until a
+# follow-up translation pass covers them -- do not invent text for those.
+# Stat "value"s are short factual badges (not prose) and stay identical to
+# the English entry.
+metaDescription: "Better Change ist ein europäisches Netzwerk erfahrener Trainer:innen und Coaching-Praktiker:innen. Wir bieten Kanban-, Flight Levels- und Scrum-Training, Team- und Leadership-Coaching sowie organisatorische Transformation an, auf Englisch und Deutsch."
+heroEyebrow: "Training, Coaching & Consulting · Berlin & Europa"
+heroHeadingLead: "Wir helfen Organisationen,"
+heroHeadingTrail: "besser zu werden"
+heroBody: "Better Change ist ein europäisches Netzwerk erfahrener Trainer:innen und Coaching-Praktiker:innen. Wir bieten Kanban-, Flight Levels- und Scrum-Training, Team- und Leadership-Coaching sowie organisatorische Transformation an, auf Englisch und Deutsch."
 stats:
-  - label: "[DE] Experience"
+  - label: "Erfahrung"
     value: "30+"
-    description: "[DE] Years combined practitioner experience"
-  - label: "[DE] Network"
+    description: "zusammen mehr als 30 Jahre Praxiserfahrung"
+  - label: "Netzwerk"
     value: "8+"
-    description: "[DE] Expert coaches & trainers across Europe"
-  - label: "[DE] Delivery"
+    description: "Erfahrene Coaches & Trainer:innen in ganz Europa"
+  - label: "Sprachen"
     value: "EN+"
-    description: "[DE] Training & coaching in English and multilingual"
-  - label: "[DE] Base"
+    description: "Training & Coaching auf Englisch und in anderen Sprachen"
+  - label: "Standort"
     value: Berlin
-    description: "[DE] In-person & online, Germany & Europe wide"
+    description: "Vor Ort & online, deutschland- und europaweit"
 workedWithLabel: "[DE] Worked with"
 servicesEyebrow: "[DE] What we do"
-servicesHeading: "[DE] Services that create lasting change"
+servicesHeading: "Leistungen, die nachhaltige Veränderung schaffen"
 upcomingEyebrow: "[DE] Upcoming courses"
-upcomingHeading: "[DE] Next open training dates"
-teamEyebrow: "[DE] Our people"
-teamHeading: "[DE] Practitioners, not theorists"
-teamBody: "[DE] All of us have been there ourselves, and know what to do when the real world doesn't follow the manual."
-quoteEyebrow: "[DE] Client perspective"
-quoteText: "[DE] Better Change brought real-world credibility to our transformation. They'd done it themselves. That made all the difference."
-quoteCite: "[DE] Senior Engineering Leader, DACH region"
-insightsEyebrow: "[DE] Insights"
+upcomingHeading: "Nächste Trainingstermine"
+teamEyebrow: "Unser Team"
+teamHeading: "Praktiker:innen, keine Theoretiker:innen"
+teamBody: "Wir alle haben es selbst erlebt, und wissen, was zu tun ist, wenn sich die Realität nicht an das Drehbuch hält."
+quoteEyebrow: "Kundenstimmen"
+quoteText: "Better Change hat unserer Transformation echte Praxisglaubwürdigkeit verliehen. Sie hatten es selbst schon gemacht, das hat den entscheidenden Unterschied gemacht."
+quoteCite: "Senior Engineering Leader, DACH-Region"
+insightsEyebrow: "Insights"
 insightsHeading: "[DE] Articles, guides & resources"
 ---
