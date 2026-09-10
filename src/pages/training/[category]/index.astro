@@ -103,15 +103,22 @@ const upcomingWithCourse = await Promise.all(
                 href={`/training/${category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
                 class="flex items-center justify-between gap-3 border-b border-neutral-100 px-5 py-3.5 transition-colors last:border-0 hover:bg-mist-light"
               >
-                <div>
-                  <p class="text-[length:var(--text-small)] font-semibold">{course.data.name}</p>
-                  <p class="text-[length:var(--text-caption)] text-neutral-500">
-                    {course.data.level}
-                    {course.data.level && " · "}
-                    {course.data.formats.length === 1 && course.data.formats[0] === "self-paced"
-                      ? "Self-paced"
-                      : `${course.data.formats.length} format${course.data.formats.length > 1 ? "s" : ""}`}
-                  </p>
+                <div class="flex min-w-0 items-center gap-3">
+                  {courseBadges[course.id] && (
+                    <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-mist-light p-1.5">
+                      <Image src={courseBadges[course.id]} alt="" width={48} height={48} class="h-full w-full object-contain" />
+                    </span>
+                  )}
+                  <div class="min-w-0">
+                    <p class="text-[length:var(--text-small)] font-semibold">{course.data.name}</p>
+                    <p class="text-[length:var(--text-caption)] text-neutral-500">
+                      {course.data.level}
+                      {course.data.level && " · "}
+                      {course.data.formats.length === 1 && course.data.formats[0] === "self-paced"
+                        ? "Self-paced"
+                        : `${course.data.formats.length} format${course.data.formats.length > 1 ? "s" : ""}`}
+                    </p>
+                  </div>
                 </div>
                 {course.data.priceFrom && <span class="shrink-0 font-bold">{course.data.priceFrom}</span>}
               </a>
