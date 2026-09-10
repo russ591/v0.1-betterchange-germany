@@ -42,11 +42,21 @@ const placeholderStyle = (id: string) => {
   return `background: radial-gradient(circle at ${position}, rgba(154,255,91,0.5), transparent 55%), linear-gradient(135deg, #14200c, #37452a);`;
 };
 
-// Curated via the `featured` flag migrated from the old site; falls back to
-// the most recent articles if fewer than 3 are flagged, so the spotlight
-// row is never sparse or empty.
+// Curated via the `featured` flag migrated from the old site. Rather than
+// always showing the same 3, this rotates through the flagged pool once a
+// day: a 3-wide window keyed off the UTC day number, so every flagged
+// article gets a turn in the hero over time instead of the newest 3
+// permanently crowding out the rest. (This is a static build, so "today"
+// is the day of the last deploy -- see the note where this page is wired
+// up for what that means in practice.) Falls back to the most recent
+// articles overall when fewer than 3 are flagged, so the row is never
+// sparse; a pool that small isn't worth rotating.
 const featuredPool = articles.filter((a) => a.article.data.featured);
-const spotlight = (featuredPool.length >= 3 ? featuredPool : articles).slice(0, 3);
+const dayNumber = Math.floor(Date.now() / 86_400_000);
+const spotlight =
+  featuredPool.length >= 3
+    ? [0, 1, 2].map((i) => featuredPool[(dayNumber + i) % featuredPool.length])
+    : articles.slice(0, 3);
 const spotlightIds = new Set(spotlight.map((a) => a.article.id));
 const gridArticles = articles.filter((a) => !spotlightIds.has(a.article.id));
 
