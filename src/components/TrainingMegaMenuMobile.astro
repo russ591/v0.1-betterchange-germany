@@ -32,6 +32,28 @@ const { categoriesWithCourses } = Astro.props;
     </svg>
   </summary>
   <div class="-mx-6 mb-2 bg-mist-light pb-3 pt-1">
+    <a
+      href="/training"
+      class="flex items-center justify-between gap-2.5 border-b border-neutral-200 px-6 py-2.5 text-[length:var(--text-small)] font-semibold text-ink"
+    >
+      <span class="flex items-center gap-2.5">
+        <span
+          aria-hidden="true"
+          class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-lime [&_svg]:h-3.5 [&_svg]:w-3.5"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7" rx="1" />
+            <rect x="14" y="3" width="7" height="7" rx="1" />
+            <rect x="3" y="14" width="7" height="7" rx="1" />
+            <rect x="14" y="14" width="7" height="7" rx="1" />
+          </svg>
+        </span>
+        Training Home
+      </span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-3.5 w-3.5 shrink-0 text-neutral-400">
+        <path d="m9 6 6 6-6 6" />
+      </svg>
+    </a>
     {
       categoriesWithCourses.map(({ category, courses }) => (
         <details class="group/category border-b border-neutral-200 px-6 last:border-0">
