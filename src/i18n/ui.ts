@@ -128,6 +128,12 @@ export const en = {
   "certification": "Certification",
   "languages": "Languages",
 
+  // Not covered by any Insights translation draft yet -- falls back to the
+  // "[DE] " placeholder until reviewed.
+  "insights.minRead": "min read",
+  "insights.by": "By",
+  "insights.relatedReading": "Related reading",
+
   "register.eyebrow": "Register",
   "register.backToCourse": "← Back to course details",
   "register.orderSummary": "Order summary",

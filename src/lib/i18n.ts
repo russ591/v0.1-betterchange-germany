@@ -43,3 +43,20 @@ export async function localizedCourse(
   }
   return (await getEntry("training-courses", base))!;
 }
+
+// insights-articles is overwhelmingly untranslated (a handful of German
+// entries alongside ~200 English-only ones, growing batch by batch) -- this
+// resolves "the version of this article to display" for whichever locale a
+// page is in, falling back to the English entry whenever no German
+// translation exists yet rather than a broken link or a missing card.
+export async function localizedArticle(
+  article: CollectionEntry<"insights-articles">,
+  locale: Locale
+): Promise<CollectionEntry<"insights-articles">> {
+  const base = baseSlug(article.id);
+  if (locale === "de") {
+    const de = await getEntry("insights-articles", `de/${base}`);
+    if (de) return de;
+  }
+  return (await getEntry("insights-articles", base))!;
+}

@@ -5,8 +5,13 @@ import Section from "@/components/Section.astro";
 import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { toPathSegment } from "@/lib/urlSlug";
+import { localeOfId } from "@/lib/i18n";
 
-const allArticles = (await getCollection("insights-articles")).sort(
+// A handful of articles now have a German translation living alongside
+// them (src/content/insights-articles/de/*.md) -- this hub only has an
+// English version so far, so it must not show those German entries as if
+// they were their own separate articles.
+const allArticles = (await getCollection("insights-articles", (a) => localeOfId(a.id) === "en")).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 

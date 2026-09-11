@@ -2,16 +2,14 @@
 import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import InsightsArticlePageContent from "@/components/pages/InsightsArticlePageContent.astro";
-import { localeOfId, baseSlug } from "@/lib/i18n";
+import { baseSlug } from "@/lib/i18n";
 
 export async function getStaticPaths() {
-  // A handful of articles now have a German translation living alongside
-  // them (src/content/insights-articles/de/*.md, id "de/<slug>") -- this
-  // route is the English one, so it must only ever generate English paths;
-  // /de/insights/[slug].astro is the German counterpart.
-  const articles = await getCollection("insights-articles", (a) => localeOfId(a.id) === "en");
+  const articles = await getCollection("insights-articles", (a) => a.id.startsWith("de/"));
   return articles.map((article) => ({
-    params: { slug: article.data.urlSlug ?? article.id },
+    // German entries never set their own urlSlug -- the path segment is
+    // always the shared base slug, same convention as training-courses.
+    params: { slug: article.data.urlSlug ?? baseSlug(article.id) },
     props: { article },
   }));
 }
@@ -20,17 +18,19 @@ const { article } = Astro.props;
 const author = article.data.author ? await getEntry(article.data.author) : undefined;
 const authorName = author?.data.name ?? article.data.authorName ?? "Better Change";
 
-const allArticles = await getCollection("insights-articles", (a) => localeOfId(a.id) === "en");
+// Only the German entries that exist so far -- most articles don't have
+// one yet, so "related reading" is often empty here, which is expected.
+const allDeArticles = await getCollection("insights-articles", (a) => a.id.startsWith("de/"));
 const related = article.data.primaryCategory
-  ? allArticles
+  ? allDeArticles
       .filter((a) => a.id !== article.id && a.data.primaryCategory === article.data.primaryCategory)
       .slice(0, 3)
   : [];
 
-// Only some articles have a German translation yet -- the switcher/hreflang
-// only appear when this specific one does, same as individual coach
-// profiles (no translations prop at all otherwise).
-const deArticle = await getEntry("insights-articles", `de/${baseSlug(article.id)}`);
+// A German entry only ever exists alongside its English original, so this
+// always resolves -- unlike the English route, translations here is never
+// conditional.
+const enArticle = (await getEntry("insights-articles", baseSlug(article.id)))!;
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -53,14 +53,10 @@ const articleSchema = {
   title={article.data.metaTitle ?? article.data.title}
   description={article.data.metaDescription ?? article.data.excerpt}
   jsonLd={articleSchema}
-  translations={
-    deArticle
-      ? {
-          en: `/insights/${article.data.urlSlug ?? baseSlug(article.id)}`,
-          de: `/de/insights/${deArticle.data.urlSlug ?? baseSlug(deArticle.id)}`,
-        }
-      : undefined
-  }
+  translations={{
+    en: `/insights/${enArticle.data.urlSlug ?? baseSlug(enArticle.id)}`,
+    de: `/de/insights/${article.data.urlSlug ?? baseSlug(article.id)}`,
+  }}
 >
   <InsightsArticlePageContent article={article} authorName={authorName} related={related} />
 </BaseLayout>

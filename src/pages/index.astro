@@ -28,7 +28,7 @@ const team = (await getCollection("coach-profiles"))
   .sort((a, b) => a.data.displayOrder - b.data.displayOrder || a.data.name.localeCompare(b.data.name))
   .slice(0, 7);
 
-const allArticles = await getCollection("insights-articles");
+const allArticles = await getCollection("insights-articles", (a) => localeOfId(a.id) === "en");
 const featuredArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
 ---
 

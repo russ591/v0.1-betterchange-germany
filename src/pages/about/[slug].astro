@@ -81,7 +81,11 @@ function badgeFor(course: CollectionEntry<"training-courses">, category: Collect
   return logo ? { kind: "logo" as const, logo } : undefined;
 }
 
-const allArticles = await getCollection("insights-articles");
+// Individual coach profile pages stay English-only (see the getStaticPaths
+// comment above about courses) -- a growing few articles now have a German
+// translation alongside them, which this page must not surface as if it
+// were a separate, distinct article.
+const allArticles = await getCollection("insights-articles", (a) => localeOfId(a.id) === "en");
 const recentArticles = allArticles
   .filter((a) => a.data.author?.id === profile.id)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
