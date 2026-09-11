@@ -163,6 +163,7 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "nav.contactCta": "Kontakt",
   "nav.menu": "Menü",
   "nav.langSwitcherLabel": "Sprache",
+  "breadcrumb.home": "Startseite",
 
   "footer.tagline":
     "Ein europäisches Netzwerk von Praktiker:innen für Training, Coaching und Transformation, auf Englisch und Deutsch.",
