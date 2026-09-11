@@ -3,9 +3,9 @@ import { getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import NotFoundPageContent from "@/components/pages/NotFoundPageContent.astro";
 
-const copy = (await getEntry("not-found-page", "en"))!.data;
+const copy = (await getEntry("not-found-page", "de"))!.data;
 ---
 
-<BaseLayout title="Page not found" description={copy.metaDescription} translations={{ en: "/404", de: "/de/404" }}>
+<BaseLayout title="Seite nicht gefunden" description={copy.metaDescription} translations={{ en: "/404", de: "/de/404" }}>
   <NotFoundPageContent copy={copy} />
 </BaseLayout>

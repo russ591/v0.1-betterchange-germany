@@ -1,0 +1,35 @@
+---
+// Shared body for /404 (English) and /de/404 (German) -- see
+// HomePageContent.astro for the same split pattern. `copy` carries the
+// page's own prose (not-found-page content collection). Netlify serves
+// dist/404.html for any unmatched English-side path and dist/de/404.html
+// for any unmatched path under /de/* (its own per-directory custom-404
+// convention -- no _redirects rule needed), so both routes are real,
+// directly addressable pages in their own right.
+import type { CollectionEntry } from "astro:content";
+import Section from "@/components/Section.astro";
+import Button from "@/components/Button.astro";
+import { resolveLocale } from "@/i18n/utils";
+
+interface Props {
+  copy: CollectionEntry<"not-found-page">["data"];
+}
+
+const { copy } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const prefix = locale === "de" ? "/de" : "";
+---
+
+<Section eyebrow={copy.eyebrow} class="bg-mist-light">
+  <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+    {copy.heading}
+  </h1>
+  <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
+    {copy.body}
+  </p>
+  <div class="mt-8 flex flex-wrap gap-4">
+    <Button href={prefix || "/"} variant="primary">{copy.backHomeLabel}</Button>
+    <Button href={`${prefix}/training`} variant="secondary">{copy.seeTrainingLabel}</Button>
+    <Button href={`${prefix}/contact`} variant="secondary">{copy.contactLabel}</Button>
+  </div>
+</Section>

@@ -299,6 +299,19 @@ const registerThankYouPage = defineCollection({
   }),
 });
 
+const notFoundPage = defineCollection({
+  loader: glob({ pattern: "*.md", base: "./src/content/not-found-page" }),
+  schema: z.object({
+    metaDescription: z.string(),
+    eyebrow: z.string(),
+    heading: z.string(),
+    body: z.string(),
+    backHomeLabel: z.string(),
+    seeTrainingLabel: z.string(),
+    contactLabel: z.string(),
+  }),
+});
+
 export const collections = {
   "training-categories": trainingCategory,
   "training-courses": trainingCourse,
@@ -314,4 +327,5 @@ export const collections = {
   "full-schedule-page": fullSchedulePage,
   "thank-you-page": thankYouPage,
   "register-thank-you-page": registerThankYouPage,
+  "not-found-page": notFoundPage,
 };
