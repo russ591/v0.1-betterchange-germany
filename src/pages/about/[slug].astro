@@ -65,13 +65,14 @@ const upcomingSessions = await Promise.all(
   allSchedules
     .filter((s) => s.data.trainers?.some((t) => t.id === profile.id) && s.data.date && s.data.date >= new Date())
     .sort((a, b) => a.data.date!.valueOf() - b.data.date!.valueOf())
-    .slice(0, 4)
     .map(async (session) => {
       const course = await getEntry(session.data.course);
       const category = await getEntry(course.data.category);
       return { session, course, category };
     })
 );
+const UPCOMING_PREVIEW_COUNT = 4;
+const firstNameLabel = name.split(" ")[0];
 
 function badgeFor(course: CollectionEntry<"training-courses">, category: CollectionEntry<"training-categories">) {
   const badge = courseBadges[course.id];
@@ -202,13 +203,15 @@ const hasSidebar = upcomingSessions.length > 0 || recentArticles.length > 0;
           {upcomingSessions.length > 0 && (
             <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-5 shadow-card">
               <p class="text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.06em] text-neutral-500">Upcoming training</p>
-              <div class="mt-3 flex flex-col divide-y divide-neutral-100">
-                {upcomingSessions.map(({ session, course, category }) => {
+              <div class="mt-3 flex flex-col divide-y divide-neutral-100" id="upcoming-training-list">
+                {upcomingSessions.map(({ session, course, category }, i) => {
                   const b = badgeFor(course, category);
                   return (
                     <a
                       href={`/training/${category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
                       class="flex flex-col gap-2 py-3 first:pt-0 last:pb-0 transition-colors hover:bg-mist-light lg:flex-row lg:items-center lg:gap-3"
+                      data-extra-session={i >= UPCOMING_PREVIEW_COUNT ? "" : undefined}
+                      hidden={i >= UPCOMING_PREVIEW_COUNT}
                     >
                       <div class="flex min-w-0 flex-1 items-center gap-3">
                         {b?.kind === "badge" && (
@@ -231,7 +234,20 @@ const hasSidebar = upcomingSessions.length > 0 || recentArticles.length > 0;
                   );
                 })}
               </div>
-              <a href="/training" class="mt-3 inline-block text-[length:var(--text-caption)] font-semibold text-ink hover:underline">See all training →</a>
+              {upcomingSessions.length > UPCOMING_PREVIEW_COUNT ? (
+                <button
+                  type="button"
+                  id="upcoming-training-toggle"
+                  data-expanded="false"
+                  data-label-more={`See all ${firstNameLabel}'s training →`}
+                  data-label-less="Show less ↑"
+                  class="mt-3 cursor-pointer text-[length:var(--text-caption)] font-semibold text-ink hover:underline"
+                >
+                  {`See all ${firstNameLabel}'s training →`}
+                </button>
+              ) : (
+                <a href="/training" class="mt-3 inline-block text-[length:var(--text-caption)] font-semibold text-ink hover:underline">See all training →</a>
+              )}
             </div>
           )}
 
@@ -261,4 +277,18 @@ const hasSidebar = upcomingSessions.length > 0 || recentArticles.length > 0;
       )}
     </div>
   </Section>
+
+  <script>
+    const toggle = document.getElementById("upcoming-training-toggle") as HTMLButtonElement | null;
+    const extraSessions = Array.from(document.querySelectorAll<HTMLElement>("[data-extra-session]"));
+
+    toggle?.addEventListener("click", () => {
+      const expanded = toggle.dataset.expanded === "true";
+      extraSessions.forEach((row) => {
+        row.hidden = expanded;
+      });
+      toggle.dataset.expanded = String(!expanded);
+      toggle.textContent = expanded ? toggle.dataset.labelMore! : toggle.dataset.labelLess!;
+    });
+  </script>
 </BaseLayout>
