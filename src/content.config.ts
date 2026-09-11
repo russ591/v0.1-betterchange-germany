@@ -130,7 +130,13 @@ const insightsArticle = defineCollection({
     date: z.coerce.date(),
     readTimeMinutes: z.number().optional(),
     // Reference when the author has a migrated profile, plain name
-    // fallback otherwise.
+    // fallback otherwise. On German entries, always pull author from
+    // the EN source article, not from the batch draft's per-article
+    // header (Russ's author-ID-to-name mapping there is unreliable --
+    // confirmed mismatches across several batches). Only flag if the
+    // EN source's own attribution looks wrong. Standing rule for the
+    // whole batch-by-batch Insights translation project; no need to
+    // re-flag this per batch.
     author: reference("coach-profiles").optional(),
     authorName: z.string().optional(),
     // Translated into German on German entries as part of each batch's
