@@ -10,20 +10,15 @@ linkedinUrl: https://www.linkedin.com/in/gkeegan/
 yearsExperience: '16+'
 hasFullProfile: true
 bio: |-
-  Gregory Keegan is an Enterprise Agile Coach, leadership consultant, and AI transformation advisor with more than 16 years of experience helping organisations navigate complex change, improve collaboration, and build adaptive cultures. He is the founder of Agile AI Coach, where he supports organisations in integrating Agile ways of working with AI-enabled strategies, leadership alignment, and organisational development.
+  Gregory Keegan is an Enterprise Agile Coach and AI Integration Advisor based in Berlin, working at the intersection of business agility and responsible AI integration. As founder of AgileAI Consulting, he helps executives, transformation leads, and agile teams close the gap between AI pilots and real organisational scale — combining agile depth with EU AI Act compliance readiness.
 backgroundAndExpertise: |-
-  Gregory began his career in software development and training before moving into Agile coaching and enterprise transformation, working across industries including FinTech, MedTech, telecommunications, automation, and the public sector, with both teams and executive leadership. For more than 11 years he was a Senior Agile Coach at agile42 Consulting GmbH, coaching teams, Scrum Masters, Product Owners, and executives on organisational Agile adoption and leadership development, and he has also worked as a Scrum Master at Hypoport AG. He holds certifications including Certified Teams Coach (CTC) with Scrum Alliance, ICAgile Certified Professional – Foundations of Artificial Intelligence (ICP-FAI), and an AI for Business certification.
-approach: He is passionate about combining human-centred Agile principles with practical AI adoption, helping leaders, teams, and organisations bridge the gap between emerging AI capabilities and human collaboration in a responsible, practical way — while maintaining trust, transparency, and sustainable performance. He also serves as Community Lead for the Business Agility Institute in Berlin, facilitating discussions and events on business agility, leadership, and organisational resilience.
+  Gregory's career began in software development and English-language training: he worked as a Business English Consultant and Trainer at the Berlin School of Economics, then joined Hypoport AG as a Software Developer and later ScrumMaster, improving delivery consistency and cross-team collaboration across multiple product teams. He went on to spend 11 years as a Senior Agile Coach at agile42, coaching development teams, Scrum Masters, Product Owners, and C-suite leaders across FinTech, MedTech, and healthcare by designing tailored agile operating models. He holds certifications including Certified Teams Coach (CTC) with Scrum Alliance, ICAgile Certified Professional – Foundations of Artificial Intelligence (ICP-FAI), and is a Registered Gen AI Practitioner™.
+approach: Through AgileAI Consulting, Gregory advises enterprise and mid-market clients on EU AI Act compliance readiness, agile transformation strategy, AI use-case discovery, and executive coaching — working bilingually in English and German. He also serves as Community Lead for the Business Agility Institute's Berlin/Brandenburg community, hosting lean coffees, fishbowls, and panel discussions on agile strategy, leadership, and AI adoption.
 specialities:
-  - Agile Coaching
-  - Enterprise Transformation
-  - Leadership Development
-  - AI Adoption
-  - Business Agility
-  - Scrum
-  - Kanban
-  - Organizational Change
+  - Agile & Organizational Transformation
   - Executive Coaching
-  - Team Development
+  - AI Strategy
+  - EU AI Act Readiness
+  - Change Management
 displayOrder: 10
 ---
