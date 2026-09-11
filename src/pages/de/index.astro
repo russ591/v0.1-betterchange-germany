@@ -32,7 +32,7 @@ const allArticles = await getCollection("insights-articles");
 const featuredArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
 ---
 
-<BaseLayout title="[DE] Home" description={copy.metaDescription} translations={{ en: "/", de: "/de/" }}>
+<BaseLayout title="Startseite" description={copy.metaDescription} translations={{ en: "/", de: "/de/" }}>
   <HomePageContent
     copy={copy}
     certifiedBy={certifiedBy}

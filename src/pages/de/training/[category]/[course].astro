@@ -5,6 +5,7 @@ import CoursePageContent from "@/components/pages/CoursePageContent.astro";
 import { toPathSegment } from "@/lib/urlSlug";
 import { localeOfId, baseSlug } from "@/lib/i18n";
 import { getTrainersForSessions } from "@/lib/trainers";
+import { metaOrFallback } from "@/i18n/utils";
 
 export async function getStaticPaths() {
   const courses = await getCollection("training-courses", (c) => localeOfId(c.id) === "de");
@@ -65,8 +66,8 @@ const enCourseSlug = toPathSegment(enCourse?.data.urlSlug ?? courseSlug);
 ---
 
 <BaseLayout
-  title={course.data.metaTitle ?? course.data.name}
-  description={course.data.metaDescription ?? course.data.summary}
+  title={metaOrFallback(course.data.metaTitle, course.data.name)}
+  description={metaOrFallback(course.data.metaDescription, course.data.summary)}
   jsonLd={courseSchema}
   translations={{
     en: `/training/${categorySlug}/${enCourseSlug}`,
