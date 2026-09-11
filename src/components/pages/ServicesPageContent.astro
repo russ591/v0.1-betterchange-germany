@@ -29,9 +29,9 @@ const services = getServices(locale);
 // the German variant.
 const serviceLinks: Record<string, { href: string; label: string }> = {
   training: { href: `${prefix}/training`, label: t("cta.seeAllTraining") },
-  coaching: { href: `/contact`, label: t("cta.talkToUs") },
-  consulting: { href: `/contact`, label: t("cta.talkToUs") },
-  facilitation: { href: `/contact`, label: t("cta.talkToUs") },
+  coaching: { href: `${prefix}/contact`, label: t("cta.talkToUs") },
+  consulting: { href: `${prefix}/contact`, label: t("cta.talkToUs") },
+  facilitation: { href: `${prefix}/contact`, label: t("cta.talkToUs") },
 };
 ---
 
@@ -43,7 +43,7 @@ const serviceLinks: Record<string, { href: string; label: string }> = {
   </h1>
   <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">{copy.heroBody}</p>
   <div class="mt-8 flex flex-wrap gap-4">
-    <Button href={`/contact`} variant="primary">{t("nav.contactCta")}</Button>
+    <Button href={`${prefix}/contact`} variant="primary">{t("nav.contactCta")}</Button>
     <Button href={`${prefix}/training`} variant="secondary">{t("cta.seeAllTraining")}</Button>
   </div>
 </Section>
@@ -99,5 +99,5 @@ const serviceLinks: Record<string, { href: string; label: string }> = {
   heading={t("cta.closingHeading")}
   body={t("cta.closingBody")}
   ctaLabel={t("schedule.getInTouch")}
-  ctaHref={`/contact`}
+  ctaHref={`${prefix}/contact`}
 />

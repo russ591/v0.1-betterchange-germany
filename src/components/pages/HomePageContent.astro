@@ -133,7 +133,7 @@ const clients = [
 <Section eyebrow={copy.upcomingEyebrow} heading={copy.upcomingHeading} class="border-t border-neutral-200 bg-mist-light">
   <ScheduleList rows={upcomingWithCourse} id="home-schedule" showTrainer={false} />
   <div class="mt-6 text-right">
-    <Button href="/training/full-schedule" variant="link" class="group">{t("schedule.fullSchedule")}</Button>
+    <Button href={`${prefix}/training/full-schedule`} variant="link" class="group">{t("schedule.fullSchedule")}</Button>
   </div>
 </Section>
 
@@ -166,7 +166,7 @@ const clients = [
     }
   </div>
   <div class="mt-8 flex flex-wrap items-center gap-6">
-    <Button href="/about" variant="primary">{t("cta.meetFullTeam")}</Button>
+    <Button href={`${prefix}/about`} variant="primary">{t("cta.meetFullTeam")}</Button>
     <p class="max-w-md text-[length:var(--text-small)] text-neutral-300">{copy.teamBody}</p>
   </div>
 
@@ -188,4 +188,4 @@ const clients = [
   </div>
 </Section>
 
-<CTABanner tone="light" heading={t("cta.closingHeading")} body={t("cta.closingBody")} ctaLabel={t("schedule.getInTouch")} ctaHref={`/contact`} />
+<CTABanner tone="light" heading={t("cta.closingHeading")} body={t("cta.closingBody")} ctaLabel={t("schedule.getInTouch")} ctaHref={`${prefix}/contact`} />

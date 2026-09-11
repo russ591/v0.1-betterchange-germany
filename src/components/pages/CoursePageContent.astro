@@ -156,7 +156,7 @@ const formatDetails = getFormatDetails(locale);
             <div class="p-6 text-center">
               <p class="text-[length:var(--text-small)] text-neutral-600">{t("schedule.noSessionsForCourse")}</p>
               <a
-                href={`/contact`}
+                href={`${prefix}/contact`}
                 class="mt-4 inline-flex items-center justify-center gap-1.5 rounded-[var(--radius-control)] bg-ink px-4 py-2.5 text-sm font-semibold text-surface transition-colors hover:bg-neutral-800"
               >
                 {t("schedule.getInTouch")} <span aria-hidden="true">→</span>
@@ -224,7 +224,7 @@ const formatDetails = getFormatDetails(locale);
 
         <div class="px-5 py-4 text-[length:var(--text-caption)] leading-relaxed text-neutral-500">
           <p>{t("schedule.paymentNote")}</p>
-          <a href={`/training/full-schedule`} class="mt-2 inline-block font-semibold text-ink hover:underline">
+          <a href={`${prefix}/training/full-schedule`} class="mt-2 inline-block font-semibold text-ink hover:underline">
             {t("schedule.seeFullSchedule")} →
           </a>
         </div>
@@ -306,7 +306,7 @@ const formatDetails = getFormatDetails(locale);
   {
     course.data.formats.length > 1 && (
       <p class="mt-8 text-center text-[length:var(--text-small)] text-neutral-500">
-        {t("course.notSureFormat")} <a href={`/contact`} class="font-semibold text-ink underline">{t("schedule.getInTouch")}</a>{" "}
+        {t("course.notSureFormat")} <a href={`${prefix}/contact`} class="font-semibold text-ink underline">{t("schedule.getInTouch")}</a>{" "}
         {t("course.notSureFormatTrailing")}
       </p>
     )

@@ -1,0 +1,64 @@
+---
+// Shared body for /about (English) and /de/about (German) -- see
+// HomePageContent.astro for the same split pattern. `copy` carries the
+// page's own prose (about-page content collection); `team` is already
+// resolved for the correct locale (unfiltered -- coach-profiles isn't
+// locale-split, see TeamCard.astro).
+import type { CollectionEntry } from "astro:content";
+import Section from "@/components/Section.astro";
+import StatCallout from "@/components/StatCallout.astro";
+import TeamCard from "@/components/TeamCard.astro";
+import CTABanner from "@/components/CTABanner.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+
+interface Props {
+  copy: CollectionEntry<"about-page">["data"];
+  team: CollectionEntry<"coach-profiles">[];
+}
+
+const { copy, team } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const prefix = locale === "de" ? "/de" : "";
+---
+
+<Breadcrumbs items={[{ label: t("nav.about") }]} />
+
+<Section eyebrow={copy.heroEyebrow} class="bg-mist-light">
+  <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+    {copy.heroHeading}
+  </h1>
+  <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
+    {copy.heroBody}
+  </p>
+</Section>
+
+<Section eyebrow={copy.approachEyebrow} heading={copy.approachHeading}>
+  <div class="max-w-2xl space-y-4 text-[length:var(--text-body)] text-neutral-600">
+    {copy.approachParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+  </div>
+</Section>
+
+<Section class="border-t border-neutral-200 bg-mist-light !py-16">
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+    {copy.stats.map((stat) => <StatCallout {...stat} />)}
+  </div>
+</Section>
+
+<Section eyebrow={copy.peopleEyebrow} heading={copy.teamHeading}>
+  <p class="max-w-2xl text-[length:var(--text-small)] text-neutral-500">
+    {copy.teamBody}
+  </p>
+  <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {team.map((profile) => <TeamCard profile={profile} />)}
+  </div>
+</Section>
+
+<CTABanner
+  tone="light"
+  heading={t("cta.closingHeading")}
+  body={t("cta.closingBody")}
+  ctaLabel={t("schedule.getInTouch")}
+  ctaHref={`${prefix}/contact`}
+/>

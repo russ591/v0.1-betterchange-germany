@@ -215,9 +215,9 @@ const logo = category.data.certificationBody ? certificationLogos[category.data.
   />
   <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
     <p class="text-[length:var(--text-small)] text-neutral-600">
-      {t("schedule.preferInHouse")} <a href={`/contact`} class="font-semibold text-ink underline">{t("schedule.letUsKnow")}</a>.
+      {t("schedule.preferInHouse")} <a href={`${prefix}/contact`} class="font-semibold text-ink underline">{t("schedule.letUsKnow")}</a>.
     </p>
-    <a href={`/training/full-schedule`} class="rounded-[var(--radius-control)] border border-ink px-4 py-2.5 text-sm font-semibold text-ink">
+    <a href={`${prefix}/training/full-schedule`} class="rounded-[var(--radius-control)] border border-ink px-4 py-2.5 text-sm font-semibold text-ink">
       {t("schedule.seeAllScheduled")} &rarr;
     </a>
   </div>
@@ -227,5 +227,5 @@ const logo = category.data.certificationBody ? certificationLogos[category.data.
   tone="light"
   heading={t("cta.categoryClosingHeading")}
   ctaLabel={t("cta.getStarted")}
-  ctaHref={`/contact`}
+  ctaHref={`${prefix}/contact`}
 />

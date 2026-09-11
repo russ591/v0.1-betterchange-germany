@@ -227,6 +227,54 @@ const trainingHubPage = defineCollection({
   }),
 });
 
+const aboutPage = defineCollection({
+  loader: glob({ pattern: "*.md", base: "./src/content/about-page" }),
+  schema: z.object({
+    metaDescription: z.string(),
+    heroEyebrow: z.string(),
+    heroHeading: z.string(),
+    heroBody: z.string(),
+    approachEyebrow: z.string(),
+    approachHeading: z.string(),
+    approachParagraphs: z.array(z.string()),
+    stats: z.array(z.object({ label: z.string(), value: z.string(), description: z.string() })),
+    peopleEyebrow: z.string(),
+    teamHeading: z.string(),
+    teamBody: z.string(),
+  }),
+});
+
+const contactPage = defineCollection({
+  loader: glob({ pattern: "*.md", base: "./src/content/contact-page" }),
+  schema: z.object({
+    metaDescription: z.string(),
+    eyebrow: z.string(),
+    heading: z.string(),
+    body: z.string(),
+    location: z.string(),
+    responseTime: z.string(),
+    stepsEyebrow: z.string(),
+    steps: z.array(z.object({ title: z.string(), body: z.string() })),
+    languagesNote: z.string(),
+    honeypotLabel: z.string(),
+    nameLabel: z.string(),
+    emailLabel: z.string(),
+    messageLabel: z.string(),
+    consentLabel: z.string(),
+    submitLabel: z.string(),
+  }),
+});
+
+const fullSchedulePage = defineCollection({
+  loader: glob({ pattern: "*.md", base: "./src/content/full-schedule-page" }),
+  schema: z.object({
+    metaDescription: z.string(),
+    eyebrow: z.string(),
+    heading: z.string(),
+    body: z.string(),
+  }),
+});
+
 export const collections = {
   "training-categories": trainingCategory,
   "training-courses": trainingCourse,
@@ -237,4 +285,7 @@ export const collections = {
   "home-page": homePage,
   "services-page": servicesPage,
   "training-hub-page": trainingHubPage,
+  "about-page": aboutPage,
+  "contact-page": contactPage,
+  "full-schedule-page": fullSchedulePage,
 };

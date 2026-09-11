@@ -315,7 +315,7 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
     <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-10 text-center">
       <p class="text-[length:var(--text-small)] text-neutral-600">{emptyMessage}</p>
       <a
-        href="/contact"
+        href={`${prefix}/contact`}
         class="mt-4 inline-flex items-center justify-center gap-1.5 rounded-[var(--radius-control)] bg-ink px-4 py-2.5 text-sm font-semibold text-surface transition-colors hover:bg-neutral-800"
       >
         {t("schedule.getInTouch")} <span aria-hidden="true">→</span>

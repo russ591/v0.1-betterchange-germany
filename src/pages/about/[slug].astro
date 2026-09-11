@@ -15,10 +15,10 @@ import { localeOfId } from "@/lib/i18n";
 // profiles in this set (see TeamCard.astro).
 export async function getStaticPaths() {
   const profiles = await getCollection("coach-profiles", ({ data }) => data.hasFullProfile);
-  // The About page itself isn't translated (see the German-language plan
-  // doc's ~30-page scope) -- only ever link out to the English course
-  // pages, not the German placeholder entries the courses collection now
-  // also contains.
+  // Individual coach profile pages aren't translated (bios are real,
+  // language-neutral content, not site copy) even though the About index
+  // now is -- only ever link out to the English course pages, not the
+  // German placeholder entries the courses collection now also contains.
   const courses = await getCollection("training-courses", (c) => localeOfId(c.id) === "en");
   // course codes in Fellows.coursesDelivered don't always match
   // TrainingCourse.code punctuation exactly (e.g. "ICP-ACC" vs "ICPACC")

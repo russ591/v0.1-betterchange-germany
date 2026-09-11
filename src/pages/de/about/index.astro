@@ -3,13 +3,13 @@ import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import AboutPageContent from "@/components/pages/AboutPageContent.astro";
 
-const copy = (await getEntry("about-page", "en"))!.data;
+const copy = (await getEntry("about-page", "de"))!.data;
 
 const team = (await getCollection("coach-profiles")).sort(
   (a, b) => a.data.displayOrder - b.data.displayOrder || a.data.name.localeCompare(b.data.name)
 );
 ---
 
-<BaseLayout title="About" description={copy.metaDescription} translations={{ en: "/about", de: "/de/about" }}>
+<BaseLayout title="Über uns" description={copy.metaDescription} translations={{ en: "/about", de: "/de/about" }}>
   <AboutPageContent copy={copy} team={team} />
 </BaseLayout>

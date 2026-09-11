@@ -44,9 +44,9 @@ const year = new Date().getFullYear();
         <p class="eyebrow text-lime">{t("footer.companyHeading")}</p>
         <ul class="mt-4 space-y-2 text-[length:var(--text-small)]">
           <li><a href={`${prefix}/services`} class="text-neutral-400 hover:text-surface">{t("nav.services")}</a></li>
-          <li><a href="/about" class="text-neutral-400 hover:text-surface">{t("nav.about")}</a></li>
+          <li><a href={`${prefix}/about`} class="text-neutral-400 hover:text-surface">{t("nav.about")}</a></li>
           <li><a href="/insights" class="text-neutral-400 hover:text-surface">{t("nav.insights")}</a></li>
-          <li><a href="/contact" class="text-neutral-400 hover:text-surface">{t("nav.contact")}</a></li>
+          <li><a href={`${prefix}/contact`} class="text-neutral-400 hover:text-surface">{t("nav.contact")}</a></li>
         </ul>
       </div>
     </div>

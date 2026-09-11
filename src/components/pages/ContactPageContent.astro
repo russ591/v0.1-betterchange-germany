@@ -1,0 +1,125 @@
+---
+// Shared body for /contact (English) and /de/contact (German) -- see
+// HomePageContent.astro for the same split pattern. `copy` carries the
+// page's own prose (contact-page content collection).
+import type { CollectionEntry } from "astro:content";
+import Section from "@/components/Section.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+
+interface Props {
+  copy: CollectionEntry<"contact-page">["data"];
+}
+
+const { copy } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+---
+
+<Breadcrumbs items={[{ label: t("nav.contact") }]} />
+
+<Section eyebrow={copy.eyebrow} class="bg-mist-light">
+  <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">{copy.heading}</h1>
+  <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
+    {copy.body}
+  </p>
+  <div class="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-[length:var(--text-small)]">
+    <a href="mailto:office@betterchange-consulting.de" class="flex items-center gap-2 font-semibold hover:underline">
+      <span aria-hidden="true">✉</span> office@betterchange-consulting.de
+    </a>
+    <span class="flex items-center gap-2 text-neutral-600">
+      <span aria-hidden="true">📍</span> {copy.location}
+    </span>
+    <span class="flex items-center gap-2 text-neutral-600">
+      <span aria-hidden="true">🕒</span> {copy.responseTime}
+    </span>
+  </div>
+</Section>
+
+<Section>
+  <div class="grid gap-10 md:grid-cols-[1fr_1.3fr] md:items-start">
+    <div class="min-w-0">
+      <p class="eyebrow">{copy.stepsEyebrow}</p>
+      <ol class="mt-6 space-y-6">
+        {
+          copy.steps.map((step, i) => (
+            <li class="flex gap-4">
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-lime text-[length:var(--text-small)] font-bold text-ink">
+                {i + 1}
+              </span>
+              <div>
+                <p class="font-semibold">{step.title}</p>
+                <p class="mt-1 text-[length:var(--text-small)] text-neutral-600">{step.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="mt-8 border-t border-neutral-200 pt-6 text-[length:var(--text-small)] text-neutral-600">
+        {copy.languagesNote}
+      </p>
+    </div>
+
+    <div class="min-w-0 rounded-[var(--radius-card)] border border-neutral-200 bg-mist-light p-6 sm:p-8">
+      <form
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        action="/thank-you"
+        class="space-y-5"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden">
+          <label>
+            {copy.honeypotLabel} <input name="bot-field" />
+          </label>
+        </p>
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label for="name" class="block text-[length:var(--text-small)] font-medium">{copy.nameLabel}</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-4 py-2.5"
+            />
+          </div>
+          <div>
+            <label for="email" class="block text-[length:var(--text-small)] font-medium">{copy.emailLabel}</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-4 py-2.5"
+            />
+          </div>
+        </div>
+        <div>
+          <label for="message" class="block text-[length:var(--text-small)] font-medium">
+            {copy.messageLabel}
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows="6"
+            required
+            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-4 py-2.5"
+          ></textarea>
+        </div>
+        <label class="flex items-start gap-2 text-[length:var(--text-caption)] text-neutral-600">
+          <input type="checkbox" required class="mt-1" />
+          {copy.consentLabel}
+        </label>
+        <button
+          type="submit"
+          class="w-full cursor-pointer rounded-[var(--radius-control)] bg-ink px-6 py-3 font-semibold text-surface transition-colors hover:bg-neutral-800 sm:w-auto"
+        >
+          {copy.submitLabel}
+        </button>
+      </form>
+    </div>
+  </div>
+</Section>

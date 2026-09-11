@@ -1,0 +1,44 @@
+---
+// Shared body for /training/full-schedule (English) and
+// /de/training/full-schedule (German) -- see HomePageContent.astro for the
+// same split pattern. `rows` is already resolved for the correct locale by
+// the caller (localized course/category entries).
+import type { CollectionEntry } from "astro:content";
+import Section from "@/components/Section.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import ScheduleList from "@/components/ScheduleList.astro";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+
+interface Props {
+  copy: CollectionEntry<"full-schedule-page">["data"];
+  rows: {
+    session: CollectionEntry<"training-schedules">;
+    course: CollectionEntry<"training-courses">;
+    category: CollectionEntry<"training-categories">;
+  }[];
+}
+
+const { copy, rows } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const prefix = locale === "de" ? "/de" : "";
+---
+
+<Breadcrumbs items={[{ label: t("nav.training"), href: `${prefix}/training` }, { label: t("schedule.fullSchedule") }]} />
+
+<Section eyebrow={copy.eyebrow} class="bg-mist-light">
+  <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">{copy.heading}</h1>
+  <p class="mt-4 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
+    {copy.body}
+  </p>
+</Section>
+
+<Section>
+  <ScheduleList
+    rows={rows}
+    id="full-schedule"
+    filters={["topic", "country", "trainer"]}
+    defaultCountry="Germany"
+    emptyMessage={t("schedule.noSessions")}
+  />
+</Section>

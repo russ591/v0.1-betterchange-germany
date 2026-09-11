@@ -19,18 +19,18 @@ const locale = resolveLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 const prefix = locale === "de" ? "/de" : "";
 
-// Only Services and Training have German pages so far (see the
-// German-language plan doc's ~30-page scope) -- About/Insights/Contact
-// stay English-only regardless of which language the visitor is browsing
-// in, so their links never get the /de prefix.
+// Insights stays English-only regardless of which language the visitor is
+// browsing in (see insights-articles' own locale-split note), so its link
+// never gets the /de prefix. Services, Training, About and Contact all
+// have German counterparts.
 const navLinks = [
   { href: "/services", label: t("nav.services"), translated: true },
   { href: "/training", label: t("nav.training"), mega: true, translated: true },
   { href: "/insights", label: t("nav.insights"), translated: false },
-  { href: "/about", label: t("nav.about"), translated: false },
+  { href: "/about", label: t("nav.about"), translated: true },
   // Desktop already has the lime "Contact us" button; keep this entry only
   // for the mobile menu, where that button is hidden below the sm breakpoint.
-  { href: "/contact", label: t("nav.contact"), translated: false, mobileOnly: true },
+  { href: "/contact", label: t("nav.contact"), translated: true, mobileOnly: true },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -124,7 +124,7 @@ const deHref = translations?.de ?? "/de/";
       </div>
 
       <a
-        href={`/contact`}
+        href={`${prefix}/contact`}
         class="hidden items-center gap-1.5 rounded-[var(--radius-pill)] bg-lime px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-lime/85 sm:inline-flex"
       >
         {t("nav.contactCta")}
