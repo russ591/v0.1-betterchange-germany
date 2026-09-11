@@ -128,6 +128,12 @@ export const en = {
   "certification": "Certification",
   "languages": "Languages",
 
+  // Not covered by any Insights translation draft yet -- falls back to the
+  // "[DE] " placeholder until reviewed.
+  "insights.minRead": "min read",
+  "insights.by": "By",
+  "insights.relatedReading": "Related reading",
+
   "register.eyebrow": "Register",
   "register.backToCourse": "← Back to course details",
   "register.orderSummary": "Order summary",
@@ -302,6 +308,10 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "course.notSureFormatTrailing": "und gemeinsam die passende Option finden.",
   "course.relatedCourses": "Verwandte Kurse",
   "course.trainerLabel": "Trainer:in",
+
+  "insights.minRead": "Min. Lesezeit",
+  "insights.by": "Von",
+  "insights.relatedReading": "Weiterführende Artikel",
 
   "level": "Niveau",
   "duration": "Dauer",

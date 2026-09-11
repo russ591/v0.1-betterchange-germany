@@ -1,0 +1,69 @@
+---
+// Shared body for /insights/[slug] (English) and /de/insights/[slug]
+// (German) -- see HomePageContent.astro for the same split pattern.
+// `article`/`related` are already resolved to the correct locale by the
+// caller. Most articles have no German translation yet (this is an
+// ongoing, article-by-article project), so `related` is often empty on
+// the German route -- that's expected, not a bug.
+import type { CollectionEntry } from "astro:content";
+import Section from "@/components/Section.astro";
+import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+
+interface Props {
+  article: CollectionEntry<"insights-articles">;
+  authorName: string;
+  related: CollectionEntry<"insights-articles">[];
+}
+
+const { article, authorName, related } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+
+// The Insights hub itself has no German index page yet (see Header.astro's
+// same note) -- so, like the main nav link, this breadcrumb always points
+// at the English hub regardless of locale, rather than a /de/insights URL
+// that would 404.
+---
+
+<Breadcrumbs items={[{ label: t("nav.insights"), href: "/insights" }, { label: article.data.title }]} />
+
+<Section
+  eyebrow={[article.data.primaryCategory, article.data.contentType].filter(Boolean).join(" · ") || t("nav.insights")}
+  class="bg-mist-light"
+>
+  <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+    {article.data.title}
+  </h1>
+  <p class="mt-4 text-[length:var(--text-small)] text-neutral-500">
+    {article.data.date.toLocaleDateString(locale === "de" ? "de-DE" : "en-GB", { day: "numeric", month: "long", year: "numeric" })}
+    {article.data.readTimeMinutes && ` · ${article.data.readTimeMinutes} ${t("insights.minRead")}`}
+    {" "}· {t("insights.by")} {authorName}
+  </p>
+</Section>
+
+<Section>
+  {
+    article.data.imageUrl && (
+      <img
+        src={article.data.imageUrl}
+        alt=""
+        class="mb-10 aspect-[16/9] w-full max-w-2xl rounded-[var(--radius-card)] object-cover"
+      />
+    )
+  }
+  <div class="article-body max-w-2xl text-[length:var(--text-body)] text-neutral-700" set:html={article.data.bodyHtml} />
+</Section>
+
+{
+  related.length > 0 && (
+    <Section eyebrow={t("insights.relatedReading")} class="bg-mist-light">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {related.map((a) => (
+          <InsightsArticleCard article={a} />
+        ))}
+      </div>
+    </Section>
+  )
+}

@@ -1,6 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { toPathSegment } from "@/lib/urlSlug";
+import { localeOfId, baseSlug } from "@/lib/i18n";
+import { useTranslations } from "@/i18n/utils";
 
 interface Props {
   article: CollectionEntry<"insights-articles">;
@@ -13,6 +15,16 @@ interface Props {
 
 const { article, showDate = true, author } = Astro.props;
 const { title, date, readTimeMinutes, contentType, excerpt, primaryCategory, imageUrl } = article.data;
+
+// Cards mix locales during the ongoing article-by-article translation
+// (a German page can show an English card as a fallback, and vice versa
+// for a "related" list), so href/date go by the article's OWN locale
+// rather than the page it happens to render on -- otherwise a German
+// article's card would link to a /insights/... 404 when shown on an
+// English fallback list, or vice versa.
+const articleLocale = localeOfId(article.id);
+const articlePrefix = articleLocale === "de" ? "/de" : "";
+const t = useTranslations(articleLocale);
 
 // Real article photography exists for most articles (migrated from the Wix
 // imageUrl field); a deterministic duotone placeholder (picked from the
@@ -30,7 +42,7 @@ const initials = author?.name
 ---
 
 <a
-  href={`/insights/${toPathSegment(article.data.urlSlug ?? article.id)}`}
+  href={`${articlePrefix}/insights/${toPathSegment(article.data.urlSlug ?? baseSlug(article.id))}`}
   class="flex flex-col overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card transition-shadow hover:shadow-card-hover"
 >
   {
@@ -50,8 +62,13 @@ const initials = author?.name
     <p class="eyebrow">
       {
         [
-          showDate && date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }),
-          readTimeMinutes && `${readTimeMinutes} min read`,
+          showDate &&
+            date.toLocaleDateString(articleLocale === "de" ? "de-DE" : "en-GB", {
+              day: "numeric",
+              month: "short",
+              year: "numeric",
+            }),
+          readTimeMinutes && `${readTimeMinutes} ${t("insights.minRead")}`,
           contentType && contentType !== "Blog" && contentType,
         ]
           .filter(Boolean)

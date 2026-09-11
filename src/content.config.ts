@@ -117,6 +117,12 @@ const coachProfile = defineCollection({
 const insightsArticle = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/insights-articles" }),
   schema: z.object({
+    // Kept as English loanwords on German entries too (Change Management,
+    // Leadership, Coaching, Flight Levels, Kanban, Blog, Webinar, etc.),
+    // same as the filter tags elsewhere on the site -- with two agreed
+    // exceptions: "Product Development" -> "Produktentwicklung" and
+    // "AI" -> "KI". Standing rule for the whole batch-by-batch Insights
+    // translation project; no need to re-flag this per batch.
     title: z.string(),
     contentType: z.string().optional(),
     primaryCategory: z.string().optional(),
@@ -124,9 +130,19 @@ const insightsArticle = defineCollection({
     date: z.coerce.date(),
     readTimeMinutes: z.number().optional(),
     // Reference when the author has a migrated profile, plain name
-    // fallback otherwise.
+    // fallback otherwise. On German entries, always pull author from
+    // the EN source article, not from the batch draft's per-article
+    // header (Russ's author-ID-to-name mapping there is unreliable --
+    // confirmed mismatches across several batches). Only flag if the
+    // EN source's own attribution looks wrong. Standing rule for the
+    // whole batch-by-batch Insights translation project; no need to
+    // re-flag this per batch.
     author: reference("coach-profiles").optional(),
     authorName: z.string().optional(),
+    // Translated into German on German entries as part of each batch's
+    // reviewed draft, same as bodyHtml. Standing rule for the whole
+    // batch-by-batch Insights translation project; no need to re-flag
+    // this per batch.
     excerpt: z.string(),
     featured: z.boolean().default(false),
     imageUrl: z.string().optional(),

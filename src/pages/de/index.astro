@@ -2,7 +2,7 @@
 import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import HomePageContent from "@/components/pages/HomePageContent.astro";
-import { localeOfId, localizedCourse } from "@/lib/i18n";
+import { localeOfId, localizedCourse, localizedArticle } from "@/lib/i18n";
 
 const copy = (await getEntry("home-page", "de"))!.data;
 
@@ -28,8 +28,13 @@ const team = (await getCollection("coach-profiles"))
   .sort((a, b) => a.data.displayOrder - b.data.displayOrder || a.data.name.localeCompare(b.data.name))
   .slice(0, 7);
 
-const allArticles = await getCollection("insights-articles");
-const featuredArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
+// Pick the 3 most recent articles by their English (canonical) date, then
+// show each one's German translation where one exists yet, English
+// otherwise -- most articles aren't translated yet, so this is a graceful
+// mixed-language fallback rather than a bug.
+const allArticles = await getCollection("insights-articles", (a) => localeOfId(a.id) === "en");
+const topArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
+const featuredArticles = await Promise.all(topArticles.map((a) => localizedArticle(a, "de")));
 ---
 
 <BaseLayout title="Startseite" description={copy.metaDescription} translations={{ en: "/", de: "/de/" }}>

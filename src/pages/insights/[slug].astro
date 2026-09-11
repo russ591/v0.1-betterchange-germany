@@ -1,12 +1,15 @@
 ---
 import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Section from "@/components/Section.astro";
-import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
-import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import InsightsArticlePageContent from "@/components/pages/InsightsArticlePageContent.astro";
+import { localeOfId, baseSlug } from "@/lib/i18n";
 
 export async function getStaticPaths() {
-  const articles = await getCollection("insights-articles");
+  // A handful of articles now have a German translation living alongside
+  // them (src/content/insights-articles/de/*.md, id "de/<slug>") -- this
+  // route is the English one, so it must only ever generate English paths;
+  // /de/insights/[slug].astro is the German counterpart.
+  const articles = await getCollection("insights-articles", (a) => localeOfId(a.id) === "en");
   return articles.map((article) => ({
     params: { slug: article.data.urlSlug ?? article.id },
     props: { article },
@@ -17,12 +20,17 @@ const { article } = Astro.props;
 const author = article.data.author ? await getEntry(article.data.author) : undefined;
 const authorName = author?.data.name ?? article.data.authorName ?? "Better Change";
 
-const allArticles = await getCollection("insights-articles");
+const allArticles = await getCollection("insights-articles", (a) => localeOfId(a.id) === "en");
 const related = article.data.primaryCategory
   ? allArticles
       .filter((a) => a.id !== article.id && a.data.primaryCategory === article.data.primaryCategory)
       .slice(0, 3)
   : [];
+
+// Only some articles have a German translation yet -- the switcher/hreflang
+// only appear when this specific one does, same as individual coach
+// profiles (no translations prop at all otherwise).
+const deArticle = await getEntry("insights-articles", `de/${baseSlug(article.id)}`);
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -45,45 +53,14 @@ const articleSchema = {
   title={article.data.metaTitle ?? article.data.title}
   description={article.data.metaDescription ?? article.data.excerpt}
   jsonLd={articleSchema}
->
-  <Breadcrumbs items={[{ label: "Insights", href: "/insights" }, { label: article.data.title }]} />
-
-  <Section
-    eyebrow={[article.data.primaryCategory, article.data.contentType].filter(Boolean).join(" · ") || "Insights"}
-    class="bg-mist-light"
-  >
-    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
-      {article.data.title}
-    </h1>
-    <p class="mt-4 text-[length:var(--text-small)] text-neutral-500">
-      {article.data.date.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}
-      {article.data.readTimeMinutes && ` · ${article.data.readTimeMinutes} min read`}
-      {" "}· By {authorName}
-    </p>
-  </Section>
-
-  <Section>
-    {
-      article.data.imageUrl && (
-        <img
-          src={article.data.imageUrl}
-          alt=""
-          class="mb-10 aspect-[16/9] w-full max-w-2xl rounded-[var(--radius-card)] object-cover"
-        />
-      )
-    }
-    <div class="article-body max-w-2xl text-[length:var(--text-body)] text-neutral-700" set:html={article.data.bodyHtml} />
-  </Section>
-
-  {
-    related.length > 0 && (
-      <Section eyebrow="Related reading" class="bg-mist-light">
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {related.map((a) => (
-            <InsightsArticleCard article={a} />
-          ))}
-        </div>
-      </Section>
-    )
+  translations={
+    deArticle
+      ? {
+          en: `/insights/${article.data.urlSlug ?? baseSlug(article.id)}`,
+          de: `/de/insights/${deArticle.data.urlSlug ?? baseSlug(deArticle.id)}`,
+        }
+      : undefined
   }
+>
+  <InsightsArticlePageContent article={article} authorName={authorName} related={related} />
 </BaseLayout>

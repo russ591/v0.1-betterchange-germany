@@ -1,0 +1,62 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import InsightsArticlePageContent from "@/components/pages/InsightsArticlePageContent.astro";
+import { baseSlug } from "@/lib/i18n";
+
+export async function getStaticPaths() {
+  const articles = await getCollection("insights-articles", (a) => a.id.startsWith("de/"));
+  return articles.map((article) => ({
+    // German entries never set their own urlSlug -- the path segment is
+    // always the shared base slug, same convention as training-courses.
+    params: { slug: article.data.urlSlug ?? baseSlug(article.id) },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const author = article.data.author ? await getEntry(article.data.author) : undefined;
+const authorName = author?.data.name ?? article.data.authorName ?? "Better Change";
+
+// Only the German entries that exist so far -- most articles don't have
+// one yet, so "related reading" is often empty here, which is expected.
+const allDeArticles = await getCollection("insights-articles", (a) => a.id.startsWith("de/"));
+const related = article.data.primaryCategory
+  ? allDeArticles
+      .filter((a) => a.id !== article.id && a.data.primaryCategory === article.data.primaryCategory)
+      .slice(0, 3)
+  : [];
+
+// A German entry only ever exists alongside its English original, so this
+// always resolves -- unlike the English route, translations here is never
+// conditional.
+const enArticle = (await getEntry("insights-articles", baseSlug(article.id)))!;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: article.data.title,
+  description: article.data.metaDescription ?? article.data.excerpt,
+  datePublished: article.data.date.toISOString(),
+  author: { "@type": "Person", name: authorName },
+  publisher: {
+    "@type": "Organization",
+    name: "Better Change",
+    logo: { "@type": "ImageObject", url: new URL("/logo.png", Astro.site).toString() },
+  },
+  ...(article.data.imageUrl && { image: article.data.imageUrl }),
+  mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).toString(),
+};
+---
+
+<BaseLayout
+  title={article.data.metaTitle ?? article.data.title}
+  description={article.data.metaDescription ?? article.data.excerpt}
+  jsonLd={articleSchema}
+  translations={{
+    en: `/insights/${enArticle.data.urlSlug ?? baseSlug(enArticle.id)}`,
+    de: `/de/insights/${article.data.urlSlug ?? baseSlug(article.id)}`,
+  }}
+>
+  <InsightsArticlePageContent article={article} authorName={authorName} related={related} />
+</BaseLayout>

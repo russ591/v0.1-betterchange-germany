@@ -1,7 +1,9 @@
 ---
 title: The Agile Disconnect
 contentType: Blog
-categories: []
+primaryCategory: Agile
+categories:
+  - Agile
 date: '2024-07-04T00:00:00Z'
 readTimeMinutes: 2
 author: jesper-orting

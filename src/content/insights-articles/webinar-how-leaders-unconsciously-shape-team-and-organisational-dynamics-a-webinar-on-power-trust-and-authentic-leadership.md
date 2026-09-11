@@ -14,7 +14,7 @@ excerpt: Your behaviour as a leader shapes your team's culture whether you inten
 featured: false
 imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2026/02/Psycho-dynamics.png
 metaTitle: 'Webinar Recording: The Hidden Ways Leaders Shape the Teams Around Them'
-metaDescription: Your behaviour as a leader shapes your team's culture whether you intend it to or not. This webinar with Bent Myllerup and Giuseppe De Simone examines...
+metaDescription: Your behaviour as a leader shapes your team's culture whether you intend it to or not. This webinar with Bent Myllerup and Giuseppe De Simone examines the psychodynamics of leadership, the part most leadership development programmes quietly skip.
 bodyHtml: |-
   <p>Most leadership advice focuses on what to do: communicate clearly, delegate effectively, set direction. This webinar focuses on something less comfortable but arguably more important, what is actually happening between you and your team, regardless of your intentions.</p>
 
