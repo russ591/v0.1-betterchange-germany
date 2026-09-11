@@ -2,12 +2,13 @@
 import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import RegisterPageContent from "@/components/pages/RegisterPageContent.astro";
+import { localizedCourse } from "@/lib/i18n";
+import { useTranslations } from "@/i18n/utils";
 
 export async function getStaticPaths() {
-  // Externally-fulfilled sessions (isExternal: true) have no internal
-  // registration page at all -- their "Register" links point straight to
-  // externalUrl instead (see @/lib/registrationLink), so this page is
-  // never linked to for them and shouldn't exist to be found either.
+  // Same session set as the English route -- training-schedules isn't
+  // locale-split, so the id (and therefore the URL param) is identical;
+  // only course/category get resolved to their German counterparts below.
   const sessions = (await getCollection("training-schedules")).filter((s) => !s.data.isExternal);
   return sessions.map((session) => ({
     params: { session: session.id },
@@ -16,13 +17,14 @@ export async function getStaticPaths() {
 }
 
 const { session } = Astro.props;
-const course = await getEntry(session.data.course);
+const course = await localizedCourse(session.data.course, "de");
 const category = await getEntry(course.data.category);
+const t = useTranslations("de");
 ---
 
 <BaseLayout
-  title={`Register, ${course.data.name}`}
-  description={`Register for ${course.data.name}, ${session.data.format}, ${session.data.location}.`}
+  title={`${t("register.eyebrow")}, ${course.data.name}`}
+  description={`${t("register.metaDescriptionPrefix")} ${course.data.name}, ${session.data.format}, ${session.data.location}.`}
   translations={{
     en: `/training/register/${session.id}`,
     de: `/de/training/register/${session.id}`,

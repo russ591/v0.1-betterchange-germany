@@ -29,7 +29,7 @@ export function formatSessionDate(
 ): string {
   const { date, format } = session.data;
   const formatter = formatters[locale][monthStyle];
-  if (!date) return "Start anytime";
+  if (!date) return locale === "de" ? "Jederzeit verfügbar" : "Start anytime";
 
   if (format === "in-person" && course.data.durationDays > 1) {
     const end = new Date(date.getTime() + (course.data.durationDays - 1) * 86_400_000);

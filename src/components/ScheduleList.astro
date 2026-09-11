@@ -220,7 +220,7 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
                 <Badge format={row.session.data.format} />
               </div>
               <a
-                href={registrationHref(row.session)}
+                href={registrationHref(row.session, prefix)}
                 {...registrationLinkAttrs(row.session)}
                 class={
                   row.session.data.status === "sold-out"
@@ -288,7 +288,7 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
                   </td>
                   <td class="px-4 py-4 text-right sm:px-5">
                     <a
-                      href={registrationHref(row.session)}
+                      href={registrationHref(row.session, prefix)}
                       {...registrationLinkAttrs(row.session)}
                       class={
                         row.session.data.status === "sold-out"

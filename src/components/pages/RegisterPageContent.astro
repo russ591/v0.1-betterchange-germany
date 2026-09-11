@@ -1,0 +1,782 @@
+---
+// Shared body for /training/register/[session] (English) and
+// /de/training/register/[session] (German) -- see CoursePageContent.astro
+// for the same split pattern. `course`/`category` are already resolved for
+// the correct locale by the caller; `session` (training-schedules) isn't
+// locale-split, so its id is identical on both routes.
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import Section from "@/components/Section.astro";
+import Badge from "@/components/Badge.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import TrainerChip from "@/components/TrainerChip.astro";
+import { formatSessionDate } from "@/lib/dates";
+import { certificationLogos } from "@/data/certifications";
+import { courseBadges } from "@/data/courseBadges";
+import { toPathSegment } from "@/lib/urlSlug";
+import { baseSlug } from "@/lib/i18n";
+import { getTrainersForSessions } from "@/lib/trainers";
+import { translateOffer } from "@/data/offerCopy";
+import { translateNotes } from "@/data/notesCopy";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+
+interface Props {
+  session: CollectionEntry<"training-schedules">;
+  course: CollectionEntry<"training-courses">;
+  category: CollectionEntry<"training-categories">;
+}
+
+const { session, course, category } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const prefix = locale === "de" ? "/de" : "";
+const sessionTrainers = await getTrainersForSessions([session]);
+
+const unitPrice = parseFloat(session.data.price.replace(/[^0-9.]/g, "")) || 0;
+const hasBulkOffer = /seats? for the price of/i.test(session.data.offer ?? "");
+const isSoldOut = session.data.status === "sold-out";
+
+const categorySlug = baseSlug(category.id);
+const courseSlug = toPathSegment(course.data.urlSlug ?? baseSlug(course.id));
+
+const logo = category.data.certificationBody ? certificationLogos[category.data.certificationBody] : undefined;
+const badge = courseBadges[baseSlug(course.id)];
+
+const countries = [
+  "Germany",
+  "Austria",
+  "Belgium",
+  "Croatia",
+  "Czech Republic",
+  "Denmark",
+  "Estonia",
+  "Finland",
+  "France",
+  "Greece",
+  "Hungary",
+  "Ireland",
+  "Italy",
+  "Latvia",
+  "Lithuania",
+  "Luxembourg",
+  "Netherlands",
+  "Norway",
+  "Poland",
+  "Portugal",
+  "Romania",
+  "Slovakia",
+  "Slovenia",
+  "Spain",
+  "Sweden",
+  "Switzerland",
+  "United Kingdom",
+  "United States",
+  "Other",
+];
+
+// Passed into the client-side <script> below via define:vars, so its
+// button-loading-state / discount-code feedback text matches the same
+// locale as everything server-rendered on this page (see the [DE]-flagged
+// keys' comment in src/i18n/ui.ts for which of these aren't yet from a
+// reviewed draft).
+const scriptCopy = {
+  checking: t("register.checking"),
+  apply: t("register.apply"),
+  discountCodeLabel: t("register.discountCodeLabel"),
+  discountAppliedSuffix: t("register.discountAppliedSuffix"),
+  off: t("register.off"),
+  codeNotRecognized: t("register.codeNotRecognized"),
+  codeCheckError: t("register.codeCheckError"),
+  waitlistJoining: t("register.waitlistJoining"),
+  joinWaitlist: t("register.joinWaitlist"),
+  waitlistError: t("register.waitlistError"),
+};
+---
+
+<Breadcrumbs
+  items={[
+    { label: t("nav.training"), href: `${prefix}/training` },
+    { label: category.data.name, href: `${prefix}/training/${categorySlug}` },
+    { label: course.data.name, href: `${prefix}/training/${categorySlug}/${courseSlug}` },
+    { label: t("register.eyebrow") },
+  ]}
+/>
+
+<Section eyebrow={t("register.eyebrow")} class="bg-mist-light">
+  <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">{course.data.name}</h1>
+  <p class="mt-4 text-[length:var(--text-small)] text-neutral-500">
+    <a href={`${prefix}/training/${categorySlug}/${courseSlug}`} class="hover:underline">
+      &larr; {t("register.backToCourse")}
+    </a>
+  </p>
+  {
+    category.data.certificationBody && (
+      <div class="mt-7 inline-flex items-center gap-3 rounded-[var(--radius-pill)] border border-neutral-200 bg-surface px-4 py-2.5">
+        {logo ? (
+          <img src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} class="h-4 w-auto object-contain" />
+        ) : (
+          <span class="text-[length:var(--text-caption)] font-semibold text-neutral-500">
+            {category.data.certificationBody}
+          </span>
+        )}
+        {badge && (
+          <>
+            <span aria-hidden="true" class="h-5 w-px bg-neutral-200" />
+            <span class="flex h-7 w-7 shrink-0 items-center justify-center">
+              <Image
+                src={badge}
+                alt={`${course.data.certification ?? course.data.code} certification`}
+                width={56}
+                height={56}
+                class="h-full w-full object-contain"
+              />
+            </span>
+          </>
+        )}
+        <span class="text-[length:var(--text-caption)] text-neutral-500">
+          {t("certifiedBy")} <span class="font-semibold text-ink">{category.data.certificationBody}</span>
+        </span>
+      </div>
+    )
+  }
+</Section>
+
+<Section>
+  <div class="grid gap-10 md:grid-cols-[1fr_1.3fr]">
+    <div class="min-w-0 rounded-[var(--radius-card)] border border-neutral-200 bg-mist-light p-6">
+      <p class="eyebrow">{t("register.orderSummary")}</p>
+      <div class="mt-2 flex items-center gap-3">
+        {
+          badge ? (
+            <span class="flex h-8 w-8 shrink-0 items-center justify-center">
+              <Image src={badge} alt="" width={48} height={48} class="h-full w-full object-contain" />
+            </span>
+          ) : (
+            logo && (
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center">
+                <img src={logo.src} alt="" class="h-full w-full object-contain" />
+              </span>
+            )
+          )
+        }
+        <h2 class="text-[length:var(--text-h4)]">{course.data.name}</h2>
+      </div>
+      <dl class="mt-6 space-y-4 text-[length:var(--text-small)]">
+        <div class="flex items-center justify-between">
+          <dt class="text-neutral-500">{t("schedule.format")}</dt>
+          <dd><Badge format={session.data.format} /></dd>
+        </div>
+        <div class="flex items-center justify-between">
+          <dt class="text-neutral-500">{t("schedule.date")}</dt>
+          <dd class="font-semibold">
+            {formatSessionDate(session, course, "long", locale)}
+          </dd>
+        </div>
+        <div class="flex items-center justify-between">
+          <dt class="text-neutral-500">{t("schedule.location")}</dt>
+          <dd class="font-semibold">{session.data.location}</dd>
+        </div>
+        {
+          session.data.notes && (
+            <div class="rounded-[var(--radius-control)] bg-surface p-3 text-[length:var(--text-caption)] text-neutral-500">
+              {translateNotes(session.data.notes, locale)}
+            </div>
+          )
+        }
+        {
+          isSoldOut && (
+            <div class="flex items-center justify-between">
+              <dt class="text-neutral-500">{t("schedule.price")}</dt>
+              <dd class="font-semibold">{session.data.price}</dd>
+            </div>
+          )
+        }
+      </dl>
+
+      <div
+        class="mt-6 border-t border-neutral-200 pt-4"
+        id="order-total-block"
+        data-unit-price={unitPrice}
+        data-bulk-offer={hasBulkOffer ? "true" : "false"}
+        hidden={isSoldOut}
+      >
+        <div class="flex items-center justify-between text-[length:var(--text-body)] text-neutral-600">
+          <span>{t("schedule.price")}</span>
+          <span>{session.data.price}</span>
+        </div>
+        <div class="mt-1 flex items-center justify-between text-[length:var(--text-body)] text-neutral-600">
+          <span>{t("register.seats")}</span>
+          <span id="order-seats">1</span>
+        </div>
+        <div class="mt-1 flex items-center justify-between text-[length:var(--text-body)] text-neutral-600">
+          <span>{t("register.subtotal")}</span>
+          <span id="order-subtotal">{session.data.price}</span>
+        </div>
+        <div
+          id="offer-line"
+          class="mt-1 flex items-center justify-between text-[length:var(--text-body)] text-neutral-600"
+          hidden
+        >
+          <span>{t("register.offerThreeForTwo")}</span>
+          <span id="order-offer-amount"></span>
+        </div>
+        <div
+          id="discount-code-line"
+          class="mt-1 flex items-center justify-between text-[length:var(--text-body)] text-neutral-600"
+          hidden
+        >
+          <span id="discount-code-label">{t("register.discountCodeLabel")}</span>
+          <span id="order-discount-amount"></span>
+        </div>
+        <div class="mt-2 flex items-center justify-between border-t border-neutral-200 pt-2 text-[length:var(--text-h4)] font-bold">
+          <span>{t("register.total")}</span>
+          <span id="order-total">{session.data.price}</span>
+        </div>
+        <p class="mt-1 text-[length:var(--text-caption)] text-neutral-500">{t("register.pricesExclVat")}</p>
+        {session.data.offer && (
+          <p class="mt-1 text-[length:var(--text-caption)] text-neutral-500">{translateOffer(session.data.offer, locale)}</p>
+        )}
+      </div>
+
+      {
+        sessionTrainers.length > 0 && (
+          <div class="mt-4 border-t border-dashed border-neutral-300 pt-4">
+            <p class="text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.06em] text-neutral-500">
+              {sessionTrainers.length > 1 ? t("register.trainerPlural") : t("register.trainerSingular")}
+            </p>
+            <div class="mt-2.5 flex flex-wrap gap-2">
+              {sessionTrainers.map((trainer) => <TrainerChip trainer={trainer} density="plain" />)}
+            </div>
+          </div>
+        )
+      }
+    </div>
+
+    {
+      // Always rendered (hidden, not removed, when not sold out) so
+      // Netlify's build-time form detection reliably knows about the
+      // "waitlist" form even in a build where no session happens to be
+      // sold out -- the same pattern as the registration form below.
+    }
+    <form
+      name="waitlist"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      id="waitlist-form"
+      class="min-w-0 space-y-5"
+      hidden={!isSoldOut}
+    >
+      <input type="hidden" name="form-name" value="waitlist" />
+        <input type="hidden" name="course" value={course.data.name} />
+        <input type="hidden" name="session-date" value={formatSessionDate(session, course, "long", locale)} />
+        <input type="hidden" name="location" value={session.data.location} />
+        <p class="hidden">
+          <label>
+            {t("register.honeypotLabel")} <input name="bot-field" />
+          </label>
+        </p>
+
+        <div class="rounded-[var(--radius-card)] bg-de-red/10 p-4">
+          <p class="font-semibold text-de-red">{t("register.soldOutHeading")}</p>
+          <p class="mt-1 text-[length:var(--text-small)] text-neutral-600">
+            {t("register.soldOutBodyPrefix")} {formatSessionDate(session, course, "long", locale)} {t("register.soldOutBodySuffix")}
+          </p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label for="waitlist-name" class="block text-[length:var(--text-small)] font-medium">{t("register.yourName")}</label>
+            <input
+              id="waitlist-name"
+              name="name"
+              type="text"
+              required
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+            />
+          </div>
+          <div>
+            <label for="waitlist-email" class="block text-[length:var(--text-small)] font-medium">{t("register.yourEmail")}</label>
+            <input
+              id="waitlist-email"
+              name="email"
+              type="email"
+              required
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+            />
+          </div>
+        </div>
+        <div>
+          <label for="waitlist-notes" class="block text-[length:var(--text-small)] font-medium">{t("register.anythingWeShouldKnow")}</label>
+          <textarea
+            id="waitlist-notes"
+            name="notes"
+            rows="3"
+            class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+          ></textarea>
+        </div>
+        <p id="waitlist-error" class="text-[length:var(--text-small)] text-de-red" hidden></p>
+        <button
+          type="submit"
+          id="waitlist-submit"
+          class="w-full cursor-pointer rounded-[var(--radius-control)] bg-ink px-6 py-3 font-semibold text-surface transition-colors hover:bg-neutral-800 sm:w-auto"
+        >
+          {t("register.joinWaitlist")}
+        </button>
+    </form>
+    <p
+      id="waitlist-success"
+      class="min-w-0 rounded-[var(--radius-card)] bg-lime/15 p-4 text-[length:var(--text-small)] text-ink"
+      hidden
+    >
+      {t("register.waitlistSuccess")}
+    </p>
+
+    <form
+      name="registration"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      action="/training/register/thank-you"
+      id="registration-form"
+      class="min-w-0 space-y-5"
+      hidden={isSoldOut}
+    >
+      <input type="hidden" name="form-name" value="registration" />
+      <input type="hidden" name="course" value={course.data.name} />
+      <input type="hidden" name="session-date" value={formatSessionDate(session, course, "long", locale)} />
+      <input type="hidden" name="session-date-iso" value={session.data.date?.toISOString() ?? ""} />
+      <input
+        type="hidden"
+        name="session-end-date-iso"
+        value={
+          session.data.date
+            ? new Date(
+                session.data.date.getTime() +
+                  (session.data.format === "in-person" ? course.data.durationDays : 1) * 86_400_000
+              ).toISOString()
+            : ""
+        }
+      />
+      <input type="hidden" name="location" value={session.data.location} />
+      <input type="hidden" name="total" id="total-field" value={session.data.price} />
+      <p class="hidden">
+        <label>
+          {t("register.honeypotLabel")} <input name="bot-field" />
+        </label>
+      </p>
+
+      <div>
+        <p class="eyebrow">{t("register.bookingDetails")}</p>
+        <div class="mt-3 flex items-center gap-2">
+          <label for="seats" class="text-[length:var(--text-small)] font-medium">{t("register.seats")}</label>
+          <select
+            id="seats"
+            name="seats"
+            class="rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-2 py-1 text-[length:var(--text-small)]"
+          >
+            {Array.from({ length: 6 }, (_, i) => i + 1).map((n) => <option value={n}>{n}</option>)}
+          </select>
+        </div>
+        <div class="mt-4 grid gap-4 sm:grid-cols-2">
+          <div>
+            <label for="name" class="block text-[length:var(--text-small)] font-medium">{t("register.yourName")}</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+            />
+          </div>
+          <div>
+            <label for="email" class="block text-[length:var(--text-small)] font-medium">{t("register.yourEmail")}</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+            />
+          </div>
+          <div>
+            <label for="address" class="block text-[length:var(--text-small)] font-medium">{t("register.street")}</label>
+            <input
+              id="address"
+              name="address"
+              type="text"
+              required
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+            />
+          </div>
+          <div>
+            <label for="postcode" class="block text-[length:var(--text-small)] font-medium">{t("register.postcode")}</label>
+            <input
+              id="postcode"
+              name="postcode"
+              type="text"
+              required
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+            />
+          </div>
+          <div>
+            <label for="city" class="block text-[length:var(--text-small)] font-medium">{t("register.city")}</label>
+            <input
+              id="city"
+              name="city"
+              type="text"
+              required
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+            />
+          </div>
+          <div>
+            <label for="country" class="block text-[length:var(--text-small)] font-medium">{t("schedule.filterCountry")}</label>
+            <select
+              id="country"
+              name="country"
+              required
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-4 py-2.5"
+            >
+              {
+                countries.map((country) => (
+                  <option value={country} selected={country === "Germany"}>
+                    {country}
+                  </option>
+                ))
+              }
+            </select>
+          </div>
+          <div>
+            <label for="company" class="block text-[length:var(--text-small)] font-medium">{t("register.company")}</label>
+            <input
+              id="company"
+              name="company"
+              type="text"
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+            />
+          </div>
+          <div>
+            <label for="vat-id" class="block text-[length:var(--text-small)] font-medium">{t("register.vatId")}</label>
+            <input
+              id="vat-id"
+              name="vat-id"
+              type="text"
+              class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="eyebrow">{t("register.attendees")}</p>
+        <p class="mt-2 text-[length:var(--text-caption)] text-neutral-500">
+          {t("register.attendee1Note")}
+        </p>
+        <div class="mt-3 divide-y divide-neutral-200 rounded-[var(--radius-control)] border border-neutral-200">
+          {
+            Array.from({ length: 6 }, (_, i) => i + 1).map((n) => (
+              <div
+                data-attendee-block
+                data-attendee-index={n}
+                hidden={n > 1}
+                class="grid grid-cols-[auto_1fr_1fr] items-center gap-3 p-3"
+              >
+                <span class="flex h-6 w-6 items-center justify-center rounded-full bg-mist-light text-[length:var(--text-caption)] font-semibold text-neutral-600">
+                  {n}
+                </span>
+                <input
+                  id={`attendee-name-${n}`}
+                  name={`attendee-name-${n}`}
+                  type="text"
+                  placeholder={t("register.attendeeName")}
+                  aria-label={`${t("register.attendeeAriaPrefix")} ${n} ${t("register.attendeeName")}`}
+                  required={n === 1}
+                  class="w-full rounded-[var(--radius-control)] border border-neutral-300 px-3 py-2 text-[length:var(--text-small)]"
+                />
+                <input
+                  id={`attendee-email-${n}`}
+                  name={`attendee-email-${n}`}
+                  type="email"
+                  placeholder={t("register.attendeeEmail")}
+                  aria-label={`${t("register.attendeeAriaPrefix")} ${n} ${t("register.attendeeEmail")}`}
+                  required={n === 1}
+                  class="w-full rounded-[var(--radius-control)] border border-neutral-300 px-3 py-2 text-[length:var(--text-small)]"
+                />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div>
+        <div class="rounded-[var(--radius-card)] border border-neutral-300 bg-mist-light p-5">
+          <div class="flex items-center gap-2">
+            <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-lime" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#0a0a0a" stroke-width="2">
+                <path d="M20.6 12.1 12.9 4.4a2 2 0 0 0-1.4-.6H5a1 1 0 0 0-1 1v6.5c0 .5.2 1 .6 1.4l7.7 7.7c.8.8 2 .8 2.8 0l5.5-5.5c.8-.8.8-2 0-2.8Z" />
+                <circle cx="8" cy="8.5" r="1.2" fill="#0a0a0a" stroke="none" />
+              </svg>
+            </span>
+            <h3 class="text-[length:var(--text-small)] font-bold">{t("register.discountCodeQuestion")}</h3>
+          </div>
+          <div class="mt-3 flex gap-2">
+            <input
+              id="discount-code"
+              name="discount-code"
+              type="text"
+              placeholder={t("register.enterCode")}
+              class="w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 text-[length:var(--text-small)]"
+            />
+            <button
+              type="button"
+              id="apply-discount-code"
+              class="shrink-0 cursor-pointer rounded-[var(--radius-control)] border border-neutral-300 bg-surface px-3 py-2 text-[length:var(--text-small)] font-semibold text-ink transition-colors hover:bg-mist-light"
+            >
+              {t("register.apply")}
+            </button>
+          </div>
+          <p id="discount-code-feedback" class="mt-2 text-[length:var(--text-caption)]" hidden></p>
+        </div>
+      </div>
+
+      <div>
+        <label for="notes" class="block text-[length:var(--text-small)] font-medium">{t("register.anythingWeShouldKnow")}</label>
+        <textarea
+          id="notes"
+          name="notes"
+          rows="3"
+          class="mt-1 w-full rounded-[var(--radius-control)] border border-neutral-300 px-4 py-2.5"
+        ></textarea>
+      </div>
+      <label class="flex items-start gap-2 text-[length:var(--text-caption)] text-neutral-600">
+        <input type="checkbox" required class="mt-1" />
+        {t("register.consentLabel")}
+      </label>
+      <button
+        type="submit"
+        class="w-full cursor-pointer rounded-[var(--radius-control)] bg-ink px-6 py-3 font-semibold text-surface transition-colors hover:bg-neutral-800 sm:w-auto"
+      >
+        {t("register.confirmRegistration")}
+      </button>
+    </form>
+  </div>
+</Section>
+
+<script define:vars={{ copy: scriptCopy, locale }}>
+  const seatsSelect = document.getElementById("seats");
+  const attendeeBlocks = Array.from(
+    document.querySelectorAll("[data-attendee-block]")
+  );
+
+  const orderTotalBlock = document.getElementById("order-total-block");
+  const orderSeatsEl = document.getElementById("order-seats");
+  const orderSubtotalEl = document.getElementById("order-subtotal");
+  const orderTotalEl = document.getElementById("order-total");
+  const offerLineEl = document.getElementById("offer-line");
+  const offerAmountEl = document.getElementById("order-offer-amount");
+  const discountCodeLineEl = document.getElementById("discount-code-line");
+  const discountCodeLabelEl = document.getElementById("discount-code-label");
+  const discountAmountEl = document.getElementById("order-discount-amount");
+  const totalField = document.getElementById("total-field");
+  const discountCodeInput = document.getElementById("discount-code");
+  const applyDiscountButton = document.getElementById("apply-discount-code");
+  const discountFeedbackEl = document.getElementById("discount-code-feedback");
+  const unitPrice = parseFloat(orderTotalBlock.dataset.unitPrice ?? "0");
+  const hasBulkOffer = orderTotalBlock.dataset.bulkOffer === "true";
+  const currencyFormatter = new Intl.NumberFormat(locale === "de" ? "de-DE" : "en-GB", {
+    style: "currency",
+    currency: "EUR",
+    maximumFractionDigits: 0,
+  });
+
+  // Purely a live preview for the customer — the actual discount is
+  // applied server-side (netlify/functions/lib/discount.js) against the
+  // pre-discount total submitted in the hidden "total" field, via
+  // Lexware's own line-item discount. Never bake this into totalField.
+  let appliedDiscount = null;
+
+  // Two discounts can stack, applied in order: the automatic 3-for-2
+  // seat offer first, then a discount code on top of what's left —
+  // each shown as its own line so the cascade from the gross subtotal
+  // down to the final total is never a single opaque jump.
+  function updateTotal(seats) {
+    orderSeatsEl.textContent = String(seats);
+
+    const grossSubtotal = seats * unitPrice;
+    orderSubtotalEl.textContent = currencyFormatter.format(grossSubtotal);
+
+    // Every 3rd seat is free under the "3 seats for the price of 2" offer.
+    const freeSeats = hasBulkOffer ? Math.floor(seats / 3) : 0;
+    const offerAmount = freeSeats * unitPrice;
+    if (offerAmount > 0) {
+      offerAmountEl.textContent = `-${currencyFormatter.format(offerAmount)}`;
+      offerLineEl.hidden = false;
+    } else {
+      offerLineEl.hidden = true;
+    }
+
+    const afterOffer = grossSubtotal - offerAmount;
+    // The hidden "total" field is what the server applies a discount
+    // code's percentage against (via Lexware's line-item discount) —
+    // post-offer, pre-code, matching this same cascade server-side.
+    totalField.value = currencyFormatter.format(afterOffer);
+
+    let discountAmount = 0;
+    if (appliedDiscount) {
+      discountAmount =
+        appliedDiscount.type === "fixed"
+          ? Math.min(appliedDiscount.value, afterOffer)
+          : afterOffer * (appliedDiscount.value / 100);
+    }
+    if (discountAmount > 0) {
+      discountCodeLabelEl.textContent =
+        appliedDiscount.type === "fixed"
+          ? copy.discountCodeLabel
+          : `${copy.discountCodeLabel} (${appliedDiscount.value}%)`;
+      discountAmountEl.textContent = `-${currencyFormatter.format(discountAmount)}`;
+      discountCodeLineEl.hidden = false;
+    } else {
+      discountCodeLineEl.hidden = true;
+    }
+
+    orderTotalEl.textContent = currencyFormatter.format(afterOffer - discountAmount);
+  }
+
+  function showDiscountFeedback(message, tone) {
+    discountFeedbackEl.textContent = message;
+    discountFeedbackEl.hidden = false;
+    discountFeedbackEl.classList.toggle("text-ink", tone === "success");
+    discountFeedbackEl.classList.toggle("font-semibold", tone === "success");
+    discountFeedbackEl.classList.toggle("text-de-red", tone === "error");
+  }
+
+  // Codes are looked up server-side (checked against Netlify Blobs via
+  // check-discount-code.js) rather than shipped to the client as a full
+  // list — so a visitor can only ever learn whether the one code they
+  // typed is valid, never enumerate every code Russell has issued.
+  async function applyDiscountCode() {
+    const entered = discountCodeInput.value.trim().toUpperCase();
+    if (!entered) {
+      appliedDiscount = null;
+      discountFeedbackEl.hidden = true;
+      updateTotal(parseInt(seatsSelect.value, 10));
+      return;
+    }
+
+    applyDiscountButton.disabled = true;
+    applyDiscountButton.textContent = copy.checking;
+    try {
+      const res = await fetch("/.netlify/functions/check-discount-code", {
+        method: "POST",
+        body: JSON.stringify({ code: entered }),
+      });
+      const result = await res.json();
+      if (result.valid) {
+        appliedDiscount = { type: result.discountType, value: result.value };
+        const amountText =
+          result.discountType === "fixed"
+            ? `${currencyFormatter.format(result.value)} ${copy.off}`
+            : `${result.value}% ${copy.off}`;
+        showDiscountFeedback(`${copy.discountCodeLabel} ${entered} ${copy.discountAppliedSuffix} ${amountText}`, "success");
+      } else {
+        appliedDiscount = null;
+        showDiscountFeedback(copy.codeNotRecognized, "error");
+      }
+    } catch {
+      appliedDiscount = null;
+      showDiscountFeedback(copy.codeCheckError, "error");
+    } finally {
+      applyDiscountButton.disabled = false;
+      applyDiscountButton.textContent = copy.apply;
+    }
+    updateTotal(parseInt(seatsSelect.value, 10));
+  }
+
+  applyDiscountButton.addEventListener("click", applyDiscountCode);
+  discountCodeInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      applyDiscountCode();
+    }
+  });
+  // Typing after a code was applied invalidates that preview until
+  // "Apply" is pressed again — otherwise the discount shown could go
+  // stale relative to whatever's now in the field.
+  discountCodeInput.addEventListener("input", () => {
+    if (appliedDiscount !== null || !discountFeedbackEl.hidden) {
+      appliedDiscount = null;
+      discountFeedbackEl.hidden = true;
+      updateTotal(parseInt(seatsSelect.value, 10));
+    }
+  });
+
+  function updateAttendeeBlocks() {
+    const seats = parseInt(seatsSelect.value, 10);
+    attendeeBlocks.forEach((block, i) => {
+      block.hidden = i >= seats;
+    });
+    updateTotal(seats);
+  }
+
+  seatsSelect.addEventListener("change", updateAttendeeBlocks);
+  updateAttendeeBlocks();
+
+  // Mirror the booking-contact fields into attendee 1 until attendee 1
+  // is explicitly edited directly -- attendee 1 defaults to being the
+  // person booking, but someone booking on behalf of a colleague can
+  // still override it.
+  const attendee1Name = document.getElementById("attendee-name-1");
+  const attendee1Email = document.getElementById("attendee-email-1");
+  const bookerName = document.getElementById("name");
+  const bookerEmail = document.getElementById("email");
+  let attendee1NameTouched = false;
+  let attendee1EmailTouched = false;
+
+  bookerName.addEventListener("input", () => {
+    if (!attendee1NameTouched) attendee1Name.value = bookerName.value;
+  });
+  bookerEmail.addEventListener("input", () => {
+    if (!attendee1EmailTouched) attendee1Email.value = bookerEmail.value;
+  });
+  attendee1Name.addEventListener("input", () => {
+    attendee1NameTouched = true;
+  });
+  attendee1Email.addEventListener("input", () => {
+    attendee1EmailTouched = true;
+  });
+
+  // Intercepted via fetch (rather than a normal form POST) so a
+  // successful join can show the inline "you're on the list" message
+  // without navigating away — the sold-out registration page is often
+  // reached from a bookmarked/shared link, so staying put matters more
+  // here than it would for a one-time registration.
+  const waitlistForm = document.getElementById("waitlist-form");
+  const waitlistSubmitButton = document.getElementById("waitlist-submit");
+  const waitlistErrorEl = document.getElementById("waitlist-error");
+  const waitlistSuccessEl = document.getElementById("waitlist-success");
+
+  waitlistForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    waitlistErrorEl.hidden = true;
+    waitlistSubmitButton.disabled = true;
+    waitlistSubmitButton.textContent = copy.waitlistJoining;
+
+    try {
+      const body = new URLSearchParams(new FormData(waitlistForm)).toString();
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+      });
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+
+      waitlistForm.hidden = true;
+      waitlistSuccessEl.hidden = false;
+    } catch {
+      waitlistErrorEl.textContent = copy.waitlistError;
+      waitlistErrorEl.hidden = false;
+      waitlistSubmitButton.disabled = false;
+      waitlistSubmitButton.textContent = copy.joinWaitlist;
+    }
+  });
+</script>

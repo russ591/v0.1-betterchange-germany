@@ -127,6 +127,58 @@ export const en = {
   "duration": "Duration",
   "certification": "Certification",
   "languages": "Languages",
+
+  "register.eyebrow": "Register",
+  "register.backToCourse": "← Back to course details",
+  "register.orderSummary": "Order summary",
+  "register.seats": "Seats",
+  "register.subtotal": "Subtotal",
+  "register.total": "Total",
+  "register.pricesExclVat": "Prices exclude VAT (MwSt.)",
+  "register.trainerSingular": "Your trainer",
+  "register.trainerPlural": "Your trainers",
+  "register.honeypotLabel": "Don't fill this out if you're human:",
+  "register.bookingDetails": "Booking details",
+  "register.yourName": "Your name",
+  "register.yourEmail": "Your email",
+  "register.street": "Street and number",
+  "register.postcode": "Postcode",
+  "register.city": "City, State",
+  "register.company": "Company (optional)",
+  "register.vatId": "VAT ID (optional)",
+  "register.attendees": "Attendees",
+  "register.attendee1Note":
+    "Attendee 1 is filled in from your booking details above. Edit it if a different person is attending.",
+  "register.attendeeName": "Name",
+  "register.attendeeEmail": "Email",
+  "register.attendeeAriaPrefix": "Attendee",
+  "register.discountCodeQuestion": "Have a discount code?",
+  "register.enterCode": "Enter code",
+  "register.apply": "Apply",
+  "register.anythingWeShouldKnow": "Anything we should know? (optional)",
+  "register.consentLabel":
+    "I agree to my data being used to process this registration, in line with the privacy policy.",
+  "register.confirmRegistration": "Confirm registration",
+  // Below this point: not covered by betterchange-de-translation-draft-
+  // register-pages.md (sold-out/waitlist messaging, the meta description's
+  // verb phrase, and the discount-code JS feedback strings) -- these fall
+  // back to the "[DE] " placeholder until a Fellow reviews them.
+  "register.metaDescriptionPrefix": "Register for",
+  "register.soldOutHeading": "This session is sold out",
+  "register.soldOutBodyPrefix": "All seats for",
+  "register.soldOutBodySuffix":
+    "are taken. Join the waitlist and we'll email you personally the moment a spot opens up.",
+  "register.joinWaitlist": "Join the waitlist",
+  "register.waitlistJoining": "Joining…",
+  "register.waitlistSuccess": "You're on the list. We'll email you the moment a seat opens up.",
+  "register.waitlistError": "Couldn't join the waitlist. Check your connection and try again.",
+  "register.offerThreeForTwo": "Offer (3-for-2)",
+  "register.discountCodeLabel": "Discount code",
+  "register.checking": "Checking…",
+  "register.discountAppliedSuffix": "applied,",
+  "register.off": "off",
+  "register.codeNotRecognized": "Code not recognized",
+  "register.codeCheckError": "Couldn't check that code. Try again",
 } as const;
 
 export type UIKey = keyof typeof en;
@@ -175,6 +227,7 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "schedule.date": "Datum",
   "schedule.location": "Ort",
   "schedule.format": "Format",
+  "schedule.price": "Preis",
   "schedule.bookNow": "Jetzt buchen",
   "schedule.register": "Anmelden",
   "schedule.fullSchedule": "Alle Termine",
@@ -258,6 +311,42 @@ const deOverrides: Partial<Record<UIKey, string>> = {
 
   "certifiedBy": "Zertifiziert durch",
   "cta.talkToUs": "Kontakt aufnehmen",
+
+  // From betterchange-de-translation-draft-register-pages.md. Anything not
+  // covered there (sold-out/waitlist messaging, discount-code JS feedback,
+  // the meta description's verb phrase) is deliberately left out here, so
+  // it falls back to the "[DE] " placeholder rather than being guessed at.
+  "register.eyebrow": "Anmeldung",
+  "register.backToCourse": "← Zurück zu den Kursdetails",
+  "register.orderSummary": "Bestellübersicht",
+  "register.seats": "Plätze",
+  "register.subtotal": "Zwischensumme",
+  "register.total": "Gesamt",
+  "register.pricesExclVat": "Preise zzgl. MwSt.",
+  "register.trainerSingular": "Trainer:in",
+  "register.trainerPlural": "Trainer:in",
+  "register.honeypotLabel": "Dieses Feld bitte leer lassen:",
+  "register.bookingDetails": "Buchungsdetails",
+  "register.yourName": "Name",
+  "register.yourEmail": "E-Mail",
+  "register.street": "Straße und Hausnummer",
+  "register.postcode": "Postleitzahl",
+  "register.city": "Stadt, Region",
+  "register.company": "Unternehmen (optional)",
+  "register.vatId": "USt-IdNr. (optional)",
+  "register.attendees": "Teilnehmende",
+  "register.attendee1Note":
+    "Teilnehmer:in 1 wird automatisch aus den Buchungsdetails oben übernommen. Bei Bedarf anpassen, falls eine andere Person teilnimmt.",
+  "register.attendeeName": "Name",
+  "register.attendeeEmail": "E-Mail",
+  "register.attendeeAriaPrefix": "Teilnehmer:in",
+  "register.discountCodeQuestion": "Rabattcode vorhanden?",
+  "register.enterCode": "Code eingeben",
+  "register.apply": "Anwenden",
+  "register.anythingWeShouldKnow": "Sonstige Hinweise (optional)",
+  "register.consentLabel":
+    "Ich bin damit einverstanden, dass meine Daten gemäß der Datenschutzerklärung zur Bearbeitung dieser Anmeldung verwendet werden.",
+  "register.confirmRegistration": "Anmeldung bestätigen",
 };
 
 export const de: Record<UIKey, string> = { ...dePlaceholders, ...deOverrides };
