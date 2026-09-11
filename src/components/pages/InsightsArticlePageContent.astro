@@ -20,10 +20,14 @@ interface Props {
 const { article, authorName, related } = Astro.props;
 const locale = resolveLocale(Astro.currentLocale);
 const t = useTranslations(locale);
-const prefix = locale === "de" ? "/de" : "";
+
+// The Insights hub itself has no German index page yet (see Header.astro's
+// same note) -- so, like the main nav link, this breadcrumb always points
+// at the English hub regardless of locale, rather than a /de/insights URL
+// that would 404.
 ---
 
-<Breadcrumbs items={[{ label: t("nav.insights"), href: `${prefix}/insights` }, { label: article.data.title }]} />
+<Breadcrumbs items={[{ label: t("nav.insights"), href: "/insights" }, { label: article.data.title }]} />
 
 <Section
   eyebrow={[article.data.primaryCategory, article.data.contentType].filter(Boolean).join(" · ") || t("nav.insights")}
