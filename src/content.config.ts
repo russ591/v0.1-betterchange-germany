@@ -117,6 +117,12 @@ const coachProfile = defineCollection({
 const insightsArticle = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/insights-articles" }),
   schema: z.object({
+    // Kept as English loanwords on German entries too (Change Management,
+    // Leadership, Coaching, Flight Levels, Kanban, Blog, Webinar, etc.),
+    // same as the filter tags elsewhere on the site -- with two agreed
+    // exceptions: "Product Development" -> "Produktentwicklung" and
+    // "AI" -> "KI". Standing rule for the whole batch-by-batch Insights
+    // translation project; no need to re-flag this per batch.
     title: z.string(),
     contentType: z.string().optional(),
     primaryCategory: z.string().optional(),

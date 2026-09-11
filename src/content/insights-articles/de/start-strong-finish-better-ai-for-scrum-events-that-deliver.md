@@ -1,20 +1,22 @@
 ---
 # Reviewed German copy from betterchange-de-insights-batch-01.md (lighter-
 # touch spot-check review, not full Fellow line-by-line -- agreed approach
-# for Insights). Title kept in English per explicit instruction. excerpt/
-# metaTitle/metaDescription not covered by the draft, left as [DE]-prefixed
-# placeholders. contentType/primaryCategory/categories left in English
-# pending a decision (flagged separately). The embedded iframe title uses
-# the em-dash-free article title already approved for this same article's
-# frontmatter title/metaTitle in an earlier round -- the English source's
-# own iframe title still has the old em-dash version, flagged separately
-# as a leftover from that round, not fixed here since it's the EN file.
+# for Insights). Title kept in English per explicit instruction; metaTitle
+# omitted entirely so it falls back to title (BaseLayout's own metaTitle ??
+# title), per instruction that it should equal the page title, unprefixed.
+# excerpt/metaDescription not yet covered by a reviewed translation (the
+# addendum draft referenced for these wasn't actually attached) -- still
+# [DE]-prefixed placeholders pending that. "AI" -> "KI" in categories per
+# the site-wide category-label rule; contentType/primaryCategory/other
+# categories stay English loanwords under that same rule. Gregory Keegan's
+# name now links to his profile (added after this draft was written), so
+# the earlier open question in the trailing comment is resolved and removed.
 title: 'Start Strong, Finish Better: AI for Scrum Events That Deliver'
 contentType: Blog
 primaryCategory: Change Management
 categories:
   - Change Management
-  - AI
+  - KI
   - Scrum
   - Webinar
 date: '2026-04-19T00:00:00Z'
@@ -23,7 +25,6 @@ author: giuseppe-de-simone
 excerpt: "[DE] Tired of sprints that start slow or end without impact? This webinar with Giuseppe De Simone and Gregory Keegan shows how AI can transform your sprint planning, retrospectives, and coaching conversations."
 featured: false
 imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2026/04/Gemini_Generated_Image_fzns87fzns87fzns-300x164.png
-metaTitle: '[DE] Webinar Recording: Start Strong, Finish Better: AI for Scrum Events That Deliver'
 metaDescription: "[DE] Tired of sprints that start slow or end without impact? This webinar shows how AI can transform your sprint planning, retrospectives, and coaching conversations."
 bodyHtml: |-
   <p><strong>Sprints, die langsam starten oder ohne Wirkung enden? Das muss nicht sein.</strong> In diesem Webinar wird gezeigt, wie KI Sprint Planning, Retrospektiven und Coaching-Gespräche verändern kann. Im Video geht es unter anderem um:</p>
@@ -74,6 +75,5 @@ bodyHtml: |-
 
   <h2>Über die Vortragenden</h2>
   <p><strong>Giuseppe De Simone</strong> ist Ingenieur, der zur Führungskraft, Coach und Trainer wurde, mit über 26 Jahren Erfahrung in der Produktentwicklung und 16 Jahren im Coaching, Consulting und Training für Kund:innen in verschiedenen Branchen. Als Certified Scrum Trainer, Certified Enterprise Coach und Leadership Educator unterstützt er Führungskräfte, Teams und Organisationen dabei, produktiver, widerstandsfähiger und menschenorientierter zu werden. Er ist Gründer und CEO seines eigenen Beratungs- und Trainingsunternehmens sowie Fellow Coach bei Better Change. Als Redner auf internationalen Konferenzen teilt Giuseppe regelmäßig Einblicke zu Agilität, Change Management, Leadership und Coaching in Artikeln und Webinaren. Sein Ziel ist es, Menschen für eine menschlichere, dynamischere und kompetentere Arbeitswelt 2030 zukunftssicher zu machen.</p>
-  <p><strong>Gregory Keegan</strong> ist Enterprise Agile Coach mit über 16 Jahren Erfahrung in agilen Transformationen, Führungsentwicklung und kulturellem Wandel in Branchen wie FinTech, MedTech und dem öffentlichen Sektor. Er hat mit Organisationen wie der Europäischen Zentralbank, Siemens und Sanofi zusammengearbeitet, um Business-Agilität zu fördern und leistungsstarke Teams aufzubauen. Seine Arbeit verbindet agile Expertise (Scrum, LeSS, Business Agility) mit einem wachsenden Fokus auf KI-Integration, unterstützt durch aktuelle Zertifizierungen in ICA-FAI und "AI for Business". Er engagiert sich dafür, Organisationen agiler und intelligent anpassungsfähiger für eine sich wandelnde Welt zu machen.</p>
-  <!-- NOTE: this webinar has two presenters, Giuseppe De Simone and Gregory Keegan. Gregory Keegan doesn't appear to be an existing Better Change Fellow profile -- worth confirming with Russ whether to add him or simply credit him in the article body as a guest presenter. -->
+  <p><strong><a href="/about/gregory-keegan">Gregory Keegan</a></strong> ist Enterprise Agile Coach mit über 16 Jahren Erfahrung in agilen Transformationen, Führungsentwicklung und kulturellem Wandel in Branchen wie FinTech, MedTech und dem öffentlichen Sektor. Er hat mit Organisationen wie der Europäischen Zentralbank, Siemens und Sanofi zusammengearbeitet, um Business-Agilität zu fördern und leistungsstarke Teams aufzubauen. Seine Arbeit verbindet agile Expertise (Scrum, LeSS, Business Agility) mit einem wachsenden Fokus auf KI-Integration, unterstützt durch aktuelle Zertifizierungen in ICA-FAI und "AI for Business". Er engagiert sich dafür, Organisationen agiler und intelligent anpassungsfähiger für eine sich wandelnde Welt zu machen.</p>
 ---

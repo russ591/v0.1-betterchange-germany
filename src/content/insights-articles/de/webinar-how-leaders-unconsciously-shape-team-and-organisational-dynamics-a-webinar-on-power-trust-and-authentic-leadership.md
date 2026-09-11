@@ -2,13 +2,14 @@
 # Reviewed German copy from betterchange-de-insights-batch-01.md (lighter-
 # touch spot-check review, not full Fellow line-by-line -- agreed approach
 # for Insights). Title kept in English per explicit instruction (the draft
-# offered a suggested German title for this article too, not used).
-# excerpt/metaTitle/metaDescription not covered by the draft, left as
-# [DE]-prefixed placeholders. contentType/primaryCategory/categories left
-# in English pending a decision (flagged separately). Note: this EN source
-# file's own metaDescription is mid-sentence-truncated ("...examines...")
-# -- a pre-existing data issue, not something this round touches; flagged
-# separately.
+# offered a suggested German title for this article too, not used);
+# metaTitle omitted so it falls back to title, unprefixed, per instruction.
+# excerpt/metaDescription not yet covered by a reviewed translation (the
+# addendum draft referenced for these wasn't actually attached) -- still
+# [DE]-prefixed placeholders pending that. contentType/primaryCategory/
+# categories stay English loanwords per the site-wide category-label
+# rule. The EN source file's own metaDescription truncation has been
+# fixed separately (not part of this file).
 title: The Hidden Ways Leaders Shape the Teams Around Them
 contentType: Blog
 primaryCategory: Change Management
@@ -22,7 +23,6 @@ author: bent-myllerup
 excerpt: "[DE] Your behaviour as a leader shapes your team's culture whether you intend it to or not. This webinar with Bent Myllerup and Giuseppe De Simone examines the psychodynamics of leadership, the part most leadership development programmes quietly skip."
 featured: false
 imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2026/02/Psycho-dynamics.png
-metaTitle: '[DE] Webinar Recording: The Hidden Ways Leaders Shape the Teams Around Them'
 metaDescription: "[DE] Your behaviour as a leader shapes your team's culture whether you intend it to or not. This webinar with Bent Myllerup and Giuseppe De Simone examines..."
 bodyHtml: |-
   <p>Die meisten Ratschläge zu Führung konzentrieren sich darauf, was zu tun ist: klar kommunizieren, effektiv delegieren, Richtung vorgeben. Dieses Webinar widmet sich etwas Unbequemerem, aber vermutlich Wichtigerem: dem, was tatsächlich zwischen einer Führungskraft und ihrem Team geschieht, unabhängig von den eigenen Absichten.</p>

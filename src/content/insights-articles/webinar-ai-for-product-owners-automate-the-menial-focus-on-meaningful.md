@@ -13,8 +13,8 @@ author: giuseppe-de-simone
 excerpt: Product Owners spend a disproportionate amount of time on low-value administrative work. This webinar shows practical AI techniques for automating the repetitive so POs can focus on the conversations, decisions, and strategic thinking that actually need them.
 featured: false
 imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2025/12/unnamed.png
-metaTitle: 'Webinar Recording: How Product Owners Can Use AI Without Losing the Pl'
-metaDescription: Product Owners spend a disproportionate amount of time on low-value administrative work. This webinar shows practical AI techniques for automating the...
+metaTitle: 'Webinar Recording: How Product Owners Can Use AI Without Losing the Plot'
+metaDescription: Product Owners spend a disproportionate amount of time on low-value administrative work. This webinar shows practical AI techniques for automating the repetitive so POs can focus on the conversations, decisions, and strategic thinking that actually need them.
 bodyHtml: |-
   <p>The irony of the modern Product Owner role is that much of what consumes time is precisely the work that adds the least value. Meeting notes turned into action items. Jira tickets assembled from workshop outputs. Status summaries for stakeholders who want to know what the team is working on without having to read the backlog. Important work, but not the work that requires a good Product Owner.</p>
 

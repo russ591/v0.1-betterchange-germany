@@ -1,13 +1,16 @@
 ---
 # Reviewed German copy from betterchange-de-insights-batch-01.md (lighter-
 # touch spot-check review, not full Fellow line-by-line -- agreed approach
-# for Insights). Title kept in English per explicit instruction. excerpt/
-# metaTitle/metaDescription not covered by the draft, left as [DE]-prefixed
-# placeholders. contentType/primaryCategory/categories left in English
-# pending a decision (flagged separately). The embedded iframe title uses
-# the em-dash-free article title already approved for this same article's
-# frontmatter title/metaTitle in an earlier round -- the English source's
-# own iframe title still has the old em-dash version, flagged separately.
+# for Insights). Title kept in English per explicit instruction; metaTitle
+# omitted so it falls back to title, unprefixed, per instruction. excerpt/
+# metaDescription not yet covered by a reviewed translation (the addendum
+# draft referenced for these wasn't actually attached) -- still [DE]-
+# prefixed placeholders pending that. contentType/primaryCategory/
+# categories stay English loanwords per the site-wide category-label
+# rule. The embedded iframe title uses the em-dash-free article title
+# already approved for this same article's frontmatter title in an
+# earlier round -- the English source's own iframe title still has the
+# old em-dash version, flagged separately.
 title: Why Organizations Struggle with Change and How to Build Adaptive Ones
 contentType: Blog
 primaryCategory: Change Management
@@ -21,7 +24,6 @@ author: nino-zeljko
 excerpt: "[DE] Tired of change initiatives that fizzle out? This webinar with Nino Zeljko explores why organizations struggle with change — and how to build genuinely adaptive ones."
 featured: false
 imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2026/04/Learning-how-to-change-is-more-important-than-the-change-itself-300x148.png
-metaTitle: '[DE] Webinar Recording: Why Organizations Struggle with Change and How to Build Adaptive Ones'
 metaDescription: "[DE] Tired of change initiatives that fizzle out? This webinar with Nino Zeljko explores why organizations struggle with change — and how to build adaptive ones."
 bodyHtml: |-
   <p><strong>Change-Initiativen, die im Sande verlaufen?</strong> In diesem Webinar wird gezeigt, warum so viele Organisationen beim Wandel scheitern, und was tatsächlich funktioniert.</p>

@@ -2,14 +2,14 @@
 # Reviewed German copy from betterchange-de-insights-batch-01.md (lighter-
 # touch spot-check review, not full Fellow line-by-line -- agreed approach
 # for Insights). Title kept in English per explicit instruction, matching
-# how course names are handled. excerpt/metaTitle/metaDescription are NOT
-# covered by the draft (it only covers on-page body content) -- left as
-# [DE]-prefixed placeholders pending a translation. contentType/
-# primaryCategory/categories left in English pending a decision on whether
-# these display labels should be translated at all (flagged separately).
-# The personal booking link/discount code and the open question about
-# Gregory Keegan (article 2) are carried over unresolved, same as the EN
-# source's own HTML comment -- not a translation decision to make here.
+# how course names are handled; metaTitle omitted so it falls back to
+# title, unprefixed, per instruction. excerpt/metaDescription not yet
+# covered by a reviewed translation (the addendum draft referenced for
+# these wasn't actually attached) -- still [DE]-prefixed placeholders
+# pending that. contentType/primaryCategory/categories stay English
+# loanwords per the site-wide category-label rule. The personal booking
+# link/discount code stays as-is on the German version too, per explicit
+# confirmation.
 title: 'What Happens When You Invest in Your Leadership: A Conversation with Maja Lovrenčić'
 contentType: Blog
 primaryCategory: Change Management
@@ -24,7 +24,6 @@ author: giuseppe-de-simone
 excerpt: "[DE] What does leadership growth really look like from the inside? Giuseppe De Simone talks with Maja Lovrenčić, Coach and Leader at Avery Dennison, about the shift from firefighting to designing."
 featured: false
 imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2026/04/6-months-of-mentoring-2048x1761.png
-metaTitle: '[DE] Webinar Recording: What Happens When You Invest in Your Leadership'
 metaDescription: "[DE] What does leadership growth really look like from the inside? Giuseppe De Simone talks with Maja Lovrenčić about the shift from firefighting to designing."
 bodyHtml: |-
   <h2>Wie sieht Wachstum als Führungskraft von innen tatsächlich aus?</h2>
