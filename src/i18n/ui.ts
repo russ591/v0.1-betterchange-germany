@@ -233,6 +233,8 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "training.upcomingDisciplineTrainingPrefix": "Anstehende Trainings im Bereich",
   "training.noSessionsForDisciplinePrefix": "Für",
   "training.noSessionsForDisciplineSuffix": "sind derzeit keine Termine geplant.",
+  "training.formatSingular": "Format",
+  "training.formatPlural": "Formate",
 
   "course.whoFor": "Für wen ist dieser Kurs geeignet?",
   "course.whatLearn": "Lerninhalte",
