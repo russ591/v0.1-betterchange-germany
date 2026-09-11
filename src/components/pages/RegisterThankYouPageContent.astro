@@ -1,0 +1,51 @@
+---
+// Shared body for /training/register/thank-you (English) and
+// /de/training/register/thank-you (German) -- see HomePageContent.astro
+// for the same split pattern. `copy` carries the page's own prose
+// (register-thank-you-page content collection).
+import type { CollectionEntry } from "astro:content";
+import Section from "@/components/Section.astro";
+import Button from "@/components/Button.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+
+interface Props {
+  copy: CollectionEntry<"register-thank-you-page">["data"];
+}
+
+const { copy } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const prefix = locale === "de" ? "/de" : "";
+---
+
+<Breadcrumbs items={[{ label: t("nav.training"), href: `${prefix}/training` }, { label: copy.eyebrow }]} />
+
+<Section eyebrow={copy.eyebrow} class="bg-mist-light">
+  <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+    {copy.heading}
+  </h1>
+  <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
+    {copy.body}
+  </p>
+
+  <div class="mt-10 max-w-xl rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6">
+    <h2 class="text-[length:var(--text-h4)]">{copy.nextStepsHeading}</h2>
+    <ol class="mt-4 space-y-4 text-[length:var(--text-small)] text-neutral-600">
+      {
+        copy.steps.map((step, i) => (
+          <li class="flex gap-3">
+            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-lime text-[length:var(--text-caption)] font-bold text-ink">
+              {i + 1}
+            </span>
+            <span>{step}</span>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+
+  <div class="mt-10">
+    <Button href={`${prefix}/training`} variant="primary">{copy.buttonLabel}</Button>
+  </div>
+</Section>

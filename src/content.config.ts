@@ -286,6 +286,19 @@ const thankYouPage = defineCollection({
   }),
 });
 
+const registerThankYouPage = defineCollection({
+  loader: glob({ pattern: "*.md", base: "./src/content/register-thank-you-page" }),
+  schema: z.object({
+    metaDescription: z.string(),
+    eyebrow: z.string(),
+    heading: z.string(),
+    body: z.string(),
+    nextStepsHeading: z.string(),
+    steps: z.array(z.string()),
+    buttonLabel: z.string(),
+  }),
+});
+
 export const collections = {
   "training-categories": trainingCategory,
   "training-courses": trainingCourse,
@@ -300,4 +313,5 @@ export const collections = {
   "contact-page": contactPage,
   "full-schedule-page": fullSchedulePage,
   "thank-you-page": thankYouPage,
+  "register-thank-you-page": registerThankYouPage,
 };

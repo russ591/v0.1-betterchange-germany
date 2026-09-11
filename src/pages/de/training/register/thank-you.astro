@@ -3,11 +3,11 @@ import { getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import RegisterThankYouPageContent from "@/components/pages/RegisterThankYouPageContent.astro";
 
-const copy = (await getEntry("register-thank-you-page", "en"))!.data;
+const copy = (await getEntry("register-thank-you-page", "de"))!.data;
 ---
 
 <BaseLayout
-  title="You're registered"
+  title="Anmeldung bestätigt"
   description={copy.metaDescription}
   translations={{ en: "/training/register/thank-you", de: "/de/training/register/thank-you" }}
 >
