@@ -667,7 +667,16 @@ const scriptCopy = {
   // list — so a visitor can only ever learn whether the one code they
   // typed is valid, never enumerate every code Russell has issued.
   async function applyDiscountCode() {
-    const entered = discountCodeInput.value.trim().toUpperCase();
+    const rawEntered = discountCodeInput.value.trim().toUpperCase();
+    // A trailing "**" is a hidden marker (see netlify/functions/lib/
+    // discount.js) that forces this submission's Lexware invoice into
+    // TEST_MODE — it's not a real code, so strip it before checking/
+    // previewing: "SAVE20**" still previews exactly like "SAVE20", and a
+    // bare "**" behaves like no code was entered rather than showing an
+    // "invalid code" error. The full raw value (marker included) is still
+    // what actually gets submitted with the form, via discountCodeInput's
+    // own value — this only affects the live preview.
+    const entered = rawEntered.endsWith("**") ? rawEntered.slice(0, -2).trim() : rawEntered;
     if (!entered) {
       appliedDiscount = null;
       discountFeedbackEl.hidden = true;

@@ -3,6 +3,7 @@
 // the full set, so a visitor can't enumerate every discount code Russell has
 // handed out by poking this endpoint.
 import { getDiscountForCode } from "./lib/discount-store.js";
+import { parseDiscountField } from "./lib/discount.js";
 
 export const handler = async (event) => {
   if (event.httpMethod !== "POST") {
@@ -16,7 +17,10 @@ export const handler = async (event) => {
     return { statusCode: 400, body: JSON.stringify({ error: "Invalid request body" }) };
   }
 
-  const discount = await getDiscountForCode(code);
+  // Strip a trailing "**" test-mode marker (see discount.js) before
+  // looking the code up, so e.g. "SAVE20**" still previews as SAVE20.
+  const { code: strippedCode } = parseDiscountField(code);
+  const discount = await getDiscountForCode(strippedCode);
   return {
     statusCode: 200,
     headers: { "Content-Type": "application/json" },
