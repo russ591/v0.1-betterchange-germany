@@ -3,12 +3,12 @@
 # touch spot-check review, not full Fellow line-by-line -- agreed approach
 # for Insights). Title kept in English per explicit instruction; metaTitle
 # omitted so it falls back to title, unprefixed, per instruction. excerpt/
-# metaDescription not yet covered by a reviewed translation (the addendum
-# draft referenced for these wasn't actually attached) -- still [DE]-
-# prefixed placeholders pending that. contentType/primaryCategory/
+# metaDescription now from the reviewed batch-01-addendum draft, written
+# fresh from the untruncated English text (the addendum's own note; the
+# EN source's own metaTitle/metaDescription truncation bug was fixed
+# separately, not part of this file). contentType/primaryCategory/
 # categories stay English loanwords per the site-wide category-label
-# rule. The EN source file's own metaTitle/metaDescription truncation has
-# been fixed separately (not part of this file).
+# rule.
 title: How Product Owners Can Use AI Without Losing the Plot
 contentType: Blog
 primaryCategory: Change Management
@@ -19,10 +19,10 @@ categories:
 date: '2026-01-28T00:00:00Z'
 readTimeMinutes: 2
 author: giuseppe-de-simone
-excerpt: "[DE] Product Owners spend a disproportionate amount of time on low-value administrative work. This webinar shows practical AI techniques for automating the repetitive so POs can focus on the conversations, decisions, and strategic thinking that actually need them."
+excerpt: "Product Owner verbringen unverhältnismäßig viel Zeit mit administrativer Arbeit von geringem Wert. Dieses Webinar zeigt praktische KI-Techniken, um Wiederkehrendes zu automatisieren, damit sich Product Owner auf die Gespräche, Entscheidungen und strategischen Überlegungen konzentrieren können, die sie wirklich brauchen."
 featured: false
 imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2025/12/unnamed.png
-metaDescription: "[DE] Product Owners spend a disproportionate amount of time on low-value administrative work. This webinar shows practical AI techniques for automating the..."
+metaDescription: "Product Owner verbringen unverhältnismäßig viel Zeit mit administrativer Arbeit von geringem Wert. Dieses Webinar zeigt praktische KI-Techniken, um Wiederkehrendes zu automatisieren, damit sich Product Owner auf die Gespräche, Entscheidungen und strategischen Überlegungen konzentrieren können, die sie wirklich brauchen."
 bodyHtml: |-
   <p>Die Ironie der modernen Product-Owner-Rolle ist, dass ein Großteil der Zeit ausgerechnet für die Arbeit aufgewendet wird, die am wenigsten Wert schafft. Meeting-Notizen, die in Action Items umgewandelt werden. Jira-Tickets, die aus Workshop-Ergebnissen zusammengestellt werden. Status-Zusammenfassungen für Stakeholder, die wissen wollen, woran das Team arbeitet, ohne selbst den Backlog zu lesen. Wichtige Arbeit, aber nicht die Arbeit, die eine gute Product-Owner-Person ausmacht.</p>
 

@@ -3,14 +3,12 @@
 # touch spot-check review, not full Fellow line-by-line -- agreed approach
 # for Insights). Title kept in English per explicit instruction; metaTitle
 # omitted so it falls back to title, unprefixed, per instruction. excerpt/
-# metaDescription not yet covered by a reviewed translation (the addendum
-# draft referenced for these wasn't actually attached) -- still [DE]-
-# prefixed placeholders pending that. contentType/primaryCategory/
-# categories stay English loanwords per the site-wide category-label
-# rule. The embedded iframe title uses the em-dash-free article title
-# already approved for this same article's frontmatter title in an
-# earlier round -- the English source's own iframe title still has the
-# old em-dash version, flagged separately.
+# metaDescription now from the reviewed batch-01-addendum draft.
+# contentType/primaryCategory/categories stay English loanwords per the
+# site-wide category-label rule. The embedded iframe title uses the
+# em-dash-free article title already approved for this same article's
+# frontmatter title in an earlier round -- the English source's own
+# iframe title still has the old em-dash version, flagged separately.
 title: Why Organizations Struggle with Change and How to Build Adaptive Ones
 contentType: Blog
 primaryCategory: Change Management
@@ -21,10 +19,10 @@ categories:
 date: '2026-04-02T00:00:00Z'
 readTimeMinutes: 3
 author: nino-zeljko
-excerpt: "[DE] Tired of change initiatives that fizzle out? This webinar with Nino Zeljko explores why organizations struggle with change — and how to build genuinely adaptive ones."
+excerpt: "Change-Initiativen, die im Sande verlaufen? Dieses Webinar mit Nino Zeljko untersucht, warum Organisationen mit Wandel kämpfen, und wie sich wirklich anpassungsfähige aufbauen lassen."
 featured: false
 imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2026/04/Learning-how-to-change-is-more-important-than-the-change-itself-300x148.png
-metaDescription: "[DE] Tired of change initiatives that fizzle out? This webinar with Nino Zeljko explores why organizations struggle with change — and how to build adaptive ones."
+metaDescription: "Change-Initiativen, die im Sande verlaufen? Dieses Webinar mit Nino Zeljko untersucht, warum Organisationen mit Wandel kämpfen, und wie sich wirklich anpassungsfähige aufbauen lassen."
 bodyHtml: |-
   <p><strong>Change-Initiativen, die im Sande verlaufen?</strong> In diesem Webinar wird gezeigt, warum so viele Organisationen beim Wandel scheitern, und was tatsächlich funktioniert.</p>
 

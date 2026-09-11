@@ -3,13 +3,11 @@
 # touch spot-check review, not full Fellow line-by-line -- agreed approach
 # for Insights). Title kept in English per explicit instruction, matching
 # how course names are handled; metaTitle omitted so it falls back to
-# title, unprefixed, per instruction. excerpt/metaDescription not yet
-# covered by a reviewed translation (the addendum draft referenced for
-# these wasn't actually attached) -- still [DE]-prefixed placeholders
-# pending that. contentType/primaryCategory/categories stay English
-# loanwords per the site-wide category-label rule. The personal booking
-# link/discount code stays as-is on the German version too, per explicit
-# confirmation.
+# title, unprefixed, per instruction. excerpt/metaDescription now from
+# the reviewed batch-01-addendum draft. contentType/primaryCategory/
+# categories stay English loanwords per the site-wide category-label
+# rule. The personal booking link/discount code stays as-is on the
+# German version too, per explicit confirmation.
 title: 'What Happens When You Invest in Your Leadership: A Conversation with Maja Lovrenčić'
 contentType: Blog
 primaryCategory: Change Management
@@ -21,10 +19,10 @@ categories:
 date: '2026-04-27T00:00:00Z'
 readTimeMinutes: 3
 author: giuseppe-de-simone
-excerpt: "[DE] What does leadership growth really look like from the inside? Giuseppe De Simone talks with Maja Lovrenčić, Coach and Leader at Avery Dennison, about the shift from firefighting to designing."
+excerpt: "Wie sieht Wachstum als Führungskraft von innen tatsächlich aus? Giuseppe De Simone spricht mit Maja Lovrenčić, Coach und Führungskraft bei Avery Dennison, über den Wechsel vom Feuerlöschen zum Gestalten."
 featured: false
 imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2026/04/6-months-of-mentoring-2048x1761.png
-metaDescription: "[DE] What does leadership growth really look like from the inside? Giuseppe De Simone talks with Maja Lovrenčić about the shift from firefighting to designing."
+metaDescription: "Wie sieht Wachstum als Führungskraft von innen tatsächlich aus? Giuseppe De Simone spricht mit Maja Lovrenčić, Coach und Führungskraft bei Avery Dennison, über den Wechsel vom Feuerlöschen zum Gestalten."
 bodyHtml: |-
   <h2>Wie sieht Wachstum als Führungskraft von innen tatsächlich aus?</h2>
   <p>Maja Lovrenčić ist Coach und Führungskraft bei Avery Dennison.</p>
@@ -59,7 +57,6 @@ bodyHtml: |-
   <p>Jede Situation ist unterschiedlich. Aber wenn etwas aus diesem Interview Anklang gefunden hat, sei es das Navigieren einer wachsenden Organisation, der Aufbau einer kollaborativeren Kultur, oder einfach das Gefühl, zu viele Probleme allein zu lösen, könnte es sich lohnen zu erkunden, wie Coaching oder Mentoring aussehen könnte.</p>
   <p><a href="https://www.betterchange-consulting.dk/products/250809-Giuseppe-De-Simone">Kostenloses 45-minütiges Erstgespräch buchen</a> (unverbindlich). Bei der Buchung den Code <strong>BC-FORWARD</strong> angeben.</p>
   <p>Es ist eine Gelegenheit, über die aktuelle Situation, das gewünschte Ziel und eine mögliche Zusammenarbeit zu sprechen.</p>
-  <!-- NOTE: this article contains a personal booking link and discount code for Giuseppe specifically -- confirm with Russ whether this stays as-is for the .de site or should be adapted. -->
 
   <h2>Über die Teilnehmenden</h2>
   <p><strong>Maja Lovrenčić</strong> ist Coach und Führungskraft bei Avery Dennison und arbeitet an der Schnittstelle von Personalentwicklung, Führung und Organisationskultur. Sie ist seit mehreren Jahren Teil von Mentoring- und Coaching-Programmen mit Giuseppe.</p>

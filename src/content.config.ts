@@ -133,6 +133,10 @@ const insightsArticle = defineCollection({
     // fallback otherwise.
     author: reference("coach-profiles").optional(),
     authorName: z.string().optional(),
+    // Translated into German on German entries as part of each batch's
+    // reviewed draft, same as bodyHtml. Standing rule for the whole
+    // batch-by-batch Insights translation project; no need to re-flag
+    // this per batch.
     excerpt: z.string(),
     featured: z.boolean().default(false),
     imageUrl: z.string().optional(),

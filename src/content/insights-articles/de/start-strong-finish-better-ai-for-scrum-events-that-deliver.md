@@ -4,13 +4,12 @@
 # for Insights). Title kept in English per explicit instruction; metaTitle
 # omitted entirely so it falls back to title (BaseLayout's own metaTitle ??
 # title), per instruction that it should equal the page title, unprefixed.
-# excerpt/metaDescription not yet covered by a reviewed translation (the
-# addendum draft referenced for these wasn't actually attached) -- still
-# [DE]-prefixed placeholders pending that. "AI" -> "KI" in categories per
-# the site-wide category-label rule; contentType/primaryCategory/other
-# categories stay English loanwords under that same rule. Gregory Keegan's
-# name now links to his profile (added after this draft was written), so
-# the earlier open question in the trailing comment is resolved and removed.
+# excerpt/metaDescription now from the reviewed batch-01-addendum draft.
+# "AI" -> "KI" in categories per the site-wide category-label rule;
+# contentType/primaryCategory/other categories stay English loanwords
+# under that same rule. Gregory Keegan's name now links to his profile
+# (added after this draft was written), so the earlier open question in
+# the trailing comment is resolved and removed.
 title: 'Start Strong, Finish Better: AI for Scrum Events That Deliver'
 contentType: Blog
 primaryCategory: Change Management
@@ -22,10 +21,10 @@ categories:
 date: '2026-04-19T00:00:00Z'
 readTimeMinutes: 3
 author: giuseppe-de-simone
-excerpt: "[DE] Tired of sprints that start slow or end without impact? This webinar with Giuseppe De Simone and Gregory Keegan shows how AI can transform your sprint planning, retrospectives, and coaching conversations."
+excerpt: "Sprints, die langsam starten oder ohne Wirkung enden? Dieses Webinar mit Giuseppe De Simone und Gregory Keegan zeigt, wie KI Sprint Planning, Retrospektiven und Coaching-Gespräche verändern kann."
 featured: false
 imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2026/04/Gemini_Generated_Image_fzns87fzns87fzns-300x164.png
-metaDescription: "[DE] Tired of sprints that start slow or end without impact? This webinar shows how AI can transform your sprint planning, retrospectives, and coaching conversations."
+metaDescription: "Sprints, die langsam starten oder ohne Wirkung enden? Dieses Webinar mit Giuseppe De Simone und Gregory Keegan zeigt, wie KI Sprint Planning, Retrospektiven und Coaching-Gespräche verändern kann."
 bodyHtml: |-
   <p><strong>Sprints, die langsam starten oder ohne Wirkung enden? Das muss nicht sein.</strong> In diesem Webinar wird gezeigt, wie KI Sprint Planning, Retrospektiven und Coaching-Gespräche verändern kann. Im Video geht es unter anderem um:</p>
   <ul>
