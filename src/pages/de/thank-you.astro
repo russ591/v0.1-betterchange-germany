@@ -3,9 +3,9 @@ import { getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ThankYouPageContent from "@/components/pages/ThankYouPageContent.astro";
 
-const copy = (await getEntry("thank-you-page", "en"))!.data;
+const copy = (await getEntry("thank-you-page", "de"))!.data;
 ---
 
-<BaseLayout title="Thank you" description={copy.metaDescription} translations={{ en: "/thank-you", de: "/de/thank-you" }}>
+<BaseLayout title="Danke" description={copy.metaDescription} translations={{ en: "/thank-you", de: "/de/thank-you" }}>
   <ThankYouPageContent copy={copy} />
 </BaseLayout>

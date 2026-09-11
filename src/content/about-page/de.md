@@ -1,11 +1,8 @@
 ---
 # Reviewed German copy from betterchange-de-translation-draft-about-contact-schedule.md.
 # One em dash in the draft's first approach paragraph converted to a comma
-# per CLAUDE.md house style. teamBody has no translation in the draft (the
-# draft only flagged the old "Only profiles with real biography..." sentence
-# as a removal, and that sentence had already been replaced on main with
-# this new one before this draft was written) -- left as a [DE]-prefixed
-# placeholder pending a translation.
+# per CLAUDE.md house style. teamBody's translation was added in a later
+# round of the same draft file.
 metaDescription: "Better Change ist ein europäisches Netzwerk aus Agile Coaches, Trainer:innen und Berater:innen, die es selbst gemacht haben und wissen, was zu tun ist, wenn sich die Realität nicht an das Drehbuch hält."
 heroEyebrow: "Über Better Change"
 heroHeading: "Praktiker:innen, keine Theoretiker:innen"
@@ -31,5 +28,5 @@ stats:
     description: "Jahre kombinierte Erfahrung"
 peopleEyebrow: "Unser Team"
 teamHeading: "Das Team"
-teamBody: "[DE] Click through any profile to read more about their background, experience, and approach."
+teamBody: "Jedes Profil enthält mehr Informationen zu Hintergrund, Erfahrung und Ansatz der jeweiligen Person."
 ---

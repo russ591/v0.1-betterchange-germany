@@ -275,6 +275,17 @@ const fullSchedulePage = defineCollection({
   }),
 });
 
+const thankYouPage = defineCollection({
+  loader: glob({ pattern: "*.md", base: "./src/content/thank-you-page" }),
+  schema: z.object({
+    metaDescription: z.string(),
+    eyebrow: z.string(),
+    heading: z.string(),
+    body: z.string(),
+    buttonLabel: z.string(),
+  }),
+});
+
 export const collections = {
   "training-categories": trainingCategory,
   "training-courses": trainingCourse,
@@ -288,4 +299,5 @@ export const collections = {
   "about-page": aboutPage,
   "contact-page": contactPage,
   "full-schedule-page": fullSchedulePage,
+  "thank-you-page": thankYouPage,
 };
