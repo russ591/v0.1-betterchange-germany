@@ -7,6 +7,7 @@
 // template.md) covers, leaving anything else as-is in English rather than
 // guessing at a translation.
 import type { Locale } from "@/lib/i18n";
+import { germanizePrice } from "@/lib/prices";
 
 const BULK_OFFER_EN = "🎁 Offer: 3 seats for the price of 2";
 const BULK_OFFER_DE = "🎁 Angebot: 3 Plätze zum Preis von 2";
@@ -62,7 +63,7 @@ export function translateOffer(offer: string, locale: Locale): string {
   const match = offer.match(EARLY_BIRD_RE);
   if (match) {
     const [, price, date] = match;
-    return `🎁 Frühbucherpreis. Preis steigt nach dem ${germanizeEnglishDate(date)} auf ${price}.`;
+    return `🎁 Frühbucherpreis. Preis steigt nach dem ${germanizeEnglishDate(date)} auf ${germanizePrice(price, locale)}.`;
   }
   return offer;
 }

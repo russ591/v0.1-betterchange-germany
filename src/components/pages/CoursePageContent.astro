@@ -17,6 +17,7 @@ import { getFormatDetails, formatIcons } from "@/data/formatDetails";
 import { translateOffer } from "@/data/offerCopy";
 import { translateLevel } from "@/data/levelIcons";
 import { formatSessionDate } from "@/lib/dates";
+import { germanizePrice } from "@/lib/prices";
 import { registrationHref, registrationLinkAttrs } from "@/lib/registrationLink";
 import TrainerChip from "@/components/TrainerChip.astro";
 import { baseSlug } from "@/lib/i18n";
@@ -174,7 +175,7 @@ const formatDetails = getFormatDetails(locale);
                 >
                   <div class="flex items-center justify-between gap-3">
                     <span class="font-bold">
-                      {isSelfPaced ? t("badge.selfPaced") : formatSessionDate(session, course)}
+                      {isSelfPaced ? t("badge.selfPaced") : formatSessionDate(session, course, "long", locale)}
                     </span>
                     {session.data.status === "sold-out" ? (
                       <SoldOutBadge />
@@ -196,7 +197,7 @@ const formatDetails = getFormatDetails(locale);
                   )}
                   <div class="mt-3 flex items-center justify-between gap-3">
                     <span class="font-bold">
-                      {session.data.price}
+                      {germanizePrice(session.data.price, locale)}
                       <span class="ml-1 text-[length:var(--text-caption)] font-normal text-neutral-500">
                         {t("schedule.exclVat")}
                       </span>

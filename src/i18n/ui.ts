@@ -206,7 +206,7 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "course.notSureFormat": "Unsicher, was am besten passt?",
   "course.notSureFormatTrailing": "und gemeinsam die passende Option finden.",
   "course.relatedCourses": "Verwandte Kurse",
-  "course.trainerLabel": "Trainer:in:",
+  "course.trainerLabel": "Trainer:in",
 
   "level": "Niveau",
   "duration": "Dauer",

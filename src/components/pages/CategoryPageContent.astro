@@ -14,6 +14,7 @@ import ScheduleList from "@/components/ScheduleList.astro";
 import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
 import { levelIcons, levelPillClasses, translateLevel } from "@/data/levelIcons";
+import { germanizePrice } from "@/lib/prices";
 import { toPathSegment } from "@/lib/urlSlug";
 import { baseSlug } from "@/lib/i18n";
 import { resolveLocale, useTranslations } from "@/i18n/utils";
@@ -120,7 +121,7 @@ const logo = category.data.certificationBody ? certificationLogos[category.data.
                   </p>
                 </div>
               </div>
-              {course.data.priceFrom && <span class="shrink-0 font-bold">{course.data.priceFrom}</span>}
+              {course.data.priceFrom && <span class="shrink-0 font-bold">{germanizePrice(course.data.priceFrom, locale)}</span>}
             </a>
           ))
         }
