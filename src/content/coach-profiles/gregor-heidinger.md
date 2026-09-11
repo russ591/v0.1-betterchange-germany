@@ -7,7 +7,7 @@ languages:
   - German
   - Dutch
   - English
-photo: https://www.betterchange-consulting.com/wp-content/uploads/2023/09/Gregor-1.png
+photo: /coaches/gregor-heidinger.webp
 linkedinUrl: https://www.linkedin.com/in/gregorheidinger/
 hasFullProfile: true
 bio: |-

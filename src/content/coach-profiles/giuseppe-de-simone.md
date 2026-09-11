@@ -7,7 +7,7 @@ languages:
   - Italian
   - English
   - Swedish
-photo: https://www.betterchange-consulting.com/wp-content/uploads/2025/03/giuseppe.jpeg
+photo: /coaches/giuseppe-de-simone.webp
 linkedinUrl: https://www.linkedin.com/in/giuseppedesimone/
 yearsExperience: '25+'
 hasFullProfile: true

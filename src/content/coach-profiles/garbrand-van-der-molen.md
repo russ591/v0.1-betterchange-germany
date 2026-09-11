@@ -6,7 +6,7 @@ country: Netherlands
 languages:
   - Dutch
   - English
-photo: https://www.betterchange-consulting.com/wp-content/uploads/2023/09/garbrand-1024x1004.png
+photo: /coaches/garbrand-van-der-molen.webp
 linkedinUrl: https://www.linkedin.com/in/garbrand/
 hasFullProfile: true
 bio: |-

@@ -7,7 +7,7 @@ country: Estonia
 languages:
   - Estonian
   - English
-photo: https://www.betterchange-consulting.com/wp-content/uploads/2024/06/Julia-Vastrik.png
+photo: /coaches/julia-vastrik.webp
 linkedinUrl: https://www.linkedin.com/in/julia-vastrik/
 hasFullProfile: true
 bio: |-

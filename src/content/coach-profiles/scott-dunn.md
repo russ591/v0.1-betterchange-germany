@@ -5,7 +5,7 @@ role: Better Change Coach
 country: USA
 languages:
   - English
-photo: https://www.betterchange-consulting.com/wp-content/uploads/2024/10/Scott-Dunn-Website.png
+photo: /coaches/scott-dunn.webp
 linkedinUrl: https://www.linkedin.com/in/scottdunn/
 hasFullProfile: true
 bio: |-

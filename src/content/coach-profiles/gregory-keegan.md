@@ -5,7 +5,7 @@ role: Better Change Coach
 country: Germany
 languages:
   - English
-photo: https://www.betterchange-consulting.com/wp-content/uploads/2026/05/1-Profile-Image-1.png
+photo: /coaches/gregory-keegan.webp
 linkedinUrl: https://www.linkedin.com/in/gkeegan/
 yearsExperience: '16+'
 hasFullProfile: true

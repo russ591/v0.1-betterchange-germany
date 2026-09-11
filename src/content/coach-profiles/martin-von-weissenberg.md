@@ -5,7 +5,7 @@ role: Better Change Coach
 country: Finland
 languages:
   - English
-photo: https://www.betterchange-consulting.com/wp-content/uploads/2023/09/martin.png
+photo: /coaches/martin-von-weissenberg.webp
 linkedinUrl: https://www.linkedin.com/in/martinvonweissenberg/
 hasFullProfile: true
 bio: |-

@@ -6,7 +6,7 @@ country: Sweden
 languages:
   - Swedish
   - English
-photo: https://www.betterchange-consulting.com/wp-content/uploads/2024/10/Camilla-Bergkvist.png
+photo: /coaches/camilla-bergkvist.webp
 linkedinUrl: https://www.linkedin.com/in/camilla-bergkvist-5b1534/
 yearsExperience: '29+'
 hasFullProfile: true

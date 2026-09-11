@@ -7,7 +7,7 @@ country: Denmark
 languages:
   - Danish
   - English
-photo: https://www.betterchange-consulting.com/wp-content/uploads/2024/05/jesper-e1716541668187.jpeg
+photo: /coaches/jesper-orting.webp
 linkedinUrl: https://www.linkedin.com/in/jesper-orting/
 hasFullProfile: true
 bio: |-

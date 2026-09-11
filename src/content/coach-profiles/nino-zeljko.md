@@ -6,7 +6,7 @@ country: Croatia
 languages:
   - Croatian
   - English
-photo: https://www.betterchange-consulting.com/wp-content/uploads/2024/02/Nino-Zeljko.jpg
+photo: /coaches/nino-zeljko.webp
 linkedinUrl: https://www.linkedin.com/in/nino-zeljko-0839059/
 yearsExperience: '12+'
 hasFullProfile: true
