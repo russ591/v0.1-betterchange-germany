@@ -194,6 +194,7 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "schedule.paymentNote":
     "Keine Vorauszahlung nötig. Eine Rechnung mit ausgewiesener MwSt. wird per E-Mail zugestellt; die Zahlung ist per Überweisung oder Karte möglich.",
   "schedule.noSessionsForCourse": "Für diesen Kurs sind derzeit keine Termine geplant.",
+  "schedule.noSessionsFilter": "Für diese Filterkombination sind derzeit keine Termine verfügbar.",
 
   "badge.inPerson": "Vor Ort",
   "badge.liveOnline": "Live online",

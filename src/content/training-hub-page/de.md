@@ -9,11 +9,10 @@
 # plain display-caption text (not a lookup key), so it's set directly to
 # "Vor Ort" per the draft's "FL2D · In-person" -> "FL2D · Vor Ort" rows.
 #
-# metaDescription is NOT from the draft -- its English text differs from
-# heroBody's (missing "coaching" and "scaling"), so the draft's heroBody
-# translation can't be reused without dropping words that were never
-# approved. Stays "[DE]" pending its own translation.
-metaDescription: "[DE] Hands-on, certification-ready training in Flight Levels, Kanban, Scrum and leadership. In-person in Berlin, live online, or at your own pace."
+# metaDescription reuses heroBody's translation verbatim, per explicit
+# instruction, even though the English metaDescription (still listing only
+# Flight Levels/Kanban/Scrum/leadership) is stale relative to heroBody's.
+metaDescription: "Praxisnahes, zertifizierungsreifes Training in Flight Levels, Kanban, Scrum, Coaching, Leadership und Scaling. Vor Ort in Berlin, live online oder im eigenen Tempo."
 heroEyebrow: "Better Change Training Academy"
 heroHeading: "Training, das wirklich hängen bleibt"
 heroBody: "Praxisnahes, zertifizierungsreifes Training in Flight Levels, Kanban, Scrum, Coaching, Leadership und Scaling. Vor Ort in Berlin, live online oder im eigenen Tempo."

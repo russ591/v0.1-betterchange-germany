@@ -1,5 +1,5 @@
 ---
-metaDescription: Hands-on, certification-ready training in Flight Levels, Kanban, Scrum and leadership. In-person in Berlin, live online, or at your own pace.
+metaDescription: Hands-on, certification-ready training in Flight Levels, Kanban, Scrum, coaching, leadership and scaling. In-person in Berlin, live online, or at your own pace.
 heroEyebrow: Better Change Training Academy
 heroHeading: Training that actually sticks
 heroBody: Hands-on, certification-ready training in Flight Levels, Kanban, Scrum, coaching, leadership and scaling. In-person in Berlin, live online, or at your own pace.

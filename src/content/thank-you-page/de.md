@@ -7,7 +7,7 @@
 # label, for consistency with the rest of the site.
 metaDescription: "Die Nachricht ist angekommen, vielen Dank."
 eyebrow: "Danke"
-heading: "Nachricht erhalten, vielen Dank."
+heading: "Angekommen, vielen Dank!"
 body: "Die Nachricht ist angekommen. Antwort innerhalb eines Werktags."
 buttonLabel: "Zurück zur Startseite"
 ---
