@@ -159,10 +159,9 @@ export const en = {
   "register.consentLabel":
     "I agree to my data being used to process this registration, in line with the privacy policy.",
   "register.confirmRegistration": "Confirm registration",
-  // Below this point: not covered by betterchange-de-translation-draft-
-  // register-pages.md (sold-out/waitlist messaging, the meta description's
-  // verb phrase, and the discount-code JS feedback strings) -- these fall
-  // back to the "[DE] " placeholder until a Fellow reviews them.
+  // Sold-out/waitlist messaging, the meta description's verb phrase, the
+  // price-breakdown offer line, and the discount-code JS feedback strings
+  // -- added in a later round of the same register-pages draft.
   "register.metaDescriptionPrefix": "Register for",
   "register.soldOutHeading": "This session is sold out",
   "register.soldOutBodyPrefix": "All seats for",
@@ -347,6 +346,28 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "register.consentLabel":
     "Ich bin damit einverstanden, dass meine Daten gemäß der Datenschutzerklärung zur Bearbeitung dieser Anmeldung verwendet werden.",
   "register.confirmRegistration": "Anmeldung bestätigen",
+
+  // Sold-out/waitlist messaging, the meta description's verb phrase, the
+  // price-breakdown offer line, and the discount-code JS feedback strings
+  // -- from a later round of the same register-pages draft. The em dash
+  // in the draft's waitlist body sentence was converted to a full-stop
+  // split per CLAUDE.md house style.
+  "register.metaDescriptionPrefix": "Anmeldung für",
+  "register.soldOutHeading": "Dieser Termin ist ausgebucht",
+  "register.soldOutBodyPrefix": "Alle Plätze für",
+  "register.soldOutBodySuffix":
+    "sind vergeben. Auf die Warteliste eintragen. Sobald ein Platz frei wird, gibt es eine persönliche Benachrichtigung per E-Mail.",
+  "register.joinWaitlist": "Zur Warteliste",
+  "register.waitlistJoining": "Wird hinzugefügt…",
+  "register.waitlistSuccess": "Eintragung erfolgreich. Sobald ein Platz frei wird, folgt eine Benachrichtigung per E-Mail.",
+  "register.waitlistError": "Eintragung in die Warteliste fehlgeschlagen. Bitte Verbindung prüfen und erneut versuchen.",
+  "register.offerThreeForTwo": "Angebot (3 für 2)",
+  "register.discountCodeLabel": "Rabattcode",
+  "register.checking": "Wird geprüft…",
+  "register.discountAppliedSuffix": "angewendet,",
+  "register.off": "Rabatt",
+  "register.codeNotRecognized": "Code nicht erkannt",
+  "register.codeCheckError": "Code konnte nicht geprüft werden. Bitte erneut versuchen.",
 };
 
 export const de: Record<UIKey, string> = { ...dePlaceholders, ...deOverrides };

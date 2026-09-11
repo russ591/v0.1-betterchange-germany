@@ -76,9 +76,7 @@ const countries = [
 
 // Passed into the client-side <script> below via define:vars, so its
 // button-loading-state / discount-code feedback text matches the same
-// locale as everything server-rendered on this page (see the [DE]-flagged
-// keys' comment in src/i18n/ui.ts for which of these aren't yet from a
-// reviewed draft).
+// locale as everything server-rendered on this page.
 const scriptCopy = {
   checking: t("register.checking"),
   apply: t("register.apply"),
@@ -583,11 +581,25 @@ const scriptCopy = {
   const discountFeedbackEl = document.getElementById("discount-code-feedback");
   const unitPrice = parseFloat(orderTotalBlock.dataset.unitPrice ?? "0");
   const hasBulkOffer = orderTotalBlock.dataset.bulkOffer === "true";
-  const currencyFormatter = new Intl.NumberFormat(locale === "de" ? "de-DE" : "en-GB", {
+  // German typographic convention puts a space before "%" ("25 %"); English
+  // doesn't ("25%") -- both places a percentage renders on this page use
+  // this so they stay consistent with each other.
+  const percentSuffix = locale === "de" ? " %" : "%";
+  // Always formats in en-GB ("€1,234", symbol first) and, for German, swaps
+  // the comma for a period afterwards -- matching germanizePrice()'s own
+  // approach (src/lib/prices.ts) for every other price shown on the site,
+  // rather than switching to Intl's de-DE currency format, which moves the
+  // € symbol after the number ("1.234 €") and would be inconsistent with
+  // everywhere else a price appears.
+  const currencyFormatter = new Intl.NumberFormat("en-GB", {
     style: "currency",
     currency: "EUR",
     maximumFractionDigits: 0,
   });
+  function formatPrice(amount) {
+    const formatted = currencyFormatter.format(amount);
+    return locale === "de" ? formatted.replace(/,/g, ".") : formatted;
+  }
 
   // Purely a live preview for the customer — the actual discount is
   // applied server-side (netlify/functions/lib/discount.js) against the
@@ -603,13 +615,13 @@ const scriptCopy = {
     orderSeatsEl.textContent = String(seats);
 
     const grossSubtotal = seats * unitPrice;
-    orderSubtotalEl.textContent = currencyFormatter.format(grossSubtotal);
+    orderSubtotalEl.textContent = formatPrice(grossSubtotal);
 
     // Every 3rd seat is free under the "3 seats for the price of 2" offer.
     const freeSeats = hasBulkOffer ? Math.floor(seats / 3) : 0;
     const offerAmount = freeSeats * unitPrice;
     if (offerAmount > 0) {
-      offerAmountEl.textContent = `-${currencyFormatter.format(offerAmount)}`;
+      offerAmountEl.textContent = `-${formatPrice(offerAmount)}`;
       offerLineEl.hidden = false;
     } else {
       offerLineEl.hidden = true;
@@ -619,7 +631,7 @@ const scriptCopy = {
     // The hidden "total" field is what the server applies a discount
     // code's percentage against (via Lexware's line-item discount) —
     // post-offer, pre-code, matching this same cascade server-side.
-    totalField.value = currencyFormatter.format(afterOffer);
+    totalField.value = formatPrice(afterOffer);
 
     let discountAmount = 0;
     if (appliedDiscount) {
@@ -632,14 +644,14 @@ const scriptCopy = {
       discountCodeLabelEl.textContent =
         appliedDiscount.type === "fixed"
           ? copy.discountCodeLabel
-          : `${copy.discountCodeLabel} (${appliedDiscount.value}%)`;
-      discountAmountEl.textContent = `-${currencyFormatter.format(discountAmount)}`;
+          : `${copy.discountCodeLabel} (${appliedDiscount.value}${percentSuffix})`;
+      discountAmountEl.textContent = `-${formatPrice(discountAmount)}`;
       discountCodeLineEl.hidden = false;
     } else {
       discountCodeLineEl.hidden = true;
     }
 
-    orderTotalEl.textContent = currencyFormatter.format(afterOffer - discountAmount);
+    orderTotalEl.textContent = formatPrice(afterOffer - discountAmount);
   }
 
   function showDiscountFeedback(message, tone) {
@@ -675,8 +687,8 @@ const scriptCopy = {
         appliedDiscount = { type: result.discountType, value: result.value };
         const amountText =
           result.discountType === "fixed"
-            ? `${currencyFormatter.format(result.value)} ${copy.off}`
-            : `${result.value}% ${copy.off}`;
+            ? `${formatPrice(result.value)} ${copy.off}`
+            : `${result.value}${percentSuffix} ${copy.off}`;
         showDiscountFeedback(`${copy.discountCodeLabel} ${entered} ${copy.discountAppliedSuffix} ${amountText}`, "success");
       } else {
         appliedDiscount = null;
