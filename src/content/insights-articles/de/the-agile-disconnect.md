@@ -5,19 +5,21 @@
 # established convention (the draft offered a suggested German title,
 # not used); metaTitle omitted so it falls back to title, unprefixed.
 #
-# FLAGGED FOR RUSS: the EN source has an empty categories array and no
-# primaryCategory (a pre-existing gap, not introduced by translation),
-# even though the batch-03 cover note labels this article "Agile" --
-# left empty here too rather than unilaterally adding a category the EN
-# page doesn't have. The draft also omits the EN source's opening H2
-# ("Elevate Your SAFe® and Start Leading by Example...", with links to
-# an internal article and scaledagileframework.com) and its closing
-# "Let's Talk Agile!" comment-prompt paragraph plus the final resource-
-# links paragraph (Google Form survey link) -- not included here, not
-# invented.
+# primaryCategory/categories: "Agile" added on both EN and DE per Russ's
+# confirmation -- the EN source originally had an empty categories array
+# and no primaryCategory (a pre-existing gap, now fixed on both language
+# versions since it wasn't translation-specific). The draft omits the EN
+# source's opening H2 ("Elevate Your SAFe® and Start Leading by
+# Example...", with links to an internal article and
+# scaledagileframework.com) and its closing "Let's Talk Agile!" comment-
+# prompt paragraph plus the final resource-links paragraph (Google Form
+# survey link) -- confirmed by Russ to match the current EN source, so
+# no fix needed here.
 title: The Agile Disconnect
 contentType: Blog
-categories: []
+primaryCategory: Agile
+categories:
+  - Agile
 date: '2024-07-04T00:00:00Z'
 readTimeMinutes: 2
 author: jesper-orting
