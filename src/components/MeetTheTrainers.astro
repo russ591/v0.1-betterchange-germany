@@ -7,6 +7,7 @@
 import Section from "@/components/Section.astro";
 import TeamCard from "@/components/TeamCard.astro";
 import type { TrainerEntry } from "@/lib/trainers";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
 
 interface Props {
   trainers: TrainerEntry[];
@@ -14,19 +15,20 @@ interface Props {
 }
 
 const { trainers, class: className = "" } = Astro.props;
-const profiles = trainers.filter((t) => t.kind === "profile");
-const plainNames = trainers.filter((t) => t.kind === "name");
+const translate = useTranslations(resolveLocale(Astro.currentLocale));
+const profiles = trainers.filter((entry) => entry.kind === "profile");
+const plainNames = trainers.filter((entry) => entry.kind === "name");
 ---
 
 {
   trainers.length > 0 && (
-    <Section eyebrow="Your trainers" heading="Meet the trainers" class={className}>
+    <Section eyebrow={translate("trainers.eyebrow")} heading={translate("trainers.heading")} class={className}>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {profiles.map((t) => t.kind === "profile" && <TeamCard profile={t.profile} />)}
+        {profiles.map((entry) => entry.kind === "profile" && <TeamCard profile={entry.profile} />)}
       </div>
       {plainNames.length > 0 && (
         <p class="mt-6 text-[length:var(--text-small)] text-neutral-500">
-          Also delivered by: {plainNames.map((t) => (t.kind === "name" ? t.name : "")).join(", ")}
+          {translate("trainers.alsoDeliveredBy")} {plainNames.map((entry) => (entry.kind === "name" ? entry.name : "")).join(", ")}
         </p>
       )}
     </Section>

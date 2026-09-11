@@ -10,6 +10,8 @@ import { categoryIcons } from "@/data/categoryIcons";
 import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
 import { toPathSegment } from "@/lib/urlSlug";
+import { baseSlug } from "@/lib/i18n";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
 
 interface Props {
   categoriesWithCourses: {
@@ -19,6 +21,9 @@ interface Props {
 }
 
 const { categoriesWithCourses } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const prefix = locale === "de" ? "/de" : "";
 
 // Fallback certification-body logo per category, keyed by category id, for
 // the rare course with no specific badge in courseBadges -- see
@@ -34,7 +39,7 @@ const logoByCategory = Object.fromEntries(
 
 <details class="group/training border-b border-neutral-100">
   <summary class="flex cursor-pointer list-none items-center justify-between py-2 text-sm font-medium text-ink">
-    Training
+    {t("nav.training")}
     <svg
       viewBox="0 0 24 24"
       fill="none"
@@ -47,7 +52,7 @@ const logoByCategory = Object.fromEntries(
   </summary>
   <div class="-mx-6 mb-2 bg-mist-light pb-3 pt-1">
     <a
-      href="/training"
+      href={`${prefix}/training`}
       class="flex items-center justify-between gap-2.5 border-b border-neutral-200 px-6 py-2.5 text-[length:var(--text-small)] font-semibold text-ink"
     >
       <span class="flex items-center gap-2.5">
@@ -62,7 +67,7 @@ const logoByCategory = Object.fromEntries(
             <rect x="14" y="14" width="7" height="7" rx="1" />
           </svg>
         </span>
-        Training Home
+        {t("megaMenu.trainingHome")}
       </span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-3.5 w-3.5 shrink-0 text-neutral-400">
         <path d="m9 6 6 6-6 6" />
@@ -73,11 +78,11 @@ const logoByCategory = Object.fromEntries(
         <details class="group/category border-b border-neutral-200 px-6 last:border-0">
           <summary class="flex cursor-pointer list-none items-center justify-between py-2.5 text-[length:var(--text-small)] font-semibold text-ink">
             <span class="flex items-center gap-2.5">
-              {categoryIcons[category.id] && (
+              {categoryIcons[baseSlug(category.id)] && (
                 <span
                   aria-hidden="true"
                   class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface [&_svg]:h-3.5 [&_svg]:w-3.5"
-                  set:html={categoryIcons[category.id]}
+                  set:html={categoryIcons[baseSlug(category.id)]}
                 />
               )}
               {category.data.name}
@@ -95,12 +100,12 @@ const logoByCategory = Object.fromEntries(
           <div class="space-y-0.5 py-1.5 pl-6">
             {courses.map((course) => (
               <a
-                href={`/training/${category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
+                href={`${prefix}/training/${baseSlug(category.id)}/${toPathSegment(course.data.urlSlug ?? baseSlug(course.id))}`}
                 class="flex items-center gap-2 py-1.5 text-[length:var(--text-caption)] text-neutral-600"
               >
-                {courseBadges[course.id] ? (
+                {courseBadges[baseSlug(course.id)] ? (
                   <span class="flex h-4 w-6 shrink-0 items-center justify-center">
-                    <Image src={courseBadges[course.id]} alt="" width={24} height={16} class="max-h-3.5 max-w-full object-contain" />
+                    <Image src={courseBadges[baseSlug(course.id)]} alt="" width={24} height={16} class="max-h-3.5 max-w-full object-contain" />
                   </span>
                 ) : (
                   logoByCategory[category.id] && (
@@ -124,14 +129,14 @@ const logoByCategory = Object.fromEntries(
     }
     <div class="mx-6 mt-3 rounded-[var(--radius-card)] bg-ink p-4 text-surface">
       <p class="text-[length:var(--text-caption)] font-bold uppercase tracking-[0.06em] text-lime">
-        Not sure where to start?
+        {t("megaMenu.notSureWhereToStart")}
       </p>
-      <h3 class="mt-1.5 text-[length:var(--text-small)] font-semibold">Talk to us about your team's situation</h3>
+      <h3 class="mt-1.5 text-[length:var(--text-small)] font-semibold">{t("megaMenu.talkToUsAboutTeam")}</h3>
       <a
-        href="/contact"
+        href={`${prefix}/contact`}
         class="mt-3 block rounded-[var(--radius-control)] bg-lime px-4 py-2 text-center text-[length:var(--text-small)] font-semibold text-ink"
       >
-        Contact us &rarr;
+        {t("nav.contactCta")} &rarr;
       </a>
     </div>
   </div>

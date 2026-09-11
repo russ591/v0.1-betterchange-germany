@@ -1,0 +1,103 @@
+---
+// Shared body for /services (English) and /de/services (German) -- see
+// CategoryPageContent.astro for the same split pattern.
+import type { CollectionEntry } from "astro:content";
+import Section from "@/components/Section.astro";
+import ServiceCard from "@/components/ServiceCard.astro";
+import Button from "@/components/Button.astro";
+import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
+import CTABanner from "@/components/CTABanner.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { getServices, serviceIcons } from "@/data/services";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+
+interface Props {
+  copy: CollectionEntry<"services-page">["data"];
+  insightArticles: CollectionEntry<"insights-articles">[];
+}
+
+const { copy, insightArticles } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const prefix = locale === "de" ? "/de" : "";
+const services = getServices(locale);
+
+// Where each service's "Learn more" link should send a visitor -- Training
+// has its own hub page, the other three don't yet have a dedicated page so
+// they route to Contact instead. Keyed by the same stable `icon` id as
+// getServices() rather than `name`, which carries a "[DE] " placeholder on
+// the German variant.
+const serviceLinks: Record<string, { href: string; label: string }> = {
+  training: { href: `${prefix}/training`, label: t("cta.seeAllTraining") },
+  coaching: { href: `${prefix}/contact`, label: t("cta.talkToUs") },
+  consulting: { href: `${prefix}/contact`, label: t("cta.talkToUs") },
+  facilitation: { href: `${prefix}/contact`, label: t("cta.talkToUs") },
+};
+---
+
+<Breadcrumbs items={[{ label: t("nav.services") }]} />
+
+<Section eyebrow={copy.heroEyebrow} class="bg-mist-light">
+  <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+    {copy.heroHeading}
+  </h1>
+  <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">{copy.heroBody}</p>
+  <div class="mt-8 flex flex-wrap gap-4">
+    <Button href={`${prefix}/contact`} variant="primary">{t("nav.contactCta")}</Button>
+    <Button href={`${prefix}/training`} variant="secondary">{t("cta.seeAllTraining")}</Button>
+  </div>
+</Section>
+
+<Section eyebrow={copy.servicesEyebrow} heading={copy.servicesHeading}>
+  <div class="grid gap-6 sm:grid-cols-2">
+    {
+      services.map((service) => (
+        <ServiceCard
+          name={service.name}
+          blurb={service.blurb}
+          items={service.items}
+          href={serviceLinks[service.icon].href}
+          learnLabel={serviceLinks[service.icon].label}
+        >
+          <Fragment slot="icon" set:html={serviceIcons[service.icon]} />
+        </ServiceCard>
+      ))
+    }
+  </div>
+</Section>
+
+<Section eyebrow={copy.howItWorksEyebrow} heading={copy.howItWorksHeading} class="bg-mist-light">
+  <div class="grid gap-8 sm:grid-cols-3">
+    {
+      copy.steps.map((step, i) => (
+        <div>
+          <span
+            aria-hidden="true"
+            class="blob-dot flex h-11 w-11 items-center justify-center bg-lime text-[length:var(--text-h4)] font-bold text-ink"
+          >
+            {i + 1}
+          </span>
+          <h3 class="mt-4 text-[length:var(--text-h4)]">{step.heading}</h3>
+          <p class="mt-2 text-[length:var(--text-small)] text-neutral-600">{step.body}</p>
+        </div>
+      ))
+    }
+  </div>
+</Section>
+
+<Section eyebrow={copy.insightsEyebrow} heading={copy.insightsHeading}>
+  <div class="grid gap-6 sm:grid-cols-3">
+    {insightArticles.map((article) => <InsightsArticleCard article={article} showDate={false} />)}
+  </div>
+  <div class="mt-6 text-right">
+    <Button href="/insights" variant="link" class="group">{t("cta.viewAllInsights")}</Button>
+  </div>
+</Section>
+
+<CTABanner
+  tone="light"
+  heading={t("cta.closingHeading")}
+  body={t("cta.closingBody")}
+  ctaLabel={t("schedule.getInTouch")}
+  ctaHref={`${prefix}/contact`}
+/>

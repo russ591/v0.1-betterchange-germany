@@ -1,43 +1,12 @@
 ---
 import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Section from "@/components/Section.astro";
-import Button from "@/components/Button.astro";
-import ServiceCard from "@/components/ServiceCard.astro";
-import ScheduleList from "@/components/ScheduleList.astro";
-import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
-import CTABanner from "@/components/CTABanner.astro";
-import { services, serviceIcons } from "@/data/services";
-import { certificationLogos } from "@/data/certifications";
+import HomePageContent from "@/components/pages/HomePageContent.astro";
+import { localeOfId } from "@/lib/i18n";
 
-const stats = [
-  { label: "Experience", value: "30+", description: "Years combined practitioner experience" },
-  { label: "Network", value: "8+", description: "Expert coaches & trainers across Europe" },
-  { label: "Delivery", value: "EN+", description: "Training & coaching in English and multilingual" },
-  { label: "Base", value: "Berlin", description: "In-person & online, Germany & Europe wide" },
-];
+const copy = (await getEntry("home-page", "en"))!.data;
 
-const clients = [
-  "Deutsche Telekom",
-  "Grundfos",
-  "Laerdal",
-  "TC Electronic",
-  "HelloFresh",
-  "McKinsey",
-  "Microsoft",
-  "Kleinanzeigen",
-  "mobile.de",
-  "Cogent",
-  "Volkswagen",
-  "Axel Springer",
-  "Flightright",
-  "Aiven",
-  "Velux",
-  "Luxembourg Chamber of Commerce",
-  "Search Guard",
-];
-
-const categories = await getCollection("training-categories");
+const categories = await getCollection("training-categories", (c) => localeOfId(c.id) === "en");
 const certifiedBy = [
   ...new Set(categories.map((c) => c.data.certificationBody).filter((c): c is string => Boolean(c))),
 ];
@@ -60,165 +29,15 @@ const team = (await getCollection("coach-profiles"))
   .slice(0, 7);
 
 const allArticles = await getCollection("insights-articles");
-const featuredArticles = allArticles
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3);
+const featuredArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
 ---
 
-<BaseLayout
-  title="Home"
-  description="Better Change is a European network of experienced trainers and coaching practitioners. We deliver Kanban, Flight Levels and Scrum training, team and leadership coaching, and organisational transformation, in English and German."
->
-  <section class="bg-mist-light">
-    <div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
-      <div class="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start">
-        <div class="min-w-0">
-          <p class="eyebrow">training, coaching &amp; Consulting · Berlin &amp; Europe</p>
-          <h1 class="mt-4 text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
-            We help organisations change{" "}
-            <span aria-hidden="true" class="blob-dot inline-block h-[0.5em] w-[0.5em] bg-lime align-middle"></span>{" "}
-            for the better
-          </h1>
-          <p class="mt-6 max-w-lg text-[length:var(--text-body)] text-neutral-600">
-            Better Change is a European network of experienced trainers and coaching practitioners.
-            We deliver Kanban, Flight Levels and Scrum training, team and leadership coaching, and
-            organisational transformation, in English and German.
-          </p>
-          <div class="mt-8 flex flex-wrap gap-4">
-            <Button href="/training" variant="primary">See all training</Button>
-            <Button href="/services" variant="secondary">Our services</Button>
-          </div>
-        </div>
-
-        <div class="min-w-0 rounded-[var(--radius-card)] bg-surface p-6 shadow-card">
-          <div class="grid grid-cols-2 gap-3">
-            {
-              stats.map((stat) => (
-                <div class="rounded-[0.6rem] bg-mist-light p-4">
-                  <p class="eyebrow">{stat.label}</p>
-                  <p class="mt-1 text-[length:var(--text-h3)] font-bold">{stat.value}</p>
-                  <p class="mt-1 text-[length:var(--text-caption)] text-neutral-600">{stat.description}</p>
-                </div>
-              ))
-            }
-          </div>
-          <div class="mt-5 border-t border-neutral-200 pt-5">
-            <p class="eyebrow justify-center">Certified by</p>
-            <div class="mt-3 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-              {
-                certifiedBy
-                  .filter((cert) => cert !== "Scaled Agile")
-                  .map((cert) => {
-                    const logo = certificationLogos[cert];
-                    return logo ? (
-                      <img src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} class="h-6 w-auto object-contain" />
-                    ) : (
-                      <span class="text-[length:var(--text-caption)] font-semibold text-neutral-500">{cert}</span>
-                    );
-                  })
-              }
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <Section class="border-t border-neutral-200 !py-10">
-    <div class="flex items-center gap-8">
-      <p class="shrink-0 text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-600">
-        Worked with
-      </p>
-      <div class="overflow-hidden" style="mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);">
-        <ul class="marquee-track flex w-max flex-nowrap items-center gap-x-14 text-[length:var(--text-small)] font-medium whitespace-nowrap text-neutral-600">
-          {clients.map((client) => <li>{client}</li>)}
-          {clients.map((client) => <li aria-hidden="true">{client}</li>)}
-        </ul>
-      </div>
-    </div>
-  </Section>
-
-  <Section eyebrow="What we do" heading="Services that create lasting change" class="border-t border-neutral-200">
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {
-        services.map((service) => (
-          <ServiceCard name={service.name} blurb={service.blurb} href="/services">
-            <Fragment slot="icon" set:html={serviceIcons[service.name]} />
-          </ServiceCard>
-        ))
-      }
-    </div>
-  </Section>
-
-  <Section eyebrow="Upcoming courses" heading="Next open training dates" class="border-t border-neutral-200 bg-mist-light">
-    <ScheduleList rows={upcomingWithCourse} id="home-schedule" showTrainer={false} />
-    <div class="mt-6 text-right">
-      <Button href="/training/full-schedule" variant="link" class="group">Full schedule</Button>
-    </div>
-  </Section>
-
-  <Section tone="dark" eyebrow="Our people" heading="Practitioners, not theorists">
-    <div class="flex flex-wrap gap-6">
-      {
-        team.map((profile) => (
-          <div class="flex w-24 flex-col items-center gap-2 text-center">
-            {
-              profile.data.photo ? (
-                <img
-                  src={profile.data.photo}
-                  alt={profile.data.name}
-                  class="h-14 w-14 rounded-full object-cover"
-                  loading="lazy"
-                />
-              ) : (
-                <span class="flex h-14 w-14 items-center justify-center rounded-full border-[1.5px] border-lime text-sm font-bold text-lime">
-                  {(() => {
-                    const parts = profile.data.name.split(" ");
-                    return parts.length > 1 ? parts[0][0] + parts[parts.length - 1][0] : parts[0].slice(0, 2);
-                  })()}
-                </span>
-              )
-            }
-            <span class="text-[length:var(--text-caption)] font-semibold">{profile.data.name}</span>
-            <span class="text-[length:var(--text-caption)] text-neutral-400">{profile.data.country}</span>
-          </div>
-        ))
-      }
-    </div>
-    <div class="mt-8 flex flex-wrap items-center gap-6">
-      <Button href="/about" variant="primary">Meet the full team</Button>
-      <p class="max-w-md text-[length:var(--text-small)] text-neutral-300">
-        All of us have been there ourselves, and know what to do when the real world doesn't follow
-        the manual.
-      </p>
-    </div>
-
-    <div class="mt-12 border-t border-neutral-800 pt-10">
-      <p class="eyebrow text-lime">Client perspective</p>
-      <blockquote class="mt-3 max-w-2xl text-[length:var(--text-h3)] font-bold leading-snug text-lime">
-        “Better Change brought real-world credibility to our transformation. They'd done it themselves.
-        That made all the difference.”
-      </blockquote>
-      <cite class="mt-4 block text-[length:var(--text-small)] not-italic text-neutral-400">
-        Senior Engineering Leader, DACH region
-      </cite>
-    </div>
-  </Section>
-
-  <Section eyebrow="Insights" heading="Articles, guides & resources" class="border-t border-neutral-200">
-    <div class="grid gap-6 sm:grid-cols-3">
-      {featuredArticles.map((article) => <InsightsArticleCard article={article} />)}
-    </div>
-    <div class="mt-6 text-right">
-      <Button href="/insights" variant="link" class="group">View all insights</Button>
-    </div>
-  </Section>
-
-  <CTABanner
-    tone="light"
-    heading="Not sure where to start?"
-    body="Talk to us. We'll help you find the right training or coaching approach for your situation."
-    ctaLabel="Get in touch"
-    ctaHref="/contact"
+<BaseLayout title="Home" description={copy.metaDescription} translations={{ en: "/", de: "/de/" }}>
+  <HomePageContent
+    copy={copy}
+    certifiedBy={certifiedBy}
+    upcomingWithCourse={upcomingWithCourse}
+    team={team}
+    featuredArticles={featuredArticles}
   />
 </BaseLayout>

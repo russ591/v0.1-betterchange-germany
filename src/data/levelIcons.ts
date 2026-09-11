@@ -1,6 +1,11 @@
 // Icons and pill colours keyed by course level. A single, small, fixed set
-// reused across every course in every category -- scales to any topic
-// without needing a bespoke icon authored per course.
+// reused across every category, in every category -- scales to any topic
+// without needing a bespoke icon authored per course. `course.data.level`
+// stays this exact English word on both locales (a lookup key, like
+// `format`), so these lookups keep working on German pages -- only the
+// *displayed* text is translated, via translateLevel() below.
+import type { Locale } from "@/lib/i18n";
+
 export const levelIcons: Record<string, string> = {
   Foundation:
     '<svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="1.6" class="h-7 w-7"><circle cx="12" cy="12" r="9"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="2.4" fill="#0a0a0a" stroke="none"/></svg>',
@@ -18,3 +23,19 @@ export const levelPillClasses: Record<string, string> = {
   Advanced: "bg-amber-200 text-amber-900",
   Expert: "bg-ink text-surface",
 };
+
+// Phase E: reviewed, approved German labels from
+// betterchange-de-translation-draft-all-courses.md ("Level values used
+// throughout"). course.data.level is never one of these directly -- always
+// pass it through this function for display.
+const levelLabelsDe: Record<string, string> = {
+  Foundation: "Grundlagen",
+  Practitioner: "Praktiker:in",
+  Advanced: "Fortgeschritten",
+  Expert: "Experte:in",
+};
+
+export function translateLevel(level: string, locale: Locale): string {
+  if (locale !== "de") return level;
+  return levelLabelsDe[level] ?? level;
+}

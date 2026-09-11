@@ -1,0 +1,34 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import RegisterPageContent from "@/components/pages/RegisterPageContent.astro";
+import { localizedCourse } from "@/lib/i18n";
+import { useTranslations } from "@/i18n/utils";
+
+export async function getStaticPaths() {
+  // Same session set as the English route -- training-schedules isn't
+  // locale-split, so the id (and therefore the URL param) is identical;
+  // only course/category get resolved to their German counterparts below.
+  const sessions = (await getCollection("training-schedules")).filter((s) => !s.data.isExternal);
+  return sessions.map((session) => ({
+    params: { session: session.id },
+    props: { session },
+  }));
+}
+
+const { session } = Astro.props;
+const course = await localizedCourse(session.data.course, "de");
+const category = await getEntry(course.data.category);
+const t = useTranslations("de");
+---
+
+<BaseLayout
+  title={`${t("register.eyebrow")}, ${course.data.name}`}
+  description={`${t("register.metaDescriptionPrefix")} ${course.data.name}, ${session.data.format}, ${session.data.location}.`}
+  translations={{
+    en: `/training/register/${session.id}`,
+    de: `/de/training/register/${session.id}`,
+  }}
+>
+  <RegisterPageContent session={session} course={course} category={category} />
+</BaseLayout>

@@ -1,0 +1,191 @@
+---
+// Shared body for / (English) and /de/ (German) -- see
+// CategoryPageContent.astro for the same split pattern. `copy` carries the
+// page's own prose (home-page content collection); everything else is data
+// already resolved by the caller for the correct locale.
+import type { CollectionEntry } from "astro:content";
+import Section from "@/components/Section.astro";
+import Button from "@/components/Button.astro";
+import ServiceCard from "@/components/ServiceCard.astro";
+import ScheduleList from "@/components/ScheduleList.astro";
+import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
+import CTABanner from "@/components/CTABanner.astro";
+import { getServices, serviceIcons } from "@/data/services";
+import { certificationLogos } from "@/data/certifications";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+
+interface Props {
+  copy: CollectionEntry<"home-page">["data"];
+  certifiedBy: string[];
+  upcomingWithCourse: {
+    session: CollectionEntry<"training-schedules">;
+    course: CollectionEntry<"training-courses">;
+    category: CollectionEntry<"training-categories">;
+  }[];
+  team: CollectionEntry<"coach-profiles">[];
+  featuredArticles: CollectionEntry<"insights-articles">[];
+}
+
+const { copy, certifiedBy, upcomingWithCourse, team, featuredArticles } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const prefix = locale === "de" ? "/de" : "";
+const services = getServices(locale);
+
+const clients = [
+  "Deutsche Telekom",
+  "Grundfos",
+  "Laerdal",
+  "TC Electronic",
+  "HelloFresh",
+  "McKinsey",
+  "Microsoft",
+  "Kleinanzeigen",
+  "mobile.de",
+  "Cogent",
+  "Volkswagen",
+  "Axel Springer",
+  "Flightright",
+  "Aiven",
+  "Velux",
+  "Luxembourg Chamber of Commerce",
+  "Search Guard",
+];
+---
+
+<section class="bg-mist-light">
+  <div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+    <div class="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start">
+      <div class="min-w-0">
+        <p class="eyebrow">{copy.heroEyebrow}</p>
+        <h1 class="mt-4 text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+          {copy.heroHeadingLead}{" "}
+          <span aria-hidden="true" class="blob-dot inline-block h-[0.5em] w-[0.5em] bg-lime align-middle"></span>{" "}
+          {copy.heroHeadingTrail}
+        </h1>
+        <p class="mt-6 max-w-lg text-[length:var(--text-body)] text-neutral-600">{copy.heroBody}</p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <Button href={`${prefix}/training`} variant="primary">{t("cta.seeAllTraining")}</Button>
+          <Button href={`${prefix}/services`} variant="secondary">{t("cta.ourServices")}</Button>
+        </div>
+      </div>
+
+      <div class="min-w-0 rounded-[var(--radius-card)] bg-surface p-6 shadow-card">
+        <div class="grid grid-cols-2 gap-3">
+          {
+            copy.stats.map((stat) => (
+              <div class="rounded-[0.6rem] bg-mist-light p-4">
+                <p class="eyebrow">{stat.label}</p>
+                <p class="mt-1 text-[length:var(--text-h3)] font-bold">{stat.value}</p>
+                <p class="mt-1 text-[length:var(--text-caption)] text-neutral-600">{stat.description}</p>
+              </div>
+            ))
+          }
+        </div>
+        <div class="mt-5 border-t border-neutral-200 pt-5">
+          <p class="eyebrow justify-center">{t("certifiedBy")}</p>
+          <div class="mt-3 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+            {
+              certifiedBy
+                .filter((cert) => cert !== "Scaled Agile")
+                .map((cert) => {
+                  const logo = certificationLogos[cert];
+                  return logo ? (
+                    <img src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} class="h-6 w-auto object-contain" />
+                  ) : (
+                    <span class="text-[length:var(--text-caption)] font-semibold text-neutral-500">{cert}</span>
+                  );
+                })
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<Section class="border-t border-neutral-200 !py-10">
+  <div class="flex items-center gap-8">
+    <p class="shrink-0 text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-600">
+      {copy.workedWithLabel}
+    </p>
+    <div class="overflow-hidden" style="mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);">
+      <ul class="marquee-track flex w-max flex-nowrap items-center gap-x-14 text-[length:var(--text-small)] font-medium whitespace-nowrap text-neutral-600">
+        {clients.map((client) => <li>{client}</li>)}
+        {clients.map((client) => <li aria-hidden="true">{client}</li>)}
+      </ul>
+    </div>
+  </div>
+</Section>
+
+<Section eyebrow={copy.servicesEyebrow} heading={copy.servicesHeading} class="border-t border-neutral-200">
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    {
+      services.map((service) => (
+        <ServiceCard name={service.name} blurb={service.blurb} href={`${prefix}/services`}>
+          <Fragment slot="icon" set:html={serviceIcons[service.icon]} />
+        </ServiceCard>
+      ))
+    }
+  </div>
+</Section>
+
+<Section eyebrow={copy.upcomingEyebrow} heading={copy.upcomingHeading} class="border-t border-neutral-200 bg-mist-light">
+  <ScheduleList rows={upcomingWithCourse} id="home-schedule" showTrainer={false} />
+  <div class="mt-6 text-right">
+    <Button href={`${prefix}/training/full-schedule`} variant="link" class="group">{t("schedule.fullSchedule")}</Button>
+  </div>
+</Section>
+
+<Section tone="dark" eyebrow={copy.teamEyebrow} heading={copy.teamHeading}>
+  <div class="flex flex-wrap gap-6">
+    {
+      team.map((profile) => (
+        <div class="flex w-24 flex-col items-center gap-2 text-center">
+          {
+            profile.data.photo ? (
+              <img
+                src={profile.data.photo}
+                alt={profile.data.name}
+                class="h-14 w-14 rounded-full object-cover"
+                loading="lazy"
+              />
+            ) : (
+              <span class="flex h-14 w-14 items-center justify-center rounded-full border-[1.5px] border-lime text-sm font-bold text-lime">
+                {(() => {
+                  const parts = profile.data.name.split(" ");
+                  return parts.length > 1 ? parts[0][0] + parts[parts.length - 1][0] : parts[0].slice(0, 2);
+                })()}
+              </span>
+            )
+          }
+          <span class="text-[length:var(--text-caption)] font-semibold">{profile.data.name}</span>
+          <span class="text-[length:var(--text-caption)] text-neutral-400">{profile.data.country}</span>
+        </div>
+      ))
+    }
+  </div>
+  <div class="mt-8 flex flex-wrap items-center gap-6">
+    <Button href={`${prefix}/about`} variant="primary">{t("cta.meetFullTeam")}</Button>
+    <p class="max-w-md text-[length:var(--text-small)] text-neutral-300">{copy.teamBody}</p>
+  </div>
+
+  <div class="mt-12 border-t border-neutral-800 pt-10">
+    <p class="eyebrow text-lime">{copy.quoteEyebrow}</p>
+    <blockquote class="mt-3 max-w-2xl text-[length:var(--text-h3)] font-bold leading-snug text-lime">
+      {locale === "de" ? "„" : "“"}{copy.quoteText}{locale === "de" ? "“" : "”"}
+    </blockquote>
+    <cite class="mt-4 block text-[length:var(--text-small)] not-italic text-neutral-400">{copy.quoteCite}</cite>
+  </div>
+</Section>
+
+<Section eyebrow={copy.insightsEyebrow} heading={copy.insightsHeading} class="border-t border-neutral-200">
+  <div class="grid gap-6 sm:grid-cols-3">
+    {featuredArticles.map((article) => <InsightsArticleCard article={article} />)}
+  </div>
+  <div class="mt-6 text-right">
+    <Button href="/insights" variant="link" class="group">{t("cta.viewAllInsights")}</Button>
+  </div>
+</Section>
+
+<CTABanner tone="light" heading={t("cta.closingHeading")} body={t("cta.closingBody")} ctaLabel={t("schedule.getInTouch")} ctaHref={`${prefix}/contact`} />

@@ -1,0 +1,11 @@
+---
+import { getEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ContactPageContent from "@/components/pages/ContactPageContent.astro";
+
+const copy = (await getEntry("contact-page", "de"))!.data;
+---
+
+<BaseLayout title="Kontakt" description={copy.metaDescription} translations={{ en: "/contact", de: "/de/contact" }}>
+  <ContactPageContent copy={copy} />
+</BaseLayout>

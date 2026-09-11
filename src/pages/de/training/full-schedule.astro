@@ -1,0 +1,36 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import FullSchedulePageContent from "@/components/pages/FullSchedulePageContent.astro";
+import { localizedCourse } from "@/lib/i18n";
+
+const copy = (await getEntry("full-schedule-page", "de"))!.data;
+
+const schedules = await getCollection("training-schedules");
+
+const now = new Date();
+const upcoming = schedules.filter((s) => !s.data.date || s.data.date >= now);
+
+const rows = await Promise.all(
+  upcoming.map(async (session) => {
+    const course = await localizedCourse(session.data.course, "de");
+    const category = await getEntry(course.data.category);
+    return { session, course, category };
+  })
+);
+
+rows.sort((a, b) => {
+  if (!a.session.data.date && !b.session.data.date) return 0;
+  if (!a.session.data.date) return 1;
+  if (!b.session.data.date) return -1;
+  return a.session.data.date.valueOf() - b.session.data.date.valueOf();
+});
+---
+
+<BaseLayout
+  title="Trainingsplan"
+  description={copy.metaDescription}
+  translations={{ en: "/training/full-schedule", de: "/de/training/full-schedule" }}
+>
+  <FullSchedulePageContent copy={copy} rows={rows} />
+</BaseLayout>

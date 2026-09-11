@@ -1,0 +1,32 @@
+---
+// Shared body for /thank-you (English) and /de/thank-you (German) -- see
+// HomePageContent.astro for the same split pattern. `copy` carries the
+// page's own prose (thank-you-page content collection).
+import type { CollectionEntry } from "astro:content";
+import Section from "@/components/Section.astro";
+import Button from "@/components/Button.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { resolveLocale } from "@/i18n/utils";
+
+interface Props {
+  copy: CollectionEntry<"thank-you-page">["data"];
+}
+
+const { copy } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const prefix = locale === "de" ? "/de" : "";
+---
+
+<Breadcrumbs items={[{ label: copy.eyebrow }]} />
+
+<Section eyebrow={copy.eyebrow} class="bg-mist-light">
+  <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+    {copy.heading}
+  </h1>
+  <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
+    {copy.body}
+  </p>
+  <div class="mt-8">
+    <Button href={prefix || "/"} variant="primary">{copy.buttonLabel}</Button>
+  </div>
+</Section>

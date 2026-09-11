@@ -299,3 +299,17 @@
   from = "/insights/why-developers-build-the-wrong-thing-%E2%80%94-and-how-user-stories-help"
   to = "/insights/why-developers-build-the-wrong-thing-and-how-user-stories-help"
   status = 301
+
+# --- German 404 page ------------------------------------------------------
+# Netlify's automatic per-directory custom-404 convention needs a literal
+# 404.html in the requested directory. Astro's own "/404 -> 404.html
+# instead of 404/index.html" special-casing only applies to the top-level
+# route, so src/pages/de/404.astro builds as dist/de/404/index.html, not
+# dist/de/404.html -- without this rule, a broken link under /de/* would
+# silently fall back to the English 404 page. Keep this as the LAST rule:
+# it's a catch-all for the whole /de/* tree, so any future /de/... redirect
+# needs to be declared above it to take precedence.
+[[redirects]]
+  from = "/de/*"
+  to = "/de/404/"
+  status = 404

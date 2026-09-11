@@ -6,7 +6,7 @@ category: scrum
 level: Practitioner
 durationText: "2 days ·\_4 x ½ days"
 durationDays: 2
-certification: CSPCM
+certification: CSP-SM
 formats:
   - in-person
   - live-online

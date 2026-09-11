@@ -1,4 +1,6 @@
 ---
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+
 interface Props {
   name: string;
   items?: string[];
@@ -7,7 +9,8 @@ interface Props {
   learnLabel?: string;
 }
 
-const { name, items, blurb, href, learnLabel = "Learn more" } = Astro.props;
+const t = useTranslations(resolveLocale(Astro.currentLocale));
+const { name, items, blurb, href, learnLabel = t("cta.learnMore") } = Astro.props;
 ---
 
 <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-8 shadow-card transition-shadow hover:shadow-card-hover">

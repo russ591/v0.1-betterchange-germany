@@ -1,22 +1,11 @@
 ---
+import { getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Section from "@/components/Section.astro";
-import Button from "@/components/Button.astro";
-import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import ThankYouPageContent from "@/components/pages/ThankYouPageContent.astro";
+
+const copy = (await getEntry("thank-you-page", "en"))!.data;
 ---
 
-<BaseLayout title="Thank you" description="Thanks, we've received your message.">
-  <Breadcrumbs items={[{ label: "Thank you" }]} />
-
-  <Section eyebrow="Thank you" class="bg-mist-light">
-    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
-      Got it, thank you.
-    </h1>
-    <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
-      We've received your message and will get back to you within one business day.
-    </p>
-    <div class="mt-8">
-      <Button href="/" variant="primary">Back to home</Button>
-    </div>
-  </Section>
+<BaseLayout title="Thank you" description={copy.metaDescription} translations={{ en: "/thank-you", de: "/de/thank-you" }}>
+  <ThankYouPageContent copy={copy} />
 </BaseLayout>

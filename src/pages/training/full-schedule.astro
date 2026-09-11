@@ -1,9 +1,9 @@
 ---
 import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Section from "@/components/Section.astro";
-import Breadcrumbs from "@/components/Breadcrumbs.astro";
-import ScheduleList from "@/components/ScheduleList.astro";
+import FullSchedulePageContent from "@/components/pages/FullSchedulePageContent.astro";
+
+const copy = (await getEntry("full-schedule-page", "en"))!.data;
 
 const schedules = await getCollection("training-schedules");
 
@@ -28,24 +28,8 @@ rows.sort((a, b) => {
 
 <BaseLayout
   title="Full training schedule"
-  description="All upcoming Better Change training sessions, filterable by discipline, country and trainer."
+  description={copy.metaDescription}
+  translations={{ en: "/training/full-schedule", de: "/de/training/full-schedule" }}
 >
-  <Breadcrumbs items={[{ label: "Training", href: "/training" }, { label: "Full schedule" }]} />
-
-  <Section eyebrow="Training schedule" class="bg-mist-light">
-    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">All upcoming training</h1>
-    <p class="mt-4 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
-      Next scheduled sessions across all disciplines.
-    </p>
-  </Section>
-
-  <Section>
-    <ScheduleList
-      rows={rows}
-      id="full-schedule"
-      filters={["topic", "country", "trainer"]}
-      defaultCountry="Germany"
-      emptyMessage="No sessions are currently scheduled."
-    />
-  </Section>
+  <FullSchedulePageContent copy={copy} rows={rows} />
 </BaseLayout>

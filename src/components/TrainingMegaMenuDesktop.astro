@@ -18,6 +18,8 @@ import { categoryIcons } from "@/data/categoryIcons";
 import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
 import { toPathSegment } from "@/lib/urlSlug";
+import { baseSlug } from "@/lib/i18n";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
 
 interface Props {
   categoriesWithCourses: {
@@ -27,6 +29,9 @@ interface Props {
 }
 
 const { categoriesWithCourses } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const prefix = locale === "de" ? "/de" : "";
 
 // Fallback certification-body logo per category, keyed by category id, for
 // the rare course with no specific badge in courseBadges.
@@ -45,7 +50,7 @@ const logoByCategory = Object.fromEntries(
     <div class="training-mega flex overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card-hover">
       <div class="flex w-56 shrink-0 flex-col gap-0.5 border-r border-neutral-100 bg-mist-light p-3">
         <a
-          href="/training"
+          href={`${prefix}/training`}
           data-cat-trigger="__home"
           class="mega-cat-trigger is-active flex items-center justify-between gap-2 rounded-[var(--radius-control)] bg-surface px-3 py-2.5 text-[length:var(--text-small)] font-semibold text-ink shadow-card transition-colors hover:bg-surface"
         >
@@ -61,7 +66,7 @@ const logoByCategory = Object.fromEntries(
                 <rect x="14" y="14" width="7" height="7" rx="1" />
               </svg>
             </span>
-            Training Home
+            {t("megaMenu.trainingHome")}
           </span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-3.5 w-3.5 shrink-0 text-neutral-400">
             <path d="m9 6 6 6-6 6" />
@@ -71,16 +76,16 @@ const logoByCategory = Object.fromEntries(
         {
           categoriesWithCourses.map(({ category }) => (
             <a
-              href={`/training/${category.id}`}
+              href={`${prefix}/training/${baseSlug(category.id)}`}
               data-cat-trigger={category.id}
               class="mega-cat-trigger flex items-center justify-between gap-2 rounded-[var(--radius-control)] px-3 py-2.5 text-[length:var(--text-small)] font-semibold text-ink transition-colors hover:bg-surface"
             >
               <span class="flex items-center gap-2.5">
-                {categoryIcons[category.id] && (
+                {categoryIcons[baseSlug(category.id)] && (
                   <span
                     aria-hidden="true"
                     class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface [&_svg]:h-3.5 [&_svg]:w-3.5"
-                    set:html={categoryIcons[category.id]}
+                    set:html={categoryIcons[baseSlug(category.id)]}
                   />
                 )}
                 {category.data.name}
@@ -95,23 +100,25 @@ const logoByCategory = Object.fromEntries(
 
       <div class="min-w-0 flex-1 px-5 py-6">
         <div class="mega-cat-panel" data-cat-panel="__home">
-          <p class="text-[length:var(--text-caption)] text-neutral-500">Six disciplines, one practitioner network.</p>
+          <p class="text-[length:var(--text-caption)] text-neutral-500">{t("megaMenu.sixDisciplines")}</p>
           <div class="mt-3 grid grid-cols-2 gap-3">
             {
               categoriesWithCourses.map(({ category, courses }) => (
                 <a
-                  href={`/training/${category.id}`}
+                  href={`${prefix}/training/${baseSlug(category.id)}`}
                   class="flex flex-col gap-2 rounded-[var(--radius-control)] border border-neutral-200 p-3 transition-colors hover:border-neutral-400 hover:shadow-card"
                 >
-                  {categoryIcons[category.id] && (
+                  {categoryIcons[baseSlug(category.id)] && (
                     <span
                       aria-hidden="true"
                       class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-lime [&_svg]:h-4 [&_svg]:w-4"
-                      set:html={categoryIcons[category.id]}
+                      set:html={categoryIcons[baseSlug(category.id)]}
                     />
                   )}
                   <span class="text-[length:var(--text-small)] font-semibold text-ink">{category.data.name}</span>
-                  <span class="text-[length:var(--text-caption)] text-neutral-500">{courses.length} courses &rarr;</span>
+                  <span class="text-[length:var(--text-caption)] text-neutral-500">
+                    {courses.length} {courses.length === 1 ? t("training.courseSingular") : t("training.coursePlural")} &rarr;
+                  </span>
                 </a>
               ))
             }
@@ -124,12 +131,12 @@ const logoByCategory = Object.fromEntries(
               <div class="mt-3 flex flex-col gap-2">
                 {courses.map((course) => (
                   <a
-                    href={`/training/${category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
+                    href={`${prefix}/training/${baseSlug(category.id)}/${toPathSegment(course.data.urlSlug ?? baseSlug(course.id))}`}
                     class="flex items-center gap-2.5 text-[length:var(--text-small)] text-neutral-600 hover:text-ink hover:underline"
                   >
-                    {courseBadges[course.id] ? (
+                    {courseBadges[baseSlug(course.id)] ? (
                       <span class="flex h-5 w-8 shrink-0 items-center justify-center">
-                        <Image src={courseBadges[course.id]} alt="" width={32} height={20} class="max-h-4 max-w-full object-contain" />
+                        <Image src={courseBadges[baseSlug(course.id)]} alt="" width={32} height={20} class="max-h-4 max-w-full object-contain" />
                       </span>
                     ) : (
                       logoByCategory[category.id] && (
@@ -155,19 +162,17 @@ const logoByCategory = Object.fromEntries(
 
       <div class="flex w-56 shrink-0 flex-col bg-ink p-5 text-surface">
         <p class="text-[length:var(--text-caption)] font-bold uppercase tracking-[0.06em] text-lime">
-          Not sure where to start?
+          {t("megaMenu.notSureWhereToStart")}
         </p>
         <h3 class="mt-2 text-[length:var(--text-small)] font-semibold leading-snug">
-          Talk to us about your team's situation
+          {t("megaMenu.talkToUsAboutTeam")}
         </h3>
-        <p class="mt-2 flex-1 text-[length:var(--text-caption)] text-neutral-300">
-          We'll help you pick the right discipline and format, in-person, live online, or self-paced.
-        </p>
+        <p class="mt-2 flex-1 text-[length:var(--text-caption)] text-neutral-300">{t("megaMenu.helpText")}</p>
         <a
-          href="/contact"
+          href={`${prefix}/contact`}
           class="mt-4 rounded-[var(--radius-control)] bg-lime px-4 py-2.5 text-center text-[length:var(--text-small)] font-semibold text-ink transition-colors hover:bg-lime/85"
         >
-          Contact us &rarr;
+          {t("nav.contactCta")} &rarr;
         </a>
       </div>
     </div>
