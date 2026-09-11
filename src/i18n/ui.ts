@@ -102,6 +102,15 @@ export const en = {
   "training.nextScheduledSessions": "Next scheduled sessions",
   "training.formatSingular": "format",
   "training.formatPlural": "formats",
+  // German phrases the discipline name at the end ("Trainingskurse im
+  // Bereich Kanban") rather than the start like English does ("Kanban
+  // training courses"), so these two exist purely for that German
+  // construction -- English keeps using the prefix/suffix pair above and
+  // never reads these two English values.
+  "training.disciplineCoursesHeadingPrefix": "Training courses in",
+  "training.upcomingDisciplineTrainingPrefix": "Upcoming training in",
+  "training.noSessionsForDisciplinePrefix": "No",
+  "training.noSessionsForDisciplineSuffix": "sessions are currently scheduled.",
 
   "course.whoFor": "Who is this course for?",
   "course.whatLearn": "What you'll learn",
@@ -131,11 +140,20 @@ const dePlaceholders: Record<UIKey, string> = Object.fromEntries(
 ) as Record<UIKey, string>;
 
 // Reviewed, approved German copy (Phase B), from
-// betterchange-de-translation-draft-homepage-services.md and
-// betterchange-de-translation-draft-training-hub.md. House style:
+// betterchange-de-translation-draft-homepage-services.md,
+// betterchange-de-translation-draft-training-hub.md, and
+// betterchange-de-translation-draft-mega-menu-disciplines.md. House style:
 // impersonal/collective address (no "Sie"/"Du"), colon-form gender-inclusive
 // language (Trainer:innen), and several terms kept as English loanwords
 // (Training, Leadership, Facilitation, Coaching, course/certification codes).
+//
+// Two values below are shared JS constants rather than separately-typed-out
+// duplicate strings, per betterchange-de-translation-draft-mega-menu-
+// disciplines.md's explicit "reuse existing" notes -- so the two call
+// sites for each can't drift apart in a future translation pass.
+const notSureWhereToStartDe = "Unsicher, wo der richtige Startpunkt liegt?";
+const seeFullScheduleDe = "Gesamten Trainingsplan ansehen";
+
 const deOverrides: Partial<Record<UIKey, string>> = {
   "nav.services": "Leistungen",
   "nav.training": "Training",
@@ -143,6 +161,7 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "nav.insights": "Insights",
   "nav.contact": "Kontakt",
   "nav.contactCta": "Kontakt",
+  "nav.menu": "Menü",
 
   "footer.tagline":
     "Ein europäisches Netzwerk von Praktiker:innen für Training, Coaching und Transformation, auf Englisch und Deutsch.",
@@ -158,7 +177,8 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "schedule.register": "Anmelden",
   "schedule.fullSchedule": "Alle Termine",
   "schedule.getInTouch": "Kontakt aufnehmen",
-  "schedule.seeFullSchedule": "Gesamten Trainingsplan ansehen",
+  "schedule.seeFullSchedule": seeFullScheduleDe,
+  "schedule.seeAllScheduled": seeFullScheduleDe,
   "schedule.preferInHouse": "Lieber privates Inhouse-Training?",
   "schedule.letUsKnow": "Kontakt aufnehmen",
   "schedule.filterDiscipline": "Disziplin",
@@ -181,6 +201,15 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "trainers.heading": "Die Trainer:innen im Überblick",
 
   "megaMenu.trainingHome": "Training-Startseite",
+  // Mirrors training-hub-page/de.md's disciplinesHeading, which is
+  // approved copy from a different system (a content-collection field,
+  // not this dictionary) so it can't be a literal shared JS reference --
+  // keep this in sync by hand if that heading ever changes.
+  "megaMenu.sixDisciplines": "Sechs Disziplinen, ein Netzwerk aus Praktiker:innen.",
+  "megaMenu.notSureWhereToStart": notSureWhereToStartDe,
+  "megaMenu.talkToUsAboutTeam": "Ein Gespräch über die Situation des Teams",
+  "megaMenu.helpText":
+    "Gemeinsam lässt sich die passende Disziplin und das passende Format finden, vor Ort, live online oder im Selbststudium.",
 
   "cta.seeAllTraining": "Alle Trainings ansehen",
   "cta.ourServices": "Unsere Leistungen",
@@ -188,14 +217,22 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "cta.readAllReviews": "Alle Bewertungen lesen",
   "cta.viewAllInsights": "Alle Insights ansehen",
   "cta.learnMore": "Mehr erfahren",
-  "cta.closingHeading": "Unsicher, wo der richtige Startpunkt liegt?",
+  "cta.closingHeading": notSureWhereToStartDe,
   "cta.closingBody":
     "Ein kurzes Gespräch hilft oft weiter. Wir unterstützen gerne dabei, den passenden Trainings- oder Coaching-Ansatz für die jeweilige Situation zu finden.",
+  "cta.categoryClosingHeading": "Wie wir unterstützen können",
   "cta.moreCoursesInPrefix": "Weitere Kurse im Bereich",
+  "cta.getStarted": "Jetzt starten",
   "cta.viewDiscipline": "Zur Übersicht",
 
+  "training.eyebrowLabel": "Training",
   "training.courseSingular": "Kurs",
   "training.coursePlural": "Kurse",
+  "training.chooseWhereToStart": "Einstiegspunkt wählen",
+  "training.disciplineCoursesHeadingPrefix": "Trainingskurse im Bereich",
+  "training.upcomingDisciplineTrainingPrefix": "Anstehende Trainings im Bereich",
+  "training.noSessionsForDisciplinePrefix": "Für",
+  "training.noSessionsForDisciplineSuffix": "sind derzeit keine Termine geplant.",
 
   "course.whoFor": "Für wen ist dieser Kurs geeignet?",
   "course.whatLearn": "Lerninhalte",

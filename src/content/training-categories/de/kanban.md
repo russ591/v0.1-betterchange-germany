@@ -1,10 +1,8 @@
 ---
-# name/tagline are reviewed, approved German copy (Phase B/C). description
-# stays Phase A placeholder text marked "[DE]" until the course pages
-# translation pass covers it.
+# name/tagline/description are reviewed, approved German copy (Phase B/C/F).
 name: "Kanban"
 tagline: "Arbeit visualisieren und Flow über Teams hinweg steuern"
-description: "[DE] The Kanban Method is a practical, evolutionary approach to managing and improving the flow of work. Rather than a prescriptive framework, it starts with what you do today and helps you improve from there - making work visible, limiting work in progress, and continuously improving how value flows through your organisation. Kanban University certified training covers the full spectrum from foundational system design through to enterprise-scale flow management."
+description: "Die Kanban-Methode ist ein praktischer, evolutionärer Ansatz zur Steuerung und Verbesserung des Arbeitsflusses. Statt eines vorschreibenden Frameworks setzt sie beim bestehenden Status quo an und ermöglicht Verbesserung von dort aus, Arbeit sichtbar machen, laufende Arbeit begrenzen und kontinuierlich verbessern, wie Wert durch die Organisation fließt. Die von der Kanban University zertifizierten Trainings decken das gesamte Spektrum ab, von grundlegendem Systemdesign bis zu unternehmensweitem Flow-Management."
 certificationBody: Kanban University
 order: 2
 ---

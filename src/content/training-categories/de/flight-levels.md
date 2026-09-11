@@ -1,10 +1,8 @@
 ---
-# name/tagline are reviewed, approved German copy (Phase B/C). description
-# stays Phase A placeholder text marked "[DE]" until the course pages
-# translation pass covers it.
+# name/tagline/description are reviewed, approved German copy (Phase B/C/F).
 name: "Flight Levels"
 tagline: "Strategie und Umsetzung in der gesamten Organisation verbinden"
-description: "[DE] Flight Levels gives organisations a structured way to connect strategic intent with operational reality. It focuses on ensuring the right people address the right things at the right time - breaking down silos, improving transparency, and aligning work with organisational goals. Rather than optimising individual teams, Flight Levels looks at the interactions between teams and levels of the organisation. The result is faster flow, better decisions, and sustainable business agility - without costly reorganisation."
+description: "Flight Levels gibt Organisationen eine strukturierte Möglichkeit, strategische Absicht mit operativer Realität zu verbinden. Im Mittelpunkt steht, dass die richtigen Menschen sich zur richtigen Zeit mit den richtigen Dingen befassen, Silos abbauen, Transparenz verbessern und Arbeit an den Unternehmenszielen ausrichten. Statt einzelne Teams zu optimieren, betrachtet Flight Levels die Interaktionen zwischen Teams und Ebenen der Organisation. Das Ergebnis: schnellerer Flow, bessere Entscheidungen und nachhaltige Business-Agilität, ohne teure Reorganisation."
 certificationBody: Flight Levels Academy
 order: 1
 ---

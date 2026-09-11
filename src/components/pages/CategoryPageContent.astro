@@ -132,7 +132,11 @@ const logo = category.data.certificationBody ? certificationLogos[category.data.
 
 <Section
   eyebrow={`${courses.length} ${courses.length === 1 ? t("training.courseSingular") : t("training.coursePlural")}`}
-  heading={`${category.data.name} ${t("training.trainingCoursesHeadingSuffix")}`}
+  heading={
+    locale === "de"
+      ? `${t("training.disciplineCoursesHeadingPrefix")} ${category.data.name}`
+      : `${category.data.name} ${t("training.trainingCoursesHeadingSuffix")}`
+  }
 >
   {
     courses.length > 0 ? (
@@ -196,14 +200,18 @@ const logo = category.data.certificationBody ? certificationLogos[category.data.
 <MeetTheTrainers trainers={categoryTrainers} />
 
 <Section
-  eyebrow={`${t("training.upcomingPrefix")} ${category.data.name} ${t("training.upcomingSuffix")}`}
+  eyebrow={
+    locale === "de"
+      ? `${t("training.upcomingDisciplineTrainingPrefix")} ${category.data.name}`
+      : `${t("training.upcomingPrefix")} ${category.data.name} ${t("training.upcomingSuffix")}`
+  }
   heading={t("training.nextScheduledSessions")}
   class="bg-mist-light"
 >
   <ScheduleList
     rows={upcomingWithCourse}
     id="category-schedule"
-    emptyMessage={`${t("schedule.noSessions")}`}
+    emptyMessage={`${t("training.noSessionsForDisciplinePrefix")} ${category.data.name} ${t("training.noSessionsForDisciplineSuffix")}`}
   />
   <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
     <p class="text-[length:var(--text-small)] text-neutral-600">

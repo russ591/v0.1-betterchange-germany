@@ -1,10 +1,8 @@
 ---
-# name/tagline are reviewed, approved German copy (Phase B/C). description
-# stays Phase A placeholder text marked "[DE]" until the course pages
-# translation pass covers it.
+# name/tagline/description are reviewed, approved German copy (Phase B/C/F).
 name: "Coaching & Facilitation"
 tagline: "Coaching-Fähigkeiten entwickeln, um Teams durch echte Transformation zu begleiten"
-description: "[DE] Great agile coaches do far more than enforce processes and run ceremonies. They help individuals and teams develop autonomy, navigate conflict, and sustain meaningful change. ICAgile certified training at Better Change develops the coaching mindset, facilitation skills, and systemic thinking you need to guide organisations through transformation - not just implement frameworks."
+description: "Gute Agile Coaches tun weit mehr, als Prozesse durchzusetzen und Zeremonien zu leiten. Sie helfen Einzelpersonen und Teams, Autonomie zu entwickeln, Konflikte zu navigieren und bedeutsamen Wandel zu tragen. Die von ICAgile zertifizierten Trainings bei Better Change entwickeln die Coaching-Haltung, Facilitation-Fähigkeiten und das systemische Denken, die nötig sind, um Organisationen durch Transformation zu begleiten, nicht nur Frameworks einzuführen."
 certificationBody: ICAgile
 order: 4
 ---

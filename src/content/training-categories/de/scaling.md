@@ -1,10 +1,8 @@
 ---
-# name/tagline are reviewed, approved German copy (Phase B/C). description
-# stays Phase A placeholder text marked "[DE]" until the course pages
-# translation pass covers it.
+# name/tagline/description are reviewed, approved German copy (Phase B/C/F).
 name: "Scaling"
 tagline: "Agilität über Portfolios und große Organisationen hinweg anwenden"
-description: "[DE] As organisations grow, team-level agility is no longer enough. Scaling frameworks provide the structures, processes, and leadership approaches needed to align multiple teams towards shared goals and deliver consistently at scale. Better Change delivers Scaled Agile Framework (SAFe) training, covering both the leadership perspective and the team-level practice."
+description: "Mit wachsender Organisationsgröße reicht Agilität auf Teamebene allein nicht mehr aus. Skalierungs-Frameworks liefern die Strukturen, Prozesse und Führungsansätze, die nötig sind, um mehrere Teams auf gemeinsame Ziele auszurichten und verlässlich im großen Maßstab zu liefern. Better Change bietet Training zum Scaled Agile Framework (SAFe) an, sowohl aus Führungsperspektive als auch für die Praxis auf Teamebene."
 certificationBody: Scaled Agile
 order: 6
 ---

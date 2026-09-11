@@ -116,7 +116,9 @@ const logoByCategory = Object.fromEntries(
                     />
                   )}
                   <span class="text-[length:var(--text-small)] font-semibold text-ink">{category.data.name}</span>
-                  <span class="text-[length:var(--text-caption)] text-neutral-500">{courses.length} courses &rarr;</span>
+                  <span class="text-[length:var(--text-caption)] text-neutral-500">
+                    {courses.length} {courses.length === 1 ? t("training.courseSingular") : t("training.coursePlural")} &rarr;
+                  </span>
                 </a>
               ))
             }

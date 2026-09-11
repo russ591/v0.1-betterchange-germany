@@ -1,10 +1,8 @@
 ---
-# name/tagline are reviewed, approved German copy (Phase B/C). description
-# stays Phase A placeholder text marked "[DE]" until the course pages
-# translation pass covers it.
+# name/tagline/description are reviewed, approved German copy (Phase B/C/F).
 name: "Leadership"
 tagline: "Die richtige Haltung für Führung in agilen Organisationen entwickeln"
-description: "[DE] Agile leadership is not about telling people what to do more efficiently - it is about creating the conditions in which teams can thrive. Scrum Alliance certified leadership training explores how leaders can enable self-organisation, navigate complexity, and drive sustainable organisational change. From foundational agile leadership principles through to advanced organisational design and authentic leadership."
+description: "Bei agiler Führung geht es nicht darum, Menschen effizienter zu sagen, was zu tun ist, es geht darum, die Bedingungen zu schaffen, unter denen Teams aufblühen können. Die von der Scrum Alliance zertifizierten Leadership-Trainings zeigen, wie Führungskräfte Selbstorganisation ermöglichen, Komplexität navigieren und nachhaltigen organisatorischen Wandel vorantreiben können, von grundlegenden Prinzipien agiler Führung bis zu fortgeschrittenem Organisationsdesign und authentischer Führung."
 certificationBody: Scrum Alliance
 order: 5
 ---
