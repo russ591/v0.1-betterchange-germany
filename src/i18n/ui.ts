@@ -309,6 +309,10 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "course.relatedCourses": "Verwandte Kurse",
   "course.trainerLabel": "Trainer:in",
 
+  "insights.minRead": "Min. Lesezeit",
+  "insights.by": "Von",
+  "insights.relatedReading": "Weiterführende Artikel",
+
   "level": "Niveau",
   "duration": "Dauer",
   "certification": "Zertifizierung",
