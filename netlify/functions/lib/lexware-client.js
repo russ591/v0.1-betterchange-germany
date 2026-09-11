@@ -26,8 +26,12 @@ import { buildAttendeeList } from "./registration-email.js";
 
 const LEXWARE_BASE_URL = "https://api.lexware.io/v1";
 
-function isTestMode() {
-  return process.env.LEXWARE_TEST_MODE !== "false";
+// `forceTestMode` is per-submission (set when the registrant's discount-code
+// field ended in "**" — see discount.js's parseDiscountField), and always
+// wins over the env var: it's how a real production run-through gets tested
+// without leaving a real invoice behind even when LEXWARE_TEST_MODE="false".
+function isTestMode(forceTestMode) {
+  return Boolean(forceTestMode) || process.env.LEXWARE_TEST_MODE !== "false";
 }
 
 // Lexware caps requests at 2/s. A single registration can now chain 4+
@@ -277,8 +281,8 @@ function buildInvoiceIntroduction(data) {
   return lines.join("\n");
 }
 
-async function createInvoice(data, contactId, discount) {
-  const testMode = isTestMode();
+async function createInvoice(data, contactId, discount, forceTestMode) {
+  const testMode = isTestMode(forceTestMode);
   const prefix = testMode ? "TEST — " : "";
   const netAmount = parseAmount(data.total);
   const voucherDate = new Date();
@@ -382,23 +386,29 @@ async function downloadFile(fileId) {
 // the registration emails from sending. `discount` is the already-resolved
 // result of discount.js's resolveDiscount() — resolved once by the caller
 // (submission-created.js) rather than re-resolved here, so a code's usage
-// only ever gets counted once per submission.
-export async function generateInvoicePdf(data, discount) {
+// only ever gets counted once per submission. `forceTestMode` is the
+// discount-code field's "**" marker (see discount.js) — set even when
+// `discount` is null, since a bare "**" forces test mode with no discount.
+export async function generateInvoicePdf(data, discount, forceTestMode) {
   if (!process.env.LEXWARE_API_KEY) {
     console.log("submission-created: LEXWARE_API_KEY not set — skipping invoice generation.");
     return null;
   }
 
+  if (forceTestMode) {
+    console.log('submission-created: "**" marker on discount-code field — forcing this invoice into TEST_MODE regardless of LEXWARE_TEST_MODE.');
+  }
+
   try {
     const contactId = await findOrCreateContact(data);
-    const invoice = await createInvoice(data, contactId, discount);
+    const invoice = await createInvoice(data, contactId, discount, forceTestMode);
 
     // Lexware never renders a PDF for a draft (unfinalized) invoice —
     // confirmed against their docs, not just a rendering delay — so
     // LEXWARE_TEST_MODE=true invoices will reliably have no attachment.
     // That's expected, not an error; only warn when a *finalized*
     // invoice unexpectedly has no PDF.
-    if (isTestMode()) {
+    if (isTestMode(forceTestMode)) {
       console.log(
         `submission-created: invoice ${invoice.id} created as a TEST_MODE draft — Lexware doesn't render a PDF for drafts, so no attachment this time (expected; will attach once LEXWARE_TEST_MODE is "false").`
       );
@@ -413,7 +423,12 @@ export async function generateInvoicePdf(data, discount) {
     }
 
     const pdfBuffer = await downloadFile(documentFileId);
-    return { pdfBuffer, invoiceId: invoice.id, voucherNumber: voucherNumber || invoice.voucherNumber, testMode: isTestMode() };
+    return {
+      pdfBuffer,
+      invoiceId: invoice.id,
+      voucherNumber: voucherNumber || invoice.voucherNumber,
+      testMode: isTestMode(forceTestMode),
+    };
   } catch (error) {
     // Log only the message (not the full Error object) so this stays one
     // short line — the stack trace adds nothing we can act on and eats

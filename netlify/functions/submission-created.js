@@ -11,7 +11,7 @@
 // The registration itself is already safely captured by Netlify Forms
 // regardless of what happens here.
 import { generateInvoicePdf } from "./lib/lexware-client.js";
-import { resolveDiscount, computeDiscountBreakdown } from "./lib/discount.js";
+import { resolveDiscount, computeDiscountBreakdown, parseDiscountField } from "./lib/discount.js";
 import { incrementUsage } from "./lib/discount-store.js";
 import { sendRegistrationEmails, sendWaitlistNotification } from "./lib/send-registration-emails.js";
 
@@ -40,7 +40,13 @@ export const handler = async (event) => {
   const discountBreakdown = discount ? computeDiscountBreakdown(data.total, discount.amount) : null;
   if (discount) await incrementUsage(discount.code);
 
-  const invoiceResult = await generateInvoicePdf(data, discount);
+  // A trailing "**" on the discount-code field (with or without a real code
+  // before it) forces just this submission's invoice into Lexware TEST_MODE
+  // — see discount.js's parseDiscountField and lexware-client.js's
+  // isTestMode(). Checked independently of `discount` since a bare "**"
+  // (no code) still needs to force test mode.
+  const { forceTestMode } = parseDiscountField(data["discount-code"]);
+  const invoiceResult = await generateInvoicePdf(data, discount, forceTestMode);
   const invoiceStatus = invoiceResult
     ? `generated (${invoiceResult.testMode ? "draft, TEST_MODE" : "finalized"}, id ${invoiceResult.invoiceId})`
     : "skipped or failed — see earlier log lines";
