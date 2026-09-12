@@ -41,6 +41,13 @@ const categorySlug = baseSlug(category.id);
 const logo = category.data.certificationBody ? certificationLogos[category.data.certificationBody] : undefined;
 const badge = courseBadges[baseSlug(course.id)];
 const formatDetails = getFormatDetails(locale);
+// A format can be a real, bookable option (per course.data.formats) without
+// currently having any public session on the calendar -- e.g. live-online
+// is available for private/in-house delivery on several courses but isn't
+// always open for public enrolment. The "Choose your format" cards below
+// flag that case explicitly rather than presenting it identically to a
+// format with real upcoming sessions.
+const scheduledFormats = new Set(upcoming.map((s) => s.data.format));
 ---
 
 <Breadcrumbs
@@ -273,19 +280,33 @@ const formatDetails = getFormatDetails(locale);
     {
       course.data.formats.map((format) => {
         const details = formatDetails[format];
+        const isScheduled = scheduledFormats.has(format);
         return (
           <div class="flex flex-col gap-5 rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-7 shadow-card">
-            <span
-              aria-hidden="true"
-              class="blob-dot flex h-11 w-11 items-center justify-center bg-lime"
-              set:html={formatIcons[format]}
-            />
+            <div class="flex items-center justify-between gap-3">
+              <span
+                aria-hidden="true"
+                class="blob-dot flex h-11 w-11 items-center justify-center bg-lime"
+                set:html={formatIcons[format]}
+              />
+              {!isScheduled && (
+                <span class="inline-flex items-center rounded-[var(--radius-pill)] border border-neutral-300 bg-neutral-50 px-2.5 py-1 text-[length:var(--text-caption)] font-semibold text-neutral-600">
+                  {t("course.onRequestLabel")}
+                </span>
+              )}
+            </div>
             <div class="flex flex-col gap-2">
               <h3 class="text-[length:var(--text-h4)]">{details.label}</h3>
               <p class="text-[length:var(--text-small)] leading-relaxed text-neutral-600">
                 {details.description}
-                {course.data.formats.length > 1 && ` ${details.chooseIf}`}
+                {isScheduled && course.data.formats.length > 1 && ` ${details.chooseIf}`}
+                {!isScheduled && ` ${t("course.onRequestNote")}`}
               </p>
+              {!isScheduled && (
+                <a href={`${prefix}/contact`} class="text-[length:var(--text-small)] font-semibold text-ink underline">
+                  {t("schedule.getInTouch")} →
+                </a>
+              )}
             </div>
             <div class="flex flex-col gap-3 border-t border-neutral-100 pt-5">
               <p class="eyebrow">{t("course.included")}</p>

@@ -122,6 +122,8 @@ export const en = {
   "course.relatedCourses": "Related courses",
   "course.notSureFormatTrailing": "and we'll help you decide.",
   "course.trainerLabel": "Trainer:",
+  "course.onRequestLabel": "On request",
+  "course.onRequestNote": "Not on the public schedule right now, but available for private or in-house delivery on request.",
 
   "level": "Level",
   "duration": "Duration",
@@ -308,6 +310,8 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "course.notSureFormatTrailing": "und gemeinsam die passende Option finden.",
   "course.relatedCourses": "Verwandte Kurse",
   "course.trainerLabel": "Trainer:in",
+  "course.onRequestLabel": "Auf Anfrage",
+  "course.onRequestNote": "Aktuell nicht öffentlich terminiert, auf Anfrage jedoch für private oder unternehmensinterne Durchführung verfügbar.",
 
   "insights.minRead": "Min. Lesezeit",
   "insights.by": "Von",
