@@ -123,6 +123,28 @@ export const en = {
   "course.notSureFormatTrailing": "and we'll help you decide.",
   "course.trainerLabel": "Trainer:",
 
+  // New for the trainer-led-vs-self-paced two-card layout (courses that
+  // offer self-paced alongside at least one trainer-led format). Falls
+  // back to the auto-generated "[DE] " placeholder until a proper
+  // translation pass reviews these, same as every other not-yet-reviewed
+  // key in this file.
+  "course.trainerLedTitle": "Trainer-Led Workshop",
+  "course.trainerLedDescription":
+    "Learn in a group with a certified trainer, in person or live online. Social, interactive, and led at a set pace over the scheduled dates.",
+  "course.selfPacedTitle": "Self-Paced Workshop",
+  "course.findOutMore": "Find out more",
+
+  "selfPaced.breadcrumbLabel": "Self-Paced",
+  "selfPaced.eyebrowPrefix": "Self-Paced",
+  "selfPaced.beginWhenReady": "Begin whenever you're ready",
+  "selfPaced.whatsIncluded": "What's included",
+  "selfPaced.curriculumEyebrow": "Curriculum",
+  "selfPaced.faqHeading": "Frequently asked questions",
+  "selfPaced.faqCertificationQuestion": "Is the certification the same as the trainer-led course?",
+  "selfPaced.faqCertificationAnswer":
+    "Yes. The self-paced format leads to the same certification as every other format of this course.",
+  "selfPaced.readyHeading": "Ready to get started?",
+
   "level": "Level",
   "duration": "Duration",
   "certification": "Certification",

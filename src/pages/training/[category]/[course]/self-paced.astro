@@ -1,0 +1,43 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SelfPacedPageContent from "@/components/pages/SelfPacedPageContent.astro";
+import { toPathSegment } from "@/lib/urlSlug";
+import { localeOfId, baseSlug } from "@/lib/i18n";
+import { getTrainersForSessions } from "@/lib/trainers";
+import { metaOrFallback } from "@/i18n/utils";
+
+export async function getStaticPaths() {
+  const courses = await getCollection(
+    "training-courses",
+    (c) => localeOfId(c.id) === "en" && c.data.formats.includes("self-paced")
+  );
+  return courses.map((course) => ({
+    params: { category: course.data.category.id, course: course.data.urlSlug ?? course.id },
+    props: { course },
+  }));
+}
+
+const { course } = Astro.props;
+const category = await getEntry(course.data.category);
+
+const allSchedules = await getCollection("training-schedules");
+const selfPacedSession = allSchedules.find(
+  (s) => baseSlug(s.data.course.id) === baseSlug(course.id) && s.data.format === "self-paced"
+)!;
+const trainers = await getTrainersForSessions([selfPacedSession]);
+
+const categorySlug = category.id;
+const courseSlug = toPathSegment(course.data.urlSlug ?? baseSlug(course.id));
+---
+
+<BaseLayout
+  title={`Self-Paced ${metaOrFallback(course.data.metaTitle, course.data.name)}`}
+  description={metaOrFallback(course.data.metaDescription, course.data.summary)}
+  translations={{
+    en: `/training/${categorySlug}/${courseSlug}/self-paced`,
+    de: `/de/training/${categorySlug}/${baseSlug(course.id)}/self-paced`,
+  }}
+>
+  <SelfPacedPageContent course={course} category={category} selfPacedSession={selfPacedSession} trainers={trainers} />
+</BaseLayout>

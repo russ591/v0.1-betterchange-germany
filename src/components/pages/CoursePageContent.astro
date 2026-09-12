@@ -19,6 +19,7 @@ import { translateLevel } from "@/data/levelIcons";
 import { formatSessionDate } from "@/lib/dates";
 import { germanizePrice } from "@/lib/prices";
 import { registrationHref, registrationLinkAttrs } from "@/lib/registrationLink";
+import { toPathSegment } from "@/lib/urlSlug";
 import TrainerChip from "@/components/TrainerChip.astro";
 import { baseSlug } from "@/lib/i18n";
 import { resolveLocale, useTranslations } from "@/i18n/utils";
@@ -37,10 +38,25 @@ const locale = resolveLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 const prefix = locale === "de" ? "/de" : "";
 const categorySlug = baseSlug(category.id);
+// Same expression CourseCard.astro uses for a course's own href -- German
+// entries never set urlSlug, so this naturally falls back to baseSlug(id)
+// for them without needing a locale branch.
+const courseSlug = toPathSegment(course.data.urlSlug ?? baseSlug(course.id));
 
 const logo = category.data.certificationBody ? certificationLogos[category.data.certificationBody] : undefined;
 const badge = courseBadges[baseSlug(course.id)];
 const formatDetails = getFormatDetails(locale);
+
+// Courses that offer self-paced alongside at least one trainer-led format
+// get the two-card "Trainer-Led vs Self-Paced" layout instead of one card
+// per format -- self-paced-only or single-format courses fall back to the
+// original per-format grid, since there's nothing to compare against.
+const isSelfPacedEligible = course.data.formats.includes("self-paced") && course.data.formats.length > 1;
+// upcomingWithTrainers sorts by date, but self-paced sessions have no date
+// (?? 0 sorts them first) -- filter self-paced out before taking [0] so
+// this is genuinely the next scheduled trainer-led session.
+const nextTrainerLed = upcomingWithTrainers.find(({ session }) => session.data.format !== "self-paced");
+const selfPacedEntry = upcomingWithTrainers.find(({ session }) => session.data.format === "self-paced");
 ---
 
 <Breadcrumbs
@@ -269,39 +285,122 @@ const formatDetails = getFormatDetails(locale);
   heading={course.data.formats.length > 1 ? t("course.chooseFormat") : t("course.howThisRuns")}
   class="bg-mist-light"
 >
-  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    {
-      course.data.formats.map((format) => {
-        const details = formatDetails[format];
-        return (
-          <div class="flex flex-col gap-5 rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-7 shadow-card">
-            <span
-              aria-hidden="true"
-              class="blob-dot flex h-11 w-11 items-center justify-center bg-lime"
-              set:html={formatIcons[format]}
-            />
-            <div class="flex flex-col gap-2">
-              <h3 class="text-[length:var(--text-h4)]">{details.label}</h3>
-              <p class="text-[length:var(--text-small)] leading-relaxed text-neutral-600">
-                {details.description}
-                {course.data.formats.length > 1 && ` ${details.chooseIf}`}
-              </p>
-            </div>
-            <div class="flex flex-col gap-3 border-t border-neutral-100 pt-5">
-              <p class="eyebrow">{t("course.included")}</p>
-              <div class="flex flex-wrap gap-2">
-                {details.included.map((item) => (
-                  <span class="inline-flex items-center rounded-[var(--radius-pill)] border border-neutral-300 bg-neutral-50 px-3 py-1 text-[length:var(--text-caption)] font-medium text-neutral-700">
-                    {item}
-                  </span>
-                ))}
+  {
+    isSelfPacedEligible ? (
+      <div class="grid gap-6 lg:grid-cols-2">
+        <div class="flex flex-col gap-5 rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-7 shadow-card">
+          <span aria-hidden="true" class="blob-dot flex h-11 w-11 items-center justify-center bg-lime" set:html={formatIcons["in-person"]} />
+          <div class="flex flex-col gap-2">
+            <h3 class="text-[length:var(--text-h4)]">{t("course.trainerLedTitle")}</h3>
+            <p class="text-[length:var(--text-small)] leading-relaxed text-neutral-600">{t("course.trainerLedDescription")}</p>
+          </div>
+          {nextTrainerLed && (
+            <div class="mt-auto flex flex-col gap-3 rounded-[var(--radius-card)] border border-neutral-200 bg-mist-light p-4">
+              <div class="flex items-center justify-between gap-3">
+                <Badge format={nextTrainerLed.session.data.format} />
+                <span class="text-[length:var(--text-caption)] text-neutral-500">
+                  {formatSessionDate(nextTrainerLed.session, course, "long", locale)}
+                </span>
+              </div>
+              <p class="text-[length:var(--text-caption)] text-neutral-500">{nextTrainerLed.session.data.location}</p>
+              {nextTrainerLed.trainers.length > 0 && (
+                <div class="flex flex-wrap gap-1.5">
+                  {nextTrainerLed.trainers.map((trainer) => (
+                    <TrainerChip trainer={trainer} density="plain" linkable={false} showLabel />
+                  ))}
+                </div>
+              )}
+              <div class="flex items-center justify-between gap-3">
+                <span class="font-bold">{germanizePrice(nextTrainerLed.session.data.price, locale)}</span>
+                <a
+                  href={registrationHref(nextTrainerLed.session, prefix)}
+                  {...registrationLinkAttrs(nextTrainerLed.session)}
+                  class="inline-flex items-center justify-center gap-1.5 rounded-[var(--radius-control)] bg-ink px-4 py-2.5 text-sm font-semibold text-surface transition-colors hover:bg-neutral-800"
+                >
+                  {t("schedule.register")} <span aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
+          )}
+          <a href={`${prefix}/training/full-schedule`} class="text-center text-[length:var(--text-small)] font-semibold text-ink underline">
+            {t("schedule.seeAllScheduled")} →
+          </a>
+        </div>
+
+        <div class="flex flex-col gap-5 rounded-[var(--radius-card)] border border-lime bg-lime/5 p-7 shadow-card">
+          <span aria-hidden="true" class="blob-dot flex h-11 w-11 items-center justify-center bg-lime" set:html={formatIcons["live-online"]} />
+          <div class="flex flex-col gap-2">
+            <h3 class="text-[length:var(--text-h4)]">{t("course.selfPacedTitle")}</h3>
+            <p class="text-[length:var(--text-small)] leading-relaxed text-neutral-600">
+              {formatDetails["self-paced"].description} {formatDetails["self-paced"].chooseIf}
+            </p>
           </div>
-        );
-      })
-    }
-  </div>
+          {selfPacedEntry && (
+            <div class="mt-auto flex flex-col gap-3 rounded-[var(--radius-card)] border border-lime/40 bg-surface p-4">
+              <div class="flex items-center justify-between">
+                <span class="text-[length:var(--text-h4)] font-bold">{germanizePrice(selfPacedEntry.session.data.price, locale)}</span>
+                <span class="inline-flex items-center rounded-[var(--radius-pill)] bg-lime/25 px-3 py-1 text-[length:var(--text-caption)] font-semibold text-ink">
+                  {t("schedule.alwaysAvailable")}
+                </span>
+              </div>
+              {selfPacedEntry.trainers.length > 0 && (
+                <div class="flex flex-wrap gap-1.5">
+                  {selfPacedEntry.trainers.map((trainer) => (
+                    <TrainerChip trainer={trainer} density="plain" linkable={false} showLabel />
+                  ))}
+                </div>
+              )}
+              <a
+                href={registrationHref(selfPacedEntry.session, prefix)}
+                {...registrationLinkAttrs(selfPacedEntry.session)}
+                class="inline-flex w-full items-center justify-center gap-1.5 rounded-[var(--radius-control)] bg-ink px-4 py-2.5 text-sm font-semibold text-surface transition-colors hover:bg-neutral-800"
+              >
+                {t("schedule.startNow")} <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          )}
+          <a
+            href={`${prefix}/training/${categorySlug}/${courseSlug}/self-paced`}
+            class="text-center text-[length:var(--text-small)] font-semibold text-ink underline"
+          >
+            {t("course.findOutMore")} →
+          </a>
+        </div>
+      </div>
+    ) : (
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {course.data.formats.map((format) => {
+          const details = formatDetails[format];
+          return (
+            <div class="flex flex-col gap-5 rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-7 shadow-card">
+              <span
+                aria-hidden="true"
+                class="blob-dot flex h-11 w-11 items-center justify-center bg-lime"
+                set:html={formatIcons[format]}
+              />
+              <div class="flex flex-col gap-2">
+                <h3 class="text-[length:var(--text-h4)]">{details.label}</h3>
+                <p class="text-[length:var(--text-small)] leading-relaxed text-neutral-600">
+                  {details.description}
+                  {course.data.formats.length > 1 && ` ${details.chooseIf}`}
+                </p>
+              </div>
+              <div class="flex flex-col gap-3 border-t border-neutral-100 pt-5">
+                <p class="eyebrow">{t("course.included")}</p>
+                <div class="flex flex-wrap gap-2">
+                  {details.included.map((item) => (
+                    <span class="inline-flex items-center rounded-[var(--radius-pill)] border border-neutral-300 bg-neutral-50 px-3 py-1 text-[length:var(--text-caption)] font-medium text-neutral-700">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    )
+  }
 
   {
     course.data.formats.length > 1 && (
