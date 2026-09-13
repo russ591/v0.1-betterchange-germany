@@ -136,6 +136,28 @@ export const en = {
   "insights.by": "By",
   "insights.relatedReading": "Related reading",
 
+  // From betterchange-de-translation-draft-insights-template.md (the
+  // Insights hub's shared template strings -- individual article titles/
+  // bodies/categories are per-article content, translated separately).
+  "insights.eyebrow": "insights",
+  "insights.heading": "Articles, guides & resources",
+  "insights.intro":
+    "Practical thinking on Kanban, Flight Levels, agile transformation, and organisational change, written by people who have done the work.",
+  "insights.featuredEyebrow": "Featured",
+  "insights.article": "article",
+  "insights.articlesPlural": "articles",
+  "insights.searchLabel": "Search articles",
+  "insights.searchPlaceholder": "Search articles…",
+  "insights.filterByTopic": "Filter by topic",
+  "insights.noResults": "No articles match the selected filters.",
+  "insights.prevPage": "‹ Prev",
+  "insights.nextPage": "Next ›",
+  "insights.newsletterEyebrow": "Newsletter",
+  "insights.newsletterHeading": "Get new articles by email",
+  "insights.newsletterBody": "No noise. Just useful thinking on agile, Kanban, and Flight Levels, roughly monthly.",
+  "insights.emailAddress": "Email address",
+  "insights.subscribe": "Subscribe",
+
   "register.eyebrow": "Register",
   "register.backToCourse": "← Back to course details",
   "register.orderSummary": "Order summary",
@@ -316,6 +338,32 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "insights.minRead": "Min. Lesezeit",
   "insights.by": "Von",
   "insights.relatedReading": "Weiterführende Artikel",
+
+  // From betterchange-de-translation-draft-insights-template.md. The
+  // draft's intro paragraph used an em dash ("... organisatorischem
+  // Wandel — geschrieben von..."); converted to a comma per CLAUDE.md's
+  // no-em-dash house style, same as the register-pages draft's waitlist
+  // body sentence.
+  "insights.eyebrow": "Insights",
+  "insights.heading": "Artikel, Leitfäden & Ressourcen",
+  "insights.intro":
+    "Praxisnahe Gedanken zu Kanban, Flight Levels, agiler Transformation und organisatorischem Wandel, geschrieben von Menschen, die die Arbeit selbst gemacht haben.",
+  "insights.featuredEyebrow": "Ausgewählt",
+  "insights.article": "Artikel",
+  "insights.articlesPlural": "Artikel",
+  "insights.searchLabel": "Artikel durchsuchen",
+  "insights.searchPlaceholder": "Artikel durchsuchen…",
+  "insights.filterByTopic": "Nach Thema filtern",
+  // Not in the draft (only shared template strings were covered there) --
+  // written to match house style (impersonal, no em dash).
+  "insights.noResults": "Keine Artikel entsprechen den gewählten Filtern.",
+  "insights.prevPage": "‹ Zurück",
+  "insights.nextPage": "Weiter ›",
+  "insights.newsletterEyebrow": "Newsletter",
+  "insights.newsletterHeading": "Neue Artikel per E-Mail erhalten",
+  "insights.newsletterBody": "Kein Rauschen. Nur nützliche Gedanken zu Agile, Kanban und Flight Levels, etwa einmal im Monat.",
+  "insights.emailAddress": "E-Mail-Adresse",
+  "insights.subscribe": "Abonnieren",
 
   "level": "Niveau",
   "duration": "Dauer",
