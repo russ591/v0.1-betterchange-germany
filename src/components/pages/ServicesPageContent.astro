@@ -90,7 +90,7 @@ const serviceLinks: Record<string, { href: string; label: string }> = {
     {insightArticles.map((article) => <InsightsArticleCard article={article} showDate={false} />)}
   </div>
   <div class="mt-6 text-right">
-    <Button href="/insights" variant="link" class="group">{t("cta.viewAllInsights")}</Button>
+    <Button href={`${prefix}/insights`} variant="link" class="group">{t("cta.viewAllInsights")}</Button>
   </div>
 </Section>
 

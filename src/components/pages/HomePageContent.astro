@@ -184,7 +184,7 @@ const clients = [
     {featuredArticles.map((article) => <InsightsArticleCard article={article} />)}
   </div>
   <div class="mt-6 text-right">
-    <Button href="/insights" variant="link" class="group">{t("cta.viewAllInsights")}</Button>
+    <Button href={`${prefix}/insights`} variant="link" class="group">{t("cta.viewAllInsights")}</Button>
   </div>
 </Section>
 
