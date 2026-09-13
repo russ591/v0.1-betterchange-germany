@@ -8,6 +8,10 @@ Full rebuild of betterchange-consulting.de from Wix Studio to a coded Astro site
 
 As of the v2.0.0 milestone: the entire site is live in both languages, including all core pages, the training/course/register flow, and all 81 "quality-tier" Insights articles. Two things remain deliberately deferred (not forgotten — see "Deferred work" below).
 
+## Merge policy
+
+Never merge to `main` without asking first. When your work is ready and all pre-merge checks pass, stop and ask Russ for explicit approval before merging — do not merge automatically even if everything looks clean. This applies to every branch, every time.
+
 ## Known recurring bugs / gotchas
 
 **Netlify stale-build issue.** Deploy logs sometimes show "All files already uploaded by a previous deploy with the same commits" while the live site keeps serving old output. Standard "Trigger deploy" / "Retry" does NOT fix this. Use **"Clear cache and deploy site"** specifically in the Netlify Deploys tab. This has recurred multiple times across this project — if a change isn't showing live after a normal deploy, this is the first thing to try before assuming the code is wrong.
