@@ -1,0 +1,424 @@
+---
+// Shared body for /insights (English) and /de/insights (German) -- see
+// RegisterPageContent.astro for the same split pattern. `articles` is
+// already resolved to the right version of each article for this locale by
+// the caller (the German translation when one exists, otherwise the
+// English original -- same graceful-fallback pattern as the language
+// switcher on untranslated pages) and pre-sorted by date, newest first.
+// Author resolution also happens in the caller, since it's identical work
+// on both routes.
+//
+// Individual card/spotlight hrefs and date formatting go by each
+// article's OWN locale (via localeOfId), not the page's locale -- so an
+// English fallback article shown on the German hub still links to
+// /insights/... and shows an English-formatted date, exactly like
+// InsightsArticleCard already does elsewhere on the site.
+import type { CollectionEntry } from "astro:content";
+import Section from "@/components/Section.astro";
+import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { toPathSegment } from "@/lib/urlSlug";
+import { localeOfId, baseSlug } from "@/lib/i18n";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+
+interface Props {
+  articles: { article: CollectionEntry<"insights-articles">; author?: { name: string; photo?: string } }[];
+}
+
+const { articles } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const prefix = locale === "de" ? "/de" : "";
+
+const articleHref = (article: CollectionEntry<"insights-articles">) => {
+  const articlePrefix = localeOfId(article.id) === "de" ? "/de" : "";
+  return `${articlePrefix}/insights/${toPathSegment(article.data.urlSlug ?? baseSlug(article.id))}`;
+};
+const articleDate = (article: CollectionEntry<"insights-articles">) =>
+  article.data.date.toLocaleDateString(localeOfId(article.id) === "de" ? "de-DE" : "en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+
+const initials = (name: string) =>
+  name
+    .split(" ")
+    .map((w) => w[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+
+// Duotone placeholder for articles without real photography -- same
+// deterministic pattern as InsightsArticleCard, used here for the bespoke
+// spotlight cards below.
+const positions = ["30% 20%", "70% 30%", "40% 70%", "60% 60%"];
+const placeholderStyle = (id: string) => {
+  const hash = [...id].reduce((sum, ch) => sum + ch.charCodeAt(0), 0);
+  const position = positions[hash % positions.length];
+  return `background: radial-gradient(circle at ${position}, rgba(154,255,91,0.5), transparent 55%), linear-gradient(135deg, #14200c, #37452a);`;
+};
+
+// Curated via the `featured` flag migrated from the old site. Rather than
+// always showing the same 3, this rotates through the flagged pool once a
+// day: a 3-wide window keyed off the UTC day number, so every flagged
+// article gets a turn in the hero over time instead of the newest 3
+// permanently crowding out the rest. (This is a static build, so "today"
+// is the day of the last deploy -- see the note where this page is wired
+// up for what that means in practice.) Falls back to the most recent
+// articles overall when fewer than 3 are flagged, so the row is never
+// sparse; a pool that small isn't worth rotating.
+const featuredPool = articles.filter((a) => a.article.data.featured);
+const dayNumber = Math.floor(Date.now() / 86_400_000);
+const spotlight =
+  featuredPool.length >= 3
+    ? [0, 1, 2].map((i) => featuredPool[(dayNumber + i) % featuredPool.length])
+    : articles.slice(0, 3);
+const spotlightIds = new Set(spotlight.map((a) => a.article.id));
+const gridArticles = articles.filter((a) => !spotlightIds.has(a.article.id));
+
+// House style keeps category tags as English loanwords, with two agreed
+// exceptions (see content.config.ts's insightsArticle schema comment).
+// Applied here rather than trusted from the data, since a German-hub card
+// can be showing an English fallback article (whose primaryCategory is
+// always the English string) or a German translation whose frontmatter
+// hasn't necessarily been normalized to the German label -- this keeps
+// every card and filter button grouped under one canonical label per
+// category regardless of which source it came from.
+const categoryLabelDe: Record<string, string> = {
+  "Product Development": "Produktentwicklung",
+  AI: "KI",
+};
+const displayCategory = (raw: string) => (locale === "de" ? (categoryLabelDe[raw] ?? raw) : raw);
+
+// Order topics by how many articles use them, most common first — matches
+// the filter pattern on /training/full-schedule.
+const topicCounts = new Map<string, number>();
+for (const { article } of articles) {
+  if (article.data.primaryCategory) {
+    const topic = displayCategory(article.data.primaryCategory);
+    topicCounts.set(topic, (topicCounts.get(topic) ?? 0) + 1);
+  }
+}
+const topics = [...topicCounts.keys()].sort((a, b) => topicCounts.get(b)! - topicCounts.get(a)!);
+---
+
+<Breadcrumbs items={[{ label: t("nav.insights") }]} />
+
+<Section eyebrow={t("insights.eyebrow")} class="bg-mist-light">
+  <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+    {t("insights.heading")}
+  </h1>
+  <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
+    {t("insights.intro")}
+  </p>
+</Section>
+
+<Section eyebrow={t("insights.featuredEyebrow")}>
+  <div class="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
+    {
+      spotlight[0] && (
+        <a
+          href={articleHref(spotlight[0].article)}
+          class="flex flex-col overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card transition-shadow hover:shadow-card-hover"
+        >
+          {spotlight[0].article.data.imageUrl ? (
+            <div class="aspect-[16/9] w-full overflow-hidden">
+              <img src={spotlight[0].article.data.imageUrl} alt="" class="h-full w-full object-cover" />
+            </div>
+          ) : (
+            <div aria-hidden="true" class="aspect-[16/9] w-full" style={placeholderStyle(spotlight[0].article.id)} />
+          )}
+          <div class="flex flex-1 flex-col p-7">
+            <p class="eyebrow">
+              {[
+                articleDate(spotlight[0].article),
+                spotlight[0].article.data.readTimeMinutes && `${spotlight[0].article.data.readTimeMinutes} ${t("insights.minRead")}`,
+              ]
+                .filter(Boolean)
+                .join(" · ")}
+            </p>
+            <h2 class="mt-2 text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)]">{spotlight[0].article.data.title}</h2>
+            <p class="mt-3 max-w-xl text-[length:var(--text-body)] text-neutral-600">{spotlight[0].article.data.excerpt}</p>
+            {spotlight[0].author && (
+              <div class="mt-auto flex items-center gap-2 pt-5">
+                {spotlight[0].author.photo ? (
+                  <img src={spotlight[0].author.photo} alt="" class="h-9 w-9 shrink-0 rounded-full object-cover" />
+                ) : (
+                  <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-neutral-200 text-[11px] font-semibold text-neutral-600">
+                    {initials(spotlight[0].author.name)}
+                  </span>
+                )}
+                <span class="text-[length:var(--text-small)] font-semibold text-neutral-700">{spotlight[0].author.name}</span>
+              </div>
+            )}
+          </div>
+        </a>
+      )
+    }
+
+    <div class="flex flex-col gap-6">
+      {
+        spotlight.slice(1, 3).map(({ article, author }) => (
+          <a
+            href={articleHref(article)}
+            class="flex overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card transition-shadow hover:shadow-card-hover"
+          >
+            {article.data.imageUrl ? (
+              <div class="w-2/5 shrink-0 overflow-hidden">
+                <img src={article.data.imageUrl} alt="" class="h-full w-full object-cover" />
+              </div>
+            ) : (
+              <div aria-hidden="true" class="w-2/5 shrink-0" style={placeholderStyle(article.id)} />
+            )}
+            <div class="flex flex-1 flex-col justify-center p-5">
+              <p class="eyebrow">
+                {[article.data.readTimeMinutes && `${article.data.readTimeMinutes} ${t("insights.minRead")}`, articleDate(article)]
+                  .filter(Boolean)
+                  .join(" · ")}
+              </p>
+              <h3 class="mt-1.5 text-[length:var(--text-small)] font-semibold leading-snug">{article.data.title}</h3>
+              {author && (
+                <div class="mt-3 flex items-center gap-2">
+                  {author.photo ? (
+                    <img src={author.photo} alt="" class="h-6 w-6 shrink-0 rounded-full object-cover" />
+                  ) : (
+                    <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-neutral-200 text-[9px] font-semibold text-neutral-600">
+                      {initials(author.name)}
+                    </span>
+                  )}
+                  <span class="text-[length:var(--text-caption)] font-semibold text-neutral-700">{author.name}</span>
+                </div>
+              )}
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</Section>
+
+<Section eyebrow={`${articles.length} ${articles.length === 1 ? t("insights.article") : t("insights.articlesPlural")}`}>
+  <div id="insights-filters" class="space-y-6">
+    <div class="relative max-w-md">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400"
+      >
+        <circle cx="11" cy="11" r="7" />
+        <path d="m21 21-4.3-4.3" />
+      </svg>
+      <label for="insights-search" class="sr-only">{t("insights.searchLabel")}</label>
+      <input
+        id="insights-search"
+        type="search"
+        placeholder={t("insights.searchPlaceholder")}
+        class="w-full rounded-[var(--radius-control)] border border-neutral-300 bg-surface py-2.5 pl-9 pr-3 text-[length:var(--text-small)] placeholder:text-neutral-400 focus:border-ink focus:outline-none"
+      />
+    </div>
+
+    <div>
+      <p class="text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-500">
+        {t("insights.filterByTopic")}
+      </p>
+      <div class="mt-2 flex flex-wrap gap-2">
+        {
+          topics.map((topic) => (
+            <button
+              type="button"
+              data-filter-group="topic"
+              data-filter-value={topic}
+              class="cursor-pointer rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors hover:border-ink hover:text-ink"
+            >
+              {topic}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <p id="insights-empty" class="mt-10 text-[length:var(--text-body)] text-neutral-500" hidden>
+    {t("insights.noResults")}
+  </p>
+
+  <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="insights-grid">
+    {
+      gridArticles.map(({ article, author }) => (
+        <div class="insights-card contents" data-topic={article.data.primaryCategory ? displayCategory(article.data.primaryCategory) : ""}>
+          <InsightsArticleCard article={article} author={author} />
+        </div>
+      ))
+    }
+  </div>
+
+  <nav
+    aria-label="Insights pagination"
+    id="insights-pagination"
+    class="mt-10 flex items-center justify-center gap-1"
+    data-prev-label={t("insights.prevPage")}
+    data-next-label={t("insights.nextPage")}
+  ></nav>
+</Section>
+
+<Section tone="dark" eyebrow={t("insights.newsletterEyebrow")} heading={t("insights.newsletterHeading")}>
+  <p class="max-w-xl text-[length:var(--text-body)] text-neutral-300">
+    {t("insights.newsletterBody")}
+  </p>
+  <form
+    name="newsletter"
+    method="POST"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+    action={`${prefix}/thank-you`}
+    class="mt-6 flex max-w-md flex-col gap-3 sm:flex-row"
+  >
+    <input type="hidden" name="form-name" value="newsletter" />
+    <p class="hidden">
+      <label>
+        {t("register.honeypotLabel")} <input name="bot-field" />
+      </label>
+    </p>
+    <label class="sr-only" for="newsletter-email">{t("insights.emailAddress")}</label>
+    <input
+      id="newsletter-email"
+      name="email"
+      type="email"
+      required
+      placeholder="you@company.com"
+      class="w-full rounded-[var(--radius-control)] border border-neutral-600 bg-transparent px-4 py-2.5 text-surface placeholder:text-neutral-500"
+    />
+    <button
+      type="submit"
+      class="shrink-0 cursor-pointer rounded-[var(--radius-control)] bg-lime px-6 py-2.5 font-semibold text-ink transition-colors hover:bg-lime/85"
+    >
+      {t("insights.subscribe")}
+    </button>
+  </form>
+</Section>
+
+<script>
+  const PAGE_SIZE = 12;
+
+  const filterButtons = Array.from(
+    document.querySelectorAll<HTMLButtonElement>("[data-filter-group]")
+  );
+  const cards = Array.from(document.querySelectorAll<HTMLElement>(".insights-card"));
+  const emptyMessage = document.getElementById("insights-empty") as HTMLParagraphElement;
+  const grid = document.getElementById("insights-grid") as HTMLDivElement;
+  const searchInput = document.getElementById("insights-search") as HTMLInputElement | null;
+  const pagination = document.getElementById("insights-pagination") as HTMLElement;
+
+  const searchText = new Map(cards.map((card) => [card, card.textContent?.toLowerCase() ?? ""]));
+
+  const active: Record<string, Set<string>> = { topic: new Set() };
+  let query = "";
+  let currentPage = 1;
+
+  // Windowed page list, e.g. current=5, total=17 -> [1, "…", 4, 5, 6, "…", 17].
+  function pageList(current: number, total: number): (number | "…")[] {
+    const keep = new Set([1, total, current - 1, current, current + 1]);
+    const sorted = [...keep].filter((p) => p >= 1 && p <= total).sort((a, b) => a - b);
+    const result: (number | "…")[] = [];
+    let prev = 0;
+    for (const p of sorted) {
+      if (prev && p - prev > 1) result.push("…");
+      result.push(p);
+      prev = p;
+    }
+    return result;
+  }
+
+  function renderPagination(totalMatching: number) {
+    pagination.innerHTML = "";
+    const totalPages = Math.max(1, Math.ceil(totalMatching / PAGE_SIZE));
+    if (totalPages <= 1) return;
+
+    const makeButton = (label: string, page: number, variant: "nav" | "page" | "active") => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.textContent = label;
+      const base = "flex h-9 min-w-9 cursor-pointer items-center justify-center rounded-[var(--radius-control)] px-3 text-[length:var(--text-small)] font-semibold transition-colors";
+      btn.className =
+        variant === "active"
+          ? `${base} bg-ink text-surface`
+          : `${base} text-neutral-700 hover:bg-mist-light`;
+      btn.addEventListener("click", () => {
+        currentPage = page;
+        update();
+        document.getElementById("insights-filters")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      return btn;
+    };
+
+    if (currentPage > 1) pagination.appendChild(makeButton(pagination.dataset.prevLabel ?? "‹ Prev", currentPage - 1, "nav"));
+
+    for (const p of pageList(currentPage, totalPages)) {
+      if (p === "…") {
+        const span = document.createElement("span");
+        span.textContent = "…";
+        span.className = "flex h-9 min-w-9 items-center justify-center text-neutral-400";
+        pagination.appendChild(span);
+      } else {
+        pagination.appendChild(makeButton(String(p), p, p === currentPage ? "active" : "page"));
+      }
+    }
+
+    if (currentPage < totalPages) pagination.appendChild(makeButton(pagination.dataset.nextLabel ?? "Next ›", currentPage + 1, "nav"));
+  }
+
+  function update() {
+    const matching = cards.filter((card) => {
+      const topic = card.dataset.topic ?? "";
+      const topicMatch = active.topic.size === 0 || active.topic.has(topic);
+      const searchMatch = query === "" || (searchText.get(card) ?? "").includes(query);
+      return topicMatch && searchMatch;
+    });
+
+    const totalPages = Math.max(1, Math.ceil(matching.length / PAGE_SIZE));
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    const start = (currentPage - 1) * PAGE_SIZE;
+    const visible = new Set(matching.slice(start, start + PAGE_SIZE));
+
+    cards.forEach((card) => {
+      card.hidden = !visible.has(card);
+    });
+
+    emptyMessage.hidden = matching.length > 0;
+    grid.style.display = matching.length > 0 ? "" : "none";
+    renderPagination(matching.length);
+  }
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const group = button.dataset.filterGroup!;
+      const value = button.dataset.filterValue!;
+      const isActive = active[group].has(value);
+
+      if (isActive) {
+        active[group].delete(value);
+        button.classList.remove("bg-lime", "border-lime", "text-ink");
+        button.classList.add("bg-surface", "border-neutral-300", "text-neutral-700");
+      } else {
+        active[group].add(value);
+        button.classList.remove("bg-surface", "border-neutral-300", "text-neutral-700");
+        button.classList.add("bg-lime", "border-lime", "text-ink");
+      }
+
+      currentPage = 1;
+      update();
+    });
+  });
+
+  searchInput?.addEventListener("input", () => {
+    query = searchInput.value.trim().toLowerCase();
+    currentPage = 1;
+    update();
+  });
+
+  update();
+</script>

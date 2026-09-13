@@ -1,0 +1,41 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import InsightsHubPageContent from "@/components/pages/InsightsHubPageContent.astro";
+import { localeOfId, localizedArticle } from "@/lib/i18n";
+import { useTranslations } from "@/i18n/utils";
+
+const t = useTranslations("de");
+
+// Same canonical (English) article list as /insights -- this hub always
+// shows all of them, each resolved to its German translation when one
+// exists (localizedArticle), falling back to the English original
+// otherwise. A fallback article's card/spotlight then links out to its
+// /insights/[slug] page rather than 404ing or being hidden -- same
+// graceful-fallback pattern as the language switcher on untranslated
+// pages elsewhere on the site.
+const allEnArticles = (await getCollection("insights-articles", (a) => localeOfId(a.id) === "en")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const articles = await Promise.all(
+  allEnArticles.map(async (enArticle) => {
+    const article = await localizedArticle(enArticle, "de");
+    const profile = article.data.author ? await getEntry(article.data.author) : undefined;
+    const author = profile
+      ? { name: profile.data.name, photo: profile.data.photo }
+      : article.data.authorName
+        ? { name: article.data.authorName, photo: undefined }
+        : undefined;
+    return { article, author };
+  })
+);
+---
+
+<BaseLayout
+  title={t("insights.eyebrow")}
+  description={t("insights.intro")}
+  translations={{ en: "/insights", de: "/de/insights" }}
+>
+  <InsightsHubPageContent articles={articles} />
+</BaseLayout>
