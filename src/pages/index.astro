@@ -24,7 +24,7 @@ const upcomingWithCourse = await Promise.all(
   })
 );
 
-const team = (await getCollection("coach-profiles"))
+const team = (await getCollection("coach-profiles", (c) => localeOfId(c.id) === "en"))
   .sort((a, b) => a.data.displayOrder - b.data.displayOrder || a.data.name.localeCompare(b.data.name))
   .slice(0, 7);
 

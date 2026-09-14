@@ -3,17 +3,12 @@ import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import AboutProfilePageContent from "@/components/pages/AboutProfilePageContent.astro";
 import { toPathSegment } from "@/lib/urlSlug";
-import { localeOfId, baseSlug } from "@/lib/i18n";
+import { localeOfId, baseSlug, localizedArticle } from "@/lib/i18n";
 
-// Spec §2 bug 1: only profiles with hasFullProfile: true get a page here —
-// this is the "resolved" behaviour, since the About index only links to
-// profiles in this set (see TeamCard.astro). This route is the English
-// one, so it must only ever generate English paths; /de/about/[slug].astro
-// is the German counterpart.
 export async function getStaticPaths() {
   const profiles = await getCollection(
     "coach-profiles",
-    ({ data, id }) => data.hasFullProfile && localeOfId(id) === "en"
+    ({ data, id }) => data.hasFullProfile && localeOfId(id) === "de"
   );
   // Individual coach profile pages don't translate course/session data --
   // there's one shared set of course/session instances, not duplicated per
@@ -24,7 +19,11 @@ export async function getStaticPaths() {
   // TrainingCourse.code punctuation exactly (e.g. "ICP-ACC" vs "ICPACC")
   const normalize = (s: string) => s.replace(/[^a-z0-9]/gi, "").toUpperCase();
   return profiles.map((profile) => ({
-    params: { slug: profile.data.urlSlug ?? profile.id },
+    // urlSlug is copied forward from the English entry when set (an
+    // accented character already present in both locales' content) --
+    // otherwise the path segment is always the shared base slug, same
+    // convention as training-courses/insights-articles.
+    params: { slug: profile.data.urlSlug ?? baseSlug(profile.id) },
     props: {
       profile,
       coursesDelivered: (profile.data.coursesDelivered ?? [])
@@ -37,6 +36,11 @@ export async function getStaticPaths() {
 const { profile, coursesDelivered } = Astro.props;
 const { bio, name, role } = profile.data;
 
+// trainers/author references on training-schedules and insights-articles
+// always point at the English coach-profile id (one canonical identity per
+// person, not duplicated per language) -- match on that.
+const authorId = baseSlug(profile.id);
+
 // "About your trainer(s)" companion data: what this person is teaching next
 // and what they've written recently. Both are optional add-ons -- most
 // profiles (everyone except Russell Hill today) won't have either yet, and
@@ -44,42 +48,39 @@ const { bio, name, role } = profile.data;
 const allSchedules = await getCollection("training-schedules");
 const upcomingSessions = await Promise.all(
   allSchedules
-    .filter((s) => s.data.trainers?.some((t) => t.id === profile.id) && s.data.date && s.data.date >= new Date())
+    .filter((s) => s.data.trainers?.some((t) => t.id === authorId) && s.data.date && s.data.date >= new Date())
     .sort((a, b) => a.data.date!.valueOf() - b.data.date!.valueOf())
     .map(async (session) => {
       const course = await getEntry(session.data.course);
       const category = await getEntry(course.data.category);
-      return { session, course, category };
+      return { session, category, course };
     })
 );
 
-// A growing few articles now have a German translation alongside them,
-// which this English route must not surface as if it were a separate,
-// distinct article -- allArticles stays English-only.
-const allArticles = await getCollection("insights-articles", (a) => localeOfId(a.id) === "en");
-const recentArticles = allArticles
-  .filter((a) => a.data.author?.id === profile.id)
+// Match this Fellow's articles by their canonical English author id, then
+// resolve each matched article to its own German translation where one
+// exists, falling back to the English original otherwise -- same
+// graceful-fallback pattern as the Insights hub (localizedArticle).
+const allEnArticles = await getCollection("insights-articles", (a) => localeOfId(a.id) === "en");
+const authoredEnArticles = allEnArticles
+  .filter((a) => a.data.author?.id === authorId)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 4);
+const recentArticles = await Promise.all(authoredEnArticles.map((a) => localizedArticle(a, "de")));
 
-// Only the German coach profiles that exist get a switcher/hreflang pair --
-// every hasFullProfile entry does today, but this stays defensive (same
-// shape as insights articles) rather than assuming so for a future profile
-// added without its German counterpart yet.
-const deProfile = await getEntry("coach-profiles", `de/${baseSlug(profile.id)}`);
+// A German coach-profile entry only ever exists alongside its English
+// original, so this always resolves -- unlike the English route,
+// translations here is never conditional.
+const enProfile = (await getEntry("coach-profiles", authorId))!;
 ---
 
 <BaseLayout
   title={name}
-  description={bio ? bio.slice(0, 160) : `${name}, ${role} at Better Change`}
-  translations={
-    deProfile
-      ? {
-          en: `/about/${toPathSegment(profile.data.urlSlug ?? baseSlug(profile.id))}`,
-          de: `/de/about/${toPathSegment(deProfile.data.urlSlug ?? baseSlug(deProfile.id))}`,
-        }
-      : undefined
-  }
+  description={bio ? bio.slice(0, 160) : `${name}, ${role} bei Better Change`}
+  translations={{
+    en: `/about/${toPathSegment(enProfile.data.urlSlug ?? baseSlug(enProfile.id))}`,
+    de: `/de/about/${toPathSegment(profile.data.urlSlug ?? baseSlug(profile.id))}`,
+  }}
 >
   <AboutProfilePageContent
     profile={profile}

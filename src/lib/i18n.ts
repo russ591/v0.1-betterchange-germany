@@ -44,6 +44,23 @@ export async function localizedCourse(
   return (await getEntry("training-courses", base))!;
 }
 
+// coach-profiles: every hasFullProfile entry now has a German translation,
+// but this still falls back to the English entry rather than assuming so --
+// same defensive shape as localizedArticle/localizedCourse, so a future
+// profile added without its German counterpart yet degrades gracefully
+// instead of breaking the build.
+export async function localizedCoachProfile(
+  profile: CollectionEntry<"coach-profiles">,
+  locale: Locale
+): Promise<CollectionEntry<"coach-profiles">> {
+  const base = baseSlug(profile.id);
+  if (locale === "de") {
+    const de = await getEntry("coach-profiles", `de/${base}`);
+    if (de) return de;
+  }
+  return (await getEntry("coach-profiles", base))!;
+}
+
 // insights-articles is overwhelmingly untranslated (a handful of German
 // entries alongside ~200 English-only ones, growing batch by batch) -- this
 // resolves "the version of this article to display" for whichever locale a

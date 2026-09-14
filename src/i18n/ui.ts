@@ -130,6 +130,22 @@ export const en = {
   "certification": "Certification",
   "languages": "Languages",
 
+  // Coach/Fellow profile page (/about/[slug]). "Bio" left in both languages
+  // since it's already the naturally-used word in German too -- not
+  // translated to something like "Biografie".
+  "profile.bio": "Bio",
+  "profile.backgroundExpertise": "Background & expertise",
+  "profile.approach": "Approach",
+  "profile.specialities": "Specialities",
+  "profile.certifications": "Certifications",
+  "profile.coursesDelivered": "Courses delivered",
+  "profile.yearsExperienceSuffix": "years experience",
+  "profile.upcomingTraining": "Upcoming training",
+  "profile.findOutMore": "Find out more",
+  "profile.recentArticles": "Recent articles",
+  "profile.seeAllArticles": "See all articles",
+  "profile.showLess": "Show less",
+
   // Not covered by any Insights translation draft yet -- falls back to the
   // "[DE] " placeholder until reviewed.
   "insights.minRead": "min read",
@@ -369,6 +385,22 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "duration": "Dauer",
   "certification": "Zertifizierung",
   "languages": "Sprachen",
+
+  // From betterchange-de-coach-profiles.md.
+  "profile.bio": "Bio",
+  "profile.backgroundExpertise": "Hintergrund & Expertise",
+  "profile.approach": "Ansatz",
+  "profile.specialities": "Spezialgebiete",
+  "profile.certifications": "Zertifizierungen",
+  "profile.coursesDelivered": "Durchgeführte Kurse",
+  "profile.yearsExperienceSuffix": "Jahre Erfahrung",
+  // Reuses "anstehende" for "upcoming", matching
+  // training.upcomingDisciplineTrainingPrefix's established phrasing.
+  "profile.upcomingTraining": "Anstehende Trainings",
+  "profile.findOutMore": "Mehr erfahren",
+  "profile.recentArticles": "Aktuelle Artikel",
+  "profile.seeAllArticles": "Alle Artikel ansehen",
+  "profile.showLess": "Weniger anzeigen",
 
   "certifiedBy": "Zertifiziert durch",
   "cta.talkToUs": "Kontakt aufnehmen",
