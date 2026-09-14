@@ -2,7 +2,7 @@
 import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import HomePageContent from "@/components/pages/HomePageContent.astro";
-import { localeOfId, localizedCourse, localizedArticle } from "@/lib/i18n";
+import { localeOfId, localizedCourse, localizedArticle, localizedCoachProfile } from "@/lib/i18n";
 
 const copy = (await getEntry("home-page", "de"))!.data;
 
@@ -24,9 +24,10 @@ const upcomingWithCourse = await Promise.all(
   })
 );
 
-const team = (await getCollection("coach-profiles"))
+const teamEn = (await getCollection("coach-profiles", (c) => localeOfId(c.id) === "en"))
   .sort((a, b) => a.data.displayOrder - b.data.displayOrder || a.data.name.localeCompare(b.data.name))
   .slice(0, 7);
+const team = await Promise.all(teamEn.map((profile) => localizedCoachProfile(profile, "de")));
 
 // Pick the 3 most recent articles by their English (canonical) date, then
 // show each one's German translation where one exists yet, English

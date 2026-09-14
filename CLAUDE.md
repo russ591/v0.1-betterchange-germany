@@ -26,6 +26,8 @@ Never merge to `main` without asking first. When your work is ready and all pre-
 
 **Em dashes are prohibited house-wide**, per house style (see below) — check for these in visible content on every change, including article titles, generated copy, and code comments in files that also contain rendered content (script blocks are fine, rendered text is not).
 
+**Redirect targets must be verified against the actual built directory, never guessed from a title.** Several existing articles have a custom `urlSlug` field preserving legacy punctuation (colons, apostrophes, periods, question marks) that differs from what a "clean" slug derived from the title would produce. When redirecting to an existing article, always look up its actual live URL in the built output before using it as a redirect target — a guessed slug will silently 404. This has recurred at least 3 times across the Insights rewrite/cleanup work.
+
 ## German translation house style
 
 - **No direct address.** Never use "Sie" or "Du" to address the reader. Use impersonal/collective/passive constructions instead ("Wir unterstützen..." / "Es lohnt sich, ..." / passive voice), consistent with how the whole site is written.

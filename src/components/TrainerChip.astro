@@ -1,6 +1,7 @@
 ---
 import { toPathSegment } from "@/lib/urlSlug";
 import type { TrainerEntry } from "@/lib/trainers";
+import { baseSlug } from "@/lib/i18n";
 import { resolveLocale, useTranslations } from "@/i18n/utils";
 
 // Compact avatar+name chip -- used wherever a trainer needs to be
@@ -33,13 +34,20 @@ interface Props {
 }
 
 const { trainer, density = "chip", linkable = true, showLabel = false, linkedinFallback = true } = Astro.props;
-const t = useTranslations(resolveLocale(Astro.currentLocale));
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const prefix = locale === "de" ? "/de" : "";
 const trainerLabel = (name: string) => `${t("course.trainerLabel")} ${name}`;
 
+// trainer.profile is always the English coach-profile entry (a session's
+// trainers reference the canonical English id, same as an article's
+// author) -- unlike training-courses, a coach's own path segment doesn't
+// diverge by locale (the German route copies the same urlSlug/base slug
+// forward), so only the locale prefix needs adding here, same as TeamCard.
 const href =
   linkable && trainer.kind === "profile"
     ? trainer.profile.data.hasFullProfile
-      ? `/about/${toPathSegment(trainer.profile.data.urlSlug ?? trainer.profile.id)}`
+      ? `${prefix}/about/${toPathSegment(trainer.profile.data.urlSlug ?? baseSlug(trainer.profile.id))}`
       : linkedinFallback
         ? trainer.profile.data.linkedinUrl
         : undefined

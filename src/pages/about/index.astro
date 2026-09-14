@@ -2,10 +2,11 @@
 import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import AboutPageContent from "@/components/pages/AboutPageContent.astro";
+import { localeOfId } from "@/lib/i18n";
 
 const copy = (await getEntry("about-page", "en"))!.data;
 
-const team = (await getCollection("coach-profiles")).sort(
+const team = (await getCollection("coach-profiles", (c) => localeOfId(c.id) === "en")).sort(
   (a, b) => a.data.displayOrder - b.data.displayOrder || a.data.name.localeCompare(b.data.name)
 );
 ---

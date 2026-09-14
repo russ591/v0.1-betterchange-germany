@@ -1,0 +1,24 @@
+---
+# Reviewed German copy from betterchange-de-seo-rewrite-translation-02.md
+# (lighter-touch spot-check review, not full Fellow line-by-line --
+# agreed approach for Insights). Title kept in English per the
+# established convention (the draft offered a suggested German title,
+# not used); metaTitle omitted so it falls back to title, unprefixed.
+# contentType/primaryCategory/categories stay English loanwords per the
+# site-wide category-label rule; "AI" -> "KI" applied where relevant per
+# that same rule's stated exception. excerpt/metaDescription supplied
+# directly in this batch's draft (unlike sub-batch 1); author/date/
+# contentType pulled from the EN source article per the standing rule.
+title: 'What to Actually Do When Unplanned Work Hits Your Sprint'
+contentType: Blog
+primaryCategory: Scrum
+categories: []
+date: '2026-06-22T02:08:00Z'
+readTimeMinutes: 2
+authorName: 'Better Change Fellow'
+excerpt: "Ungeplante Arbeit wird in vielen Scrum-Ratgebern als seltene, zu minimierende Störung behandelt. Für viele Teams ist sie ein routinemäßiger, wiederkehrender Bestandteil der Arbeit. Wie sie sich handhaben lässt, ohne den Wert der Sprint-Planung still zu zerstören."
+featured: false
+metaDescription: "Ungeplante Arbeit wird in vielen Scrum-Ratgebern als seltene, zu minimierende Störung behandelt. Für viele Teams ist sie ein routinemäßiger,…"
+bodyHtml: |-
+  <p>Ungeplante Arbeit wird in vielen Scrum-Ratgebern als seltene, zu minimierende Störung behandelt. Für viele Teams (alle, die ein produktives System unterstützen, alle in einer Organisation mit genuin dringenden Kundeneskalationen) ist sie ein routinemäßiger, wiederkehrender Bestandteil der Arbeit, keine Ausnahme. Die nützliche Frage ist nicht, wie sie beseitigt wird, sondern wie sie gehandhabt wird, ohne den Wert von Sprint Planning insgesamt still zu zerstören.</p><h2>Erst echte Dringlichkeit von schlechter Planung anderer unterscheiden</h2><p>Nicht alles, was während eines Sprints als "dringend" ankommt, ist es tatsächlich. Ein Produktionsvorfall, der gerade jetzt Kund:innen betrifft, ist genuin dringend. Eine Stakeholder-Anfrage, die beim vorherigen Sprint Review hätte angesprochen werden können, es aber nicht wurde, und jetzt "dringend" geschehen muss, weil jemand vergessen hat, vorauszuplanen, ist eine andere Kategorie von Problem, und beide gleich zu behandeln, trainiert die Organisation darauf, alles über Dringlichkeit zu leiten statt über echte Planung.</p><h2>Explizit Raum dafür schaffen, statt so zu tun, als würde es nicht passieren</h2><p>Teams, die wiederkehrende ungeplante Arbeit erleben, aber Sprints so planen, als würde sie nicht auftreten, setzen sich entweder dem Risiko aus, regelmäßig Verpflichtungen zu verfehlen, oder liefern still jeden einzelnen Sprint weniger geplante Arbeit, ohne je zu klären, warum. Ein ehrlicherer Ansatz: die historische Rate ungeplanter Arbeit über mehrere Sprints verfolgen und bewusst so viel Kapazität beim Planen des nächsten reservieren, statt 100 % der nominellen Kapazität an geplante Arbeit zu binden und jede Unterbrechung als Ausnahme zu behandeln.</p><h2>Eine explizite Schwelle dafür haben, wann das Sprint Goal selbst gefährdet ist</h2><p>Manche ungeplante Arbeit lässt sich innerhalb bestehender Reserven auffangen. Manche ist bedeutsam genug, dass die Verfolgung des ursprünglichen Sprint Goals unverändert keinen Sinn mehr ergibt. Das Team braucht gemeinsam mit der Product-Owner-Person eine echte Antwort auf "wie viel ungeplante Arbeit ist zu viel, bevor das Ziel überdacht wird", nicht als automatisch angewendete Regel, sondern als bewusster Entscheidungspunkt, der ausgelöst wird, statt still ignoriert zu werden, während das Team einfach versucht, alles zu schaffen.</p><h2>Es verfolgen, damit das Gespräch darüber auf Evidenz beruhen kann</h2><p>Ein Team, das sagen kann "ungeplante Arbeit hat in den letzten vier Sprints etwa 20 % unserer Kapazität beansprucht", ist in einer völlig anderen Position als eines mit dem vagen, unquantifizierten Gefühl "wir werden ständig unterbrochen". Ersteres kann ein echtes Gespräch mit der Product-Owner-Person und Stakeholdern über den eingegangenen Kompromiss führen. Letzteres erlebt nur Frustration ohne die Daten, um zu handeln.</p><h2>Die Retrospektive nutzen, um die Quelle zu adressieren, nicht nur das Symptom</h2><p>Folgt ungeplante Arbeit einem konsistenten Muster (derselbe Typ Produktionsproblem tritt wiederholt auf, dieselbe Kategorie Stakeholder-Anfrage umgeht die normale Planung), ist die Retrospektive der Ort, an dem das Team fragen sollte, ob die Quelle dieses Musters behebbar ist, statt jedes Auftreten als isolierten Einzelfall zu behandeln, der einfach wieder aufgefangen werden muss.</p><p>Ungeplante Arbeit ist kein Zeichen, dass Scrum scheitert. So zu tun, als existiere sie im Planungsprozess nicht, und dann jeden Sprint überrascht zu sein, wenn sie trotzdem auftaucht, ist das eigentliche Scheitern.</p>
+---
