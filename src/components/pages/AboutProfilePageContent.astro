@@ -5,8 +5,9 @@
 // in src/lib/i18n.ts); `coursesDelivered`/`upcomingSessions` always reference
 // the English training-courses/training-categories entries regardless of
 // locale (there's one shared set of course/session data, not duplicated per
-// language -- see the getStaticPaths comment in the page files), so only
-// their hrefs need the locale prefix. `recentArticles` is already resolved
+// language -- see the getStaticPaths comment in the page files), so their
+// hrefs need locale-aware slug resolution, not just a prefix -- see
+// courseHref() below. `recentArticles` is already resolved
 // to the correct locale by the caller too, one at a time via localizedArticle,
 // so it degrades to the English original for any article without a German
 // translation yet -- same graceful-fallback pattern used on the Insights hub.
@@ -18,7 +19,7 @@ import { formatSessionDate } from "@/lib/dates";
 import { toPathSegment } from "@/lib/urlSlug";
 import { courseBadges } from "@/data/courseBadges";
 import { certificationLogos } from "@/data/certifications";
-import { baseSlug } from "@/lib/i18n";
+import { baseSlug, localeOfId } from "@/lib/i18n";
 import { resolveLocale, useTranslations } from "@/i18n/utils";
 
 interface Props {
@@ -74,6 +75,29 @@ function badgeFor(course: CollectionEntry<"training-courses">, category: Collect
   if (badge) return { kind: "badge" as const, badge };
   const logo = category.data.certificationBody ? certificationLogos[category.data.certificationBody] : undefined;
   return logo ? { kind: "logo" as const, logo } : undefined;
+}
+
+// `course` here is always the English training-courses entry (see the file
+// header comment), so its own urlSlug is only a valid path segment on the
+// English route -- German course pages always route on the plain base slug
+// regardless of urlSlug, per the getStaticPaths comment in
+// src/pages/de/training/[category]/[course].astro. Using course.data.urlSlug
+// unconditionally here produced a 404 on the German profile pages (urlSlug
+// segments like "flight-level-3-design-(fl3d)" have no German route; only
+// "/de/training/flight-levels/fl3d" does).
+function courseHref(course: CollectionEntry<"training-courses">, categoryId: string) {
+  const slug = locale === "de" ? baseSlug(course.id) : (course.data.urlSlug ?? course.id);
+  return `${prefix}/training/${baseSlug(categoryId)}/${toPathSegment(slug)}`;
+}
+
+// A recentArticles entry without a German translation falls back to the
+// English original (see localizedArticle) -- its href/date must go by its
+// OWN locale, not the page's, or a fallback article shown here 404s at
+// /de/insights/<en-slug>. Same fix as InsightsHubPageContent.astro's
+// articleHref()/articleDate() for the identical fallback case.
+function articleHref(article: CollectionEntry<"insights-articles">) {
+  const articlePrefix = localeOfId(article.id) === "de" ? "/de" : "";
+  return `${articlePrefix}/insights/${toPathSegment(article.data.urlSlug ?? baseSlug(article.id))}`;
 }
 
 const hasSidebar = upcomingSessions.length > 0 || recentArticles.length > 0;
@@ -166,7 +190,7 @@ const hasSidebar = upcomingSessions.length > 0 || recentArticles.length > 0;
                 {coursesDelivered.map((course) => (
                   <li>
                     <a
-                      href={`${prefix}/training/${course.data.category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
+                      href={courseHref(course, course.data.category.id)}
                       class="flex items-center gap-1.5 rounded-[var(--radius-pill)] border border-neutral-300 bg-surface py-1 pl-1 pr-2.5 text-[length:var(--text-caption)] font-semibold transition-colors hover:border-ink hover:text-ink"
                     >
                       {courseBadges[course.id] && (
@@ -196,7 +220,7 @@ const hasSidebar = upcomingSessions.length > 0 || recentArticles.length > 0;
                 const b = badgeFor(course, category);
                 return (
                   <a
-                    href={`${prefix}/training/${category.id}/${toPathSegment(course.data.urlSlug ?? course.id)}`}
+                    href={courseHref(course, category.id)}
                     class="flex flex-col gap-2 py-3 first:pt-0 last:pb-0 transition-colors hover:bg-mist-light lg:flex-row lg:items-center lg:gap-3"
                     data-extra-session={i >= UPCOMING_PREVIEW_COUNT ? "" : undefined}
                     hidden={i >= UPCOMING_PREVIEW_COUNT}
@@ -244,14 +268,14 @@ const hasSidebar = upcomingSessions.length > 0 || recentArticles.length > 0;
             <p class="text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.06em] text-neutral-500">{t("profile.recentArticles")}</p>
             <div class="mt-3 flex flex-col divide-y divide-neutral-100">
               {recentArticles.map((article) => (
-                <a href={`${prefix}/insights/${toPathSegment(article.data.urlSlug ?? baseSlug(article.id))}`} class="flex items-center gap-3 py-3 first:pt-0 last:pb-0 transition-colors hover:bg-mist-light">
+                <a href={articleHref(article)} class="flex items-center gap-3 py-3 first:pt-0 last:pb-0 transition-colors hover:bg-mist-light">
                   <span class="block h-12 w-12 shrink-0 overflow-hidden rounded-[0.5rem] bg-mist-light">
                     {article.data.imageUrl && <img src={article.data.imageUrl} alt="" class="h-full w-full object-cover" loading="lazy" />}
                   </span>
                   <div class="min-w-0 flex-1">
                     <p class="line-clamp-2 text-[length:var(--text-small)] font-semibold leading-snug">{article.data.title}</p>
                     <p class="mt-0.5 text-[length:var(--text-caption)] text-neutral-500">
-                      {article.data.date.toLocaleDateString(locale === "de" ? "de-DE" : "en-GB", { day: "numeric", month: "short" })}
+                      {article.data.date.toLocaleDateString(localeOfId(article.id) === "de" ? "de-DE" : "en-GB", { day: "numeric", month: "short" })}
                       {article.data.readTimeMinutes && ` · ${article.data.readTimeMinutes} ${t("insights.minRead")}`}
                     </p>
                   </div>
