@@ -431,6 +431,94 @@
   to = "/insights/what-good-facilitation-actually-requires"
   status = 301
 
+# --- Duplicate cleanup: 15 filler articles retired, redirected to the ------
+# canonical article (rewritten pieces from batches 1-2, or an existing
+# quality-tier article) that already covers their topic. See
+# betterchange-duplicate-cleanup-plan.md. The content files themselves are
+# removed, not just redirected -- fully superseded, nothing to keep.
+[[redirects]]
+  from = "/insights/10-advantages-using-sprint-goals"
+  to = "/insights/ten-reasons-sprint-goals-are-worth-the-effort"
+  status = 301
+
+[[redirects]]
+  from = "/insights/examples-of-teal-organizations-a-comprehensive-guide"
+  to = "/insights/what-teal-organizations-actually-get-right"
+  status = 301
+
+[[redirects]]
+  from = "/insights/exploring-the-benefits-of-teal-organisations"
+  to = "/insights/what-teal-organizations-actually-get-right"
+  status = 301
+
+[[redirects]]
+  from = "/insights/10-examples-of-teal-organizations"
+  to = "/insights/what-teal-organizations-actually-get-right"
+  status = 301
+
+[[redirects]]
+  from = "/insights/creating-a-teal-organisation-how-to-achieve-a-self-managed-workplace"
+  to = "/insights/what-teal-organizations-actually-get-right"
+  status = 301
+
+# This article's live URL was its custom urlSlug (a legacy colon-containing
+# path preserved for SEO on domain cutover), not its filename -- redirect
+# from that literal URL too, or anyone who had it bookmarked/indexed 404s.
+[[redirects]]
+  from = "/insights/creating-a-teal-organisation:-how-to-achieve-a-self-managed-workplace"
+  to = "/insights/what-teal-organizations-actually-get-right"
+  status = 301
+
+[[redirects]]
+  from = "/insights/understanding-the-decision-making-process"
+  to = "/insights/how-decisions-actually-get-made-in-management"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-a-characteristic-of-an-effective-scrum-master"
+  to = "/insights/what-is-a-scrum-master-more-than-a-meeting-facilitator"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-makes-a-good-product-owner"
+  to = "/insights/the-product-owner:-running-a-business-within-a-business"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-makes-a-good-leader"
+  to = "/insights/strategies-that-actually-enhance-leadership-skills"
+  status = 301
+
+[[redirects]]
+  from = "/insights/the-benefits-of-collaborative-decision-making"
+  to = "/insights/why-group-decisions-often-go-wrong"
+  status = 301
+
+[[redirects]]
+  from = "/insights/10-examples-of-effective-decision-making"
+  to = "/insights/how-decisions-actually-get-made-in-management"
+  status = 301
+
+[[redirects]]
+  from = "/insights/3-backlog-refinement-techniques"
+  to = "/insights/what-good-backlog-refinement-actually-looks-like"
+  status = 301
+
+[[redirects]]
+  from = "/insights/5-important-leadership-skills"
+  to = "/insights/strategies-that-actually-enhance-leadership-skills"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-do-agile-leaders-do"
+  to = "/insights/strategies-that-actually-enhance-leadership-skills"
+  status = 301
+
+[[redirects]]
+  from = "/insights/the-art-of-making-decisions-how-to-make-the-right-choice-every-time"
+  to = "/insights/how-decisions-actually-get-made-in-management"
+  status = 301
+
 # --- German 404 page ------------------------------------------------------
 # Netlify's automatic per-directory custom-404 convention needs a literal
 # 404.html in the requested directory. Astro's own "/404 -> 404.html
