@@ -345,6 +345,49 @@
   to = "/insights/why-change-management-matters-more-than-the-plan-itself"
   status = 301
 
+# --- SEO-filler rewrite batch 2: old slug -> new, sharper slug -------------
+# Same approach as batch 1 (see betterchange-seo-rewrite-batch-02.md).
+# English-only -- none of these 8 had a German translation.
+[[redirects]]
+  from = "/insights/6-tips-improving-product-backlog-refinement"
+  to = "/insights/what-good-backlog-refinement-actually-looks-like"
+  status = 301
+
+[[redirects]]
+  from = "/insights/top-7-questions-typically-asked-during-sprint-review"
+  to = "/insights/the-questions-that-make-a-sprint-review-actually-useful"
+  status = 301
+
+[[redirects]]
+  from = "/insights/managing-technical-debt-in-scrum-roles-and-responsibilities"
+  to = "/insights/who-actually-owns-technical-debt-in-scrum"
+  status = 301
+
+[[redirects]]
+  from = "/insights/3-best-practices-for-sprint-planning"
+  to = "/insights/the-sprint-planning-mistake-most-teams-dont-notice"
+  status = 301
+
+[[redirects]]
+  from = "/insights/effective-strategies-for-stabilizing-team-velocity-in-scrum"
+  to = "/insights/why-team-velocity-swings-and-what-actually-stabilizes-it"
+  status = 301
+
+[[redirects]]
+  from = "/insights/how-to-handle-unplanned-work-in-scrum"
+  to = "/insights/what-to-actually-do-when-unplanned-work-hits-your-sprint"
+  status = 301
+
+[[redirects]]
+  from = "/insights/establishing-an-agile-team-working-agreement"
+  to = "/insights/what-a-team-working-agreement-is-actually-for"
+  status = 301
+
+[[redirects]]
+  from = "/insights/5-best-kanban-tools"
+  to = "/insights/choosing-a-kanban-tool-the-question-that-actually-matters"
+  status = 301
+
 # --- German 404 page ------------------------------------------------------
 # Netlify's automatic per-directory custom-404 convention needs a literal
 # 404.html in the requested directory. Astro's own "/404 -> 404.html
