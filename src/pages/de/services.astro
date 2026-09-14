@@ -5,7 +5,7 @@ import ServicesPageContent from "@/components/pages/ServicesPageContent.astro";
 
 const copy = (await getEntry("services-page", "de"))!.data;
 
-const insightSlugs = ["what-is-a-scrum-master", "how-to-run-a-retrospective", "why-is-change-management-important"];
+const insightSlugs = ["what-is-a-scrum-master", "how-to-run-a-retrospective", "why-change-management-matters-more-than-the-plan-itself"];
 const insightArticles = (
   await Promise.all(insightSlugs.map((slug) => getEntry("insights-articles", slug)))
 ).filter((article) => article !== undefined);

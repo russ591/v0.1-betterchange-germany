@@ -300,6 +300,51 @@
   to = "/insights/why-developers-build-the-wrong-thing-and-how-user-stories-help"
   status = 301
 
+# --- SEO-filler rewrite batch 1: old slug -> new, sharper slug -------------
+# No historical traffic/backlinks to protect on this site, so slugs were
+# updated to match each rewritten article's new title rather than kept
+# unchanged (see betterchange-seo-rewrite-batch-01.md). English-only --
+# none of these 8 had a German translation.
+[[redirects]]
+  from = "/insights/understanding-the-decision-making-process-in-management"
+  to = "/insights/how-decisions-actually-get-made-in-management"
+  status = 301
+
+[[redirects]]
+  from = "/insights/exploring-the-benefits-of-the-teal-organization-model"
+  to = "/insights/what-teal-organizations-actually-get-right"
+  status = 301
+
+[[redirects]]
+  from = "/insights/six-ways-scrum-masters-can-be-more-effective"
+  to = "/insights/six-ways-scrum-masters-become-more-effective"
+  status = 301
+
+[[redirects]]
+  from = "/insights/maximizing-group-decision-making-for-optimal-outcomes"
+  to = "/insights/why-group-decisions-often-go-wrong"
+  status = 301
+
+[[redirects]]
+  from = "/insights/top-strategies-for-enhancing-your-leadership-skills"
+  to = "/insights/strategies-that-actually-enhance-leadership-skills"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-scrum-says-about-estimates"
+  to = "/insights/what-scrum-actually-says-about-estimates"
+  status = 301
+
+[[redirects]]
+  from = "/insights/the-importance-of-teamwork"
+  to = "/insights/why-teamwork-is-harder-than-it-looks"
+  status = 301
+
+[[redirects]]
+  from = "/insights/why-is-change-management-important"
+  to = "/insights/why-change-management-matters-more-than-the-plan-itself"
+  status = 301
+
 # --- German 404 page ------------------------------------------------------
 # Netlify's automatic per-directory custom-404 convention needs a literal
 # 404.html in the requested directory. Astro's own "/404 -> 404.html
