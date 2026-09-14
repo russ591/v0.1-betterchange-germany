@@ -71,7 +71,7 @@
 
 [[redirects]]
   from = "/insights/can-the-product-owner-also-be-the-scrum-master%3F"
-  to = "/insights/can-the-product-owner-also-be-the-scrum-master"
+  to = "/insights/why-combining-product-owner-and-scrum-master-usually-backfires"
   status = 301
 
 [[redirects]]
@@ -106,7 +106,7 @@
 
 [[redirects]]
   from = "/insights/what-is-a-kanban-card%3F"
-  to = "/insights/what-is-a-kanban-card"
+  to = "/insights/what-a-kanban-card-should-actually-contain"
   status = 301
 
 [[redirects]]
@@ -145,17 +145,17 @@
 
 [[redirects]]
   from = "/insights/what-is-agile-leadership%3F"
-  to = "/insights/what-is-agile-leadership"
+  to = "/insights/what-agile-leadership-requires-that-traditional-management-doesnt"
   status = 301
 
 [[redirects]]
   from = "/insights/what-is-agile-project-management%3F"
-  to = "/insights/what-is-agile-project-management"
+  to = "/insights/how-agile-project-management-actually-differs-from-traditional"
   status = 301
 
 [[redirects]]
   from = "/insights/what-is-agile-transformation%3F"
-  to = "/insights/what-is-agile-transformation"
+  to = "/insights/why-agile-transformations-are-organizational-not-just-procedural"
   status = 301
 
 [[redirects]]
@@ -175,7 +175,7 @@
 
 [[redirects]]
   from = "/insights/what-is-an-iteration-in-agile%3F"
-  to = "/insights/what-is-an-iteration-in-agile"
+  to = "/insights/what-an-iteration-is-actually-buying-you"
   status = 301
 
 [[redirects]]
@@ -190,7 +190,7 @@
 
 [[redirects]]
   from = "/insights/what-is-evidence-based-management%3F"
-  to = "/insights/what-is-evidence-based-management"
+  to = "/insights/what-evidence-based-management-actually-measures"
   status = 301
 
 [[redirects]]
@@ -230,7 +230,7 @@
 
 [[redirects]]
   from = "/insights/what-is-self-organizing-teams%3F"
-  to = "/insights/what-is-self-organizing-teams"
+  to = "/insights/what-self-organizing-actually-means-in-practice"
   status = 301
 
 [[redirects]]
@@ -250,7 +250,7 @@
 
 [[redirects]]
   from = "/insights/what-is-transformational-leadership%3F"
-  to = "/insights/what-is-transformational-leadership"
+  to = "/insights/what-transformational-leadership-actually-requires"
   status = 301
 
 [[redirects]]
@@ -604,6 +604,74 @@
 [[redirects]]
   from = "/insights/the-power-of-generative-ai-a-comprehensive-guide"
   to = "/insights/your-biggest-ai-challenge-isn't-technical.-it's-cultural."
+  status = 301
+
+# --- SEO-filler rewrite batch 5: old slug -> new, sharper slug -------------
+# Same approach as batches 1-4 (see betterchange-seo-rewrite-batch-05.md).
+# English-only -- none of these 10 had a German translation. Includes all
+# 3 of the site's "Featured" pinned articles (featured: true preserved).
+# 9 of these 10 already had an existing "...%3F" redirect elsewhere in this
+# file (from the old live site's "?"-suffixed titles) that would have
+# chained through the bare old slug renamed here -- updated all 9 in place
+# to point straight at the new slug instead (see the standing redirect-
+# verification gotcha in CLAUDE.md).
+[[redirects]]
+  from = "/insights/five-ways-to-build-consensus"
+  to = "/insights/building-consensus-without-just-averaging-opinions"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-transformational-leadership"
+  to = "/insights/what-transformational-leadership-actually-requires"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-self-organizing-teams"
+  to = "/insights/what-self-organizing-actually-means-in-practice"
+  status = 301
+
+[[redirects]]
+  from = "/insights/can-the-product-owner-also-be-the-scrum-master"
+  to = "/insights/why-combining-product-owner-and-scrum-master-usually-backfires"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-evidence-based-management"
+  to = "/insights/what-evidence-based-management-actually-measures"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-agile-leadership"
+  to = "/insights/what-agile-leadership-requires-that-traditional-management-doesnt"
+  status = 301
+
+# This article's filename was what-is-agile-transformation-2.md, but its
+# actual live URL (via a custom urlSlug) was the bare what-is-agile-
+# transformation, with no "-2" -- confirmed against the built directory
+# per the redirect-verification gotcha. Both are covered.
+[[redirects]]
+  from = "/insights/what-is-agile-transformation-2"
+  to = "/insights/why-agile-transformations-are-organizational-not-just-procedural"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-agile-transformation"
+  to = "/insights/why-agile-transformations-are-organizational-not-just-procedural"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-agile-project-management"
+  to = "/insights/how-agile-project-management-actually-differs-from-traditional"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-a-kanban-card"
+  to = "/insights/what-a-kanban-card-should-actually-contain"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-an-iteration-in-agile"
+  to = "/insights/what-an-iteration-is-actually-buying-you"
   status = 301
 
 # --- German 404 page ------------------------------------------------------
