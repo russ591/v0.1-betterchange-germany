@@ -3,9 +3,9 @@ title: 'What to Actually Do When Unplanned Work Hits Your Sprint'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-06-22T02:08:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'For many teams, unplanned work is a routine, recurring feature of the work, not an exception. How to handle it without quietly destroying the value of sprint planning.'
 featured: false
 metaTitle: 'What to Actually Do When Unplanned Work Hits Your Sprint'

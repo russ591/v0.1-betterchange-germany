@@ -4,9 +4,9 @@ contentType: Resource
 primaryCategory: Leadership
 categories:
   - Leadership
-date: '2023-12-21T00:00:00Z'
+date: '2026-09-12T01:30:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Genuine consensus is different from a compromise nobody actively objects to. Five practices that build a decision the group actually believes in.'
 featured: true
 metaTitle: 'Building Consensus Without Just Averaging Opinions'

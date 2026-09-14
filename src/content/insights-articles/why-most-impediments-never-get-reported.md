@@ -4,9 +4,9 @@ contentType: Resource
 primaryCategory: Scrum
 categories:
   - Scrum
-date: '2023-11-28T00:00:00Z'
+date: '2026-07-03T14:15:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Scrum assumes impediments get raised. In practice, a substantial share never are, which makes discovery at least as important as solving them once they''re found.'
 featured: false
 metaTitle: 'Why Most Impediments Never Get Reported'

@@ -4,9 +4,9 @@ contentType: Resource
 primaryCategory: Scrum
 categories:
   - Scrum
-date: '2023-11-29T00:00:00Z'
+date: '2026-07-05T02:45:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Scrum is often described as built around short feedback loops, without being specific about which loops, at which timescales, checking what. Being precise clarifies why Scrum has several distinct ones.'
 featured: false
 metaTitle: 'The Feedback Loops Scrum Actually Runs On'

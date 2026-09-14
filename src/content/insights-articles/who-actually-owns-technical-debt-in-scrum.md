@@ -3,9 +3,9 @@ title: 'Who Actually Owns Technical Debt in Scrum?'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-08-25T01:26:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Technical debt accumulates because no single Scrum accountability clearly owns it. How the three accountabilities should actually share this responsibility.'
 featured: false
 metaTitle: 'Who Actually Owns Technical Debt in Scrum?'

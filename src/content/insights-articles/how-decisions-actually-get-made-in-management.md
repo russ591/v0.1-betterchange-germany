@@ -3,9 +3,9 @@ title: 'How Decisions Actually Get Made in Management'
 contentType: Blog
 primaryCategory: Leadership
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-08-30T15:45:00Z'
 readTimeMinutes: 3
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Most decision-making frameworks describe a process almost no manager actually follows. Here''s what separates good management decisions from bad ones in practice, not in theory.'
 featured: false
 metaTitle: 'How Decisions Actually Get Made in Management'

@@ -3,9 +3,9 @@ title: 'What Teal Organizations Actually Get Right (and Where the Model Breaks D
 contentType: Blog
 primaryCategory: Change Management
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-06-17T13:45:00Z'
 readTimeMinutes: 3
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Frederic Laloux''s Teal model gets treated as more of a finished blueprint than it is. What holds up under scrutiny, and where it needs real adaptation before it survives contact with an actual organization.'
 featured: false
 metaTitle: 'What Teal Organizations Actually Get Right (and Where the Model Breaks Down)'

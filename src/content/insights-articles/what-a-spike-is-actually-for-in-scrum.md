@@ -6,9 +6,9 @@ categories:
   - Agile
   - Product Development
   - Scrum
-date: '2023-11-29T00:00:00Z'
+date: '2026-07-14T16:30:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'A Spike answers a specific question or reduces a specific uncertainty, rather than delivering product. What makes it different from ordinary backlog work, and when it becomes an excuse to avoid a decision.'
 featured: false
 metaTitle: 'What a Spike Is Actually For in Scrum'

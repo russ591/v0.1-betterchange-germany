@@ -4,9 +4,9 @@ contentType: Resource
 primaryCategory: Scrum
 categories:
   - Scrum
-date: '2023-12-21T00:00:00Z'
+date: '2026-09-07T06:00:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'The Scrum Guide doesn''t prohibit one person holding both accountabilities. Why the combination creates structural conflict, and what gets lost specifically.'
 featured: false
 metaTitle: 'Why Combining Product Owner and Scrum Master Usually Backfires'

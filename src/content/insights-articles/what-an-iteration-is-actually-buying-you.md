@@ -5,9 +5,9 @@ primaryCategory: Agile
 categories:
   - Agile
   - Product Development
-date: '2023-11-29T00:00:00Z'
+date: '2026-08-26T19:59:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'An iteration is a fundamental agile building block. Why time-boxing work at all, rather than working continuously toward a larger goal, is worth being explicit about.'
 featured: false
 metaTitle: 'What an Iteration Is Actually Buying You'

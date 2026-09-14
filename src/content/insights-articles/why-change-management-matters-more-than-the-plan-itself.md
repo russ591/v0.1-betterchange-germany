@@ -3,9 +3,9 @@ title: 'Why Change Management Matters More Than the Plan Itself'
 contentType: Blog
 primaryCategory: Change Management
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-06-29T11:30:00Z'
 readTimeMinutes: 3
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Organizations invest heavily in the technical design of a change and comparatively little in managing how people actually move through it. That asymmetry is why most change initiatives fail.'
 featured: false
 metaTitle: 'Why Change Management Matters More Than the Plan Itself'

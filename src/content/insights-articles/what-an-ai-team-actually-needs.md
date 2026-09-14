@@ -5,9 +5,9 @@ primaryCategory: AI
 categories:
   - AI
   - Leadership
-date: '2024-02-23T00:00:00Z'
+date: '2026-07-27T19:54:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Hiring data scientists first isn''t wrong, but it''s incomplete: technically excellent models that never get deployed, because the roles that make adoption succeed were never staffed.'
 featured: true
 metaTitle: 'What an AI Team Actually Needs (Beyond Data Scientists)'

@@ -5,9 +5,9 @@ primaryCategory: Agile
 categories:
   - Agile
   - Leadership
-date: '2023-12-19T00:00:00Z'
+date: '2026-07-12T04:15:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'EBM addresses organizations investing in agile transformation without a clear way to measure whether it''s actually working. The four Key Value Areas, and why organizations often measure the wrong things.'
 featured: false
 metaTitle: 'What Evidence-Based Management Actually Measures'

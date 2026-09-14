@@ -3,9 +3,9 @@ title: 'What Actually Breaks When a Scrum Team Gets Too Big'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-07-28T19:45:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Scrum guidance states a recommended team size range without explaining what specifically degrades as a team exceeds it. The actual failure modes explain why the number exists.'
 featured: false
 metaTitle: 'What Actually Breaks When a Scrum Team Gets Too Big'

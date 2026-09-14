@@ -4,9 +4,9 @@ contentType: Resource
 primaryCategory: Scrum
 categories:
   - Product Development
-date: '2023-12-21T00:00:00Z'
+date: '2026-08-05T06:45:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'The Product Goal''s relationship to a broader product vision is easy to blur. Conflating them produces Product Goals that are either too vague or too narrow to do their job.'
 featured: false
 metaTitle: 'What a Product Goal Actually Does That a Vision Doesn''t'

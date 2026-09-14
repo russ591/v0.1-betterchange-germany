@@ -3,9 +3,9 @@ title: 'How Scrum Manages Risk Without a Risk Register'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-07-22T07:45:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Scrum has no risk register, which sometimes reads as Scrum not addressing risk. In practice it manages risk through its structure. What that mechanism catches, and what it doesn''t.'
 featured: false
 metaTitle: 'How Scrum Manages Risk Without a Risk Register'

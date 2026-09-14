@@ -5,9 +5,9 @@ primaryCategory: Change Management
 categories:
   - Change Management
   - Leadership
-date: '2021-08-30T00:00:00Z'
+date: '2026-08-21T15:45:00Z'
 readTimeMinutes: 2
-author: bent-myllerup
+authorName: 'Better Change Fellow'
 excerpt: 'Most established change management frameworks assume a reasonably linear, predictable change. Genuinely complex organisational landscapes strain those assumptions.'
 featured: false
 metaTitle: 'Why Change Management Frameworks Struggle With Genuine Complexity'

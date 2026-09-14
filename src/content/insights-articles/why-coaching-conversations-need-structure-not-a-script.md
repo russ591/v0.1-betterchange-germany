@@ -4,9 +4,9 @@ contentType: Blog
 primaryCategory: Coaching
 categories:
   - Coaching
-date: '2023-10-31T00:00:00Z'
+date: '2026-08-07T12:30:00Z'
 readTimeMinutes: 2
-author: bent-myllerup
+authorName: 'Better Change Fellow'
 excerpt: 'Unstructured coaching conversations tend to drift. Structure solves this without turning coaching into a rigid script, provided it''s held loosely.'
 featured: false
 metaTitle: 'Why Coaching Conversations Need Structure, Not a Script'

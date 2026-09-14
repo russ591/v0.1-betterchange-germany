@@ -3,9 +3,9 @@ title: 'The Sprint Planning Mistake Most Teams Don''t Notice'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-07-24T19:45:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Most Sprint Planning advice focuses on mechanics. The more consequential mistakes are less visible than mechanics, and teams that get the mechanics right can still plan badly.'
 featured: false
 metaTitle: 'The Sprint Planning Mistake Most Teams Don''t Notice'

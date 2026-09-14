@@ -3,9 +3,9 @@ title: 'What Scrum Actually Says About Estimates'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-08-03T18:38:00Z'
 readTimeMinutes: 3
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'There''s a persistent myth that Scrum requires story points. It doesn''t. What the Scrum Guide actually says about estimation, and why some teams are moving away from it entirely.'
 featured: false
 metaTitle: 'What Scrum Actually Says About Estimates'

@@ -3,9 +3,9 @@ title: 'The Questions That Make a Sprint Review Actually Useful'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-09-03T21:15:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'A Sprint Review''s value depends heavily on whether the right questions get asked during it. Seven questions that produce substantive feedback instead of polite nods.'
 featured: false
 metaTitle: 'The Questions That Make a Sprint Review Actually Useful'

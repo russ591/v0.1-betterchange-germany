@@ -5,9 +5,9 @@ primaryCategory: Agile
 categories:
   - Product Development
   - Scrum
-date: '2023-12-21T00:00:00Z'
+date: '2026-09-11T04:15:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'A product vision is often written once and rarely referenced again, which suggests it''s not really functioning as a vision. What a vision is genuinely supposed to do.'
 featured: false
 metaTitle: 'What a Product Vision Is Actually For'

@@ -4,9 +4,9 @@ contentType: Resource
 primaryCategory: Agile
 categories:
   - Leadership
-date: '2023-11-29T00:00:00Z'
+date: '2026-08-06T02:30:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'A cross-functional team''s definition is simple: all the skills needed to deliver value, in one team. Actually building one, and keeping it that way, is considerably harder.'
 featured: false
 metaTitle: 'Why Cross-Functional Teams Are Harder to Build Than to Define'

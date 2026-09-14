@@ -3,9 +3,9 @@ title: 'Why Agile Communication Principles Are Harder Than They Sound'
 contentType: Blog
 primaryCategory: Agile
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-07-07T07:15:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Individuals and interactions over processes and tools is easy to state and surprisingly hard to practice, because most organizational habits pull in the opposite direction.'
 featured: false
 metaTitle: 'Why Agile Communication Principles Are Harder Than They Sound'

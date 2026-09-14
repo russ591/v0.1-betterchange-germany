@@ -3,9 +3,9 @@ title: 'Strategies That Actually Enhance Leadership Skills'
 contentType: Blog
 primaryCategory: Leadership
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-08-18T09:30:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Communicate more, delegate more, lead by example: true and fairly useless on their own. What actually builds the capability to practice good leadership, not just describe it.'
 featured: false
 metaTitle: 'Strategies That Actually Enhance Leadership Skills'
