@@ -81,7 +81,7 @@
 
 [[redirects]]
   from = "/insights/how-to-discover-and-solve-impediments-in-scrum%3F"
-  to = "/insights/how-to-discover-and-solve-impediments-in-scrum"
+  to = "/insights/why-most-impediments-never-get-reported"
   status = 301
 
 [[redirects]]
@@ -101,7 +101,7 @@
 
 [[redirects]]
   from = "/insights/what-are-cross-functional-teams%3F"
-  to = "/insights/what-are-cross-functional-teams"
+  to = "/insights/why-cross-functional-teams-are-harder-to-build-than-to-define"
   status = 301
 
 [[redirects]]
@@ -135,7 +135,7 @@
 
 [[redirects]]
   from = "/insights/what-is-a-spike-in-scrum%3F"
-  to = "/insights/what-is-a-spike-in-scrum"
+  to = "/insights/what-a-spike-is-actually-for-in-scrum"
   status = 301
 
 [[redirects]]
@@ -170,7 +170,7 @@
 
 [[redirects]]
   from = "/insights/what-is-an-agile-organisation%3F"
-  to = "/insights/what-is-an-agile-organisation"
+  to = "/insights/what-actually-makes-an-organisation-agile-not-just-its-teams"
   status = 301
 
 [[redirects]]
@@ -195,7 +195,7 @@
 
 [[redirects]]
   from = "/insights/what-is-kanban-flight-levels%3F"
-  to = "/insights/what-is-kanban-flight-levels"
+  to = "/insights/what-flight-levels-actually-means-and-where-the-name-comes-from"
   status = 301
 
 [[redirects]]
@@ -672,6 +672,73 @@
 [[redirects]]
   from = "/insights/what-is-an-iteration-in-agile"
   to = "/insights/what-an-iteration-is-actually-buying-you"
+  status = 301
+
+# --- SEO-filler rewrite batch 6 (FINAL): old slug -> new, sharper slug -----
+# Same approach as batches 1-5 (see betterchange-seo-rewrite-batch-06.md).
+# English-only -- none of these 10 had a German translation. 5 of these 10
+# already had an existing "...%3F" redirect elsewhere in this file (from the
+# old live site's "?"-suffixed titles) that would have chained through the
+# bare old slug renamed here -- updated all 5 in place to point straight at
+# the new slug instead (see the standing redirect-verification gotcha in
+# CLAUDE.md).
+#
+# Item 7 (old slug what-is-kanban-flight-levels) was flagged in the source
+# batch doc for verification before processing, since Flight Levels is
+# Better Change's core specialty. Checked against the two existing
+# quality-tier Flight Levels pieces ("Why Flight Levels Isn't a Framework,
+# and Why That Matters" and "Flight Levels in Practice: The Five
+# Activities"): neither is a foundational "what is it" explainer, so this
+# was a genuine content gap rather than a duplicate. Replaced with a new,
+# distinct explainer piece rather than retired/redirected.
+[[redirects]]
+  from = "/insights/what-is-a-spike-in-scrum"
+  to = "/insights/what-a-spike-is-actually-for-in-scrum"
+  status = 301
+
+[[redirects]]
+  from = "/insights/agile-coach-vs-scrum-master"
+  to = "/insights/what-actually-separates-an-agile-coach-from-a-scrum-master"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-are-cross-functional-teams"
+  to = "/insights/why-cross-functional-teams-are-harder-to-build-than-to-define"
+  status = 301
+
+[[redirects]]
+  from = "/insights/feedback-loops-in-scrum"
+  to = "/insights/the-feedback-loops-scrum-actually-runs-on"
+  status = 301
+
+[[redirects]]
+  from = "/insights/how-to-discover-and-solve-impediments-in-scrum"
+  to = "/insights/why-most-impediments-never-get-reported"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-an-agile-organisation"
+  to = "/insights/what-actually-makes-an-organisation-agile-not-just-its-teams"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-kanban-flight-levels"
+  to = "/insights/what-flight-levels-actually-means-and-where-the-name-comes-from"
+  status = 301
+
+[[redirects]]
+  from = "/insights/have-a-structure-for-your-coaching-conversation"
+  to = "/insights/why-coaching-conversations-need-structure-not-a-script"
+  status = 301
+
+[[redirects]]
+  from = "/insights/how-agile-transformation-leads-to-increased-flexibility-in-finance"
+  to = "/insights/what-agile-actually-requires-financial-organisations-to-change"
+  status = 301
+
+[[redirects]]
+  from = "/insights/navigating-change-management-in-a-complex-organisational-landscape"
+  to = "/insights/why-change-management-frameworks-struggle-with-genuine-complexity"
   status = 301
 
 # --- German 404 page ------------------------------------------------------
