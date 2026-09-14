@@ -3,9 +3,9 @@ title: 'Why Team Velocity Swings, and What Actually Stabilizes It'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-06-30T09:26:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Volatile velocity undermines the forecasting value it''s supposed to provide. Velocity swings are usually a symptom. Four common causes, and what actually stabilizes it.'
 featured: false
 metaTitle: 'Why Team Velocity Swings, and What Actually Stabilizes It'

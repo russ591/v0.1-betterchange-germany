@@ -16,9 +16,9 @@ primaryCategory: Agile
 categories:
   - Produktentwicklung
   - Scrum
-date: '2023-12-21T00:00:00Z'
+date: '2026-09-11T04:15:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Eine Produktvision wird oft einmal geschrieben, in einer frühen Planungsübung, und danach selten wieder herangezogen. Was eine Vision genuin leisten soll, klärt, warum das eine verpasste Gelegenheit ist."
 featured: false
 metaDescription: "Eine Produktvision wird oft einmal geschrieben, in einer frühen Planungsübung, und danach selten wieder herangezogen. Was eine Vision genuin leisten…"

@@ -3,9 +3,9 @@ title: 'Six Ways Scrum Masters Become More Effective'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-07-30T10:00:00Z'
 readTimeMinutes: 3
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Scrum Masters technically doing the role and Scrum Masters genuinely effective in it often look similar day to day. The difference shows up in six specific habits.'
 featured: false
 metaTitle: 'Six Ways Scrum Masters Become More Effective'

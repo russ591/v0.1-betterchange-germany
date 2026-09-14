@@ -12,9 +12,9 @@ title: 'What Teal Organizations Actually Get Right (and Where the Model Breaks D
 contentType: Blog
 primaryCategory: Change Management
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-06-17T13:45:00Z'
 readTimeMinutes: 3
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Frederic Laloux' Teal-Modell wird oft eher als fertige Blaupause behandelt, als es ist. Was einer genauen Prüfung standhält, und wo echte Anpassung nötig ist, bevor es den Kontakt mit einer realen Organisation übersteht."
 featured: false
 metaDescription: "Frederic Laloux' Teal-Modell wird oft eher als fertige Blaupause behandelt, als es ist. Was einer genauen Prüfung standhält, und wo echte Anpassung nötig…"

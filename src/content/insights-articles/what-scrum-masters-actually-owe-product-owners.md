@@ -3,9 +3,9 @@ title: 'What Scrum Masters Actually Owe Product Owners'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-08-14T11:45:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'The Scrum Guide is explicit that the Scrum Master serves the Product Owner, not just the Developers. What that support actually looks like, concretely.'
 featured: false
 metaTitle: 'What Scrum Masters Actually Owe Product Owners'

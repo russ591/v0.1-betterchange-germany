@@ -17,9 +17,9 @@ categories:
   - Agile
   - Produktentwicklung
   - Scrum
-date: '2023-11-29T00:00:00Z'
+date: '2026-07-14T16:30:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Ein Spike ist ein zeitlich begrenztes Arbeitspaket, gedacht, eine konkrete Frage zu beantworten, statt einen Teil des Produkts zu liefern. Er ist nicht formal im Scrum Guide definiert, aber weitverbreitet genutzt."
 featured: false
 metaDescription: "Ein Spike ist ein zeitlich begrenztes Arbeitspaket, gedacht, eine konkrete Frage zu beantworten, statt einen Teil des Produkts zu liefern. Er ist nicht…"

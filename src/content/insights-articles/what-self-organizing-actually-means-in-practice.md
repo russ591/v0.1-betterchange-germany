@@ -6,9 +6,9 @@ categories:
   - Agile
   - Leadership
   - Scrum
-date: '2023-12-13T00:00:00Z'
+date: '2026-08-09T13:00:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Self-organizing is often misread as no management structure at all. What it actually means: real authority over how work gets done, bounded by decisions that stay elsewhere.'
 featured: true
 metaTitle: 'What Self-Organizing Actually Means in Practice'

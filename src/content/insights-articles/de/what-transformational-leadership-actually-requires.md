@@ -15,9 +15,9 @@ contentType: Resource
 primaryCategory: Leadership
 categories:
   - Leadership
-date: '2023-12-21T00:00:00Z'
+date: '2026-08-02T05:00:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Transformationale Führung wird im Alltagsgebrauch oft auf \"inspirierende Führung\" reduziert, ein vages Kompliment statt des spezifischen, strukturierten Konzepts, das die ursprüngliche Forschung beschreibt."
 featured: true
 metaDescription: "Transformationale Führung wird im Alltagsgebrauch oft auf \"inspirierende Führung\" reduziert, ein vages Kompliment statt des spezifischen,…"

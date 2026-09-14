@@ -3,9 +3,9 @@ title: 'What Good Backlog Refinement Actually Looks Like'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-08-17T00:30:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Backlog refinement is the Scrum activity most likely to be skipped when time is tight, and the one whose absence causes the most damage two or three sprints later. Six habits that separate refinement that works from refinement that''s just ceremony.'
 featured: false
 metaTitle: 'What Good Backlog Refinement Actually Looks Like'

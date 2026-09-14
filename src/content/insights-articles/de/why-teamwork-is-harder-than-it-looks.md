@@ -12,9 +12,9 @@ title: 'Why Teamwork Is Harder Than It Looks'
 contentType: Blog
 primaryCategory: Leadership
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-07-04T07:45:00Z'
 readTimeMinutes: 3
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "„Teamarbeit ist wichtig“ ist eine Aussage, der niemand widerspricht und nach der kaum jemand präzise handelt. Was konkret schiefgeht, wenn sie scheitert, und was tatsächlich hilft."
 featured: false
 metaDescription: "„Teamarbeit ist wichtig“ ist eine Aussage, der niemand widerspricht und nach der kaum jemand präzise handelt. Was konkret schiefgeht, wenn sie scheitert,…"

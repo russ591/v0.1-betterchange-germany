@@ -13,9 +13,9 @@ title: 'Why Team Velocity Swings, and What Actually Stabilizes It'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-06-30T09:26:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Volatile Velocity untergräbt den Prognosewert, den sie eigentlich liefern soll. Velocity-Schwankungen sind meist ein Symptom, und das Symptom zu behandeln, ohne die Ursache zu adressieren, erzeugt selten dauerhafte Stabilität."
 featured: false
 metaDescription: "Volatile Velocity untergräbt den Prognosewert, den sie eigentlich liefern soll. Velocity-Schwankungen sind meist ein Symptom, und das Symptom zu…"

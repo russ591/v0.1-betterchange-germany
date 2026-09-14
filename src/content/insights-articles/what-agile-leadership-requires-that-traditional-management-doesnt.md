@@ -5,9 +5,9 @@ primaryCategory: Leadership
 categories:
   - Agile
   - Leadership
-date: '2023-12-13T00:00:00Z'
+date: '2026-06-18T15:00:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Agile leadership means enabling rather than directing, which is harder than it sounds for leaders promoted for being good at directing.'
 featured: false
 metaTitle: 'What Agile Leadership Requires That Traditional Management Doesn''t'

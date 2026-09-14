@@ -15,9 +15,9 @@ contentType: Resource
 primaryCategory: Agile
 categories:
   - Leadership
-date: '2023-11-29T00:00:00Z'
+date: '2026-08-06T02:30:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Ein funktionsübergreifendes Team hat per Definition alle nötigen Fähigkeiten, um ein vollständiges Wertpaket zu liefern, ohne von Menschen außerhalb abhängig zu sein. Die Definition ist einfach. Es tatsächlich zu bauen, ist deutlich schwerer."
 featured: false
 metaDescription: "Ein funktionsübergreifendes Team hat per Definition alle nötigen Fähigkeiten, um ein vollständiges Wertpaket zu liefern. Die Definition ist einfach. Es…"

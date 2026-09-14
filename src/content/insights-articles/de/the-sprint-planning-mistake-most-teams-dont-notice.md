@@ -12,9 +12,9 @@ title: 'The Sprint Planning Mistake Most Teams Don''t Notice'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-07-24T19:45:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Die meisten Ratschläge zu Sprint Planning konzentrieren sich auf Mechanik. Die folgenreicheren Fehler sind unsichtbarer als die Mechanik, und Teams, die die Mechanik richtig machen, können trotzdem schlecht planen."
 featured: false
 metaDescription: "Die meisten Ratschläge zu Sprint Planning konzentrieren sich auf Mechanik. Die folgenreicheren Fehler sind unsichtbarer als die Mechanik, und Teams, die die…"

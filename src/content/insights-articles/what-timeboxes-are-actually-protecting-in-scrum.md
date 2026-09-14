@@ -3,9 +3,9 @@ title: 'What Timeboxes Are Actually Protecting in Scrum'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-08-28T13:30:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Every Scrum event''s timebox is protecting something specific. Understanding what clarifies why exceeding it consistently is a signal worth investigating, not just an inconvenience.'
 featured: false
 metaTitle: 'What Timeboxes Are Actually Protecting in Scrum'

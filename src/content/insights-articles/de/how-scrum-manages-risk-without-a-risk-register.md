@@ -13,9 +13,9 @@ title: 'How Scrum Manages Risk Without a Risk Register'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-07-22T07:45:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Traditionelles Projektmanagement geht Risiko über explizite Register an. Scrum hat kein äquivalentes Artefakt. In der Praxis managt Scrum Risiko anders, durch seine Struktur statt durch ein dediziertes Dokument."
 featured: false
 metaDescription: "Traditionelles Projektmanagement geht Risiko über explizite Register an. Scrum hat kein äquivalentes Artefakt. In der Praxis managt Scrum Risiko anders,…"

@@ -12,9 +12,9 @@ title: 'Why Change Management Matters More Than the Plan Itself'
 contentType: Blog
 primaryCategory: Change Management
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-06-29T11:30:00Z'
 readTimeMinutes: 3
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Organisationen investieren stark in das technische Design eines Wandels und vergleichsweise wenig darin, wie Menschen tatsächlich hindurchgehen. Diese Schieflage erklärt, warum die meisten Wandelinitiativen scheitern."
 featured: false
 metaDescription: "Organisationen investieren stark in das technische Design eines Wandels und vergleichsweise wenig darin, wie Menschen tatsächlich hindurchgehen. Diese…"

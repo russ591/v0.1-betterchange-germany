@@ -16,9 +16,9 @@ primaryCategory: Change Management
 categories:
   - Change Management
   - Leadership
-date: '2021-08-30T00:00:00Z'
+date: '2026-08-21T15:45:00Z'
 readTimeMinutes: 2
-author: bent-myllerup
+authorName: 'Better Change Fellow'
 excerpt: "Die meisten etablierten Change-Management-Frameworks wurden mit einem einigermaßen linearen, vorhersehbaren Wandel im Sinn entwickelt. Genuin komplexe organisatorische Landschaften strapazieren die zugrunde liegenden Annahmen dieser Frameworks."
 featured: false
 metaDescription: "Die meisten etablierten Change-Management-Frameworks wurden mit einem einigermaßen linearen, vorhersehbaren Wandel im Sinn entwickelt. Genuin komplexe…"

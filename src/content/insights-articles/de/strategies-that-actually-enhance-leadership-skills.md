@@ -12,9 +12,9 @@ title: 'Strategies That Actually Enhance Leadership Skills'
 contentType: Blog
 primaryCategory: Leadership
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-08-18T09:30:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Mehr kommunizieren, mehr delegieren, mit gutem Beispiel vorangehen: richtig und für sich genommen ziemlich nutzlos. Was tatsächlich die Fähigkeit aufbaut, gute Führung zu praktizieren, nicht nur zu beschreiben."
 featured: false
 metaDescription: "Mehr kommunizieren, mehr delegieren, mit gutem Beispiel vorangehen: richtig und für sich genommen ziemlich nutzlos. Was tatsächlich die Fähigkeit aufbaut,…"

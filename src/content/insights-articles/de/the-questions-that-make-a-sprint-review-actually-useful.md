@@ -12,9 +12,9 @@ title: 'The Questions That Make a Sprint Review Actually Useful'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-09-03T21:15:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Der Wert eines Sprint Review hängt stark davon ab, ob die richtigen Fragen gestellt werden. Sieben Fragen, die substanzielles Feedback statt höflichem Nicken hervorbringen."
 featured: false
 metaDescription: "Der Wert eines Sprint Review hängt stark davon ab, ob die richtigen Fragen gestellt werden. Sieben Fragen, die substanzielles Feedback statt höflichem…"

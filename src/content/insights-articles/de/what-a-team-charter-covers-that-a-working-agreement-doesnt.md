@@ -13,9 +13,9 @@ title: 'What a Team Charter Covers That a Working Agreement Doesn''t'
 contentType: Blog
 primaryCategory: Agile
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-06-16T13:15:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Team Charter und Working Agreement werden oft synonym verwendet, aber die Überlappung ist real genug, um die Unterscheidung präzise zu treffen, statt beide als zwei Namen für dasselbe Dokument zu behandeln."
 featured: false
 metaDescription: "Team Charter und Working Agreement werden oft synonym verwendet, aber die Überlappung ist real genug, um die Unterscheidung präzise zu treffen, statt…"

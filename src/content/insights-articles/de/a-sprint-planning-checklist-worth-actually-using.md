@@ -13,9 +13,9 @@ title: 'A Sprint Planning Checklist Worth Actually Using'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-07-09T01:15:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Die meisten Sprint-Planning-Checklisten listen die mechanischen Schritte des Events auf. Eine nützlichere Checkliste fängt die konkreten Dinge ab, die selbst dann schiefgehen, wenn die Mechanik korrekt befolgt wird."
 featured: false
 metaDescription: "Die meisten Sprint-Planning-Checklisten listen die mechanischen Schritte des Events auf. Eine nützlichere Checkliste fängt die konkreten Dinge ab, die…"

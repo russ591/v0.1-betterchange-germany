@@ -3,9 +3,9 @@ title: 'Why Teamwork Is Harder Than It Looks'
 contentType: Blog
 primaryCategory: Leadership
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-07-04T07:45:00Z'
 readTimeMinutes: 3
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Teamwork is important is a statement nobody disputes and almost nobody acts on with precision. What specifically breaks down when it fails, and what actually fixes it.'
 featured: false
 metaTitle: 'Why Teamwork Is Harder Than It Looks'

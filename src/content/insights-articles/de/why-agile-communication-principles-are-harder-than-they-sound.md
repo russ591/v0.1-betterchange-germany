@@ -13,9 +13,9 @@ title: 'Why Agile Communication Principles Are Harder Than They Sound'
 contentType: Blog
 primaryCategory: Agile
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-07-07T07:15:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "\"Individuen und Interaktionen über Prozesse und Werkzeuge\" ist der erste Wert im Agile Manifest, und einer der am häufigsten nur lippenbekenntnishaft vertretenen, ohne genuin praktiziert zu werden."
 featured: false
 metaDescription: "\"Individuen und Interaktionen über Prozesse und Werkzeuge\" ist der erste Wert im Agile Manifest, und einer der am häufigsten nur lippenbekenntnishaft…"

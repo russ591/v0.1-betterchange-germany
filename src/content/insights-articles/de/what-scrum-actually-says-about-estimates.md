@@ -12,9 +12,9 @@ title: 'What Scrum Actually Says About Estimates'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-08-03T18:38:00Z'
 readTimeMinutes: 3
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Es hält sich der hartnäckige Mythos, Scrum verlange Story Points. Das stimmt nicht. Was der Scrum Guide tatsächlich über Schätzung sagt, und warum manche Teams ganz davon abrücken."
 featured: false
 metaDescription: "Es hält sich der hartnäckige Mythos, Scrum verlange Story Points. Das stimmt nicht. Was der Scrum Guide tatsächlich über Schätzung sagt, und warum manche…"

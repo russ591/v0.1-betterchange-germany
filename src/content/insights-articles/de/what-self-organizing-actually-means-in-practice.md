@@ -17,9 +17,9 @@ categories:
   - Agile
   - Leadership
   - Scrum
-date: '2023-12-13T00:00:00Z'
+date: '2026-08-09T13:00:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "\"Selbstorganisierend\" ist eines der am häufigsten zitierten agilen Prinzipien und eines der am häufigsten falsch angewendeten, weil es oft als \"keinerlei Managementstruktur\" interpretiert wird."
 featured: true
 metaDescription: "\"Selbstorganisierend\" ist eines der am häufigsten zitierten agilen Prinzipien und eines der am häufigsten falsch angewendeten, weil es oft als…"

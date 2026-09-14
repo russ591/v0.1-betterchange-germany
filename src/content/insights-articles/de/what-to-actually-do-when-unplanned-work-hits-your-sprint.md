@@ -13,9 +13,9 @@ title: 'What to Actually Do When Unplanned Work Hits Your Sprint'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-06-22T02:08:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Ungeplante Arbeit wird in vielen Scrum-Ratgebern als seltene, zu minimierende Störung behandelt. Für viele Teams ist sie ein routinemäßiger, wiederkehrender Bestandteil der Arbeit. Wie sie sich handhaben lässt, ohne den Wert der Sprint-Planung still zu zerstören."
 featured: false
 metaDescription: "Ungeplante Arbeit wird in vielen Scrum-Ratgebern als seltene, zu minimierende Störung behandelt. Für viele Teams ist sie ein routinemäßiger,…"

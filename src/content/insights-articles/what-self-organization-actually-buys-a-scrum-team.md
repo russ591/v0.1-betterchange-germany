@@ -3,9 +3,9 @@ title: 'What Self-Organization Actually Buys a Scrum Team'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-08-22T14:30:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Self-organization is often presented as an ideological commitment. The actual case for it is more practical and specific than a values statement, with real limits worth knowing.'
 featured: false
 metaTitle: 'What Self-Organization Actually Buys a Scrum Team'

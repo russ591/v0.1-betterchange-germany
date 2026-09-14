@@ -16,9 +16,9 @@ primaryCategory: Agile
 categories:
   - Agile
   - Leadership
-date: '2023-12-19T00:00:00Z'
+date: '2026-07-12T04:15:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Evidence-Based Management, entwickelt von Scrum.org, adressiert ein häufiges Problem: Organisationen investieren in agile Transformation, ohne klar messen zu können, ob sie tatsächlich bessere Ergebnisse erzeugt."
 featured: false
 metaDescription: "Evidence-Based Management, entwickelt von Scrum.org, adressiert ein häufiges Problem: Organisationen investieren in agile Transformation, ohne klar…"

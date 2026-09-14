@@ -4,9 +4,9 @@ contentType: Resource
 primaryCategory: Kanban
 categories:
   - Kanban
-date: '2023-12-11T00:00:00Z'
+date: '2026-09-10T13:15:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'A Kanban card is easy to treat as a simple sticky-note. What information it actually carries has real consequences for how well the board serves its purpose.'
 featured: false
 metaTitle: 'What a Kanban Card Should Actually Contain'

@@ -15,9 +15,9 @@ contentType: Resource
 primaryCategory: Change Management
 categories:
   - Agile
-date: '2023-11-28T00:00:00Z'
+date: '2026-09-05T10:15:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Eine Organisation kann jedes Entwicklungsteam nach Lehrbuch-Scrum führen lassen und trotzdem in keinem bedeutsamen Sinne eine agile Organisation sein. Teamagilität mit organisatorischer Agilität zu verwechseln, ist ein häufiger Grund, warum Transformationen ins Stocken geraten."
 featured: false
 metaDescription: "Eine Organisation kann jedes Entwicklungsteam nach Lehrbuch-Scrum führen lassen und trotzdem in keinem bedeutsamen Sinne eine agile Organisation sein…"

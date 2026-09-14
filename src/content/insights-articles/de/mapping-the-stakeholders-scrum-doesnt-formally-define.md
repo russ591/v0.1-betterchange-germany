@@ -13,9 +13,9 @@ title: 'Mapping the Stakeholders Scrum Doesn''t Formally Define'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-08-27T15:45:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Der Scrum Guide definiert drei Accountabilities präzise und sagt vergleichsweise wenig über den breiteren Kreis an Stakeholdern. Teams müssen diese Kartierung selbst leisten, und sie auszulassen, ist eine häufige, stille Dysfunktionsquelle."
 featured: false
 metaDescription: "Der Scrum Guide definiert drei Accountabilities präzise und sagt vergleichsweise wenig über den breiteren Kreis an Stakeholdern. Teams müssen diese…"

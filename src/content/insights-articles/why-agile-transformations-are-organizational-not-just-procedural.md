@@ -5,9 +5,9 @@ primaryCategory: Change Management
 categories:
   - Agile
   - Leadership
-date: '2023-12-13T00:00:00Z'
+date: '2026-08-23T13:30:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Agile transformation executed as process change consistently under-delivers. What actually needs to change: structure, funding, leadership behavior, and incentives.'
 featured: false
 metaTitle: 'Why Agile Transformations Are Organizational, Not Just Procedural'

@@ -12,9 +12,9 @@ title: 'What Good Backlog Refinement Actually Looks Like'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-08-17T00:30:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Backlog Refinement ist die Scrum-Aktivität, die bei Zeitdruck am ehesten ausfällt, und deren Fehlen zwei oder drei Sprints später den größten Schaden anrichtet. Sechs Gewohnheiten, die wirksames Refinement von bloßer Zeremonie unterscheiden."
 featured: false
 metaDescription: "Backlog Refinement ist die Scrum-Aktivität, die bei Zeitdruck am ehesten ausfällt, und deren Fehlen zwei oder drei Sprints später den größten Schaden…"

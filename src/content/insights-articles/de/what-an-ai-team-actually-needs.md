@@ -16,9 +16,9 @@ primaryCategory: KI
 categories:
   - KI
   - Leadership
-date: '2024-02-23T00:00:00Z'
+date: '2026-07-27T19:54:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Der Instinkt beim Aufbau eines \"KI-Teams\" ist, zuerst Data Scientists und ML-Engineers einzustellen. Das ist nicht falsch, aber unvollständig auf eine Weise, die ein konkretes, wiederkehrendes Scheiternsmuster verursacht."
 featured: true
 metaDescription: "Der Instinkt beim Aufbau eines \"KI-Teams\" ist, zuerst Data Scientists und ML-Engineers einzustellen. Das ist nicht falsch, aber unvollständig auf eine…"

@@ -15,9 +15,9 @@ contentType: Blog
 primaryCategory: Coaching
 categories:
   - Coaching
-date: '2023-10-31T00:00:00Z'
+date: '2026-08-07T12:30:00Z'
 readTimeMinutes: 2
-author: bent-myllerup
+authorName: 'Better Change Fellow'
 excerpt: "Unstrukturierte Coaching-Gespräche neigen zum Driften. Struktur löst das, ohne Coaching zu einem starren Skript zu machen, sofern sie als Gerüst genutzt wird und nicht als Ersatz für echtes Zuhören."
 featured: false
 metaDescription: "Unstrukturierte Coaching-Gespräche neigen zum Driften. Struktur löst das, ohne Coaching zu einem starren Skript zu machen, sofern sie als Gerüst…"

@@ -16,9 +16,9 @@ primaryCategory: Leadership
 categories:
   - Agile
   - Leadership
-date: '2023-12-13T00:00:00Z'
+date: '2026-06-18T15:00:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Agile Führung wird manchmal einfach als \"Führung im agilen Kontext\" beschrieben, was unterschätzt, wie genuin anders die erforderliche Denkweise ist, besonders bezüglich Kontrolle und Gewissheit."
 featured: false
 metaDescription: "Agile Führung wird manchmal einfach als \"Führung im agilen Kontext\" beschrieben, was unterschätzt, wie genuin anders die erforderliche Denkweise ist,…"

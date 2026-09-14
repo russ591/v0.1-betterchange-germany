@@ -14,9 +14,9 @@ title: 'What Scrum Masters Actually Owe Product Owners'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-08-14T11:45:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Der Scrum Guide ist explizit, dass der Scrum Master der Product-Owner-Person dient, nicht nur den Developern. Was diese Unterstützung tatsächlich aussieht."
 featured: false
 metaDescription: "Der Scrum Guide ist explizit, dass der Scrum Master der Product-Owner-Person dient, nicht nur den Developern. Was diese Unterstützung tatsächlich…"

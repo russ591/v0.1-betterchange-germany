@@ -6,9 +6,9 @@ categories:
   - Agile
   - Leadership
   - Scrum
-date: '2023-11-29T00:00:00Z'
+date: '2026-07-13T00:45:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'The two roles overlap enough in day-to-day appearance that the distinction is easy to blur. The genuine difference is in scope, not in the underlying skill set.'
 featured: false
 metaTitle: 'What Actually Separates an Agile Coach from a Scrum Master'

@@ -15,9 +15,9 @@ contentType: Resource
 primaryCategory: Scrum
 categories:
   - Scrum
-date: '2023-11-29T00:00:00Z'
+date: '2026-07-05T02:45:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Scrum wird oft als auf kurzen Feedback-Loops aufgebaut beschrieben, ohne immer konkret zu sagen, welche Loops, auf welchen Zeitskalen, was prüfend. Präzision klärt, warum Scrum mehrere unterschiedliche Feedback-Mechanismen hat."
 featured: false
 metaDescription: "Scrum wird oft als auf kurzen Feedback-Loops aufgebaut beschrieben, ohne immer konkret zu sagen, welche Loops, auf welchen Zeitskalen, was prüfend…"

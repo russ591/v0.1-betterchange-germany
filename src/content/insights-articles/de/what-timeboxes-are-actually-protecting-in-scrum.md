@@ -13,9 +13,9 @@ title: 'What Timeboxes Are Actually Protecting in Scrum'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-08-28T13:30:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Jedes Scrum-Event hat eine maximale Dauer, die Timebox, und es ist leicht, sie als willkürliche Einschränkung zu behandeln. Jede Timebox schützt etwas Konkretes."
 featured: false
 metaDescription: "Jedes Scrum-Event hat eine maximale Dauer, die Timebox, und es ist leicht, sie als willkürliche Einschränkung zu behandeln. Jede Timebox schützt etwas…"

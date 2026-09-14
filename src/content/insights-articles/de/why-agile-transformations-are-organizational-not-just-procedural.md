@@ -16,9 +16,9 @@ primaryCategory: Change Management
 categories:
   - Agile
   - Leadership
-date: '2023-12-13T00:00:00Z'
+date: '2026-08-23T13:30:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Agile Transformation wird häufig als Prozessänderung umgesetzt. Diese Rahmung liefert konsequent weniger, als sie verspricht, weil Prozessänderung nur einen Bruchteil dessen adressiert, was genuine Transformation erfordert."
 featured: false
 metaDescription: "Agile Transformation wird häufig als Prozessänderung umgesetzt. Diese Rahmung liefert konsequent weniger, als sie verspricht, weil Prozessänderung nur…"

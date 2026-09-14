@@ -12,9 +12,9 @@ title: 'Six Ways Scrum Masters Become More Effective'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-07-30T10:00:00Z'
 readTimeMinutes: 3
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Scrum Master, die die Rolle nur technisch ausführen, und Scrum Master, die genuin wirksam sind, wirken im Alltag oft ähnlich. Der Unterschied zeigt sich in sechs konkreten Gewohnheiten."
 featured: false
 metaDescription: "Scrum Master, die die Rolle nur technisch ausführen, und Scrum Master, die genuin wirksam sind, wirken im Alltag oft ähnlich. Der Unterschied zeigt sich in…"

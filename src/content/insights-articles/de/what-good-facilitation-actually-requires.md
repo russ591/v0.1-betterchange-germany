@@ -13,9 +13,9 @@ title: 'What Good Facilitation Actually Requires'
 contentType: Blog
 primaryCategory: Coaching
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-06-27T23:45:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Facilitation wird oft mit dem Leiten eines Meetings gleichgesetzt, was unterschätzt, was eine genuin gute facilitierende Person von jemandem unterscheidet, der kompetent eine Agenda durcharbeitet."
 featured: false
 metaDescription: "Facilitation wird oft mit dem Leiten eines Meetings gleichgesetzt, was unterschätzt, was eine genuin gute facilitierende Person von jemandem…"

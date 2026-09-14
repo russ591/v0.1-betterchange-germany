@@ -12,9 +12,9 @@ title: 'Why Group Decisions Often Go Wrong (and How to Fix Them)'
 contentType: Blog
 primaryCategory: Leadership
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-07-21T10:45:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Gruppen sollen bessere Entscheidungen treffen als Einzelpersonen. In der Praxis treffen sie häufig schlechtere. Drei Fehlermuster erklären warum, und vier strukturelle Lösungen adressieren sie."
 featured: false
 metaDescription: "Gruppen sollen bessere Entscheidungen treffen als Einzelpersonen. In der Praxis treffen sie häufig schlechtere. Drei Fehlermuster erklären warum, und vier…"

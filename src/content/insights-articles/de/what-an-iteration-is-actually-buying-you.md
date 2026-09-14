@@ -16,9 +16,9 @@ primaryCategory: Agile
 categories:
   - Agile
   - Produktentwicklung
-date: '2023-11-29T00:00:00Z'
+date: '2026-08-26T19:59:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Eine Iteration ist ein grundlegender agiler Baustein, und der Grund für Timeboxing überhaupt, statt kontinuierlich auf ein größeres Ziel hinzuarbeiten, lohnt sich, explizit zu machen."
 featured: false
 metaDescription: "Eine Iteration ist ein grundlegender agiler Baustein, und der Grund für Timeboxing überhaupt, statt kontinuierlich auf ein größeres Ziel…"

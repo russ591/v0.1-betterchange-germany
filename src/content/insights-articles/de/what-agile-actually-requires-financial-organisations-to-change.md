@@ -15,9 +15,9 @@ contentType: Resource
 primaryCategory: Change Management
 categories:
   - Agile
-date: '2023-10-14T00:00:00Z'
+date: '2026-07-26T04:45:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Finanzdienstleistungsorganisationen, die Agile einführen, stehen vor einer konkreten Spannung: Agiles Annahmen über adaptive, iterative Arbeit stehen in echter Reibung mit regulatorischen Anforderungen an Dokumentation und Genehmigungsspuren."
 featured: false
 metaDescription: "Finanzdienstleistungsorganisationen, die Agile einführen, stehen vor einer konkreten Spannung: Agiles Annahmen über adaptive, iterative Arbeit stehen…"

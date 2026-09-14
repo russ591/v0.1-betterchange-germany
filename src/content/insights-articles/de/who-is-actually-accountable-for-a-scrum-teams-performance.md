@@ -14,9 +14,9 @@ title: 'Who Is Actually Accountable for a Scrum Team''s Performance?'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-09-04T05:00:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Die ehrliche Antwort ist verteilter und weniger griffig, als die meisten Organisationen es sich wünschen. Warum sich Scrums Accountability-Struktur gegen die Suche nach einem einzelnen Verantwortlichen sträubt."
 featured: false
 metaDescription: "Die ehrliche Antwort ist verteilter und weniger griffig, als die meisten Organisationen es sich wünschen. Warum sich Scrums Accountability-Struktur…"

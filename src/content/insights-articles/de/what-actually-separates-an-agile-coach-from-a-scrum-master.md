@@ -17,9 +17,9 @@ categories:
   - Agile
   - Leadership
   - Scrum
-date: '2023-11-29T00:00:00Z'
+date: '2026-07-13T00:45:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Die beiden Rollen überschneiden sich im Alltag genug (beide coachen, beide facilitieren, beide arbeiten an Teamwirksamkeit), dass die Unterscheidung leicht verwischt. Der eigentliche Unterschied liegt im Umfang, nicht im zugrunde liegenden Fähigkeitsset."
 featured: false
 metaDescription: "Die beiden Rollen überschneiden sich im Alltag genug, dass die Unterscheidung leicht verwischt. Der eigentliche Unterschied liegt im Umfang, nicht im…"

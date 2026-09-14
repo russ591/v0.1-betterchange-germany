@@ -15,9 +15,9 @@ contentType: Resource
 primaryCategory: Kanban
 categories:
   - Kanban
-date: '2023-12-11T00:00:00Z'
+date: '2026-09-10T13:15:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Eine Kanban-Karte repräsentiert ein Arbeitspaket, das sich über ein Board bewegt, und wird leicht wie ein einfacher Sticky Note behandelt. Was sie tatsächlich enthält, hat echte Konsequenzen dafür, wie gut das Board seinen Zweck erfüllt."
 featured: false
 metaDescription: "Eine Kanban-Karte repräsentiert ein Arbeitspaket, das sich über ein Board bewegt, und wird leicht wie ein einfacher Sticky Note behandelt. Was sie…"

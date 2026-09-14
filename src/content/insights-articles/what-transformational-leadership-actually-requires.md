@@ -4,9 +4,9 @@ contentType: Resource
 primaryCategory: Leadership
 categories:
   - Leadership
-date: '2023-12-21T00:00:00Z'
+date: '2026-08-02T05:00:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Transformational leadership is often reduced to a vague compliment. The four components Burns and Bass actually described, and why strength in three doesn''t compensate for a missing fourth.'
 featured: true
 metaTitle: 'What Transformational Leadership Actually Requires'

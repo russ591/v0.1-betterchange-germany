@@ -4,9 +4,9 @@ contentType: Resource
 primaryCategory: Change Management
 categories:
   - Agile
-date: '2023-11-28T00:00:00Z'
+date: '2026-09-05T10:15:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'An organisation can have every team running textbook Scrum and still not be, in any meaningful sense, an agile organisation. Conflating the two is why transformations plateau.'
 featured: false
 metaTitle: 'What Actually Makes an Organisation Agile, Not Just Its Teams'

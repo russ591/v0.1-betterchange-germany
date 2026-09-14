@@ -15,9 +15,9 @@ contentType: Resource
 primaryCategory: Scrum
 categories:
   - Scrum
-date: '2023-12-21T00:00:00Z'
+date: '2026-09-07T06:00:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Der Scrum Guide verbietet nicht explizit, dass eine Person beide Accountabilities hält, und kleine Teams kombinieren sie manchmal aus praktischer Notwendigkeit. Warum diese Kombination strukturelle Spannung erzeugt."
 featured: false
 metaDescription: "Der Scrum Guide verbietet nicht explizit, dass eine Person beide Accountabilities hält, und kleine Teams kombinieren sie manchmal aus praktischer…"

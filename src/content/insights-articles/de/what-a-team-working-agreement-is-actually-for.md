@@ -12,9 +12,9 @@ title: 'What a Team Working Agreement Is Actually For'
 contentType: Blog
 primaryCategory: Agile
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-07-10T05:37:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Ein Working Agreement ist oft eine einmalige Übung, die abgelegt und vergessen wird. Gut gemacht, ist es eine lebendige Referenz, die tatsächlich die Reibung löst, die es verhindern soll."
 featured: false
 metaDescription: "Ein Working Agreement ist oft eine einmalige Übung, die abgelegt und vergessen wird. Gut gemacht, ist es eine lebendige Referenz, die tatsächlich die…"

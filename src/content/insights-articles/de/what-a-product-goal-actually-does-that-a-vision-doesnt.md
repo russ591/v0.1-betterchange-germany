@@ -15,9 +15,9 @@ contentType: Resource
 primaryCategory: Scrum
 categories:
   - Produktentwicklung
-date: '2023-12-21T00:00:00Z'
+date: '2026-08-05T06:45:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Das Product Goal wurde 2020 formal in den Scrum Guide aufgenommen, und sein Verhältnis zu einer breiteren Produktvision ist genuin leicht zu verwischen. Die Unterscheidung lohnt sich, präzise zu treffen."
 featured: false
 metaDescription: "Das Product Goal wurde 2020 formal in den Scrum Guide aufgenommen, und sein Verhältnis zu einer breiteren Produktvision ist genuin leicht zu verwischen…"

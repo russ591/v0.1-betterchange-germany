@@ -13,9 +13,9 @@ title: 'What a Scrum Master''s Day Actually Looks Like'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-07-17T06:26:00Z'
 readTimeMinutes: 3
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Die Scrum-Master-Rolle wird oft über Accountabilities und Ergebnisse beschrieben, was zutreffend ist, aber nicht beantwortet, was jemand in dieser Rolle zwischen zwei Daily Scrums tatsächlich tut."
 featured: false
 metaDescription: "Die Scrum-Master-Rolle wird oft über Accountabilities und Ergebnisse beschrieben, was zutreffend ist, aber nicht beantwortet, was jemand in dieser Rolle…"

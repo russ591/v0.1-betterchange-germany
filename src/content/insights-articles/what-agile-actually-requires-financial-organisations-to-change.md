@@ -4,9 +4,9 @@ contentType: Resource
 primaryCategory: Change Management
 categories:
   - Agile
-date: '2023-10-14T00:00:00Z'
+date: '2026-07-26T04:45:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Financial services organisations adopting agile face a specific tension between adaptive, iterative work and regulatory requirements for documentation and audit trails.'
 featured: false
 metaTitle: 'What Agile Actually Requires Financial Organisations to Change'

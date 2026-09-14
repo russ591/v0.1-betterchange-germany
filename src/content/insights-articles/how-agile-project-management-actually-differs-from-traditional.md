@@ -5,9 +5,9 @@ primaryCategory: Agile
 categories:
   - Agile
   - Leadership
-date: '2023-12-13T00:00:00Z'
+date: '2026-07-18T04:30:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Agile project management is sometimes presented as traditional PM done faster. The differences run deeper, touching planning, requirements, and the project manager''s role itself.'
 featured: false
 metaTitle: 'How Agile Project Management Actually Differs From Traditional'

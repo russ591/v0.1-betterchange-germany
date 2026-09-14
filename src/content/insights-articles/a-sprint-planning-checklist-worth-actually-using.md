@@ -3,9 +3,9 @@ title: 'A Sprint Planning Checklist Worth Actually Using'
 contentType: Blog
 primaryCategory: Scrum
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-07-09T01:15:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Most Sprint Planning checklists just restate the Scrum Guide''s mechanical steps. A more useful checklist catches the specific things that go wrong even when those steps are followed correctly.'
 featured: false
 metaTitle: 'A Sprint Planning Checklist Worth Actually Using'

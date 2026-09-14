@@ -13,9 +13,9 @@ title: 'AI Projects Worth Starting With'
 contentType: Resource
 primaryCategory: KI
 categories: []
-date: '2024-02-23T00:00:00Z'
+date: '2026-08-04T15:00:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Die meisten \"Top-KI-Projekte\"-Listen lesen sich wie ein Menü an Ambitionen. Ambition ist nicht die Einschränkung für die meisten Organisationen zu Beginn der KI-Einführung. Reihenfolge ist es."
 featured: false
 metaDescription: "Die meisten \"Top-KI-Projekte\"-Listen lesen sich wie ein Menü an Ambitionen. Ambition ist nicht die Einschränkung für die meisten Organisationen zu Beginn…"

@@ -3,9 +3,9 @@ title: 'AI Projects Worth Starting With'
 contentType: Resource
 primaryCategory: AI
 categories: []
-date: '2024-02-23T00:00:00Z'
+date: '2026-08-04T15:00:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: 'Ambition isn''t the constraint for most organizations starting out with AI adoption. Sequencing is: knowing which project to actually attempt first.'
 featured: false
 metaTitle: 'AI Projects Worth Starting With'

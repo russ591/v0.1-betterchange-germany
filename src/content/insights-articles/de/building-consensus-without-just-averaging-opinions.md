@@ -15,9 +15,9 @@ contentType: Resource
 primaryCategory: Leadership
 categories:
   - Leadership
-date: '2023-12-21T00:00:00Z'
+date: '2026-09-12T01:30:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Konsens wird oft mit einem Kompromiss gleichgesetzt, der niemanden vollständig zufriedenstellt, aber auch niemanden aktiv stört. Echter Konsens ist anders, und schwerer."
 featured: true
 metaDescription: "Konsens wird oft mit einem Kompromiss gleichgesetzt, der niemanden vollständig zufriedenstellt, aber auch niemanden aktiv stört. Echter Konsens ist…"

@@ -12,9 +12,9 @@ title: 'Choosing a Kanban Tool: The Question That Actually Matters'
 contentType: Blog
 primaryCategory: Kanban
 categories: []
-date: '2024-03-20T00:00:00Z'
+date: '2026-08-13T06:15:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Vergleiche von Kanban-Tools konzentrieren sich meist auf Funktionslisten. Das ist nicht die erste Frage, die sich zu stellen lohnt, und sie falsch zu beantworten macht den Funktionsvergleich weitgehend irrelevant."
 featured: false
 metaDescription: "Vergleiche von Kanban-Tools konzentrieren sich meist auf Funktionslisten. Das ist nicht die erste Frage, die sich zu stellen lohnt, und sie falsch zu…"

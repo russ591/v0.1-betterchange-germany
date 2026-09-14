@@ -15,9 +15,9 @@ contentType: Resource
 primaryCategory: Scrum
 categories:
   - Scrum
-date: '2023-11-28T00:00:00Z'
+date: '2026-07-03T14:15:00Z'
 readTimeMinutes: 2
-author: mogens-villadsen
+authorName: 'Better Change Fellow'
 excerpt: "Scrum nimmt an, dass Hindernisse angesprochen werden, typischerweise im Daily Scrum. In der Praxis wird ein erheblicher Anteil echter Hindernisse nie explizit angesprochen, was das Entdeckungsproblem mindestens ebenso wichtig macht wie das Lösungsproblem."
 featured: false
 metaDescription: "Scrum nimmt an, dass Hindernisse angesprochen werden, typischerweise im Daily Scrum. In der Praxis wird ein erheblicher Anteil echter Hindernisse nie…"
