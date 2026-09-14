@@ -388,6 +388,49 @@
   to = "/insights/choosing-a-kanban-tool-the-question-that-actually-matters"
   status = 301
 
+# --- SEO-filler rewrite batch 3: old slug -> new, sharper slug -------------
+# Same approach as batches 1-2 (see betterchange-seo-rewrite-batch-03.md).
+# English-only -- none of these 8 had a German translation.
+[[redirects]]
+  from = "/insights/what-is-agile-team-charter"
+  to = "/insights/what-a-team-charter-covers-that-a-working-agreement-doesnt"
+  status = 301
+
+[[redirects]]
+  from = "/insights/effective-communication-key-agile-principles-explained"
+  to = "/insights/why-agile-communication-principles-are-harder-than-they-sound"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-does-a-scrum-master-do-all-day"
+  to = "/insights/what-a-scrum-masters-day-actually-looks-like"
+  status = 301
+
+[[redirects]]
+  from = "/insights/how-scrum-event-timeboxes-make-your-team-more-effective"
+  to = "/insights/what-timeboxes-are-actually-protecting-in-scrum"
+  status = 301
+
+[[redirects]]
+  from = "/insights/how-to-manage-risk-with-scrum"
+  to = "/insights/how-scrum-manages-risk-without-a-risk-register"
+  status = 301
+
+[[redirects]]
+  from = "/insights/why-does-a-scrum-team-need-self-organization"
+  to = "/insights/what-self-organization-actually-buys-a-scrum-team"
+  status = 301
+
+[[redirects]]
+  from = "/insights/the-key-stakeholders-in-scrum"
+  to = "/insights/mapping-the-stakeholders-scrum-doesnt-formally-define"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-makes-a-good-facilitator"
+  to = "/insights/what-good-facilitation-actually-requires"
+  status = 301
+
 # --- German 404 page ------------------------------------------------------
 # Netlify's automatic per-directory custom-404 convention needs a literal
 # 404.html in the requested directory. Astro's own "/404 -> 404.html
