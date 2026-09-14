@@ -110,13 +110,17 @@
   status = 301
 
 [[redirects]]
+  # Updated to point straight at the batch-4 rewrite's new slug rather than
+  # chaining through the old bare "what-is-a-product-goal" (now itself a
+  # redirect below, since the file was renamed).
   from = "/insights/what-is-a-product-goal%3F"
-  to = "/insights/what-is-a-product-goal"
+  to = "/insights/what-a-product-goal-actually-does-that-a-vision-doesnt"
   status = 301
 
 [[redirects]]
+  # Same as above, for the product-vision article.
   from = "/insights/what-is-a-product-vision%3F"
-  to = "/insights/what-is-a-product-vision"
+  to = "/insights/what-a-product-vision-is-actually-for"
   status = 301
 
 [[redirects]]
@@ -343,6 +347,263 @@
 [[redirects]]
   from = "/insights/why-is-change-management-important"
   to = "/insights/why-change-management-matters-more-than-the-plan-itself"
+  status = 301
+
+# --- SEO-filler rewrite batch 2: old slug -> new, sharper slug -------------
+# Same approach as batch 1 (see betterchange-seo-rewrite-batch-02.md).
+# English-only -- none of these 8 had a German translation.
+[[redirects]]
+  from = "/insights/6-tips-improving-product-backlog-refinement"
+  to = "/insights/what-good-backlog-refinement-actually-looks-like"
+  status = 301
+
+[[redirects]]
+  from = "/insights/top-7-questions-typically-asked-during-sprint-review"
+  to = "/insights/the-questions-that-make-a-sprint-review-actually-useful"
+  status = 301
+
+[[redirects]]
+  from = "/insights/managing-technical-debt-in-scrum-roles-and-responsibilities"
+  to = "/insights/who-actually-owns-technical-debt-in-scrum"
+  status = 301
+
+[[redirects]]
+  from = "/insights/3-best-practices-for-sprint-planning"
+  to = "/insights/the-sprint-planning-mistake-most-teams-dont-notice"
+  status = 301
+
+[[redirects]]
+  from = "/insights/effective-strategies-for-stabilizing-team-velocity-in-scrum"
+  to = "/insights/why-team-velocity-swings-and-what-actually-stabilizes-it"
+  status = 301
+
+[[redirects]]
+  from = "/insights/how-to-handle-unplanned-work-in-scrum"
+  to = "/insights/what-to-actually-do-when-unplanned-work-hits-your-sprint"
+  status = 301
+
+[[redirects]]
+  from = "/insights/establishing-an-agile-team-working-agreement"
+  to = "/insights/what-a-team-working-agreement-is-actually-for"
+  status = 301
+
+[[redirects]]
+  from = "/insights/5-best-kanban-tools"
+  to = "/insights/choosing-a-kanban-tool-the-question-that-actually-matters"
+  status = 301
+
+# --- SEO-filler rewrite batch 3: old slug -> new, sharper slug -------------
+# Same approach as batches 1-2 (see betterchange-seo-rewrite-batch-03.md).
+# English-only -- none of these 8 had a German translation.
+[[redirects]]
+  from = "/insights/what-is-agile-team-charter"
+  to = "/insights/what-a-team-charter-covers-that-a-working-agreement-doesnt"
+  status = 301
+
+[[redirects]]
+  from = "/insights/effective-communication-key-agile-principles-explained"
+  to = "/insights/why-agile-communication-principles-are-harder-than-they-sound"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-does-a-scrum-master-do-all-day"
+  to = "/insights/what-a-scrum-masters-day-actually-looks-like"
+  status = 301
+
+[[redirects]]
+  from = "/insights/how-scrum-event-timeboxes-make-your-team-more-effective"
+  to = "/insights/what-timeboxes-are-actually-protecting-in-scrum"
+  status = 301
+
+[[redirects]]
+  from = "/insights/how-to-manage-risk-with-scrum"
+  to = "/insights/how-scrum-manages-risk-without-a-risk-register"
+  status = 301
+
+[[redirects]]
+  from = "/insights/why-does-a-scrum-team-need-self-organization"
+  to = "/insights/what-self-organization-actually-buys-a-scrum-team"
+  status = 301
+
+[[redirects]]
+  from = "/insights/the-key-stakeholders-in-scrum"
+  to = "/insights/mapping-the-stakeholders-scrum-doesnt-formally-define"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-makes-a-good-facilitator"
+  to = "/insights/what-good-facilitation-actually-requires"
+  status = 301
+
+# --- Duplicate cleanup: 15 filler articles retired, redirected to the ------
+# canonical article (rewritten pieces from batches 1-2, or an existing
+# quality-tier article) that already covers their topic. See
+# betterchange-duplicate-cleanup-plan.md. The content files themselves are
+# removed, not just redirected -- fully superseded, nothing to keep.
+[[redirects]]
+  from = "/insights/10-advantages-using-sprint-goals"
+  to = "/insights/ten-reasons-sprint-goals-are-worth-the-effort"
+  status = 301
+
+[[redirects]]
+  from = "/insights/examples-of-teal-organizations-a-comprehensive-guide"
+  to = "/insights/what-teal-organizations-actually-get-right"
+  status = 301
+
+[[redirects]]
+  from = "/insights/exploring-the-benefits-of-teal-organisations"
+  to = "/insights/what-teal-organizations-actually-get-right"
+  status = 301
+
+[[redirects]]
+  from = "/insights/10-examples-of-teal-organizations"
+  to = "/insights/what-teal-organizations-actually-get-right"
+  status = 301
+
+[[redirects]]
+  from = "/insights/creating-a-teal-organisation-how-to-achieve-a-self-managed-workplace"
+  to = "/insights/what-teal-organizations-actually-get-right"
+  status = 301
+
+# This article's live URL was its custom urlSlug (a legacy colon-containing
+# path preserved for SEO on domain cutover), not its filename -- redirect
+# from that literal URL too, or anyone who had it bookmarked/indexed 404s.
+[[redirects]]
+  from = "/insights/creating-a-teal-organisation:-how-to-achieve-a-self-managed-workplace"
+  to = "/insights/what-teal-organizations-actually-get-right"
+  status = 301
+
+[[redirects]]
+  from = "/insights/understanding-the-decision-making-process"
+  to = "/insights/how-decisions-actually-get-made-in-management"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-a-characteristic-of-an-effective-scrum-master"
+  to = "/insights/what-is-a-scrum-master-more-than-a-meeting-facilitator"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-makes-a-good-product-owner"
+  to = "/insights/the-product-owner:-running-a-business-within-a-business"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-makes-a-good-leader"
+  to = "/insights/strategies-that-actually-enhance-leadership-skills"
+  status = 301
+
+[[redirects]]
+  from = "/insights/the-benefits-of-collaborative-decision-making"
+  to = "/insights/why-group-decisions-often-go-wrong"
+  status = 301
+
+[[redirects]]
+  from = "/insights/10-examples-of-effective-decision-making"
+  to = "/insights/how-decisions-actually-get-made-in-management"
+  status = 301
+
+[[redirects]]
+  from = "/insights/3-backlog-refinement-techniques"
+  to = "/insights/what-good-backlog-refinement-actually-looks-like"
+  status = 301
+
+[[redirects]]
+  from = "/insights/5-important-leadership-skills"
+  to = "/insights/strategies-that-actually-enhance-leadership-skills"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-do-agile-leaders-do"
+  to = "/insights/strategies-that-actually-enhance-leadership-skills"
+  status = 301
+
+[[redirects]]
+  from = "/insights/the-art-of-making-decisions-how-to-make-the-right-choice-every-time"
+  to = "/insights/how-decisions-actually-get-made-in-management"
+  status = 301
+
+# --- SEO-filler rewrite batch 4: old slug -> new, sharper slug -------------
+# Same approach as batches 1-3 (see betterchange-seo-rewrite-batch-04.md).
+# English-only -- none of these 8 had a German translation.
+[[redirects]]
+  from = "/insights/what-happens-if-a-scrum-team-becomes-too-large"
+  to = "/insights/what-actually-breaks-when-a-scrum-team-gets-too-big"
+  status = 301
+
+[[redirects]]
+  from = "/insights/sprint-planning-checklist"
+  to = "/insights/a-sprint-planning-checklist-worth-actually-using"
+  status = 301
+
+[[redirects]]
+  from = "/insights/how-can-scrum-master-support-product-owner"
+  to = "/insights/what-scrum-masters-actually-owe-product-owners"
+  status = 301
+
+[[redirects]]
+  from = "/insights/who-is-responsible-for-a-scrum-teams-performance"
+  to = "/insights/who-is-actually-accountable-for-a-scrum-teams-performance"
+  status = 301
+
+[[redirects]]
+  from = "/insights/top-10-ai-projects-for-2024"
+  to = "/insights/ai-projects-worth-starting-with"
+  status = 301
+
+[[redirects]]
+  from = "/insights/the-ultimate-guide-to-building-an-ai-team"
+  to = "/insights/what-an-ai-team-actually-needs"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-a-product-vision"
+  to = "/insights/what-a-product-vision-is-actually-for"
+  status = 301
+
+[[redirects]]
+  from = "/insights/what-is-a-product-goal"
+  to = "/insights/what-a-product-goal-actually-does-that-a-vision-doesnt"
+  status = 301
+
+# --- Batch 4 AI cluster: 5 of 7 retired, 2 rewritten above (items 5-6) -----
+# See betterchange-seo-rewrite-batch-04.md's AI cluster table. Two of the
+# five map to existing quality-tier AI articles -- the batch doc's stated
+# target slugs for both were "clean" guesses that don't match either
+# article's actual live URL, which comes from a custom urlSlug (same
+# pattern as several duplicate-cleanup items already caught): confirmed by
+# finding the actual built directory rather than trusting the stated slug.
+[[redirects]]
+  from = "/insights/the-impact-of-ai-in-tech-a-comprehensive-guide"
+  to = "/insights/ai-design:-the-principles-that-shape-every-system-you-interact-with"
+  status = 301
+
+# This retired article had its own legacy urlSlug (a colon-containing URL
+# preserved for SEO on domain cutover) -- redirect from that literal URL
+# too, same treatment as the duplicate-cleanup batch's item 5.
+[[redirects]]
+  from = "/insights/ai-in-tech:-a-comprehensive-guide-to-its-impact"
+  to = "/insights/ai-design:-the-principles-that-shape-every-system-you-interact-with"
+  status = 301
+
+[[redirects]]
+  from = "/insights/the-future-of-tech-and-ai-a-comprehensive-guide"
+  to = "/insights/ai-projects-worth-starting-with"
+  status = 301
+
+[[redirects]]
+  from = "/insights/the-future-of-ai-tech-a-comprehensive-guide"
+  to = "/insights/ai-projects-worth-starting-with"
+  status = 301
+
+[[redirects]]
+  from = "/insights/the-top-tools-for-ai-a-comprehensive-guide"
+  to = "/insights/what-an-ai-team-actually-needs"
+  status = 301
+
+[[redirects]]
+  from = "/insights/the-power-of-generative-ai-a-comprehensive-guide"
+  to = "/insights/your-biggest-ai-challenge-isn't-technical.-it's-cultural."
   status = 301
 
 # --- German 404 page ------------------------------------------------------
