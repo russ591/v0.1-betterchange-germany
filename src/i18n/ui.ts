@@ -125,11 +125,9 @@ export const en = {
   "course.onRequestLabel": "On request",
   "course.onRequestNote": "Not on the public schedule right now, but available for private or in-house delivery on request.",
 
-  // New for the trainer-led-vs-self-paced two-card layout (courses that
-  // offer self-paced alongside at least one trainer-led format). Falls
-  // back to the auto-generated "[DE] " placeholder until a proper
-  // translation pass reviews these, same as every other not-yet-reviewed
-  // key in this file.
+  // For the trainer-led-vs-self-paced two-card layout (courses that offer
+  // self-paced alongside at least one trainer-led format). German copy
+  // added below in deOverrides.
   "course.trainerLedTitle": "Trainer-Led Workshop",
   "course.trainerLedDescription":
     "Learn in a group with a certified trainer, in person or live online. Social, interactive, and led at a set pace over the scheduled dates.",
@@ -372,6 +370,26 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "course.trainerLabel": "Trainer:in",
   "course.onRequestLabel": "Auf Anfrage",
   "course.onRequestNote": "Aktuell nicht öffentlich terminiert, auf Anfrage jedoch für private oder unternehmensinterne Durchführung verfügbar.",
+
+  // Found and fixed as a site-wide [DE]-placeholder scan follow-up: the
+  // trainer-led-vs-self-paced two-card layout and the whole self-paced
+  // course page were shipped without ever getting a translation pass.
+  "course.trainerLedTitle": "Trainergeführter Workshop",
+  "course.trainerLedDescription":
+    "Lernen in der Gruppe mit zertifizierten Trainer:innen, vor Ort oder live online. Sozial, interaktiv und im festen Rhythmus der geplanten Termine.",
+  "course.selfPacedTitle": "Selbstlern-Workshop",
+  "course.findOutMore": "Mehr erfahren",
+
+  "selfPaced.breadcrumbLabel": "Selbstlernkurs",
+  "selfPaced.eyebrowPrefix": "Selbstlernkurs",
+  "selfPaced.beginWhenReady": "Beginn, wann immer gewünscht",
+  "selfPaced.whatsIncluded": "Was ist inklusive",
+  "selfPaced.curriculumEyebrow": "Curriculum",
+  "selfPaced.faqHeading": "Häufig gestellte Fragen",
+  "selfPaced.faqCertificationQuestion": "Ist die Zertifizierung dieselbe wie beim trainergeführten Kurs?",
+  "selfPaced.faqCertificationAnswer":
+    "Ja. Der Selbstlernkurs führt zur gleichen Zertifizierung wie jedes andere Format dieses Kurses.",
+  "selfPaced.readyHeading": "Bereit loszulegen?",
 
   "insights.minRead": "Min. Lesezeit",
   "insights.by": "Von",
