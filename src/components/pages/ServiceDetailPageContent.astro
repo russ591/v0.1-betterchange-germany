@@ -1,0 +1,49 @@
+---
+// Shared body for /services/[service] -- English only for now (no German
+// services collection yet), but built as a locale-aware split-body
+// component like every other detail page on the site, so a future German
+// route can reuse it without changes. `name`/`blurb` come from
+// src/data/services.ts's getServices() rather than this entry's own
+// frontmatter -- that stays the single source of truth for the grid card
+// copy, which this page doesn't repeat.
+import type { CollectionEntry } from "astro:content";
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+import Section from "@/components/Section.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import CTABanner from "@/components/CTABanner.astro";
+import { getServices, serviceIcons } from "@/data/services";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+
+interface Props {
+  service: CollectionEntry<"services">;
+  Content: AstroComponentFactory;
+}
+
+const { service, Content } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const prefix = locale === "de" ? "/de" : "";
+const grid = getServices(locale).find((s) => s.icon === service.data.icon)!;
+---
+
+<Breadcrumbs items={[{ label: t("nav.services"), href: `${prefix}/services` }, { label: grid.name }]} />
+
+<Section eyebrow={t("nav.services")} class="bg-mist-light">
+  <span aria-hidden="true" class="blob-dot flex h-11 w-11 items-center justify-center bg-lime" set:html={serviceIcons[service.data.icon]} />
+  <h1 class="mt-4 text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">{grid.name}</h1>
+  <p class="mt-4 max-w-2xl text-[length:var(--text-body)] text-neutral-600">{grid.blurb}</p>
+</Section>
+
+<Section>
+  <div class="article-body max-w-2xl text-[length:var(--text-body)] text-neutral-700">
+    <Content />
+  </div>
+</Section>
+
+<CTABanner
+  tone="light"
+  heading={t("cta.closingHeading")}
+  body={t("cta.closingBody")}
+  ctaLabel={t("schedule.getInTouch")}
+  ctaHref={`${prefix}/contact`}
+/>

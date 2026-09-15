@@ -1,0 +1,41 @@
+---
+import { getCollection, getEntry, render } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ServiceDetailPageContent from "@/components/pages/ServiceDetailPageContent.astro";
+import { getServices } from "@/data/services";
+import { toPathSegment } from "@/lib/urlSlug";
+import { localeOfId, baseSlug } from "@/lib/i18n";
+
+export async function getStaticPaths() {
+  const services = await getCollection("services", (s) => localeOfId(s.id) === "en");
+  return services.map((service) => ({
+    params: { service: service.data.urlSlug ?? service.id },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const { Content } = await render(service);
+const grid = getServices("en").find((s) => s.icon === service.data.icon)!;
+
+// No German services yet (EN-first, per Russ) -- this stays defensive
+// like every other detail page on the site (coach profiles, insights
+// articles), so a future German entry picks up the switcher/hreflang
+// automatically without this file needing to change.
+const deService = await getEntry("services", `de/${baseSlug(service.id)}`);
+---
+
+<BaseLayout
+  title={service.data.metaTitle ?? grid.name}
+  description={service.data.metaDescription ?? grid.blurb}
+  translations={
+    deService
+      ? {
+          en: `/services/${toPathSegment(service.data.urlSlug ?? baseSlug(service.id))}`,
+          de: `/de/services/${toPathSegment(deService.data.urlSlug ?? baseSlug(deService.id))}`,
+        }
+      : undefined
+  }
+>
+  <ServiceDetailPageContent service={service} Content={Content} />
+</BaseLayout>

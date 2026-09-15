@@ -92,6 +92,7 @@ export const en = {
   "cta.moreCoursesInPrefix": "More courses in",
 
   "training.eyebrowLabel": "Training",
+  "training.readMoreAboutApproach": "Read more about our training approach",
   "training.courseSingular": "course",
   "training.coursePlural": "courses",
   "training.trainingCoursesHeadingSuffix": "training courses",

@@ -184,6 +184,24 @@ const legalPage = defineCollection({
   }),
 });
 
+// One dedicated detail page per service shown on /services -- name, the
+// grid's one-line blurb, and the bullet items are deliberately NOT
+// repeated here: they already live in src/data/services.ts's getServices(),
+// keyed by the same `icon` id, and that stays the single source of truth
+// for the grid card copy (which isn't changing). The markdown body below
+// this file's frontmatter is the actual page content (rendered via
+// astro:content's render(), same as legal-pages), not a frontmatter field,
+// since it's prose with headings/lists/links rather than structured data.
+const service = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/services" }),
+  schema: z.object({
+    icon: z.enum(["training", "coaching", "consulting", "facilitation"]),
+    urlSlug: z.string().optional(),
+    metaTitle: z.string().optional(),
+    metaDescription: z.string().optional(),
+  }),
+});
+
 // German-language scaffold (phase A): page-level prose for the three
 // hand-built marketing pages (home, services, training hub) that isn't
 // otherwise sourced from a content collection. One entry per language --
@@ -352,6 +370,7 @@ export const collections = {
   "coach-profiles": coachProfile,
   "insights-articles": insightsArticle,
   "legal-pages": legalPage,
+  services: service,
   "home-page": homePage,
   "services-page": servicesPage,
   "training-hub-page": trainingHubPage,
