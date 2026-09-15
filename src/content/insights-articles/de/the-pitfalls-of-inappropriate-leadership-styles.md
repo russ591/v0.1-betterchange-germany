@@ -22,7 +22,7 @@ readTimeMinutes: 3
 author: joanne-perold
 excerpt: "Alyssa ist brillant, engagiert und hat ein erfolgreiches Softwareunternehmen aufgebaut. Sie fährt auch leise ihr Team an die Wand. Ihre Geschichte veranschaulicht, was Golemans Forschung zu Führungsstilen seit Jahrzehnten zeigt."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/04/nick-fewings-EkyuhD7uwSM-unsplash-scaled.jpg
+imageUrl: /insights/the-pitfalls-of-inappropriate-leadership-styles.webp
 metaDescription: "Alyssa ist brillant, engagiert und hat ein erfolgreiches Softwareunternehmen aufgebaut. Sie fährt auch leise ihr Team an die Wand. Ihre Geschichte veranschaulicht, was Golemans Forschung zu Führungsstilen seit Jahrzehnten zeigt."
 bodyHtml: |-
   <p>Alyssa ist Gründerin und Geschäftsführerin eines Softwareunternehmens, spezialisiert auf HR- und Gehaltsabrechnungslösungen. Sie arbeitet härter als jede:r andere im Gebäude. Während kritischer Projektphasen ist sie vor allen anderen da und geht nach allen anderen. Sie setzt einen außergewöhnlichen Standard durch eigenes Beispiel und erwartet, dass das Team mithält.</p>

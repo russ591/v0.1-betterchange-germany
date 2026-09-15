@@ -21,7 +21,7 @@ readTimeMinutes: 3
 author: mogens-villadsen
 excerpt: "Change Management ist der strukturierte Ansatz, um Organisationen dabei zu helfen, sich von ihrem aktuellen Zustand zu einem gewünschten zukünftigen zu bewegen. Es umfasst Menschen, Prozesse und Systeme, und scheitert häufiger, als es gelingt."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/12/Change-Management.png
+imageUrl: /insights/what-is-change-management.webp
 metaDescription: "Change Management ist der strukturierte Ansatz, um Organisationen dabei zu helfen, sich von ihrem aktuellen Zustand zu einem gewünschten zukünftigen zu bewegen. Es umfasst Menschen, Prozesse und Systeme, und scheitert häufiger, als es gelingt."
 bodyHtml: |-
   <p>Change Management ist die strukturierte Sammlung von Prozessen, Werkzeugen und Techniken, die eine Organisation nutzt, um die menschliche Seite von Wandel zu managen. Es adressiert den vollen Umfang dessen, was nötig ist, um sich von einem aktuellen zu einem gewünschten zukünftigen Zustand zu bewegen: Menschen vorbereiten, Unterstützung aufbauen, Widerstand managen, und die Bedingungen schaffen, damit Wandel greift und sich hält.</p>

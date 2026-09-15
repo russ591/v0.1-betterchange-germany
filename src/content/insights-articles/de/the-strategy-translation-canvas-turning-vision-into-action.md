@@ -19,7 +19,7 @@ readTimeMinutes: 3
 author: jan-b-olsen
 excerpt: "Eine Strategie in einer Präsentation ist eine Absicht, kein Plan. Die Strategy Translation Canvas zerlegt strategische Absichten in konkrete, verantwortete, messbare Maßnahmen, die mit der täglichen Arbeit verbunden sind."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2025/01/Bridge.png
+imageUrl: /insights/the-strategy-translation-canvas-turning-vision-into-action.webp
 metaDescription: "Eine Strategie in einer Präsentation ist eine Absicht, kein Plan. Die Strategy Translation Canvas zerlegt strategische Absichten in konkrete, verantwortete, messbare Maßnahmen, die mit der täglichen Arbeit verbunden sind."
 bodyHtml: |-
   <p>Letzten Monat hob ein Kollege in einem Meeting entnervt die Hände. "Wir haben diese großartige Strategie", sagte er, "aber sechs Monate später bekommen wir sie einfach nicht real." Diese Aussage, in verschiedenen Formen, ist schon oft zu hören gewesen. Die Strategie ist nicht das Problem. Die Übersetzung der Strategie in Umsetzung ist das Problem, und genau dort liegt fast immer die Lücke.</p>

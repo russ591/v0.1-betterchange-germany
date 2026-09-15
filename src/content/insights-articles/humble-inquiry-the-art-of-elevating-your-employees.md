@@ -10,7 +10,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: 'Effective leadership is often associated with qualities such as decisiveness, confidence, and assertiveness. However, there''s another, often overlooked trait that can be equally - if not more - valuable in driving organisational success: humble inquiry.'
 featured: true
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/04/brooke-cagle-uHVRvDr7pg-unsplash.jpg
+imageUrl: /insights/humble-inquiry-the-art-of-elevating-your-employees.webp
 metaTitle: Humble Inquiry - The Art of Elevating Your Employees | Better Change C
 metaDescription: Effective leadership is often associated with qualities such as decisiveness, confidence, and assertiveness. However, there's another, often overlooked...
 bodyHtml: |-

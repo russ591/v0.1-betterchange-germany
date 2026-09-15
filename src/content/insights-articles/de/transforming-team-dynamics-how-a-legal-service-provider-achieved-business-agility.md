@@ -16,7 +16,7 @@ readTimeMinutes: 3
 author: russell-hill
 excerpt: "Ein Online-Rechtsdienstleister wuchs innerhalb von drei Jahren von 50 auf 350 Mitarbeitende und stieß an eine Wand. Technische Ausfälle häuften sich, Prioritäten waren unklar, und die Koordination zwischen Teams war zusammengebrochen. Wie Flight Levels das Bild veränderten."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/04/Screenshot-2024-04-11-at-08.43.32-e1712819668742.png
+imageUrl: /insights/transforming-team-dynamics-how-a-legal-service-provider-achieved-business-agility.webp
 metaDescription: "Ein Online-Rechtsdienstleister wuchs innerhalb von drei Jahren von 50 auf 350 Mitarbeitende und stieß an eine Wand. Technische Ausfälle häuften sich, Prioritäten waren unklar, und die Koordination zwischen Teams war zusammengebrochen. Wie Flight Levels das Bild veränderten."
 bodyHtml: |-
   <p>Das Unternehmen hatte in den frühen Jahren alles richtig gemacht. Profitabel innerhalb von zwölf Monaten. Die Belegschaft verdreifachte sich in drei Jahren. Starke Kultur. Gutes Produkt. Und dann, wie es tendenziell geschieht, wenn informelle Koordinationssysteme über ihre Auslegungskapazität hinaus skalieren sollen, begannen Dinge zu brechen.</p>

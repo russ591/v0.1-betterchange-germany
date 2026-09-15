@@ -16,7 +16,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: "Bei der Auswahl von Führungskräften gibt es ein anhaltendes Verzerrungsproblem: Selbstbewusstsein wird gefördert und mit Kompetenz verwechselt. Die Eigenschaften, die tatsächlich Ergebnisse bringen, Empathie, Bescheidenheit, klare Kommunikation, finden sich häufiger bei Frauen. Das muss sich ändern."
 featured: true
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2025/03/vonecia-carswell-0aMMMUjiiEQ-unsplash.jpg
+imageUrl: /insights/the-need-for-female-competencies-in-leadership.webp
 metaDescription: "Bei der Auswahl von Führungskräften gibt es ein anhaltendes Verzerrungsproblem: Selbstbewusstsein wird gefördert und mit Kompetenz verwechselt. Die Eigenschaften, die tatsächlich Ergebnisse bringen, Empathie, Bescheidenheit, klare Kommunikation, finden sich häufiger bei Frauen. Das muss sich ändern."
 bodyHtml: |-
   <p>Es gibt eine aufschlussreiche Forschungslage, große Teile davon zusammengetragen vom Organisationspsychologen Tomas Chamorro-Premuzic, die auf ein unbequemes Muster bei der Auswahl von Führungskräften hinweist: Selbstbewusstsein wird durchweg mit Kompetenz verwechselt. Ausgewählt werden Menschen, die Autorität ausstrahlen, während jene übersehen werden, die sie tatsächlich besitzen. Das Ergebnis ist eine anhaltende Überrepräsentation eines bestimmten Typs: durchsetzungsstark, selbstdarstellend, und häufig falsch.</p>
