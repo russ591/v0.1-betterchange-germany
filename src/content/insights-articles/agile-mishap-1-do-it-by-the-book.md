@@ -1,6 +1,8 @@
 ---
 title: 'Agile Mishap #1: Do it by the book!'
 urlSlug: "agile-mishap-1:-do-it-by-the-book!"
+seriesId: "agile-mishaps"
+seriesOrder: 2
 contentType: Blog
 primaryCategory: Change Management
 categories:
@@ -15,7 +17,7 @@ imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/01/tim
 metaTitle: 'Agile Mishap #1: Do it by the book! | Better Change Consulting'
 metaDescription: 'In a series of blog posts I am discussing the question: What went wrong with Agile? When I started applying Agile methodologies in 2006 there was one...'
 bodyHtml: |-
-  <p><em>In a series of blog posts I am discussing the question: What went wrong with Agile? If you have not read the introduction blog post already (<a href="https://www.betterchange-consulting.com/change-management/what-went-wrong-with-agile/">What went wrong with Agile?</a>) I suggest you go there first before continuing reading here.</em></p>
+  <p><em>In a series of blog posts I am discussing the question: What went wrong with Agile? If you have not read the introduction blog post already (<a href="/insights/what-went-wrong-with-agile-an-honest-reckoning">What went wrong with Agile?</a>) I suggest you go there first before continuing reading here.</em></p>
 
   <p>When I started applying Agile methodologies in 2006 there was one dominant framework. It was Scrum and to be honest, in the beginning I thought that Agile was Scrum and Scrum was Agile. How wrong I was. Back then there was a dominant saying: “Scrum is simple but hard to do.” I think they were right. But raising questions about how to ease the hard parts, the answer seemed to be variations of: “Do it by the book! Repeat it over and over again until you get it right, because if you do not follow the Scrum Guide to the letter, you are not doing Scrum, you are doing Scrum-but!”</p>
 
@@ -35,5 +37,5 @@ bodyHtml: |-
 
   <p>Besides being owned by yourself, your agile implementation must also be done according to your context. It must be a balance between challenging your context and adapting to it. There is no blueprint you can follow. You must find the way yourself. You can of course be guided by consultants who have extensive experience with the process of transforming organisations, but stay away from those who with enormous confidence state that they know exactly what to do. Look instead for those who have a skillset that is larger than their ego - those that know that a job like this must first of all be addressed through humbleness.</p>
 
-  <p>In my coming blog post I will address another agile mishap which is related to today’s topic: <a href="https://www.betterchange-consulting.com/agile-mishaps/agile-mishap-2-all-frameworks-are-wrong-but-mine/">All frameworks are wrong but mine</a>. In that we will address the growing numbers of frameworks, the reasons why so many appear and are they actually relevant. Stay tuned and remember also to <a href="https://www.betterchange-consulting.dk/page/178194">subscribe to our newsletter</a> for a monthly goodybag of agile inspiration.</p>
+  <p>In my coming blog post I will address another agile mishap which is related to today’s topic: <a href="/insights/agile-mishap-2:-all-frameworks-are-wrong-but-mine">All frameworks are wrong but mine</a>. In that we will address the growing numbers of frameworks, the reasons why so many appear and are they actually relevant. Stay tuned and remember also to <a href="https://www.betterchange-consulting.dk/page/178194">subscribe to our newsletter</a> for a monthly goodybag of agile inspiration.</p>
 ---

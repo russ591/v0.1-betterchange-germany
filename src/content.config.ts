@@ -159,6 +159,17 @@ const insightsArticle = defineCollection({
     // punctuation (colons, apostrophes, em-dashes). Falls back to the
     // content id when absent so new articles don't need to set this.
     urlSlug: z.string().optional(),
+    // A handful of articles are chapters of one ongoing story (e.g. the
+    // "Agile Mishaps" series: an intro, five numbered mishaps, and a
+    // closing piece) rather than standalone posts. seriesOrder is the
+    // chapter's 1-based position; when both are set, the Insights hub only
+    // ever hero-features the seriesOrder: 1 entry (the other chapters
+    // would spoil/duplicate the series' front door), and each chapter's
+    // "related reading" links to its nearest siblings in the series
+    // instead of the usual same-category picks. Set identically on both
+    // the English and German entry when a series has a translation.
+    seriesId: z.string().optional(),
+    seriesOrder: z.number().optional(),
   }),
 });
 

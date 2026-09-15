@@ -6,9 +6,9 @@
 # not used); metaTitle omitted so it falls back to title, unprefixed.
 # contentType/primaryCategory/categories stay English loanwords per the
 # site-wide category-label rule. The list of earlier "Agile mishap"
-# posts carries over the EN source's own hrefs (external legacy
-# betterchange-consulting.com URLs) since the linked text is a German
-# rendering of the same series-post titles either way.
+# posts now links internally to each German sibling's own /de/insights/
+# page (previously carried the EN source's legacy betterchange-consulting.com
+# hrefs -- fixed alongside the rest of the series' cross-links).
 #
 # The original batch-03 draft was substantially shorter than the EN
 # source (translated from a truncated fetch on Russ's end) -- flagged,
@@ -19,6 +19,8 @@
 # paragraph the original draft had used instead of a full translation
 # of the EN "Conclusion" section.
 title: 'Despite All the Mishaps: Show Me the Better Option!'
+seriesId: "agile-mishaps"
+seriesOrder: 7
 contentType: Blog
 primaryCategory: Agile
 categories:
@@ -34,17 +36,17 @@ bodyHtml: |-
   <p>Dies ist der letzte Blogbeitrag der Serie über Pannen bei der Anwendung von Agile. Wer die anderen Beiträge noch nicht gelesen hat, sollte das vorher tun. Hier die vollständige Liste:</p>
 
   <ul>
-  <li><a href="https://www.betterchange-consulting.com/agile-mishaps/what-went-wrong-with-agile/">Was ging schief mit Agile?</a></li>
+  <li><a href="/de/insights/what-went-wrong-with-agile">Was ging schief mit Agile?</a></li>
 
-  <li><a href="https://www.betterchange-consulting.com/agile-mishaps/agile-mishap-1-do-it-by-the-book/">Agile-Panne #1: Es nach Lehrbuch machen!</a></li>
+  <li><a href="/de/insights/agile-mishap-1-do-it-by-the-book">Agile-Panne #1: Es nach Lehrbuch machen!</a></li>
 
-  <li><a href="https://www.betterchange-consulting.com/agile-mishaps/agile-mishap-2-all-frameworks-are-wrong-but-mine/">Agile-Panne #2: Alle Frameworks sind falsch, außer meinem</a></li>
+  <li><a href="/de/insights/agile-mishap-2-all-frameworks-are-wrong-but-mine">Agile-Panne #2: Alle Frameworks sind falsch, außer meinem</a></li>
 
-  <li><a href="https://www.betterchange-consulting.com/agile-mishaps/the-agile-bubble/">Agile-Panne #3: Die Agile-Blase</a></li>
+  <li><a href="/de/insights/the-agile-bubble">Agile-Panne #3: Die Agile-Blase</a></li>
 
-  <li><a href="https://www.betterchange-consulting.com/agile-mishaps/agile-mishap-4-incompetent-coaches-and-trainers/">Agile-Panne #4: Unfähige Coaches und Trainer:innen</a></li>
+  <li><a href="/de/insights/agile-mishap-4-incompetent-coaches-and-trainers">Agile-Panne #4: Unfähige Coaches und Trainer:innen</a></li>
 
-  <li><a href="https://www.betterchange-consulting.com/agile-mishaps/agile-mishap-5-the-certification-circus-reflecting-on-the-agile-accreditation-landscape/">Agile-Panne #5: Der Zertifizierungszirkus</a></li>
+  <li><a href="/de/insights/agile-mishap-5-the-certification-circus-reflecting-on-the-agile-accreditation-landscape">Agile-Panne #5: Der Zertifizierungszirkus</a></li>
   </ul>
 
   <h3>Einführung</h3>

@@ -1,6 +1,8 @@
 ---
 title: 'Agile Mishap #5: The Certification Circus'
 urlSlug: "agile-mishap-5:-the-certification-circus"
+seriesId: "agile-mishaps"
+seriesOrder: 6
 contentType: Blog
 primaryCategory: Agile
 categories:

@@ -7,6 +7,8 @@
 # contentType/primaryCategory/categories stay English loanwords per the
 # site-wide category-label rule.
 title: 'Agile Mishap #5: The Certification Circus'
+seriesId: "agile-mishaps"
+seriesOrder: 6
 contentType: Blog
 primaryCategory: Agile
 categories:

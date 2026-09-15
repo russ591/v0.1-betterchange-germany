@@ -1,6 +1,8 @@
 ---
 title: 'Despite All the Mishaps: Show Me the Better Option!'
 urlSlug: "despite-all-the-mishaps:-show-me-the-better-option!"
+seriesId: "agile-mishaps"
+seriesOrder: 7
 contentType: Blog
 primaryCategory: Agile
 categories:
@@ -17,17 +19,17 @@ bodyHtml: |-
   <p>This is the final blog post in my series about mishaps in applying Agile. If you have not read the other posts, I suggest you address those before moving on. Here is the complete list:</p>
 
   <ul>
-  <li><a href="https://www.betterchange-consulting.com/agile-mishaps/what-went-wrong-with-agile/">What went wrong with Agile?</a></li>
+  <li><a href="/insights/what-went-wrong-with-agile-an-honest-reckoning">What went wrong with Agile?</a></li>
 
-  <li><a href="https://www.betterchange-consulting.com/agile-mishaps/agile-mishap-1-do-it-by-the-book/">Agile mishap #1: Do it by the book!</a></li>
+  <li><a href="/insights/agile-mishap-1:-do-it-by-the-book!">Agile mishap #1: Do it by the book!</a></li>
 
-  <li><a href="https://www.betterchange-consulting.com/agile-mishaps/agile-mishap-2-all-frameworks-are-wrong-but-mine/">Agile mishap #2: All frameworks are wrong but mine</a></li>
+  <li><a href="/insights/agile-mishap-2:-all-frameworks-are-wrong-but-mine">Agile mishap #2: All frameworks are wrong but mine</a></li>
 
-  <li><a href="https://www.betterchange-consulting.com/agile-mishaps/the-agile-bubble/">Agile mishap #3: The Agile bubble</a></li>
+  <li><a href="/insights/agile-mishap-3:-the-agile-bubble">Agile mishap #3: The Agile bubble</a></li>
 
-  <li><a href="https://www.betterchange-consulting.com/agile-mishaps/agile-mishap-4-incompetent-coaches-and-trainers/">Agile mishap #4: Incompetent coaches and trainers</a></li>
+  <li><a href="/insights/agile-mishap-4:-incompetent-coaches-and-trainers">Agile mishap #4: Incompetent coaches and trainers</a></li>
 
-  <li><a href="https://www.betterchange-consulting.com/agile-mishaps/agile-mishap-5-the-certification-circus-reflecting-on-the-agile-accreditation-landscape/">Agile mishap #5: The certification circus</a></li>
+  <li><a href="/insights/agile-mishap-5:-the-certification-circus">Agile mishap #5: The certification circus</a></li>
   </ul>
 
   <h3>Introduction</h3>

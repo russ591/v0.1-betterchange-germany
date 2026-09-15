@@ -11,6 +11,8 @@
 # links and closing link to the next post in the series are not in the
 # draft.
 title: 'Agile Mishap #2: All frameworks are wrong but mine'
+seriesId: "agile-mishaps"
+seriesOrder: 3
 contentType: Blog
 primaryCategory: Agile
 categories:

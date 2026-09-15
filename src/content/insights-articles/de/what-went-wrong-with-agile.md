@@ -9,6 +9,8 @@
 # Management, with Agile also in categories). EN source is first-
 # person; the draft renders it impersonally throughout.
 title: What Went Wrong with Agile? An Honest Reckoning
+seriesId: "agile-mishaps"
+seriesOrder: 1
 contentType: Blog
 primaryCategory: Change Management
 categories:

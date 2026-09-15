@@ -9,6 +9,8 @@
 # renders it impersonally throughout. EN source's inline citation links
 # and closing "subscribe to our newsletter" CTA are not in the draft.
 title: 'Agile Mishap #1: Do it by the book!'
+seriesId: "agile-mishaps"
+seriesOrder: 2
 contentType: Blog
 primaryCategory: Change Management
 categories:

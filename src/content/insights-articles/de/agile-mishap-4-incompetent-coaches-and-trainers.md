@@ -12,6 +12,8 @@
 # draft, consistent with the CTA/link drops already confirmed fine on
 # earlier batches' similar articles.
 title: 'Agile Mishap #4: Incompetent Coaches and Trainers'
+seriesId: "agile-mishaps"
+seriesOrder: 5
 contentType: Blog
 primaryCategory: Coaching
 categories:

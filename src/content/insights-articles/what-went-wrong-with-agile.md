@@ -1,6 +1,8 @@
 ---
 title: What Went Wrong with Agile? An Honest Reckoning
 urlSlug: "what-went-wrong-with-agile-an-honest-reckoning"
+seriesId: "agile-mishaps"
+seriesOrder: 1
 contentType: Blog
 primaryCategory: Change Management
 categories:
