@@ -19,7 +19,7 @@ readTimeMinutes: 1
 author: bent-myllerup
 excerpt: "Ohne bewusste Auseinandersetzung mit Kultur laufen neue Ansätze Gefahr, ihre Wirksamkeit zu verlieren oder ganz zu scheitern. Eine Herausforderung, die häufig auftritt, und mit der viele Berater:innen zu kämpfen haben."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2021/08/Edgard-Schein-Edited-from-Simon-Lee.png
+imageUrl: /insights/organisational-culture-the-overlooked-key-to-success-with-new-ways-of-working.webp
 metaDescription: "Ohne bewusste Auseinandersetzung mit Kultur laufen neue Ansätze Gefahr, ihre Wirksamkeit zu verlieren oder ganz zu scheitern. Eine Herausforderung, die häufig auftritt, und mit der viele Berater:innen zu kämpfen haben."
 bodyHtml: |-
   <p>Ohne bewusste Auseinandersetzung mit Kultur laufen neue Ansätze Gefahr, ihre Wirksamkeit zu verlieren oder ganz zu scheitern. Dies ist eine Herausforderung, die häufig auftritt, und mit der sich viele Berater:innen schwertun.</p>

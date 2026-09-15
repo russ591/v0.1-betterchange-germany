@@ -16,7 +16,7 @@ readTimeMinutes: 3
 author: russell-hill
 excerpt: "Flight Levels ist ein Denkmodell für organisatorische Agilität, kein Prozess-Framework. Seine fünf Schlüsselaktivitäten, Ergebnisse definieren, visualisieren, Fokus schaffen, Interaktionen etablieren, verbessern, sind es, die das Denken in tatsächlichen Wandel übersetzen."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/04/Screenshot-2024-04-25-at-11.31.02.png
+imageUrl: /insights/enhancing-organisational-learning-with-flight-levels-and-the-5-activities.webp
 metaDescription: "Flight Levels ist ein Denkmodell für organisatorische Agilität, kein Prozess-Framework. Seine fünf Schlüsselaktivitäten, Ergebnisse definieren, visualisieren, Fokus schaffen, Interaktionen etablieren, verbessern, sind es, die das Denken in tatsächlichen Wandel übersetzen."
 bodyHtml: |-
   <p>Wenn Organisationen davon sprechen, agiler zu werden, meinen sie meist eines von zwei Dingen: schnellere Lieferung auf Teamebene, oder bessere strategische Reaktionsfähigkeit auf Führungsebene. Flight Levels adressiert beides, aber sein eigentlicher Beitrag ist die Ebene dazwischen: die Koordinationsebene, die strategische Absicht mit operativer Tätigkeit verbindet und in den meisten Organisationen dort liegt, wo die bedeutsamsten Verbesserungen verfügbar sind.</p>

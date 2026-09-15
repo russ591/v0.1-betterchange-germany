@@ -17,6 +17,7 @@ readTimeMinutes: 3
 author: heidi-reidel-sorensen
 excerpt: "Der Sprint Review ist, wo das Scrum-Team und Stakeholder überprüfen, was gebaut wurde, und entscheiden, was als Nächstes kommt. Teams, die ihn als Demo und Abnahme-Zeremonie behandeln, verpassen das Meiste seines Werts."
 featured: false
+imageUrl: /insights/what-is-a-sprint-review-in-scrum.webp
 metaDescription: "Der Sprint Review ist, wo das Scrum-Team und Stakeholder überprüfen, was gebaut wurde, und entscheiden, was als Nächstes kommt. Teams, die ihn als Demo und Abnahme-Zeremonie behandeln, verpassen das Meiste seines Werts."
 bodyHtml: |-
   <p>Der Sprint Review nimmt eine konkrete und wichtige Position im Scrum-Framework ein. Es ist das Event, in dem das empirische Herz von Scrum konkret wird: echte Arbeit wird von echten Stakeholdern überprüft, echtes Feedback wird gesammelt, und der Product Backlog wird basierend auf dem Gelernten aktualisiert. Gut gemacht, ist er eines der wertvollsten Events im Sprint. Schlecht gemacht, als Formalität, Präsentation, oder Leistungsbeurteilung des Entwicklungsteams, erzeugt er Konformität ohne Erkenntnis.</p>

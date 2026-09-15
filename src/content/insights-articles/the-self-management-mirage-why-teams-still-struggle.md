@@ -9,7 +9,7 @@ readTimeMinutes: 2
 author: jesper-orting
 excerpt: The allure of self-managing teams is undeniable. The promise of empowered, autonomous teams driving innovation and efficiency is a siren song for many organisations. However, the reality can be far less enchanting.
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/07/self-managing_eight_people_team.png
+imageUrl: /insights/the-self-management-mirage-why-teams-still-struggle.webp
 metaTitle: 'The Self-Management Mirage: Why Teams Still Struggle | Better Change C'
 metaDescription: The allure of self-managing teams is undeniable. The promise of empowered, autonomous teams driving innovation and efficiency is a siren song for many...
 bodyHtml: |-

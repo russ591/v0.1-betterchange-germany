@@ -11,7 +11,7 @@ readTimeMinutes: 3
 author: jan-b-olsen
 excerpt: 'OKRs, Objectives and Key Results, are a goal-setting system built on a counterintuitive premise: if you are always hitting your goals, they are too easy.'
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/09/goals.jpeg
+imageUrl: /insights/mastering-the-art-of-goal-setting-with-okr.webp
 metaTitle: 'OKRs: Ambitious Goals, Honest Numbers, and Why 70% Is Actually Fine |'
 metaDescription: 'OKRs, Objectives and Key Results, are a goal-setting system built on a counterintuitive premise: if you are always hitting your goals, they are too easy.'
 bodyHtml: |-

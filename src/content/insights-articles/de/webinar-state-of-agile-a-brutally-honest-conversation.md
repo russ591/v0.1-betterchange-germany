@@ -19,7 +19,7 @@ readTimeMinutes: 2
 author: bent-myllerup
 excerpt: "Agile wurde häufiger für tot erklärt, als sich zählen lässt. Trotzdem sind seine Prinzipien, Anpassungsfähigkeit, Zusammenarbeit und Kundenfokus, relevanter denn je."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2026/01/Agile-is-Dead-again.png
+imageUrl: /insights/webinar-state-of-agile-a-brutally-honest-conversation.webp
 metaDescription: "Agile wurde häufiger für tot erklärt, als sich zählen lässt. Trotzdem sind seine Prinzipien, Anpassungsfähigkeit, Zusammenarbeit und Kundenfokus, relevanter denn je."
 bodyHtml: |-
   <p>Agile wurde häufiger für tot erklärt, als sich zählen lässt. Trotzdem sind seine Prinzipien, Anpassungsfähigkeit, Zusammenarbeit und Kundenfokus, relevanter denn je. Das Problem ist nicht Agile selbst, sondern wie es fehlangewendet, kommerzialisiert und durch Dogma, Inkompetenz und Hype verwässert wurde.</p>

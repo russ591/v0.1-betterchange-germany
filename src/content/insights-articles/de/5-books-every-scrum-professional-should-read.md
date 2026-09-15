@@ -21,6 +21,7 @@ readTimeMinutes: 2
 author: bent-myllerup
 excerpt: "Die Agile- und Scrum-Frameworks haben in der Geschäftswelt erheblich an Bedeutung gewonnen und die Art, wie Projekte gemanagt und Produkte geliefert werden, revolutioniert. Um wettbewerbsfähig zu bleiben, müssen Fachleute in kontinuierliches Lernen investieren."
 featured: false
+imageUrl: /insights/5-books-every-scrum-professional-should-read.webp
 metaDescription: "Die Agile- und Scrum-Frameworks haben in der Geschäftswelt erheblich an Bedeutung gewonnen und die Art, wie Projekte gemanagt und Produkte geliefert werden, revolutioniert. Um wettbewerbsfähig zu bleiben, müssen Fachleute in kontinuierliches Lernen investieren."
 bodyHtml: |-
   <p>Die Agile- und Scrum-Frameworks haben in der Geschäftswelt erheblich an Bedeutung gewonnen und die Art, wie Projekte gemanagt und Produkte geliefert werden, revolutioniert. Um wettbewerbsfähig zu bleiben, müssen Fachleute in kontinuierliches Lernen investieren. Bücher bleiben dafür ein Grundpfeiler. Hier die besten Scrum-Bücher, die man nicht verpassen sollte, um die eigenen Scrum-Fähigkeiten und -Methoden zu schärfen.</p>

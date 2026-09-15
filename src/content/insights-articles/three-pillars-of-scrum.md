@@ -10,6 +10,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: 'Understanding the Three Pillars of Scrum is important in order for Agile teams to maximise the use of the Scrum Framework. The three Scrum Pillars are as follows: Transparency: This is ensuring everyone in the team...'
 featured: false
+imageUrl: /insights/three-pillars-of-scrum.webp
 metaTitle: What are the Three Pillars of Scrum? | Better Change Consulting
 metaDescription: Understanding the Three Pillars of Scrum is important in order for Agile teams to maximise the use of the Scrum Framework. The three Scrum Pillars are...
 bodyHtml: |-

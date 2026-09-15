@@ -10,6 +10,7 @@ readTimeMinutes: 2
 author: bent-myllerup
 excerpt: The Agile and Scrum frameworks have gained significant traction in the business world, revolutionizing how projects are managed and products are delivered. To stay competitive, professionals need to invest in continuous learning.
 featured: false
+imageUrl: /insights/5-books-every-scrum-professional-should-read.webp
 metaTitle: 5 books every scrum professional should read | Better Change Consultin
 metaDescription: The Agile and Scrum frameworks have gained significant traction in the business world, revolutionizing how projects are managed and products are...
 bodyHtml: |-

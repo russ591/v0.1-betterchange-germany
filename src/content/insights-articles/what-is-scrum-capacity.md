@@ -10,6 +10,7 @@ readTimeMinutes: 3
 author: konrad-pogorzala
 excerpt: 'Capacity planning answers one question: given who is available and for how long, how much work can this team realistically commit to? Getting this right is the foundation of realistic Sprint commitments and sustainable pace.'
 featured: false
+imageUrl: /insights/what-is-scrum-capacity.webp
 metaTitle: 'Scrum Capacity Planning: How Much Can the Team Actually Do This Sprint'
 metaDescription: 'Capacity planning answers one question: given who is available and for how long, how much work can this team realistically commit to? Getting this...'
 bodyHtml: |-

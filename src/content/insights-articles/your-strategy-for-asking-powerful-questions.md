@@ -10,7 +10,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: Most coaches think about what to ask. The better skill is knowing what kind of question to ask, and when. Karl Tomm's four-quadrant model gives you a strategic framework rather than a deck of cards to memorise.
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/12/The-four-question-types-of-Karl-Tomm.png
+imageUrl: /insights/your-strategy-for-asking-powerful-questions.webp
 metaTitle: 'The Question Behind the Question: Karl Tomm''s Map for Coaches | Better'
 metaDescription: Most coaches think about what to ask. The better skill is knowing what kind of question to ask, and when. Karl Tomm's four-quadrant model gives you a...
 bodyHtml: |-

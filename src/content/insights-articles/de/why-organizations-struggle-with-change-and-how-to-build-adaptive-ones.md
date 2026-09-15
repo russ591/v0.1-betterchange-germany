@@ -21,7 +21,7 @@ readTimeMinutes: 3
 author: nino-zeljko
 excerpt: "Change-Initiativen, die im Sande verlaufen? Dieses Webinar mit Nino Zeljko untersucht, warum Organisationen mit Wandel kämpfen, und wie sich wirklich anpassungsfähige aufbauen lassen."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2026/04/Learning-how-to-change-is-more-important-than-the-change-itself-300x148.png
+imageUrl: /insights/why-organizations-struggle-with-change-and-how-to-build-adaptive-ones.webp
 metaDescription: "Change-Initiativen, die im Sande verlaufen? Dieses Webinar mit Nino Zeljko untersucht, warum Organisationen mit Wandel kämpfen, und wie sich wirklich anpassungsfähige aufbauen lassen."
 bodyHtml: |-
   <p><strong>Change-Initiativen, die im Sande verlaufen?</strong> In diesem Webinar wird gezeigt, warum so viele Organisationen beim Wandel scheitern, und was tatsächlich funktioniert.</p>

@@ -9,6 +9,7 @@ readTimeMinutes: 3
 author: gregor-heidinger
 excerpt: Agile Methodology usually starts with small teams that are focused on contributing elements to the project. Typically, a need eventually arises for long-lasting.
 featured: false
+imageUrl: /insights/what-is-an-agile-release-train.webp
 metaTitle: What is an Agile Release Train | Better Change Consulting
 metaDescription: Agile Methodology usually starts with small teams that are focused on contributing elements to the project. Typically, a need eventually arises for...
 bodyHtml: |-

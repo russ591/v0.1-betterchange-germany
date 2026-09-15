@@ -20,7 +20,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: "Dies ist der dritte und letzte Beitrag der Mini-Serie über Management und Führung. Zur Serie gehören außerdem: Management ist nicht Führung und Me-dership ist auch nicht Führung."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/10/mohamed-nohassi-odxB5oIG_iA-unsplash-scaled.jpg
+imageUrl: /insights/developing-your-unique-leadership-style.webp
 metaDescription: "Dies ist der dritte und letzte Beitrag der Mini-Serie über Management und Führung. Zur Serie gehören außerdem: Management ist nicht Führung und Me-dership ist auch nicht Führung."
 bodyHtml: |-
   <p><em>Dies ist der dritte und letzte Beitrag der Mini-Serie über Management und Führung. Zur Serie gehören außerdem: Management ist nicht Führung und Me-dership ist auch nicht Führung, eine kritische Sicht auf idealisierte Führung.</em></p>

@@ -10,6 +10,7 @@ readTimeMinutes: 2
 author: bent-myllerup
 excerpt: The Definition of Done (DoD) is a crucial concept in agile methodologies, particularly in Scrum, acting as a comprehensive checklist that outlines the criteria each product backlog item must meet to be considered complete.
 featured: false
+imageUrl: /insights/definition-of-done.webp
 metaTitle: What is the Definition of Done? | Better Change Consulting
 metaDescription: The Definition of Done (DoD) is a crucial concept in agile methodologies, particularly in Scrum, acting as a comprehensive checklist that outlines the...
 bodyHtml: |-

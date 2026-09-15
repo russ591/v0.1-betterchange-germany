@@ -30,9 +30,11 @@ const related = article.data.seriesId
         .slice(0, 3)
     : [];
 
-// Only some articles have a German translation yet -- the switcher/hreflang
+// Only some articles have a German translation yet -- the hreflang tags
 // only appear when this specific one does, same as individual coach
-// profiles (no translations prop at all otherwise).
+// profiles (no translations prop at all otherwise; the header's language
+// switcher then falls back to linking this same English page for both
+// locales, per Header.astro).
 const deArticle = await getEntry("insights-articles", `de/${baseSlug(article.id)}`);
 
 const articleSchema = {

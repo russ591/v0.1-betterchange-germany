@@ -11,7 +11,7 @@ interface Props {
   /** Same shape as BaseLayout's own prop -- passed straight through so the
    * language switcher can link to the exact equivalent page rather than
    * just the other language's homepage. Absent on pages with no German
-   * counterpart, where the switcher falls back to each locale's home. */
+   * counterpart, where the switcher falls back to the current page itself. */
   translations?: Partial<Record<"en" | "de", string>>;
 }
 
@@ -46,10 +46,15 @@ const categoriesWithCourses = categories.map((category) => ({
     .sort((a, b) => (a.data.sortOrder ?? 99) - (b.data.sortOrder ?? 99)),
 }));
 
-// Falls back to each locale's homepage when the current page has no
-// translation counterpart (translations prop omitted entirely).
-const enHref = translations?.en ?? "/";
-const deHref = translations?.de ?? "/de/";
+// Falls back to the current page itself when this locale's counterpart is
+// missing (translations prop omitted, e.g. an Insights article with no
+// German translation yet) -- same "no translation yet? stay on what
+// exists" idiom as localizedArticle() elsewhere, rather than dropping the
+// visitor at the homepage and losing their place. The EN link in
+// particular should never need a fallback at all on an English page (we're
+// already on it), which the old "/" default got wrong.
+const enHref = translations?.en ?? currentPath;
+const deHref = translations?.de ?? currentPath;
 ---
 
 <header class="sticky top-0 z-50 border-b border-neutral-200 bg-surface/90 backdrop-blur">

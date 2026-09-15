@@ -20,7 +20,7 @@ readTimeMinutes: 1
 author: konrad-pogorzala
 excerpt: "In diesem aufgezeichneten Webinar zeigt Konrad Pogorzala, wie Flight Levels Abstimmung und Transparenz über alle Organisationsebenen hinweg schaffen, von operativen Teams bis zur Geschäftsführung. Praxisnah, fallstudienbasiert und sehenswert."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/04/Screenshot-2024-04-11-at-08.42.54.png
+imageUrl: /insights/webinar-the-role-of-flight-levels-in-agile-transformation.webp
 metaDescription: "In diesem aufgezeichneten Webinar zeigt Konrad Pogorzala, wie Flight Levels Abstimmung und Transparenz über alle Organisationsebenen hinweg schaffen, von operativen Teams bis zur Geschäftsführung. Praxisnah, fallstudienbasiert und sehenswert."
 bodyHtml: |-
   <p>Flight Levels wird oft abstrakt beschrieben, als Denkmodell, Koordinations-Framework, eine Möglichkeit, Strategie mit Umsetzung zu verbinden. In diesem Webinar, veranstaltet von Agile Boston, holt Konrad Pogorzala das Thema auf den Boden der Praxis.</p>

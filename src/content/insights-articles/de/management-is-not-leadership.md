@@ -19,7 +19,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: "Management und Führung sind nicht dieselbe Tätigkeit, und sie als austauschbar zu behandeln, hat reale Konsequenzen. Dieser Beitrag eröffnet eine Serie darüber, was Führung tatsächlich erfordert, beginnend mit der Unterscheidung, die die meisten Organisationen noch immer nicht klar genug treffen."
 featured: true
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/10/Betterchange_0062.jpg
+imageUrl: /insights/management-is-not-leadership.webp
 metaDescription: "Management und Führung sind nicht dieselbe Tätigkeit, und sie als austauschbar zu behandeln, hat reale Konsequenzen. Dieser Beitrag eröffnet eine Serie darüber, was Führung tatsächlich erfordert, beginnend mit der Unterscheidung, die die meisten Organisationen noch immer nicht klar genug treffen."
 bodyHtml: |-
   <p>Dies ist der erste Beitrag einer Serie darüber, was Führung ist und was nicht. Der zweite ist <em>Me-dership ist auch keine Führung</em>, der dritte <em>Den eigenen Führungsstil entwickeln</em>.</p>

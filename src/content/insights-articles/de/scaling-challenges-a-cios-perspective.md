@@ -17,7 +17,7 @@ readTimeMinutes: 2
 author: jesper-orting
 excerpt: "Ein CIO startet ein großes Skalierungsprogramm. Sechs Monate später laufen die neuen Zeremonien, die Teams sind geschult, und die Ergebnisse liegen ungefähr dort, wo sie vorher waren. Keine ungewöhnliche Geschichte."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/07/a_self-managing_eight_people_team.png
+imageUrl: /insights/scaling-challenges-a-cios-perspective.webp
 metaDescription: "Ein CIO startet ein großes Skalierungsprogramm. Sechs Monate später laufen die neuen Zeremonien, die Teams sind geschult, und die Ergebnisse liegen ungefähr dort, wo sie vorher waren. Keine ungewöhnliche Geschichte."
 bodyHtml: |-
   <p>Ein Szenario, das sich in großen Organisationen regelmäßig wiederholt: Ein CIO investiert in eine Skalierungsinitiative, SAFe, LeSS oder eine angepasste Variante, mit klaren Erwartungen an schnellere Lieferung, bessere teamübergreifende Koordination und reaktionsfähigere IT. Der Start ist ambitioniert, das Training gründlich, und die Teams sind zunächst engagiert.</p>
