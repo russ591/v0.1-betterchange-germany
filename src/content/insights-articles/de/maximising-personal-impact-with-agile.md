@@ -17,6 +17,7 @@ readTimeMinutes: 3
 author: mogens-villadsen
 excerpt: "Die meisten Menschen managen ihre Karriere so, wie Organisationen früher Projekte managten, lange Planungszyklen, begrenztes Feedback, spät entdeckte Veränderungen. Agiles Denken auf die persönliche Entwicklung angewendet, behebt genau diese Schwächen, mit besseren Ergebnissen."
 featured: false
+imageUrl: /insights/maximising-personal-impact-with-agile.webp
 metaDescription: "Die meisten Menschen managen ihre Karriere so, wie Organisationen früher Projekte managten, lange Planungszyklen, begrenztes Feedback, spät entdeckte Veränderungen. Agiles Denken auf die persönliche Entwicklung angewendet, behebt genau diese Schwächen, mit besseren Ergebnissen."
 bodyHtml: |-
   <p>Die meisten Menschen managen ihre Karriere so, wie Organisationen früher Projekte managten: einen Plan zu Jahresbeginn festlegen, zwölf Monate darauf hinarbeiten, am Ende überprüfen, und wiederholen. Der Ansatz hat dieselben Schwächen, die Wasserfall-Projektmanagement in der Softwareentwicklung unbeliebt gemacht haben: Er optimiert für die Ausführung eines Plans statt für Lernen und Anpassung, und er entdeckt Fehler, falsche Richtung, falsches Timing, falsche Annahmen, kostspielig spät.</p>

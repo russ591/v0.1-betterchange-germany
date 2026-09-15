@@ -11,6 +11,7 @@ readTimeMinutes: 2
 authorName: Raffaela Hampf
 excerpt: Agile and Scrum are not competing approaches, not synonyms, and not interchangeable. Agile is a philosophy. Scrum is one of many methods for applying that philosophy. Understanding the difference makes both more useful.
 featured: false
+imageUrl: /insights/agile-vs-scrum.webp
 metaTitle: 'Agile vs Scrum: Clearing Up the Confusion Once and for All | Better Ch'
 metaDescription: Agile and Scrum are not competing approaches, not synonyms, and not interchangeable. Agile is a philosophy. Scrum is one of many methods for applying...
 bodyHtml: |-
