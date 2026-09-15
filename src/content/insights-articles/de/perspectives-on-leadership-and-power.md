@@ -22,7 +22,7 @@ readTimeMinutes: 2
 author: bent-myllerup
 excerpt: "Chris Mowles beschreibt Macht als die Währung des organisatorischen Lebens. Sie fließt durch formale Hierarchien, informelle Netzwerke, und unausgesprochene Vereinbarungen. Der deutsche Soziologe Norbert Elias argumentierte, dass Macht kein fester Besitz ist."
 featured: true
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/09/Power.png
+imageUrl: /insights/perspectives-on-leadership-and-power.webp
 metaDescription: "Chris Mowles beschreibt Macht als die Währung des organisatorischen Lebens. Sie fließt durch formale Hierarchien, informelle Netzwerke, und unausgesprochene Vereinbarungen. Der deutsche Soziologe Norbert Elias argumentierte, dass Macht kein fester Besitz ist."
 bodyHtml: |-
   <p><a href="https://www.linkedin.com/in/chris-mowles-966b592/">Chris Mowles</a> beschreibt Macht als die Währung des organisatorischen Lebens. Sie fließt durch formale Hierarchien, informelle Netzwerke, und unausgesprochene Vereinbarungen. Der deutsche Soziologe Norbert Elias argumentierte, dass Macht kein fester Besitz ist, sondern eine dynamische Beziehung, ein Gleichgewicht (oder Ungleichgewicht) zwischen verschiedenen Akteur:innen. Er stellte 1969 berühmt fest, dass "der Herr Macht über den Knecht hat, aber der Knecht auch Macht über den Herrn hat, aufgrund der Dienste, die der Knecht leistet, und der Abhängigkeit des Herrn davon." Mit anderen Worten, Macht verschiebt sich ständig. Sie ist nichts, das Führungskräfte gänzlich besitzen; sie ist etwas, das in der Spannung zwischen Menschen existiert.</p>
