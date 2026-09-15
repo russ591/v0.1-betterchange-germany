@@ -11,6 +11,8 @@
 # links and closing link to the next post in the series are not in the
 # draft.
 title: 'Agile Mishap #2: All frameworks are wrong but mine'
+seriesId: "agile-mishaps"
+seriesOrder: 3
 contentType: Blog
 primaryCategory: Agile
 categories:
@@ -20,7 +22,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: "In einer Serie von Blogbeiträgen wird die Frage untersucht: Wenn Agile nicht tot ist, was ging dann schief? Ist die wachsende Zahl an Agile-Frameworks aufgefallen, die in den letzten Jahren entstanden sind?"
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/02/ashkan-forouzani-v31lgBn5114-unsplash-scaled.jpg
+imageUrl: /insights/agile-mishap-2-all-frameworks-are-wrong-but-mine.webp
 metaDescription: "In einer Serie von Blogbeiträgen wird die Frage untersucht: Wenn Agile nicht tot ist, was ging dann schief? Ist die wachsende Zahl an Agile-Frameworks aufgefallen, die in den letzten Jahren entstanden sind?"
 bodyHtml: |-
   <p><em>In einer Serie von Blogbeiträgen wird die Frage untersucht: Wenn Agile nicht tot ist, was ging dann schief? Wer den einleitenden Beitrag (Was ging schief mit Agile?) noch nicht gelesen hat, sollte dort zuerst weiterlesen.</em></p>

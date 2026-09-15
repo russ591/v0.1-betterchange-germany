@@ -9,6 +9,8 @@
 # renders it impersonally throughout. EN source's inline citation links
 # and closing "subscribe to our newsletter" CTA are not in the draft.
 title: 'Agile Mishap #1: Do it by the book!'
+seriesId: "agile-mishaps"
+seriesOrder: 2
 contentType: Blog
 primaryCategory: Change Management
 categories:
@@ -19,7 +21,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: "In einer Serie von Blogbeiträgen wird die Frage untersucht: Was ging schief mit Agile? Als 2006 begonnen wurde, Agile-Methodiken anzuwenden, gab es ein dominantes Framework."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/01/timothy-eberly-_4l76rRSsr4-unsplash.jpg
+imageUrl: /insights/agile-mishap-1-do-it-by-the-book.webp
 metaDescription: "In einer Serie von Blogbeiträgen wird die Frage untersucht: Was ging schief mit Agile? Als 2006 begonnen wurde, Agile-Methodiken anzuwenden, gab es ein dominantes Framework."
 bodyHtml: |-
   <p><em>In einer Serie von Blogbeiträgen wird die Frage untersucht: Was ging schief mit Agile? Wer den einleitenden Beitrag (Was ging schief mit Agile?) noch nicht gelesen hat, sollte dort zuerst weiterlesen.</em></p>

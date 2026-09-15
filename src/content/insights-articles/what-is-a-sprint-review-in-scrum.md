@@ -10,6 +10,7 @@ readTimeMinutes: 3
 author: heidi-reidel-sorensen
 excerpt: The Sprint Review is where the Scrum Team and stakeholders inspect what was built and decide what comes next. Teams that treat it as a demo and sign-off ceremony miss most of its value.
 featured: false
+imageUrl: /insights/what-is-a-sprint-review-in-scrum.webp
 metaTitle: 'The Sprint Review: Not a Presentation, a Conversation | Better Change'
 metaDescription: The Sprint Review is where the Scrum Team and stakeholders inspect what was built and decide what comes next. Teams that treat it as a demo and...
 bodyHtml: |-

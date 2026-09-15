@@ -1,6 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { toPathSegment } from "@/lib/urlSlug";
+import { baseSlug } from "@/lib/i18n";
+import { resolveLocale } from "@/i18n/utils";
 
 // Consolidates the homepage mini-avatar and About page full-photo-plus-flag
 // treatments into one card at two densities (spec §4).
@@ -11,11 +13,16 @@ interface Props {
 
 const { profile, density = "full" } = Astro.props;
 const { name, role, country, languages, hasFullProfile, photo, linkedinUrl } = profile.data;
+const locale = resolveLocale(Astro.currentLocale);
+const prefix = locale === "de" ? "/de" : "";
 
 // Every card links somewhere: to the full profile page when there is one,
 // otherwise out to the fellow's LinkedIn (new tab, since that leaves the
 // site) -- and only renders as a plain, unlinked card if neither exists.
-const href = hasFullProfile ? `/about/${toPathSegment(profile.data.urlSlug ?? profile.id)}` : linkedinUrl;
+// baseSlug() strips a "de/" prefix from profile.id when no urlSlug override
+// is set, since the locale already lives in `prefix` -- otherwise a German
+// profile with no override would 404 at /de/about/de/<slug>.
+const href = hasFullProfile ? `${prefix}/about/${toPathSegment(profile.data.urlSlug ?? baseSlug(profile.id))}` : linkedinUrl;
 const isExternal = !hasFullProfile && Boolean(linkedinUrl);
 
 const avatarSize = density === "compact" ? "h-12 w-12 text-sm" : "mb-4 h-20 w-20 text-lg";

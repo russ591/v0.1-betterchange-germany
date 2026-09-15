@@ -11,6 +11,7 @@ readTimeMinutes: 2
 author: joanne-perold
 excerpt: Lean and Agile are regularly conflated, used interchangeably, or treated as competing philosophies. They are none of those things. Understanding what distinguishes them makes you better at using both.
 featured: false
+imageUrl: /insights/lean-vs-agile.webp
 metaTitle: 'Lean vs Agile: What They Share, Where They Differ, and Why It Actually'
 metaDescription: Lean and Agile are regularly conflated, used interchangeably, or treated as competing philosophies. They are none of those things. Understanding what...
 bodyHtml: |-

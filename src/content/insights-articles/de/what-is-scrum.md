@@ -17,6 +17,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: "Scrum ist ein Framework, um komplexe Arbeit in kurzen Zyklen anzugehen, aufgebaut auf Transparenz, Überprüfung und Anpassung. Es ist keine Projektmanagement-Methodik, kein Prozess, und kein Synonym für Agile."
 featured: false
+imageUrl: /insights/what-is-scrum.webp
 metaDescription: "Scrum ist ein Framework, um komplexe Arbeit in kurzen Zyklen anzugehen, aufgebaut auf Transparenz, Überprüfung und Anpassung. Es ist keine Projektmanagement-Methodik, kein Prozess, und kein Synonym für Agile."
 bodyHtml: |-
   <p>Scrum ist ein leichtgewichtiges Framework, innerhalb dessen Menschen komplexe, adaptive Probleme angehen können, während sie Produkte mit dem größtmöglichen Wert liefern. Das ist die Definition des Scrum Guide, und sie ist gut, auch wenn sie zum Verständnis aufgeschlüsselt werden muss.</p>

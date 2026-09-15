@@ -10,6 +10,7 @@ readTimeMinutes: 3
 author: anders-hojgaard-nielsen
 excerpt: Written in 2001, the Agile Manifesto's four values and twelve principles remain the clearest statement of what Agile actually means, and why the approach consistently outperforms traditional project management in complex, uncertain work.
 featured: false
+imageUrl: /insights/agile-values-and-principles.webp
 metaTitle: 'The Agile Manifesto: Four Values, Twelve Principles, and Why It Still'
 metaDescription: Written in 2001, the Agile Manifesto's four values and twelve principles remain the clearest statement of what Agile actually means, and why the...
 bodyHtml: |-

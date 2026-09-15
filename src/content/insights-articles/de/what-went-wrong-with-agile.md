@@ -9,6 +9,8 @@
 # Management, with Agile also in categories). EN source is first-
 # person; the draft renders it impersonally throughout.
 title: What Went Wrong with Agile? An Honest Reckoning
+seriesId: "agile-mishaps"
+seriesOrder: 1
 contentType: Blog
 primaryCategory: Change Management
 categories:
@@ -19,7 +21,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: "Agile ist nicht tot. Aber es wurde stark missbraucht, zynisch vermarktet, und routinemäßig auf Weisen angewendet, die seinen eigenen Prinzipien widersprechen. Dieser Beitrag eröffnet eine Serie, die untersucht, was tatsächlich schiefging, und warum das wichtig ist."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/02/agil-jpg.webp
+imageUrl: /insights/what-went-wrong-with-agile.webp
 metaDescription: "Agile ist nicht tot. Aber es wurde stark missbraucht, zynisch vermarktet, und routinemäßig auf Weisen angewendet, die seinen eigenen Prinzipien widersprechen. Dieser Beitrag eröffnet eine Serie, die untersucht, was tatsächlich schiefging, und warum das wichtig ist."
 bodyHtml: |-
   <p>Eine wiederkehrende Behauptung auf LinkedIn lautet, Agile sei tot. Das ist Unsinn, aber die Art von Unsinn, die ein Signal enthält, das eine Untersuchung wert ist. Wer diese Behauptung aufstellt, bewirbt meist ein Nachfolge-Framework, was etwas über die eigenen Motive verrät. Es bedeutet nicht, dass die Symptome völlig falsch beschrieben werden.</p>

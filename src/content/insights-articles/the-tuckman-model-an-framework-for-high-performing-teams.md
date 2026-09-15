@@ -12,6 +12,7 @@ readTimeMinutes: 3
 author: niels-verdonk
 excerpt: Bruce Tuckman's model of team development is more than fifty years old and still more useful than most of what has replaced it. Here is what the four stages actually mean, and how to navigate each of them.
 featured: false
+imageUrl: /insights/the-tuckman-model-an-framework-for-high-performing-teams.webp
 metaTitle: 'Forming, Storming, Norming, Performing: Tuckman''s Map Through Team Dev'
 metaDescription: Bruce Tuckman's model of team development is more than fifty years old and still more useful than most of what has replaced it. Here is what the four...
 bodyHtml: |-

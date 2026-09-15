@@ -9,6 +9,7 @@ readTimeMinutes: 2
 author: mogens-villadsen
 excerpt: In Scrum, the acceptance criteria refer to a set of conditions or requirements that a user story must meet to be considered complete or acceptable by the product owner, user, customer or other stakeholders.
 featured: false
+imageUrl: /insights/what-are-acceptance-criteria.webp
 metaTitle: What are Acceptance Criteria | Better Change Consulting
 metaDescription: In Scrum, the acceptance criteria refer to a set of conditions or requirements that a user story must meet to be considered complete or acceptable by...
 bodyHtml: |-

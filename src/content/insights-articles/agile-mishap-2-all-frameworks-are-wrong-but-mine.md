@@ -1,6 +1,8 @@
 ---
 title: 'Agile Mishap #2: All frameworks are wrong but mine'
 urlSlug: "agile-mishap-2:-all-frameworks-are-wrong-but-mine"
+seriesId: "agile-mishaps"
+seriesOrder: 3
 contentType: Blog
 primaryCategory: Agile
 categories:
@@ -10,13 +12,13 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: 'In a series of blog posts I am discussing the question: If it is not dead then what went wrong with Agile? Have you noticed the increasing numbers of Agile frameworks that have emerged over the past years?'
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/02/ashkan-forouzani-v31lgBn5114-unsplash-scaled.jpg
+imageUrl: /insights/agile-mishap-2-all-frameworks-are-wrong-but-mine.webp
 metaTitle: 'Agile Mishap #2: All frameworks are wrong but mine | Better Change Con'
 metaDescription: 'In a series of blog posts I am discussing the question: If it is not dead then what went wrong with Agile? Have you noticed the increasing numbers of...'
 bodyHtml: |-
-  <p><em>In a series of blog posts I am discussing the question: If it is not dead then what went wrong with Agile? If you have not read the introduction blog post already (<a href="https://www.betterchange-consulting.com/change-management/what-went-wrong-with-agile/">What went wrong with Agile?</a>) I suggest you go there first before continuing reading here.</em></p>
+  <p><em>In a series of blog posts I am discussing the question: If it is not dead then what went wrong with Agile? If you have not read the introduction blog post already (<a href="/insights/what-went-wrong-with-agile-an-honest-reckoning">What went wrong with Agile?</a>) I suggest you go there first before continuing reading here.</em></p>
 
-  <p>Have you noticed the increasing numbers of Agile frameworks that have emerged over the past years? I mentioned a handful of them in <a href="https://www.betterchange-consulting.com/change-management/agile-mishap-1-do-it-by-the-book/">my latest blog post</a>. Do we really need all of them? I would say no, and in this blog post I will share my opinions about why the market is so overwhelmed by so-called Agile frameworks.</p>
+  <p>Have you noticed the increasing numbers of Agile frameworks that have emerged over the past years? I mentioned a handful of them in <a href="/insights/agile-mishap-1:-do-it-by-the-book!">my latest blog post</a>. Do we really need all of them? I would say no, and in this blog post I will share my opinions about why the market is so overwhelmed by so-called Agile frameworks.</p>
 
   <p>I recently commented on a LinkedIn posting promoting Agile 2, an initiative that claims to be the new beginning of Agile. As I understand it, part of the motive for this initiative is the same as the motivation behind this series of blog posts: the observations that many people and organisations experience a lack of success using Agile frameworks and methodologies. Back to my comment which was: “I’ll personally wait for Agile 3.0 as I think it will be more mature and solve all problems. (irony might apply).” Do I have to mention that the originator of the post became quite defensive after that?</p>
 
@@ -34,5 +36,5 @@ bodyHtml: |-
 
   <p>Agile is what you and your organisation make it by adapting the values and principles of Agile in the way you do your daily work. You do not become agile by buying somebody’s snake oil or by following a false messiah. You grow it within yourself and your organisation.</p>
 
-  <p>I know this blog post might seem a little controversial, but I hope I have caught your interest in avoiding Agile mishaps. Stay tuned for the next blog post in this series which is about <a href="https://www.betterchange-consulting.com/agile-mishaps/the-agile-bubble/">the Agile Bubble</a>.</p>
+  <p>I know this blog post might seem a little controversial, but I hope I have caught your interest in avoiding Agile mishaps. Stay tuned for the next blog post in this series which is about <a href="/insights/agile-mishap-3:-the-agile-bubble">the Agile Bubble</a>.</p>
 ---

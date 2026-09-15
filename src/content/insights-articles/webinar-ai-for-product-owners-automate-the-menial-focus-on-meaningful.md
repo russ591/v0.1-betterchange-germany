@@ -12,7 +12,7 @@ readTimeMinutes: 2
 author: giuseppe-de-simone
 excerpt: Product Owners spend a disproportionate amount of time on low-value administrative work. This webinar shows practical AI techniques for automating the repetitive so POs can focus on the conversations, decisions, and strategic thinking that actually need them.
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2025/12/unnamed.png
+imageUrl: /insights/webinar-ai-for-product-owners-automate-the-menial-focus-on-meaningful.webp
 metaTitle: 'Webinar Recording: How Product Owners Can Use AI Without Losing the Plot'
 metaDescription: Product Owners spend a disproportionate amount of time on low-value administrative work. This webinar shows practical AI techniques for automating the repetitive so POs can focus on the conversations, decisions, and strategic thinking that actually need them.
 bodyHtml: |-

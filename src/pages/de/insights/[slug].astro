@@ -3,6 +3,7 @@ import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import InsightsArticlePageContent from "@/components/pages/InsightsArticlePageContent.astro";
 import { baseSlug } from "@/lib/i18n";
+import { relatedSeriesEntries } from "@/lib/insights";
 
 export async function getStaticPaths() {
   const articles = await getCollection("insights-articles", (a) => a.id.startsWith("de/"));
@@ -21,11 +22,13 @@ const authorName = author?.data.name ?? article.data.authorName ?? "Better Chang
 // Only the German entries that exist so far -- most articles don't have
 // one yet, so "related reading" is often empty here, which is expected.
 const allDeArticles = await getCollection("insights-articles", (a) => a.id.startsWith("de/"));
-const related = article.data.primaryCategory
-  ? allDeArticles
-      .filter((a) => a.id !== article.id && a.data.primaryCategory === article.data.primaryCategory)
-      .slice(0, 3)
-  : [];
+const related = article.data.seriesId
+  ? relatedSeriesEntries(article, allDeArticles)
+  : article.data.primaryCategory
+    ? allDeArticles
+        .filter((a) => a.id !== article.id && a.data.primaryCategory === article.data.primaryCategory)
+        .slice(0, 3)
+    : [];
 
 // A German entry only ever exists alongside its English original, so this
 // always resolves -- unlike the English route, translations here is never

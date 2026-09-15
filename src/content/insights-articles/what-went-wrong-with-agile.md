@@ -1,6 +1,8 @@
 ---
 title: What Went Wrong with Agile? An Honest Reckoning
 urlSlug: "what-went-wrong-with-agile-an-honest-reckoning"
+seriesId: "agile-mishaps"
+seriesOrder: 1
 contentType: Blog
 primaryCategory: Change Management
 categories:
@@ -11,7 +13,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: Agile is not dead. But it has been badly misused, cynically marketed, and routinely applied in ways that contradict its own principles. This post opens a series examining what actually went wrong, and why it matters.
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/02/agil-jpg.webp
+imageUrl: /insights/what-went-wrong-with-agile.webp
 metaTitle: What Went Wrong with Agile? An Honest Reckoning | Better Change Consul
 metaDescription: Agile is not dead. But it has been badly misused, cynically marketed, and routinely applied in ways that contradict its own principles. This post opens...
 bodyHtml: |-

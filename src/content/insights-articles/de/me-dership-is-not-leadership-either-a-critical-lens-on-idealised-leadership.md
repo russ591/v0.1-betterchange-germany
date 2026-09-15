@@ -20,7 +20,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: "Dies ist der zweite Beitrag einer Serie darüber, was Führung ist und was nicht. Der dritte und letzte Beitrag, \"Den eigenen Führungsstil entwickeln\", ist ebenfalls verfügbar."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/11/steve-gale-e7jq0NH9Fbg-unsplash-scaled.jpg
+imageUrl: /insights/me-dership-is-not-leadership-either-a-critical-lens-on-idealised-leadership.webp
 metaDescription: "Dies ist der zweite Beitrag einer Serie darüber, was Führung ist und was nicht. Der dritte und letzte Beitrag, \"Den eigenen Führungsstil entwickeln\", ist ebenfalls verfügbar."
 bodyHtml: |-
   <p><em>Dies ist der zweite Beitrag einer Serie darüber, was Führung ist und was nicht. Der erste Beitrag ist "Management ist nicht Führung", der dritte und letzte "Den eigenen Führungsstil entwickeln".</em></p>

@@ -3,6 +3,7 @@ import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import InsightsArticlePageContent from "@/components/pages/InsightsArticlePageContent.astro";
 import { localeOfId, baseSlug } from "@/lib/i18n";
+import { relatedSeriesEntries } from "@/lib/insights";
 
 export async function getStaticPaths() {
   // A handful of articles now have a German translation living alongside
@@ -21,15 +22,19 @@ const author = article.data.author ? await getEntry(article.data.author) : undef
 const authorName = author?.data.name ?? article.data.authorName ?? "Better Change";
 
 const allArticles = await getCollection("insights-articles", (a) => localeOfId(a.id) === "en");
-const related = article.data.primaryCategory
-  ? allArticles
-      .filter((a) => a.id !== article.id && a.data.primaryCategory === article.data.primaryCategory)
-      .slice(0, 3)
-  : [];
+const related = article.data.seriesId
+  ? relatedSeriesEntries(article, allArticles)
+  : article.data.primaryCategory
+    ? allArticles
+        .filter((a) => a.id !== article.id && a.data.primaryCategory === article.data.primaryCategory)
+        .slice(0, 3)
+    : [];
 
-// Only some articles have a German translation yet -- the switcher/hreflang
+// Only some articles have a German translation yet -- the hreflang tags
 // only appear when this specific one does, same as individual coach
-// profiles (no translations prop at all otherwise).
+// profiles (no translations prop at all otherwise; the header's language
+// switcher then falls back to linking this same English page for both
+// locales, per Header.astro).
 const deArticle = await getEntry("insights-articles", `de/${baseSlug(article.id)}`);
 
 const articleSchema = {

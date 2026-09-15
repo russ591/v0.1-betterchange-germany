@@ -25,7 +25,7 @@ readTimeMinutes: 1
 author: garbrand-van-der-molen
 excerpt: "Organisationskultur umfasst die geteilten Werte, Überzeugungen und Praktiken, die definieren, wie Menschen innerhalb einer Organisation interagieren und zusammenarbeiten. Sie spiegelt die Identität des Unternehmens wider, beeinflusst Entscheidungsfindung und prägt das Verhalten von Mitarbeitenden."
 featured: true
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/01/Org-culture.png
+imageUrl: /insights/what-is-organisational-culture.webp
 metaDescription: "Organisationskultur umfasst die geteilten Werte, Überzeugungen und Praktiken, die definieren, wie Menschen innerhalb einer Organisation interagieren und zusammenarbeiten. Sie spiegelt die Identität des Unternehmens wider, beeinflusst Entscheidungsfindung und prägt das Verhalten von Mitarbeitenden."
 bodyHtml: |-
   <p>Organisationskultur umfasst die geteilten Werte, Überzeugungen und Praktiken, die definieren, wie Menschen innerhalb einer Organisation interagieren und zusammenarbeiten. Sie spiegelt die Identität des Unternehmens wider, beeinflusst Entscheidungsfindung und prägt das Verhalten von Mitarbeitenden.</p>

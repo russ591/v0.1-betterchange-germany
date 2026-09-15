@@ -10,7 +10,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: Difficult conversations are not a test of courage. They are a test of preparation, clarity, and emotional composure. Most leaders avoid them or handle them badly. Here is a structured approach that makes them more productive and less damaging.
 featured: true
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/07/vitaly-gariev-yrSta3T5GDs-unsplash.jpg
+imageUrl: /insights/mastering-difficult-conversations-a-comprehensive-guide-for-leaders.webp
 metaTitle: 'Difficult Conversations: A Leader''s Practical Guide to Saying the Hard'
 metaDescription: Difficult conversations are not a test of courage. They are a test of preparation, clarity, and emotional composure. Most leaders avoid them or handle...
 bodyHtml: |-

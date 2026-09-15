@@ -11,6 +11,7 @@ readTimeMinutes: 3
 author: konrad-pogorzala
 excerpt: Burndown charts show remaining work and whether the current pace will get the team there on time. The Sprint Burndown helps Developers navigate a Sprint. The Release Burndown helps the Product Owner manage the longer delivery arc.
 featured: false
+imageUrl: /insights/what-is-a-burndown-chart.webp
 metaTitle: 'Burndown Charts: A Practical Guide to Sprint and Release Tracking | Be'
 metaDescription: Burndown charts show remaining work and whether the current pace will get the team there on time. The Sprint Burndown helps Developers navigate a...
 bodyHtml: |-

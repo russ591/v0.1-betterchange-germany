@@ -25,7 +25,7 @@ readTimeMinutes: 2
 author: jesper-orting
 excerpt: "Better Change versteht das immense Potenzial des Scaled Agile Framework (SAFe®), große Organisationen auf ihrem Weg zu Business-Agilität zu stärken. Ein oft übersehener Faktor ist jedoch, wie aktiv Führung agile Prinzipien fördert und vorlebt."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/05/DystopianTeam2.png
+imageUrl: /insights/the-agile-disconnect.webp
 metaDescription: "Better Change versteht das immense Potenzial des Scaled Agile Framework (SAFe®), große Organisationen auf ihrem Weg zu Business-Agilität zu stärken. Ein oft übersehener Faktor ist jedoch, wie aktiv Führung agile Prinzipien fördert und vorlebt."
 bodyHtml: |-
   <p>Bei Better Change wird das immense Potenzial des Scaled Agile Framework (SAFe®) verstanden, große Organisationen auf ihrem Weg zu Business-Agilität zu stärken. Ein oft übersehener Faktor ist jedoch, wie aktiv Führung agile Prinzipien fördert und vorlebt. Diese Diskrepanz zwischen Führungsrhetorik und Führungshandeln kann ein erhebliches Hindernis für eine erfolgreiche SAFe®-Einführung darstellen.</p>

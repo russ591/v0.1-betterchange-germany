@@ -18,7 +18,7 @@ readTimeMinutes: 1
 author: bent-myllerup
 excerpt: "In \"Humanocracy\" bieten Gary Hamel und Michele Zanini eine anregende Kritik traditioneller bürokratischer Strukturen, wie sie in mittleren bis großen Organisationen verbreitet sind."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/03/Humanocracy.png
+imageUrl: /insights/review-humanocracy-creating-organizations-as-amazing-as-the-people-inside-them.webp
 metaDescription: "In \"Humanocracy\" bieten Gary Hamel und Michele Zanini eine anregende Kritik traditioneller bürokratischer Strukturen, wie sie in mittleren bis großen Organisationen verbreitet sind."
 bodyHtml: |-
   <p>In "Humanocracy: Creating Organizations as Amazing as the People Inside Them" bieten Gary Hamel und Michele Zanini eine anregende Kritik traditioneller bürokratischer Strukturen, wie sie in mittleren bis großen Organisationen verbreitet sind. Sie argumentieren überzeugend, dass solche Strukturen oft individuelles Wachstum, Kreativität und Innovation ersticken. Durch aufschlussreiche Analysen und Fallstudien zeigen die Autoren, wie Bürokratie zu Trägheit, Entfremdung und mangelnder Anpassungsfähigkeit in Organisationen führen kann.</p>

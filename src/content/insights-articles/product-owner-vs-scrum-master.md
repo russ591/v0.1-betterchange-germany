@@ -10,6 +10,7 @@ readTimeMinutes: 3
 author: heidi-reidel-sorensen
 excerpt: The Product Owner and Scrum Master are the two most frequently confused roles in Scrum. They interact closely, they both care about team effectiveness, and they are fundamentally different in what they are accountable for. Here is the distinction that matters.
 featured: false
+imageUrl: /insights/product-owner-vs-scrum-master.webp
 metaTitle: 'Product Owner vs Scrum Master: Two Accountabilities That Should Never'
 metaDescription: The Product Owner and Scrum Master are the two most frequently confused roles in Scrum. They interact closely, they both care about team effectiveness,...
 bodyHtml: |-

@@ -29,7 +29,7 @@ readTimeMinutes: 1
 author: bent-myllerup
 excerpt: "Dieses Webinar richtet sich an Führungskräfte, Manager:innen und Coaches, die ihre Führungsfähigkeiten weiterentwickeln möchten, um Komplexität zu navigieren und erfolgreiche Transformationen voranzutreiben. Besonders relevant für alle, die Einblicke in die sich wandelnden Anforderungen an Führung suchen."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2025/05/kelly-sikkema-dAfmUrCTGKc-unsplash.jpg
+imageUrl: /insights/webinar-agile-leadership-the-vital-role-of-sense-making-integrity-and-authenticity.webp
 metaDescription: "Dieses Webinar richtet sich an Führungskräfte, Manager:innen und Coaches, die ihre Führungsfähigkeiten weiterentwickeln möchten, um Komplexität zu navigieren und erfolgreiche Transformationen voranzutreiben. Besonders relevant für alle, die Einblicke in die sich wandelnden Anforderungen an Führung suchen."
 bodyHtml: |-
   <p>Dieses Webinar richtet sich an Führungskräfte, Manager:innen und Coaches, die ihre Führungsfähigkeiten weiterentwickeln möchten, um Komplexität zu navigieren und erfolgreiche Transformationen in ihren Organisationen voranzutreiben. Es ist besonders relevant für alle, die Einblicke in die sich wandelnden Anforderungen an Führung im heutigen dynamischen Geschäftsumfeld suchen.</p>

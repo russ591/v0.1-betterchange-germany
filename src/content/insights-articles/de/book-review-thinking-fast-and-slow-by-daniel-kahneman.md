@@ -18,7 +18,7 @@ readTimeMinutes: 2
 author: joanne-perold
 excerpt: "Daniel Kahnemans mit dem Nobelpreis ausgezeichnete Arbeit über menschliches Urteilsvermögen war nie relevanter. In einer datengetriebenen Welt voller KI und algorithmischer Empfehlungen ist zu verstehen, wie das eigene Denken funktioniert, und wo es zuverlässig in die Irre führt, grundlegend."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/04/Thinking-fast-and-slow-Daniel-Kahneman-9780141033570_1_0.jpeg
+imageUrl: /insights/book-review-thinking-fast-and-slow-by-daniel-kahneman.webp
 metaDescription: "Daniel Kahnemans mit dem Nobelpreis ausgezeichnete Arbeit über menschliches Urteilsvermögen war nie relevanter. In einer datengetriebenen Welt voller KI und algorithmischer Empfehlungen ist zu verstehen, wie das eigene Denken funktioniert, und wo es zuverlässig in die Irre führt, grundlegend."
 bodyHtml: |-
   <p>Daniel Kahneman verstarb 2024, aber die Arbeit, die ihm 2002 gemeinsam mit seinem langjährigen Kollegen Amos Tversky den Wirtschaftsnobelpreis einbrachte, ist keinen Tag gealtert. <em>Thinking, Fast and Slow</em> bleibt die gründlichste, lesbarste Darstellung davon, wie menschliche Entscheidungsfindung tatsächlich funktioniert, im Gegensatz zu wie sie gerne gedacht wird.</p>

@@ -11,6 +11,7 @@ readTimeMinutes: 3
 authorName: Jakob Verner Christensen
 excerpt: The Product Increment is the sum of everything completed so far, every Sprint's delivered work, combined into something usable. It is the most important artefact in Scrum because it is the evidence that the team is delivering value, not...
 featured: false
+imageUrl: /insights/what-is-a-product-increment.webp
 metaTitle: 'The Product Increment: Scrum''s Most Important Artefact | Better Change'
 metaDescription: The Product Increment is the sum of everything completed so far, every Sprint's delivered work, combined into something usable. It is the most...
 bodyHtml: |-

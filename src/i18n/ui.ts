@@ -125,10 +125,46 @@ export const en = {
   "course.onRequestLabel": "On request",
   "course.onRequestNote": "Not on the public schedule right now, but available for private or in-house delivery on request.",
 
+  // For the trainer-led-vs-self-paced two-card layout (courses that offer
+  // self-paced alongside at least one trainer-led format). German copy
+  // added below in deOverrides.
+  "course.trainerLedTitle": "Trainer-Led Workshop",
+  "course.trainerLedDescription":
+    "Learn in a group with a certified trainer, in person or live online. Social, interactive, and led at a set pace over the scheduled dates.",
+  "course.selfPacedTitle": "Self-Paced Workshop",
+  "course.findOutMore": "Find out more",
+
+  "selfPaced.breadcrumbLabel": "Self-Paced",
+  "selfPaced.eyebrowPrefix": "Self-Paced",
+  "selfPaced.beginWhenReady": "Begin whenever you're ready",
+  "selfPaced.whatsIncluded": "What's included",
+  "selfPaced.curriculumEyebrow": "Curriculum",
+  "selfPaced.faqHeading": "Frequently asked questions",
+  "selfPaced.faqCertificationQuestion": "Is the certification the same as the trainer-led course?",
+  "selfPaced.faqCertificationAnswer":
+    "Yes. The self-paced format leads to the same certification as every other format of this course.",
+  "selfPaced.readyHeading": "Ready to get started?",
+
   "level": "Level",
   "duration": "Duration",
   "certification": "Certification",
   "languages": "Languages",
+
+  // Coach/Fellow profile page (/about/[slug]). "Bio" left in both languages
+  // since it's already the naturally-used word in German too -- not
+  // translated to something like "Biografie".
+  "profile.bio": "Bio",
+  "profile.backgroundExpertise": "Background & expertise",
+  "profile.approach": "Approach",
+  "profile.specialities": "Specialities",
+  "profile.certifications": "Certifications",
+  "profile.coursesDelivered": "Courses delivered",
+  "profile.yearsExperienceSuffix": "years experience",
+  "profile.upcomingTraining": "Upcoming training",
+  "profile.findOutMore": "Find out more",
+  "profile.recentArticles": "Recent articles",
+  "profile.seeAllArticles": "See all articles",
+  "profile.showLess": "Show less",
 
   // Not covered by any Insights translation draft yet -- falls back to the
   // "[DE] " placeholder until reviewed.
@@ -335,6 +371,26 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "course.onRequestLabel": "Auf Anfrage",
   "course.onRequestNote": "Aktuell nicht öffentlich terminiert, auf Anfrage jedoch für private oder unternehmensinterne Durchführung verfügbar.",
 
+  // Found and fixed as a site-wide [DE]-placeholder scan follow-up: the
+  // trainer-led-vs-self-paced two-card layout and the whole self-paced
+  // course page were shipped without ever getting a translation pass.
+  "course.trainerLedTitle": "Trainergeführter Workshop",
+  "course.trainerLedDescription":
+    "Lernen in der Gruppe mit zertifizierten Trainer:innen, vor Ort oder live online. Sozial, interaktiv und im festen Rhythmus der geplanten Termine.",
+  "course.selfPacedTitle": "Selbstlern-Workshop",
+  "course.findOutMore": "Mehr erfahren",
+
+  "selfPaced.breadcrumbLabel": "Selbstlernkurs",
+  "selfPaced.eyebrowPrefix": "Selbstlernkurs",
+  "selfPaced.beginWhenReady": "Beginn, wann immer gewünscht",
+  "selfPaced.whatsIncluded": "Was ist inklusive",
+  "selfPaced.curriculumEyebrow": "Curriculum",
+  "selfPaced.faqHeading": "Häufig gestellte Fragen",
+  "selfPaced.faqCertificationQuestion": "Ist die Zertifizierung dieselbe wie beim trainergeführten Kurs?",
+  "selfPaced.faqCertificationAnswer":
+    "Ja. Der Selbstlernkurs führt zur gleichen Zertifizierung wie jedes andere Format dieses Kurses.",
+  "selfPaced.readyHeading": "Bereit loszulegen?",
+
   "insights.minRead": "Min. Lesezeit",
   "insights.by": "Von",
   "insights.relatedReading": "Weiterführende Artikel",
@@ -369,6 +425,22 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "duration": "Dauer",
   "certification": "Zertifizierung",
   "languages": "Sprachen",
+
+  // From betterchange-de-coach-profiles.md.
+  "profile.bio": "Bio",
+  "profile.backgroundExpertise": "Hintergrund & Expertise",
+  "profile.approach": "Ansatz",
+  "profile.specialities": "Spezialgebiete",
+  "profile.certifications": "Zertifizierungen",
+  "profile.coursesDelivered": "Durchgeführte Kurse",
+  "profile.yearsExperienceSuffix": "Jahre Erfahrung",
+  // Reuses "anstehende" for "upcoming", matching
+  // training.upcomingDisciplineTrainingPrefix's established phrasing.
+  "profile.upcomingTraining": "Anstehende Trainings",
+  "profile.findOutMore": "Mehr erfahren",
+  "profile.recentArticles": "Aktuelle Artikel",
+  "profile.seeAllArticles": "Alle Artikel ansehen",
+  "profile.showLess": "Weniger anzeigen",
 
   "certifiedBy": "Zertifiziert durch",
   "cta.talkToUs": "Kontakt aufnehmen",

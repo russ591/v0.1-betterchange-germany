@@ -27,4 +27,5 @@ specialities:
   - Training Development
   - Diversity and Inclusion
 displayOrder: 10
+isFellow: true
 ---

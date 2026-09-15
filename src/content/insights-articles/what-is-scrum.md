@@ -10,6 +10,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: Scrum is a framework for tackling complex work in short cycles, built on transparency, inspection, and adaptation. It is not a project management methodology, not a process, and not a synonym for Agile. Here is what it actually is.
 featured: false
+imageUrl: /insights/what-is-scrum.webp
 metaTitle: What Is Scrum? A Straight Answer to the Most Common Question in Agile
 metaDescription: Scrum is a framework for tackling complex work in short cycles, built on transparency, inspection, and adaptation. It is not a project management...
 bodyHtml: |-

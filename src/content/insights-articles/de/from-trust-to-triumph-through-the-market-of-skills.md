@@ -23,7 +23,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: "Synergie ist die Magie, die eine Gruppe von Individuen in ein leistungsstarkes Team verwandelt. Sie entspringt dem gemeinsamen Ziel oder Zweck, der Teammitglieder verbindet."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/10/PETRONAS-Pitstop.png
+imageUrl: /insights/from-trust-to-triumph-through-the-market-of-skills.webp
 metaDescription: "Synergie ist die Magie, die eine Gruppe von Individuen in ein leistungsstarkes Team verwandelt. Sie entspringt dem gemeinsamen Ziel oder Zweck, der Teammitglieder verbindet."
 bodyHtml: |-
   <h2><strong>Team-Synergie: Das Fundament des Erfolgs</strong></h2>

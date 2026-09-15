@@ -18,9 +18,12 @@ interface Props {
     category: CollectionEntry<"training-categories">;
     courses: CollectionEntry<"training-courses">[];
   }[];
+  /** Raw <svg> path/shape markup for the row's own icon, matching every
+   * other top-level row in the mobile drawer -- see Header.astro. */
+  icon: string;
 }
 
-const { categoriesWithCourses } = Astro.props;
+const { categoriesWithCourses, icon } = Astro.props;
 const locale = resolveLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 const prefix = locale === "de" ? "/de" : "";
@@ -39,7 +42,19 @@ const logoByCategory = Object.fromEntries(
 
 <details class="group/training border-b border-neutral-100">
   <summary class="flex cursor-pointer list-none items-center justify-between py-2 text-sm font-medium text-ink">
-    {t("nav.training")}
+    <span class="flex items-center gap-2.5">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="h-4 w-4 shrink-0 text-neutral-500"
+        set:html={icon}
+      />
+      {t("nav.training")}
+    </span>
     <svg
       viewBox="0 0 24 24"
       fill="none"

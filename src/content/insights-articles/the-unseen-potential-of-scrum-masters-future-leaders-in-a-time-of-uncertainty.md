@@ -12,7 +12,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: In recent times, there has been an unfortunate pattern of laying off Scrum Masters - especially in financial institutions. On the surface, this may seem like a cost-cutting measure.
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/03/parabol-the-agile-meeting-toolbox-q2jngCuEMFU-unsplash.jpg
+imageUrl: /insights/the-unseen-potential-of-scrum-masters-future-leaders-in-a-time-of-uncertainty.webp
 metaTitle: 'The Unseen Potential of Scrum Masters: Future Leaders in a Time of Unc'
 metaDescription: In recent times, there has been an unfortunate pattern of laying off Scrum Masters - especially in financial institutions. On the surface, this may...
 bodyHtml: |-

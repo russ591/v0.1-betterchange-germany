@@ -1,0 +1,119 @@
+---
+// Shared body for /training/[category]/[course]/self-paced (English) and
+// /de/training/[category]/[course]/self-paced (German) -- same split
+// pattern as CoursePageContent.astro. Locale is read directly off the
+// current request rather than passed as a prop.
+import type { CollectionEntry } from "astro:content";
+import Section from "@/components/Section.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import CTABanner from "@/components/CTABanner.astro";
+import TrainerChip from "@/components/TrainerChip.astro";
+import { getFormatDetails } from "@/data/formatDetails";
+import { germanizePrice } from "@/lib/prices";
+import { registrationHref, registrationLinkAttrs } from "@/lib/registrationLink";
+import { toPathSegment } from "@/lib/urlSlug";
+import { baseSlug } from "@/lib/i18n";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+import type { TrainerEntry } from "@/lib/trainers";
+
+interface Props {
+  course: CollectionEntry<"training-courses">;
+  category: CollectionEntry<"training-categories">;
+  selfPacedSession: CollectionEntry<"training-schedules">;
+  trainers: TrainerEntry[];
+}
+
+const { course, category, selfPacedSession, trainers } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const prefix = locale === "de" ? "/de" : "";
+const categorySlug = baseSlug(category.id);
+const courseSlug = toPathSegment(course.data.urlSlug ?? baseSlug(course.id));
+const details = getFormatDetails(locale)["self-paced"];
+---
+
+<Breadcrumbs
+  items={[
+    { label: t("nav.training"), href: `${prefix}/training` },
+    { label: category.data.name, href: `${prefix}/training/${categorySlug}` },
+    { label: course.data.name, href: `${prefix}/training/${categorySlug}/${courseSlug}` },
+    { label: t("selfPaced.breadcrumbLabel") },
+  ]}
+/>
+
+<Section class="bg-mist-light">
+  <div class="grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-start">
+    <div class="min-w-0">
+      <p class="eyebrow">{t("selfPaced.eyebrowPrefix")} &middot; {course.data.code}</p>
+      <h1 class="mt-4 text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
+        {t("selfPaced.eyebrowPrefix")} {course.data.name}
+      </h1>
+      <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
+        {details.description} {details.chooseIf}
+      </p>
+    </div>
+    <div class="min-w-0 md:sticky md:top-24">
+      <div class="overflow-hidden rounded-[var(--radius-card)] border border-lime bg-lime/5 shadow-card">
+        <div class="border-b border-neutral-200 bg-surface px-5 py-4">
+          <p class="font-semibold">{t("schedule.startNow")}</p>
+          <p class="text-[length:var(--text-caption)] text-neutral-500">{t("selfPaced.beginWhenReady")}</p>
+        </div>
+        <div class="p-5">
+          <p class="text-[length:var(--text-h3)] font-bold">{germanizePrice(selfPacedSession.data.price, locale)}</p>
+          <p class="text-[length:var(--text-caption)] text-neutral-500">{t("schedule.exclVat")}</p>
+          {trainers.length > 0 && (
+            <div class="mt-4 flex flex-wrap gap-1.5">
+              {trainers.map((trainer) => (
+                <TrainerChip trainer={trainer} density="plain" linkable={false} showLabel />
+              ))}
+            </div>
+          )}
+          <a
+            href={registrationHref(selfPacedSession, prefix)}
+            {...registrationLinkAttrs(selfPacedSession)}
+            class="mt-5 inline-flex w-full items-center justify-center gap-1.5 rounded-[var(--radius-control)] bg-ink px-4 py-3 text-sm font-semibold text-surface transition-colors hover:bg-neutral-800"
+          >
+            {t("schedule.startNow")} <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<Section eyebrow={t("selfPaced.whatsIncluded")} heading={t("course.included")} class="bg-mist-light">
+  <div class="grid gap-6 sm:grid-cols-3">
+    {details.included.map((item) => (
+      <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6 shadow-card">
+        <h3 class="text-[length:var(--text-h4)]">{item}</h3>
+      </div>
+    ))}
+  </div>
+</Section>
+
+<Section eyebrow={t("selfPaced.curriculumEyebrow")} heading={t("course.whatLearn")}>
+  <ul class="max-w-2xl space-y-3 text-[length:var(--text-body)] text-neutral-600">
+    {course.data.whatYoullLearn.map((item) => (
+      <li class="flex gap-2.5">
+        <span aria-hidden="true" class="blob-dot mt-2.5 h-1.5 w-1.5 shrink-0 bg-lime" />
+        <span>{item}</span>
+      </li>
+    ))}
+  </ul>
+</Section>
+
+<Section heading={t("selfPaced.faqHeading")} class="bg-mist-light">
+  <div class="max-w-2xl">
+    <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-5">
+      <p class="font-semibold">{t("selfPaced.faqCertificationQuestion")}</p>
+      <p class="mt-2 text-[length:var(--text-small)] text-neutral-600">{t("selfPaced.faqCertificationAnswer")}</p>
+    </div>
+  </div>
+</Section>
+
+<CTABanner
+  tone="light"
+  heading={t("selfPaced.readyHeading")}
+  ctaLabel={t("schedule.startNow")}
+  ctaHref={registrationHref(selfPacedSession, prefix)}
+/>

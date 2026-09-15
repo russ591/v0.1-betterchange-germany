@@ -16,7 +16,7 @@ readTimeMinutes: 3
 author: jan-b-olsen
 excerpt: "Zwischen zwei Dritteln und drei Vierteln großer Organisationen tun sich schwer damit, strategische Pläne in operative Realität zu übersetzen. Die Pläne sind oft gut. An der Umsetzung scheitert es. Ein strukturierter Ansatz für diese Lücke."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2025/01/anne-nygard-Zkq09XVL3ss-unsplash-1-scaled.jpg
+imageUrl: /insights/practical-guide-to-strategy-implementation.webp
 metaDescription: "Zwischen zwei Dritteln und drei Vierteln großer Organisationen tun sich schwer damit, strategische Pläne in operative Realität zu übersetzen. Die Pläne sind oft gut. An der Umsetzung scheitert es. Ein strukturierter Ansatz für diese Lücke."
 bodyHtml: |-
   <p>Die Strategiearbeit ist abgeschlossen. Die Präsentation ist geschliffen. Das Führungsteam ist abgestimmt. Und dann, still, ändert sich nichts.</p>

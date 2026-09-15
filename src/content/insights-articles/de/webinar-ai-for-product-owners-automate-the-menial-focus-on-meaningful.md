@@ -21,7 +21,7 @@ readTimeMinutes: 2
 author: giuseppe-de-simone
 excerpt: "Product Owner verbringen unverhältnismäßig viel Zeit mit administrativer Arbeit von geringem Wert. Dieses Webinar zeigt praktische KI-Techniken, um Wiederkehrendes zu automatisieren, damit sich Product Owner auf die Gespräche, Entscheidungen und strategischen Überlegungen konzentrieren können, die sie wirklich brauchen."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2025/12/unnamed.png
+imageUrl: /insights/webinar-ai-for-product-owners-automate-the-menial-focus-on-meaningful.webp
 metaDescription: "Product Owner verbringen unverhältnismäßig viel Zeit mit administrativer Arbeit von geringem Wert. Dieses Webinar zeigt praktische KI-Techniken, um Wiederkehrendes zu automatisieren, damit sich Product Owner auf die Gespräche, Entscheidungen und strategischen Überlegungen konzentrieren können, die sie wirklich brauchen."
 bodyHtml: |-
   <p>Die Ironie der modernen Product-Owner-Rolle ist, dass ein Großteil der Zeit ausgerechnet für die Arbeit aufgewendet wird, die am wenigsten Wert schafft. Meeting-Notizen, die in Action Items umgewandelt werden. Jira-Tickets, die aus Workshop-Ergebnissen zusammengestellt werden. Status-Zusammenfassungen für Stakeholder, die wissen wollen, woran das Team arbeitet, ohne selbst den Backlog zu lesen. Wichtige Arbeit, aber nicht die Arbeit, die eine gute Product-Owner-Person ausmacht.</p>

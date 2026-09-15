@@ -11,6 +11,8 @@
 # convention. The EN source's closing link to Agile Mishap #4 and its
 # opening citation link to the intro post are not in the draft.
 title: 'Agile mishap #3: The Agile Bubble'
+seriesId: "agile-mishaps"
+seriesOrder: 4
 contentType: Blog
 primaryCategory: Agile
 categories:
@@ -20,7 +22,7 @@ readTimeMinutes: 2
 author: bent-myllerup
 excerpt: "In einer Serie von Blogbeiträgen wird die Frage untersucht: Wenn Agile nicht tot ist, was ging dann schief? 2019 gab es die Gelegenheit, zwei Konferenzen hintereinander zu besuchen."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/02/lanju-fotografie-muy0ywmdsPY-unsplash.jpg
+imageUrl: /insights/the-agile-bubble.webp
 metaDescription: "In einer Serie von Blogbeiträgen wird die Frage untersucht: Wenn Agile nicht tot ist, was ging dann schief? 2019 gab es die Gelegenheit, zwei Konferenzen hintereinander zu besuchen."
 bodyHtml: |-
   <p><em>In einer Serie von Blogbeiträgen wird die Frage untersucht: Wenn Agile nicht tot ist, was ging dann schief? Wer den einleitenden Beitrag (Was ging schief mit Agile?) noch nicht gelesen hat, sollte dort zuerst weiterlesen.</em></p>

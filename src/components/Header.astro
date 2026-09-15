@@ -5,12 +5,13 @@ import TrainingMegaMenuDesktop from "@/components/TrainingMegaMenuDesktop.astro"
 import TrainingMegaMenuMobile from "@/components/TrainingMegaMenuMobile.astro";
 import { resolveLocale, useTranslations } from "@/i18n/utils";
 import { localeOfId } from "@/lib/i18n";
+import { mobileNavIcons } from "@/data/mobileNavIcons";
 
 interface Props {
   /** Same shape as BaseLayout's own prop -- passed straight through so the
    * language switcher can link to the exact equivalent page rather than
    * just the other language's homepage. Absent on pages with no German
-   * counterpart, where the switcher falls back to each locale's home. */
+   * counterpart, where the switcher falls back to the current page itself. */
   translations?: Partial<Record<"en" | "de", string>>;
 }
 
@@ -20,13 +21,16 @@ const t = useTranslations(locale);
 const prefix = locale === "de" ? "/de" : "";
 
 const navLinks = [
-  { href: "/services", label: t("nav.services"), translated: true },
-  { href: "/training", label: t("nav.training"), mega: true, translated: true },
-  { href: "/insights", label: t("nav.insights"), translated: true },
-  { href: "/about", label: t("nav.about"), translated: true },
+  // mobileOnly since the logo already covers "go home" on desktop; only
+  // the mobile drawer needs an explicit row for it.
+  { href: "/", label: t("breadcrumb.home"), translated: true, mobileOnly: true, icon: "home" as const },
+  { href: "/services", label: t("nav.services"), translated: true, icon: "services" as const },
+  { href: "/training", label: t("nav.training"), mega: true, translated: true, icon: "training" as const },
+  { href: "/insights", label: t("nav.insights"), translated: true, icon: "insights" as const },
+  { href: "/about", label: t("nav.about"), translated: true, icon: "about" as const },
   // Desktop already has the lime "Contact us" button; keep this entry only
   // for the mobile menu, where that button is hidden below the sm breakpoint.
-  { href: "/contact", label: t("nav.contact"), translated: true, mobileOnly: true },
+  { href: "/contact", label: t("nav.contact"), translated: true, mobileOnly: true, icon: "contact" as const },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -42,10 +46,15 @@ const categoriesWithCourses = categories.map((category) => ({
     .sort((a, b) => (a.data.sortOrder ?? 99) - (b.data.sortOrder ?? 99)),
 }));
 
-// Falls back to each locale's homepage when the current page has no
-// translation counterpart (translations prop omitted entirely).
-const enHref = translations?.en ?? "/";
-const deHref = translations?.de ?? "/de/";
+// Falls back to the current page itself when this locale's counterpart is
+// missing (translations prop omitted, e.g. an Insights article with no
+// German translation yet) -- same "no translation yet? stay on what
+// exists" idiom as localizedArticle() elsewhere, rather than dropping the
+// visitor at the homepage and losing their place. The EN link in
+// particular should never need a fallback at all on an English page (we're
+// already on it), which the old "/" default got wrong.
+const enHref = translations?.en ?? currentPath;
+const deHref = translations?.de ?? currentPath;
 ---
 
 <header class="sticky top-0 z-50 border-b border-neutral-200 bg-surface/90 backdrop-blur">
@@ -141,9 +150,19 @@ const deHref = translations?.de ?? "/de/";
             navLinks.map((link) => {
               const href = link.translated ? `${prefix}${link.href}` : link.href;
               return link.mega ? (
-                <TrainingMegaMenuMobile categoriesWithCourses={categoriesWithCourses} />
+                <TrainingMegaMenuMobile categoriesWithCourses={categoriesWithCourses} icon={mobileNavIcons[link.icon]} />
               ) : (
-                <a href={href} class="py-2 text-sm font-medium text-neutral-700">
+                <a href={href} class="flex items-center gap-2.5 py-2 text-sm font-medium text-neutral-700">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="h-4 w-4 shrink-0 text-neutral-500"
+                    set:html={mobileNavIcons[link.icon]}
+                  />
                   {link.label}
                 </a>
               );

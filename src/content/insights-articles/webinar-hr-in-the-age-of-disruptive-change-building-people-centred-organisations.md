@@ -12,7 +12,7 @@ readTimeMinutes: 2
 author: giuseppe-de-simone
 excerpt: Most HR functions know what agile means in theory. Far fewer have figured out what it means for how they actually work. This webinar with Giuseppe De Simone examines what genuinely agile HR looks like.
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2026/01/HR-in-the-age-of-disruptive-change.png
+imageUrl: /insights/webinar-hr-in-the-age-of-disruptive-change-building-people-centred-organisations.webp
 metaTitle: 'Webinar Recording: What HR Looks Like When It''s Actually Agile | Bette'
 metaDescription: Most HR functions know what agile means in theory. Far fewer have figured out what it means for how they actually work. This webinar with Giuseppe De...
 bodyHtml: |-

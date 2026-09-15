@@ -18,6 +18,7 @@ readTimeMinutes: 3
 author: niels-verdonk
 excerpt: "Scrums fünf Werte, Mut, Fokus, Selbstverpflichtung, Respekt und Offenheit, sind leicht aufzulisten und leicht zu ignorieren. Teams, die sie ernst nehmen, wirken grundlegend anders als Teams, die sie als dekorativ behandeln."
 featured: false
+imageUrl: /insights/the-scrum-values-a-key-to-agile-excellence.webp
 metaDescription: "Scrums fünf Werte, Mut, Fokus, Selbstverpflichtung, Respekt und Offenheit, sind leicht aufzulisten und leicht zu ignorieren. Teams, die sie ernst nehmen, wirken grundlegend anders als Teams, die sie als dekorativ behandeln."
 bodyHtml: |-
   <p>Der Scrum Guide beschreibt fünf Werte: Mut, Fokus, Selbstverpflichtung, Respekt und Offenheit. Sie erscheinen im Dokument vor den Rollen, den Events oder den Artefakten, was bewusst so gewählt ist. Die Werte sind der Boden, auf dem das Framework wächst. Ohne sie wird Scrum zu einer Reihe von Ritualen, die den Anschein von Agilität erzeugt, ohne deren Substanz.</p>

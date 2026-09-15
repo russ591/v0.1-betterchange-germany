@@ -1,0 +1,91 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import AboutProfilePageContent from "@/components/pages/AboutProfilePageContent.astro";
+import { toPathSegment } from "@/lib/urlSlug";
+import { localeOfId, baseSlug, localizedArticle } from "@/lib/i18n";
+
+export async function getStaticPaths() {
+  const profiles = await getCollection(
+    "coach-profiles",
+    ({ data, id }) => data.hasFullProfile && localeOfId(id) === "de"
+  );
+  // Individual coach profile pages don't translate course/session data --
+  // there's one shared set of course/session instances, not duplicated per
+  // language -- only ever link out to the English course pages, not the
+  // German placeholder entries the courses collection now also contains.
+  const courses = await getCollection("training-courses", (c) => localeOfId(c.id) === "en");
+  // course codes in Fellows.coursesDelivered don't always match
+  // TrainingCourse.code punctuation exactly (e.g. "ICP-ACC" vs "ICPACC")
+  const normalize = (s: string) => s.replace(/[^a-z0-9]/gi, "").toUpperCase();
+  return profiles.map((profile) => ({
+    // urlSlug is copied forward from the English entry when set (an
+    // accented character already present in both locales' content) --
+    // otherwise the path segment is always the shared base slug, same
+    // convention as training-courses/insights-articles.
+    params: { slug: profile.data.urlSlug ?? baseSlug(profile.id) },
+    props: {
+      profile,
+      coursesDelivered: (profile.data.coursesDelivered ?? [])
+        .map((code) => courses.find((c) => normalize(c.data.code) === normalize(code)))
+        .filter((c) => c !== undefined),
+    },
+  }));
+}
+
+const { profile, coursesDelivered } = Astro.props;
+const { bio, name, role } = profile.data;
+
+// trainers/author references on training-schedules and insights-articles
+// always point at the English coach-profile id (one canonical identity per
+// person, not duplicated per language) -- match on that.
+const authorId = baseSlug(profile.id);
+
+// "About your trainer(s)" companion data: what this person is teaching next
+// and what they've written recently. Both are optional add-ons -- most
+// profiles (everyone except Russell Hill today) won't have either yet, and
+// the sections simply don't render for them.
+const allSchedules = await getCollection("training-schedules");
+const upcomingSessions = await Promise.all(
+  allSchedules
+    .filter((s) => s.data.trainers?.some((t) => t.id === authorId) && s.data.date && s.data.date >= new Date())
+    .sort((a, b) => a.data.date!.valueOf() - b.data.date!.valueOf())
+    .map(async (session) => {
+      const course = await getEntry(session.data.course);
+      const category = await getEntry(course.data.category);
+      return { session, category, course };
+    })
+);
+
+// Match this Fellow's articles by their canonical English author id, then
+// resolve each matched article to its own German translation where one
+// exists, falling back to the English original otherwise -- same
+// graceful-fallback pattern as the Insights hub (localizedArticle).
+const allEnArticles = await getCollection("insights-articles", (a) => localeOfId(a.id) === "en");
+const authoredEnArticles = allEnArticles
+  .filter((a) => a.data.author?.id === authorId)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 4);
+const recentArticles = await Promise.all(authoredEnArticles.map((a) => localizedArticle(a, "de")));
+
+// A German coach-profile entry only ever exists alongside its English
+// original, so this always resolves -- unlike the English route,
+// translations here is never conditional.
+const enProfile = (await getEntry("coach-profiles", authorId))!;
+---
+
+<BaseLayout
+  title={name}
+  description={bio ? bio.slice(0, 160) : `${name}, ${role} bei Better Change`}
+  translations={{
+    en: `/about/${toPathSegment(enProfile.data.urlSlug ?? baseSlug(enProfile.id))}`,
+    de: `/de/about/${toPathSegment(profile.data.urlSlug ?? baseSlug(profile.id))}`,
+  }}
+>
+  <AboutProfilePageContent
+    profile={profile}
+    coursesDelivered={coursesDelivered}
+    upcomingSessions={upcomingSessions}
+    recentArticles={recentArticles}
+  />
+</BaseLayout>

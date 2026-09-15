@@ -2,8 +2,10 @@
 // Shared body for /about (English) and /de/about (German) -- see
 // HomePageContent.astro for the same split pattern. `copy` carries the
 // page's own prose (about-page content collection); `team` is already
-// resolved for the correct locale (unfiltered -- coach-profiles isn't
-// locale-split, see TeamCard.astro).
+// resolved for the correct locale (each entry is the German translation
+// when one exists, English otherwise -- see localizedCoachProfile in
+// src/lib/i18n.ts). TeamCard.astro derives its own href prefix from the
+// current locale rather than from the entry it's given.
 import type { CollectionEntry } from "astro:content";
 import Section from "@/components/Section.astro";
 import StatCallout from "@/components/StatCallout.astro";

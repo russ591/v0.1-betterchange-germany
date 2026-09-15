@@ -3,6 +3,7 @@ import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import InsightsHubPageContent from "@/components/pages/InsightsHubPageContent.astro";
 import { localeOfId } from "@/lib/i18n";
+import { isFellowAuthored } from "@/lib/insights";
 import { useTranslations } from "@/i18n/utils";
 
 const t = useTranslations("en");
@@ -12,13 +13,21 @@ const t = useTranslations("en");
 // shows the English original of each, since /de/insights is the German
 // counterpart (see that route for how it resolves the German version of
 // each article, falling back to English where none exists yet).
-const allArticles = (await getCollection("insights-articles", (a) => localeOfId(a.id) === "en")).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+const allArticles = await getCollection("insights-articles", (a) => localeOfId(a.id) === "en");
+
+// Names of every confirmed Fellow, for matching articles that only have a
+// plain authorName (no linked coach profile) against a Fellow by name --
+// see isFellowAuthored for why that's needed alongside the isFellow flag.
+const fellowNames = new Set(
+  (await getCollection("coach-profiles", (c) => localeOfId(c.id) === "en" && c.data.isFellow)).map(
+    (c) => c.data.name
+  )
 );
 
 // Resolve each article's author once, up front -- the same lookup feeds
-// the card byline everywhere below.
-const articles = await Promise.all(
+// the card byline everywhere below, plus the isFellow flag that drives
+// the sort order.
+const withAuthor = await Promise.all(
   allArticles.map(async (article) => {
     const profile = article.data.author ? await getEntry(article.data.author) : undefined;
     const author = profile
@@ -26,9 +35,20 @@ const articles = await Promise.all(
       : article.data.authorName
         ? { name: article.data.authorName, photo: undefined }
         : undefined;
-    return { article, author };
+    const isFellow = isFellowAuthored(profile?.data.isFellow, article.data.authorName, fellowNames);
+    return { article, author, isFellow };
   })
 );
+
+// Newest-first within each group, but every Fellow-authored article sinks
+// below every non-Fellow one regardless of date -- per Russ's request, a
+// reader only reaches them by paging through to the end of the grid.
+const byDateDesc = (a: (typeof withAuthor)[number], b: (typeof withAuthor)[number]) =>
+  b.article.data.date.valueOf() - a.article.data.date.valueOf();
+const articles = [
+  ...withAuthor.filter((a) => !a.isFellow).sort(byDateDesc),
+  ...withAuthor.filter((a) => a.isFellow).sort(byDateDesc),
+];
 ---
 
 <BaseLayout title="Insights" description={t("insights.intro")} translations={{ en: "/insights", de: "/de/insights" }}>

@@ -10,6 +10,7 @@ readTimeMinutes: 3
 author: niels-verdonk
 excerpt: The Scrum Master is accountable for the effectiveness of the Scrum Team, which makes them a coach, a change agent, and an obstacle-remover, not a meeting facilitator with a fancy title. Here is what the role actually involves.
 featured: false
+imageUrl: /insights/what-is-a-scrum-master.webp
 metaTitle: What Is a Scrum Master? More Than a Meeting Facilitator | Better Chang
 metaDescription: The Scrum Master is accountable for the effectiveness of the Scrum Team, which makes them a coach, a change agent, and an obstacle-remover, not a...
 bodyHtml: |-

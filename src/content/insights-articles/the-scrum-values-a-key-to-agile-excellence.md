@@ -11,6 +11,7 @@ readTimeMinutes: 3
 author: niels-verdonk
 excerpt: Scrum's five values, courage, focus, commitment, respect, and openness, are easy to list and easy to ignore. Teams that take them seriously look fundamentally different from teams that treat them as decorative.
 featured: false
+imageUrl: /insights/the-scrum-values-a-key-to-agile-excellence.webp
 metaTitle: 'Scrum''s Five Values: The Human Foundation Under the Framework | Better'
 metaDescription: Scrum's five values, courage, focus, commitment, respect, and openness, are easy to list and easy to ignore. Teams that take them seriously look...
 bodyHtml: |-
