@@ -21,6 +21,7 @@ readTimeMinutes: 3
 author: niels-verdonk
 excerpt: "Bruce Tuckmans Modell der Teamentwicklung ist über fünfzig Jahre alt und immer noch nützlicher als das meiste, was es ersetzen sollte. Was die vier Phasen tatsächlich bedeuten, und wie sich jede davon navigieren lässt."
 featured: false
+imageUrl: /insights/the-tuckman-model-an-framework-for-high-performing-teams.webp
 metaDescription: "Bruce Tuckmans Modell der Teamentwicklung ist über fünfzig Jahre alt und immer noch nützlicher als das meiste, was es ersetzen sollte. Was die vier Phasen tatsächlich bedeuten, und wie sich jede davon navigieren lässt."
 bodyHtml: |-
   <p>1965 veröffentlichte der Psychologe Bruce Tuckman eine Arbeit, die Forschung zu Kleingruppenverhalten überprüfte, und schlug vor, dass Teams durchgängig vier Entwicklungsphasen durchlaufen. Er nannte sie Forming, Storming, Norming und Performing. Zwölf Jahre später fügte er eine fünfte hinzu, Adjourning, um zu erfassen, was geschieht, wenn die Arbeit eines Teams abgeschlossen ist.</p>

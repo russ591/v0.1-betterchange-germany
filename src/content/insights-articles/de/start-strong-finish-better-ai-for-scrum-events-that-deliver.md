@@ -23,7 +23,7 @@ readTimeMinutes: 3
 author: giuseppe-de-simone
 excerpt: "Sprints, die langsam starten oder ohne Wirkung enden? Dieses Webinar mit Giuseppe De Simone und Gregory Keegan zeigt, wie KI Sprint Planning, Retrospektiven und Coaching-Gespräche verändern kann."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2026/04/Gemini_Generated_Image_fzns87fzns87fzns-300x164.png
+imageUrl: /insights/start-strong-finish-better-ai-for-scrum-events-that-deliver.webp
 metaDescription: "Sprints, die langsam starten oder ohne Wirkung enden? Dieses Webinar mit Giuseppe De Simone und Gregory Keegan zeigt, wie KI Sprint Planning, Retrospektiven und Coaching-Gespräche verändern kann."
 bodyHtml: |-
   <p><strong>Sprints, die langsam starten oder ohne Wirkung enden? Das muss nicht sein.</strong> In diesem Webinar wird gezeigt, wie KI Sprint Planning, Retrospektiven und Coaching-Gespräche verändern kann. Im Video geht es unter anderem um:</p>

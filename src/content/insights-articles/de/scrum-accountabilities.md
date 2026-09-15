@@ -17,6 +17,7 @@ readTimeMinutes: 3
 author: garbrand-van-der-molen
 excerpt: "Scrum hat keine Rollen, es hat Accountabilities (Verantwortlichkeiten). Dieser Unterschied ist nicht semantisch. Zu verstehen, wofür Scrum Master, Product Owner und Developers tatsächlich verantwortlich sind, und wie diese Verantwortlichkeiten zusammenwirken, ist grundlegend dafür, dass Scrum funktioniert."
 featured: false
+imageUrl: /insights/scrum-accountabilities.webp
 metaDescription: "Scrum hat keine Rollen, es hat Accountabilities (Verantwortlichkeiten). Dieser Unterschied ist nicht semantisch. Zu verstehen, wofür Scrum Master, Product Owner und Developers tatsächlich verantwortlich sind, und wie diese Verantwortlichkeiten zusammenwirken, ist grundlegend dafür, dass Scrum funktioniert."
 bodyHtml: |-
   <p>Der Scrum Guide wählt das Wort "Accountability" bewusst. Nicht "Rolle", nicht "Verantwortung" im losen Sinn, nicht "Funktion". Accountability. Der Unterschied trägt Gewicht: Eine Accountability lässt sich nicht teilen oder wegdelegieren. Wer eine Accountability in Scrum trägt, besitzt das Ergebnis, unabhängig davon, ob die gesamte Arbeit selbst geleistet wird.</p>

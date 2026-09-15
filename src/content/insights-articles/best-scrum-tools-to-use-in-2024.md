@@ -9,6 +9,7 @@ readTimeMinutes: 3
 authorName: Jakob Verner Christensen
 excerpt: At Better Change we understand the importance of utilising effective tools to enhance collaboration, improve productivity, and streamline project management. Whether you're a seasoned Sc rum Master or just starting your agile journey.
 featured: false
+imageUrl: /insights/best-scrum-tools-to-use-in-2024.webp
 metaTitle: Best Scrum Tools to use in 2024 | Better Change Consulting
 metaDescription: At Better Change we understand the importance of utilising effective tools to enhance collaboration, improve productivity, and streamline project...
 bodyHtml: |-

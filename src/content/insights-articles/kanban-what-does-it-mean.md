@@ -10,7 +10,7 @@ readTimeMinutes: 3
 author: russell-hill
 excerpt: Ask ten people what Kanban means and you'll get at least three different answers, and they'll all be correct. The confusion is baked in, because the word genuinely refers to three distinct things.
 featured: false
-imageUrl: /insights/kanban.webp
+imageUrl: /insights/kanban-what-does-it-mean.webp
 metaTitle: 'Kanban: One Word, Three Completely Different Meanings | Better Change'
 metaDescription: Ask ten people what Kanban means and you'll get at least three different answers, and they'll all be correct. The confusion is baked in, because the...
 bodyHtml: |-

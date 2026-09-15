@@ -10,6 +10,7 @@ readTimeMinutes: 3
 authorName: Martin von Weissenberg
 excerpt: Backlog Refinement is the ongoing work that makes Sprint Planning possible. Teams that do it consistently tend to have shorter, more focused planning sessions and fewer mid-Sprint surprises.
 featured: false
+imageUrl: /insights/product-backlog-refinement.webp
 metaTitle: 'Product Backlog Refinement: The Work That Makes Sprint Planning Possib'
 metaDescription: Backlog Refinement is the ongoing work that makes Sprint Planning possible. Teams that do it consistently tend to have shorter, more focused planning...
 bodyHtml: |-

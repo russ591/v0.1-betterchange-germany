@@ -10,6 +10,7 @@ readTimeMinutes: 3
 authorName: Raffaela Hampf
 excerpt: Agile is not one thing. It is a philosophy implemented through many different frameworks. Understanding what the Manifesto actually says, and how Scrum and Kanban translate it, is the foundation for using any of them well.
 featured: false
+imageUrl: /insights/agile-methodology-and-frameworks.webp
 metaTitle: 'Agile Methodology and Frameworks: What the Umbrella Actually Covers |'
 metaDescription: Agile is not one thing. It is a philosophy implemented through many different frameworks. Understanding what the Manifesto actually says, and how...
 bodyHtml: |-

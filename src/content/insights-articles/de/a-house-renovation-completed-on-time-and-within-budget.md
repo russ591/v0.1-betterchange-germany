@@ -20,7 +20,7 @@ readTimeMinutes: 2
 author: mogens-villadsen
 excerpt: "Ein Hausrenovierungsprojekt mit Familie und Freund:innen als Arbeitskräften ist eine Koordinationsherausforderung, die die meisten Projektmanager:innen nervös machen würde. Ein 20-minütiges Brainstorming und eine Wand voller Sticky Notes waren die gesamte benötigte Management-Infrastruktur."
 featured: true
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/09/IMG_2960-scaled.jpeg
+imageUrl: /insights/a-house-renovation-completed-on-time-and-within-budget.webp
 metaDescription: "Ein Hausrenovierungsprojekt mit Familie und Freund:innen als Arbeitskräften ist eine Koordinationsherausforderung, die die meisten Projektmanager:innen nervös machen würde. Ein 20-minütiges Brainstorming und eine Wand voller Sticky Notes waren die gesamte benötigte Management-Infrastruktur."
 bodyHtml: |-
   <p>Als meine Frau und ich unser neues Zuhause übernahmen, war die Liste der Dinge, die vor dem Einzug erledigt werden mussten, beträchtlich. Die verfügbare Arbeitskraft war willig, aber uneinheitlich: Familie und Freund:innen mit unterschiedlichen Fähigkeiten, unterschiedlich viel verfügbarer Zeit, und ohne jeglichen Projektmanagement-Hintergrund. Sie zu koordinieren fühlte sich wie ein Problem an, das leicht schiefgehen konnte.</p>
