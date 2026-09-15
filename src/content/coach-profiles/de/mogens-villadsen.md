@@ -25,4 +25,5 @@ bio: |-
 approach: |-
   Er arbeitet mit einer vielfältigen Bandbreite an Kund:innen über Branchen und Regionen hinweg, von Start-ups bis zu etablierten Unternehmen, und gestaltet und implementiert wirksame, nachhaltige Lösungen im Einklang mit deren Vision und Zielen. Er trägt zudem zur Better Change Fellowship bei, einem Netzwerk von Coaches und Facilitatoren, das soziale und ökologische Change-Maker unterstützt.
 displayOrder: 10
+isFellow: true
 ---

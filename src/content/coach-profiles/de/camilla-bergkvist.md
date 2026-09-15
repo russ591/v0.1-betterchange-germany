@@ -27,4 +27,5 @@ backgroundAndExpertise: |-
 approach: |-
   Sie ist zertifizierte Coaching Supervisor (CoachMastery) und HUCAMA Factors Practitioner, und bringt diese Verankerung in emotionaler Intelligenz, Vertrauen und persönlichkeitsbasiertem Coaching in ihre Arbeit mit Führungskräften und Teams ein, mit der Überzeugung, dass dauerhafter Wandel in einer Organisation bei genuin gestärkten Menschen beginnt.
 displayOrder: 10
+isFellow: true
 ---

@@ -12,13 +12,12 @@ const t = useTranslations("en");
 // shows the English original of each, since /de/insights is the German
 // counterpart (see that route for how it resolves the German version of
 // each article, falling back to English where none exists yet).
-const allArticles = (await getCollection("insights-articles", (a) => localeOfId(a.id) === "en")).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
+const allArticles = await getCollection("insights-articles", (a) => localeOfId(a.id) === "en");
 
 // Resolve each article's author once, up front -- the same lookup feeds
-// the card byline everywhere below.
-const articles = await Promise.all(
+// the card byline everywhere below, plus the isFellow flag that drives
+// the sort order.
+const withAuthor = await Promise.all(
   allArticles.map(async (article) => {
     const profile = article.data.author ? await getEntry(article.data.author) : undefined;
     const author = profile
@@ -26,9 +25,23 @@ const articles = await Promise.all(
       : article.data.authorName
         ? { name: article.data.authorName, photo: undefined }
         : undefined;
-    return { article, author };
+    // Articles with only a plain authorName (no linked coach profile)
+    // can never be checked against the Fellow list, so they default to
+    // "not a Fellow" rather than guessing.
+    const isFellow = profile?.data.isFellow ?? false;
+    return { article, author, isFellow };
   })
 );
+
+// Newest-first within each group, but every Fellow-authored article sinks
+// below every non-Fellow one regardless of date -- per Russ's request, a
+// reader only reaches them by paging through to the end of the grid.
+const byDateDesc = (a: (typeof withAuthor)[number], b: (typeof withAuthor)[number]) =>
+  b.article.data.date.valueOf() - a.article.data.date.valueOf();
+const articles = [
+  ...withAuthor.filter((a) => !a.isFellow).sort(byDateDesc),
+  ...withAuthor.filter((a) => a.isFellow).sort(byDateDesc),
+];
 ---
 
 <BaseLayout title="Insights" description={t("insights.intro")} translations={{ en: "/insights", de: "/de/insights" }}>

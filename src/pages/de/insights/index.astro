@@ -14,11 +14,9 @@ const t = useTranslations("de");
 // /insights/[slug] page rather than 404ing or being hidden -- same
 // graceful-fallback pattern as the language switcher on untranslated
 // pages elsewhere on the site.
-const allEnArticles = (await getCollection("insights-articles", (a) => localeOfId(a.id) === "en")).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
+const allEnArticles = await getCollection("insights-articles", (a) => localeOfId(a.id) === "en");
 
-const articles = await Promise.all(
+const withAuthor = await Promise.all(
   allEnArticles.map(async (enArticle) => {
     const article = await localizedArticle(enArticle, "de");
     const profile = article.data.author ? await getEntry(article.data.author) : undefined;
@@ -27,9 +25,23 @@ const articles = await Promise.all(
       : article.data.authorName
         ? { name: article.data.authorName, photo: undefined }
         : undefined;
-    return { article, author };
+    // Articles with only a plain authorName (no linked coach profile)
+    // can never be checked against the Fellow list, so they default to
+    // "not a Fellow" rather than guessing.
+    const isFellow = profile?.data.isFellow ?? false;
+    return { article, author, isFellow };
   })
 );
+
+// Newest-first within each group, but every Fellow-authored article sinks
+// below every non-Fellow one regardless of date -- per Russ's request, a
+// reader only reaches them by paging through to the end of the grid.
+const byDateDesc = (a: (typeof withAuthor)[number], b: (typeof withAuthor)[number]) =>
+  b.article.data.date.valueOf() - a.article.data.date.valueOf();
+const articles = [
+  ...withAuthor.filter((a) => !a.isFellow).sort(byDateDesc),
+  ...withAuthor.filter((a) => a.isFellow).sort(byDateDesc),
+];
 ---
 
 <BaseLayout

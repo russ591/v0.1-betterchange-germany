@@ -25,4 +25,5 @@ backgroundAndExpertise: |-
 approach: |-
   Seine Aufgabe ist, Organisationen zu helfen, ihre Kultur und Arbeitsweisen in etwas zu verändern, das besser zu ihren strategischen Zielen passt, indem er den richtigen Führungsansatz mit Change-Management-Werkzeugen verbindet, damit Organisationen lernen, sich strukturiert und nachhaltig selbst zu verändern, mit dem expliziten Ziel, Kund:innen selbstständig zu machen. Martin ist einer der Autoren hinter dem agile42-Buch "The Hitchhiker's Guide to Agile Coaching", und engagiert sich seit Jahren ehrenamtlich bei Scrum Alliance und Agile Finland.
 displayOrder: 10
+isFellow: true
 ---

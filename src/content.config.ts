@@ -111,6 +111,12 @@ const coachProfile = defineCollection({
     // URL slug from the live site's sitemap (may contain accented
     // characters, e.g. "jesper-ørting"). Falls back to the content id.
     urlSlug: z.string().optional(),
+    // Distinct from every other coach here: a Better Change Fellow is
+    // specifically self-described as such in their own bio text (there's
+    // no separate "Fellow" role value -- `role` stays their job title,
+    // e.g. "Better Change Coach"). Drives the Insights hub's sort/hero
+    // rules, which deliberately deprioritize Fellow-authored articles.
+    isFellow: z.boolean().default(false),
   }),
 });
 

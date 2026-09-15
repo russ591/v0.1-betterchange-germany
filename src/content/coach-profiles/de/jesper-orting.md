@@ -27,4 +27,5 @@ backgroundAndExpertise: |-
 approach: |-
   Kolleg:innen beschreiben ihn als großzügige, erfahrene Stimme in jedem Team, jemand, der Wissen frei teilt, seinen Humor bewahrt, und echte Tiefe in Lernen und Entwicklung einbringt.
 displayOrder: 10
+isFellow: true
 ---
