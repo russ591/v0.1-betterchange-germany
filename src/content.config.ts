@@ -184,14 +184,26 @@ const legalPage = defineCollection({
   }),
 });
 
-// One dedicated detail page per service shown on /services -- name, the
-// grid's one-line blurb, and the bullet items are deliberately NOT
-// repeated here: they already live in src/data/services.ts's getServices(),
-// keyed by the same `icon` id, and that stays the single source of truth
-// for the grid card copy (which isn't changing). The markdown body below
-// this file's frontmatter is the actual page content (rendered via
-// astro:content's render(), same as legal-pages), not a frontmatter field,
-// since it's prose with headings/lists/links rather than structured data.
+// A single icon-card cell shared by both the concept grid and the offer
+// cards on a service detail page -- same shape, different rendering
+// component (ServiceIconCardGrid.astro vs ServiceOfferCards.astro). `icon`
+// is a key into src/data/serviceSectionIcons.ts, not raw markup, so a
+// content file stays plain data.
+const serviceCard = z.object({
+  icon: z.string(),
+  label: z.string(),
+  description: z.string(),
+});
+
+// One dedicated detail page per service shown on /services, rebuilt as
+// the icon-led structured-grid template (Option B) rather than prose --
+// see the approved coaching-page-option-b-mockup.md / services-template-
+// option-b-spec.md for the pattern this schema encodes. `name`/`blurb`/
+// the grid's own `items` list are deliberately NOT repeated here: they
+// already live in src/data/services.ts's getServices(), keyed by the same
+// `icon` id, and that stays the single source of truth for the /services
+// grid card copy (which isn't changing). No markdown body is used -- like
+// training-courses, every field the page needs is structured frontmatter.
 const service = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/services" }),
   schema: z.object({
@@ -199,6 +211,27 @@ const service = defineCollection({
     urlSlug: z.string().optional(),
     metaTitle: z.string().optional(),
     metaDescription: z.string().optional(),
+    // Optional: only pages with a natural enumerable "set of ideas" have
+    // one (Coaching's 4 stances, Training's 6 TBR principles) -- Consulting
+    // and Facilitation skip it per the spec.
+    conceptGrid: z
+      .object({
+        heading: z.string(),
+        intro: z.string(),
+        items: z.array(serviceCard),
+        closing: z.string().optional(),
+      })
+      .optional(),
+    offerCardsHeading: z.string(),
+    offerCards: z.array(serviceCard),
+    // Plain prose, not a card -- for the one closing/philosophy statement
+    // per page that doesn't compress into a scannable fact (e.g. Coaching's
+    // "long-term engagements", Training's format list). Raw inline HTML
+    // (just <strong>, same restraint as insights-articles' bodyHtml)
+    // since Training's version needs bold text. Facilitation has none.
+    closingParagraphHtml: z.string().optional(),
+    atAGlanceHeading: z.string().optional(),
+    atAGlance: z.array(z.object({ icon: z.string(), label: z.string() })).optional(),
   }),
 });
 

@@ -1,5 +1,5 @@
 ---
-import { getCollection, getEntry, render } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ServiceDetailPageContent from "@/components/pages/ServiceDetailPageContent.astro";
 import { getServices } from "@/data/services";
@@ -15,7 +15,6 @@ export async function getStaticPaths() {
 }
 
 const { service } = Astro.props;
-const { Content } = await render(service);
 const grid = getServices("en").find((s) => s.icon === service.data.icon)!;
 
 // No German services yet (EN-first, per Russ) -- this stays defensive
@@ -37,5 +36,5 @@ const deService = await getEntry("services", `de/${baseSlug(service.id)}`);
       : undefined
   }
 >
-  <ServiceDetailPageContent service={service} Content={Content} />
+  <ServiceDetailPageContent service={service} />
 </BaseLayout>

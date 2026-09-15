@@ -1,0 +1,27 @@
+---
+// Compact "at a glance" icon row for a service page -- icon + label only,
+// no description, replacing what used to be a plain bulleted list.
+// 2-up on mobile, up to 4-up on larger screens.
+import { serviceSectionIcons } from "@/data/serviceSectionIcons";
+
+interface Props {
+  items: { icon: string; label: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+  {
+    items.map((item) => (
+      <div class="flex flex-col items-center gap-2.5 rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-4 text-center">
+        <span
+          aria-hidden="true"
+          class="blob-dot flex h-9 w-9 shrink-0 items-center justify-center bg-lime [&_svg]:h-[18px] [&_svg]:w-[18px]"
+          set:html={serviceSectionIcons[item.icon]}
+        />
+        <p class="text-[length:var(--text-caption)] font-semibold text-ink">{item.label}</p>
+      </div>
+    ))
+  }
+</div>

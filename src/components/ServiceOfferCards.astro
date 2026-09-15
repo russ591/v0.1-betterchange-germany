@@ -1,0 +1,29 @@
+---
+// A service page's core sub-services as compact cards (icon, heading, 2-3
+// sentences max) -- replaces what used to be full H3 prose sections. See
+// ServiceIconCardGrid.astro for the smaller sibling used for an
+// enumerable "concept" set (e.g. Coaching's 4 stances).
+import { serviceSectionIcons } from "@/data/serviceSectionIcons";
+
+interface Props {
+  items: { icon: string; label: string; description: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  {
+    items.map((item) => (
+      <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6 shadow-card">
+        <span
+          aria-hidden="true"
+          class="blob-dot flex h-11 w-11 items-center justify-center bg-lime [&_svg]:h-[22px] [&_svg]:w-[22px]"
+          set:html={serviceSectionIcons[item.icon]}
+        />
+        <h3 class="mt-4 text-[length:var(--text-h4)]">{item.label}</h3>
+        <p class="mt-2 text-[length:var(--text-small)] text-neutral-600">{item.description}</p>
+      </div>
+    ))
+  }
+</div>

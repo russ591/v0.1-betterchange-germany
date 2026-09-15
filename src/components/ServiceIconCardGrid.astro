@@ -1,0 +1,32 @@
+---
+// Compact 2-column icon-card grid for a service page's "concept grid"
+// section (an enumerable set of ideas, e.g. Coaching's 4 stances or
+// Training's 6 TBR principles) -- icon, bold short label, one-line
+// description, no paragraph prose. See ServiceOfferCards.astro for the
+// larger sibling used for a page's core sub-services.
+import { serviceSectionIcons } from "@/data/serviceSectionIcons";
+
+interface Props {
+  items: { icon: string; label: string; description: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="grid gap-4 sm:grid-cols-2">
+  {
+    items.map((item) => (
+      <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-5 shadow-card">
+        <div class="flex items-center gap-3">
+          <span
+            aria-hidden="true"
+            class="blob-dot flex h-9 w-9 shrink-0 items-center justify-center bg-lime [&_svg]:h-[18px] [&_svg]:w-[18px]"
+            set:html={serviceSectionIcons[item.icon]}
+          />
+          <h3 class="text-[length:var(--text-small)] font-bold text-ink">{item.label}</h3>
+        </div>
+        <p class="mt-3 text-[length:var(--text-small)] text-neutral-600">{item.description}</p>
+      </div>
+    ))
+  }
+</div>

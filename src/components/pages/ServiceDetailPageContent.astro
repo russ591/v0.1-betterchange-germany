@@ -2,30 +2,49 @@
 // Shared body for /services/[service] -- English only for now (no German
 // services collection yet), but built as a locale-aware split-body
 // component like every other detail page on the site, so a future German
-// route can reuse it without changes. `name`/`blurb`/`items` come from
+// route can reuse it without changes.
+//
+// Icon-led structured-grid template (Option B) -- see the approved
+// coaching-page-option-b-mockup.md / services-template-option-b-spec.md
+// for the pattern this renders. `name`/`blurb` come from
 // src/data/services.ts's getServices() rather than this entry's own
-// frontmatter -- that stays the single source of truth for the grid card
-// copy, which this page doesn't repeat (the sidebar's "At a glance" list
-// below reuses the same `items`, rather than inventing new quick facts).
+// frontmatter -- that stays the single source of truth for the /services
+// grid card copy, which this page doesn't repeat.
 import type { CollectionEntry } from "astro:content";
-import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 import Section from "@/components/Section.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import Button from "@/components/Button.astro";
 import CTABanner from "@/components/CTABanner.astro";
+import ServiceIconCardGrid from "@/components/ServiceIconCardGrid.astro";
+import ServiceOfferCards from "@/components/ServiceOfferCards.astro";
+import ServiceAtAGlanceRow from "@/components/ServiceAtAGlanceRow.astro";
 import { getServices, serviceIcons, serviceDetailCta } from "@/data/services";
 import { resolveLocale, useTranslations } from "@/i18n/utils";
 
 interface Props {
   service: CollectionEntry<"services">;
-  Content: AstroComponentFactory;
 }
 
-const { service, Content } = Astro.props;
+const { service } = Astro.props;
 const locale = resolveLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 const prefix = locale === "de" ? "/de" : "";
 const grid = getServices(locale).find((s) => s.icon === service.data.icon)!;
 const cta = serviceDetailCta[service.data.icon];
+const { conceptGrid, offerCardsHeading, offerCards, closingParagraphHtml, atAGlanceHeading, atAGlance } = service.data;
+
+// Sections below the hero render in a fixed order but several are
+// optional per page (see content.config.ts) -- collecting them into one
+// list first, rather than hardcoding a background per section type,
+// keeps the light/white alternation correct regardless of which optional
+// sections a given service actually has.
+type Block = "conceptGrid" | "offerCards" | "closing" | "atAGlance";
+const blocks: Block[] = [
+  ...(conceptGrid ? (["conceptGrid"] as const) : []),
+  "offerCards",
+  ...(closingParagraphHtml ? (["closing"] as const) : []),
+  ...(atAGlance ? (["atAGlance"] as const) : []),
+];
 ---
 
 <Breadcrumbs items={[{ label: t("nav.services"), href: `${prefix}/services` }, { label: grid.name }]} />
@@ -36,41 +55,54 @@ const cta = serviceDetailCta[service.data.icon];
   <p class="mt-4 max-w-2xl text-[length:var(--text-body)] text-neutral-600">{grid.blurb}</p>
 </Section>
 
-<Section>
-  <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-start">
-    <div class="article-body min-w-0 text-[length:var(--text-body)] text-neutral-700">
-      <Content />
-    </div>
-    <div class="min-w-0 lg:sticky lg:top-24">
-      <div class="overflow-hidden rounded-[var(--radius-card)] border border-lime bg-lime/5 shadow-card">
-        <div class="border-b border-neutral-200 bg-surface px-5 py-4">
-          <p class="font-semibold">At a glance</p>
-        </div>
-        <div class="p-5">
-          <ul class="space-y-2.5 text-[length:var(--text-small)] text-neutral-700">
-            {grid.items?.map((item) => (
-              <li class="flex items-start gap-2">
-                <span aria-hidden="true" class="blob-dot mt-2 h-1.5 w-1.5 shrink-0 bg-lime" />
-                {item}
-              </li>
-            ))}
-          </ul>
-          <a
-            href={cta.href}
-            class="mt-5 inline-flex w-full items-center justify-center gap-1.5 rounded-[var(--radius-control)] bg-ink px-4 py-3 text-center text-sm font-semibold text-surface transition-colors hover:bg-neutral-800"
-          >
-            {cta.label} <span aria-hidden="true">→</span>
-          </a>
-          {
-            cta.secondary && (
-              <a href={cta.secondary.href} class="mt-3 block text-center text-[length:var(--text-caption)] text-neutral-500 hover:underline">
-                {cta.secondary.label} →
-              </a>
-            )
-          }
-        </div>
-      </div>
-    </div>
+{
+  blocks.map((block, i) => {
+    const bgClass = i % 2 === 0 ? undefined : "bg-mist-light";
+    if (block === "conceptGrid" && conceptGrid) {
+      return (
+        <Section heading={conceptGrid.heading} intro={conceptGrid.intro} class={bgClass}>
+          <ServiceIconCardGrid items={conceptGrid.items} />
+          {conceptGrid.closing && <p class="mt-6 max-w-2xl text-[length:var(--text-small)] text-neutral-600">{conceptGrid.closing}</p>}
+        </Section>
+      );
+    }
+    if (block === "offerCards") {
+      return (
+        <Section heading={offerCardsHeading} class={bgClass}>
+          <ServiceOfferCards items={offerCards} />
+        </Section>
+      );
+    }
+    if (block === "closing" && closingParagraphHtml) {
+      return (
+        <Section class={bgClass}>
+          <p class="max-w-2xl text-[length:var(--text-body)] text-neutral-700" set:html={closingParagraphHtml} />
+        </Section>
+      );
+    }
+    if (block === "atAGlance" && atAGlance) {
+      return (
+        <Section heading={atAGlanceHeading} class={bgClass}>
+          <ServiceAtAGlanceRow items={atAGlance} />
+        </Section>
+      );
+    }
+    return null;
+  })
+}
+
+<Section class={blocks.length % 2 === 0 ? undefined : "bg-mist-light"}>
+  <div class="flex flex-col items-start gap-3">
+    <Button href={cta.href} variant="primary">
+      {cta.label}
+    </Button>
+    {
+      cta.secondary && (
+        <a href={cta.secondary.href} class="text-[length:var(--text-small)] text-neutral-500 hover:underline">
+          {cta.secondary.label} →
+        </a>
+      )
+    }
   </div>
 </Section>
 
