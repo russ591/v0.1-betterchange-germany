@@ -18,7 +18,7 @@ readTimeMinutes: 2
 author: russell-hill
 excerpt: "Klaus Leopolds kurzes, pointiertes Buch macht ein Argument, und macht es gut: exzellente Agilität auf Teamebene erzeugt keine Business-Agilität. Es sind unterschiedliche Probleme, die unterschiedliche Lösungen brauchen, und die meisten Organisationen lösen nur eines davon."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/04/real-en-1024x1024-1-1024x1024-1.png
+imageUrl: /insights/book-review-rethinking-agile-why-agile-teams-have-nothing-to-do-with-business-agility.webp
 metaDescription: "Klaus Leopolds kurzes, pointiertes Buch macht ein Argument, und macht es gut: exzellente Agilität auf Teamebene erzeugt keine Business-Agilität. Es sind unterschiedliche Probleme, die unterschiedliche Lösungen brauchen, und die meisten Organisationen lösen nur eines davon."
 bodyHtml: |-
   <p>"Rethinking Agile: Why Agile Teams Have Nothing to Do with Business Agility" ist ein Buch mit einer Agenda, und Leopold ist erfrischend offen darüber. Die Agenda ist, die Annahme herauszufordern, dass Teams zu reparieren dasselbe ist wie die Organisation zu reparieren. Es ist kein langes Buch, es lässt sich an einem Nachmittag lesen, aber es ist ein klärendes.</p>

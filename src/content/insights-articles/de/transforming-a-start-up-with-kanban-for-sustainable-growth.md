@@ -20,7 +20,7 @@ readTimeMinutes: 3
 author: russell-hill
 excerpt: "Ein 45-köpfiges Start-up im Bereich zielgerichteter Werbung hatte zwei Jahre lang Scrum ausprobiert und es für nutzlos befunden. Die Lösung war nicht mehr Agile-Theorie, sondern der Fokus auf die organisatorischen Herausforderungen, während der Ansatz selbst bewusst in den Hintergrund trat."
 featured: false
-imageUrl: https://static.wixstatic.com/media/fa07b6_d48d092b0c164d0eb2824c0a677fb8af~mv2.jpg
+imageUrl: /insights/transforming-a-start-up-with-kanban-for-sustainable-growth.webp
 metaDescription: "Ein 45-köpfiges Start-up im Bereich zielgerichteter Werbung hatte zwei Jahre lang Scrum ausprobiert und es für nutzlos befunden. Die Lösung war nicht mehr Agile-Theorie, sondern der Fokus auf die organisatorischen Herausforderungen, während der Ansatz selbst bewusst in den Hintergrund trat."
 bodyHtml: |-
   <p>Das Erste, was in solchen Situationen zu hören ist, ist meist eine Version von: "Wir haben Agile ausprobiert. Es hat hier nicht funktioniert." Dieses Unternehmen, ein Start-up für zielgerichtete Werbung, das kürzlich übernommen worden war und seine Belegschaft verdoppelte, hatte zwei Jahre lang Scrum ausprobiert. Die Zeremonien, die Rollen und die Tickets in Jira waren vorhanden. Was fehlte, waren die Vorteile. Also hatte man aufgehört.</p>

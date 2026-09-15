@@ -22,7 +22,7 @@ readTimeMinutes: 1
 author: joanne-perold
 excerpt: "Die erste Ausgabe von Agile Retrospectives war jahrzehntelang der eigene Leitfaden für die Durchführung von Retrospektiven. Die Aufregung war entsprechend groß, als Esther und Diana ankündigten, eine zweite Auflage zu erarbeiten."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/02/AgileRetrospectives-scaled.jpg
+imageUrl: /insights/agile-retrospectives-second-edition-a-practical-guide-for-catalyzing-team-learning-and-improvement.webp
 metaDescription: "Die erste Ausgabe von Agile Retrospectives war jahrzehntelang der eigene Leitfaden für die Durchführung von Retrospektiven. Die Aufregung war entsprechend groß, als Esther und Diana ankündigten, eine zweite Auflage zu erarbeiten."
 bodyHtml: |-
   <p>Die erste Ausgabe von Agile Retrospectives war jahrzehntelang der eigene Leitfaden für die Durchführung von Retrospektiven. Die Aufregung war entsprechend groß, als Esther und Diana ankündigten, eine zweite Auflage zu erarbeiten, gemeinsam mit dem fabelhaften David Horowitz. Als Reviewerin bzw. Reviewer der neuen Auflage besteht große Begeisterung dafür.</p>

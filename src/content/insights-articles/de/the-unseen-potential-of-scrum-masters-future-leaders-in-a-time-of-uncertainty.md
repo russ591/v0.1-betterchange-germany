@@ -18,7 +18,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: "In letzter Zeit gibt es ein bedauerliches Muster, Scrum Master zu entlassen, besonders in Finanzinstituten. An der Oberfläche mag das wie eine Kostensenkungsmaßnahme wirken."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/03/parabol-the-agile-meeting-toolbox-q2jngCuEMFU-unsplash.jpg
+imageUrl: /insights/the-unseen-potential-of-scrum-masters-future-leaders-in-a-time-of-uncertainty.webp
 metaDescription: "In letzter Zeit gibt es ein bedauerliches Muster, Scrum Master zu entlassen, besonders in Finanzinstituten. An der Oberfläche mag das wie eine Kostensenkungsmaßnahme wirken."
 bodyHtml: |-
   <h3>Einführung</h3>

@@ -19,7 +19,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: "Schwierige Gespräche sind kein Test von Mut, sondern ein Test von Vorbereitung, Klarheit und emotionaler Fassung. Die meisten Führungskräfte vermeiden sie oder führen sie schlecht. Ein strukturierter Ansatz, der sie produktiver und weniger belastend macht."
 featured: true
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/07/vitaly-gariev-yrSta3T5GDs-unsplash.jpg
+imageUrl: /insights/mastering-difficult-conversations-a-comprehensive-guide-for-leaders.webp
 metaDescription: "Schwierige Gespräche sind kein Test von Mut, sondern ein Test von Vorbereitung, Klarheit und emotionaler Fassung. Die meisten Führungskräfte vermeiden sie oder führen sie schlecht. Ein strukturierter Ansatz, der sie produktiver und weniger belastend macht."
 bodyHtml: |-
   <p>Ein schwieriges Gespräch dreht sich meist um Feedback zu unerwünschtem Verhalten oder einer unerwünschten Situation. Vor allem anderen sollte die eigene Motivation geklärt werden. Feedback sagt oft ebenso viel über die gebende wie über die empfangende Person aus, und mit unklarer Absicht angegangen, wird sich das im Gespräch widerspiegeln.</p>

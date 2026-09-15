@@ -24,7 +24,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: "Beim Regional Scrum Gathering in Gent am 6. und 7. Juni 2024 wurde über die entscheidenden Elemente agiler Führung gesprochen."
 featured: true
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/06/timon-studler-ABGaVhJxwDQ-unsplash-scaled.jpg
+imageUrl: /insights/agile-leadership-the-vital-role-of-sensemaking-integrity-presence-and-authenticity.webp
 metaDescription: "Beim Regional Scrum Gathering in Gent am 6. und 7. Juni 2024 wurde über die entscheidenden Elemente agiler Führung gesprochen."
 bodyHtml: |-
   <h2>Einführung</h2>

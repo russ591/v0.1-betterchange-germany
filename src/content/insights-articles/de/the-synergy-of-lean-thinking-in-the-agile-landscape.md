@@ -21,7 +21,7 @@ readTimeMinutes: 2
 author: niels-verdonk
 excerpt: "Im sich ständig wandelnden Bereich des Geschäftsmanagements ist die Verbindung von Lean Thinking mit agiler Produktentwicklung zu einem Katalysator für Organisationen geworden, die operative Exzellenz und unvergleichlichen Kundenwert anstreben."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/10/Lean-flow.png
+imageUrl: /insights/the-synergy-of-lean-thinking-in-the-agile-landscape.webp
 metaDescription: "Im sich ständig wandelnden Bereich des Geschäftsmanagements ist die Verbindung von Lean Thinking mit agiler Produktentwicklung zu einem Katalysator für Organisationen geworden, die operative Exzellenz und unvergleichlichen Kundenwert anstreben."
 bodyHtml: |-
   <p>Im sich ständig wandelnden Bereich des Geschäftsmanagements ist die Verbindung von Lean Thinking mit agiler Produktentwicklung zu einem Katalysator für Organisationen geworden, die operative Exzellenz und unvergleichlichen Kundenwert anstreben. Ursprünglich aus dem Toyota-Produktionssystem stammend, verkörpert Lean Thinking eine Philosophie kontinuierlicher Verbesserung, Verschwendungsreduktion und kundenzentrierter Wertschöpfung. Integriert mit agilen Prinzipien fördert Lean Thinking einen ganzheitlichen Ansatz für Produktentwicklung, Prozessoptimierung und Wertlieferung.</p>

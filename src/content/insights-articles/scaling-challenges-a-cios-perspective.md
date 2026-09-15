@@ -11,7 +11,7 @@ readTimeMinutes: 2
 author: jesper-orting
 excerpt: A CIO kicks off a major scaling programme. Six months later, the new ceremonies are running, the teams are trained, and the results are... roughly where they were before. This is not an unusual story.
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/07/a_self-managing_eight_people_team.png
+imageUrl: /insights/scaling-challenges-a-cios-perspective.webp
 metaTitle: Six Months Into Your Scaling Initiative, and the Benefits Still Haven
 metaDescription: A CIO kicks off a major scaling programme. Six months later, the new ceremonies are running, the teams are trained, and the results are... roughly...
 bodyHtml: |-

@@ -22,7 +22,7 @@ readTimeMinutes: 3
 author: mogens-villadsen
 excerpt: "Jedes KI-System, mit dem man interagiert, wurde von Design-Entscheidungen geprägt, die vor der Bereitstellung getroffen wurden. Diese Entscheidungen bestimmen, was das System tut, wie es sich in Grenzfällen verhält, und wie sehr seinen Ergebnissen vertraut werden kann."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/02/ChatGPT-Image-Mar-31-2025-08_06_07-AM.png
+imageUrl: /insights/the-impact-of-ai-design-on-modern-technology.webp
 metaDescription: "Jedes KI-System, mit dem man interagiert, wurde von Design-Entscheidungen geprägt, die vor der Bereitstellung getroffen wurden. Diese Entscheidungen bestimmen, was das System tut, wie es sich in Grenzfällen verhält, und wie sehr seinen Ergebnissen vertraut werden kann."
 bodyHtml: |-
   <p>Jedes KI-System, mit dem interagiert wird, Empfehlungsalgorithmen, virtuelle Assistenten, Diagnosewerkzeuge, Content-Moderation, wurde durch eine Reihe von Design-Entscheidungen geprägt, die vor seiner Bereitstellung getroffen wurden. Diese Entscheidungen bestimmen nicht nur, was das System tut, sondern auch, wie es sich in Grenzfällen verhält, wem es gut und wem es schlecht dient, und wie sehr seinen Ergebnissen vertraut werden kann.</p>
