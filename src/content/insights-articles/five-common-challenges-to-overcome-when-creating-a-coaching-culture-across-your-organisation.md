@@ -11,7 +11,7 @@ readTimeMinutes: 3
 authorName: Raffaela Hampf
 excerpt: Creating a coaching culture is one of the most frequently stated leadership development goals, and one of the most frequently failing ones. The reasons tend not to be what organisations expect.
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2023/09/agile.jpeg
+imageUrl: /insights/five-common-challenges-to-overcome-when-creating-a-coaching-culture-across-your-organisation.webp
 metaTitle: Five Reasons Coaching Cultures Fail, and They're Not What You Think |
 metaDescription: Creating a coaching culture is one of the most frequently stated leadership development goals, and one of the most frequently failing ones. The...
 bodyHtml: |-

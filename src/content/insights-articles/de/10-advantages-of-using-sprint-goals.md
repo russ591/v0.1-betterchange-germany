@@ -18,7 +18,7 @@ readTimeMinutes: 3
 author: niels-verdonk
 excerpt: "Sprint Goals gehören zu den am wenigsten genutzten Elementen von Scrum. Teams überspringen sie, behandeln sie als Nebensache oder verwechseln sie mit Aufgabenlisten. Warum das ein Fehler ist, und was ein Team tatsächlich gewinnt, wenn sie richtig eingesetzt werden."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/07/sprint-goals.png
+imageUrl: /insights/10-advantages-of-using-sprint-goals.webp
 metaDescription: "Sprint Goals gehören zu den am wenigsten genutzten Elementen von Scrum. Teams überspringen sie, behandeln sie als Nebensache oder verwechseln sie mit Aufgabenlisten. Warum das ein Fehler ist, und was ein Team tatsächlich gewinnt, wenn sie richtig eingesetzt werden."
 bodyHtml: |-
   <p>Sprint Goals sind im Scrum Guide definiert und Teil jeder Sprint-Planning-Diskussion. Sie werden aber auch, in vielen Teams, still beiseitegelegt, wenn die Planung hektisch wird, ersetzt durch eine Aufgabenliste, die als De-facto-Ziel dient. Es lohnt sich, dem zu widerstehen.</p>

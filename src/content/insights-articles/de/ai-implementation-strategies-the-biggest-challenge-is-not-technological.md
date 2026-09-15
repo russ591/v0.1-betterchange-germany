@@ -18,7 +18,7 @@ readTimeMinutes: 3
 author: javier-perez-fernandez
 excerpt: "Die meisten Organisationen behandeln die KI-Einführung als technisches Problem. Dieser Rahmen garantiert fast zwangsläufig begrenzte Ergebnisse. Ob eine Initiative gelingt, hängt weit mehr davon ab, wie Menschen mit Unsicherheit umgehen, als von der Qualität der Technologie."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2025/12/strategies-and-challenge.png
+imageUrl: /insights/ai-implementation-strategies-the-biggest-challenge-is-not-technological.webp
 metaDescription: "Die meisten Organisationen behandeln die KI-Einführung als technisches Problem. Dieser Rahmen garantiert fast zwangsläufig begrenzte Ergebnisse. Ob eine Initiative gelingt, hängt weit mehr davon ab, wie Menschen mit Unsicherheit umgehen, als von der Qualität der Technologie."
 bodyHtml: |-
   <p>Dies ist eine Perspektive, die aus direkter Erfahrung entstanden ist, nicht aus Theorie. Nach der Arbeit mit Organisationen in verschiedenen Phasen der KI-Einführung zeigt sich immer wieder dasselbe Muster: Die technischen Herausforderungen werden gelöst. Die menschlichen nicht.</p>
