@@ -10,6 +10,7 @@ readTimeMinutes: 3
 author: garbrand-van-der-molen
 excerpt: Scrum does not have roles. It has accountabilities. That distinction is not semantic. Understanding what the Scrum Master, Product Owner, and Developers are actually accountable for, and how those accountabilities interact, is foundational to making Scrum work.
 featured: false
+imageUrl: /insights/scrum-accountabilities.webp
 metaTitle: 'Scrum''s Three Accountabilities: What They Actually Mean | Better Chang'
 metaDescription: Scrum does not have roles. It has accountabilities. That distinction is not semantic. Understanding what the Scrum Master, Product Owner, and...
 bodyHtml: |-

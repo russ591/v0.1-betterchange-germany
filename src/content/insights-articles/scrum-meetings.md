@@ -9,6 +9,7 @@ readTimeMinutes: 1
 author: niels-verdonk
 excerpt: In Scrum there are meetings which are an opportunity for teams, management and stakeholders to align. There are four main types of meetings which we call Scrum Events (sometimes also referred to as Scrum ceremonies) that teams participate in.
 featured: false
+imageUrl: /insights/scrum-meetings.webp
 metaTitle: Scrum Meetings | Better Change Consulting
 metaDescription: In Scrum there are meetings which are an opportunity for teams, management and stakeholders to align. There are four main types of meetings which we...
 bodyHtml: |-

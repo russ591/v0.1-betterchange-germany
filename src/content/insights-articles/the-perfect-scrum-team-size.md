@@ -9,6 +9,7 @@ readTimeMinutes: 2
 author: mogens-villadsen
 excerpt: 'The quest for a high-performing Scrum team often starts with a fundamental question: What is the perfect Scrum team size? It''s not just about having the right roles filled.'
 featured: false
+imageUrl: /insights/the-perfect-scrum-team-size.webp
 metaTitle: The Perfect Scrum Team Size | Better Change Consulting
 metaDescription: 'The quest for a high-performing Scrum team often starts with a fundamental question: What is the perfect Scrum team size? It''s not just about having...'
 bodyHtml: |-

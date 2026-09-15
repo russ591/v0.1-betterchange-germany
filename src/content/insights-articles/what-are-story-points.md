@@ -11,6 +11,7 @@ readTimeMinutes: 3
 author: jan-b-olsen
 excerpt: Story points are a relative measure of effort and complexity, not hours, not days, not a commitment. Teams that misunderstand this tend to use them badly. Here is what story points actually are and why Planning Poker works.
 featured: false
+imageUrl: /insights/what-are-story-points.webp
 metaTitle: 'Story Points: What They Are, What They''re Not, and How to Use Them Wel'
 metaDescription: Story points are a relative measure of effort and complexity, not hours, not days, not a commitment. Teams that misunderstand this tend to use them...
 bodyHtml: |-
