@@ -1,8 +1,14 @@
 ---
 // Wordmark: a lime dot followed by "Better" (bold) + "Change" (bold
 // italic), no gap between the two words -- matches the live betterchange-
-// consulting.com mark. Below it, right-justified under "Change", a small
-// tricolour flag tab + "GERMANY" caption tags the regional site.
+// consulting.com mark. Below it, right-justified under "Change", three
+// small black/red/gold dots (echoing the same blob-dot bullet used for the
+// lime logo mark and every eyebrow on the site) + "GERMANY" caption tags
+// the regional site. Deliberately not a flag rectangle: visitors were
+// clicking the old rectangular flag tab expecting it to switch language
+// (that's the actual EN/DE toggle's job, elsewhere in the header) --
+// three dots reads as a decorative bullet, consistent with the rest of the
+// site's own bullet language, not as a language-switcher control.
 interface Props {
   size?: "default" | "medium" | "large";
   tone?: "dark" | "light";
@@ -15,7 +21,7 @@ const dotSize = size === "large" ? "h-9 w-9" : size === "medium" ? "h-7 w-7" : "
 const textSize = size === "large" ? "text-3xl" : size === "medium" ? "text-xl" : "text-lg";
 const rowGap = size === "large" ? "gap-1" : size === "medium" ? "gap-0.5" : "gap-0";
 const wordGap = size === "large" ? "gap-2.5" : size === "medium" ? "gap-2" : "gap-1.5";
-const flagSize = size === "large" ? "h-[13px] w-5" : size === "medium" ? "h-[11px] w-[17px]" : "h-2 w-3";
+const dotDotSize = size === "large" ? "h-[6px] w-[6px]" : size === "medium" ? "h-[5px] w-[5px]" : "h-[4px] w-[4px]";
 const captionSize = size === "large" ? "text-xs" : size === "medium" ? "text-[10px]" : "text-[9px]";
 
 const isLight = tone === "light";
@@ -30,17 +36,14 @@ const isLight = tone === "light";
       Better<span class="italic">Change</span>
     </span>
   </span>
-  <span class="inline-flex items-center gap-1.5">
-    <span
-      aria-hidden="true"
-      class={`flex flex-col overflow-hidden rounded-[1px] ${flagSize} ${isLight ? "ring-1 ring-white/20" : ""}`}
-    >
-      <span class={`flex-1 ${isLight ? "bg-neutral-400" : "bg-de-black"}`}></span>
-      <span class="flex-1 bg-de-red"></span>
-      <span class="flex-1 bg-de-gold"></span>
+  <span class="inline-flex items-center gap-1">
+    <span aria-hidden="true" class="flex shrink-0 items-center gap-[2.5px]">
+      <span class={`blob-dot ${dotDotSize} ${isLight ? "bg-neutral-300" : "bg-de-black"}`}></span>
+      <span class={`blob-dot ${dotDotSize} bg-de-red`}></span>
+      <span class={`blob-dot ${dotDotSize} bg-de-gold`}></span>
     </span>
     <span
-      class={`${captionSize} font-semibold uppercase tracking-[0.18em] ${isLight ? "text-neutral-400" : "text-neutral-500"}`}
+      class={`ml-0.5 ${captionSize} font-semibold uppercase tracking-[0.18em] ${isLight ? "text-neutral-400" : "text-neutral-500"}`}
     >
       Germany
     </span>
