@@ -22,7 +22,7 @@ readTimeMinutes: 1
 author: bent-myllerup
 excerpt: "Das Verhalten einer Führungskraft prägt die Teamkultur, ob beabsichtigt oder nicht. Dieses Webinar mit Bent Myllerup und Giuseppe De Simone untersucht die Psychodynamik von Führung, den Teil, den die meisten Führungskräfteentwicklungsprogramme stillschweigend auslassen."
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2026/02/Psycho-dynamics.png
+imageUrl: /insights/webinar-how-leaders-unconsciously-shape-team-and-organisational-dynamics-a-webinar-on-power-trust-and-authentic-leadership.webp
 metaDescription: "Das Verhalten einer Führungskraft prägt die Teamkultur, ob beabsichtigt oder nicht. Dieses Webinar mit Bent Myllerup und Giuseppe De Simone untersucht die Psychodynamik von Führung, den Teil, den die meisten Führungskräfteentwicklungsprogramme stillschweigend auslassen."
 bodyHtml: |-
   <p>Die meisten Ratschläge zu Führung konzentrieren sich darauf, was zu tun ist: klar kommunizieren, effektiv delegieren, Richtung vorgeben. Dieses Webinar widmet sich etwas Unbequemerem, aber vermutlich Wichtigerem: dem, was tatsächlich zwischen einer Führungskraft und ihrem Team geschieht, unabhängig von den eigenen Absichten.</p>
