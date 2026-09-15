@@ -11,9 +11,17 @@ interface Props {
 
 const t = useTranslations(resolveLocale(Astro.currentLocale));
 const { name, items, blurb, href, learnLabel = t("cta.learnMore") } = Astro.props;
+// Whole-card link (same pattern as the training category cards on
+// /training) rather than just the "Learn more" line -- with the entire
+// card already a link, that line becomes plain text underneath it, group-hover
+// underlined, instead of a second, nested <a>.
+const Tag = href ? "a" : "div";
 ---
 
-<div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-8 shadow-card transition-shadow hover:shadow-card-hover">
+<Tag
+  href={href}
+  class="group flex flex-col rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-8 shadow-card transition-shadow hover:shadow-card-hover"
+>
   <span aria-hidden="true" class="blob-dot flex h-11 w-11 items-center justify-center bg-lime">
     <slot name="icon" />
   </span>
@@ -33,9 +41,9 @@ const { name, items, blurb, href, learnLabel = t("cta.learnMore") } = Astro.prop
   }
   {
     href && (
-      <a href={href} class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-ink hover:underline">
+      <span class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-ink group-hover:underline">
         {learnLabel} <span aria-hidden="true">→</span>
-      </a>
+      </span>
     )
   }
-</div>
+</Tag>

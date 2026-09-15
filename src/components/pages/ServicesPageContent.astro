@@ -22,22 +22,20 @@ const t = useTranslations(locale);
 const prefix = locale === "de" ? "/de" : "";
 const services = getServices(locale);
 
-// Where each service's "Learn more" link should send a visitor -- Training
-// keeps linking straight to its own hub page (that's where people actually
-// book), not the new /services/training detail page, which still exists
-// and is reachable, just not from here. The other three now have their own
-// dedicated page (src/content/services/*.md) instead of routing to Contact.
-// Keyed by the same stable `icon` id as getServices() rather than `name`,
-// which carries a "[DE] " placeholder on the German variant.
+// Each card is a whole-card link (see ServiceCard.astro) to that service's
+// own /services/<slug> detail page -- the hub at /training is still one
+// click away via the hero's separate "See all training" button below,
+// unaffected by this. Keyed by the same stable `icon` id as getServices()
+// rather than `name`, which carries a "[DE] " placeholder on the German
+// variant.
 //
-// Deliberately NOT prefix-aware for coaching/consulting/facilitation: the
-// services collection is English-only for now (no /de/services/* pages
-// exist yet), so even on /de/services these three always point at the
-// English page -- same graceful-fallback pattern as the German Insights
-// hub linking out to English-only articles -- rather than the usual
-// `${prefix}` treatment, which would 404 here.
+// Deliberately NOT prefix-aware: the services collection is English-only
+// for now (no /de/services/* pages exist yet), so even on /de/services
+// every card here points at the English page -- same graceful-fallback
+// pattern as the German Insights hub linking out to English-only articles
+// -- rather than the usual `${prefix}` treatment, which would 404 here.
 const serviceLinks: Record<string, { href: string; label: string }> = {
-  training: { href: `${prefix}/training`, label: t("cta.seeAllTraining") },
+  training: { href: "/services/training", label: t("cta.learnMore") },
   coaching: { href: "/services/coaching", label: t("cta.learnMore") },
   consulting: { href: "/services/consulting", label: t("cta.learnMore") },
   facilitation: { href: "/services/facilitation", label: t("cta.learnMore") },
