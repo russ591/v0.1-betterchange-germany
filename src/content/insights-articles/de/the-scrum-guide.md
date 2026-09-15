@@ -20,6 +20,7 @@ readTimeMinutes: 2
 author: niels-verdonk
 excerpt: "Im Bereich des agilen Projektmanagements steht der Scrum Guide als entscheidendes Framework, das Prinzipien und Leitlinien bereitstellt, die Teams befähigen, Wert durch adaptive Lösungen zu liefern."
 featured: false
+imageUrl: /insights/the-scrum-guide.webp
 metaDescription: "Im Bereich des agilen Projektmanagements steht der Scrum Guide als entscheidendes Framework, das Prinzipien und Leitlinien bereitstellt, die Teams befähigen, Wert durch adaptive Lösungen zu liefern."
 bodyHtml: |-
   <p>Im Bereich des agilen Projektmanagements steht der Scrum Guide als entscheidendes Framework, das Prinzipien und Leitlinien bereitstellt, die Teams befähigen, Wert durch adaptive Lösungen zu liefern. Entstanden aus der gemeinsamen Arbeit von Jeff Sutherland und Ken Schwaber in den frühen 1990ern, hat sich der Scrum Guide zum Grundstein agiler Methodiken entwickelt und ermöglicht es Teams, komplexe Projekte effizient anzugehen, während eine Kultur der Zusammenarbeit und Anpassungsfähigkeit gefördert wird.</p>

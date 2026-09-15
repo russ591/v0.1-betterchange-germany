@@ -10,6 +10,7 @@ readTimeMinutes: 2
 author: niels-verdonk
 excerpt: In the realm of agile project management, the Scrum Guide stands as a crucial framework, providing a set of principles and guidelines that empower teams to deliver value through adaptive solutions.
 featured: false
+imageUrl: /insights/the-scrum-guide.webp
 metaTitle: The Scrum Guide | Better Change Consulting
 metaDescription: In the realm of agile project management, the Scrum Guide stands as a crucial framework, providing a set of principles and guidelines that empower...
 bodyHtml: |-

@@ -10,6 +10,7 @@ readTimeMinutes: 3
 author: anders-hojgaard-nielsen
 excerpt: The Sprint is the heartbeat of Scrum, a fixed-length container within which all other events happen and value is created. Getting Sprints right improves everything else. Getting them wrong corrupts everything else.
 featured: false
+imageUrl: /insights/what-is-a-scrum-sprint.webp
 metaTitle: 'The Scrum Sprint: Short, Fixed, Continuous, and More Consequential Th'
 metaDescription: The Sprint is the heartbeat of Scrum, a fixed-length container within which all other events happen and value is created. Getting Sprints right...
 bodyHtml: |-
