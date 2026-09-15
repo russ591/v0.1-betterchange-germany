@@ -12,6 +12,7 @@ readTimeMinutes: 3
 author: joanne-perold
 excerpt: An Epic is a large chunk of work that cannot be completed in a single Sprint. It spans multiple iterations and eventually decomposes into the user stories and backlog items that drive day-to-day delivery.
 featured: false
+imageUrl: /insights/what-is-an-epic-in-agile.webp
 metaTitle: 'Epics in Agile: How Large Pieces of Work Get Organised and Delivered |'
 metaDescription: An Epic is a large chunk of work that cannot be completed in a single Sprint. It spans multiple iterations and eventually decomposes into the user...
 bodyHtml: |-

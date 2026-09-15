@@ -10,6 +10,7 @@ readTimeMinutes: 2
 author: gregor-heidinger
 excerpt: SAFe is one of the most widely adopted approaches for applying agile at enterprise scale. Here is what it is, how it works, and what you need to understand before deciding whether it is the right fit for your organisation.
 featured: false
+imageUrl: /insights/what-is-safe.webp
 metaTitle: 'SAFe: A Practical Introduction to Scaling Agile Across the Enterprise'
 metaDescription: SAFe is one of the most widely adopted approaches for applying agile at enterprise scale. Here is what it is, how it works, and what you need to...
 bodyHtml: |-

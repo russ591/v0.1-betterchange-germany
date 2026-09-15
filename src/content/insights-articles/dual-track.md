@@ -11,6 +11,7 @@ readTimeMinutes: 2
 authorName: Jakob Verner Christensen
 excerpt: Dual Track Agile separates discovery, the work of figuring out what to build, from delivery, the work of building it. Running both tracks simultaneously sounds complicated, but it solves a real problem that single-track teams constantly bump into.
 featured: false
+imageUrl: /insights/dual-track.webp
 metaTitle: 'Dual Track Agile: Discover and Deliver at the Same Time | Better Chang'
 metaDescription: Dual Track Agile separates discovery, the work of figuring out what to build, from delivery, the work of building it. Running both tracks...
 bodyHtml: |-
