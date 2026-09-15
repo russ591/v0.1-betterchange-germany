@@ -3,6 +3,7 @@ import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import InsightsHubPageContent from "@/components/pages/InsightsHubPageContent.astro";
 import { localeOfId, localizedArticle } from "@/lib/i18n";
+import { isFellowAuthored } from "@/lib/insights";
 import { useTranslations } from "@/i18n/utils";
 
 const t = useTranslations("de");
@@ -16,6 +17,15 @@ const t = useTranslations("de");
 // pages elsewhere on the site.
 const allEnArticles = await getCollection("insights-articles", (a) => localeOfId(a.id) === "en");
 
+// Names of every confirmed Fellow, for matching articles that only have a
+// plain authorName (no linked coach profile) against a Fellow by name --
+// see isFellowAuthored for why that's needed alongside the isFellow flag.
+const fellowNames = new Set(
+  (await getCollection("coach-profiles", (c) => localeOfId(c.id) === "en" && c.data.isFellow)).map(
+    (c) => c.data.name
+  )
+);
+
 const withAuthor = await Promise.all(
   allEnArticles.map(async (enArticle) => {
     const article = await localizedArticle(enArticle, "de");
@@ -25,10 +35,7 @@ const withAuthor = await Promise.all(
       : article.data.authorName
         ? { name: article.data.authorName, photo: undefined }
         : undefined;
-    // Articles with only a plain authorName (no linked coach profile)
-    // can never be checked against the Fellow list, so they default to
-    // "not a Fellow" rather than guessing.
-    const isFellow = profile?.data.isFellow ?? false;
+    const isFellow = isFellowAuthored(profile?.data.isFellow, article.data.authorName, fellowNames);
     return { article, author, isFellow };
   })
 );
