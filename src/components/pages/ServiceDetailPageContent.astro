@@ -26,31 +26,9 @@ const t = useTranslations(locale);
 const prefix = locale === "de" ? "/de" : "";
 const grid = getServices(locale).find((s) => s.icon === service.data.icon)!;
 const cta = serviceDetailCta[service.data.icon];
-
-// Hero band's angle varies a little per service so the 4 pages don't look
-// like the exact same image recolored, while staying the same ink/lime
-// duotone treatment used for photo-less cards elsewhere on the site (see
-// InsightsHubPageContent.astro's placeholderStyle) -- a real photo or
-// illustration can replace this per-service once a direction is chosen;
-// this is a finished design, not a stand-in, in the meantime.
-const heroAngle: Record<string, number> = { training: 135, coaching: 115, consulting: 155, facilitation: 200 };
-// Recolor to lime and drop the icon's own h-5 w-5 sizing (meant for the
-// small badge use below) so the wrapper's own size wins outright, rather
-// than depending on which utility class happens to win a specificity tie.
-const heroIcon = serviceIcons[service.data.icon]
-  .replace('stroke="#0a0a0a"', 'stroke="#9AFF5B"')
-  .replace('class="h-5 w-5"', "");
 ---
 
 <Breadcrumbs items={[{ label: t("nav.services"), href: `${prefix}/services` }, { label: grid.name }]} />
-
-<div
-  aria-hidden="true"
-  class="relative aspect-[3/1] w-full overflow-hidden"
-  style={`background: linear-gradient(${heroAngle[service.data.icon]}deg, #14200c, #37452a);`}
->
-  <div class="absolute inset-0 flex items-center justify-center opacity-25 [&_svg]:h-40 [&_svg]:w-40 sm:[&_svg]:h-56 sm:[&_svg]:w-56" set:html={heroIcon} />
-</div>
 
 <Section eyebrow={t("nav.services")} class="bg-mist-light">
   <span aria-hidden="true" class="blob-dot flex h-11 w-11 items-center justify-center bg-lime" set:html={serviceIcons[service.data.icon]} />
