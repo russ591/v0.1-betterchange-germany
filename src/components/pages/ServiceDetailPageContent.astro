@@ -2,16 +2,17 @@
 // Shared body for /services/[service] -- English only for now (no German
 // services collection yet), but built as a locale-aware split-body
 // component like every other detail page on the site, so a future German
-// route can reuse it without changes. `name`/`blurb` come from
+// route can reuse it without changes. `name`/`blurb`/`items` come from
 // src/data/services.ts's getServices() rather than this entry's own
 // frontmatter -- that stays the single source of truth for the grid card
-// copy, which this page doesn't repeat.
+// copy, which this page doesn't repeat (the sidebar's "At a glance" list
+// below reuses the same `items`, rather than inventing new quick facts).
 import type { CollectionEntry } from "astro:content";
 import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 import Section from "@/components/Section.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import CTABanner from "@/components/CTABanner.astro";
-import { getServices, serviceIcons } from "@/data/services";
+import { getServices, serviceIcons, serviceDetailCta } from "@/data/services";
 import { resolveLocale, useTranslations } from "@/i18n/utils";
 
 interface Props {
@@ -24,9 +25,32 @@ const locale = resolveLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 const prefix = locale === "de" ? "/de" : "";
 const grid = getServices(locale).find((s) => s.icon === service.data.icon)!;
+const cta = serviceDetailCta[service.data.icon];
+
+// Hero band's angle varies a little per service so the 4 pages don't look
+// like the exact same image recolored, while staying the same ink/lime
+// duotone treatment used for photo-less cards elsewhere on the site (see
+// InsightsHubPageContent.astro's placeholderStyle) -- a real photo or
+// illustration can replace this per-service once a direction is chosen;
+// this is a finished design, not a stand-in, in the meantime.
+const heroAngle: Record<string, number> = { training: 135, coaching: 115, consulting: 155, facilitation: 200 };
+// Recolor to lime and drop the icon's own h-5 w-5 sizing (meant for the
+// small badge use below) so the wrapper's own size wins outright, rather
+// than depending on which utility class happens to win a specificity tie.
+const heroIcon = serviceIcons[service.data.icon]
+  .replace('stroke="#0a0a0a"', 'stroke="#9AFF5B"')
+  .replace('class="h-5 w-5"', "");
 ---
 
 <Breadcrumbs items={[{ label: t("nav.services"), href: `${prefix}/services` }, { label: grid.name }]} />
+
+<div
+  aria-hidden="true"
+  class="relative aspect-[3/1] w-full overflow-hidden"
+  style={`background: linear-gradient(${heroAngle[service.data.icon]}deg, #14200c, #37452a);`}
+>
+  <div class="absolute inset-0 flex items-center justify-center opacity-25 [&_svg]:h-40 [&_svg]:w-40 sm:[&_svg]:h-56 sm:[&_svg]:w-56" set:html={heroIcon} />
+</div>
 
 <Section eyebrow={t("nav.services")} class="bg-mist-light">
   <span aria-hidden="true" class="blob-dot flex h-11 w-11 items-center justify-center bg-lime" set:html={serviceIcons[service.data.icon]} />
@@ -35,8 +59,40 @@ const grid = getServices(locale).find((s) => s.icon === service.data.icon)!;
 </Section>
 
 <Section>
-  <div class="article-body max-w-2xl text-[length:var(--text-body)] text-neutral-700">
-    <Content />
+  <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-start">
+    <div class="article-body min-w-0 text-[length:var(--text-body)] text-neutral-700">
+      <Content />
+    </div>
+    <div class="min-w-0 lg:sticky lg:top-24">
+      <div class="overflow-hidden rounded-[var(--radius-card)] border border-lime bg-lime/5 shadow-card">
+        <div class="border-b border-neutral-200 bg-surface px-5 py-4">
+          <p class="font-semibold">At a glance</p>
+        </div>
+        <div class="p-5">
+          <ul class="space-y-2.5 text-[length:var(--text-small)] text-neutral-700">
+            {grid.items?.map((item) => (
+              <li class="flex items-start gap-2">
+                <span aria-hidden="true" class="blob-dot mt-2 h-1.5 w-1.5 shrink-0 bg-lime" />
+                {item}
+              </li>
+            ))}
+          </ul>
+          <a
+            href={cta.href}
+            class="mt-5 inline-flex w-full items-center justify-center gap-1.5 rounded-[var(--radius-control)] bg-ink px-4 py-3 text-center text-sm font-semibold text-surface transition-colors hover:bg-neutral-800"
+          >
+            {cta.label} <span aria-hidden="true">→</span>
+          </a>
+          {
+            cta.secondary && (
+              <a href={cta.secondary.href} class="mt-3 block text-center text-[length:var(--text-caption)] text-neutral-500 hover:underline">
+                {cta.secondary.label} →
+              </a>
+            )
+          }
+        </div>
+      </div>
+    </div>
   </div>
 </Section>
 

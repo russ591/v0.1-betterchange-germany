@@ -27,5 +27,3 @@ Structural change without cultural buy-in tends not to stick. We run cultural su
 ### Real-world experience
 
 Our consultants have led transformations across hardware and software development, in organisations ranging from fast-growing startups to large, established enterprises. That includes bringing genuine agile practice into contexts, embedded hardware and electronics development among them, well outside the software teams most agile frameworks were originally designed for.
-
-<a href="/contact">Talk to us about your organisation →</a>

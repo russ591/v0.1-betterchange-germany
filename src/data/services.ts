@@ -81,3 +81,22 @@ const servicesDe = [
 export function getServices(locale: Locale) {
   return locale === "de" ? servicesDe : servicesEn;
 }
+
+// Sidebar "At a glance" CTA for each /services/<slug> detail page (English
+// only for now, same as the services collection itself). `secondary` is
+// optional -- only Training currently has a second, less prominent
+// destination worth surfacing (in-house delivery) alongside its primary
+// CTA (the schedule).
+export const serviceDetailCta: Record<
+  string,
+  { label: string; href: string; secondary?: { label: string; href: string } }
+> = {
+  training: {
+    label: "See the full training schedule",
+    href: "/training/full-schedule",
+    secondary: { label: "Contact us about in-house delivery", href: "/contact" },
+  },
+  coaching: { label: "Get in touch about coaching", href: "/contact" },
+  consulting: { label: "Talk to us about your organisation", href: "/contact" },
+  facilitation: { label: "Get in touch about a workshop", href: "/contact" },
+};

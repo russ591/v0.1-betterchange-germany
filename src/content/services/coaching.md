@@ -30,5 +30,3 @@ Sometimes a team needs a Scrum Master before it has the internal capability to g
 ### Long-term engagements
 
 Coaching that actually changes how people work takes longer than a single workshop. Most of our coaching engagements run over months, not days, with a deliberate arc: understand the real situation, work alongside the team or leader directly, and gradually step back as capability genuinely builds.
-
-<a href="/contact">Get in touch about coaching →</a>

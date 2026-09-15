@@ -31,5 +31,3 @@ In practice, this means fewer slides and more simulations, games, and hands-on e
 ### Formats
 
 Every course runs **in-person in Berlin**, **live online**, or, where the content suits it, **self-paced**. In-house delivery is available for teams who'd rather run a course privately than send people to an open enrolment date, at your site or fully remote.
-
-<a href="/training/full-schedule">See the full training schedule →</a> &middot; <a href="/contact">Contact us about in-house delivery →</a>

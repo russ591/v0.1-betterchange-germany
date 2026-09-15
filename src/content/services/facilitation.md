@@ -23,5 +23,3 @@ Building the wrong thing well is still building the wrong thing. User story mapp
 ### Team building and graphical facilitation
 
 Beyond specific structured formats, we facilitate team building workshops aimed at building genuine trust rather than one-off fun, and use graphical facilitation, live visual capture of discussion, decisions, and ideas, to help groups process complex conversations that pure text and speech alone often lose track of.
-
-<a href="/contact">Get in touch about a workshop →</a>
