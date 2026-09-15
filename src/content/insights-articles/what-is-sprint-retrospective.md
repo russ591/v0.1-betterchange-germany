@@ -10,6 +10,7 @@ readTimeMinutes: 3
 author: bent-myllerup
 excerpt: Sprint Retrospective is a time for teams to reflect on opportunities to improve. The event is dedicated to discussing overall workflow enhancements including individuals, interactions, processes and tools.
 featured: false
+imageUrl: /insights/what-is-sprint-retrospective.webp
 metaTitle: What is the Sprint Retrospective? | Better Change Consulting
 metaDescription: Sprint Retrospective is a time for teams to reflect on opportunities to improve. The event is dedicated to discussing overall workflow enhancements...
 bodyHtml: |-
