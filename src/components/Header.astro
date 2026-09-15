@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 import Logo from "@/components/Logo.astro";
 import TrainingMegaMenuDesktop from "@/components/TrainingMegaMenuDesktop.astro";
 import TrainingMegaMenuMobile from "@/components/TrainingMegaMenuMobile.astro";
+import ServicesDropdownDesktop from "@/components/ServicesDropdownDesktop.astro";
+import ServicesDropdownMobile from "@/components/ServicesDropdownMobile.astro";
 import { resolveLocale, useTranslations } from "@/i18n/utils";
 import { localeOfId } from "@/lib/i18n";
 import { mobileNavIcons } from "@/data/mobileNavIcons";
@@ -24,8 +26,8 @@ const navLinks = [
   // mobileOnly since the logo already covers "go home" on desktop; only
   // the mobile drawer needs an explicit row for it.
   { href: "/", label: t("breadcrumb.home"), translated: true, mobileOnly: true, icon: "home" as const },
-  { href: "/services", label: t("nav.services"), translated: true, icon: "services" as const },
-  { href: "/training", label: t("nav.training"), mega: true, translated: true, icon: "training" as const },
+  { href: "/services", label: t("nav.services"), mega: "services" as const, translated: true, icon: "services" as const },
+  { href: "/training", label: t("nav.training"), mega: "training" as const, translated: true, icon: "training" as const },
   { href: "/insights", label: t("nav.insights"), translated: true, icon: "insights" as const },
   { href: "/about", label: t("nav.about"), translated: true, icon: "about" as const },
   // Desktop already has the lime "Contact us" button; keep this entry only
@@ -89,7 +91,11 @@ const deHref = translations?.de ?? currentPath;
                       <path d="m6 9 6 6 6-6" />
                     </svg>
                   </a>
-                  <TrainingMegaMenuDesktop categoriesWithCourses={categoriesWithCourses} />
+                  {link.mega === "training" ? (
+                    <TrainingMegaMenuDesktop categoriesWithCourses={categoriesWithCourses} />
+                  ) : (
+                    <ServicesDropdownDesktop />
+                  )}
                 </div>
               );
             }
@@ -149,8 +155,10 @@ const deHref = translations?.de ?? currentPath;
           {
             navLinks.map((link) => {
               const href = link.translated ? `${prefix}${link.href}` : link.href;
-              return link.mega ? (
+              return link.mega === "training" ? (
                 <TrainingMegaMenuMobile categoriesWithCourses={categoriesWithCourses} icon={mobileNavIcons[link.icon]} />
+              ) : link.mega === "services" ? (
+                <ServicesDropdownMobile icon={mobileNavIcons[link.icon]} />
               ) : (
                 <a href={href} class="flex items-center gap-2.5 py-2 text-sm font-medium text-neutral-700">
                   <svg

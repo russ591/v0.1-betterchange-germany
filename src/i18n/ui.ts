@@ -68,6 +68,7 @@ export const en = {
   "trainers.alsoDeliveredBy": "Also delivered by:",
 
   "megaMenu.trainingHome": "Training Home",
+  "megaMenu.servicesHome": "Services Home",
   "megaMenu.sixDisciplines": "Six disciplines, one practitioner network.",
   "megaMenu.notSureWhereToStart": "Not sure where to start?",
   "megaMenu.talkToUsAboutTeam": "Talk to us about your team's situation",
@@ -323,6 +324,7 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "trainers.heading": "Die Trainer:innen im Überblick",
 
   "megaMenu.trainingHome": "Training-Startseite",
+  "megaMenu.servicesHome": "Leistungen-Startseite",
   // Mirrors training-hub-page/de.md's disciplinesHeading, which is
   // approved copy from a different system (a content-collection field,
   // not this dictionary) so it can't be a literal shared JS reference --

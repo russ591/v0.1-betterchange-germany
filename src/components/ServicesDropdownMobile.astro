@@ -1,0 +1,84 @@
+---
+// Nested <details> accordion shown in place of a flat "Services" link
+// inside the mobile menu drawer (see Header.astro), same native
+// <details>/<summary> pattern as TrainingMegaMenuMobile.astro. Simpler
+// than that one: a single flat list of the 4 service pages (icon + label
+// only), no nested accordions, no CTA box -- matching
+// ServicesDropdownDesktop.astro's equally plain desktop panel. The pinned
+// "Services Home" link above that list exists for the same reason
+// TrainingMegaMenuMobile.astro has its own "Training Home" link: tapping
+// the <summary> row only opens/closes the accordion on mobile, so it
+// can't also double as the "go to /services" navigation the desktop
+// hover-trigger link gives for free.
+import { getServices } from "@/data/services";
+import { servicesNavIcons } from "@/data/servicesNavIcons";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+
+interface Props {
+  /** Raw <svg> path/shape markup for the row's own icon, matching every
+   * other top-level row in the mobile drawer -- see Header.astro. */
+  icon: string;
+}
+
+const { icon } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const prefix = locale === "de" ? "/de" : "";
+const services = getServices(locale);
+
+// Same English-only fallback as ServicesDropdownDesktop.astro -- see that
+// component's comment for why these 4 aren't `${prefix}`-prefixed.
+const hrefs: Record<string, string> = {
+  training: "/services/training",
+  coaching: "/services/coaching",
+  consulting: "/services/consulting",
+  facilitation: "/services/facilitation",
+};
+---
+
+<details class="group/services border-b border-neutral-100">
+  <summary class="flex cursor-pointer list-none items-center justify-between py-2 text-sm font-medium text-ink">
+    <span class="flex items-center gap-2.5">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="h-4 w-4 shrink-0 text-neutral-500"
+        set:html={icon}
+      />
+      {t("nav.services")}
+    </span>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      class="h-4 w-4 shrink-0 text-neutral-500 transition-transform group-open/services:rotate-180"
+    >
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  </summary>
+  <div class="-mx-6 mb-2 flex flex-col gap-0.5 bg-mist-light px-6 pb-3 pt-1">
+    <a
+      href={`${prefix}/services`}
+      class="border-b border-neutral-200 py-2.5 text-[length:var(--text-small)] font-semibold text-ink"
+    >
+      {t("megaMenu.servicesHome")}
+    </a>
+    {
+      services.map((service) => (
+        <a href={hrefs[service.icon]} class="flex items-center gap-2.5 py-2.5 text-[length:var(--text-small)] text-neutral-700">
+          <span
+            aria-hidden="true"
+            class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-surface [&_svg]:h-3.5 [&_svg]:w-3.5"
+            set:html={servicesNavIcons[service.icon]}
+          />
+          {service.name}
+        </a>
+      ))
+    }
+  </div>
+</details>

@@ -1,0 +1,54 @@
+---
+// Hover/focus panel shown under the "Services" nav link on desktop (see
+// Header.astro, which wraps this in a `.group` exactly like Training's
+// mega-menu, so the same group-hover/group-focus-within CSS opens it --
+// no JS needed). Deliberately plainer than TrainingMegaMenuDesktop.astro:
+// a flat list of the 4 service pages, icon + label only, no columns, no
+// descriptions, no "not sure where to start" panel -- these pages don't
+// have the course-level depth underneath them that Training's menu needs
+// to surface.
+import { getServices } from "@/data/services";
+import { servicesNavIcons } from "@/data/servicesNavIcons";
+import { resolveLocale } from "@/i18n/utils";
+
+const locale = resolveLocale(Astro.currentLocale);
+const services = getServices(locale);
+
+// English-only for now, same graceful-fallback rule as
+// ServicesPageContent.astro's own serviceLinks: none of the 4
+// /services/<slug> detail pages has a German version yet (unlike the
+// /services hub itself, which the "Services" link above this dropdown
+// already points at via its own prefix-aware href), so every item here
+// points at the English URL regardless of locale rather than the usual
+// `${prefix}` treatment, which would 404 on this page specifically.
+const hrefs: Record<string, string> = {
+  training: "/services/training",
+  coaching: "/services/coaching",
+  consulting: "/services/consulting",
+  facilitation: "/services/facilitation",
+};
+---
+
+<div
+  class="invisible absolute left-0 top-full z-50 opacity-0 transition-opacity duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+>
+  <div class="w-60 pt-3">
+    <div class="flex flex-col gap-0.5 rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-2 shadow-card-hover">
+      {
+        services.map((service) => (
+          <a
+            href={hrefs[service.icon]}
+            class="flex items-center gap-2.5 rounded-[var(--radius-control)] px-3 py-2.5 text-[length:var(--text-small)] font-medium text-ink transition-colors hover:bg-mist-light"
+          >
+            <span
+              aria-hidden="true"
+              class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-lime [&_svg]:h-3.5 [&_svg]:w-3.5"
+              set:html={servicesNavIcons[service.icon]}
+            />
+            {service.name}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</div>

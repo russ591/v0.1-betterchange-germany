@@ -17,7 +17,7 @@
 // same reason) for Training's offer cards rather than drawing near-duplicates.
 import { categoryIcons } from "./categoryIcons";
 
-const stripSizeClass = (svg: string) => svg.replace(/\s*class="[^"]*"/, "");
+export const stripSizeClass = (svg: string) => svg.replace(/\s*class="[^"]*"/, "");
 
 export const serviceSectionIcons: Record<string, string> = {
   // Coaching: four stances + team coaching / scrum master mentoring / long-term
