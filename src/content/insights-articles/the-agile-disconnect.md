@@ -9,7 +9,7 @@ readTimeMinutes: 2
 author: jesper-orting
 excerpt: At Better Change, we understand the immense potential of the Scaled Agile Framework (SAFe®) to empower large organisations on their journey towards business agility. Yet, a critical factor often overlooked is leadership's active promotion and embodiment of Agile principles.
 featured: false
-imageUrl: https://www.betterchange-consulting.com/wp-content/uploads/2024/05/DystopianTeam2.png
+imageUrl: /insights/the-agile-disconnect.webp
 metaTitle: The Agile Disconnect | Better Change Consulting
 metaDescription: At Better Change, we understand the immense potential of the Scaled Agile Framework (SAFe®) to empower large organisations on their journey towards...
 bodyHtml: |-
