@@ -32,6 +32,17 @@ const t = useTranslations(locale);
 const prefix = locale === "de" ? "/de" : "";
 const services = getServices(locale);
 
+// English-only for now, same graceful-fallback rule as ServicesPageContent.astro's
+// serviceLinks: none of the 4 /services/<slug> detail pages has a German version
+// yet, so every card here points at the English URL regardless of locale rather
+// than the usual `${prefix}` treatment, which would 404 on this page specifically.
+const serviceHrefs: Record<string, string> = {
+  training: "/services/training",
+  coaching: "/services/coaching",
+  consulting: "/services/consulting",
+  facilitation: "/services/facilitation",
+};
+
 const clients = [
   "Deutsche Telekom",
   "Grundfos",
@@ -122,7 +133,7 @@ const clients = [
   <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
     {
       services.map((service) => (
-        <ServiceCard name={service.name} blurb={service.blurb} href={`${prefix}/services`}>
+        <ServiceCard name={service.name} blurb={service.blurb} href={serviceHrefs[service.icon]}>
           <Fragment slot="icon" set:html={serviceIcons[service.icon]} />
         </ServiceCard>
       ))
