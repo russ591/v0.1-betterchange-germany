@@ -114,6 +114,19 @@
   --blob-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M96,50 C96,60.37 88.77,73.27 81.1,81.1 C73.43,88.93 60.48,96.88 50,97 C39.52,97.12 26.2,89.63 18.2,81.8 C10.2,73.97 2,60.6 2,50 C2,39.4 10.2,25.87 18.2,18.2 C26.2,10.53 39.52,3.88 50,4 C60.48,4.12 73.43,11.23 81.1,18.9 C88.77,26.57 96,39.63 96,50 Z'/%3E%3C/svg%3E");
 }
 
+/* --text-h1 (3.5rem) has no room to breathe on a narrow phone: a single
+   long word with no space to wrap at (e.g. "Facilitation", "Coaching")
+   hits the global `overflow-wrap: break-word` below and splits mid-word
+   instead. That rule itself stays as-is -- it's still needed for long
+   German compound words on the legal pages -- this just gives headings
+   enough size margin below `sm` that real single-word page titles clear
+   a phone-width viewport without needing to break at all. */
+@media (max-width: 639px) {
+  :root {
+    --text-h1: 2.25rem;
+  }
+}
+
 @layer base {
   html {
     font-family: var(--font-sans);
