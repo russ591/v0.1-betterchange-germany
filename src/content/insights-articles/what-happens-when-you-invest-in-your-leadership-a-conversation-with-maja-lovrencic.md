@@ -50,7 +50,6 @@ bodyHtml: |-
   <p>Every leader's situation is different. But if something in this interview resonated with you (like you are navigating a growing organisation, trying to build a more collaborative culture, or simply feeling like you are solving too many problems yourself), it might be worth exploring what coaching or mentoring could look like for you.</p>
   <p><a href="https://www.betterchange-consulting.dk/products/250809-Giuseppe-De-Simone">Book a free 45-minute discovery call</a> (no strings attached). Use the code <strong>BC-FORWARD</strong> when booking.</p>
   <p>It is a chance to talk about where you are, where you want to go, and whether working together makes sense.</p>
-  <!-- NOTE: this article contains a personal booking link and discount code for Giuseppe specifically — confirm with Russ whether this stays as-is for the .de site or should be adapted. -->
 
   <h2>About the Participants</h2>
   <p><strong>Maja Lovrenčić</strong> is a Coach and Leader at Avery Dennison, working at the intersection of people development, leadership, and organisational culture. She has been engaged in mentoring and coaching programs with Giuseppe for several years.</p>

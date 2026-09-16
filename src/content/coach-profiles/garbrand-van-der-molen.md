@@ -11,7 +11,7 @@ linkedinUrl: https://www.linkedin.com/in/garbrand/
 hasFullProfile: true
 bio: |-
   Garbrand van der Molen builds high-performance Agile organisations rooted in innovation, collaboration, fast learning, process mastery, and people development, with experience across software, cloud services, physical product development, service delivery, and financial services.
-approach: His expertise spans the entire product development lifecycle — from building new products to managing multi-million-revenue portfolios — as well as marketing and strategy, including go-to-market planning, demand generation, product marketing, organisational design and transformation, and corporate and product strategy.
+approach: His expertise spans the entire product development lifecycle, from building new products to managing multi-million-revenue portfolios, as well as marketing and strategy, including go-to-market planning, demand generation, product marketing, organisational design and transformation, and corporate and product strategy.
 specialities:
   - Adaptivity at Scale
   - Organisational Transformation
