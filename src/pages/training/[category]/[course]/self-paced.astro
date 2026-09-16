@@ -33,7 +33,7 @@ const courseSlug = toPathSegment(course.data.urlSlug ?? baseSlug(course.id));
 
 <BaseLayout
   title={`Self-Paced ${metaOrFallback(course.data.metaTitle, course.data.name)}`}
-  description={metaOrFallback(course.data.metaDescription, course.data.summary)}
+  description={metaOrFallback(course.data.metaDescription, course.data.summary, 155)}
   translations={{
     en: `/training/${categorySlug}/${courseSlug}/self-paced`,
     de: `/de/training/${categorySlug}/${baseSlug(course.id)}/self-paced`,

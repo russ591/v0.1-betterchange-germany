@@ -48,7 +48,7 @@ const initials = author?.name
   {
     imageUrl ? (
       <div class="aspect-[16/10] w-full overflow-hidden">
-        <img src={imageUrl} alt="" class="h-full w-full object-cover" loading="lazy" />
+        <img src={imageUrl} alt={title} class="h-full w-full object-cover" loading="lazy" />
       </div>
     ) : (
       <div

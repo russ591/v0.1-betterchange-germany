@@ -23,7 +23,18 @@ export function useTranslations(locale: Locale) {
 // non-empty, non-null string). This treats a still-"[DE] "-prefixed value
 // the same as an absent one, and starts using the real value automatically
 // once a future pass replaces the placeholder -- no code change needed then.
-export function metaOrFallback(value: string | undefined, fallback: string): string {
-  if (!value || value.startsWith("[DE] ")) return fallback;
-  return value;
+//
+// `maxLength` only bounds the FALLBACK: a real (already-translated) value
+// is trusted as-is. Used for German course pages, where the fallback for
+// an untranslated metaDescription is the full course summary paragraph --
+// fine for on-page body copy, but 600+ characters is far too long for a
+// <meta description>, so it's truncated to a sensible SERP-snippet length
+// there. The title fallback (course.data.name) never needs this, being
+// short already.
+export function metaOrFallback(value: string | undefined, fallback: string, maxLength?: number): string {
+  if (value && !value.startsWith("[DE] ")) return value;
+  if (maxLength && fallback.length > maxLength) {
+    return `${fallback.slice(0, maxLength).replace(/\s+\S*$/, "")}...`;
+  }
+  return fallback;
 }

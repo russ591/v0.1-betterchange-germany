@@ -20,10 +20,16 @@ const { session } = Astro.props;
 const course = await localizedCourse(session.data.course, "de");
 const category = await getEntry(course.data.category);
 const t = useTranslations("de");
+
+// Same fix as the English route: distinguishes each dated session's
+// <title> from its siblings for the same course.
+const sessionLabel = session.data.date
+  ? session.data.date.toLocaleDateString("de-DE", { day: "numeric", month: "short", year: "numeric" })
+  : session.data.location;
 ---
 
 <BaseLayout
-  title={`${t("register.eyebrow")}, ${course.data.name}`}
+  title={`${t("register.eyebrow")}, ${course.data.name}, ${sessionLabel}`}
   description={`${t("register.metaDescriptionPrefix")} ${course.data.name}, ${session.data.format}, ${session.data.location}.`}
   translations={{
     en: `/training/register/${session.id}`,

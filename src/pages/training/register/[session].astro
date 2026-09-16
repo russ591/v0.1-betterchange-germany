@@ -18,10 +18,18 @@ export async function getStaticPaths() {
 const { session } = Astro.props;
 const course = await getEntry(session.data.course);
 const category = await getEntry(course.data.category);
+
+// Distinguishes each dated session's <title> from its siblings for the
+// same course (previously every session shared one identical title,
+// including across genuinely different dates) -- self-paced sessions
+// have no date, so location ("Online") already distinguishes those.
+const sessionLabel = session.data.date
+  ? session.data.date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
+  : session.data.location;
 ---
 
 <BaseLayout
-  title={`Register, ${course.data.name}`}
+  title={`Register, ${course.data.name}, ${sessionLabel}`}
   description={`Register for ${course.data.name}, ${session.data.format}, ${session.data.location}.`}
   translations={{
     en: `/training/register/${session.id}`,

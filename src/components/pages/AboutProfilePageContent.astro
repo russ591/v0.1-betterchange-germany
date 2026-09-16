@@ -270,7 +270,7 @@ const hasSidebar = upcomingSessions.length > 0 || recentArticles.length > 0;
               {recentArticles.map((article) => (
                 <a href={articleHref(article)} class="flex items-center gap-3 py-3 first:pt-0 last:pb-0 transition-colors hover:bg-mist-light">
                   <span class="block h-12 w-12 shrink-0 overflow-hidden rounded-[0.5rem] bg-mist-light">
-                    {article.data.imageUrl && <img src={article.data.imageUrl} alt="" class="h-full w-full object-cover" loading="lazy" />}
+                    {article.data.imageUrl && <img src={article.data.imageUrl} alt={article.data.title} class="h-full w-full object-cover" loading="lazy" />}
                   </span>
                   <div class="min-w-0 flex-1">
                     <p class="line-clamp-2 text-[length:var(--text-small)] font-semibold leading-snug">{article.data.title}</p>

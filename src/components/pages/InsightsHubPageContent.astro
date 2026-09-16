@@ -137,7 +137,7 @@ const topics = [...topicCounts.keys()].sort((a, b) => topicCounts.get(b)! - topi
         >
           {spotlight[0].article.data.imageUrl ? (
             <div class="aspect-[16/9] w-full overflow-hidden">
-              <img src={spotlight[0].article.data.imageUrl} alt="" class="h-full w-full object-cover" />
+              <img src={spotlight[0].article.data.imageUrl} alt={spotlight[0].article.data.title} class="h-full w-full object-cover" />
             </div>
           ) : (
             <div aria-hidden="true" class="aspect-[16/9] w-full" style={placeholderStyle(spotlight[0].article.id)} />
@@ -179,7 +179,7 @@ const topics = [...topicCounts.keys()].sort((a, b) => topicCounts.get(b)! - topi
           >
             {article.data.imageUrl ? (
               <div class="w-2/5 shrink-0 overflow-hidden">
-                <img src={article.data.imageUrl} alt="" class="h-full w-full object-cover" />
+                <img src={article.data.imageUrl} alt={article.data.title} class="h-full w-full object-cover" />
               </div>
             ) : (
               <div aria-hidden="true" class="w-2/5 shrink-0" style={placeholderStyle(article.id)} />
