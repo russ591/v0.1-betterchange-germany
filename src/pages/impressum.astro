@@ -11,7 +11,11 @@ const { Content } = await render(entry!);
 <BaseLayout title="Impressum" description="Legal notice for Better Change Germany.">
   <Breadcrumbs items={[{ label: "Impressum" }]} />
 
-  <Section eyebrow="Legal" heading="Impressum">
+  <Section eyebrow="Legal" class="bg-mist-light">
+    <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">Impressum</h1>
+  </Section>
+
+  <Section>
     <div class="article-body max-w-2xl text-[length:var(--text-body)] text-neutral-700">
       <Content />
     </div>

@@ -13,7 +13,7 @@ imageUrl: /insights/agile-leadership-the-vital-role-of-sensemaking-integrity-pre
 metaTitle: 'Agile Leadership: The Vital Role of Sensemaking, Integrity, Presence,'
 metaDescription: Introduction At the Regional Scrum Gathering in Ghent on June 6th and 7th, 2024, I had the privilege of presenting on the critical elements of agile...
 bodyHtml: |-
-  <h1><strong>Introduction</strong></h1>
+  <h2><strong>Introduction</strong></h2>
 
   <p>At the Regional Scrum Gathering in Ghent on June 6th and 7th, 2024, I had the privilege of presenting on the critical elements of agile leadership. Agile transformations often fail not because of a lack of strategy, but due to the complexities of human behaviour and organisational dynamics. Drawing on the theories of Ralph Stacey and Karl Weick, I explored how sensemaking, integrity, presence, and authenticity are essential for effective leadership in today's complex environments.</p>
 

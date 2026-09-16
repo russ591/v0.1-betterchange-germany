@@ -44,7 +44,7 @@ const prefix = locale === "de" ? "/de" : "";
     article.data.imageUrl && (
       <img
         src={article.data.imageUrl}
-        alt=""
+        alt={article.data.title}
         class="mb-10 aspect-[16/9] w-full max-w-2xl rounded-[var(--radius-card)] object-cover"
       />
     )
@@ -55,6 +55,7 @@ const prefix = locale === "de" ? "/de" : "";
 {
   related.length > 0 && (
     <Section eyebrow={t("insights.relatedReading")} class="bg-mist-light">
+      <h2 class="sr-only">{t("insights.relatedReading")}</h2>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {related.map((a) => (
           <InsightsArticleCard article={a} />
