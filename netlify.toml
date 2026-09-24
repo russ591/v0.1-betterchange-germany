@@ -9,6 +9,14 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
+# Runs at 22:00 UTC, which is 23:00 in Germany during standard time (CET,
+# UTC+1) and midnight during daylight saving (CEST, UTC+2) -- cron has no
+# timezone-aware DST handling, so this drifts by an hour for about half
+# the year rather than landing on 23:00 CET/CEST exactly. Good enough for
+# a once-a-day content refresh (see netlify/functions/nightly-rebuild.js).
+[functions."nightly-rebuild"]
+  schedule = "0 22 * * *"
+
 # --- Canonical domain -------------------------------------------------
 # betterchange-consulting.de (apex, no www) is canonical.
 [[redirects]]

@@ -3,6 +3,7 @@ import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import HomePageContent from "@/components/pages/HomePageContent.astro";
 import { localeOfId, localizedCourse, localizedArticle, localizedCoachProfile } from "@/lib/i18n";
+import { isUpcomingDatedSession } from "@/lib/dates";
 
 const copy = (await getEntry("home-page", "de"))!.data;
 
@@ -13,7 +14,7 @@ const certifiedBy = [
 
 const schedules = await getCollection("training-schedules");
 const upcoming = schedules
-  .filter((s) => s.data.date && s.data.date >= new Date())
+  .filter(isUpcomingDatedSession)
   .sort((a, b) => a.data.date!.valueOf() - b.data.date!.valueOf())
   .slice(0, 5);
 const upcomingWithCourse = await Promise.all(

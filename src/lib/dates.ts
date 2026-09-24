@@ -52,3 +52,40 @@ export function formatSessionDate(
 
   return formatter.format(date);
 }
+
+// A session stays listed through its own start day and drops off the day
+// after -- comparing against the exact stored start instant (e.g. the
+// 08:00 UTC every session date carries) would remove it from listings
+// while the course is still running that same day, which reads as
+// premature. Self-paced sessions have no date and are always available.
+//
+// This is a static build: the comparison only re-runs when the site is
+// actually rebuilt (see .github/workflows/nightly-rebuild.yml), not
+// continuously -- a session that's crossed this cutoff will keep showing
+// as available on the live site until the next build picks it up.
+// Deliberately takes only the session -- every call site passes these
+// functions directly as an Array.prototype.filter callback, which also
+// hands the callback an index and the array; a second `now` parameter
+// here would silently collide with that index instead of ever being the
+// Date it looks like.
+function isPastListingCutoff(session: CollectionEntry<"training-schedules">): boolean {
+  if (!session.data.date) return false;
+  const cutoff = new Date(session.data.date);
+  cutoff.setUTCDate(cutoff.getUTCDate() + 1);
+  cutoff.setUTCHours(0, 0, 0, 0);
+  return new Date() >= cutoff;
+}
+
+// For a "full schedule" or a single course's own session list, where
+// self-paced ("start anytime") is a genuine option alongside dated ones.
+export function isUpcomingOrSelfPaced(session: CollectionEntry<"training-schedules">): boolean {
+  return !isPastListingCutoff(session);
+}
+
+// For surfaces that highlight a specific upcoming calendar date (the
+// homepage teaser, a category's "next dates") -- a dateless self-paced
+// session has nothing to highlight there, so it's excluded rather than
+// always shown.
+export function isUpcomingDatedSession(session: CollectionEntry<"training-schedules">): boolean {
+  return Boolean(session.data.date) && !isPastListingCutoff(session);
+}

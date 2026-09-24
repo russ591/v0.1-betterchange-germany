@@ -4,6 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import AboutProfilePageContent from "@/components/pages/AboutProfilePageContent.astro";
 import { toPathSegment } from "@/lib/urlSlug";
 import { localeOfId, baseSlug } from "@/lib/i18n";
+import { isUpcomingDatedSession } from "@/lib/dates";
 
 // Spec §2 bug 1: only profiles with hasFullProfile: true get a page here —
 // this is the "resolved" behaviour, since the About index only links to
@@ -44,7 +45,7 @@ const { bio, name, role } = profile.data;
 const allSchedules = await getCollection("training-schedules");
 const upcomingSessions = await Promise.all(
   allSchedules
-    .filter((s) => s.data.trainers?.some((t) => t.id === profile.id) && s.data.date && s.data.date >= new Date())
+    .filter((s) => s.data.trainers?.some((t) => t.id === profile.id) && isUpcomingDatedSession(s))
     .sort((a, b) => a.data.date!.valueOf() - b.data.date!.valueOf())
     .map(async (session) => {
       const course = await getEntry(session.data.course);

@@ -4,6 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import TrainingHubPageContent from "@/components/pages/TrainingHubPageContent.astro";
 import { localeOfId, localizedCourse } from "@/lib/i18n";
 import { getTrainersForSessions } from "@/lib/trainers";
+import { isUpcomingDatedSession } from "@/lib/dates";
 
 const copy = (await getEntry("training-hub-page", "de"))!.data;
 
@@ -17,9 +18,7 @@ const certifiedBy = [
 ];
 
 const schedules = await getCollection("training-schedules");
-const upcoming = schedules
-  .filter((s) => s.data.date && s.data.date >= new Date())
-  .sort((a, b) => a.data.date!.valueOf() - b.data.date!.valueOf());
+const upcoming = schedules.filter(isUpcomingDatedSession).sort((a, b) => a.data.date!.valueOf() - b.data.date!.valueOf());
 const upcomingWithCourse = await Promise.all(
   upcoming.map(async (session) => {
     const course = await localizedCourse(session.data.course, "de");

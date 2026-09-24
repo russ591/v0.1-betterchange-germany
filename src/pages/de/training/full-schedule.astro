@@ -3,13 +3,13 @@ import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import FullSchedulePageContent from "@/components/pages/FullSchedulePageContent.astro";
 import { localizedCourse } from "@/lib/i18n";
+import { isUpcomingOrSelfPaced } from "@/lib/dates";
 
 const copy = (await getEntry("full-schedule-page", "de"))!.data;
 
 const schedules = await getCollection("training-schedules");
 
-const now = new Date();
-const upcoming = schedules.filter((s) => !s.data.date || s.data.date >= now);
+const upcoming = schedules.filter(isUpcomingOrSelfPaced);
 
 const rows = await Promise.all(
   upcoming.map(async (session) => {
