@@ -1,0 +1,37 @@
+name: Nightly rebuild
+
+# This is a static Astro site (see CLAUDE.md): "upcoming course" filters
+# (src/lib/dates.ts) only re-evaluate `new Date()` at build time, not on
+# every visit. Without a rebuild, a session that's crossed its listing
+# cutoff keeps showing as available on the live site indefinitely, no
+# matter how correct the filter logic is -- this workflow triggers a
+# fresh Netlify build once a day so that cutoff actually takes effect.
+#
+# Runs at 22:00 UTC, which is 23:00 in Germany during standard time
+# (CET, UTC+1) and midnight during daylight saving (CEST, UTC+2) -- cron
+# has no timezone-aware DST handling, so this drifts by an hour for
+# about half the year rather than landing on 23:00 CET/CEST exactly.
+# Good enough for a once-a-day content refresh; adjust the hour below if
+# stricter timing ever matters.
+#
+# Requires a repository secret named NETLIFY_BUILD_HOOK_URL, set to a
+# Build Hook URL created in the Netlify site's own settings (Site
+# configuration -> Build & deploy -> Build hooks). Nothing here can
+# create that hook itself -- it has to be set up once, manually, in both
+# Netlify's and GitHub's dashboards.
+on:
+  schedule:
+    - cron: "0 22 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  trigger-rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Netlify build hook
+        run: |
+          if [ -z "${{ secrets.NETLIFY_BUILD_HOOK_URL }}" ]; then
+            echo "::error::NETLIFY_BUILD_HOOK_URL secret is not set -- see this workflow's own comments for setup."
+            exit 1
+          fi
+          curl --fail --silent --show-error -X POST "${{ secrets.NETLIFY_BUILD_HOOK_URL }}"

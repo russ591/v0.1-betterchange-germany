@@ -4,6 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import CategoryPageContent from "@/components/pages/CategoryPageContent.astro";
 import { localeOfId, baseSlug } from "@/lib/i18n";
 import { getTrainersForSessions } from "@/lib/trainers";
+import { isUpcomingDatedSession } from "@/lib/dates";
 
 export async function getStaticPaths() {
   const categories = await getCollection("training-categories", (c) => localeOfId(c.id) === "en");
@@ -22,7 +23,7 @@ const courses = allCourses
 const allSchedules = await getCollection("training-schedules");
 const courseSlugs = new Set(courses.map((c) => baseSlug(c.id)));
 const upcoming = allSchedules
-  .filter((s) => courseSlugs.has(baseSlug(s.data.course.id)) && s.data.date && s.data.date >= new Date())
+  .filter((s) => courseSlugs.has(baseSlug(s.data.course.id)) && isUpcomingDatedSession(s))
   .sort((a, b) => a.data.date!.valueOf() - b.data.date!.valueOf());
 const upcomingWithCourse = await Promise.all(
   upcoming.map(async (session) => ({ session, course: await getEntry(session.data.course), category }))

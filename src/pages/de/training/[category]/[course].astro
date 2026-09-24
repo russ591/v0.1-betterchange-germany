@@ -6,6 +6,7 @@ import { toPathSegment } from "@/lib/urlSlug";
 import { localeOfId, baseSlug } from "@/lib/i18n";
 import { getTrainersForSessions } from "@/lib/trainers";
 import { metaOrFallback } from "@/i18n/utils";
+import { isUpcomingOrSelfPaced } from "@/lib/dates";
 
 export async function getStaticPaths() {
   const courses = await getCollection("training-courses", (c) => localeOfId(c.id) === "de");
@@ -24,7 +25,7 @@ const relatedCourses = allCourses.filter((c) => c.data.category.id === category.
 
 const allSchedules = await getCollection("training-schedules");
 const upcoming = allSchedules
-  .filter((s) => baseSlug(s.data.course.id) === baseSlug(course.id))
+  .filter((s) => baseSlug(s.data.course.id) === baseSlug(course.id) && isUpcomingOrSelfPaced(s))
   .sort((a, b) => (a.data.date?.valueOf() ?? 0) - (b.data.date?.valueOf() ?? 0));
 const upcomingWithTrainers = await Promise.all(
   upcoming.map(async (session) => ({ session, trainers: await getTrainersForSessions([session]) }))
