@@ -27,5 +27,5 @@ backgroundAndExpertise: |-
   Er hat mehr als 25 Jahre in der Produktentwicklung gearbeitet, früh angezogen von der Wissenschaft, wie Menschen effektiv zusammenarbeiten, den Bedingungen, die eine Gruppe von Wissensarbeitenden in eine Organisation verwandeln, die Produkte und Dienstleistungen liefern kann, die Kund:innen lieben. Nach mehreren Jahren der Koordination komplexer internationaler Telekom- und IT-Projekte über verteilte Standorte hinweg wechselte er 2010 in Agile Coaching und Training, seither mit über 15.000 Coaching-Stunden bei Unternehmen wie Ericsson, Swedbank, Tetra Pak, IKEA, Roche, Wärtsilä, Danfoss, Miro, Accenture und Unipol SAI. Als Trainer hat er mehr als 5.000 Unterrichtsstunden in Agile, Scrum, Produktmanagement und Führung durchgeführt, und ist als Approved Certified Agile Leadership und Path-to-CSP-Educator einer der wenigen weltweit mit jeder Guide-Level-Zertifizierung von Scrum Alliance.
 approach: |-
   Giuseppes Interesse an Führung, Change Management und Komplexität ist ebenso geprägt von über 30 Jahren als Pfadfinder und über 20 Jahren als Pfadfinderleiter wie von seiner Ingenieursausbildung, eine Perspektive, die sich darin zeigt, wie er Struktur mit echter Fürsorge für die Menschen verbindet, die die Arbeit leisten.
-displayOrder: 7
+displayOrder: 5
 ---

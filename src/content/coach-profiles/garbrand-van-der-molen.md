@@ -17,5 +17,5 @@ specialities:
   - Organisational Transformation
   - Change Management
   - Innovation Operations
-displayOrder: 6
+displayOrder: 10
 ---

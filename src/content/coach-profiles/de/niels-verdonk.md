@@ -27,5 +27,5 @@ backgroundAndExpertise: |-
   Er hat viele Teams und Organisationen dabei begleitet, hochwertige Software zu liefern, indem sie Lean- und Agile-Ansätze wie Scrum, Kanban und eXtreme Programming übernehmen. Sein Hintergrund umfasst Softwareentwicklung, Entwicklungsmanagement, Systemarchitektur und IT-Betrieb, was ihm Glaubwürdigkeit sowohl bei Engineering-Teams als auch bei den Führungskräften gibt, die von ihnen abhängen.
 approach: |-
   Niels ist aktiv in der niederländischen Agile-Community und entwickelt seinen eigenen Coaching-Ansatz kontinuierlich weiter, in Zusammenarbeit mit Kolleg:innen weltweit.
-displayOrder: 4
+displayOrder: 10
 ---

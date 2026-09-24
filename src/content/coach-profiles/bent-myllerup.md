@@ -16,5 +16,5 @@ backgroundAndExpertise: |-
 
   Bent has personal experiences in various contexts: From junior developer to being on the board of directors, working in a range from garage start-ups to internationally well-recognised cooperations. In a major part of his career, his responsibility has been leading and coaching people.
 approach: Bent takes agile approaches beyond software and has for a number of years been working with Scrum in an embedded environment of software, firmware, electronics and mechanics.
-displayOrder: 5
+displayOrder: 4
 ---
