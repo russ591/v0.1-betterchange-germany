@@ -195,11 +195,6 @@ export const en = {
   "insights.noResults": "No articles match the selected filters.",
   "insights.prevPage": "‹ Prev",
   "insights.nextPage": "Next ›",
-  "insights.newsletterEyebrow": "Newsletter",
-  "insights.newsletterHeading": "Get new articles by email",
-  "insights.newsletterBody": "No noise. Just useful thinking on agile, Kanban, and Flight Levels, roughly monthly.",
-  "insights.emailAddress": "Email address",
-  "insights.subscribe": "Subscribe",
 
   "register.eyebrow": "Register",
   "register.backToCourse": "← Back to course details",
@@ -424,11 +419,6 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "insights.noResults": "Keine Artikel entsprechen den gewählten Filtern.",
   "insights.prevPage": "‹ Zurück",
   "insights.nextPage": "Weiter ›",
-  "insights.newsletterEyebrow": "Newsletter",
-  "insights.newsletterHeading": "Neue Artikel per E-Mail erhalten",
-  "insights.newsletterBody": "Kein Rauschen. Nur nützliche Gedanken zu Agile, Kanban und Flight Levels, etwa einmal im Monat.",
-  "insights.emailAddress": "E-Mail-Adresse",
-  "insights.subscribe": "Abonnieren",
 
   "level": "Niveau",
   "duration": "Dauer",
