@@ -27,5 +27,5 @@ backgroundAndExpertise: |-
   Als Organizational Development Consultant mit 14 Jahren Erfahrung, größtenteils während seiner Zeit in Berlin bis April 2025 aufgebaut, hat er an Projekten in mehr als 22 Ländern quer durch Asien, Amerika und Europa gearbeitet, spezialisiert auf Führungskräfteentwicklung und organisatorische Transformation in kulturell vielfältigen Umgebungen. Er ist Certified Team Coach (CTC), ICAgile Instructor und Flight Levels Pro, und derzeit in Madrid ansässig.
 approach: |-
   Javier integriert Beratung, Coaching, Mentoring und Training, um Strategie mit Umsetzung in Einklang zu bringen, und hilft Menschen dabei, Systeme als Ganzes zu betrachten, mehrere Perspektiven einzubeziehen, und sie iterativ und inkrementell zu verbessern, im Dienst besserer Produktivität, Zusammenarbeit und Lieferzeiten.
-displayOrder: 2
+displayOrder: 3
 ---

@@ -27,5 +27,5 @@ backgroundAndExpertise: |-
   Er hat eine nachweisliche Erfolgsbilanz darin, unterschiedliche Organisationen bei der Übernahme agiler Werte und Prinzipien zu unterstützen, und hat in den letzten Jahren mehr als 100 agile Teams über zahlreiche Branchen hinweg gecoacht und begleitet. Sein strategisches Denken und sein adaptiver Coaching-Stil, angepasst an die Gruppe und die Komplexität des Kontexts, helfen Organisationen, ihre Lerngeschwindigkeit deutlich zu verbessern und dauerhaften kulturellen Wandel zu bewirken.
 approach: |-
   In Polen geboren und aufgewachsen, studierte Konrad in Berlin, Deutschland, und nennt die Stadt seit mehr als zwanzig Jahren sein Zuhause, ein Hintergrund, der ihm ein natürliches Gespür für kulturübergreifendes Coaching gibt.
-displayOrder: 3
+displayOrder: 2
 ---

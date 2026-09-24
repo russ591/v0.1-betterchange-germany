@@ -23,5 +23,5 @@ specialities:
   - Training
   - Leadership
   - Change Management
-displayOrder: 7
+displayOrder: 5
 ---
