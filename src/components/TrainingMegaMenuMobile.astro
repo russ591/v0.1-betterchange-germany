@@ -88,6 +88,28 @@ const logoByCategory = Object.fromEntries(
         <path d="m9 6 6 6-6 6" />
       </svg>
     </a>
+    <a
+      href={`${prefix}/training/full-schedule`}
+      class="flex items-center justify-between gap-2.5 border-b border-neutral-200 px-6 py-2.5 text-[length:var(--text-small)] font-semibold text-ink"
+    >
+      <span class="flex items-center gap-2.5">
+        <span
+          aria-hidden="true"
+          class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-ink bg-surface [&_svg]:h-3.5 [&_svg]:w-3.5"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2">
+            <rect x="3" y="4" width="18" height="17" rx="2" />
+            <line x1="3" y1="9" x2="21" y2="9" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+          </svg>
+        </span>
+        {t("schedule.fullSchedule")}
+      </span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-3.5 w-3.5 shrink-0 text-neutral-400">
+        <path d="m9 6 6 6-6 6" />
+      </svg>
+    </a>
     {
       categoriesWithCourses.map(({ category, courses }) => (
         <details class="group/category border-b border-neutral-200 px-6 last:border-0">
