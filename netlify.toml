@@ -34,6 +34,12 @@
   to = "/training/register/fl3d-ber-24-11-2026"
   status = 301
 
+# The Berlin FLSA session moved from 15-16 Dec 2026 to 1-2 Dec 2026.
+[[redirects]]
+  from = "/training/register/flsa-ber-15-12-2026"
+  to = "/training/register/flsa-ber-01-12-2026"
+  status = 301
+
 # --- Insights articles whose live slug contains ? or # ------------------
 # `?` and `#` are reserved URL delimiters and can never appear literally
 # in a served path (a browser truncates everything after them before the
