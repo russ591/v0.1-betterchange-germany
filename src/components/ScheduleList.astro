@@ -44,7 +44,6 @@ type FilterKind = "topic" | "country" | "trainer";
 interface Props {
   rows: Row[];
   filters?: FilterKind[];
-  defaultCountry?: string;
   showTrainer?: boolean;
   limit?: number;
   emptyMessage?: string;
@@ -58,7 +57,6 @@ const prefix = locale === "de" ? "/de" : "";
 const {
   rows: allRows,
   filters = [],
-  defaultCountry,
   showTrainer = true,
   limit,
   emptyMessage = t("schedule.noSessions"),
@@ -146,7 +144,7 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
           <p class="hidden px-4 pb-3 text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.1em] text-neutral-500 lg:block lg:px-0 lg:pb-0">{t("schedule.filterCountry")}</p>
           <div id={`${id}-panel-country`} class="hidden flex-wrap gap-2 px-4 pb-4 pt-1 lg:flex lg:p-0 lg:pt-2">
             {countries.map((country) => (
-              <button type="button" data-filter-group="country" data-filter-value={country} class={`filter-btn mb-2 mr-2 cursor-pointer rounded-[var(--radius-pill)] border px-4 py-1.5 text-[length:var(--text-small)] font-semibold transition-colors hover:border-ink hover:text-ink lg:mb-0 ${country === defaultCountry ? "border-lime bg-lime text-ink" : "border-neutral-300 bg-surface text-neutral-700"}`}>
+              <button type="button" data-filter-group="country" data-filter-value={country} class="filter-btn mb-2 mr-2 cursor-pointer rounded-[var(--radius-pill)] border border-neutral-300 bg-surface px-4 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors hover:border-ink hover:text-ink lg:mb-0">
                 {country}
               </button>
             ))}
@@ -330,7 +328,7 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
 
 {
   hasAnyFilter && (
-    <script define:vars={{ id, defaultCountry }}>
+    <script define:vars={{ id }}>
       const filterButtons = Array.from(document.querySelectorAll(`#${id}-filters [data-filter-group]`));
       const toggleButtons = Array.from(document.querySelectorAll(`#${id}-filters .filter-toggle`));
       const rows = Array.from(document.querySelectorAll(`#${id}-mobile .schedule-row, #${id}-desktop .schedule-row`));
@@ -340,7 +338,7 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
 
       const active = {
         topic: new Set(),
-        country: new Set(defaultCountry ? [defaultCountry] : []),
+        country: new Set(),
         trainer: new Set(),
       };
 
