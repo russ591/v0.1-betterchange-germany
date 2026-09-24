@@ -23,5 +23,5 @@ bio: |-
   Garbrand van der Molen baut leistungsstarke agile Organisationen auf, verwurzelt in Innovation, Zusammenarbeit, schnellem Lernen, Prozessbeherrschung und Personalentwicklung, mit Erfahrung über Software, Cloud-Services, physische Produktentwicklung, Service-Lieferung und Finanzdienstleistungen hinweg.
 approach: |-
   Seine Expertise umfasst den gesamten Produktentwicklungszyklus, vom Aufbau neuer Produkte bis zum Management von Portfolios mit mehrstelligen Millionenumsätzen, sowie Marketing und Strategie, einschließlich Go-to-Market-Planung, Nachfragegenerierung, Produktmarketing, Organisationsdesign und -transformation sowie Unternehmens- und Produktstrategie.
-displayOrder: 6
+displayOrder: 10
 ---

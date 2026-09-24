@@ -28,5 +28,5 @@ specialities:
   - Build Automation
   - Automated Testing
   - Software Quality
-displayOrder: 4
+displayOrder: 10
 ---
