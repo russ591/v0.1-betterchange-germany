@@ -69,6 +69,10 @@ const rows = limit ? allRows.slice(0, limit) : allRows;
 
 const trainerKey = (t: TrainerEntry) => (t.kind === "profile" ? t.profile.id : `name:${t.name}`);
 const trainerLabel = (t: TrainerEntry) => (t.kind === "profile" ? t.profile.data.name : t.name);
+// A plain trainerName (no migrated profile, so no displayOrder field at
+// all) shares the same default (10) every profile without an explicit
+// ranking gets -- see CLAUDE.md's trainer display order convention.
+const trainerOrder = (t: TrainerEntry) => (t.kind === "profile" ? t.profile.data.displayOrder : 10);
 
 const enriched = await Promise.all(
   rows.map(async (row) => {
@@ -92,8 +96,8 @@ const topics = showTopicFilter
   : [];
 const countries = showCountryFilter ? [...new Set(enriched.map((r) => r.country))].sort() : [];
 const allTrainers = showTrainerFilter
-  ? [...new Map(enriched.flatMap((r) => r.trainers).map((t) => [trainerKey(t), t])).values()].sort((a, b) =>
-      trainerLabel(a).localeCompare(trainerLabel(b))
+  ? [...new Map(enriched.flatMap((r) => r.trainers).map((t) => [trainerKey(t), t])).values()].sort(
+      (a, b) => trainerOrder(a) - trainerOrder(b) || trainerLabel(a).localeCompare(trainerLabel(b))
     )
   : [];
 
