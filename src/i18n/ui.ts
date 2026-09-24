@@ -69,6 +69,11 @@ export const en = {
 
   "megaMenu.trainingHome": "Training Home",
   "megaMenu.servicesHome": "Services Home",
+  // Appended to a category's own name (e.g. "Flight Levels") to build its
+  // mobile-menu "go to this category's home page" link label -- see
+  // TrainingMegaMenuMobile.astro. Matches the "Training Home"/"Services
+  // Home" pattern above, just per-category instead of a fixed string.
+  "megaMenu.categoryHomeSuffix": " Home",
   "megaMenu.sixDisciplines": "Six disciplines, one practitioner network.",
   "megaMenu.notSureWhereToStart": "Not sure where to start?",
   "megaMenu.talkToUsAboutTeam": "Talk to us about your team's situation",
@@ -325,6 +330,7 @@ const deOverrides: Partial<Record<UIKey, string>> = {
 
   "megaMenu.trainingHome": "Training-Startseite",
   "megaMenu.servicesHome": "Leistungen-Startseite",
+  "megaMenu.categoryHomeSuffix": "-Startseite",
   // Mirrors training-hub-page/de.md's disciplinesHeading, which is
   // approved copy from a different system (a content-collection field,
   // not this dictionary) so it can't be a literal shared JS reference --

@@ -113,6 +113,12 @@ const logoByCategory = Object.fromEntries(
             </svg>
           </summary>
           <div class="space-y-0.5 py-1.5 pl-6">
+            <a
+              href={`${prefix}/training/${baseSlug(category.id)}`}
+              class="flex items-center gap-2 border-b border-neutral-200 py-1.5 pb-2 text-[length:var(--text-caption)] font-semibold text-ink"
+            >
+              {category.data.name}{t("megaMenu.categoryHomeSuffix")} &rarr;
+            </a>
             {courses.map((course) => (
               <a
                 href={`${prefix}/training/${baseSlug(category.id)}/${toPathSegment(course.data.urlSlug ?? baseSlug(course.id))}`}
