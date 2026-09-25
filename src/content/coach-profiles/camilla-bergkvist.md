@@ -23,4 +23,5 @@ specialities:
   - Agile Coaching
 displayOrder: 10
 isFellow: true
+isFemale: true
 ---
