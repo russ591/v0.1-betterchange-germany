@@ -27,6 +27,12 @@
   you can compare side-by-side with the old site.
 */
 @theme {
+  /* Breakpoints: lg is 960px rather than Tailwind's 1024px default so a
+     phone in "desktop site" mode (Chrome reports ~980px) gets the desktop
+     header, schedule table and multi-column grids, not the tablet layout.
+     Real tablets in portrait (768-959px) are unaffected. */
+  --breakpoint-lg: 60rem;
+
   /* Colour */
   --color-lime: #9aff5b;
   --color-ink: #0a0a0a;
