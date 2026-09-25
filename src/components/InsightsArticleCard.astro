@@ -11,9 +11,12 @@ interface Props {
   // since several pages need that same lookup for their own filtering/
   // grouping) -- omit to render the card with no byline, as before.
   author?: { name: string; photo?: string };
+  // "compact" is the sidebar row (thumbnail, title, date and read time),
+  // the same shape as the profile page's recent-articles rail.
+  variant?: "card" | "compact";
 }
 
-const { article, showDate = true, author } = Astro.props;
+const { article, showDate = true, author, variant = "card" } = Astro.props;
 const { title, date, readTimeMinutes, excerpt, primaryCategory, imageUrl } = article.data;
 
 // Cards mix locales during the ongoing article-by-article translation
@@ -24,6 +27,7 @@ const { title, date, readTimeMinutes, excerpt, primaryCategory, imageUrl } = art
 // English fallback list, or vice versa.
 const articleLocale = localeOfId(article.id);
 const articlePrefix = articleLocale === "de" ? "/de" : "";
+const href = `${articlePrefix}/insights/${toPathSegment(article.data.urlSlug ?? baseSlug(article.id))}`;
 const t = useTranslations(articleLocale);
 
 // Real article photography exists for most articles (migrated from the Wix
@@ -41,8 +45,26 @@ const initials = author?.name
   .toUpperCase();
 ---
 
+{variant === "compact" ? (
+  <a href={href} class="flex items-center gap-3 py-3 first:pt-0 last:pb-0 transition-colors hover:bg-mist-light">
+    <span class="block h-12 w-12 shrink-0 overflow-hidden rounded-[0.5rem] bg-mist-light">
+      {imageUrl && <img src={imageUrl} alt="" class="h-full w-full object-cover" loading="lazy" />}
+    </span>
+    <div class="min-w-0 flex-1">
+      <p class="line-clamp-2 text-[length:var(--text-small)] font-semibold leading-snug">{title}</p>
+      <p class="mt-0.5 text-[length:var(--text-caption)] text-neutral-500">
+        {[
+          showDate && date.toLocaleDateString(articleLocale === "de" ? "de-DE" : "en-GB", { day: "numeric", month: "short" }),
+          readTimeMinutes && `${readTimeMinutes} ${t("insights.minRead")}`,
+        ]
+          .filter(Boolean)
+          .join(" · ")}
+      </p>
+    </div>
+  </a>
+) : (
 <a
-  href={`${articlePrefix}/insights/${toPathSegment(article.data.urlSlug ?? baseSlug(article.id))}`}
+  href={href}
   class="flex flex-col overflow-hidden rounded-[var(--radius-card)] border border-neutral-200 bg-surface shadow-card transition-shadow hover:shadow-card-hover"
 >
   {
@@ -93,3 +115,4 @@ const initials = author?.name
     }
   </div>
 </a>
+)}
