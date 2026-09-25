@@ -14,7 +14,7 @@ interface Props {
 }
 
 const { article, showDate = true, author } = Astro.props;
-const { title, date, readTimeMinutes, contentType, excerpt, primaryCategory, imageUrl } = article.data;
+const { title, date, readTimeMinutes, excerpt, primaryCategory, imageUrl } = article.data;
 
 // Cards mix locales during the ongoing article-by-article translation
 // (a German page can show an English card as a fallback, and vice versa
@@ -69,7 +69,6 @@ const initials = author?.name
               year: "numeric",
             }),
           readTimeMinutes && `${readTimeMinutes} ${t("insights.minRead")}`,
-          contentType && contentType !== "Blog" && contentType,
         ]
           .filter(Boolean)
           .join(" · ")
