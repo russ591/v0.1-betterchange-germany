@@ -9,6 +9,7 @@
 # with heavy EN direct address ("you/your"); rewritten impersonally in
 # German per the batch's cover note.
 title: What an Agile Coach Actually Needs to Be Good At
+relatedTrainingIntro: "Prozesswissen ist notwendig, menschliche Dynamik ist der Rest. Dieses Training behandelt die Coaching-Haltung und die Haltungen darum herum."
 contentType: Blog
 primaryCategory: Coaching
 categories:

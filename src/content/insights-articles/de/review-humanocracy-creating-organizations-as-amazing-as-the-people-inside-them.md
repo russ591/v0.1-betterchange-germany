@@ -8,6 +8,7 @@
 # site-wide category-label rule, "Book Reviews" included (not one of
 # the named exceptions).
 title: 'Review: "Humanocracy: Creating Organizations as Amazing as the People Inside Them"'
+relatedTrainingIntro: "Bürokratie abzubauen ist Veränderungsarbeit, Führungsarbeit und Designarbeit. Diese Trainings decken alle drei ab."
 contentType: Blog
 primaryCategory: Change Management
 categories:

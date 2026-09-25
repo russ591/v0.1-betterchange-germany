@@ -11,6 +11,7 @@
 # the EN source's "dear reader" direct-address asides, which the draft
 # smooths into third-person narration rather than literal "Sie/Du".
 title: 'Boogie and Backlogs: The Hilarious Parallels Between Agile and Disco'
+relatedTrainingIntro: "Hinter Glitzer und Groove sind die Parallelen echt: Rhythmus, Zusammenspiel, Widerstandskraft. Dieses Training behandelt die ernsthafte Version derselben Ideen."
 contentType: Blog
 primaryCategory: Agile
 categories:

@@ -1,5 +1,6 @@
 ---
 title: 'What a Product Vision Is Actually For'
+relatedTrainingIntro: "A vision that is written once and never used is a missed opportunity. This course covers building one that guides decisions every Sprint."
 contentType: Resource
 primaryCategory: Agile
 categories:

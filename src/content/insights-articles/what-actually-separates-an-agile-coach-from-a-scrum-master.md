@@ -1,5 +1,6 @@
 ---
 title: 'What Actually Separates an Agile Coach from a Scrum Master'
+relatedTrainingIntro: "The difference is scope, and each scope has its own development path. These courses cover the Scrum Master track and the agile coaching one."
 contentType: Resource
 primaryCategory: Coaching
 categories:

@@ -11,6 +11,7 @@
 # per the standardized convention; author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'What Transformational Leadership Actually Requires'
+relatedTrainingIntro: "Alle vier Komponenten transformationaler Führung, nicht drei. Dieses Training entwickelt sie gemeinsam."
 contentType: Resource
 primaryCategory: Leadership
 categories:

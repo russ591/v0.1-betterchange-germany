@@ -10,6 +10,7 @@
 # directly in this batch's draft (unlike sub-batch 1); author/date/
 # contentType pulled from the EN source article per the standing rule.
 title: 'What to Actually Do When Unplanned Work Hits Your Sprint'
+relatedTrainingIntro: "Ungeplante Arbeit ist für viele Teams Alltag; sie zu bewältigen, ohne das Sprint Planning auszuhöhlen, ist die Fähigkeit. Dieses Training behandelt sie."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

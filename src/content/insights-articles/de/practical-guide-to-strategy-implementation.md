@@ -7,6 +7,7 @@
 # contentType/primaryCategory/categories stay English loanwords per the
 # site-wide category-label rule.
 title: Why Most Strategies Fail Between the Slides and the Doing
+relatedTrainingIntro: "Strategie scheitert zwischen den Folien und dem Tun. Diese Trainings behandeln das Design der Strategieebene, ihre Verbindung zur Arbeit und die Führung des nötigen Wandels."
 contentType: Blog
 primaryCategory: Change Management
 categories:

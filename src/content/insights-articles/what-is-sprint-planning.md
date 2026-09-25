@@ -1,5 +1,6 @@
 ---
 title: What is Sprint Planning?
+relatedTrainingIntro: "Sprint Planning takes a prepared Product Owner and a Scrum Master who can hold the event to its purpose. These courses cover both."
 urlSlug: "what-is-sprint-planning"
 contentType: Resource
 primaryCategory: Scrum

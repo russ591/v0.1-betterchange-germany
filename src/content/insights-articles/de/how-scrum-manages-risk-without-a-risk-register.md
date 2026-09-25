@@ -10,6 +10,7 @@
 # directly in this batch's draft (unlike sub-batch 1); author/date/
 # contentType pulled from the EN source article per the standing rule.
 title: 'How Scrum Manages Risk Without a Risk Register'
+relatedTrainingIntro: "Scrum steuert Risiko über Struktur statt über ein Register, aber nur, wenn die Struktur wie gedacht genutzt wird. Dieses Training behandelt die Events und Artefakte, die das möglich machen."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

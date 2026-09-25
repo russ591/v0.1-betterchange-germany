@@ -1,5 +1,6 @@
 ---
 title: 'What Good Backlog Refinement Actually Looks Like'
+relatedTrainingIntro: "Refinement is the activity whose absence hurts two Sprints later. This course covers making it continuous, collaborative and worth the time."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

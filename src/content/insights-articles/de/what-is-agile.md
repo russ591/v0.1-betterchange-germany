@@ -11,6 +11,7 @@
 # draft; dropped per the established pattern for closing CTA-style
 # invitations.
 title: What Is Agile? Beyond the Buzzword
+relatedTrainingIntro: "Jenseits des Schlagworts ist Agile eine Philosophie, die eine Praxis braucht, in der sie lebt. Dieses Training ist der häufigste Einstieg."
 contentType: Resource
 primaryCategory: Agile
 categories:

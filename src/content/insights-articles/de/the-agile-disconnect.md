@@ -16,6 +16,7 @@
 # survey link) -- confirmed by Russ to match the current EN source, so
 # no fix needed here.
 title: The Agile Disconnect
+relatedTrainingIntro: "SAFe gelingt, wenn Führungskräfte agile Prinzipien verkörpern, statt sie aus der Distanz zu sponsern. Diese Trainings behandeln das Framework und die Führung, von der es abhängt."
 contentType: Blog
 primaryCategory: Agile
 categories:

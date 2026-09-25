@@ -10,6 +10,7 @@
 # directly in this batch's draft (unlike sub-batch 1); author/date/
 # contentType pulled from the EN source article per the standing rule.
 title: 'Why Team Velocity Swings, and What Actually Stabilizes It'
+relatedTrainingIntro: "Velocity-Schwankungen sind Symptome. Dieses Training behandelt die Ursachen und die Praktiken, die sie stabilisieren."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

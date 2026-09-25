@@ -1,5 +1,6 @@
 ---
 title: How a Kanban Board on a Kitchen Wall Renovated Our House on Time and on Budget
+relatedTrainingIntro: "If a wall of sticky notes can run a renovation, imagine what a deliberately designed Kanban system does for knowledge work. This course teaches how to build one."
 urlSlug: "how-a-kanban-board-on-a-kitchen-wall-renovated-our-house-on-time-and-on-budget"
 contentType: Blog
 primaryCategory: Leadership

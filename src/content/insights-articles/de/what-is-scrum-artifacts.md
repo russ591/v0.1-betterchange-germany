@@ -9,6 +9,7 @@
 # string, no migrated coach-profile) -- used as-is. Clean match, no
 # CTA/link issues to flag.
 title: 'Scrum''s Three Artefacts: What They Are and Why They Matter'
+relatedTrainingIntro: "Jedes Artefakt ist leicht zu benennen und leicht zu missbrauchen. Dieses Training zeigt, wie Product Backlog, Sprint Backlog und Increment die Transparenz schaffen, für die sie da sind."
 contentType: Resource
 primaryCategory: Scrum
 categories:

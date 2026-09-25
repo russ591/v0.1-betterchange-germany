@@ -13,6 +13,7 @@
 # mismatches in this batch's draft headers (see the commit message /
 # report for the full list), worth checking upstream.
 title: 'AI Design: The Principles That Shape Every System You Interact With'
+relatedTrainingIntro: "Die Designentscheidungen hinter einem KI-System bestimmen, wie weit ihm zu trauen ist. Diese Trainings behandeln den Einsatz von KI in Produkt- und Teamrollen mit genau diesem Blick."
 contentType: Resource
 primaryCategory: AI
 categories:

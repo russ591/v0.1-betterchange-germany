@@ -11,6 +11,7 @@
 # the EN source article per the standing rule. This completes all 52
 # German translations for the SEO-rewrite project (sub-batches 1-4).
 title: 'What Actually Makes an Organisation Agile, Not Just Its Teams'
+relatedTrainingIntro: "Agile Teams in einer starren Organisation stagnieren. Diese Trainings behandeln Transformation, Führung und Koordinationsdesign, damit die Organisation selbst agil wird."
 contentType: Resource
 primaryCategory: Change Management
 categories:

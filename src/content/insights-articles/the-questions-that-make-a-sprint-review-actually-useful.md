@@ -1,5 +1,6 @@
 ---
 title: 'The Questions That Make a Sprint Review Actually Useful'
+relatedTrainingIntro: "The right questions turn a demo into a decision. This course covers facilitating a Sprint Review that produces real feedback."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

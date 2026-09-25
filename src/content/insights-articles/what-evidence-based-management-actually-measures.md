@@ -1,5 +1,6 @@
 ---
 title: 'What Evidence-Based Management Actually Measures'
+relatedTrainingIntro: "Measuring whether a transformation works is a leadership and change question as much as a Scrum one. These courses cover all three angles."
 contentType: Resource
 primaryCategory: Agile
 categories:

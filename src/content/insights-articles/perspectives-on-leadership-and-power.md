@@ -1,5 +1,6 @@
 ---
 title: Perspectives on leadership and power
+relatedTrainingIntro: "Power flows through every organisation whether leaders acknowledge it or not. This course helps leaders see it and use it well."
 contentType: Blog
 primaryCategory: Leadership
 categories:

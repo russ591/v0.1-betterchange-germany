@@ -1,5 +1,6 @@
 ---
 title: Why Flight Levels Isn't a Framework, and Why That Matters
+relatedTrainingIntro: "A thinking model rather than a framework means the design work is yours. These courses teach that design, from the introduction to designing a coordination level."
 urlSlug: "why-flight-levels-isn't-a-framework,-and-why-that-matters"
 contentType: Blog
 primaryCategory: Flight Levels

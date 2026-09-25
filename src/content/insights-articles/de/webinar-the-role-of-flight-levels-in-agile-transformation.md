@@ -8,6 +8,7 @@
 # site-wide category-label rule. Embedded iframe title kept in English,
 # matching the convention from earlier batches.
 title: Flight Levels in Action - Konrad Pogorzala at Agile Boston
+relatedTrainingIntro: "Konrad holt Flight Levels im Webinar auf den Boden; in diesen Trainings beginnt die Praxis, von der Einführung bis zum Design einer Ebene."
 contentType: Blog
 primaryCategory: Flight Levels
 categories:

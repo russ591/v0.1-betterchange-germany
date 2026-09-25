@@ -11,6 +11,7 @@
 # per the standardized convention; author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'What Scrum Masters Actually Owe Product Owners'
+relatedTrainingIntro: "Scrum Master dienen auch dem Product Owner. Diese Trainings behandeln beide Seiten dieser Beziehung und den Advanced Product Owner Track, den sie stützt."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

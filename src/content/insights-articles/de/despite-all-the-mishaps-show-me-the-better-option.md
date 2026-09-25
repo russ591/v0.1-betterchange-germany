@@ -19,6 +19,7 @@
 # paragraph the original draft had used instead of a full translation
 # of the EN "Conclusion" section.
 title: 'Despite All the Mishaps: Show Me the Better Option!'
+relatedTrainingIntro: "Die bessere Option ist kein neues Framework, sondern Agilität mit Urteilsvermögen. In diesem Training entsteht dieses Urteilsvermögen, mit Praktiker:innen, die die Fehlgriffe aus erster Hand kennen."
 seriesId: "agile-mishaps"
 seriesOrder: 7
 contentType: Blog

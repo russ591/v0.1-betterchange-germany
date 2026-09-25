@@ -1,5 +1,6 @@
 ---
 title: What HR Looks Like When It's Actually Agile
+relatedTrainingIntro: "Agile HR is an organisational change with HR at the centre rather than the end. These courses cover leading that change."
 urlSlug: "what-hr-looks-like-when-its-actually-agile"
 contentType: Blog
 primaryCategory: Change Management

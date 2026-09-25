@@ -1,5 +1,6 @@
 ---
 title: 'Agile Mishap #4: Incompetent Coaches and Trainers'
+relatedTrainingIntro: "Competent coaching is a discipline with a body of knowledge, not a job title anyone can claim. This course is where that discipline is taught and practised."
 urlSlug: "agile-mishap-4:-incompetent-coaches-and-trainers"
 seriesId: "agile-mishaps"
 seriesOrder: 5

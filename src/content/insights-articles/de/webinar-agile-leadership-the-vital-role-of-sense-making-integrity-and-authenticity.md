@@ -18,6 +18,7 @@
 # markup, but dropping the working links looked like an unintended
 # regression rather than a deliberate editorial choice.
 title: Agile Leadership - The Vital Role of Sense-making, Integrity, and Authenticity
+relatedTrainingIntro: "Sense-making, Integrität und Authentizität in einer Webinar-Stunde; zwei Tage Praxis damit unter Peers in diesem Training."
 contentType: Blog
 primaryCategory: Change Management
 categories:

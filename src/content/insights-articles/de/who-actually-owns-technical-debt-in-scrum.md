@@ -10,6 +10,7 @@
 # directly in this batch's draft (unlike sub-batch 1); author/date/
 # contentType pulled from the EN source article per the standing rule.
 title: 'Who Actually Owns Technical Debt in Scrum?'
+relatedTrainingIntro: "Technische Schulden werden vernachlässigt, weil keine einzelne Accountability sie besitzt. Diese Trainings zeigen, wie Product Owner und Scrum Master sie zur gemeinsamen Sache machen."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

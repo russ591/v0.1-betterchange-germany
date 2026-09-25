@@ -1,5 +1,6 @@
 ---
 title: What Is Change Management? A Practical Guide to Navigating Organisational Transitions
+relatedTrainingIntro: "Change fails more often than it succeeds because the people side is under-managed. These courses cover leading and coaching change so it takes hold."
 urlSlug: "what-is-change-management-a-practical-guide-to-navigating-organisational-transitions"
 contentType: Resource
 primaryCategory: Leadership

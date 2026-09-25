@@ -9,6 +9,7 @@
 # (the source draft only supplied title + body); author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'Why Teamwork Is Harder Than It Looks'
+relatedTrainingIntro: "Vertrauen ist der Engpass, und Vertrauen entsteht durch Struktur und Führung, nicht durch Appelle. Diese Trainings behandeln beides."
 contentType: Blog
 primaryCategory: Leadership
 categories: []

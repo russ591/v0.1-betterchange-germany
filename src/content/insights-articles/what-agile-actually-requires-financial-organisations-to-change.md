@@ -1,5 +1,6 @@
 ---
 title: 'What Agile Actually Requires Financial Organisations to Change'
+relatedTrainingIntro: "Resolving the tension between adaptive work and regulation is organisational change, not a process tweak. These courses cover leading it."
 contentType: Resource
 primaryCategory: Change Management
 categories:

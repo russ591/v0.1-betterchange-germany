@@ -1,5 +1,6 @@
 ---
 title: 'Why Group Decisions Often Go Wrong (and How to Fix Them)'
+relatedTrainingIntro: "The four structural fixes are facilitation practices, and applying them is a leadership choice. These courses cover both."
 contentType: Blog
 primaryCategory: Leadership
 categories: []

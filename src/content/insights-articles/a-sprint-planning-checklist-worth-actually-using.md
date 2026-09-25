@@ -1,5 +1,6 @@
 ---
 title: 'A Sprint Planning Checklist Worth Actually Using'
+relatedTrainingIntro: "A checklist catches what goes wrong even when the mechanics are right. This course covers the judgement behind Sprint Planning that no checklist can replace."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

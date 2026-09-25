@@ -9,6 +9,7 @@
 # rule. The personal booking link/discount code stays as-is on the
 # German version too, per explicit confirmation.
 title: 'What Happens When You Invest in Your Leadership: A Conversation with Maja Lovrenčić'
+relatedTrainingIntro: "Vom Feuerlöschen zum Gestalten ist der Wandel, den Maja beschreibt; in diesen Trainings vollziehen ihn Führungskräfte und Coaches."
 contentType: Blog
 primaryCategory: Change Management
 categories:

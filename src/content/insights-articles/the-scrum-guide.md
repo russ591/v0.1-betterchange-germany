@@ -1,5 +1,6 @@
 ---
 title: The Scrum Guide
+relatedTrainingIntro: "The Scrum Guide is short on purpose; the practice fills in the rest. This course covers what the Guide leaves to judgement."
 contentType: Resource
 primaryCategory: Agile
 categories:

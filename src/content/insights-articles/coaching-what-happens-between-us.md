@@ -1,5 +1,6 @@
 ---
 title: Why Team Performance Is Mostly About the Space Between People
+relatedTrainingIntro: "If performance lives in the space between people, coaching and leadership are the crafts that work on it. These courses develop both."
 urlSlug: "why-team-performance-is-mostly-about-the-space-between-people"
 contentType: Blog
 primaryCategory: Coaching

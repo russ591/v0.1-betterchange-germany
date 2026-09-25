@@ -9,6 +9,7 @@
 # (the source draft only supplied title + body); author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'Six Ways Scrum Masters Become More Effective'
+relatedTrainingIntro: "Die sechs Gewohnheiten trennen Scrum Master, die die Rolle ausüben, von Scrum Mastern, die darin wirksam sind. Diese Trainings bauen sie auf, von den Grundlagen bis zum Advanced-Track."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

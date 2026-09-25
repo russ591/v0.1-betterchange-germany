@@ -8,6 +8,7 @@
 # contentType/primaryCategory stay English loanwords under that same
 # rule.
 title: Your Biggest AI Challenge Isn't Technical. It's Cultural.
+relatedTrainingIntro: "Wenn die KI-Herausforderung kulturell ist, braucht sie die Werkzeuge organisationaler Veränderung, nicht noch einen Piloten. Diese Trainings behandeln Strategiearbeit, Koordination über Ebenen hinweg und die Führung des Wandels selbst."
 contentType: Blog
 primaryCategory: Change Management
 categories:

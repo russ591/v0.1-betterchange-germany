@@ -1,5 +1,6 @@
 ---
 title: 'What Actually Breaks When a Scrum Team Gets Too Big'
+relatedTrainingIntro: "Knowing what degrades as a team grows is more useful than knowing the number. This course covers the Scrum Master's part in keeping a team the right shape."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

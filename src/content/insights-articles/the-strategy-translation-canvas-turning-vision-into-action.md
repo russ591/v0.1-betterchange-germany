@@ -1,5 +1,6 @@
 ---
 title: 'The Strategy Translation Canvas: A Tool for Closing the Gap Between Vision and Execution'
+relatedTrainingIntro: "The canvas closes the gap between vision and execution; Flight Level 3 is where that gap is designed out of the organisation. These courses cover both."
 urlSlug: "the-strategy-translation-canvas:-a-tool-for-closing-the-gap-between-vision-and-execution"
 contentType: Blog
 primaryCategory: Change Management

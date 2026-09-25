@@ -12,6 +12,7 @@
 # Used the EN source's actual author -- part of a pattern of author
 # mismatches in this batch's draft headers, worth checking upstream.
 title: The Culture That Got You Here Probably Won't Get You There
+relatedTrainingIntro: "Den Chasm zu überqueren ist ein kultureller Wandel, nicht nur ein Marktschritt. Diese Trainings behandeln die Führung dieses Wandels und das Design der Koordination, die eine Organisation danach braucht."
 contentType: Blog
 primaryCategory: Change Management
 categories:

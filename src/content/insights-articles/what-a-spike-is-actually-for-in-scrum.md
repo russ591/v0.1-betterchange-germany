@@ -1,5 +1,6 @@
 ---
 title: 'What a Spike Is Actually For in Scrum'
+relatedTrainingIntro: "A Spike reduces uncertainty; it shouldn't postpone a decision. This course covers the judgement calls like this one that the Scrum Guide leaves open."
 contentType: Resource
 primaryCategory: Scrum
 categories:

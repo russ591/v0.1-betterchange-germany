@@ -9,6 +9,7 @@
 # Management, with Agile also in categories). EN source is first-
 # person; the draft renders it impersonally throughout.
 title: What Went Wrong with Agile? An Honest Reckoning
+relatedTrainingIntro: "Die ehrliche Abrechnung endet mit demselben Schluss: Agile braucht Change Agents und Führungskräfte, die es verstehen. Diese Trainings sind für sie gemacht."
 seriesId: "agile-mishaps"
 seriesOrder: 1
 contentType: Blog

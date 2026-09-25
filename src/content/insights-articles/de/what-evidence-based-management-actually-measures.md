@@ -11,6 +11,7 @@
 # per the standardized convention; author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'What Evidence-Based Management Actually Measures'
+relatedTrainingIntro: "Ob eine Transformation wirkt, ist so sehr eine Führungs- und Veränderungsfrage wie eine Scrum-Frage. Diese Trainings decken alle drei Blickwinkel ab."
 contentType: Resource
 primaryCategory: Agile
 categories:

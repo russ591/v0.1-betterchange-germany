@@ -1,5 +1,6 @@
 ---
 title: 'Why Cross-Functional Teams Are Harder to Build Than to Define'
+relatedTrainingIntro: "Building and keeping a cross-functional team takes facilitation, a framework and leadership that protects it. These courses cover each."
 contentType: Resource
 primaryCategory: Agile
 categories:

@@ -1,5 +1,6 @@
 ---
 title: 'Boogie and Backlogs: The Hilarious Parallels Between Agile and Disco'
+relatedTrainingIntro: "Behind the glitter and the groove, the parallels are real: rhythm, ensemble, resilience. This course covers the serious version of the same ideas."
 urlSlug: "boogie-and-backlogs:-the-hilarious-parallels-between-agile-and-disco"
 contentType: Blog
 primaryCategory: Agile

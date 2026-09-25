@@ -1,5 +1,6 @@
 ---
 title: 'Agile Mishap #2: All frameworks are wrong but mine'
+relatedTrainingIntro: "Every framework is wrong somewhere, which is why understanding the principles beneath them matters more than picking a favourite. These courses start from those principles."
 urlSlug: "agile-mishap-2:-all-frameworks-are-wrong-but-mine"
 seriesId: "agile-mishaps"
 seriesOrder: 3

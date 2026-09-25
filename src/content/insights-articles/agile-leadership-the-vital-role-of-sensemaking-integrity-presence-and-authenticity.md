@@ -1,5 +1,6 @@
 ---
 title: 'Agile Leadership: The Vital Role of Sensemaking, Integrity, Presence, and Authenticity'
+relatedTrainingIntro: "Sensemaking, integrity, presence and authenticity are practices, not personality traits. This course is where leaders work on them deliberately."
 contentType: Blog
 primaryCategory: Leadership
 categories:

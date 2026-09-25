@@ -11,6 +11,7 @@
 # links and closing link to the next post in the series are not in the
 # draft.
 title: 'Agile Mishap #2: All frameworks are wrong but mine'
+relatedTrainingIntro: "Jedes Framework hat irgendwo Unrecht, deshalb zählt das Verständnis der Prinzipien dahinter mehr als die Wahl eines Favoriten. Diese Trainings setzen bei diesen Prinzipien an."
 seriesId: "agile-mishaps"
 seriesOrder: 3
 contentType: Blog

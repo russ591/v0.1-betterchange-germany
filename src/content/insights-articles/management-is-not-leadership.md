@@ -1,5 +1,6 @@
 ---
 title: Management Is Not Leadership, and Confusing the Two Costs Organisations Dearly
+relatedTrainingIntro: "Management and leadership are different activities, and organisations need managers who can do both. This course covers the transition."
 urlSlug: "management-is-not-leadership-and-confusing-the-two-costs-organisations-dearly"
 contentType: Blog
 primaryCategory: Leadership

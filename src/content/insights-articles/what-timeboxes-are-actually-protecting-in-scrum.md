@@ -1,5 +1,6 @@
 ---
 title: 'What Timeboxes Are Actually Protecting in Scrum'
+relatedTrainingIntro: "A timebox consistently exceeded is a signal, not an inconvenience. This course covers reading those signals and acting on them."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

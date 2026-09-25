@@ -1,5 +1,6 @@
 ---
 title: 'Book Review: Thinking, Fast and Slow. Still the Most Useful Book About Decisions You''ll Read'
+relatedTrainingIntro: "Kahneman's two systems explain most planning failures on a Scrum team, from the planning fallacy onward. This course covers the practices that keep System 1 honest."
 urlSlug: "book-review:-thinking,-fast-and-slow.-still-the-most-useful-book-about-decisions-you'll-read"
 contentType: Blog
 primaryCategory: Agile

@@ -13,6 +13,7 @@
 # dropped per the established pattern (matches article 60's precedent
 # in batch 6 for the same CTA).
 title: Perspectives on leadership and power
+relatedTrainingIntro: "Macht fließt durch jede Organisation, ob Führungskräfte sie anerkennen oder nicht. Dieses Training hilft, sie zu sehen und gut zu nutzen."
 contentType: Blog
 primaryCategory: Leadership
 categories:

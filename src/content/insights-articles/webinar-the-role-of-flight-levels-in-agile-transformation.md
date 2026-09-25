@@ -1,5 +1,6 @@
 ---
 title: Flight Levels in Action - Konrad Pogorzala at Agile Boston
+relatedTrainingIntro: "Konrad brings Flight Levels down to earth in the webinar; these courses are where the practice starts, from the introduction to designing a level."
 urlSlug: "flight-levels-in-action-konrad-pogorzala-at-agile-boston"
 contentType: Blog
 primaryCategory: Flight Levels

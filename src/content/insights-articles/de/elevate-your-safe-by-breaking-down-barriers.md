@@ -12,6 +12,7 @@
 # the closing Google Form survey CTA paragraph, the same recurring CTA
 # already confirmed droppable on the batch-03 SAFe-related articles.
 title: Elevate Your SAFe® By Breaking Down Barriers
+relatedTrainingIntro: "Hierarchische Barrieren untergraben SAFe schneller als jede fehlende Praktik. Diese Trainings behandeln das Framework aus den Führungs- und Teamrollen, die diese Barrieren abbauen müssen."
 contentType: Blog
 primaryCategory: Agile
 categories:

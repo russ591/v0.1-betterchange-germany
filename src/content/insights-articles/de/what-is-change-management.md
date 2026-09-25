@@ -12,6 +12,7 @@
 # the EN source's actual author -- part of a pattern of author
 # mismatches in this batch's draft headers, worth checking upstream.
 title: What Is Change Management? A Practical Guide to Navigating Organisational Transitions
+relatedTrainingIntro: "Veränderung scheitert öfter, als sie gelingt, weil die menschliche Seite zu wenig gesteuert wird. Diese Trainings behandeln, wie Wandel geführt und begleitet wird, damit er Bestand hat."
 contentType: Resource
 primaryCategory: Leadership
 categories:

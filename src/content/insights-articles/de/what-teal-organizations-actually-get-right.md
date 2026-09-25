@@ -9,6 +9,7 @@
 # (the source draft only supplied title + body); author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'What Teal Organizations Actually Get Right (and Where the Model Breaks Down)'
+relatedTrainingIntro: "Teal braucht Anpassung, bevor es den Kontakt mit einer echten Organisation übersteht. Diese Trainings vermitteln die Veränderungs-, Führungs- und Facilitation-Fähigkeiten, die diese Anpassung erfordert."
 contentType: Blog
 primaryCategory: Change Management
 categories: []

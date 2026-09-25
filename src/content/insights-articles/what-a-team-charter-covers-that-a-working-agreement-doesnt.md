@@ -1,5 +1,6 @@
 ---
 title: 'What a Team Charter Covers That a Working Agreement Doesn''t'
+relatedTrainingIntro: "A charter answers why the team exists; writing one well is a facilitation job. These courses cover facilitating it and the Scrum context it usually sits in."
 contentType: Blog
 primaryCategory: Agile
 categories: []

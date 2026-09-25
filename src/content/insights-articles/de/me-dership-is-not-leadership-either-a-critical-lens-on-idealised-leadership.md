@@ -11,6 +11,7 @@
 # two posts in the series and the "Critical Perspectives on Leadership"
 # Amazon citation link are not in the draft.
 title: Me-dership is not Leadership Either - A Critical Lens on Idealised Leadership
+relatedTrainingIntro: "Führung, die der Führungskraft dient, ist keine Führung. Diese Trainings bauen die andere Art auf, mit dem ehrlichen Feedback, das idealisierte Führung selten bekommt."
 contentType: Blog
 primaryCategory: Leadership
 categories:

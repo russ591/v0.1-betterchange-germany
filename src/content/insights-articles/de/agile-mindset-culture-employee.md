@@ -7,6 +7,7 @@
 # contentType/primaryCategory/categories stay English loanwords per the
 # site-wide category-label rule.
 title: 'When Employees Resist Agile: The Reasons Are More Rational Than You Think'
+relatedTrainingIntro: "Widerstand ist eine rationale Antwort auf Veränderung, die Menschen übergestülpt statt mit ihnen gestaltet wird. Diese Trainings zeigen, wie eine Transformation gelingt, an der Menschen teilhaben können."
 contentType: Blog
 primaryCategory: Agile
 categories:

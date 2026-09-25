@@ -1,5 +1,6 @@
 ---
 title: 'AI Design: The Principles That Shape Every System You Interact With'
+relatedTrainingIntro: "The design choices behind an AI system decide how far it can be trusted. These courses cover using AI in product and team roles with that in mind."
 urlSlug: "ai-design:-the-principles-that-shape-every-system-you-interact-with"
 contentType: Resource
 primaryCategory: AI

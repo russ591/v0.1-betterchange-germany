@@ -11,6 +11,7 @@
 # the EN source article per the standing rule. This completes all 52
 # German translations for the SEO-rewrite project (sub-batches 1-4).
 title: 'Why Most Impediments Never Get Reported'
+relatedTrainingIntro: "Hindernisse zu entdecken zählt so viel wie sie zu lösen. Dieses Training behandelt die Entdeckungsmechanismen der Scrum Master jenseits des Daily Scrum."
 contentType: Resource
 primaryCategory: Scrum
 categories:

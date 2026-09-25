@@ -1,5 +1,6 @@
 ---
 title: The Start-Up That Said Agile Didn't Work, and Then Changed Its Mind
+relatedTrainingIntro: "Kanban by stealth worked because it focused on the organisation's real problems. These courses cover designing that kind of coordination deliberately, and leading it."
 urlSlug: "the-start-up-that-said-agile-didn't-work-and-then-changed-its-mind"
 contentType: Blog
 primaryCategory: Flight Levels

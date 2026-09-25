@@ -9,6 +9,7 @@
 # (the source draft only supplied title + body); author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'Why Group Decisions Often Go Wrong (and How to Fix Them)'
+relatedTrainingIntro: "Die vier strukturellen Korrekturen sind Facilitation-Praktiken, und sie anzuwenden ist eine Führungsentscheidung. Diese Trainings behandeln beides."
 contentType: Blog
 primaryCategory: Leadership
 categories: []

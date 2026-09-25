@@ -1,5 +1,6 @@
 ---
 title: The Hidden Ways Leaders Shape the Teams Around Them
+relatedTrainingIntro: "What happens between a leader and a team, regardless of intent, is where this course does its work."
 urlSlug: "the-hidden-ways-leaders-shape-the-teams-around-them"
 contentType: Blog
 primaryCategory: Change Management

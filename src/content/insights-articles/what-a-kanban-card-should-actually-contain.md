@@ -1,5 +1,6 @@
 ---
 title: 'What a Kanban Card Should Actually Contain'
+relatedTrainingIntro: "What goes on the card decides what the board can tell you. This course covers designing the whole Kanban system, cards included."
 contentType: Resource
 primaryCategory: Kanban
 categories:

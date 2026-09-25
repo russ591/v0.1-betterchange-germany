@@ -11,6 +11,7 @@
 # per the standardized convention; author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'Building Consensus Without Just Averaging Opinions'
+relatedTrainingIntro: "Konsens, der mehr ist als gemittelte Meinung, braucht Struktur und jemanden, der sie hält. Diese Trainings vermitteln die Facilitation und die Führungsseite davon."
 contentType: Resource
 primaryCategory: Leadership
 categories:

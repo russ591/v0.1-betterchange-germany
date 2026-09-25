@@ -1,5 +1,6 @@
 ---
 title: State of Agile - A Brutally Honest Conversation
+relatedTrainingIntro: "Agile isn't dead, but it needs practitioners who can tell the principles from the hype. These courses are for the people doing the fixing."
 urlSlug: "state-of-agile---a-brutally-honest-conversation"
 contentType: Blog
 primaryCategory: Change Management

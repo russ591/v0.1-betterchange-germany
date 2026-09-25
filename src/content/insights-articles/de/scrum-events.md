@@ -8,6 +8,7 @@
 # the EN source per the standing rule. Clean match, no CTA/link issues
 # to flag.
 title: 'Scrum''s Five Events: What They Are, What They''re For, and How They Connect'
+relatedTrainingIntro: "Die fünf Events sind ein System, keine fünf Meetings. Dieses Training zeigt, wie sie zusammenhängen und wozu jedes einzelne da ist."
 contentType: Resource
 primaryCategory: Scrum
 categories:

@@ -1,5 +1,6 @@
 ---
 title: 'What Teal Organizations Actually Get Right (and Where the Model Breaks Down)'
+relatedTrainingIntro: "Teal needs adaptation before it survives contact with a real organisation. These courses cover the change, leadership and facilitation skills that adaptation takes."
 contentType: Blog
 primaryCategory: Change Management
 categories: []

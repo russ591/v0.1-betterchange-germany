@@ -7,6 +7,7 @@
 # contentType/primaryCategory/categories stay English loanwords per the
 # site-wide category-label rule.
 title: 'The Unseen Potential of Scrum Masters: Future Leaders in a Time of Uncertainty'
+relatedTrainingIntro: "Scrum Master haben die Eigenschaften, die künftige Führungskräfte brauchen, sofern die Rolle über Facilitation hinaus entwickelt wird. Diese Trainings führen dorthin."
 contentType: Blog
 primaryCategory: Leadership
 categories:

@@ -11,6 +11,7 @@
 # per the standardized convention; author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'What a Product Goal Actually Does That a Vision Doesn''t'
+relatedTrainingIntro: "Product Goal, Produktvision, Sprint-Ziel: Die Hierarchie klar zu halten gehört zu beiden Accountabilities. Diese Trainings zeigen, wie jede sie nutzt."
 contentType: Resource
 primaryCategory: Scrum
 categories:

@@ -1,5 +1,6 @@
 ---
 title: 'Six Ways Scrum Masters Become More Effective'
+relatedTrainingIntro: "The six habits separate Scrum Masters doing the role from Scrum Masters effective in it. These courses build them, from the foundations to the advanced track."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

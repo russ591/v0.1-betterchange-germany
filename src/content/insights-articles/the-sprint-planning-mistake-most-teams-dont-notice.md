@@ -1,5 +1,6 @@
 ---
 title: 'The Sprint Planning Mistake Most Teams Don''t Notice'
+relatedTrainingIntro: "Agreeing on the why, treating capacity as a conversation, planning the how: this course covers the Sprint Planning that goes beyond mechanics."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

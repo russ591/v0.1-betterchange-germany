@@ -1,5 +1,6 @@
 ---
 title: What the AI Adoption Events in Madrid Didn't Talk About
+relatedTrainingIntro: "The hardest part of AI adoption is the redistribution of power and the quiet resistance it causes. These courses cover leading that change, and using AI well in the product role."
 urlSlug: "what-the-ai-adoption-events-in-madrid-didn't-talk-about"
 contentType: Blog
 primaryCategory: Change Management

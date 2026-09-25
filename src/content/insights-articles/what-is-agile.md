@@ -1,5 +1,6 @@
 ---
 title: What Is Agile? Beyond the Buzzword
+relatedTrainingIntro: "Beyond the buzzword, Agile is a philosophy that needs a practice to live in. This course is the most common place to start."
 urlSlug: "what-is-agile-beyond-the-buzzword"
 contentType: Resource
 primaryCategory: Agile

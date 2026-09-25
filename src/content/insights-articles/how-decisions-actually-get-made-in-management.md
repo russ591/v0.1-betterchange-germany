@@ -1,5 +1,6 @@
 ---
 title: 'How Decisions Actually Get Made in Management'
+relatedTrainingIntro: "Real decisions are made under time pressure with incomplete information. These courses cover leading under those conditions and facilitating the group decisions that matter."
 contentType: Blog
 primaryCategory: Leadership
 categories: []

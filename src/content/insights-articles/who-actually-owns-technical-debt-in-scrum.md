@@ -1,5 +1,6 @@
 ---
 title: 'Who Actually Owns Technical Debt in Scrum?'
+relatedTrainingIntro: "Technical debt gets neglected because no single accountability owns it. These courses cover how the Product Owner and the Scrum Master make it shared."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

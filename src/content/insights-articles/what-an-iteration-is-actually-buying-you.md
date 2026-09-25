@@ -1,5 +1,6 @@
 ---
 title: 'What an Iteration Is Actually Buying You'
+relatedTrainingIntro: "Iterations buy forced checkpoints and scope discipline. This course covers running Sprints so they actually deliver that."
 contentType: Resource
 primaryCategory: Agile
 categories:

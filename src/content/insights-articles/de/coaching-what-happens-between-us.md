@@ -7,6 +7,7 @@
 # contentType/primaryCategory/categories stay English loanwords per the
 # site-wide category-label rule.
 title: Why Team Performance Is Mostly About the Space Between People
+relatedTrainingIntro: "Wenn Leistung im Raum zwischen Menschen entsteht, sind Coaching und Führung die Handwerke, die daran arbeiten. Diese Trainings entwickeln beides."
 contentType: Blog
 primaryCategory: Coaching
 categories:

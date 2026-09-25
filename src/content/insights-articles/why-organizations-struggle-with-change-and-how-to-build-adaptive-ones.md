@@ -1,5 +1,6 @@
 ---
 title: Why Organizations Struggle with Change and How to Build Adaptive Ones
+relatedTrainingIntro: "Complex systems, empirical learning, leadership as the engine: the webinar's themes are what these courses teach in depth."
 urlSlug: "why-organizations-struggle-with-change-and-how-to-build-adaptive-ones"
 contentType: Blog
 primaryCategory: Change Management

@@ -9,6 +9,7 @@
 # (the source draft only supplied title + body); author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'What a Team Working Agreement Is Actually For'
+relatedTrainingIntro: "Eine Working Agreement mit dem Team statt für das Team zu bauen ist eine Facilitation-Fähigkeit. Diese Trainings vermitteln sie, zusammen mit der Scrum-Praxis, die sie stützt."
 contentType: Blog
 primaryCategory: Agile
 categories: []

@@ -1,5 +1,6 @@
 ---
 title: 'What to Actually Do When Unplanned Work Hits Your Sprint'
+relatedTrainingIntro: "Unplanned work is routine for many teams; handling it without hollowing out Sprint Planning is the skill. This course covers it."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

@@ -10,6 +10,7 @@
 # legacy betterchange-consulting.com URLs), same reasoning as the other
 # batch-02 articles with course-programme links.
 title: Discover How a Rapid Growing Business Regained Focus
+relatedTrainingIntro: "Die Workshops und Visualisierungen, die die schwarze Woche beendet haben, sind lernbar. Diese Trainings behandeln das Flight Levels Design dahinter und die Führung des Wandels drumherum."
 contentType: Blog
 primaryCategory: Flight Levels
 categories:

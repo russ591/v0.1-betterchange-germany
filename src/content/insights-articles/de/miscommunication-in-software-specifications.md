@@ -13,6 +13,7 @@
 # EN source's actual author -- part of a pattern of author mismatches
 # in this batch's draft headers, worth checking upstream.
 title: Why Developers Build the Wrong Thing, and How User Stories Help
+relatedTrainingIntro: "User Stories halten das Gespräch darüber lebendig, was Nutzer:innen brauchen, statt es zu ersetzen. Dieses Training zeigt, wie sie geschrieben und verfeinert werden, damit das Richtige gebaut wird."
 contentType: Blog
 primaryCategory: Produktentwicklung
 categories:

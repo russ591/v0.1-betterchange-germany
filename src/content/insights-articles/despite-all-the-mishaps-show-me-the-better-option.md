@@ -1,5 +1,6 @@
 ---
 title: 'Despite All the Mishaps: Show Me the Better Option!'
+relatedTrainingIntro: "The better option is not a new framework but agile done with judgement. This course is where that judgement is built, with practitioners who have seen the mishaps first-hand."
 urlSlug: "despite-all-the-mishaps:-show-me-the-better-option!"
 seriesId: "agile-mishaps"
 seriesOrder: 7

@@ -11,6 +11,7 @@
 # per the standardized convention; author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'Who Is Actually Accountable for a Scrum Team''s Performance?'
+relatedTrainingIntro: "Leistung ist in Scrum bewusst verteilt. Diese Trainings behandeln, was Scrum Master und Product Owner jeweils dazu beitragen."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

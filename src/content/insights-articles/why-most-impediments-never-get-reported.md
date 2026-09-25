@@ -1,5 +1,6 @@
 ---
 title: 'Why Most Impediments Never Get Reported'
+relatedTrainingIntro: "Discovering impediments matters as much as solving them. This course covers the Scrum Master's discovery mechanisms beyond the Daily Scrum."
 contentType: Resource
 primaryCategory: Scrum
 categories:

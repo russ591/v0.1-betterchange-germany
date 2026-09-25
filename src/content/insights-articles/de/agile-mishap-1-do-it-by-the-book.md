@@ -9,6 +9,7 @@
 # renders it impersonally throughout. EN source's inline citation links
 # and closing "subscribe to our newsletter" CTA are not in the draft.
 title: 'Agile Mishap #1: Do it by the book!'
+relatedTrainingIntro: "Nach Lehrbuch vorzugehen ist der erste Fehlgriff, weil kein Buch die eigene Organisation kennt. Diese Trainings zeigen, wie Agilität an den Kontext angepasst wird und nicht umgekehrt."
 seriesId: "agile-mishaps"
 seriesOrder: 2
 contentType: Blog

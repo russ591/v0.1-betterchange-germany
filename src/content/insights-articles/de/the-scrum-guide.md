@@ -10,6 +10,7 @@
 # restored as hrefs on the already-unchanged German terms in the draft
 # (the Scrum Values link points at article 68 of this same batch).
 title: The Scrum Guide
+relatedTrainingIntro: "Der Scrum Guide ist bewusst kurz, die Praxis füllt den Rest. Dieses Training behandelt, was der Guide dem Urteilsvermögen überlässt."
 contentType: Resource
 primaryCategory: Agile
 categories:

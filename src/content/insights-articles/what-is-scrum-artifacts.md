@@ -1,5 +1,6 @@
 ---
 title: 'Scrum''s Three Artefacts: What They Are and Why They Matter'
+relatedTrainingIntro: "Each artefact is easy to name and easy to misuse. This course covers using the Product Backlog, Sprint Backlog and Increment for the transparency they exist to create."
 urlSlug: "scrum's-three-artefacts:-what-they-are-and-why-they-matter"
 contentType: Resource
 primaryCategory: Scrum

@@ -1,5 +1,6 @@
 ---
 title: 'How Agile Project Management Actually Differs From Traditional'
+relatedTrainingIntro: "Different assumptions about planning and requirements change the project manager's role itself. These courses cover the Scrum foundation and the leadership stance that goes with it."
 contentType: Resource
 primaryCategory: Agile
 categories:

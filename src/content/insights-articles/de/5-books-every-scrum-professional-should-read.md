@@ -11,6 +11,7 @@
 # themselves (already-unchanged text, single clean named references),
 # consistent with the book-link precedent from earlier batches.
 title: 5 books every scrum professional should read
+relatedTrainingIntro: "Bücher bauen Verständnis auf, ein Raum voller Praktiker:innen baut Praxis auf. In diesem Training wird aus der Leseliste gelebte Gewohnheit."
 contentType: Resource
 primaryCategory: Agile
 categories:

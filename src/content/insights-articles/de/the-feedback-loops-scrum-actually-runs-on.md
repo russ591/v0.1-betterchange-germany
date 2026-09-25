@@ -11,6 +11,7 @@
 # the EN source article per the standing rule. This completes all 52
 # German translations for the SEO-rewrite project (sub-batches 1-4).
 title: 'The Feedback Loops Scrum Actually Runs On'
+relatedTrainingIntro: "Schwache Feedbackschleifen verursachen konkrete, erkennbare Fehler. Dieses Training zeigt, wie jede Schleife, vom Daily Scrum bis zum Refinement, ihre Aufgabe erfüllt."
 contentType: Resource
 primaryCategory: Scrum
 categories:

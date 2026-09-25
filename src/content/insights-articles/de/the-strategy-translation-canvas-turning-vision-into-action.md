@@ -10,6 +10,7 @@
 # per the batch-03 cover note -- expect more divergence from a literal
 # rendering than earlier batches; meaning preserved.
 title: 'The Strategy Translation Canvas: A Tool for Closing the Gap Between Vision and Execution'
+relatedTrainingIntro: "Der Canvas schließt die Lücke zwischen Vision und Umsetzung; auf Flight Level 3 wird diese Lücke aus der Organisation herausdesignt. Diese Trainings behandeln beides."
 contentType: Blog
 primaryCategory: Change Management
 categories:

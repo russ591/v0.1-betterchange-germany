@@ -13,6 +13,7 @@
 # confirmed by Russ to match the current EN source, so no fix needed
 # here.
 title: 'The Self-Management Mirage: Why Teams Still Struggle'
+relatedTrainingIntro: "Selbstverwaltete Teams brauchen Struktur aus dem Team und Erlaubnis aus der Führung. Diese Trainings behandeln beide Seiten."
 contentType: Blog
 primaryCategory: Agile
 categories:

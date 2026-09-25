@@ -1,5 +1,6 @@
 ---
 title: 'What Happens When You Invest in Your Leadership: A Conversation with Maja Lovrenčić'
+relatedTrainingIntro: "From firefighting to designing is the shift Maja describes; these courses are where leaders and coaches make it."
 urlSlug: "what-happens-when-you-invest-in-your-leadership-a-conversation-with-maja-lovrencic"
 contentType: Blog
 primaryCategory: Change Management

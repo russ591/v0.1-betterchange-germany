@@ -9,6 +9,7 @@
 # (the source draft only supplied title + body); author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'What Scrum Actually Says About Estimates'
+relatedTrainingIntro: "Story Points sind optional, das Gespräch über Prognosen nicht. Dieses Training behandelt Schätzung als Werkzeug statt als Regel."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

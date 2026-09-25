@@ -8,6 +8,7 @@
 # the EN source per the standing rule. Clean match, no links in the EN
 # source and no CTA/link issues to flag.
 title: What are Acceptance Criteria
+relatedTrainingIntro: "Akzeptanzkriterien sind der Ort, an dem sich Product Owner und Developer vor der Arbeit auf fertig einigen. Diese Trainings behandeln, wie sie geschrieben und genutzt werden."
 contentType: Resource
 primaryCategory: Scrum
 categories:

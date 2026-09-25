@@ -9,6 +9,7 @@
 # (the source draft only supplied title + body); author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'What Good Backlog Refinement Actually Looks Like'
+relatedTrainingIntro: "Refinement ist die Aktivität, deren Fehlen zwei Sprints später schmerzt. Dieses Training zeigt, wie es kontinuierlich, gemeinsam und die Zeit wert wird."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

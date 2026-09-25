@@ -1,5 +1,6 @@
 ---
 title: 'The Sprint Review: Not a Presentation, a Conversation'
+relatedTrainingIntro: "A Sprint Review as a conversation rather than a presentation depends on the Product Owner and the Scrum Master both. These courses cover each side."
 urlSlug: "the-sprint-review:-not-a-presentation,-a-conversation"
 contentType: Resource
 primaryCategory: Scrum

@@ -9,6 +9,7 @@
 # with heavy EN direct address; rewritten impersonally in German per
 # the batch's cover note.
 title: SAFe Won't Save You If Your Leaders Aren't Actually Agile
+relatedTrainingIntro: "Nicht das Framework ist die Variable, sondern das Führungsverhalten. Diese Trainings behandeln, was agile Führung verlangt und was SAFe von seinen Sponsor:innen braucht."
 contentType: Blog
 primaryCategory: Leadership
 categories:

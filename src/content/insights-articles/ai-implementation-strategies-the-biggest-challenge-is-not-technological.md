@@ -1,5 +1,6 @@
 ---
 title: Your Biggest AI Challenge Isn't Technical. It's Cultural.
+relatedTrainingIntro: "If the AI challenge is cultural, it needs the tools of organisational change, not another pilot. These courses cover strategy work, coordination across levels and leading the change itself."
 urlSlug: "your-biggest-ai-challenge-isn't-technical.-it's-cultural."
 contentType: Blog
 primaryCategory: Change Management

@@ -9,6 +9,7 @@
 # and empty <br> spacer paragraphs (WP-import artifacts) dropped, using
 # plain <p>/<h2> tags matching the rest of the DE corpus.
 title: The Start-Up That Said Agile Didn't Work, and Then Changed Its Mind
+relatedTrainingIntro: "Kanban im Verborgenen hat funktioniert, weil es sich auf die echten Probleme der Organisation konzentriert hat. Diese Trainings zeigen, wie diese Art Koordination bewusst gestaltet und geführt wird."
 contentType: Blog
 primaryCategory: Flight Levels
 categories:

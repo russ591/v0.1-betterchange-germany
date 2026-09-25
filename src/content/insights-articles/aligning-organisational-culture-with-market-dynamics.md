@@ -1,5 +1,6 @@
 ---
 title: The Culture That Got You Here Probably Won't Get You There
+relatedTrainingIntro: "Crossing the chasm is a cultural shift as much as a market one. These courses cover leading that shift and designing the coordination an organisation needs on the other side."
 urlSlug: "the-culture-that-got-you-here-probably-won't-get-you-there"
 contentType: Blog
 primaryCategory: Change Management

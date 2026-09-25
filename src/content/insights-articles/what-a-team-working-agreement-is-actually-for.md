@@ -1,5 +1,6 @@
 ---
 title: 'What a Team Working Agreement Is Actually For'
+relatedTrainingIntro: "A working agreement built with the team, not for it, is a facilitation skill. These courses teach it, alongside the Scrum practice it supports."
 contentType: Blog
 primaryCategory: Agile
 categories: []

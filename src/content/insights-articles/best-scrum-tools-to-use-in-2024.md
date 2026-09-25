@@ -1,5 +1,6 @@
 ---
 title: Best Scrum Tools to use in 2024
+relatedTrainingIntro: "Tools support Scrum; they don't create it. This course covers the practice the tools are meant to serve, so the board reflects real work rather than the other way round."
 contentType: Resource
 primaryCategory: Scrum
 categories:

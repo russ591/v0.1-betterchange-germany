@@ -1,5 +1,6 @@
 ---
 title: 'How Scrum Manages Risk Without a Risk Register'
+relatedTrainingIntro: "Scrum manages risk through structure rather than a register, and only when the structure is used as intended. This course covers the events and artefacts that make it work."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

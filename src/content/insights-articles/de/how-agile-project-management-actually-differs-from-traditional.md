@@ -11,6 +11,7 @@
 # the EN source article per the standing rule. This completes all 52
 # German translations for the SEO-rewrite project (sub-batches 1-4).
 title: 'How Agile Project Management Actually Differs From Traditional'
+relatedTrainingIntro: "Andere Annahmen über Planung und Anforderungen verändern die Rolle des Projektmanagements selbst. Diese Trainings behandeln die Scrum-Grundlagen und die dazugehörige Führungshaltung."
 contentType: Resource
 primaryCategory: Agile
 categories:

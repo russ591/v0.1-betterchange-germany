@@ -12,6 +12,7 @@
 # draft, consistent with the CTA/link drops already confirmed fine on
 # earlier batches' similar articles.
 title: 'Agile Mishap #4: Incompetent Coaches and Trainers'
+relatedTrainingIntro: "Kompetentes Coaching ist eine Disziplin mit eigenem Wissensbestand, keine Berufsbezeichnung, die sich jede:r geben kann. In diesem Training wird diese Disziplin gelehrt und geübt."
 seriesId: "agile-mishaps"
 seriesOrder: 5
 contentType: Blog

@@ -1,5 +1,6 @@
 ---
 title: 5 books every scrum professional should read
+relatedTrainingIntro: "Books build the understanding; a room full of practitioners builds the practice. This course is where the reading list turns into working habits."
 contentType: Resource
 primaryCategory: Agile
 categories:

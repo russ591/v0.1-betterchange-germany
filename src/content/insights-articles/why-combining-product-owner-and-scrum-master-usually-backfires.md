@@ -1,5 +1,6 @@
 ---
 title: 'Why Combining Product Owner and Scrum Master Usually Backfires'
+relatedTrainingIntro: "Two accountabilities in one person creates a structural conflict. These courses show what each accountability needs, and why they are best held apart."
 contentType: Resource
 primaryCategory: Scrum
 categories:

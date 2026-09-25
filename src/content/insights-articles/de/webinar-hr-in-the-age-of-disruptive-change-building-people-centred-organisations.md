@@ -8,6 +8,7 @@
 # site-wide category-label rule. Embedded iframe title kept in English,
 # matching the convention from earlier batches.
 title: What HR Looks Like When It's Actually Agile
+relatedTrainingIntro: "Agile HR ist ein organisationaler Wandel mit HR im Zentrum statt am Ende. Diese Trainings behandeln die Führung dieses Wandels."
 contentType: Blog
 primaryCategory: Change Management
 categories:

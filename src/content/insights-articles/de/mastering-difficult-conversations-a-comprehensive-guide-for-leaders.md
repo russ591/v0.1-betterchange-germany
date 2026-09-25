@@ -10,6 +10,7 @@
 # batch-03 cover note, so this file diverges more from a literal
 # rendering than earlier batches -- meaning preserved.
 title: 'Difficult Conversations: A Leader''s Practical Guide to Saying the Hard Thing Well'
+relatedTrainingIntro: "Das Schwierige gut auszusprechen ist Vorbereitung, Klarheit und Gelassenheit, nicht Mut. In diesem Training üben Führungskräfte es mit Feedback."
 contentType: Blog
 primaryCategory: Leadership
 categories:

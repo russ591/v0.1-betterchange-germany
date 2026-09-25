@@ -1,5 +1,6 @@
 ---
 title: What is Organisational Culture?
+relatedTrainingIntro: "Culture shapes decisions and behaviour whether it is managed or not. These courses cover leading it, changing it and designing the strategy and coordination it feeds."
 urlSlug: "what-is-organisational-culture"
 contentType: Resource
 primaryCategory: Leadership

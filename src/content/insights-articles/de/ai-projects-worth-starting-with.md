@@ -10,6 +10,7 @@
 # directly in this batch's draft (unlike sub-batch 1); author/date/
 # contentType pulled from the EN source article per the standing rule.
 title: 'AI Projects Worth Starting With'
+relatedTrainingIntro: "Das erste KI-Projekt richtig zu wählen ist zuerst eine Frage der Fähigkeiten, dann eine der Technologie. Diese Trainings bauen diese Fähigkeiten in Produkt-, Team- und Organisationsrollen auf."
 contentType: Resource
 primaryCategory: KI
 categories: []

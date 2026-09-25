@@ -7,6 +7,7 @@
 # contentType/primaryCategory/categories stay English loanwords per the
 # site-wide category-label rule.
 title: A Modest Manifesto for People Who Actually Change Things
+relatedTrainingIntro: "Leidenschaftliche Change Agents statt Rollendefinitionen, Coaching statt Anweisung, Beteiligung statt PowerPoint-Beratung. Dieses Training ist für Menschen gemacht, die Veränderung so angehen wollen."
 contentType: Blog
 primaryCategory: Coaching
 categories:

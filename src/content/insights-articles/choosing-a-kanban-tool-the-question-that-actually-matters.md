@@ -1,5 +1,6 @@
 ---
 title: 'Choosing a Kanban Tool: The Question That Actually Matters'
+relatedTrainingIntro: "The right question is whether a board shows how work actually flows. These courses teach how to design that system first, so any tool has something real to represent."
 contentType: Blog
 primaryCategory: Kanban
 categories: []

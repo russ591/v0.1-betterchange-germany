@@ -1,5 +1,6 @@
 ---
 title: Applying Agile Thinking to Your Own Career (It Works Better Than You'd Think)
+relatedTrainingIntro: "Agile thinking works on a career for the same reasons it works on a product. These courses cover the practices and the leadership stance behind it."
 urlSlug: "applying-agile-thinking-to-your-own-career-(it-works-better-than-you'd-think)"
 contentType: Blog
 primaryCategory: Agile

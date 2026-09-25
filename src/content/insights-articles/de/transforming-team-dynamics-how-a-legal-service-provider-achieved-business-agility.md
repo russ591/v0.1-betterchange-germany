@@ -7,6 +7,7 @@
 # contentType/primaryCategory/categories stay English loanwords per the
 # site-wide category-label rule.
 title: 'From 50 to 350 People and Everything Started Breaking: A Flight Levels Case Study'
+relatedTrainingIntro: "Flight Level 2 hat die Koordination bei 350 Menschen repariert. Diese Trainings behandeln das Modell und das Design eines eigenen Flight Level 2 Systems."
 contentType: Blog
 primaryCategory: Flight Levels
 categories:

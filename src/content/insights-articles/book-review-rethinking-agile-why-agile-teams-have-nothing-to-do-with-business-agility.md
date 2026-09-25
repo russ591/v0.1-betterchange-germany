@@ -1,5 +1,6 @@
 ---
 title: 'Book Review: Rethinking Agile by Klaus Leopold'
+relatedTrainingIntro: "Leopold's argument is that business agility is a different problem from team agility. These courses are where that problem is worked on, starting with the Flight Levels Introduction."
 urlSlug: "book-review:-rethinking-agile-by-klaus-leopold"
 contentType: Blog
 primaryCategory: Flight Levels

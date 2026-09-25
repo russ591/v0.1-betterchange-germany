@@ -10,6 +10,7 @@
 # directly in this batch's draft (unlike sub-batch 1); author/date/
 # contentType pulled from the EN source article per the standing rule.
 title: 'Mapping the Stakeholders Scrum Doesn''t Formally Define'
+relatedTrainingIntro: "Stakeholder-Mapping gehört zu den Dingen, die Scrum dem Team überlässt. Dieses Training zeigt, wie Scrum Master das Team dabei unterstützen, und den Rest dessen, was das Framework offen lässt."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

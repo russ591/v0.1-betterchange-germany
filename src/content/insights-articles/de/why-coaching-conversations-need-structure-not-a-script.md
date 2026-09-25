@@ -11,6 +11,7 @@
 # the EN source article per the standing rule. This completes all 52
 # German translations for the SEO-rewrite project (sub-batches 1-4).
 title: 'Why Coaching Conversations Need Structure, Not a Script'
+relatedTrainingIntro: "Locker gehaltene Struktur verhindert, dass ein Coaching-Gespräch abdriftet. Dieses Training behandelt Modelle wie GROW und den Moment, sie loszulassen."
 contentType: Blog
 primaryCategory: Coaching
 categories:

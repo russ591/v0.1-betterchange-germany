@@ -1,5 +1,6 @@
 ---
 title: Me-dership is not Leadership Either - A Critical Lens on Idealised Leadership
+relatedTrainingIntro: "Leadership that serves the leader is not leadership. These courses build the other kind, with the honest feedback that idealised leadership rarely gets."
 urlSlug: "me-dership-is-not-leadership-either---a-critical-lens-on-idealised-leadership"
 contentType: Blog
 primaryCategory: Leadership
