@@ -20,8 +20,89 @@ type Course = CollectionEntry<"training-courses">;
 //
 // Runs on the English article only; the German article page reuses its
 // English original's picks and shows the German course pages (see
-// localizeCourses). Same calibration as the Python prototype the mapping
+// relatedCourses). Same calibration as the Python prototype the mapping
 // was reviewed against -- keep the two in step if thresholds change.
+//
+// Alongside the picks, relatedTraining() names the *signal* that drove
+// them (scrum-master, product-owner, retrospectives, strategy, ...). The
+// article page turns that into the card's connective sentence via the
+// insights.trainingIntro.<signal> strings, unless the article's own
+// frontmatter sets relatedTrainingIntro.
+
+export type TrainingSignal =
+  | "scrum-master"
+  | "product-owner"
+  | "scrum"
+  | "ai-role"
+  | "ai-adoption"
+  | "retrospectives"
+  | "facilitation"
+  | "team-dynamics"
+  | "coaching"
+  | "transformation"
+  | "leadership"
+  | "safe"
+  | "flight-levels"
+  | "strategy"
+  | "kanban"
+  | "generic";
+
+export interface RelatedTraining {
+  ids: string[];
+  signal: TrainingSignal;
+}
+
+// The Flight Levels Introduction is what people take *before* an actual
+// Flight Levels course, so it never stands as the only FL pick: it gets
+// a companion, Flight Level 3 when the article is about strategy, Flight
+// Level 2 otherwise, slotted right after it. Only exception: FLIN is
+// already accompanied by another FL course. This is the one place the
+// list can grow to four: when FLIN is the third pick, dropping another
+// course to make room would lose a more relevant one.
+const FL_COURSES = new Set(["flin", "fl2d", "fl3d", "flsa"]);
+function withFlCompanion(ids: string[], strategy: number): string[] {
+  const i = ids.indexOf("flin");
+  if (i === -1 || ids.some((id) => id !== "flin" && FL_COURSES.has(id))) return ids;
+  const companion = strategy >= 2 ? "fl3d" : "fl2d";
+  return [...ids.slice(0, i + 1), companion, ...ids.slice(i + 1)];
+}
+
+// Which sentence fits the keyword-tier picks: the top course decides the
+// family, a few counters decide the angle within it.
+function signalFor(top: string, k: { sm: number; titleSm: number; retro: number; titleRetro: number }): TrainingSignal {
+  switch (top) {
+    case "csm":
+    case "a-csm":
+    case "csp-sm":
+      return k.sm >= 3 || k.titleSm ? "scrum-master" : "scrum";
+    case "cspo":
+    case "a-cspo":
+      return "product-owner";
+    case "ai-for-scrum-masters":
+    case "ai-for-product-owners":
+      return "ai-role";
+    case "icp-atf":
+      return k.retro >= 8 || k.titleRetro ? "retrospectives" : "facilitation";
+    case "icp-acc":
+      return "coaching";
+    case "icp-cat":
+      return "transformation";
+    case "cal-1":
+    case "cal-2":
+      return "leadership";
+    case "leading-safe":
+    case "safe-for-teams":
+      return "safe";
+    case "fl3d":
+      return "strategy";
+    case "flin":
+    case "fl2d":
+    case "flsa":
+      return "flight-levels";
+    default:
+      return "kanban";
+  }
+}
 
 const NEVER_MATCH = new Set([
   "protecting-the-hedgehogs",
@@ -41,7 +122,11 @@ const CATEGORY_TO_COURSE_CATEGORY: Record<string, string> = {
 const count = (re: RegExp, text: string): number => text.match(re)?.length ?? 0;
 
 export function relatedCourseIds(article: Article): string[] {
-  if (NEVER_MATCH.has(article.id)) return [];
+  return relatedTraining(article).ids;
+}
+
+export function relatedTraining(article: Article): RelatedTraining {
+  if (NEVER_MATCH.has(article.id)) return { ids: [], signal: "generic" };
   const d = article.data;
   const title = d.title;
   const text = [d.title, d.excerpt, d.metaTitle ?? "", d.metaDescription ?? "", d.bodyHtml.replace(/<[^>]+>/g, " ")].join(" ");
@@ -179,42 +264,46 @@ export function relatedCourseIds(article: Article): string[] {
     .sort((a, b) => b[1] - a[1])
     .slice(0, 3)
     .map(([id]) => id);
-  if (picks.length > 0) return picks;
+  if (picks.length > 0) return { ids: withFlCompanion(picks, k.strategy), signal: signalFor(picks[0], k) };
 
   // --- Fallback tier -----------------------------------------------------
+  // The first push also fixes the signal: whatever tied the article to a
+  // course family first is what the sentence should talk about.
   const out: string[] = [];
-  const push = (...ids: string[]) => {
+  let signal: TrainingSignal | undefined;
+  const push = (why: TrainingSignal, ...ids: string[]) => {
     for (const id of ids) if (!out.includes(id) && out.length < 3) out.push(id);
+    signal ??= why;
   };
   const orgChange = pc === "Change Management" || k.transf >= 2 || k.change >= 2 || k.org >= 8;
-  if (k.strategy >= 4) push("fl3d", "flin");
-  if (k.teamdyn >= 6) push("icp-atf");
-  if (cats.includes("Lean")) push("kmp1");
-  const byPrimary: Record<string, string[]> = {
-    Coaching: ["icp-acc"],
-    Kanban: ["kmp1"],
-    "Flight Levels": ["flin"],
-    Scrum: ["csm"],
-    "Product Development": ["cspo"],
-    Leadership: ["cal-1"],
-    Agile: ["csm"],
-    "Change Management": ["icp-cat", "cal-1"],
-    AI: ["ai-for-product-owners", "ai-for-scrum-masters"],
+  if (k.strategy >= 4) push("strategy", "fl3d", "flin");
+  if (k.teamdyn >= 6) push("team-dynamics", "icp-atf");
+  if (cats.includes("Lean")) push("kanban", "kmp1");
+  const byPrimary: Record<string, [TrainingSignal, ...string[]]> = {
+    Coaching: ["coaching", "icp-acc"],
+    Kanban: ["kanban", "kmp1"],
+    "Flight Levels": ["flight-levels", "flin"],
+    Scrum: ["scrum", "csm"],
+    "Product Development": ["product-owner", "cspo"],
+    Leadership: ["leadership", "cal-1"],
+    Agile: ["generic", "csm"],
+    "Change Management": ["transformation", "icp-cat", "cal-1"],
+    AI: ["ai-adoption", "ai-for-product-owners", "ai-for-scrum-masters"],
   };
-  push(...(byPrimary[pc] ?? []));
+  if (byPrimary[pc]) push(...byPrimary[pc]);
   if ((cats.includes("AI") || k.ai >= 8) && pc !== "AI") {
-    if (orgChange) push("icp-cat", "cal-1");
-    push("ai-for-product-owners");
+    if (orgChange) push("ai-adoption", "icp-cat", "cal-1");
+    push("ai-adoption", "ai-for-product-owners");
   }
-  if (k.teamdyn >= 3) push("icp-atf");
-  if (k.lean >= 3) push("kmp1");
-  if (k.poterms >= 4 || k.discover >= 3) push("cspo");
-  if (orgChange) push("icp-cat", "cal-1");
-  if (cats.includes("Leadership") || k.leader >= 3) push("cal-1");
-  if (k.scaling >= 3 || k.org >= 10) push("flin");
-  if (cats.includes("Scrum")) push("csm");
-  if (cats.includes("Book Reviews")) push("cal-1");
-  return out;
+  if (k.teamdyn >= 3) push("team-dynamics", "icp-atf");
+  if (k.lean >= 3) push("kanban", "kmp1");
+  if (k.poterms >= 4 || k.discover >= 3) push("product-owner", "cspo");
+  if (orgChange) push("transformation", "icp-cat", "cal-1");
+  if (cats.includes("Leadership") || k.leader >= 3) push("leadership", "cal-1");
+  if (k.scaling >= 3 || k.org >= 10) push("flight-levels", "flin");
+  if (cats.includes("Scrum")) push("scrum", "csm");
+  if (cats.includes("Book Reviews")) push("generic", "cal-1");
+  return { ids: withFlCompanion(out, k.strategy), signal: signal ?? "generic" };
 }
 
 // Resolves picks to course entries. For the German page, each course is

@@ -1,5 +1,6 @@
 ---
 title: 'Kanban: One Word, Three Completely Different Meanings'
+relatedTrainingIntro: "Once the three meanings are clear, the next question is how to run a Kanban system for knowledge work. These courses take it from the definition to a system that keeps improving."
 urlSlug: "kanban:-one-word,-three-completely-different-meanings"
 contentType: Resource
 primaryCategory: Kanban

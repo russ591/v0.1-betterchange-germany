@@ -1,5 +1,6 @@
 ---
 title: 'What Agile Leadership Requires That Traditional Management Doesn''t'
+relatedTrainingIntro: "Moving from directing to enabling is harder than it sounds for leaders promoted for directing well. These courses are built for exactly that shift."
 contentType: Resource
 primaryCategory: Leadership
 categories:

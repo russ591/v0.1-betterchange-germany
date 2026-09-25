@@ -1,5 +1,6 @@
 ---
 title: How Product Owners Can Use AI Without Losing the Plot
+relatedTrainingIntro: "Automate the admin, keep the judgement: the webinar shows the techniques, and these courses build the Product Owner practice they serve."
 urlSlug: "how-product-owners-can-use-ai-without-losing-the-plot"
 contentType: Blog
 primaryCategory: Change Management

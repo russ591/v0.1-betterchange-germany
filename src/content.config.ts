@@ -175,6 +175,13 @@ const insightsArticle = defineCollection({
     // the English and German entry when a series has a translation.
     seriesId: z.string().optional(),
     seriesOrder: z.number().optional(),
+    // Hand-written connective sentence for the article page's Related
+    // training card ("Want to build a product vision? These courses ...").
+    // Optional: when absent the card uses a template sentence keyed off
+    // why the courses were matched (src/lib/relatedTraining.ts). Set per
+    // locale, so a German entry needs its own (no direct address, per
+    // house style); a German entry without one gets the German template.
+    relatedTrainingIntro: z.string().optional(),
   }),
 });
 

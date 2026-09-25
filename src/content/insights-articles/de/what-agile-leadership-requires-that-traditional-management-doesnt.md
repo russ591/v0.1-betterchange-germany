@@ -11,6 +11,7 @@
 # per the standardized convention; author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'What Agile Leadership Requires That Traditional Management Doesn''t'
+relatedTrainingIntro: "Vom Anweisen zum Ermöglichen zu wechseln fällt gerade denen schwer, die fürs gute Anweisen befördert wurden. Genau für diesen Wechsel sind diese Trainings gemacht."
 contentType: Resource
 primaryCategory: Leadership
 categories:

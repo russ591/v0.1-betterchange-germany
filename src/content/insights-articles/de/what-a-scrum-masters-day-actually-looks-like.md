@@ -10,6 +10,7 @@
 # directly in this batch's draft (unlike sub-batch 1); author/date/
 # contentType pulled from the EN source article per the standing rule.
 title: 'What a Scrum Master''s Day Actually Looks Like'
+relatedTrainingIntro: "Ein guter Tag im Alltag eines Scrum Masters ist weniger strukturiert, als der Titel vermuten lässt. Diese Trainings behandeln die Beobachtung, das Coaching und die Organisationsarbeit, die ihn ausfüllen."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

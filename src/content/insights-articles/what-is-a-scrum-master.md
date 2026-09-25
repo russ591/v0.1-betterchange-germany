@@ -1,5 +1,6 @@
 ---
 title: What Is a Scrum Master? More Than a Meeting Facilitator
+relatedTrainingIntro: "Coach, change agent, obstacle-remover: if that is the Scrum Master you want to be, these courses cover the accountability in practice, from the foundations to the advanced track."
 urlSlug: "what-is-a-scrum-master-more-than-a-meeting-facilitator"
 contentType: Resource
 primaryCategory: Scrum

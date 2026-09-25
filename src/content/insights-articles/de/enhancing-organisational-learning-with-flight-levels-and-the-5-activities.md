@@ -7,6 +7,7 @@
 # contentType/primaryCategory/categories stay English loanwords per the
 # site-wide category-label rule.
 title: 'Flight Levels in Practice: The Five Activities That Make It Work'
+relatedTrainingIntro: "Ergebnisse definieren, visualisieren, Fokus schaffen, Interaktionen etablieren, verbessern: Diese Trainings zeigen, wie die fünf Aktivitäten Ebene für Ebene in einer Organisation gestaltet werden."
 contentType: Blog
 primaryCategory: Flight Levels
 categories:

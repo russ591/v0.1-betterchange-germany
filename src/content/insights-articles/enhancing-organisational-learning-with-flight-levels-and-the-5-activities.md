@@ -1,5 +1,6 @@
 ---
 title: 'Flight Levels in Practice: The Five Activities That Make It Work'
+relatedTrainingIntro: "Define outcomes, visualise, create focus, establish interactions, improve: these courses teach how to design the five activities into an organisation, level by level."
 urlSlug: "flight-levels-in-practice:-the-five-activities-that-make-it-work"
 contentType: Blog
 primaryCategory: Flight Levels

@@ -12,11 +12,14 @@
 // rail follows the body on small screens rather than leading it, since
 // nobody wants three course links between the title and a 2,000-word
 // article on a phone.
-import type { CollectionEntry } from "astro:content";
+import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 import Section from "@/components/Section.astro";
 import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
 import CourseCard from "@/components/CourseCard.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { baseSlug } from "@/lib/i18n";
+import { isUpcomingOrSelfPaced } from "@/lib/dates";
+import type { TrainingSignal } from "@/lib/relatedTraining";
 import { resolveLocale, useTranslations } from "@/i18n/utils";
 
 interface Props {
@@ -27,14 +30,55 @@ interface Props {
   // src/lib/relatedTraining.ts) -- empty for the few articles where a
   // course link would be forced, and the card simply doesn't render.
   relatedCourses: CollectionEntry<"training-courses">[];
+  // Why those courses were matched (from relatedTraining() on the English
+  // original); picks the card's template sentence unless the article's
+  // own relatedTrainingIntro overrides it.
+  trainingSignal: TrainingSignal;
 }
 
-const { article, authorName, related, relatedCourses } = Astro.props;
+const { article, authorName, related, relatedCourses, trainingSignal } = Astro.props;
 const locale = resolveLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 const prefix = locale === "de" ? "/de" : "";
 
 const hasSidebar = relatedCourses.length > 0 || related.length > 0;
+const trainingIntro = article.data.relatedTrainingIntro ?? t(`insights.trainingIntro.${trainingSignal}`);
+
+// Both rail links go to the full schedule (the sessions list, not the
+// training hub). The first one pre-selects the discipline filter for the
+// category the related courses mostly belong to: with CSM + A-CSM + ICP-ATF
+// that's Scrum alone; with FLIN + ICP-CAT it's both, since neither wins;
+// with three different ones it's just the top course's, since the courses
+// are ordered by relevance and a three-name label reads as noise.
+// Categories with nothing on the schedule are left out (the filter button
+// wouldn't exist, so the link would silently show everything), and when
+// none remain the link isn't shown. ScheduleList reads ?topic=<base slugs>.
+const scheduledCategories = new Set(
+  await Promise.all(
+    (await getCollection("training-schedules"))
+      .filter(isUpcomingOrSelfPaced)
+      .map(async (session) => baseSlug((await getEntry(session.data.course)).data.category.id))
+  )
+);
+const relatedCategories = await Promise.all(relatedCourses.map((c) => getEntry(c.data.category)));
+const categoryCounts = new Map<string, { n: number; name: string }>();
+for (const cat of relatedCategories) {
+  if (!cat || !scheduledCategories.has(baseSlug(cat.id))) continue;
+  const key = baseSlug(cat.id);
+  const entry = categoryCounts.get(key);
+  if (entry) entry.n++;
+  else categoryCounts.set(key, { n: 1, name: cat.data.name });
+}
+const maxCount = Math.max(0, ...[...categoryCounts.values()].map((e) => e.n));
+const leaders = [...categoryCounts.entries()].filter(([, e]) => e.n === maxCount);
+const focusCategories = leaders.length > 2 ? leaders.slice(0, 1) : leaders;
+const scheduleHref = `${prefix}/training/full-schedule`;
+const focusHref = `${scheduleHref}?topic=${focusCategories.map(([slug]) => slug).join(",")}`;
+const focusNames = focusCategories.map(([, e]) => e.name);
+const focusLabel =
+  focusNames.length <= 1
+    ? focusNames.join("")
+    : `${focusNames.slice(0, -1).join(", ")} ${t("insights.listAnd")} ${focusNames[focusNames.length - 1]}`;
 const railCard = "rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-5 shadow-card";
 const railLabel = "text-[length:var(--text-caption)] font-semibold uppercase tracking-[0.06em] text-neutral-500";
 const railMore = "mt-3 inline-block text-[length:var(--text-caption)] font-semibold text-ink hover:underline";
@@ -88,12 +132,20 @@ const railMore = "mt-3 inline-block text-[length:var(--text-caption)] font-semib
           {relatedCourses.length > 0 && (
             <div class={railCard}>
               <h2 class={railLabel}>{t("insights.relatedTraining")}</h2>
-              <div class="mt-3 flex flex-col divide-y divide-neutral-100">
+              <p class="mt-2 text-[length:var(--text-small)] text-neutral-600">{trainingIntro}</p>
+              <div class="mt-4 flex flex-col divide-y divide-neutral-100">
                 {relatedCourses.map((course) => (
                   <CourseCard course={course} categorySlug={course.data.category.id} variant="compact" />
                 ))}
               </div>
-              <a href={`${prefix}/training`} class={railMore}>{t("cta.seeAllTraining")} →</a>
+              <div class="mt-3 flex flex-col gap-1.5">
+                {focusCategories.length > 0 && (
+                  <a href={focusHref} class={railMore.replace("mt-3 ", "")}>
+                    {t("insights.seeCategoryTrainingPrefix")} {focusLabel} {t("insights.seeCategoryTrainingSuffix")} →
+                  </a>
+                )}
+                <a href={scheduleHref} class={railMore.replace("mt-3 ", "")}>{t("cta.seeAllTraining")} →</a>
+              </div>
             </div>
           )}
         </aside>

@@ -10,6 +10,7 @@
 # categories stay English loanwords per the site-wide category-label
 # rule.
 title: How Product Owners Can Use AI Without Losing the Plot
+relatedTrainingIntro: "Das Administrative automatisieren, das Urteilsvermögen behalten: Das Webinar zeigt die Techniken, diese Trainings bauen die Praxis als Product Owner auf, der sie dienen."
 contentType: Blog
 primaryCategory: Change Management
 categories:

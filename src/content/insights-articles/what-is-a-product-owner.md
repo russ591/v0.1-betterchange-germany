@@ -1,5 +1,6 @@
 ---
 title: 'The Product Owner: Running a Business Within a Business'
+relatedTrainingIntro: "Running a business within a business takes more than owning the backlog. These courses build the strategic, customer and decision-making sides of the Product Owner role."
 urlSlug: "the-product-owner:-running-a-business-within-a-business"
 contentType: Resource
 primaryCategory: Scrum

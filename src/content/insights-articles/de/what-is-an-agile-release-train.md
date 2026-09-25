@@ -9,6 +9,7 @@
 # links (Agile Methodology, Scrum Master, Product Owner, Team Members)
 # restored on their already-unchanged German mentions in the draft.
 title: What is an Agile Release Train
+relatedTrainingIntro: "Ob ein Agile Release Train gerade aufgesetzt wird oder nicht liefert: Diese Trainings behandeln die Rollen, Events und Prinzipien, die ihn am Laufen halten."
 contentType: Resource
 primaryCategory: Agile
 categories:

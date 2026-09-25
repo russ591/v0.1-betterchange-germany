@@ -8,6 +8,7 @@
 # the EN source per the standing rule. Clean match, no CTA/link issues
 # to flag.
 title: What Is Scrum? A Straight Answer to the Most Common Question in Agile
+relatedTrainingIntro: "Framework, nicht Prozess: Der Unterschied zeigt sich, sobald Scrum auf ein echtes Team trifft. Diese Trainings behandeln Accountabilities, Events und Artefakte so, wie sie in der Praxis funktionieren."
 contentType: Resource
 primaryCategory: Scrum
 categories:

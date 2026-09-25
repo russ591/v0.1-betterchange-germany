@@ -7,6 +7,7 @@
 # contentType/primaryCategory/categories stay English loanwords per the
 # site-wide category-label rule.
 title: How to Run a Retrospective That Actually Changes Things
+relatedTrainingIntro: "Die fünf Schritte sind der leichte Teil, den Raum dabei zu halten die eigentliche Fähigkeit. Diese Trainings vermitteln die Facilitation hinter Retrospektiven, die etwas verändern."
 contentType: Resource
 primaryCategory: Leadership
 categories:
