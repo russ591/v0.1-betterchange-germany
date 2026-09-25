@@ -72,8 +72,8 @@ for (const cat of relatedCategories) {
 const maxCount = Math.max(0, ...[...categoryCounts.values()].map((e) => e.n));
 const leaders = [...categoryCounts.entries()].filter(([, e]) => e.n === maxCount);
 const focusCategories = leaders.length > 2 ? leaders.slice(0, 1) : leaders;
-const scheduleHref = `${prefix}/training/full-schedule`;
-const focusHref = `${scheduleHref}?topic=${focusCategories.map(([slug]) => slug).join(",")}`;
+const scheduleHref = `${prefix}/training#schedule`;
+const focusHref = `${prefix}/training?topic=${focusCategories.map(([slug]) => slug).join(",")}#schedule`;
 const focusNames = focusCategories.map(([, e]) => e.name);
 const focusLabel =
   focusNames.length <= 1

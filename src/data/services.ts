@@ -93,7 +93,7 @@ export const serviceDetailCta: Record<
 > = {
   training: {
     label: "See the full training schedule",
-    href: "/training/full-schedule",
+    href: "/training#schedule",
     secondary: { label: "Contact us about in-house delivery", href: "/contact" },
   },
   coaching: { label: "Get in touch about coaching", href: "/contact" },

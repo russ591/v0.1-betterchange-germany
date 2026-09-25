@@ -247,7 +247,7 @@ const scheduledFormats = new Set(upcoming.map((s) => s.data.format));
 
         <div class="px-5 py-4 text-[length:var(--text-caption)] leading-relaxed text-neutral-500">
           <p>{t("schedule.paymentNote")}</p>
-          <a href={`${prefix}/training/full-schedule`} class="mt-2 inline-block font-semibold text-ink hover:underline">
+          <a href={`${prefix}/training#schedule`} class="mt-2 inline-block font-semibold text-ink hover:underline">
             {t("schedule.seeFullSchedule")} →
           </a>
         </div>
@@ -329,7 +329,7 @@ const scheduledFormats = new Set(upcoming.map((s) => s.data.format));
               </div>
             </div>
           )}
-          <a href={`${prefix}/training/full-schedule`} class="text-center text-[length:var(--text-small)] font-semibold text-ink underline">
+          <a href={`${prefix}/training#schedule`} class="text-center text-[length:var(--text-small)] font-semibold text-ink underline">
             {t("schedule.seeAllScheduled")} →
           </a>
         </div>
