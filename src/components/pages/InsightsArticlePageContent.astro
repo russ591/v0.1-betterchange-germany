@@ -19,6 +19,7 @@ import CourseCard from "@/components/CourseCard.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { baseSlug } from "@/lib/i18n";
 import { isUpcomingOrSelfPaced } from "@/lib/dates";
+import type { TrainingSignal } from "@/lib/relatedTraining";
 import { resolveLocale, useTranslations } from "@/i18n/utils";
 
 interface Props {
@@ -29,14 +30,19 @@ interface Props {
   // src/lib/relatedTraining.ts) -- empty for the few articles where a
   // course link would be forced, and the card simply doesn't render.
   relatedCourses: CollectionEntry<"training-courses">[];
+  // Why those courses were matched (from relatedTraining() on the English
+  // original); picks the card's template sentence unless the article's
+  // own relatedTrainingIntro overrides it.
+  trainingSignal: TrainingSignal;
 }
 
-const { article, authorName, related, relatedCourses } = Astro.props;
+const { article, authorName, related, relatedCourses, trainingSignal } = Astro.props;
 const locale = resolveLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 const prefix = locale === "de" ? "/de" : "";
 
 const hasSidebar = relatedCourses.length > 0 || related.length > 0;
+const trainingIntro = article.data.relatedTrainingIntro ?? t(`insights.trainingIntro.${trainingSignal}`);
 
 // Both rail links go to the full schedule (the sessions list, not the
 // training hub). The first one pre-selects the discipline filter for the
@@ -126,7 +132,8 @@ const railMore = "mt-3 inline-block text-[length:var(--text-caption)] font-semib
           {relatedCourses.length > 0 && (
             <div class={railCard}>
               <h2 class={railLabel}>{t("insights.relatedTraining")}</h2>
-              <div class="mt-3 flex flex-col divide-y divide-neutral-100">
+              <p class="mt-2 text-[length:var(--text-small)] text-neutral-600">{trainingIntro}</p>
+              <div class="mt-4 flex flex-col divide-y divide-neutral-100">
                 {relatedCourses.map((course) => (
                   <CourseCard course={course} categorySlug={course.data.category.id} variant="compact" />
                 ))}

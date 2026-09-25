@@ -11,6 +11,7 @@
 # the EN source article per the standing rule. This completes all 52
 # German translations for the SEO-rewrite project (sub-batches 1-4).
 title: 'What Flight Levels Actually Means, and Where the Name Comes From'
+relatedTrainingIntro: "Wenn der Name verstanden ist, folgt der Blick auf die drei Ebenen in der Anwendung. Die Flight Levels Trainings beginnen mit der Einführung und führen bis zum Design einer Ebene."
 contentType: Resource
 primaryCategory: Flight Levels
 categories:

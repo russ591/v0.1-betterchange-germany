@@ -1,5 +1,6 @@
 ---
 title: How to Run a Retrospective That Actually Changes Things
+relatedTrainingIntro: "The five steps are the easy part; holding a room to them is the skill. These courses teach the facilitation behind retrospectives that change things."
 urlSlug: "how-to-run-a-retrospective-that-actually-changes-things"
 contentType: Resource
 primaryCategory: Leadership

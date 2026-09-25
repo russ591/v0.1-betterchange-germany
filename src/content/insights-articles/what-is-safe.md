@@ -1,5 +1,6 @@
 ---
 title: 'SAFe: A Practical Introduction to Scaling Agile Across the Enterprise'
+relatedTrainingIntro: "Still deciding whether SAFe is the right fit, or already living with it? These courses cover the framework from the roles that make it work, and where it doesn't."
 urlSlug: "safe:-a-practical-introduction-to-scaling-agile-across-the-enterprise"
 contentType: Resource
 primaryCategory: Agile

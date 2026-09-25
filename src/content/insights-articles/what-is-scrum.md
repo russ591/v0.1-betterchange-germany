@@ -1,5 +1,6 @@
 ---
 title: What Is Scrum? A Straight Answer to the Most Common Question in Agile
+relatedTrainingIntro: "Framework, not process: the difference matters most when Scrum meets a real team. These courses cover the accountabilities, events and artefacts as they work in practice."
 urlSlug: "what-is-scrum-a-straight-answer-to-the-most-common-question-in-agile"
 contentType: Resource
 primaryCategory: Scrum

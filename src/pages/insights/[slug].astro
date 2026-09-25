@@ -4,7 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import InsightsArticlePageContent from "@/components/pages/InsightsArticlePageContent.astro";
 import { localeOfId, baseSlug } from "@/lib/i18n";
 import { relatedSeriesEntries } from "@/lib/insights";
-import { relatedCourses } from "@/lib/relatedTraining";
+import { relatedCourses, relatedTraining } from "@/lib/relatedTraining";
 
 export async function getStaticPaths() {
   // A handful of articles now have a German translation living alongside
@@ -71,5 +71,5 @@ const articleSchema = {
       : undefined
   }
 >
-  <InsightsArticlePageContent article={article} authorName={authorName} related={related} relatedCourses={training} />
+  <InsightsArticlePageContent article={article} authorName={authorName} related={related} relatedCourses={training} trainingSignal={relatedTraining(article).signal} />
 </BaseLayout>

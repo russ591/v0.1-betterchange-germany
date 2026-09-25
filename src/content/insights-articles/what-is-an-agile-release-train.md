@@ -1,5 +1,6 @@
 ---
 title: What is an Agile Release Train
+relatedTrainingIntro: "Setting up an Agile Release Train, or working on one that isn't delivering? These courses cover the roles, events and principles that keep the train running."
 contentType: Resource
 primaryCategory: Agile
 categories:

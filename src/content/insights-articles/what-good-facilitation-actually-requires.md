@@ -1,5 +1,6 @@
 ---
 title: 'What Good Facilitation Actually Requires'
+relatedTrainingIntro: "Neutrality, reading the room, safety, conflict, outcomes: each of these is a practised discipline rather than a trait. These courses train them."
 contentType: Blog
 primaryCategory: Coaching
 categories: []

@@ -10,6 +10,7 @@
 # directly in this batch's draft (unlike sub-batch 1); author/date/
 # contentType pulled from the EN source article per the standing rule.
 title: 'What Good Facilitation Actually Requires'
+relatedTrainingIntro: "Neutralität, Gespür für die Gruppe, Sicherheit, Konflikte, Ergebnisse: Jedes davon ist eine geübte Disziplin und keine Charaktereigenschaft. Diese Trainings trainieren sie."
 contentType: Blog
 primaryCategory: Coaching
 categories: []

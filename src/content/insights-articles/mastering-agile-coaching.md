@@ -1,5 +1,6 @@
 ---
 title: Mastering Agile Coaching
+relatedTrainingIntro: "Badges don't make a master coach, but structured practice with feedback does. These courses are where that practice starts."
 contentType: Blog
 primaryCategory: Coaching
 categories:

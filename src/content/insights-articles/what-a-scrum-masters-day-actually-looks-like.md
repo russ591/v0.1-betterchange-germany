@@ -1,5 +1,6 @@
 ---
 title: 'What a Scrum Master''s Day Actually Looks Like'
+relatedTrainingIntro: "If a good day looks less structured than the job title suggests, that is the craft. These courses cover the observation, coaching and organisational work that fill it."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

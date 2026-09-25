@@ -1,5 +1,6 @@
 ---
 title: 'What Flight Levels Actually Means, and Where the Name Comes From'
+relatedTrainingIntro: "Now that the name makes sense, the next step is seeing the three levels applied. The Flight Levels courses start with the introduction and build up to designing a level."
 contentType: Resource
 primaryCategory: Flight Levels
 categories:

@@ -14,6 +14,7 @@
 # source's excerpt is unambiguous that the Scrum Master holds this
 # accountability; corrected to match.
 title: What Is a Scrum Master? More Than a Meeting Facilitator
+relatedTrainingIntro: "Coach, Change Agent, Hindernisbeseitiger: Wer die Rolle als Scrum Master so ausfüllen will, findet in diesen Trainings das Handwerkszeug dafür, von den Grundlagen bis zum Advanced-Track."
 contentType: Resource
 primaryCategory: Scrum
 categories:

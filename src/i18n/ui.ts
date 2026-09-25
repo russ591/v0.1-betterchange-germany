@@ -185,6 +185,25 @@ export const en = {
   // "&" rather than "and": one category is itself called "Coaching and
   // Facilitation", and "Coaching and Facilitation and Leadership" reads badly.
   "insights.listAnd": "&",
+  // Connective sentence for the Related training card, one per matcher
+  // signal (see TrainingSignal in src/lib/relatedTraining.ts). Articles
+  // can override it with a relatedTrainingIntro of their own.
+  "insights.trainingIntro.scrum-master": "Want to grow into the Scrum Master role rather than just run the meetings? These courses cover the accountability in practice.",
+  "insights.trainingIntro.product-owner": "Want to shape a product vision and a backlog that reflects it? These courses are built around the Product Owner's job.",
+  "insights.trainingIntro.scrum": "Want Scrum to work as practised rather than as written? These courses cover the framework the way experienced teams use it.",
+  "insights.trainingIntro.ai-role": "Want to put AI to work in your role without handing over the judgement that makes you valuable? These courses show where it helps and where it doesn't.",
+  "insights.trainingIntro.ai-adoption": "Want AI adoption to change how the organisation works, not just its tools? These courses cover the change side of it.",
+  "insights.trainingIntro.retrospectives": "Want retrospectives that change something? Facilitation is the skill behind them, and these courses teach it.",
+  "insights.trainingIntro.facilitation": "Want to run sessions where the group does the thinking rather than the facilitator? These courses teach exactly that.",
+  "insights.trainingIntro.team-dynamics": "Want teams that decide and work together well without being managed into it? These courses are about that craft.",
+  "insights.trainingIntro.coaching": "Want to coach teams and leaders properly rather than advise from the sidelines? These courses build that skill.",
+  "insights.trainingIntro.transformation": "Want change that sticks rather than a rollout that fades? These courses are about the organisational side of the work.",
+  "insights.trainingIntro.leadership": "Want to lead in a way that makes agility possible rather than merely permitted? These courses are built for that.",
+  "insights.trainingIntro.safe": "Want to work with SAFe well rather than just install it? These courses cover the framework from the roles that make it work.",
+  "insights.trainingIntro.flight-levels": "Want to take the ideas in this article further? The Flight Levels courses start with the introduction and build from there.",
+  "insights.trainingIntro.strategy": "Want strategy that reaches the teams doing the work? Flight Level 3 is where that connection is designed, and these courses cover it.",
+  "insights.trainingIntro.kanban": "Want work to flow rather than pile up? These courses take Kanban from a board on the wall to a system that keeps improving.",
+  "insights.trainingIntro.generic": "Want to put the ideas in this article into practice? These courses are the natural next step.",
 
   // From betterchange-de-translation-draft-insights-template.md (the
   // Insights hub's shared template strings -- individual article titles/
@@ -409,6 +428,22 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "insights.seeCategoryTrainingPrefix": "Alle Trainings zu",
   "insights.seeCategoryTrainingSuffix": "ansehen",
   "insights.listAnd": "und",
+  "insights.trainingIntro.scrum-master": "Wer die Rolle als Scrum Master wirklich ausfüllen will, statt nur Meetings zu moderieren, findet in diesen Trainings das Handwerkszeug dafür.",
+  "insights.trainingIntro.product-owner": "Eine Produktvision entwickeln und ein Backlog führen, das sie auch abbildet: Genau darum geht es in diesen Trainings.",
+  "insights.trainingIntro.scrum": "Scrum so einsetzen, wie es in der Praxis funktioniert, nicht nur wie es im Guide steht: Diese Trainings zeigen, wie.",
+  "insights.trainingIntro.ai-role": "KI im eigenen Arbeitsalltag sinnvoll nutzen, ohne das Urteilsvermögen abzugeben: Diese Trainings zeigen, wo sie hilft und wo nicht.",
+  "insights.trainingIntro.ai-adoption": "KI soll die Arbeitsweise der Organisation verändern, nicht nur ihre Werkzeuge. Diese Trainings behandeln die Veränderungsseite davon.",
+  "insights.trainingIntro.retrospectives": "Retrospektiven, die wirklich etwas verändern, brauchen gute Facilitation. Diese Trainings vermitteln genau diese Fähigkeit.",
+  "insights.trainingIntro.facilitation": "Sessions leiten, in denen die Gruppe denkt und nicht die Moderation: Das ist der Kern dieser Trainings.",
+  "insights.trainingIntro.team-dynamics": "Teams, die gut entscheiden und zusammenarbeiten, ohne dazu gemanagt zu werden: Diese Trainings vermitteln dieses Handwerk.",
+  "insights.trainingIntro.coaching": "Teams und Führungskräfte wirklich coachen, statt von der Seitenlinie zu beraten: Diese Trainings bauen genau diese Fähigkeit auf.",
+  "insights.trainingIntro.transformation": "Veränderung, die bleibt, statt eines Rollouts, der verpufft: Diese Trainings behandeln die organisatorische Seite der Arbeit.",
+  "insights.trainingIntro.leadership": "Führung, die Agilität ermöglicht und nicht nur erlaubt: Dafür sind diese Trainings gemacht.",
+  "insights.trainingIntro.safe": "SAFe gut anwenden statt nur einführen: Diese Trainings behandeln das Framework aus Sicht der Rollen, die es tragen.",
+  "insights.trainingIntro.flight-levels": "Wer die Ideen aus diesem Artikel weiterverfolgen will: Die Flight Levels Trainings beginnen mit der Einführung und bauen darauf auf.",
+  "insights.trainingIntro.strategy": "Strategie, die bei den Teams ankommt, wird auf Flight Level 3 gestaltet. Diese Trainings zeigen, wie.",
+  "insights.trainingIntro.kanban": "Arbeit soll fließen, statt sich zu stapeln: Diese Trainings führen Kanban vom Board an der Wand zum System, das sich laufend verbessert.",
+  "insights.trainingIntro.generic": "Die Ideen aus diesem Artikel in die Praxis bringen: Diese Trainings sind der naheliegende nächste Schritt.",
 
   // From betterchange-de-translation-draft-insights-template.md. The
   // draft's intro paragraph used an em dash ("... organisatorischem

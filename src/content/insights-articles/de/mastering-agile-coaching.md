@@ -14,6 +14,7 @@
 # sentence is not in the draft; dropped per the established pattern for
 # closing CTA-style invitations.
 title: Mastering Agile Coaching
+relatedTrainingIntro: "Zertifikate machen noch keinen Master Coach, strukturierte Praxis mit Feedback schon. In diesen Trainings beginnt diese Praxis."
 contentType: Blog
 primaryCategory: Coaching
 categories:
