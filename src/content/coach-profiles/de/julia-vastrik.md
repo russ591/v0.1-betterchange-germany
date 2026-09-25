@@ -26,5 +26,5 @@ backgroundAndExpertise: |-
   Julia begann als Softwareentwicklerin in C++, Java, Webanwendungen und Datensynchronisation, bevor sie in Engineering-Führung wechselte, als Teil des Product Engineering Leadership Teams bei Scoro, wo sie die Einführung des Missions-Frameworks (Dynamic Teaming) unterstützte, um Produktprioritäten abzustimmen, und funktionsübergreifende Teams und Führungskräfte coachte. Sie hat außerdem organisatorischen Wandel vorangetrieben und die Liefergesundheit bei Swedbank gestärkt, in Rollen einschließlich Enterprise Agile Coach, Scrum Master, Projektmanagerin und Implementation Manager in großen, komplexen Umgebungen. Ihre Erfahrung umfasst sowohl große Finanzinstitute als auch schnelllebige Produktunternehmen, was ihr hilft, Stabilität und Skalierung mit Geschwindigkeit und Innovation zu verbinden.
 approach: |-
   Diese Mischung erlaubt Julia, als Brücke zwischen Engineering, Produkt und Führung zu wirken, indem sie Führungsteams befähigt, effektiv zu skalieren, ohne schwere Prozesse hinzuzufügen, während sie Einzelpersonen coacht, in ihren Rollen zu wachsen. Außerhalb der Kundenarbeit organisiert sie Agile Saturday Tallinn als Vorstandsmitglied von Agile Estonia, spricht auf internationalen Konferenzen, und schreibt über Führung, Lernen und Teamdynamik.
-displayOrder: 10
+displayOrder: 7
 ---

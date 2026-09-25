@@ -26,6 +26,6 @@ backgroundAndExpertise: |-
   Camilla verbrachte 20 Jahre bei Danske Bank, von Product-Manager- und Chief-Consultant-Rollen über Transaction Banking, New Ventures und Payments (einschließlich vollständiger 360-Grad-Eigentümerschaft für MobilePay) bis hin zu Scrum Master, Agile Coach und schließlich Chief Transformation Consultant, tätig innerhalb der Ways-of-Working-Mastery-Organisation der Bank. Davor war sie Product Manager bei SEB in Stockholm, mit Arbeit an E-Invoicing, BankID und lokalen Zahlungen. Sie hat einen Master of Business Science der Lund University, einschließlich eines Erasmus-Austauschjahres an der University of Sheffield.
 approach: |-
   Sie ist zertifizierte Coaching Supervisor (CoachMastery) und HUCAMA Factors Practitioner, und bringt diese Verankerung in emotionaler Intelligenz, Vertrauen und persönlichkeitsbasiertem Coaching in ihre Arbeit mit Führungskräften und Teams ein, mit der Überzeugung, dass dauerhafter Wandel in einer Organisation bei genuin gestärkten Menschen beginnt.
-displayOrder: 10
+displayOrder: 8
 isFellow: true
 ---

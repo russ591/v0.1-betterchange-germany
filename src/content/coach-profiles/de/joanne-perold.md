@@ -24,5 +24,5 @@ backgroundAndExpertise: |-
   Joanne coacht und trainiert seit über einem Jahrzehnt in agilen Methoden und verbindet ihre Erfahrung als interne Coachin und Facilitatorin mit ihrer Erfahrung als externe Beraterin. Sie liebt es, weiter zu lernen, und hat kürzlich ihre Coaching-Fähigkeiten durch eine Ausbildung in Satir-Coaching vertieft, wodurch sie die menschlichen Aspekte von Virginia Satirs Arbeit in vieles ihrer Coaching-, Trainings- und Führungsarbeit einbringt.
 approach: |-
   In ihrer Freizeit trifft man Joanne beim Kochen, bei Weinverkostungen, beim Lesen, oder beim Laufen im Park mit ihrem Labrador-Ridgeback-Mischling Harley, der Anrufen mit Jo gelegentlich zusätzlichen Sonnenschein verleiht.
-displayOrder: 10
+displayOrder: 6
 ---

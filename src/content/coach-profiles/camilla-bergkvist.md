@@ -21,6 +21,6 @@ specialities:
   - Teamwork
   - Trust at Work
   - Agile Coaching
-displayOrder: 10
+displayOrder: 8
 isFellow: true
 ---

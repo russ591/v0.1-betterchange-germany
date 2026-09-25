@@ -13,5 +13,5 @@ bio: |-
 backgroundAndExpertise: |-
   Joanne has been coaching and training Agile methods for over a decade, combining her experience as an internal coach and facilitator with her experience as an external consultant. She loves to keep learning, and has recently deepened her coaching skills through an education in Satir coaching, bringing the human aspects of Virginia Satir's work into much of her coaching, training, and leadership work.
 approach: In her spare time, you'll find Joanne cooking, wine tasting, reading, or running in the park with her lab-cross ridgeback, Harley, who occasionally adds a little extra sunshine to calls with Jo.
-displayOrder: 10
+displayOrder: 6
 ---
