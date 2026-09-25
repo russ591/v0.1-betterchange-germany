@@ -37,12 +37,6 @@ const articleHref = (article: CollectionEntry<"insights-articles">) => {
   const articlePrefix = localeOfId(article.id) === "de" ? "/de" : "";
   return `${articlePrefix}/insights/${toPathSegment(article.data.urlSlug ?? baseSlug(article.id))}`;
 };
-const articleDate = (article: CollectionEntry<"insights-articles">) =>
-  article.data.date.toLocaleDateString(localeOfId(article.id) === "de" ? "de-DE" : "en-GB", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
 
 const initials = (name: string) =>
   name
@@ -73,8 +67,10 @@ const placeholderStyle = (id: string) => {
 // through the eligible pool once a day: a 3-wide window keyed off the UTC
 // day number, so every eligible article gets a turn in the hero over time
 // instead of the newest 3 permanently crowding out the rest. (This is a
-// static build, so "today" is the day of the last deploy -- see the note
-// where this page is wired up for what that means in practice.) Falls
+// static build, so "today" is the day of the last deploy, not the
+// visitor's actual today -- kept in sync day to day by the same nightly
+// rebuild that also refreshes date-based course listings, see
+// netlify/functions/nightly-rebuild.js.) Falls
 // back to the most recent articles overall when fewer than 3 qualify, so
 // the row is never sparse; a pool that small isn't worth rotating.
 const heroPool = articles.filter(
@@ -142,14 +138,11 @@ const topics = [...topicCounts.keys()].sort((a, b) => topicCounts.get(b)! - topi
             <div aria-hidden="true" class="aspect-[16/9] w-full" style={placeholderStyle(spotlight[0].article.id)} />
           )}
           <div class="flex flex-1 flex-col p-7">
-            <p class="eyebrow">
-              {[
-                articleDate(spotlight[0].article),
-                spotlight[0].article.data.readTimeMinutes && `${spotlight[0].article.data.readTimeMinutes} ${t("insights.minRead")}`,
-              ]
-                .filter(Boolean)
-                .join(" · ")}
-            </p>
+            {spotlight[0].article.data.readTimeMinutes && (
+              <p class="eyebrow">
+                {spotlight[0].article.data.readTimeMinutes} {t("insights.minRead")}
+              </p>
+            )}
             <h2 class="mt-2 text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)]">{spotlight[0].article.data.title}</h2>
             <p class="mt-3 max-w-xl text-[length:var(--text-body)] text-neutral-600">{spotlight[0].article.data.excerpt}</p>
             {spotlight[0].author && (
@@ -184,11 +177,11 @@ const topics = [...topicCounts.keys()].sort((a, b) => topicCounts.get(b)! - topi
               <div aria-hidden="true" class="w-2/5 shrink-0" style={placeholderStyle(article.id)} />
             )}
             <div class="flex flex-1 flex-col justify-center p-5">
-              <p class="eyebrow">
-                {[article.data.readTimeMinutes && `${article.data.readTimeMinutes} ${t("insights.minRead")}`, articleDate(article)]
-                  .filter(Boolean)
-                  .join(" · ")}
-              </p>
+              {article.data.readTimeMinutes && (
+                <p class="eyebrow">
+                  {article.data.readTimeMinutes} {t("insights.minRead")}
+                </p>
+              )}
               <h3 class="mt-1.5 text-[length:var(--text-small)] font-semibold leading-snug">{article.data.title}</h3>
               {author && (
                 <div class="mt-3 flex items-center gap-2">
