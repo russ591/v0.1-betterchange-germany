@@ -361,16 +361,6 @@ const contactPage = defineCollection({
   }),
 });
 
-const fullSchedulePage = defineCollection({
-  loader: glob({ pattern: "*.md", base: "./src/content/full-schedule-page" }),
-  schema: z.object({
-    metaDescription: z.string(),
-    eyebrow: z.string(),
-    heading: z.string(),
-    body: z.string(),
-  }),
-});
-
 const thankYouPage = defineCollection({
   loader: glob({ pattern: "*.md", base: "./src/content/thank-you-page" }),
   schema: z.object({
@@ -421,7 +411,6 @@ export const collections = {
   "training-hub-page": trainingHubPage,
   "about-page": aboutPage,
   "contact-page": contactPage,
-  "full-schedule-page": fullSchedulePage,
   "thank-you-page": thankYouPage,
   "register-thank-you-page": registerThankYouPage,
   "not-found-page": notFoundPage,

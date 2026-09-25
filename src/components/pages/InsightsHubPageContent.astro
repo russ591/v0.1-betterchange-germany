@@ -100,7 +100,7 @@ const categoryLabelDe: Record<string, string> = {
 const displayCategory = (raw: string) => (locale === "de" ? (categoryLabelDe[raw] ?? raw) : raw);
 
 // Order topics by how many articles use them, most common first — matches
-// the filter pattern on /training/full-schedule.
+// the filter pattern on the training hub's schedule.
 const topicCounts = new Map<string, number>();
 for (const { article } of articles) {
   if (article.data.primaryCategory) {

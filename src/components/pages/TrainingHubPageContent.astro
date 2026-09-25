@@ -97,21 +97,21 @@ const prefix = locale === "de" ? "/de" : "";
   </div>
 </Section>
 
-<Section eyebrow={copy.upcomingEyebrow} heading={copy.upcomingHeading} class="bg-mist-light">
+{/* id="schedule" is the site-wide "full schedule" anchor: every link that
+    used to go to /training/full-schedule lands here, expanded (see
+    ScheduleList's hash handling). scroll-mt keeps the heading clear of the
+    sticky header. */}
+<Section id="schedule" eyebrow={copy.upcomingEyebrow} heading={copy.upcomingHeading} class="scroll-mt-20 bg-mist-light">
   <ScheduleList
     rows={upcomingWithCourse}
     id="hub-schedule"
     filters={["topic", "country", "trainer"]}
+    collapsedLimit={8}
     emptyMessage={t("schedule.noSessions")}
   />
-  <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
-    <p class="text-[length:var(--text-small)] text-neutral-600">
-      {t("schedule.preferInHouse")} <a href={`${prefix}/contact`} class="font-semibold text-ink underline">{t("schedule.letUsKnow")}</a>.
-    </p>
-    <a href={`${prefix}/training/full-schedule`} class="rounded-[var(--radius-control)] border border-ink px-4 py-2.5 text-sm font-semibold text-ink">
-      {t("schedule.seeFullSchedule")} &rarr;
-    </a>
-  </div>
+  <p class="mt-6 text-[length:var(--text-small)] text-neutral-600">
+    {t("schedule.preferInHouse")} <a href={`${prefix}/contact`} class="font-semibold text-ink underline">{t("schedule.letUsKnow")}</a>.
+  </p>
 </Section>
 
 <Section eyebrow={copy.formatsEyebrow} heading={copy.formatsHeading}>

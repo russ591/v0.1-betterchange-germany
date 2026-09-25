@@ -55,6 +55,10 @@ export const en = {
   "schedule.paymentNote":
     "No upfront payment needed. A VAT invoice (Rechnung) will be sent via email and you can pay by bank transfer or with card.",
   "schedule.filterDiscipline": "Discipline",
+  // "Show all 26 sessions" -- the count goes in between
+  "schedule.showAllPrefix": "Show all",
+  "schedule.showAllSuffix": "sessions",
+  "schedule.showFewer": "Show fewer",
   "schedule.filterCountry": "Country",
   "schedule.filterTrainer": "Trainer",
 
@@ -330,6 +334,9 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "schedule.preferInHouse": "Lieber privates Inhouse-Training?",
   "schedule.letUsKnow": "Kontakt aufnehmen",
   "schedule.filterDiscipline": "Disziplin",
+  "schedule.showAllPrefix": "Alle",
+  "schedule.showAllSuffix": "Termine anzeigen",
+  "schedule.showFewer": "Weniger anzeigen",
   "schedule.filterCountry": "Land",
   "schedule.filterTrainer": "Trainer:in",
   "schedule.exclVat": "zzgl. MwSt.",

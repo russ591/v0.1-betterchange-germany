@@ -28,6 +28,19 @@
 # --- Old Wix system page ------------------------------------------------
 # /confirmation was Wix's own post-checkout page; the new registration
 # flow ends at /training/register/thank-you.
+# The dedicated schedule page was folded into the training hub (collapsed
+# list + "Show all"); the anchor expands it. Browsers keep the #hash across
+# a redirect.
+[[redirects]]
+  from = "/training/full-schedule"
+  to = "/training#schedule"
+  status = 301
+
+[[redirects]]
+  from = "/de/training/full-schedule"
+  to = "/de/training#schedule"
+  status = 301
+
 [[redirects]]
   from = "/confirmation"
   to = "/training/register/thank-you"

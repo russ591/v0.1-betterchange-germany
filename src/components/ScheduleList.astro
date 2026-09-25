@@ -46,6 +46,11 @@ interface Props {
   filters?: FilterKind[];
   showTrainer?: boolean;
   limit?: number;
+  // Show only the first N rows until the visitor clicks "Show all", applies
+  // a filter, or lands via a URL that targets the list (a filter query
+  // string or a #hash on an ancestor). The training hub uses this so the
+  // whole schedule can live there without swallowing the rest of the page.
+  collapsedLimit?: number;
   emptyMessage?: string;
   id?: string;
 }
@@ -59,11 +64,14 @@ const {
   filters = [],
   showTrainer = true,
   limit,
+  collapsedLimit,
   emptyMessage = t("schedule.noSessions"),
   id = "schedule-list",
 } = Astro.props as Props;
 
 const rows = limit ? allRows.slice(0, limit) : allRows;
+const collapsible = collapsedLimit !== undefined && rows.length > collapsedLimit;
+const isExtra = (i: number) => collapsible && i >= collapsedLimit!;
 
 const trainerKey = (t: TrainerEntry) => (t.kind === "profile" ? t.profile.id : `name:${t.name}`);
 const trainerLabel = (t: TrainerEntry) => (t.kind === "profile" ? t.profile.data.name : t.name);
@@ -182,11 +190,13 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
       into an ugly 3-line wrap; below that, the card layout has room to
       breathe instead. */}
       <div class="flex flex-col gap-3 lg:hidden" id={`${id}-mobile`}>
-        {enriched.map((row) => {
+        {enriched.map((row, i) => {
           const b = badgeFor(row);
           return (
             <div
               class="schedule-row rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-4"
+              data-row-index={i}
+              hidden={isExtra(i)}
               data-topic={row.category.id}
               data-country={row.country}
               data-trainers={row.trainers.map(trainerKey).join(" ")}
@@ -249,11 +259,13 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
             </tr>
           </thead>
           <tbody>
-            {enriched.map((row) => {
+            {enriched.map((row, i) => {
               const b = badgeFor(row);
               return (
                 <tr
                   class="schedule-row border-b border-neutral-100 last:border-0"
+                  data-row-index={i}
+                  hidden={isExtra(i)}
                   data-topic={row.category.id}
                   data-country={row.country}
                   data-trainers={row.trainers.map(trainerKey).join(" ")}
@@ -312,6 +324,20 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
           {t("schedule.noSessionsFilter")}
         </p>
       )}
+      {collapsible && (
+        <div class="mt-6 text-center">
+          <button
+            type="button"
+            id={`${id}-show-all`}
+            data-limit={collapsedLimit}
+            data-label-more={`${t("schedule.showAllPrefix")} ${rows.length} ${t("schedule.showAllSuffix")} ↓`}
+            data-label-less={`${t("schedule.showFewer")} ↑`}
+            class="cursor-pointer rounded-[var(--radius-control)] border border-ink px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-ink hover:text-surface"
+          >
+            {t("schedule.showAllPrefix")} {rows.length} {t("schedule.showAllSuffix")} ↓
+          </button>
+        </div>
+      )}
     </Fragment>
   ) : (
     <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-10 text-center">
@@ -330,6 +356,9 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
   hasAnyFilter && (
     <script define:vars={{ id }}>
       const filterButtons = Array.from(document.querySelectorAll(`#${id}-filters [data-filter-group]`));
+      const showAllButton = document.getElementById(`${id}-show-all`);
+      const collapsedLimit = Number(showAllButton?.dataset.limit ?? 0);
+      let expanded = !showAllButton;
       const toggleButtons = Array.from(document.querySelectorAll(`#${id}-filters .filter-toggle`));
       const rows = Array.from(document.querySelectorAll(`#${id}-mobile .schedule-row, #${id}-desktop .schedule-row`));
       const emptyMessage = document.getElementById(`${id}-empty`);
@@ -354,6 +383,10 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
       }
 
       function update() {
+        // A filtered view is never collapsed: "8 of your filtered results"
+        // would be confusing, and the filter is the visitor asking for all.
+        const anyFilter = Object.values(active).some((set) => set.size > 0);
+        const collapsed = !expanded && !anyFilter;
         let visible = 0;
         rows.forEach((row) => {
           const topic = row.dataset.topic ?? "";
@@ -363,13 +396,31 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
           const countryMatch = active.country.size === 0 || active.country.has(country);
           const trainerMatch = active.trainer.size === 0 || trainers.some((t) => active.trainer.has(t));
           const show = topicMatch && countryMatch && trainerMatch;
-          row.hidden = !show;
+          const beyondLimit = collapsed && Number(row.dataset.rowIndex ?? 0) >= collapsedLimit;
+          row.hidden = !show || beyondLimit;
           if (show) visible++;
         });
         if (emptyMessage) emptyMessage.hidden = visible > 0;
         if (mobileList) mobileList.style.display = visible > 0 ? "" : "none";
         if (desktopList) desktopList.style.display = visible > 0 ? "" : "none";
+        if (showAllButton) {
+          showAllButton.hidden = anyFilter;
+          showAllButton.textContent = expanded ? showAllButton.dataset.labelLess : showAllButton.dataset.labelMore;
+        }
         updateSummaryCounts();
+      }
+
+      showAllButton?.addEventListener("click", () => {
+        expanded = !expanded;
+        update();
+        if (!expanded) (mobileList?.offsetParent ? mobileList : desktopList)?.scrollIntoView({ block: "start" });
+      });
+
+      // Arriving via an anchor that targets this list (e.g. /training#schedule
+      // from every "full schedule" link) means the visitor asked for all of it.
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target && ((mobileList && target.contains(mobileList)) || (desktopList && target.contains(desktopList)))) expanded = true;
       }
 
       filterButtons.forEach((button) => {
@@ -402,7 +453,7 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
         });
       });
 
-      // Deep links, e.g. /training/full-schedule?topic=scrum,kanban (topic
+      // Deep links, e.g. /training?topic=scrum,kanban#schedule (topic
       // values are base slugs; the German page's buttons carry de/ ids).
       // Clicking the matching buttons keeps one code path for the active
       // styling, and opening the group's mobile panel shows what's applied.
