@@ -8,6 +8,7 @@
 import type { CollectionEntry } from "astro:content";
 import Section from "@/components/Section.astro";
 import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
+import CourseCard from "@/components/CourseCard.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { resolveLocale, useTranslations } from "@/i18n/utils";
 
@@ -15,9 +16,13 @@ interface Props {
   article: CollectionEntry<"insights-articles">;
   authorName: string;
   related: CollectionEntry<"insights-articles">[];
+  // 1-3 courses this article is actually about, most relevant first (see
+  // src/lib/relatedTraining.ts) -- empty for the few articles where a
+  // course link would be forced, and the block simply doesn't render.
+  relatedCourses: CollectionEntry<"training-courses">[];
 }
 
-const { article, authorName, related } = Astro.props;
+const { article, authorName, related, relatedCourses } = Astro.props;
 const locale = resolveLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 const prefix = locale === "de" ? "/de" : "";
@@ -53,8 +58,20 @@ const prefix = locale === "de" ? "/de" : "";
 </Section>
 
 {
+  relatedCourses.length > 0 && (
+    <Section eyebrow={t("insights.relatedTraining")} heading={t("insights.relatedTrainingHeading")} class="bg-mist-light">
+      <div class="max-w-2xl rounded-[var(--radius-card)] border border-neutral-200 bg-surface px-6 [&>a:last-child]:border-b-0">
+        {relatedCourses.map((course) => (
+          <CourseCard course={course} categorySlug={course.data.category.id} variant="row" />
+        ))}
+      </div>
+    </Section>
+  )
+}
+
+{
   related.length > 0 && (
-    <Section eyebrow={t("insights.relatedReading")} class="bg-mist-light">
+    <Section eyebrow={t("insights.relatedReading")}>
       <h2 class="sr-only">{t("insights.relatedReading")}</h2>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {related.map((a) => (

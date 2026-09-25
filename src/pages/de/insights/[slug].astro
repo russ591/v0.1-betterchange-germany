@@ -4,6 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import InsightsArticlePageContent from "@/components/pages/InsightsArticlePageContent.astro";
 import { baseSlug } from "@/lib/i18n";
 import { relatedSeriesEntries } from "@/lib/insights";
+import { relatedCourses } from "@/lib/relatedTraining";
 
 export async function getStaticPaths() {
   const articles = await getCollection("insights-articles", (a) => a.id.startsWith("de/"));
@@ -35,6 +36,11 @@ const related = article.data.seriesId
 // conditional.
 const enArticle = (await getEntry("insights-articles", baseSlug(article.id)))!;
 
+// Matched against the English original (the reviewed mapping), shown as
+// the German course pages.
+const courses = await getCollection("training-courses");
+const training = relatedCourses(enArticle, courses, "de");
+
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -61,5 +67,5 @@ const articleSchema = {
     de: `/de/insights/${article.data.urlSlug ?? baseSlug(article.id)}`,
   }}
 >
-  <InsightsArticlePageContent article={article} authorName={authorName} related={related} />
+  <InsightsArticlePageContent article={article} authorName={authorName} related={related} relatedCourses={training} />
 </BaseLayout>

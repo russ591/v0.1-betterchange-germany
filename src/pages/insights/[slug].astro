@@ -4,6 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import InsightsArticlePageContent from "@/components/pages/InsightsArticlePageContent.astro";
 import { localeOfId, baseSlug } from "@/lib/i18n";
 import { relatedSeriesEntries } from "@/lib/insights";
+import { relatedCourses } from "@/lib/relatedTraining";
 
 export async function getStaticPaths() {
   // A handful of articles now have a German translation living alongside
@@ -29,6 +30,9 @@ const related = article.data.seriesId
         .filter((a) => a.id !== article.id && a.data.primaryCategory === article.data.primaryCategory)
         .slice(0, 3)
     : [];
+
+const courses = await getCollection("training-courses", (c) => localeOfId(c.id) === "en");
+const training = relatedCourses(article, courses);
 
 // Only some articles have a German translation yet -- the hreflang tags
 // only appear when this specific one does, same as individual coach
@@ -67,5 +71,5 @@ const articleSchema = {
       : undefined
   }
 >
-  <InsightsArticlePageContent article={article} authorName={authorName} related={related} />
+  <InsightsArticlePageContent article={article} authorName={authorName} related={related} relatedCourses={training} />
 </BaseLayout>
