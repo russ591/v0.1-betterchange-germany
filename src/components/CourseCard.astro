@@ -6,7 +6,7 @@ import { courseBadges } from "@/data/courseBadges";
 import { translateLevel } from "@/data/levelIcons";
 import { toPathSegment } from "@/lib/urlSlug";
 import { baseSlug } from "@/lib/i18n";
-import { resolveLocale } from "@/i18n/utils";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
 
 // Consolidates the live site's four course-card variants (discipline list,
 // schedule table row, "related courses" card, profile-page course card)
@@ -16,18 +16,42 @@ interface Props {
   /** Language-neutral or locale-prefixed category slug -- either works,
    * baseSlug() strips a "de/" prefix if present. */
   categorySlug: string;
-  variant?: "card" | "row";
+  /** "compact" is the sidebar row (profile page's upcoming-training
+   * list, the article page's related-training rail): badge, name, level,
+   * and a "find out more" link, no format pills. */
+  variant?: "card" | "row" | "compact";
 }
 
 const { course, categorySlug, variant = "card" } = Astro.props;
 const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
 const prefix = locale === "de" ? "/de" : "";
 const href = `${prefix}/training/${baseSlug(categorySlug)}/${toPathSegment(course.data.urlSlug ?? baseSlug(course.id))}`;
 const badge = courseBadges[baseSlug(course.id)];
 ---
 
 {
-  variant === "row" ? (
+  variant === "compact" ? (
+    <a
+      href={href}
+      class="flex flex-col gap-2 py-3 first:pt-0 last:pb-0 transition-colors hover:bg-mist-light lg:flex-row lg:items-center lg:gap-3"
+    >
+      <div class="flex min-w-0 flex-1 items-center gap-3">
+        {badge && (
+          <span class="flex h-8 w-8 shrink-0 items-center justify-center">
+            <Image src={badge} alt="" width={36} height={36} class="h-full w-full object-contain" />
+          </span>
+        )}
+        <div class="min-w-0 flex-1">
+          <p class="text-[length:var(--text-small)] font-semibold leading-snug">{course.data.name}</p>
+          {course.data.level && (
+            <p class="text-[length:var(--text-caption)] text-neutral-500">{translateLevel(course.data.level, locale)}</p>
+          )}
+        </div>
+      </div>
+      <span class="shrink-0 self-end text-[length:var(--text-caption)] font-semibold text-ink lg:self-auto">{t("profile.findOutMore")} →</span>
+    </a>
+  ) : variant === "row" ? (
     <a
       href={href}
       class="flex flex-col gap-2 border-b border-neutral-200 py-4 transition-colors hover:bg-neutral-50 sm:flex-row sm:items-center sm:justify-between"

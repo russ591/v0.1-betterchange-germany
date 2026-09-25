@@ -179,7 +179,6 @@ export const en = {
   "insights.by": "By",
   "insights.relatedReading": "Related reading",
   "insights.relatedTraining": "Related training",
-  "insights.relatedTrainingHeading": "Take it further with a course",
 
   // From betterchange-de-translation-draft-insights-template.md (the
   // Insights hub's shared template strings -- individual article titles/
@@ -401,7 +400,6 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "insights.by": "Von",
   "insights.relatedReading": "Weiterführende Artikel",
   "insights.relatedTraining": "Passende Trainings",
-  "insights.relatedTrainingHeading": "Mit einem Training vertiefen",
 
   // From betterchange-de-translation-draft-insights-template.md. The
   // draft's intro paragraph used an em dash ("... organisatorischem
