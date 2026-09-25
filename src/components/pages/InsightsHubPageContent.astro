@@ -67,8 +67,10 @@ const placeholderStyle = (id: string) => {
 // through the eligible pool once a day: a 3-wide window keyed off the UTC
 // day number, so every eligible article gets a turn in the hero over time
 // instead of the newest 3 permanently crowding out the rest. (This is a
-// static build, so "today" is the day of the last deploy -- see the note
-// where this page is wired up for what that means in practice.) Falls
+// static build, so "today" is the day of the last deploy, not the
+// visitor's actual today -- kept in sync day to day by the same nightly
+// rebuild that also refreshes date-based course listings, see
+// netlify/functions/nightly-rebuild.js.) Falls
 // back to the most recent articles overall when fewer than 3 qualify, so
 // the row is never sparse; a pool that small isn't worth rotating.
 const heroPool = articles.filter(
