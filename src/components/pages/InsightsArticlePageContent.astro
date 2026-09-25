@@ -74,18 +74,6 @@ const railMore = "mt-3 inline-block text-[length:var(--text-caption)] font-semib
     {
       hasSidebar && (
         <aside class="min-w-0 space-y-6 md:sticky md:top-24">
-          {relatedCourses.length > 0 && (
-            <div class={railCard}>
-              <h2 class={railLabel}>{t("insights.relatedTraining")}</h2>
-              <div class="mt-3 flex flex-col divide-y divide-neutral-100">
-                {relatedCourses.map((course) => (
-                  <CourseCard course={course} categorySlug={course.data.category.id} variant="compact" />
-                ))}
-              </div>
-              <a href={`${prefix}/training`} class={railMore}>{t("cta.seeAllTraining")} →</a>
-            </div>
-          )}
-
           {related.length > 0 && (
             <div class={railCard}>
               <h2 class={railLabel}>{t("insights.relatedReading")}</h2>
@@ -95,6 +83,17 @@ const railMore = "mt-3 inline-block text-[length:var(--text-caption)] font-semib
                 ))}
               </div>
               <a href={`${prefix}/insights`} class={railMore}>{t("profile.seeAllArticles")} →</a>
+            </div>
+          )}
+          {relatedCourses.length > 0 && (
+            <div class={railCard}>
+              <h2 class={railLabel}>{t("insights.relatedTraining")}</h2>
+              <div class="mt-3 flex flex-col divide-y divide-neutral-100">
+                {relatedCourses.map((course) => (
+                  <CourseCard course={course} categorySlug={course.data.category.id} variant="compact" />
+                ))}
+              </div>
+              <a href={`${prefix}/training`} class={railMore}>{t("cta.seeAllTraining")} →</a>
             </div>
           )}
         </aside>
