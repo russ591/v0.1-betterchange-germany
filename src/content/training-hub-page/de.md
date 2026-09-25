@@ -19,7 +19,7 @@ heroBody: "Praxisnahes, zertifizierungsreifes Training in Flight Levels, Kanban,
 disciplinesEyebrow: "Disziplinen"
 disciplinesHeading: "Sechs Disziplinen, ein Netzwerk aus Praktiker:innen"
 upcomingEyebrow: "Anstehende Trainings"
-upcomingHeading: "Nächste Termine, über alle Disziplinen hinweg"
+upcomingHeading: "Alle Trainingstermine"
 formatsEyebrow: "Formate"
 formatsHeading: "Verfügbare Lernformate"
 formats:

@@ -6,7 +6,7 @@ heroBody: Hands-on, certification-ready training in Flight Levels, Kanban, Scrum
 disciplinesEyebrow: Disciplines
 disciplinesHeading: Six disciplines, one practitioner network
 upcomingEyebrow: Upcoming training
-upcomingHeading: Next scheduled sessions, across every discipline
+upcomingHeading: Full training schedule
 formatsEyebrow: Delivery formats
 formatsHeading: Choose how you learn
 formats:
