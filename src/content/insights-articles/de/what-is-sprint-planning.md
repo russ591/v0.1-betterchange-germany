@@ -13,6 +13,7 @@
 # product", missing a space and mid-sentence) -- the draft's clean
 # rendering of that sentence without it is correct and not restored.
 title: What is Sprint Planning?
+relatedTrainingIntro: "Sprint Planning braucht vorbereitete Product Owner und Scrum Master, die das Event bei seinem Zweck halten. Diese Trainings behandeln beides."
 contentType: Resource
 primaryCategory: Scrum
 categories:

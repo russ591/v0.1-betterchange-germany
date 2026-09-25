@@ -1,5 +1,6 @@
 ---
 title: 'The Question Behind the Question: Karl Tomm''s Map for Coaches'
+relatedTrainingIntro: "Knowing what kind of question to ask, and when, is the coaching skill this course develops, with Tomm's model among the tools."
 urlSlug: "the-question-behind-the-question:-karl-tomm's-map-for-coaches"
 contentType: Blog
 primaryCategory: Coaching

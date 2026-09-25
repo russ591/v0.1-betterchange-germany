@@ -1,5 +1,6 @@
 ---
 title: 'The Feedback Loops Scrum Actually Runs On'
+relatedTrainingIntro: "Weak feedback loops cause specific, identifiable failures. This course covers how to keep each loop, from the Daily Scrum to refinement, doing its job."
 contentType: Resource
 primaryCategory: Scrum
 categories:

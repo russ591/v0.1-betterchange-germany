@@ -10,6 +10,7 @@
 # draft -- a minor, low-stakes omission consistent with the CTA drops
 # already confirmed fine in earlier batches, not restored here.
 title: Humble Inquiry - The Art of Elevating Your Employees
+relatedTrainingIntro: "Fragen statt anweisen ist eine Führungsdisziplin, die den meisten Managementinstinkten widerspricht. In diesem Training wird sie geübt."
 contentType: Blog
 primaryCategory: Leadership
 categories:

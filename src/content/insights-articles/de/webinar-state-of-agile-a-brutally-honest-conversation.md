@@ -8,6 +8,7 @@
 # site-wide category-label rule ("AI" only appears inline in bodyHtml
 # here, not in categories, so no KI substitution needed on this file).
 title: State of Agile - A Brutally Honest Conversation
+relatedTrainingIntro: "Agile ist nicht tot, braucht aber Praktiker:innen, die Prinzipien von Hype unterscheiden können. Diese Trainings sind für die Menschen, die das Reparieren übernehmen."
 contentType: Blog
 primaryCategory: Change Management
 categories:

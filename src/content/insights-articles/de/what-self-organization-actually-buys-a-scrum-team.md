@@ -10,6 +10,7 @@
 # directly in this batch's draft (unlike sub-batch 1); author/date/
 # contentType pulled from the EN source article per the standing rule.
 title: 'What Self-Organization Actually Buys a Scrum Team'
+relatedTrainingIntro: "Selbstorganisation hat einen praktischen Nutzen und echte Grenzen. Dieses Training zeigt, wie die Fähigkeit entsteht, ohne die Grenzen wegzureden."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

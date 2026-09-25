@@ -13,6 +13,7 @@
 # rather than the draft's header note -- worth double-checking in case
 # it points to a real attribution issue somewhere upstream.
 title: 'The Pacesetter Trap: What Happens When One Leadership Style Runs Everything'
+relatedTrainingIntro: "Ein Stil, der alles bestimmt, ist die Falle; Bandbreite ist die Fähigkeit. Dieses Training hilft Führungskräften, ihren Standardmodus zu erkennen und zu erweitern."
 contentType: Blog
 primaryCategory: Leadership
 categories:

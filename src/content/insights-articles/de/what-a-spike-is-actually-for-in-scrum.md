@@ -11,6 +11,7 @@
 # the EN source article per the standing rule. This completes all 52
 # German translations for the SEO-rewrite project (sub-batches 1-4).
 title: 'What a Spike Is Actually For in Scrum'
+relatedTrainingIntro: "Ein Spike reduziert Unsicherheit, er soll keine Entscheidung vertagen. Dieses Training behandelt Ermessensfragen wie diese, die der Scrum Guide offen lässt."
 contentType: Resource
 primaryCategory: Scrum
 categories:

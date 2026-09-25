@@ -11,6 +11,7 @@
 # per the standardized convention; author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'Why Combining Product Owner and Scrum Master Usually Backfires'
+relatedTrainingIntro: "Zwei Accountabilities in einer Person erzeugen einen strukturellen Konflikt. Diese Trainings zeigen, was jede Accountability braucht und warum sie am besten getrennt bleiben."
 contentType: Resource
 primaryCategory: Scrum
 categories:

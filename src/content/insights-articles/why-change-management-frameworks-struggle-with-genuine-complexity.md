@@ -1,5 +1,6 @@
 ---
 title: 'Why Change Management Frameworks Struggle With Genuine Complexity'
+relatedTrainingIntro: "Complexity needs a different approach from Kotter's eight steps. These courses cover coaching and leading change when the end state isn't known."
 contentType: Blog
 primaryCategory: Change Management
 categories:

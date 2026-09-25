@@ -8,6 +8,7 @@
 # site-wide category-label rule. Author pulled from the EN source per
 # the standing rule (batch-06 drafts leave author unguessed).
 title: 'The Question Behind the Question: Karl Tomm''s Map for Coaches'
+relatedTrainingIntro: "Zu wissen, welche Art Frage wann passt, ist die Coaching-Fähigkeit, die dieses Training entwickelt, mit Tomms Modell als einem der Werkzeuge."
 contentType: Blog
 primaryCategory: Coaching
 categories:

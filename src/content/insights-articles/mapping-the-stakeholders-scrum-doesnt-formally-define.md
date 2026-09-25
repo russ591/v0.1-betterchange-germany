@@ -1,5 +1,6 @@
 ---
 title: 'Mapping the Stakeholders Scrum Doesn''t Formally Define'
+relatedTrainingIntro: "Stakeholder mapping is one of the things Scrum leaves to the team. This course covers how a Scrum Master helps the team do it, and the rest of what the framework leaves unsaid."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

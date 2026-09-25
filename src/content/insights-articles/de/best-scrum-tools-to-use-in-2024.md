@@ -17,6 +17,7 @@
 # in the conclusion despite the 2024 title; the draft already renders
 # "2024" consistently throughout, so no fix needed here.
 title: Best Scrum Tools to use in 2024
+relatedTrainingIntro: "Tools unterstützen Scrum, sie erzeugen es nicht. Dieses Training behandelt die Praxis, der die Tools dienen sollen, damit das Board die echte Arbeit abbildet und nicht umgekehrt."
 contentType: Resource
 primaryCategory: Scrum
 categories:

@@ -1,5 +1,6 @@
 ---
 title: The Agile Disconnect
+relatedTrainingIntro: "SAFe succeeds when leaders embody agile principles instead of sponsoring them from a distance. These courses cover the framework and the leadership it depends on."
 contentType: Blog
 primaryCategory: Agile
 categories:

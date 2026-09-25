@@ -1,5 +1,6 @@
 ---
 title: 'Why Team Velocity Swings, and What Actually Stabilizes It'
+relatedTrainingIntro: "Velocity swings are symptoms. This course covers the causes and the practices that stabilise them."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

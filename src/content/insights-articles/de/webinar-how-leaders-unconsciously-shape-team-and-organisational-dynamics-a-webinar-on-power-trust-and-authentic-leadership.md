@@ -11,6 +11,7 @@
 # categories stay English loanwords per the site-wide category-label
 # rule.
 title: The Hidden Ways Leaders Shape the Teams Around Them
+relatedTrainingIntro: "Was zwischen Führungskraft und Team geschieht, unabhängig von der Absicht: Genau dort setzt dieses Training an."
 contentType: Blog
 primaryCategory: Change Management
 categories:

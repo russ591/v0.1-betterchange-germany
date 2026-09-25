@@ -11,6 +11,7 @@
 # per the standardized convention; author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'What a Product Vision Is Actually For'
+relatedTrainingIntro: "Eine Vision, die einmal geschrieben und nie genutzt wird, ist eine verpasste Chance. Dieses Training zeigt, wie eine entsteht, die in jedem Sprint Entscheidungen leitet."
 contentType: Resource
 primaryCategory: Agile
 categories:

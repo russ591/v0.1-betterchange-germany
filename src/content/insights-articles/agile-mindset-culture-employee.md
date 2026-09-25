@@ -1,5 +1,6 @@
 ---
 title: 'When Employees Resist Agile: The Reasons Are More Rational Than You Think'
+relatedTrainingIntro: "Resistance is a rational response to change done to people rather than with them. These courses cover how to run a transformation people can actually join."
 urlSlug: "when-employees-resist-agile:-the-reasons-are-more-rational-than-you-think"
 contentType: Blog
 primaryCategory: Agile

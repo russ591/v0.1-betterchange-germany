@@ -1,5 +1,6 @@
 ---
 title: 'Scrum''s Five Values: The Human Foundation Under the Framework'
+relatedTrainingIntro: "Courage, focus, commitment, respect and openness are what stop Scrum being a set of rituals. This course takes the values as seriously as the mechanics."
 urlSlug: "scrum's-five-values:-the-human-foundation-under-the-framework"
 contentType: Resource
 primaryCategory: Agile

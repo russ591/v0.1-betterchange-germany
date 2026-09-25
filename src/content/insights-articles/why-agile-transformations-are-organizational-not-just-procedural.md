@@ -1,5 +1,6 @@
 ---
 title: 'Why Agile Transformations Are Organizational, Not Just Procedural'
+relatedTrainingIntro: "Structure, funding, leadership behaviour and incentives: that is the transformation. This course is about changing those, not just the ceremonies."
 contentType: Resource
 primaryCategory: Change Management
 categories:

@@ -11,6 +11,7 @@
 # per the standardized convention; author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'What Actually Breaks When a Scrum Team Gets Too Big'
+relatedTrainingIntro: "Zu wissen, was in einem wachsenden Team nachlässt, ist nützlicher als die Zahl zu kennen. Dieses Training behandelt den Anteil der Scrum Master daran, ein Team in der richtigen Form zu halten."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

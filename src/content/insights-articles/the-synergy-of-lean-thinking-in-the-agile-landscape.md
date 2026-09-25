@@ -1,5 +1,6 @@
 ---
 title: The Synergy of Lean Thinking in the Agile Landscape
+relatedTrainingIntro: "Lean and Agile share a root in flow and continuous improvement. These courses cover Kanban, Scrum and the organisational change that brings them together."
 contentType: Resource
 primaryCategory: Agile
 categories:

@@ -11,6 +11,7 @@
 # (added after this draft was written), so the earlier open question in
 # the trailing comment is resolved and removed.
 title: 'Start Strong, Finish Better: AI for Scrum Events That Deliver'
+relatedTrainingIntro: "KI kann Sprint Planning, Retrospektiven und Coaching-Gespräche schärfen, sofern das menschliche Urteilsvermögen zuerst da ist. Diese Trainings bauen beide Hälften auf."
 contentType: Blog
 primaryCategory: Change Management
 categories:

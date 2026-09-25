@@ -9,6 +9,7 @@
 # string, no migrated coach-profile) -- used as-is. Clean match, no
 # CTA/link issues to flag.
 title: 'The Scrum Board: A Tool for the Team, Not a Reporting Dashboard'
+relatedTrainingIntro: "Ein Board, das das Daily Scrum antreibt, statt ans Management zu berichten, ist das Werk der Scrum Master. Dieses Training behandelt diese Praxis."
 contentType: Resource
 primaryCategory: Scrum
 categories:

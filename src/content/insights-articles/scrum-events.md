@@ -1,5 +1,6 @@
 ---
 title: 'Scrum''s Five Events: What They Are, What They''re For, and How They Connect'
+relatedTrainingIntro: "The five events are a system, not five meetings. This course covers how they connect and what each is for."
 urlSlug: "scrum's-five-events:-what-they-are,-what-they're-for,-and-how-they-connect"
 contentType: Resource
 primaryCategory: Scrum

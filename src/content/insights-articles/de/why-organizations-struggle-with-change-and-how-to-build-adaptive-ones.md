@@ -10,6 +10,7 @@
 # frontmatter title in an earlier round -- the English source's own
 # iframe title still has the old em-dash version, flagged separately.
 title: Why Organizations Struggle with Change and How to Build Adaptive Ones
+relatedTrainingIntro: "Komplexe Systeme, empirisches Lernen, Führung als Motor: Die Themen des Webinars sind das, was diese Trainings in der Tiefe vermitteln."
 contentType: Blog
 primaryCategory: Change Management
 categories:

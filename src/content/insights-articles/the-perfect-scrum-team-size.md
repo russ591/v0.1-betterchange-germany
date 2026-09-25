@@ -1,5 +1,6 @@
 ---
 title: The Perfect Scrum Team Size
+relatedTrainingIntro: "Team size is about communication and collaboration, not headcount. This course covers what a Scrum Master does to keep both working as a team grows."
 contentType: Resource
 primaryCategory: Scrum
 categories:

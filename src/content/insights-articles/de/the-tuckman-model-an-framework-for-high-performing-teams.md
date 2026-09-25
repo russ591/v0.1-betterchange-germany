@@ -10,6 +10,7 @@
 # Author pulled from the EN source per the standing rule. Clean match,
 # no CTA/link issues to flag.
 title: 'Forming, Storming, Norming, Performing: Tuckman''s Map Through Team Development'
+relatedTrainingIntro: "Jede Phase von Forming bis Performing braucht etwas anderes von den Menschen um das Team herum. Diese Trainings behandeln Facilitation, Führung und Coaching eines Teams durch diese Phasen."
 contentType: Resource
 primaryCategory: Leadership
 categories:

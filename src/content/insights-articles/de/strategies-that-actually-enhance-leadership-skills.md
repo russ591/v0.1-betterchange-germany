@@ -9,6 +9,7 @@
 # (the source draft only supplied title + body); author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'Strategies That Actually Enhance Leadership Skills'
+relatedTrainingIntro: "Bewusstes Unbehagen, strukturierte Reflexion, ungefiltertes Feedback: Führungsfähigkeit wird aufgebaut, nicht beschrieben. Genau darauf ist dieses Training ausgelegt."
 contentType: Blog
 primaryCategory: Leadership
 categories: []

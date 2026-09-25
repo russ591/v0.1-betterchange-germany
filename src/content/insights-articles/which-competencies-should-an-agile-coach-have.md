@@ -1,5 +1,6 @@
 ---
 title: What an Agile Coach Actually Needs to Be Good At
+relatedTrainingIntro: "Process knowledge is necessary; human dynamics are the rest. This course covers the coaching stance and the stances around it."
 urlSlug: "what-an-agile-coach-actually-needs-to-be-good-at"
 contentType: Blog
 primaryCategory: Coaching

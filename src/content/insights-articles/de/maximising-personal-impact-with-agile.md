@@ -8,6 +8,7 @@
 # site-wide category-label rule. Author pulled from the EN source per
 # the standing rule.
 title: Applying Agile Thinking to Your Own Career (It Works Better Than You'd Think)
+relatedTrainingIntro: "Agiles Denken funktioniert für eine Laufbahn aus denselben Gründen wie für ein Produkt. Diese Trainings behandeln die Praktiken und die Führungshaltung dahinter."
 contentType: Blog
 primaryCategory: Agile
 categories:

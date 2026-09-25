@@ -9,6 +9,7 @@
 # (the source draft only supplied title + body); author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'Why Change Management Matters More Than the Plan Itself'
+relatedTrainingIntro: "Der Plan ist selten das Problem; wie Menschen durch den Wandel gehen, schon. Diese Trainings behandeln die Steuerung dieser Seite."
 contentType: Blog
 primaryCategory: Change Management
 categories: []

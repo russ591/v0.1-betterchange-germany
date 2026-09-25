@@ -15,6 +15,7 @@
 # draft -- a minor, low-stakes omission (a pleasantry, not substantive
 # content), flagged rather than invented.
 title: 'Agile Leadership: The Vital Role of Sensemaking, Integrity, Presence, and Authenticity'
+relatedTrainingIntro: "Sensemaking, Integrität, Präsenz und Authentizität sind Praktiken, keine Charakterzüge. In diesem Training arbeiten Führungskräfte gezielt daran."
 contentType: Blog
 primaryCategory: Leadership
 categories:

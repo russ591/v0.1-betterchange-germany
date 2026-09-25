@@ -1,5 +1,6 @@
 ---
 title: 'The Scrum Board: A Tool for the Team, Not a Reporting Dashboard'
+relatedTrainingIntro: "A board that drives the Daily Scrum instead of reporting to management is a Scrum Master's doing. This course covers that practice."
 urlSlug: "the-scrum-board:-a-tool-for-the-team,-not-a-reporting-dashboard"
 contentType: Resource
 primaryCategory: Scrum

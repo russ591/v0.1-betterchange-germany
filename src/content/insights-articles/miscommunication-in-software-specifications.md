@@ -1,5 +1,6 @@
 ---
 title: Why Developers Build the Wrong Thing, and How User Stories Help
+relatedTrainingIntro: "User stories exist to keep the conversation about what the user needs, not to replace it. This course covers writing and refining them so developers build the right thing."
 urlSlug: "why-developers-build-the-wrong-thing-and-how-user-stories-help"
 contentType: Blog
 primaryCategory: Product Development

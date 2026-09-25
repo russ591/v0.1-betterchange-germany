@@ -1,5 +1,6 @@
 ---
 title: 'Why Coaching Conversations Need Structure, Not a Script'
+relatedTrainingIntro: "Structure held loosely is what keeps a coaching conversation from drifting. This course covers models like GROW and when to let go of them."
 contentType: Blog
 primaryCategory: Coaching
 categories:

@@ -7,6 +7,7 @@
 # contentType/primaryCategory/categories stay English loanwords per the
 # site-wide category-label rule.
 title: Six Months Into Your Scaling Initiative, and the Benefits Still Haven't Appeared
+relatedTrainingIntro: "Sechs Monate ohne Ergebnis heißen meist: Die Zeremonien haben sich geändert, die Organisation nicht. Diese Trainings behandeln Transformation, Führung und Koordinationsdesign, damit Skalierung liefert."
 contentType: Blog
 primaryCategory: Change Management
 categories:

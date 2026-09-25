@@ -1,5 +1,6 @@
 ---
 title: 'Who Is Actually Accountable for a Scrum Team''s Performance?'
+relatedTrainingIntro: "Performance in Scrum is distributed by design. These courses cover what the Scrum Master and Product Owner each contribute to it."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

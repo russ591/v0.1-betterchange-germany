@@ -1,5 +1,6 @@
 ---
 title: 'What Scrum Masters Actually Owe Product Owners'
+relatedTrainingIntro: "The Scrum Master serves the Product Owner too. These courses cover both sides of that relationship, and the advanced Product Owner track it supports."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

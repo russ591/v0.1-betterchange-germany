@@ -1,5 +1,6 @@
 ---
 title: 'What a Product Goal Actually Does That a Vision Doesn''t'
+relatedTrainingIntro: "Product Goal, product vision, Sprint Goal: keeping the hierarchy clear is part of both accountabilities. These courses cover how each one uses it."
 contentType: Resource
 primaryCategory: Scrum
 categories:

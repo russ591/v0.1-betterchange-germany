@@ -1,5 +1,6 @@
 ---
 title: 'Why Teamwork Is Harder Than It Looks'
+relatedTrainingIntro: "Trust is the bottleneck, and trust is built through structure and leadership rather than exhortation. These courses cover both."
 contentType: Blog
 primaryCategory: Leadership
 categories: []

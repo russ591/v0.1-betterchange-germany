@@ -16,6 +16,7 @@
 # Used the EN source's actual author -- part of a pattern of author
 # mismatches in this batch's draft headers, worth checking upstream.
 title: Organisational Change Doesn't Happen Collectively. It Happens Person by Person
+relatedTrainingIntro: "Wenn Veränderung Person für Person geschieht, sind die eigenen Fähigkeiten der Change Agents das Instrument. Diese Trainings entwickeln sie, vom Coaching von Transformationen bis zum Design der Koordination über Ebenen hinweg."
 contentType: Blog
 primaryCategory: Change Management
 categories:

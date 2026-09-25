@@ -1,5 +1,6 @@
 ---
 title: 'What Transformational Leadership Actually Requires'
+relatedTrainingIntro: "All four components of transformational leadership, not three. This course develops them together."
 contentType: Resource
 primaryCategory: Leadership
 categories:

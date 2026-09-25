@@ -1,5 +1,6 @@
 ---
 title: What Went Wrong with Agile? An Honest Reckoning
+relatedTrainingIntro: "The honest reckoning ends with the same conclusion: agile needs change agents and leaders who understand it. These courses are for them."
 urlSlug: "what-went-wrong-with-agile-an-honest-reckoning"
 seriesId: "agile-mishaps"
 seriesOrder: 1

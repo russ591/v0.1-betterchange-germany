@@ -10,6 +10,7 @@
 # as first-person voice -- the impersonal/collective-address house rule
 # applies to addressing the reader, not to first-person storytelling.
 title: How a Kanban Board on a Kitchen Wall Renovated Our House on Time and on Budget
+relatedTrainingIntro: "Wenn eine Wand voller Haftnotizen eine Renovierung steuern kann, was leistet dann ein bewusst gestaltetes Kanban-System für Wissensarbeit? Dieses Training zeigt, wie so ein System entsteht."
 contentType: Blog
 primaryCategory: Leadership
 categories:

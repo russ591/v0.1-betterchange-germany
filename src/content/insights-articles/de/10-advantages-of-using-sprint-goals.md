@@ -8,6 +8,7 @@
 # category-label rule; "Product Development" -> "Produktentwicklung" in
 # categories per that same rule's stated exception.
 title: Ten Reasons Sprint Goals Are Worth the Effort
+relatedTrainingIntro: "Ein Sprint-Ziel macht den Unterschied zwischen einem Sprint mit Zweck und einer Aufgabenliste mit Termin. Dieses Training zeigt, wie ein Ziel entsteht, hinter dem das Team wirklich steht."
 contentType: Blog
 primaryCategory: Coaching
 categories:

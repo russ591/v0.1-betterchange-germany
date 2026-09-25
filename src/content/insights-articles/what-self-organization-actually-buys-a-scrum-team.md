@@ -1,5 +1,6 @@
 ---
 title: 'What Self-Organization Actually Buys a Scrum Team'
+relatedTrainingIntro: "Self-organisation has a practical case and real limits. This course covers building the capability without pretending the limits away."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

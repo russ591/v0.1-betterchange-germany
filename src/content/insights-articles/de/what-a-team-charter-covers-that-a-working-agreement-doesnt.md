@@ -10,6 +10,7 @@
 # directly in this batch's draft (unlike sub-batch 1); author/date/
 # contentType pulled from the EN source article per the standing rule.
 title: 'What a Team Charter Covers That a Working Agreement Doesn''t'
+relatedTrainingIntro: "Ein Charter beantwortet, warum das Team existiert; ihn gut zu schreiben ist Facilitation-Arbeit. Diese Trainings behandeln diese Facilitation und den Scrum-Kontext, in dem sie meist stattfindet."
 contentType: Blog
 primaryCategory: Agile
 categories: []

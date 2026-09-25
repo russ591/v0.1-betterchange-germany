@@ -9,6 +9,7 @@
 # English loanwords per the site-wide category-label rule -- EN source
 # primaryCategory is Agile, not Coaching as the draft header claimed.
 title: 'Book Review: Thinking, Fast and Slow. Still the Most Useful Book About Decisions You''ll Read'
+relatedTrainingIntro: "Kahnemans zwei Systeme erklären die meisten Planungsfehler in Scrum Teams, angefangen beim Planning Fallacy. Dieses Training behandelt die Praktiken, die System 1 ehrlich halten."
 contentType: Blog
 primaryCategory: Agile
 categories:

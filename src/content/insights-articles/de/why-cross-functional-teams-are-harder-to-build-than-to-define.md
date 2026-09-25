@@ -11,6 +11,7 @@
 # the EN source article per the standing rule. This completes all 52
 # German translations for the SEO-rewrite project (sub-batches 1-4).
 title: 'Why Cross-Functional Teams Are Harder to Build Than to Define'
+relatedTrainingIntro: "Ein cross-funktionales Team aufzubauen und zu erhalten braucht Facilitation, ein Framework und Führung, die es schützt. Diese Trainings behandeln jedes davon."
 contentType: Resource
 primaryCategory: Agile
 categories:

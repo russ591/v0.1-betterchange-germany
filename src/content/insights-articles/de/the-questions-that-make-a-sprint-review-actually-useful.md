@@ -9,6 +9,7 @@
 # (the source draft only supplied title + body); author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'The Questions That Make a Sprint Review Actually Useful'
+relatedTrainingIntro: "Die richtigen Fragen machen aus einer Demo eine Entscheidung. Dieses Training behandelt die Facilitation eines Sprint Reviews, das echtes Feedback hervorbringt."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

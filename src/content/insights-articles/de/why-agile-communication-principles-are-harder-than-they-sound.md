@@ -10,6 +10,7 @@
 # directly in this batch's draft (unlike sub-batch 1); author/date/
 # contentType pulled from the EN source article per the standing rule.
 title: 'Why Agile Communication Principles Are Harder Than They Sound'
+relatedTrainingIntro: "Individuen und Interaktionen über Prozesse und Werkzeuge braucht mehr Mut, als es klingt. Dieses Training behandelt die Praktiken, die es real machen."
 contentType: Blog
 primaryCategory: Agile
 categories: []

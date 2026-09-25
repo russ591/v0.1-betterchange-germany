@@ -10,6 +10,7 @@
 # directly in this batch's draft (unlike sub-batch 1); author/date/
 # contentType pulled from the EN source article per the standing rule.
 title: 'A Sprint Planning Checklist Worth Actually Using'
+relatedTrainingIntro: "Eine Checkliste fängt ab, was trotz korrekter Mechanik schiefgeht. Dieses Training vermittelt das Urteilsvermögen hinter dem Sprint Planning, das keine Checkliste ersetzt."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

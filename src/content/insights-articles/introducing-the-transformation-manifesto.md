@@ -1,5 +1,6 @@
 ---
 title: A Modest Manifesto for People Who Actually Change Things
+relatedTrainingIntro: "Fiery change agents over role definitions, coaching over instruction, involvement over PowerPoint consulting. This course is built for people who want to change things that way."
 urlSlug: "a-modest-manifesto-for-people-who-actually-change-things"
 contentType: Blog
 primaryCategory: Coaching

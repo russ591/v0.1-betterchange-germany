@@ -8,6 +8,7 @@
 # the EN source per the standing rule. Clean match, no links in the EN
 # source and no CTA/link issues to flag.
 title: 'Scrum''s Five Values: The Human Foundation Under the Framework'
+relatedTrainingIntro: "Mut, Fokus, Commitment, Respekt und Offenheit verhindern, dass Scrum zum Ritual wird. Dieses Training nimmt die Werte so ernst wie die Mechanik."
 contentType: Resource
 primaryCategory: Agile
 categories:

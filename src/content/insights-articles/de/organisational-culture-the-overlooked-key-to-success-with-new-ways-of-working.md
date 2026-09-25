@@ -8,6 +8,7 @@
 # site-wide category-label rule. The title's "–" is an en dash (U+2013),
 # not the banned em dash (U+2014), so no house-style issue there.
 title: Organisational Culture – The Overlooked Key to Success with New Ways of Working
+relatedTrainingIntro: "Neue Arbeitsweisen scheitern häufiger an der Kultur als an der Methode. Diese Trainings behandeln, wie Kultur gestaltet, geführt und mit passender Koordination unterlegt wird."
 contentType: Blog
 primaryCategory: Change Management
 categories:

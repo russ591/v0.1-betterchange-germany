@@ -1,5 +1,6 @@
 ---
 title: Elevate Your SAFe® By Breaking Down Barriers
+relatedTrainingIntro: "Hierarchical barriers undo SAFe faster than any missing practice. These courses cover the framework from the leadership and team roles that have to remove them."
 urlSlug: "elevate-your-safe®-by-breaking-down-barriers"
 contentType: Blog
 primaryCategory: Agile

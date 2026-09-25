@@ -1,5 +1,6 @@
 ---
 title: Why Most Strategies Fail Between the Slides and the Doing
+relatedTrainingIntro: "Strategy fails between the slides and the doing. These courses cover designing the strategy level, connecting it to the work, and leading the change it requires."
 urlSlug: "why-most-strategies-fail-between-the-slides-and-the-doing"
 contentType: Blog
 primaryCategory: Change Management

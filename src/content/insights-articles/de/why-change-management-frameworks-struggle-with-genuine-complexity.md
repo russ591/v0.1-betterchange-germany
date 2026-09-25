@@ -11,6 +11,7 @@
 # the EN source article per the standing rule. This completes all 52
 # German translations for the SEO-rewrite project (sub-batches 1-4).
 title: 'Why Change Management Frameworks Struggle With Genuine Complexity'
+relatedTrainingIntro: "Komplexität braucht einen anderen Ansatz als Kotters acht Schritte. Diese Trainings behandeln Coaching und Führung von Wandel, wenn der Zielzustand nicht bekannt ist."
 contentType: Blog
 primaryCategory: Change Management
 categories:

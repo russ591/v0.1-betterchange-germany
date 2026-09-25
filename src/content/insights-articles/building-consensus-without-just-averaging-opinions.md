@@ -1,5 +1,6 @@
 ---
 title: 'Building Consensus Without Just Averaging Opinions'
+relatedTrainingIntro: "Consensus that isn't just averaged opinion needs structure and a facilitator who can hold it. These courses teach both the facilitation and the leadership side of that."
 contentType: Resource
 primaryCategory: Leadership
 categories:

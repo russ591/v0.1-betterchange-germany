@@ -12,6 +12,7 @@
 # promotional paragraph are not in the draft; dropped as expected
 # SEO-filler omissions, consistent with prior batches.
 title: The Perfect Scrum Team Size
+relatedTrainingIntro: "Teamgröße ist eine Frage von Kommunikation und Zusammenarbeit, nicht von Köpfen. Dieses Training zeigt, was Scrum Master tun, damit beides auch in einem wachsenden Team funktioniert."
 contentType: Resource
 primaryCategory: Scrum
 categories:

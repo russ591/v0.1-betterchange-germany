@@ -9,6 +9,7 @@
 # (the source draft only supplied title + body); author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'The Sprint Planning Mistake Most Teams Don''t Notice'
+relatedTrainingIntro: "Sich auf das Warum einigen, Kapazität als Gespräch behandeln, das Wie planen: Dieses Training behandelt das Sprint Planning jenseits der Mechanik."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

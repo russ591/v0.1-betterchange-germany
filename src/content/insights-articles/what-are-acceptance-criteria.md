@@ -1,5 +1,6 @@
 ---
 title: What are Acceptance Criteria
+relatedTrainingIntro: "Acceptance criteria are where the Product Owner and the Developers agree on done before the work starts. These courses cover writing them and working with them."
 contentType: Resource
 primaryCategory: Scrum
 categories:

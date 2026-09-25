@@ -1,5 +1,6 @@
 ---
 title: 'Agile Retrospectives, Second Edition: A Practical Guide for Catalyzing Team Learning and Improvement'
+relatedTrainingIntro: "A great book on retrospectives makes a good facilitator better; it doesn't make a beginner competent. This course builds the facilitation skill the book assumes."
 urlSlug: "agile-retrospectives,-second-edition:-a-practical-guide-for-catalyzing-team-learning-and-improvement"
 contentType: Blog
 primaryCategory: Coaching

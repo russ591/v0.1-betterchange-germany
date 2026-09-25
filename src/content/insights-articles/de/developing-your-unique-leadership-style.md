@@ -11,6 +11,7 @@
 # Exercise Guide" CTA section (a form-fill prompt) and its intro links
 # to the other two posts in the series are not in the draft.
 title: Developing Your Unique Leadership Style
+relatedTrainingIntro: "Ein Führungsstil aus eigenen Werten statt aus fremdem Playbook braucht strukturierte Reflexion. Diese Trainings liefern die Struktur und die Peers zum Reflektieren."
 contentType: Blog
 primaryCategory: Leadership
 categories:

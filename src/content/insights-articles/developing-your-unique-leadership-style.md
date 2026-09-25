@@ -1,5 +1,6 @@
 ---
 title: Developing Your Unique Leadership Style
+relatedTrainingIntro: "A leadership style built on your own values rather than someone else's playbook takes structured reflection. These courses provide the structure, and the peers to reflect with."
 contentType: Blog
 primaryCategory: Leadership
 categories:

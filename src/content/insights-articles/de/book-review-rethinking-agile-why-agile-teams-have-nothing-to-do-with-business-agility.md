@@ -8,6 +8,7 @@
 # site-wide category-label rule, "Book Reviews" included (not one of
 # the named exceptions, so kept as an English loanword like the rest).
 title: 'Book Review: Rethinking Agile by Klaus Leopold'
+relatedTrainingIntro: "Leopolds Argument: Business Agility ist ein anderes Problem als Team-Agilität. In diesen Trainings wird an diesem Problem gearbeitet, beginnend mit der Flight Levels Einführung."
 contentType: Blog
 primaryCategory: Flight Levels
 categories:

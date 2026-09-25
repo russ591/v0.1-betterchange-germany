@@ -7,6 +7,7 @@
 # contentType/primaryCategory/categories stay English loanwords per the
 # site-wide category-label rule.
 title: Why the Best Leaders Think Differently, and What We Can Learn from Female Competencies
+relatedTrainingIntro: "Empathie, Demut und klare Kommunikation bringen Ergebnisse, Selbstbewusstsein bringt nur Beförderungen. Dieses Training entwickelt die Kompetenzen, die tatsächlich führen."
 contentType: Blog
 primaryCategory: Leadership
 categories:

@@ -1,5 +1,6 @@
 ---
 title: 'Difficult Conversations: A Leader''s Practical Guide to Saying the Hard Thing Well'
+relatedTrainingIntro: "Saying the hard thing well is preparation, clarity and composure, not courage. This course is where leaders practise it with feedback."
 urlSlug: "difficult-conversations:-a-leader's-practical-guide-to-saying-the-hard-thing-well"
 contentType: Blog
 primaryCategory: Leadership

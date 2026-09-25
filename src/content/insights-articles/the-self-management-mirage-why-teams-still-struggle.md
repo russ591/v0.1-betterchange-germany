@@ -1,5 +1,6 @@
 ---
 title: 'The Self-Management Mirage: Why Teams Still Struggle'
+relatedTrainingIntro: "Self-managing teams need structure from the team and permission from leadership. These courses cover both sides."
 contentType: Blog
 primaryCategory: Agile
 categories:

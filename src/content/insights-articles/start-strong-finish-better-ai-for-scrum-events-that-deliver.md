@@ -1,5 +1,6 @@
 ---
 title: 'Start Strong, Finish Better: AI for Scrum Events That Deliver'
+relatedTrainingIntro: "AI can sharpen Sprint Planning, retrospectives and coaching conversations, provided the human judgement is there first. These courses build both halves."
 urlSlug: "start-strong-finish-better-ai-for-scrum-events-that-deliver"
 contentType: Blog
 primaryCategory: Change Management

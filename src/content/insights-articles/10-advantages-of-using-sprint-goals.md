@@ -1,5 +1,6 @@
 ---
 title: Ten Reasons Sprint Goals Are Worth the Effort
+relatedTrainingIntro: "A Sprint Goal is the difference between a Sprint with a purpose and a task list with a deadline. This course covers how to set one the team can actually rally around."
 urlSlug: "ten-reasons-sprint-goals-are-worth-the-effort"
 contentType: Blog
 primaryCategory: Coaching

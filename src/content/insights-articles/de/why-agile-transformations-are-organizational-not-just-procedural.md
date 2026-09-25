@@ -11,6 +11,7 @@
 # per the standardized convention; author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'Why Agile Transformations Are Organizational, Not Just Procedural'
+relatedTrainingIntro: "Struktur, Finanzierung, Führungsverhalten und Anreize: Das ist die Transformation. In diesem Training geht es darum, diese zu verändern, nicht nur die Zeremonien."
 contentType: Resource
 primaryCategory: Change Management
 categories:

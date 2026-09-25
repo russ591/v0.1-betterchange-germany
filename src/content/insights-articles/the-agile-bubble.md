@@ -1,5 +1,6 @@
 ---
 title: 'Agile mishap #3: The Agile Bubble'
+relatedTrainingIntro: "Outside the agile bubble, the ideas have to earn their place. This course teaches Scrum in a way that holds up in front of sceptics."
 urlSlug: "agile-mishap-3:-the-agile-bubble"
 seriesId: "agile-mishaps"
 seriesOrder: 4

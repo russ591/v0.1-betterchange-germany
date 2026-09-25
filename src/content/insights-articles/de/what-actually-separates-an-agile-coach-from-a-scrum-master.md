@@ -11,6 +11,7 @@
 # the EN source article per the standing rule. This completes all 52
 # German translations for the SEO-rewrite project (sub-batches 1-4).
 title: 'What Actually Separates an Agile Coach from a Scrum Master'
+relatedTrainingIntro: "Der Unterschied liegt im Umfang, und jeder Umfang hat seinen eigenen Entwicklungspfad. Diese Trainings behandeln den Scrum Master Pfad und den des Agile Coachings."
 contentType: Resource
 primaryCategory: Coaching
 categories:

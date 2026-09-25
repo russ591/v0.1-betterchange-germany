@@ -14,6 +14,7 @@
 # facilitation experience); the draft renders it impersonally, followed
 # here as usual.
 title: Fostering Team Synergy, Overcoming Dysfunctions, and Building Strong Teams
+relatedTrainingIntro: "Vertrauen, Rollenklarheit und Verantwortung entstehen nicht von allein, jemand muss sie facilitieren. Diese Trainings vermitteln Team-Facilitation und Coaching genau dafür."
 contentType: Blog
 primaryCategory: Coaching
 categories:

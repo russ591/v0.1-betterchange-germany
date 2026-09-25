@@ -9,6 +9,7 @@
 # (the source draft only supplied title + body); author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'How Decisions Actually Get Made in Management'
+relatedTrainingIntro: "Echte Entscheidungen fallen unter Zeitdruck mit unvollständiger Information. Diese Trainings behandeln Führung unter diesen Bedingungen und die Facilitation der Gruppenentscheidungen, auf die es ankommt."
 contentType: Blog
 primaryCategory: Leadership
 categories: []

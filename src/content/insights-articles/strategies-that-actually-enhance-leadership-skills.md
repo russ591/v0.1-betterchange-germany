@@ -1,5 +1,6 @@
 ---
 title: 'Strategies That Actually Enhance Leadership Skills'
+relatedTrainingIntro: "Deliberate discomfort, structured reflection, unfiltered feedback: leadership capability is built, not described. This course is designed around exactly that."
 contentType: Blog
 primaryCategory: Leadership
 categories: []

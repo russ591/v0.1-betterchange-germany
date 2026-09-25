@@ -1,5 +1,6 @@
 ---
 title: 'Why Change Management Matters More Than the Plan Itself'
+relatedTrainingIntro: "The plan is rarely the problem; how people move through the change is. These courses cover managing that side of it."
 contentType: Blog
 primaryCategory: Change Management
 categories: []

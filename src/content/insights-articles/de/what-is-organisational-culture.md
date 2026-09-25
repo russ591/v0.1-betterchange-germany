@@ -16,6 +16,7 @@
 # a pattern of author mismatches in this batch's draft headers, worth
 # checking upstream.
 title: What is Organisational Culture?
+relatedTrainingIntro: "Kultur prägt Entscheidungen und Verhalten, ob sie gesteuert wird oder nicht. Diese Trainings behandeln ihre Führung, ihre Veränderung und das Design von Strategie und Koordination, die sie speist."
 contentType: Resource
 primaryCategory: Leadership
 categories:

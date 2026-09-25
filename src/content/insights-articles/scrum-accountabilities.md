@@ -1,5 +1,6 @@
 ---
 title: 'Scrum''s Three Accountabilities: What They Actually Mean'
+relatedTrainingIntro: "Accountabilities can't be delegated away, which is why each one deserves proper preparation. These courses cover the Scrum Master and Product Owner accountabilities in depth."
 urlSlug: "scrum's-three-accountabilities:-what-they-actually-mean"
 contentType: Resource
 primaryCategory: Scrum

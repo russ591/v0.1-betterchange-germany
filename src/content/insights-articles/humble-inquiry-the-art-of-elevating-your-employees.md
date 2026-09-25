@@ -1,5 +1,6 @@
 ---
 title: Humble Inquiry - The Art of Elevating Your Employees
+relatedTrainingIntro: "Asking instead of telling is a leadership discipline that runs against most managerial instincts. This course is where leaders practise it."
 urlSlug: "humble-inquiry---the-art-of-elevating-your-employees"
 contentType: Blog
 primaryCategory: Leadership

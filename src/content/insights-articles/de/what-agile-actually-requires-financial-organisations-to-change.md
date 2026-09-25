@@ -11,6 +11,7 @@
 # the EN source article per the standing rule. This completes all 52
 # German translations for the SEO-rewrite project (sub-batches 1-4).
 title: 'What Agile Actually Requires Financial Organisations to Change'
+relatedTrainingIntro: "Die Spannung zwischen adaptiver Arbeit und Regulierung aufzulösen ist organisationaler Wandel, keine Prozessanpassung. Diese Trainings behandeln seine Führung."
 contentType: Resource
 primaryCategory: Change Management
 categories:

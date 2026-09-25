@@ -1,5 +1,6 @@
 ---
 title: 'The Pacesetter Trap: What Happens When One Leadership Style Runs Everything'
+relatedTrainingIntro: "One style running everything is the trap; range is the skill. This course helps leaders recognise their default and widen it."
 urlSlug: "the-pacesetter-trap:-what-happens-when-one-leadership-style-runs-everything"
 contentType: Blog
 primaryCategory: Leadership

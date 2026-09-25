@@ -11,6 +11,7 @@
 # convention. The EN source's closing link to Agile Mishap #4 and its
 # opening citation link to the intro post are not in the draft.
 title: 'Agile mishap #3: The Agile Bubble'
+relatedTrainingIntro: "Außerhalb der agilen Blase müssen sich die Ideen ihren Platz verdienen. Dieses Training vermittelt Scrum so, dass es auch vor Skeptiker:innen standhält."
 seriesId: "agile-mishaps"
 seriesOrder: 4
 contentType: Blog

@@ -1,5 +1,6 @@
 ---
 title: 'What Actually Makes an Organisation Agile, Not Just Its Teams'
+relatedTrainingIntro: "Agile teams inside a rigid organisation plateau. These courses cover the transformation, leadership and coordination design that make the organisation itself agile."
 contentType: Resource
 primaryCategory: Change Management
 categories:

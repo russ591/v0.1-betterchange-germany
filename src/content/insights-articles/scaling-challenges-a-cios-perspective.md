@@ -1,5 +1,6 @@
 ---
 title: Six Months Into Your Scaling Initiative, and the Benefits Still Haven't Appeared
+relatedTrainingIntro: "Six months in with nothing to show usually means the ceremonies changed and the organisation didn't. These courses cover the transformation, leadership and coordination design that make scaling deliver."
 urlSlug: "six-months-into-your-scaling-initiative-and-the-benefits-still-haven't-appeared"
 contentType: Blog
 primaryCategory: Change Management

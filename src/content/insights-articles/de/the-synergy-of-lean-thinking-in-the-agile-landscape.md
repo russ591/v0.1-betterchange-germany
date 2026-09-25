@@ -11,6 +11,7 @@
 # WP-import artifact. Bold paragraph lead-ins used (not h2 headings) to
 # match this article's own EN/draft formatting choice.
 title: The Synergy of Lean Thinking in the Agile Landscape
+relatedTrainingIntro: "Lean und Agile teilen die Wurzel in Fluss und kontinuierlicher Verbesserung. Diese Trainings behandeln Kanban, Scrum und den organisationalen Wandel, der beides zusammenführt."
 contentType: Resource
 primaryCategory: Agile
 categories:

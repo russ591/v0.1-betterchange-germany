@@ -1,5 +1,6 @@
 ---
 title: Fostering Team Synergy, Overcoming Dysfunctions, and Building Strong Teams
+relatedTrainingIntro: "Trust, role clarity and accountability don't appear on their own; someone has to facilitate them into being. These courses teach team facilitation and coaching for exactly that."
 urlSlug: "fostering-team-synergy,-overcoming-dysfunctions,-and-building-strong-teams"
 contentType: Blog
 primaryCategory: Coaching

@@ -1,5 +1,6 @@
 ---
 title: 'Forming, Storming, Norming, Performing: Tuckman''s Map Through Team Development'
+relatedTrainingIntro: "Every stage from forming to performing needs something different from the people around the team. These courses cover facilitating, leading and coaching a team through them."
 urlSlug: "forming,-storming,-norming,-performing:-tuckman's-map-through-team-development"
 contentType: Resource
 primaryCategory: Leadership

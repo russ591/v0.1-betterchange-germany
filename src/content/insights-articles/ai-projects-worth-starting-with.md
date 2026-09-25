@@ -1,5 +1,6 @@
 ---
 title: 'AI Projects Worth Starting With'
+relatedTrainingIntro: "Sequencing the first AI project well is a capability question before it is a technology one. These courses build that capability in product, team and organisational roles."
 contentType: Resource
 primaryCategory: AI
 categories: []

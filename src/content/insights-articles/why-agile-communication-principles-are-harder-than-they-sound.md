@@ -1,5 +1,6 @@
 ---
 title: 'Why Agile Communication Principles Are Harder Than They Sound'
+relatedTrainingIntro: "Individuals and interactions over processes and tools takes more courage than it sounds. This course covers the practices that make it real."
 contentType: Blog
 primaryCategory: Agile
 categories: []

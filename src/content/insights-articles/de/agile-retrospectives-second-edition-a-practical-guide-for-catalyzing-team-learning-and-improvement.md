@@ -12,6 +12,7 @@
 # either way and this is genuinely useful "where to get the book" info,
 # not a dropped CTA.
 title: 'Agile Retrospectives, Second Edition: A Practical Guide for Catalyzing Team Learning and Improvement'
+relatedTrainingIntro: "Ein gutes Buch über Retrospektiven macht gute Facilitator:innen besser, aber Anfänger:innen nicht kompetent. Dieses Training baut die Facilitation-Fähigkeit auf, die das Buch voraussetzt."
 contentType: Blog
 primaryCategory: Coaching
 categories:

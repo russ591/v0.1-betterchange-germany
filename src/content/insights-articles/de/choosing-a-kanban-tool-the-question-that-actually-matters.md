@@ -9,6 +9,7 @@
 # (the source draft only supplied title + body); author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'Choosing a Kanban Tool: The Question That Actually Matters'
+relatedTrainingIntro: "Die richtige Frage ist, ob ein Board zeigt, wie Arbeit tatsächlich fließt. Diese Trainings zeigen, wie dieses System zuerst gestaltet wird, damit ein Tool etwas Echtes abbilden kann."
 contentType: Blog
 primaryCategory: Kanban
 categories: []

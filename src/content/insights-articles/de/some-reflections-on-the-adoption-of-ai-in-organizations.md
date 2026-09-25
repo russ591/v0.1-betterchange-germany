@@ -8,6 +8,7 @@
 # contentType/primaryCategory stay English loanwords under that same
 # rule.
 title: What the AI Adoption Events in Madrid Didn't Talk About
+relatedTrainingIntro: "Das Schwierigste an der KI-Einführung ist die Umverteilung von Macht und der leise Widerstand dagegen. Diese Trainings behandeln die Führung dieses Wandels und den guten Einsatz von KI in der Produktrolle."
 contentType: Blog
 primaryCategory: Change Management
 categories:

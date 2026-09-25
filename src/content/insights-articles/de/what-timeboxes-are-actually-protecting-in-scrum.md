@@ -10,6 +10,7 @@
 # directly in this batch's draft (unlike sub-batch 1); author/date/
 # contentType pulled from the EN source article per the standing rule.
 title: 'What Timeboxes Are Actually Protecting in Scrum'
+relatedTrainingIntro: "Eine ständig überschrittene Timebox ist ein Signal, keine Unannehmlichkeit. Dieses Training zeigt, wie solche Signale gelesen und beantwortet werden."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

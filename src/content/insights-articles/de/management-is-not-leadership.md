@@ -10,6 +10,7 @@
 # source's closing "Authentic Leadership programme" CTA link is not in
 # the draft.
 title: Management Is Not Leadership, and Confusing the Two Costs Organisations Dearly
+relatedTrainingIntro: "Management und Leadership sind unterschiedliche Tätigkeiten, und Organisationen brauchen Manager:innen, die beides können. Dieses Training behandelt den Übergang."
 contentType: Blog
 primaryCategory: Leadership
 categories:

@@ -1,5 +1,6 @@
 ---
 title: Organisational Culture – The Overlooked Key to Success with New Ways of Working
+relatedTrainingIntro: "New ways of working fail on culture more often than on method. These courses cover shaping the culture, leading it and designing the coordination it needs."
 contentType: Blog
 primaryCategory: Change Management
 categories:

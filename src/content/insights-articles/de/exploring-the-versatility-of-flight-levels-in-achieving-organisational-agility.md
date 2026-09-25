@@ -7,6 +7,7 @@
 # contentType/primaryCategory/categories stay English loanwords per the
 # site-wide category-label rule.
 title: Why Flight Levels Isn't a Framework, and Why That Matters
+relatedTrainingIntro: "Ein Denkmodell statt eines Frameworks bedeutet: Die Designarbeit liegt bei der Organisation selbst. Diese Trainings vermitteln dieses Design, von der Einführung bis zur Gestaltung einer Koordinationsebene."
 contentType: Blog
 primaryCategory: Flight Levels
 categories:

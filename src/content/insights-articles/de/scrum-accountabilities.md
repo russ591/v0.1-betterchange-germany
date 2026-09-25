@@ -8,6 +8,7 @@
 # site-wide category-label rule. Author pulled from the EN source per
 # the standing rule. Clean match, no CTA/link issues to flag.
 title: 'Scrum''s Three Accountabilities: What They Actually Mean'
+relatedTrainingIntro: "Accountabilities lassen sich nicht delegieren, deshalb verdient jede eine gründliche Vorbereitung. Diese Trainings behandeln die Accountabilities von Scrum Master und Product Owner in der Tiefe."
 contentType: Resource
 primaryCategory: Scrum
 categories:

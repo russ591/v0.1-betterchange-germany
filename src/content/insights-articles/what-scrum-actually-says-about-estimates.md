@@ -1,5 +1,6 @@
 ---
 title: 'What Scrum Actually Says About Estimates'
+relatedTrainingIntro: "Story points are optional; the forecasting conversation isn't. This course covers estimation as a tool rather than a rule."
 contentType: Blog
 primaryCategory: Scrum
 categories: []

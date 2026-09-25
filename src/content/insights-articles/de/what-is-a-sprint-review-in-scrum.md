@@ -8,6 +8,7 @@
 # the EN source per the standing rule. Clean match, no CTA/link issues
 # to flag.
 title: 'The Sprint Review: Not a Presentation, a Conversation'
+relatedTrainingIntro: "Ein Sprint Review als Gespräch statt als Präsentation hängt von Product Owner und Scrum Master gleichermaßen ab. Diese Trainings behandeln beide Seiten."
 contentType: Resource
 primaryCategory: Scrum
 categories:

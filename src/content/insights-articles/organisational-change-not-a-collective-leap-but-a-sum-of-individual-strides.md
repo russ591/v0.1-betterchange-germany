@@ -1,5 +1,6 @@
 ---
 title: Organisational Change Doesn't Happen Collectively. It Happens Person by Person
+relatedTrainingIntro: "If change happens person by person, the change agent's own skills are the instrument. These courses develop them, from coaching transformations to designing coordination across levels."
 urlSlug: "organisational-change-doesn't-happen-collectively-it-happens-person-by-person"
 contentType: Blog
 primaryCategory: Change Management

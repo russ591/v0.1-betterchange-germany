@@ -11,6 +11,7 @@
 # per the standardized convention; author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'What an AI Team Actually Needs (Beyond Data Scientists)'
+relatedTrainingIntro: "Die Rollen, die KI zur Anwendung bringen, sind Produkt-, Team- und Veränderungsrollen, nicht nur Data Science. Diese Trainings entwickeln sie."
 contentType: Resource
 primaryCategory: KI
 categories:

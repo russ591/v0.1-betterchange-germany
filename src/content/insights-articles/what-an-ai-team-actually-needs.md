@@ -1,5 +1,6 @@
 ---
 title: 'What an AI Team Actually Needs (Beyond Data Scientists)'
+relatedTrainingIntro: "The roles that get AI adopted are product, team and change roles, not only data scientists. These courses develop them."
 contentType: Resource
 primaryCategory: AI
 categories:

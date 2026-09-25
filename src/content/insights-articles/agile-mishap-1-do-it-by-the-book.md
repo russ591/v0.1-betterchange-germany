@@ -1,5 +1,6 @@
 ---
 title: 'Agile Mishap #1: Do it by the book!'
+relatedTrainingIntro: "Doing it by the book is the first mishap because no book knows your organisation. These courses teach how to adapt agile to the context rather than the other way round."
 urlSlug: "agile-mishap-1:-do-it-by-the-book!"
 seriesId: "agile-mishaps"
 seriesOrder: 2

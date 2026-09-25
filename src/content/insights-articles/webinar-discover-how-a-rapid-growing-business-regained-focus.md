@@ -1,5 +1,6 @@
 ---
 title: Discover How a Rapid Growing Business Regained Focus
+relatedTrainingIntro: "The workshops and visualisation that ended the black week are teachable. These courses cover the Flight Levels design behind them and the change leadership around them."
 urlSlug: "discover-how-a-rapid-growing-business-regained-focus"
 contentType: Blog
 primaryCategory: Flight Levels

@@ -1,5 +1,6 @@
 ---
 title: 'What Self-Organizing Actually Means in Practice'
+relatedTrainingIntro: "Self-organising means real authority within boundaries someone else sets. These courses cover facilitating it, running it in Scrum and creating the organisational conditions for it."
 contentType: Resource
 primaryCategory: Agile
 categories:

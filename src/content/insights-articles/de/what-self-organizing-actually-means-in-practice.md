@@ -11,6 +11,7 @@
 # per the standardized convention; author/date/contentType
 # pulled from the EN source article per the standing rule.
 title: 'What Self-Organizing Actually Means in Practice'
+relatedTrainingIntro: "Selbstorganisiert heißt echte Autorität innerhalb von Grenzen, die jemand anderes setzt. Diese Trainings behandeln ihre Facilitation, ihre Praxis in Scrum und die organisationalen Bedingungen dafür."
 contentType: Resource
 primaryCategory: Agile
 categories:

@@ -1,5 +1,6 @@
 ---
 title: Agile Leadership - The Vital Role of Sense-making, Integrity, and Authenticity
+relatedTrainingIntro: "Sense-making, integrity and authenticity in an hour of webinar; two days of practising them with peers in this course."
 urlSlug: "agile-leadership-the-vital-role-of-sense-making-integrity-and-authenticity"
 contentType: Blog
 primaryCategory: Change Management
