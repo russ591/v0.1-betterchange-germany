@@ -402,6 +402,30 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
         });
       });
 
+      // Deep links, e.g. /training/full-schedule?topic=scrum,kanban (topic
+      // values are base slugs; the German page's buttons carry de/ ids).
+      // Clicking the matching buttons keeps one code path for the active
+      // styling, and opening the group's mobile panel shows what's applied.
+      const params = new URLSearchParams(window.location.search);
+      Object.keys(active).forEach((group) => {
+        const wanted = (params.get(group) ?? "")
+          .split(",")
+          .map((v) => v.trim().toLowerCase())
+          .filter(Boolean);
+        if (wanted.length === 0) return;
+        const matches = filterButtons.filter(
+          (button) =>
+            button.dataset.filterGroup === group &&
+            wanted.includes(button.dataset.filterValue.replace(/^de\//, "").toLowerCase())
+        );
+        matches.forEach((button) => button.click());
+        if (matches.length === 0) return;
+        const toggle = toggleButtons.find((t) =>
+          document.getElementById(t.dataset.panel)?.querySelector(`[data-filter-group="${group}"]`)
+        );
+        if (toggle && toggle.getAttribute("aria-expanded") !== "true") toggle.click();
+      });
+
       update();
     </script>
   )

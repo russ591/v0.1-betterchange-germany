@@ -179,6 +179,12 @@ export const en = {
   "insights.by": "By",
   "insights.relatedReading": "Related reading",
   "insights.relatedTraining": "Related training",
+  // "See all {Scrum} training" -- category names are dropped in between
+  "insights.seeCategoryTrainingPrefix": "See all",
+  "insights.seeCategoryTrainingSuffix": "training",
+  // "&" rather than "and": one category is itself called "Coaching and
+  // Facilitation", and "Coaching and Facilitation and Leadership" reads badly.
+  "insights.listAnd": "&",
 
   // From betterchange-de-translation-draft-insights-template.md (the
   // Insights hub's shared template strings -- individual article titles/
@@ -400,6 +406,9 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "insights.by": "Von",
   "insights.relatedReading": "Weiterführende Artikel",
   "insights.relatedTraining": "Passende Trainings",
+  "insights.seeCategoryTrainingPrefix": "Alle Trainings zu",
+  "insights.seeCategoryTrainingSuffix": "ansehen",
+  "insights.listAnd": "und",
 
   // From betterchange-de-translation-draft-insights-template.md. The
   // draft's intro paragraph used an em dash ("... organisatorischem
