@@ -117,6 +117,11 @@ const coachProfile = defineCollection({
     // e.g. "Better Change Coach"). Drives the Insights hub's sort/hero
     // rules, which deliberately deprioritize Fellow-authored articles.
     isFellow: z.boolean().default(false),
+    // Explicit, correctable fact rather than something inferred from bio
+    // pronouns at build time -- drives the homepage team teaser's daily
+    // rotation (src/lib/team.ts), which guarantees at least 2 women in
+    // every day's rotating set. Not displayed anywhere.
+    isFemale: z.boolean().default(false),
   }),
 });
 
