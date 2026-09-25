@@ -26,7 +26,7 @@ const prefix = locale === "de" ? "/de" : "";
 <Breadcrumbs items={[{ label: t("nav.insights"), href: `${prefix}/insights` }, { label: article.data.title }]} />
 
 <Section
-  eyebrow={[article.data.primaryCategory, article.data.contentType].filter(Boolean).join(" · ") || t("nav.insights")}
+  eyebrow={article.data.primaryCategory || t("nav.insights")}
   class="bg-mist-light"
 >
   <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
