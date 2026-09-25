@@ -57,7 +57,7 @@ const railMore = "mt-3 inline-block text-[length:var(--text-caption)] font-semib
 </Section>
 
 <Section>
-  <div class={hasSidebar ? "grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:items-start" : ""}>
+  <div class={hasSidebar ? "grid gap-10 md:grid-cols-[1.5fr_1fr] md:items-start" : ""}>
     <div class="min-w-0">
       {
         article.data.imageUrl && (
@@ -73,7 +73,7 @@ const railMore = "mt-3 inline-block text-[length:var(--text-caption)] font-semib
 
     {
       hasSidebar && (
-        <aside class="min-w-0 space-y-6 lg:sticky lg:top-24">
+        <aside class="min-w-0 space-y-6 md:sticky md:top-24">
           {relatedCourses.length > 0 && (
             <div class={railCard}>
               <h2 class={railLabel}>{t("insights.relatedTraining")}</h2>
