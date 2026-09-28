@@ -32,12 +32,14 @@ const t = useTranslations(locale);
 const prefix = locale === "de" ? "/de" : "";
 const services = getServices(locale);
 
-// English-only for now, same graceful-fallback rule as ServicesPageContent.astro's
-// serviceLinks: none of the 4 /services/<slug> detail pages has a German version
-// yet, so every card here points at the English URL regardless of locale rather
+// The Training card goes to the training hub itself (both locales exist), per
+// Russ, not the /services/training overview. The other three are English-only
+// for now, same graceful-fallback rule as ServicesPageContent.astro's
+// serviceLinks: none of the /services/<slug> detail pages has a German version
+// yet, so those cards point at the English URL regardless of locale rather
 // than the usual `${prefix}` treatment, which would 404 on this page specifically.
 const serviceHrefs: Record<string, string> = {
-  training: "/services/training",
+  training: `${prefix}/training`,
   coaching: "/services/coaching",
   consulting: "/services/consulting",
   facilitation: "/services/facilitation",
