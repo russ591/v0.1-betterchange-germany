@@ -7,7 +7,6 @@ import type { CollectionEntry } from "astro:content";
 import { Image } from "astro:assets";
 import Section from "@/components/Section.astro";
 import Badge from "@/components/Badge.astro";
-import SoldOutBadge from "@/components/SoldOutBadge.astro";
 import CourseCard from "@/components/CourseCard.astro";
 import CTABanner from "@/components/CTABanner.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
@@ -36,11 +35,14 @@ interface Props {
 
 const { course, category, relatedCourses, upcoming, upcomingWithTrainers } = Astro.props;
 
-// A sold-out date is muted and keeps its own waitlist link; the course's
-// next bookable date, one row down in the same box, gets a small "next
-// available date" tag instead of a callout repeating what the row already
-// shows (the list view and the registration page carry the explicit
-// pointers, since there the next date isn't in sight).
+// A closed date is muted, keeps its format pill, and shows "Booking
+// closed" where "Register" sits with the waitlist as a sub-link beneath it
+// (the whole row still links to the registration page, which carries the
+// waitlist form); the course's next bookable date, one row down in the
+// same box, gets a small "next available date" tag instead of a callout
+// repeating what the row already shows (the list view and the registration
+// page carry the explicit pointers, since there the next date isn't in
+// sight).
 const nextAvailableIds = new Set(
   (
     await Promise.all(
@@ -225,9 +227,7 @@ const scheduledFormats = new Set(upcoming.map((s) => s.data.format));
                         </span>
                       )}
                     </span>
-                    {session.data.status === "sold-out" ? (
-                      <SoldOutBadge />
-                    ) : isSelfPaced ? (
+                    {isSelfPaced ? (
                       <span class="inline-flex items-center rounded-[var(--radius-pill)] bg-lime/25 px-3 py-1 text-[length:var(--text-caption)] font-semibold text-ink">
                         {t("schedule.alwaysAvailable")}
                       </span>
@@ -250,14 +250,18 @@ const scheduledFormats = new Set(upcoming.map((s) => s.data.format));
                         {t("schedule.exclVat")}
                       </span>
                     </span>
-                    <span class="text-[length:var(--text-small)] font-semibold text-ink">
-                      {session.data.status === "sold-out"
-                        ? t("schedule.joinWaitlist")
-                        : isSelfPaced
-                          ? t("schedule.startNow")
-                          : t("schedule.register")}{" "}
-                      <span aria-hidden="true">→</span>
-                    </span>
+                    {isSoldOut ? (
+                      <span class="shrink-0 text-right">
+                        <span class="block text-[length:var(--text-small)] font-semibold text-de-red">{t("badge.soldOut")}</span>
+                        <span class="mt-0.5 block text-[length:var(--text-caption)] font-semibold text-neutral-600">
+                          {t("schedule.joinWaitlist")} <span aria-hidden="true">→</span>
+                        </span>
+                      </span>
+                    ) : (
+                      <span class="text-[length:var(--text-small)] font-semibold text-ink">
+                        {isSelfPaced ? t("schedule.startNow") : t("schedule.register")} <span aria-hidden="true">→</span>
+                      </span>
+                    )}
                   </div>
                   {session.data.offer && (
                     <p class="mt-2 text-[length:var(--text-caption)] text-neutral-500">
