@@ -32,6 +32,7 @@ import { toPathSegment } from "@/lib/urlSlug";
 import { baseSlug } from "@/lib/i18n";
 import { resolveLocale, useTranslations } from "@/i18n/utils";
 import { getTrainersForSessions, type TrainerEntry } from "@/lib/trainers";
+import { nextAvailableSession } from "@/lib/nextSession";
 
 interface Row {
   session: CollectionEntry<"training-schedules">;
@@ -87,7 +88,11 @@ const enriched = await Promise.all(
       : row.session.data.location;
     const trainers = showTrainer ? await getTrainersForSessions([row.session]) : [];
     const coursePath = `${prefix}/training/${baseSlug(row.category.id)}/${toPathSegment(row.course.data.urlSlug ?? baseSlug(row.course.id))}`;
-    return { ...row, country, trainers, coursePath };
+    // A sold-out row points at the course's next bookable date (Option A
+    // of the sold-out treatment; the course and registration pages carry
+    // the other two).
+    const next = row.session.data.status === "sold-out" ? await nextAvailableSession(row.session) : undefined;
+    return { ...row, country, trainers, coursePath, next };
   })
 );
 
@@ -222,6 +227,14 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
                       {row.trainers.map((trainer) => <TrainerChip trainer={trainer} density="plain" linkedinFallback={false} />)}
                     </div>
                   )}
+                  {row.next && (
+                    <p class="mt-1.5 text-[length:var(--text-caption)] text-neutral-600">
+                      {t("schedule.nextDate")}:{" "}
+                      <a href={registrationHref(row.next, prefix)} class="font-semibold text-ink underline">
+                        {formatSessionDate(row.next, row.course, "long", locale)}, {row.next.data.location.split(",")[0]} →
+                      </a>
+                    </p>
+                  )}
                 </div>
               </div>
               <div class="mt-3 flex items-center justify-between gap-3 border-t border-neutral-100 pt-3 text-[length:var(--text-small)]">
@@ -291,6 +304,14 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
                           <div class="mt-1 flex flex-wrap gap-1.5">
                             {row.trainers.map((trainer) => <TrainerChip trainer={trainer} density="plain" linkedinFallback={false} />)}
                           </div>
+                        )}
+                        {row.next && (
+                          <p class="mt-1.5 text-[length:var(--text-caption)] text-neutral-600">
+                            {t("schedule.nextDate")}:{" "}
+                            <a href={registrationHref(row.next, prefix)} class="font-semibold text-ink underline">
+                              {formatSessionDate(row.next, row.course, "long", locale)}, {row.next.data.location.split(",")[0]} →
+                            </a>
+                          </p>
                         )}
                       </div>
                     </div>

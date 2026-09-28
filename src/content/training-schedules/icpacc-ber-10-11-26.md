@@ -6,5 +6,5 @@ location: Berlin, Germany
 trainers:
   - russell-hill
 price: €1,595
-status: available
+status: sold-out
 ---

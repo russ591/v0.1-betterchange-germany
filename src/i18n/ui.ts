@@ -55,6 +55,13 @@ export const en = {
   "schedule.paymentNote":
     "No upfront payment needed. A VAT invoice (Rechnung) will be sent via email and you can pay by bank transfer or with card.",
   "schedule.filterDiscipline": "Discipline",
+  // Sold-out sessions point at the next bookable date of the same course
+  "schedule.nextDate": "Next date",
+  "schedule.dateFullyBooked": "This date is fully booked.",
+  "schedule.nextRunsPrefix": "Next",
+  "schedule.nextRunsIn": "in",
+  "schedule.bookDatePrefix": "Book",
+  "schedule.bookDateSuffix": "",
   // "Show all 26 sessions" -- the count goes in between
   "schedule.showAllPrefix": "Show all",
   "schedule.showAllSuffix": "sessions",
@@ -262,6 +269,9 @@ export const en = {
   // -- added in a later round of the same register-pages draft.
   "register.metaDescriptionPrefix": "Register for",
   "register.soldOutHeading": "This session is sold out",
+  "register.nextDateBody": "Book the next date instead, or join the waitlist below in case a seat on this one frees up.",
+  "register.bookInsteadPrefix": "Book",
+  "register.bookInsteadSuffix": "instead",
   "register.soldOutBodyPrefix": "All seats for",
   "register.soldOutBodySuffix":
     "are taken. Join the waitlist and we'll email you personally the moment a spot opens up.",
@@ -334,6 +344,15 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "schedule.preferInHouse": "Lieber privates Inhouse-Training?",
   "schedule.letUsKnow": "Kontakt aufnehmen",
   "schedule.filterDiscipline": "Disziplin",
+  "schedule.nextDate": "Nächster Termin",
+  // Never had a sold-out session before this pair was needed
+  "schedule.joinWaitlist": "Zur Warteliste",
+  "badge.soldOut": "Ausgebucht",
+  "schedule.dateFullyBooked": "Dieser Termin ist ausgebucht.",
+  "schedule.nextRunsPrefix": "Nächster Termin für",
+  "schedule.nextRunsIn": "in",
+  "schedule.bookDatePrefix": "",
+  "schedule.bookDateSuffix": "buchen",
   "schedule.showAllPrefix": "Alle",
   "schedule.showAllSuffix": "Termine anzeigen",
   "schedule.showFewer": "Weniger anzeigen",
@@ -540,6 +559,9 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   // split per CLAUDE.md house style.
   "register.metaDescriptionPrefix": "Anmeldung für",
   "register.soldOutHeading": "Dieser Termin ist ausgebucht",
+  "register.nextDateBody": "Alternativ lässt sich der nächste Termin buchen, oder unten in die Warteliste eintragen, falls hier noch ein Platz frei wird.",
+  "register.bookInsteadPrefix": "Stattdessen",
+  "register.bookInsteadSuffix": "buchen",
   "register.soldOutBodyPrefix": "Alle Plätze für",
   "register.soldOutBodySuffix":
     "sind vergeben. Auf die Warteliste eintragen. Sobald ein Platz frei wird, gibt es eine persönliche Benachrichtigung per E-Mail.",
