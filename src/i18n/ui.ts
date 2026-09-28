@@ -58,8 +58,8 @@ export const en = {
   // Sold-out sessions point at the next bookable date of the same course
   "schedule.nextDate": "Next date",
   // "Book 6-7 Apr 2027" -- the date goes in between
-  "schedule.bookDatePrefix": "Book",
-  "schedule.bookDateSuffix": "",
+  "schedule.nextAvailablePrefix": "Next available",
+  "schedule.nextAvailableSuffix": "",
   "schedule.nextAvailableDate": "Next available date",
   "schedule.nextRunsPrefix": "Next",
   "schedule.nextRunsIn": "in",
@@ -348,8 +348,8 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "schedule.letUsKnow": "Kontakt aufnehmen",
   "schedule.filterDiscipline": "Disziplin",
   "schedule.nextDate": "Nächster Termin",
-  "schedule.bookDatePrefix": "",
-  "schedule.bookDateSuffix": "buchen",
+  "schedule.nextAvailablePrefix": "Nächster Termin:",
+  "schedule.nextAvailableSuffix": "",
   // Never had a sold-out session before this pair was needed
   "schedule.joinWaitlist": "Zur Warteliste",
   "badge.soldOut": "Anmeldung geschlossen",
