@@ -72,6 +72,19 @@
   to = "/de/training/register/fl2d-ber-24-11-2026"
   status = 301
 
+# --- Withdrawn sessions -------------------------------------------------
+# A session taken off the site (file deleted, course content kept) sends
+# its old registration URL to the course page in both locales.
+[[redirects]]
+  from = "/training/register/flowmgr-ber-06-10-2026"
+  to = "/training/kanban/flow-manager"
+  status = 301
+
+[[redirects]]
+  from = "/de/training/register/flowmgr-ber-06-10-2026"
+  to = "/de/training/kanban/flow-manager"
+  status = 301
+
 # The Berlin FLSA session moved from 15-16 Dec 2026 to 1-2 Dec 2026.
 [[redirects]]
   from = "/training/register/flsa-ber-15-12-2026"
