@@ -57,11 +57,9 @@ export const en = {
   "schedule.filterDiscipline": "Discipline",
   // Sold-out sessions point at the next bookable date of the same course
   "schedule.nextDate": "Next date",
-  "schedule.dateFullyBooked": "This date is fully booked.",
+  "schedule.nextAvailableDate": "Next available date",
   "schedule.nextRunsPrefix": "Next",
   "schedule.nextRunsIn": "in",
-  "schedule.bookDatePrefix": "Book",
-  "schedule.bookDateSuffix": "",
   // "Show all 26 sessions" -- the count goes in between
   "schedule.showAllPrefix": "Show all",
   "schedule.showAllSuffix": "sessions",
@@ -348,11 +346,9 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   // Never had a sold-out session before this pair was needed
   "schedule.joinWaitlist": "Zur Warteliste",
   "badge.soldOut": "Ausgebucht",
-  "schedule.dateFullyBooked": "Dieser Termin ist ausgebucht.",
+  "schedule.nextAvailableDate": "Nächster freier Termin",
   "schedule.nextRunsPrefix": "Nächster Termin für",
   "schedule.nextRunsIn": "in",
-  "schedule.bookDatePrefix": "",
-  "schedule.bookDateSuffix": "buchen",
   "schedule.showAllPrefix": "Alle",
   "schedule.showAllSuffix": "Termine anzeigen",
   "schedule.showFewer": "Weniger anzeigen",
