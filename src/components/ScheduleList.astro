@@ -316,7 +316,7 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
                   data-country={row.country}
                   data-trainers={row.trainers.map(trainerKey).join(" ")}
                 >
-                  <td class="px-4 py-4 sm:px-5">
+                  <td class="px-4 py-4 align-top sm:px-5">
                     <div class="flex items-start gap-2.5">
                       {b?.kind === "badge" && (
                         <span class="flex h-7 w-7 shrink-0 items-center justify-center">
@@ -340,22 +340,21 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
                       </div>
                     </div>
                   </td>
-                  <td class="whitespace-nowrap px-4 py-4 font-medium sm:px-5">{formatSessionDate(row.session, row.course, "long", locale)}</td>
-                  <td class="px-4 py-4 text-neutral-600 sm:px-5">{row.session.data.location}</td>
-                  <td class="px-4 py-4 sm:px-5">
+                  <td class="whitespace-nowrap px-4 py-4 align-top font-medium sm:px-5">{formatSessionDate(row.session, row.course, "long", locale)}</td>
+                  <td class="px-4 py-4 align-top text-neutral-600 sm:px-5">{row.session.data.location}</td>
+                  <td class="px-4 py-4 align-top sm:px-5">
                     <Badge format={row.session.data.format} />
                   </td>
-                  {/* Closed: "Booking closed" (inert, red) sits exactly where
-                      "Book now" sits on every other row, on the row's centre
-                      line, with the waitlist link tucked beneath it and the
-                      next bookable date after a gap. The 1fr/auto/1fr grid puts
-                      an empty track above the status text that is as tall as
-                      the links below it, which is what keeps the status text
-                      centred; closed rows are taller as a result, by choice. */}
-                  <td class="px-4 py-4 text-right sm:px-5">
+                  {/* Every cell is top-aligned so "Booking closed" (inert,
+                      red) sits on the same first line as "Book now" does on
+                      every other row, with the waitlist link tucked beneath it
+                      and the next bookable date after a gap; the row only
+                      grows by what those two links need. (A vertically centred
+                      version needed matching empty space above the status text
+                      and left closed rows half as tall again; rejected.) */}
+                  <td class="px-4 py-4 text-right align-top sm:px-5">
                     {row.session.data.status === "sold-out" ? (
-                      <div class="grid grid-rows-[1fr_auto_1fr]">
-                        <span aria-hidden="true" />
+                      <div>
                         <span class="block whitespace-nowrap font-semibold text-de-red">{t("badge.soldOut")}</span>
                         <div>
                           <a
