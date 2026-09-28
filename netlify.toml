@@ -46,13 +46,30 @@
   to = "/training/register/thank-you"
   status = 301
 
-# --- Superseded session date --------------------------------------------
-# The live sitemap listed the Berlin FL3D session as 17-11-2026; the
-# current content has it as 24-11-2026. Catching the old date just in
-# case it was indexed.
+# --- Renamed session files ----------------------------------------------
+# The Berlin FL3D and FL2D sessions in November 2026 swapped dates after
+# their files were created (FL3D is 17-18 Nov, FL2D is 24-25 Nov), and the
+# session id, which is the registration URL, comes from the filename. The
+# files were renamed to match their dates; these catch the old URLs in
+# both locales.
 [[redirects]]
-  from = "/training/register/fl3d-ber-17-11-2026"
-  to = "/training/register/fl3d-ber-24-11-2026"
+  from = "/training/register/fl3d-ber-24-11-2026"
+  to = "/training/register/fl3d-ber-17-11-2026"
+  status = 301
+
+[[redirects]]
+  from = "/de/training/register/fl3d-ber-24-11-2026"
+  to = "/de/training/register/fl3d-ber-17-11-2026"
+  status = 301
+
+[[redirects]]
+  from = "/training/register/fl2d-ber-17-11-2026"
+  to = "/training/register/fl2d-ber-24-11-2026"
+  status = 301
+
+[[redirects]]
+  from = "/de/training/register/fl2d-ber-17-11-2026"
+  to = "/de/training/register/fl2d-ber-24-11-2026"
   status = 301
 
 # The Berlin FLSA session moved from 15-16 Dec 2026 to 1-2 Dec 2026.
