@@ -236,11 +236,11 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
                 <div>
                   <p class="font-semibold">{formatSessionDate(row.session, row.course, "long", locale)}</p>
                   <p class="text-neutral-500">{row.session.data.location}</p>
-                </div>
-                <div class="flex shrink-0 flex-col items-end gap-1.5">
-                  {row.session.data.status === "sold-out" ? <SoldOutBadge /> : <Badge format={row.session.data.format} />}
+                  {/* On the card the link goes under the date rather than under
+                      the pill: stacked on the right it squeezes the date into
+                      three lines at phone widths. */}
                   {row.next && (
-                    <p class="text-right text-[length:var(--text-caption)] text-neutral-600">
+                    <p class="mt-1 text-[length:var(--text-caption)] text-neutral-600">
                       {t("schedule.nextDate")}:{" "}
                       <a href={registrationHref(row.next, prefix)} class="font-semibold text-ink underline">
                         {formatSessionDate(row.next, row.course, "long", locale)} →
@@ -248,6 +248,7 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
                     </p>
                   )}
                 </div>
+                {row.session.data.status === "sold-out" ? <SoldOutBadge /> : <Badge format={row.session.data.format} />}
               </div>
               <a
                 href={registrationHref(row.session, prefix)}
