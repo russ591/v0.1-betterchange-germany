@@ -16,6 +16,8 @@ import { courseBadges } from "@/data/courseBadges";
 import { toPathSegment } from "@/lib/urlSlug";
 import { baseSlug } from "@/lib/i18n";
 import { getTrainersForSessions } from "@/lib/trainers";
+import { nextAvailableSession } from "@/lib/nextSession";
+import { registrationHref } from "@/lib/registrationLink";
 import { translateOffer } from "@/data/offerCopy";
 import { translateNotes } from "@/data/notesCopy";
 import { resolveLocale, useTranslations } from "@/i18n/utils";
@@ -35,6 +37,9 @@ const sessionTrainers = await getTrainersForSessions([session]);
 const unitPrice = parseFloat(session.data.price.replace(/[^0-9.]/g, "")) || 0;
 const hasBulkOffer = /seats? for the price of/i.test(session.data.offer ?? "");
 const isSoldOut = session.data.status === "sold-out";
+// The sold-out box offers the course's next bookable date before the
+// waitlist (Option C of the sold-out treatment).
+const nextSession = isSoldOut ? await nextAvailableSession(session) : undefined;
 
 const categorySlug = baseSlug(category.id);
 const courseSlug = toPathSegment(course.data.urlSlug ?? baseSlug(course.id));
@@ -280,6 +285,20 @@ const scriptCopy = {
           <p class="mt-1 text-[length:var(--text-small)] text-neutral-600">
             {t("register.soldOutBodyPrefix")} {formatSessionDate(session, course, "long", locale)} {t("register.soldOutBodySuffix")}
           </p>
+          {nextSession && (
+            <>
+              <p class="mt-2 text-[length:var(--text-small)] text-neutral-600">
+                {t("schedule.nextRunsPrefix")} {course.data.name} {t("schedule.nextRunsIn")} {nextSession.data.location.split(",")[0]}:{" "}
+                <strong class="text-ink">{formatSessionDate(nextSession, course, "long", locale)}</strong>. {t("register.nextDateBody")}
+              </p>
+              <a
+                href={registrationHref(nextSession, prefix)}
+                class="mt-3 inline-block rounded-[var(--radius-control)] bg-ink px-5 py-2.5 text-sm font-semibold text-surface transition-colors hover:bg-neutral-800"
+              >
+                {[t("register.bookInsteadPrefix"), formatSessionDate(nextSession, course, "long", locale), t("register.bookInsteadSuffix")].filter(Boolean).join(" ")} →
+              </a>
+            </>
+          )}
         </div>
 
         <div class="grid gap-4 sm:grid-cols-2">

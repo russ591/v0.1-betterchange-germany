@@ -55,6 +55,11 @@ export const en = {
   "schedule.paymentNote":
     "No upfront payment needed. A VAT invoice (Rechnung) will be sent via email and you can pay by bank transfer or with card.",
   "schedule.filterDiscipline": "Discipline",
+  // Sold-out sessions point at the next bookable date of the same course
+  "schedule.nextDate": "Next date",
+  "schedule.nextAvailableDate": "Next available date",
+  "schedule.nextRunsPrefix": "Next",
+  "schedule.nextRunsIn": "in",
   // "Show all 26 sessions" -- the count goes in between
   "schedule.showAllPrefix": "Show all",
   "schedule.showAllSuffix": "sessions",
@@ -65,7 +70,9 @@ export const en = {
   "badge.inPerson": "In-person",
   "badge.liveOnline": "Live online",
   "badge.selfPaced": "Self-paced",
-  "badge.soldOut": "Sold out",
+  // "Booking closed", not "Sold out": a date can be withdrawn without having
+  // filled, and the label has to stay true either way (Russ, Sep 2026).
+  "badge.soldOut": "Booking closed",
 
   "trainers.eyebrow": "Your trainers",
   "trainers.heading": "Meet the trainers",
@@ -261,10 +268,13 @@ export const en = {
   // price-breakdown offer line, and the discount-code JS feedback strings
   // -- added in a later round of the same register-pages draft.
   "register.metaDescriptionPrefix": "Register for",
-  "register.soldOutHeading": "This session is sold out",
-  "register.soldOutBodyPrefix": "All seats for",
+  "register.soldOutHeading": "Booking for this date is closed",
+  "register.nextDateBody": "Book the next date instead, or join the waitlist below in case a seat on this one frees up.",
+  "register.bookInsteadPrefix": "Book",
+  "register.bookInsteadSuffix": "instead",
+  "register.soldOutBodyPrefix": "Bookings for",
   "register.soldOutBodySuffix":
-    "are taken. Join the waitlist and we'll email you personally the moment a spot opens up.",
+    "are no longer being taken. Join the waitlist and we'll email you personally if a place becomes available.",
   "register.joinWaitlist": "Join the waitlist",
   "register.waitlistJoining": "Joining…",
   "register.waitlistSuccess": "You're on the list. We'll email you the moment a seat opens up.",
@@ -334,6 +344,13 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "schedule.preferInHouse": "Lieber privates Inhouse-Training?",
   "schedule.letUsKnow": "Kontakt aufnehmen",
   "schedule.filterDiscipline": "Disziplin",
+  "schedule.nextDate": "Nächster Termin",
+  // Never had a sold-out session before this pair was needed
+  "schedule.joinWaitlist": "Zur Warteliste",
+  "badge.soldOut": "Anmeldung geschlossen",
+  "schedule.nextAvailableDate": "Nächster freier Termin",
+  "schedule.nextRunsPrefix": "Nächster Termin für",
+  "schedule.nextRunsIn": "in",
   "schedule.showAllPrefix": "Alle",
   "schedule.showAllSuffix": "Termine anzeigen",
   "schedule.showFewer": "Weniger anzeigen",
@@ -539,10 +556,13 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   // in the draft's waitlist body sentence was converted to a full-stop
   // split per CLAUDE.md house style.
   "register.metaDescriptionPrefix": "Anmeldung für",
-  "register.soldOutHeading": "Dieser Termin ist ausgebucht",
-  "register.soldOutBodyPrefix": "Alle Plätze für",
+  "register.soldOutHeading": "Die Anmeldung für diesen Termin ist geschlossen",
+  "register.nextDateBody": "Alternativ lässt sich der nächste Termin buchen, oder unten in die Warteliste eintragen, falls hier noch ein Platz frei wird.",
+  "register.bookInsteadPrefix": "Stattdessen",
+  "register.bookInsteadSuffix": "buchen",
+  "register.soldOutBodyPrefix": "Für",
   "register.soldOutBodySuffix":
-    "sind vergeben. Auf die Warteliste eintragen. Sobald ein Platz frei wird, gibt es eine persönliche Benachrichtigung per E-Mail.",
+    "werden keine Anmeldungen mehr angenommen. Über die Warteliste gibt es eine persönliche Benachrichtigung per E-Mail, falls doch noch ein Platz frei wird.",
   "register.joinWaitlist": "Zur Warteliste",
   "register.waitlistJoining": "Wird hinzugefügt…",
   "register.waitlistSuccess": "Eintragung erfolgreich. Sobald ein Platz frei wird, folgt eine Benachrichtigung per E-Mail.",

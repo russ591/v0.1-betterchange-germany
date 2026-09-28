@@ -32,6 +32,7 @@ import { toPathSegment } from "@/lib/urlSlug";
 import { baseSlug } from "@/lib/i18n";
 import { resolveLocale, useTranslations } from "@/i18n/utils";
 import { getTrainersForSessions, type TrainerEntry } from "@/lib/trainers";
+import { nextAvailableSession } from "@/lib/nextSession";
 
 interface Row {
   session: CollectionEntry<"training-schedules">;
@@ -87,7 +88,11 @@ const enriched = await Promise.all(
       : row.session.data.location;
     const trainers = showTrainer ? await getTrainersForSessions([row.session]) : [];
     const coursePath = `${prefix}/training/${baseSlug(row.category.id)}/${toPathSegment(row.course.data.urlSlug ?? baseSlug(row.course.id))}`;
-    return { ...row, country, trainers, coursePath };
+    // A sold-out row points at the course's next bookable date (Option A
+    // of the sold-out treatment; the course and registration pages carry
+    // the other two).
+    const next = row.session.data.status === "sold-out" ? await nextAvailableSession(row.session) : undefined;
+    return { ...row, country, trainers, coursePath, next };
   })
 );
 
@@ -215,7 +220,6 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
                 <div class="min-w-0 flex-1">
                   <div class="flex flex-wrap items-center gap-2">
                     <a href={row.coursePath} class="font-semibold hover:underline">{row.course.data.name}</a>
-                    {row.session.data.status === "sold-out" && <SoldOutBadge />}
                   </div>
                   {row.trainers.length > 0 && (
                     <div class="mt-1 flex flex-wrap gap-1.5">
@@ -224,12 +228,27 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
                   )}
                 </div>
               </div>
+              {/* Sold out: the status pill takes the format pill's place (the
+                  format stops mattering once nothing can be booked) with the
+                  next bookable date right under it, so the course/trainer
+                  block stays identical from row to row. */}
               <div class="mt-3 flex items-center justify-between gap-3 border-t border-neutral-100 pt-3 text-[length:var(--text-small)]">
                 <div>
                   <p class="font-semibold">{formatSessionDate(row.session, row.course, "long", locale)}</p>
                   <p class="text-neutral-500">{row.session.data.location}</p>
+                  {/* On the card the link goes under the date rather than under
+                      the pill: stacked on the right it squeezes the date into
+                      three lines at phone widths. */}
+                  {row.next && (
+                    <p class="mt-1 text-[length:var(--text-caption)] text-neutral-600">
+                      {t("schedule.nextDate")}:{" "}
+                      <a href={registrationHref(row.next, prefix)} class="font-semibold text-ink underline">
+                        {formatSessionDate(row.next, row.course, "long", locale)} →
+                      </a>
+                    </p>
+                  )}
                 </div>
-                <Badge format={row.session.data.format} />
+                {row.session.data.status === "sold-out" ? <SoldOutBadge /> : <Badge format={row.session.data.format} />}
               </div>
               <a
                 href={registrationHref(row.session, prefix)}
@@ -285,7 +304,6 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
                       <div class="min-w-0">
                         <div class="flex flex-wrap items-center gap-2">
                           <a href={row.coursePath} class="font-semibold hover:underline">{row.course.data.name}</a>
-                          {row.session.data.status === "sold-out" && <SoldOutBadge />}
                         </div>
                         {row.trainers.length > 0 && (
                           <div class="mt-1 flex flex-wrap gap-1.5">
@@ -298,7 +316,15 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
                   <td class="whitespace-nowrap px-4 py-4 font-medium sm:px-5">{formatSessionDate(row.session, row.course, "long", locale)}</td>
                   <td class="px-4 py-4 text-neutral-600 sm:px-5">{row.session.data.location}</td>
                   <td class="px-4 py-4 sm:px-5">
-                    <Badge format={row.session.data.format} />
+                    {row.session.data.status === "sold-out" ? <SoldOutBadge /> : <Badge format={row.session.data.format} />}
+                    {row.next && (
+                      <p class="mt-1.5 whitespace-nowrap text-[length:var(--text-caption)] text-neutral-600">
+                        {t("schedule.nextDate")}:{" "}
+                        <a href={registrationHref(row.next, prefix)} class="font-semibold text-ink underline">
+                          {formatSessionDate(row.next, row.course, "long", locale)} →
+                        </a>
+                      </p>
+                    )}
                   </td>
                   <td class="px-4 py-4 text-right sm:px-5">
                     <a
