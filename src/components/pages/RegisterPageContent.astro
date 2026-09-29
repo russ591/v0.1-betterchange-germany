@@ -373,6 +373,10 @@ const scriptCopy = {
       hidden={isSoldOut}
     >
       <input type="hidden" name="form-name" value={registrationFormName} />
+      {/* Tells submission-created.js which language the booker used the site
+          in, so the confirmation email matches (the form name carries the
+          same signal; this survives a form rename). */}
+      <input type="hidden" name="locale" value={locale} />
       <input type="hidden" name="course" value={course.data.name} />
       <input type="hidden" name="session-date" value={formatSessionDate(session, course, "long", locale)} />
       <input type="hidden" name="session-date-iso" value={session.data.date?.toISOString() ?? ""} />
@@ -664,8 +668,13 @@ const scriptCopy = {
     const afterOffer = grossSubtotal - offerAmount;
     // The hidden "total" field is what the server applies a discount
     // code's percentage against (via Lexware's line-item discount) —
-    // post-offer, pre-code, matching this same cascade server-side.
-    totalField.value = formatPrice(afterOffer);
+    // post-offer, pre-code, matching this same cascade server-side. It is
+    // never displayed, so it always carries the en-GB form ("€2,190"), not
+    // the germanised display form ("€2.190"): the server-side parsers in
+    // discount.js and lexware-client.js strip everything but digits and
+    // dots, and read "€2.190" as 2.19 euros. The German email re-formats
+    // amounts for display itself.
+    totalField.value = currencyFormatter.format(afterOffer);
 
     let discountAmount = 0;
     if (appliedDiscount) {

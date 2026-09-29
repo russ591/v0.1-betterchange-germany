@@ -22,13 +22,87 @@ export function buildAttendeeList(data) {
   return attendees;
 }
 
-export function buildRegistrationEmailSubject(data) {
-  return `You're registered — ${data.course || "your training course"}`;
+// Booker-facing copy in both site languages. German uses "Sie" (approved
+// wording in docs/registration-email-de.md); the internal owner/waitlist emails
+// further down stay English and don't use this table. Course names stay
+// English in both.
+const BOOKER_COPY = {
+  en: {
+    subject: (course) => `You're registered — ${course || "your training course"}`,
+    heading: (firstName) => `You're registered, ${firstName || "there"}.`,
+    introBefore: "Thanks for booking ",
+    introAfter: ". Here's a summary of your registration.",
+    courseFallback: "your course",
+    summaryTitle: "Registration summary",
+    course: "Course",
+    session: "Session",
+    bookedBy: "Booked by",
+    company: "Company",
+    address: "Address",
+    seats: "Seats",
+    price: "Price excl. VAT (MwSt.)",
+    discount: "Discount",
+    total: "Total excl. VAT (MwSt.)",
+    calendar: "Add to Google Calendar",
+    attendees: "Attendees",
+    next: "What happens next?",
+    invoiceAttached: "Your invoice is attached to this email as a PDF.",
+    invoiceFollows: "Your invoice will follow separately by email.",
+    logistics: "We'll follow up with logistics (joining instructions or venue details) closer to the course date.",
+    questions: "Questions in the meantime? Just reply to this email.",
+    signoff: "Talk soon,",
+    role: "Certified Trainer and Coach",
+  },
+  de: {
+    subject: (course) => `Anmeldung bestätigt: ${course || "Ihr Kurs"}`,
+    heading: (firstName) => (firstName ? `Ihre Anmeldung ist bestätigt, ${firstName}.` : "Ihre Anmeldung ist bestätigt."),
+    introBefore: "Vielen Dank für Ihre Buchung von ",
+    introAfter: ". Hier finden Sie eine Übersicht Ihrer Anmeldung.",
+    courseFallback: "Ihrem Kurs",
+    summaryTitle: "Übersicht der Anmeldung",
+    course: "Kurs",
+    session: "Termin",
+    bookedBy: "Gebucht von",
+    company: "Unternehmen",
+    address: "Adresse",
+    seats: "Plätze",
+    price: "Preis zzgl. MwSt.",
+    discount: "Rabatt",
+    total: "Gesamt zzgl. MwSt.",
+    calendar: "In Google Kalender eintragen",
+    attendees: "Teilnehmende",
+    next: "Wie geht es weiter?",
+    invoiceAttached: "Ihre Rechnung finden Sie als PDF im Anhang dieser E-Mail.",
+    invoiceFollows: "Ihre Rechnung erhalten Sie separat per E-Mail.",
+    logistics: "Rechtzeitig vor dem Kurstermin senden wir Ihnen alle organisatorischen Details (Einwahldaten bzw. Informationen zum Veranstaltungsort).",
+    questions: "Haben Sie in der Zwischenzeit Fragen? Antworten Sie einfach auf diese E-Mail.",
+    signoff: "Herzliche Grüße",
+    role: "Zertifizierter Trainer und Coach",
+  },
+};
+
+function bookerCopy(locale) {
+  return BOOKER_COPY[locale === "de" ? "de" : "en"];
 }
 
-export function buildRegistrationEmailHtml(data, { invoiceAttached = false, discountBreakdown = null, calendarUrl = null } = {}) {
+// Amounts arrive in en-GB form ("€2,190": the hidden total field and
+// discount.js's formatEuro both use it). The German email shows the
+// site's German convention ("€2.190", see germanizePrice() in
+// src/lib/prices.ts) by swapping the separator, same as the site does.
+function formatAmount(value, locale) {
+  const text = String(value ?? "");
+  return locale === "de" ? text.replace(/,/g, ".") : text;
+}
+
+export function buildRegistrationEmailSubject(data, locale = "en") {
+  return bookerCopy(locale).subject(data.course);
+}
+
+export function buildRegistrationEmailHtml(data, { invoiceAttached = false, discountBreakdown = null, calendarUrl = null, locale = "en" } = {}) {
+  const c = bookerCopy(locale);
   const attendees = buildAttendeeList(data);
-  const firstName = (data.name || "").split(" ")[0] || "there";
+  const firstName = (data.name || "").split(" ")[0];
+  const money = (v) => escapeHtml(formatAmount(v, locale));
 
   const attendeeRows = attendees
     .map(
@@ -51,26 +125,26 @@ export function buildRegistrationEmailHtml(data, { invoiceAttached = false, disc
             </tr>
             <tr>
               <td style="padding:32px;">
-                <h1 style="margin:0 0 16px;font-size:26px;line-height:1.2;color:#0a0a0a;">You're registered, ${escapeHtml(firstName)}.</h1>
+                <h1 style="margin:0 0 16px;font-size:26px;line-height:1.2;color:#0a0a0a;">${c.heading(escapeHtml(firstName))}</h1>
                 <p style="margin:0 0 24px;font-size:16px;line-height:1.6;color:#525252;">
-                  Thanks for booking <strong style="color:#0a0a0a;">${escapeHtml(data.course || "your course")}</strong>. Here's a summary of your registration.
+                  ${c.introBefore}<strong style="color:#0a0a0a;">${escapeHtml(data.course || c.courseFallback)}</strong>${c.introAfter}
                 </p>
 
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f9f8f4;border-radius:12px;padding:20px;margin:0 0 24px;">
-                  <tr><td colspan="2" style="padding:0 0 12px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#737373;">Registration summary</td></tr>
-                  <tr><td style="padding:4px 0;color:#737373;width:40%;">Course</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${escapeHtml(data.course || "—")}</td></tr>
-                  ${data["session-date"] ? `<tr><td style="padding:4px 0;color:#737373;">Session</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data["session-date"])}${data.location ? `. ${escapeHtml(data.location)}` : ""}</td></tr>` : ""}
-                  <tr><td style="padding:4px 0;color:#737373;">Booked by</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.name || "—")} (${escapeHtml(data.email || "—")})</td></tr>
-                  ${data.company ? `<tr><td style="padding:4px 0;color:#737373;">Company</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.company)}</td></tr>` : ""}
-                  ${data.address ? `<tr><td style="padding:4px 0;color:#737373;vertical-align:top;">Address</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.address)}, ${escapeHtml(data.postcode || "")} ${escapeHtml(data.city || "")}, ${escapeHtml(data.country || "")}</td></tr>` : ""}
-                  <tr><td style="padding:4px 0;color:#737373;">Seats</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.seats || "1")}</td></tr>
+                  <tr><td colspan="2" style="padding:0 0 12px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#737373;">${c.summaryTitle}</td></tr>
+                  <tr><td style="padding:4px 0;color:#737373;width:40%;">${c.course}</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${escapeHtml(data.course || "—")}</td></tr>
+                  ${data["session-date"] ? `<tr><td style="padding:4px 0;color:#737373;">${c.session}</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data["session-date"])}${data.location ? `. ${escapeHtml(data.location)}` : ""}</td></tr>` : ""}
+                  <tr><td style="padding:4px 0;color:#737373;">${c.bookedBy}</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.name || "—")} (${escapeHtml(data.email || "—")})</td></tr>
+                  ${data.company ? `<tr><td style="padding:4px 0;color:#737373;">${c.company}</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.company)}</td></tr>` : ""}
+                  ${data.address ? `<tr><td style="padding:4px 0;color:#737373;vertical-align:top;">${c.address}</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.address)}, ${escapeHtml(data.postcode || "")} ${escapeHtml(data.city || "")}, ${escapeHtml(data.country || "")}</td></tr>` : ""}
+                  <tr><td style="padding:4px 0;color:#737373;">${c.seats}</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(data.seats || "1")}</td></tr>
                   ${
                     discountBreakdown
-                      ? `<tr><td style="padding:4px 0;color:#737373;">Price excl. VAT (MwSt.)</td><td style="padding:4px 0;color:#0a0a0a;">${escapeHtml(discountBreakdown.price)}</td></tr>
-                  <tr><td style="padding:4px 0;color:#737373;">Discount</td><td style="padding:4px 0;color:#0a0a0a;">-${escapeHtml(discountBreakdown.discount)}</td></tr>
-                  <tr><td style="padding:4px 0;color:#737373;">Total excl. VAT (MwSt.)</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${escapeHtml(discountBreakdown.total)}</td></tr>`
+                      ? `<tr><td style="padding:4px 0;color:#737373;">${c.price}</td><td style="padding:4px 0;color:#0a0a0a;">${money(discountBreakdown.price)}</td></tr>
+                  <tr><td style="padding:4px 0;color:#737373;">${c.discount}</td><td style="padding:4px 0;color:#0a0a0a;">-${money(discountBreakdown.discount)}</td></tr>
+                  <tr><td style="padding:4px 0;color:#737373;">${c.total}</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${money(discountBreakdown.total)}</td></tr>`
                       : data.total
-                        ? `<tr><td style="padding:4px 0;color:#737373;">Total excl. VAT (MwSt.)</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${escapeHtml(data.total)}</td></tr>`
+                        ? `<tr><td style="padding:4px 0;color:#737373;">${c.total}</td><td style="padding:4px 0;color:#0a0a0a;font-weight:600;">${money(data.total)}</td></tr>`
                         : ""
                   }
                 </table>
@@ -79,7 +153,7 @@ export function buildRegistrationEmailHtml(data, { invoiceAttached = false, disc
                   calendarUrl
                     ? `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
                   <tr><td align="center">
-                    <a href="${escapeHtml(calendarUrl)}" style="display:inline-block;border:1.5px solid #0a0a0a;border-radius:999px;padding:10px 22px;font-size:14px;font-weight:600;color:#0a0a0a;text-decoration:none;">Add to Google Calendar</a>
+                    <a href="${escapeHtml(calendarUrl)}" style="display:inline-block;border:1.5px solid #0a0a0a;border-radius:999px;padding:10px 22px;font-size:14px;font-weight:600;color:#0a0a0a;text-decoration:none;">${c.calendar}</a>
                   </td></tr>
                 </table>`
                     : ""
@@ -88,28 +162,28 @@ export function buildRegistrationEmailHtml(data, { invoiceAttached = false, disc
                 ${
                   attendees.length
                     ? `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
-                  <tr><td colspan="2" style="padding:0 0 8px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#737373;">Attendees</td></tr>
+                  <tr><td colspan="2" style="padding:0 0 8px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#737373;">${c.attendees}</td></tr>
                   ${attendeeRows}
                 </table>`
                     : ""
                 }
 
-                <p style="margin:0 0 12px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#737373;">What happens next?</p>
+                <p style="margin:0 0 12px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#737373;">${c.next}</p>
                 <ul style="margin:0 0 28px;padding-left:20px;color:#525252;font-size:15px;line-height:1.7;">
-                  <li>${invoiceAttached ? "Your invoice is attached to this email as a PDF." : "Your invoice will follow separately by email."}</li>
-                  <li>We'll follow up with logistics (joining instructions or venue details) closer to the course date.</li>
-                  <li>Questions in the meantime? Just reply to this email.</li>
+                  <li>${invoiceAttached ? c.invoiceAttached : c.invoiceFollows}</li>
+                  <li>${c.logistics}</li>
+                  <li>${c.questions}</li>
                 </ul>
 
                 <p style="margin:0 0 20px;font-size:15px;line-height:1.6;color:#525252;">
-                  Talk soon,
+                  ${c.signoff}
                 </p>
 
                 <table role="presentation" cellpadding="0" cellspacing="0" style="border-top:1px solid #e4e4e4;padding-top:20px;">
                   <tr>
                     <td style="vertical-align:top;font-size:14px;line-height:1.6;color:#525252;">
                       <p style="margin:0;font-weight:700;color:#0a0a0a;">Russell Hill</p>
-                      <p style="margin:0;">Certified Trainer and Coach</p>
+                      <p style="margin:0;">${c.role}</p>
                       <p style="margin:0 0 8px;color:#a3a3a3;">(FL Guide, AKT, CAL, CEC, CTC)</p>
                       <p style="margin:0;"><a href="mailto:russ@betterchange-consulting.de" style="color:#0a0a0a;text-decoration:none;">russ@betterchange-consulting.de</a></p>
                       <p style="margin:0 0 10px;">+49 151 1564 9226</p>
@@ -281,45 +355,47 @@ export function buildWaitlistNotificationText(data) {
     .join("\n");
 }
 
-export function buildRegistrationEmailText(data, { invoiceAttached = false, discountBreakdown = null, calendarUrl = null } = {}) {
+export function buildRegistrationEmailText(data, { invoiceAttached = false, discountBreakdown = null, calendarUrl = null, locale = "en" } = {}) {
+  const c = bookerCopy(locale);
   const attendees = buildAttendeeList(data);
-  const firstName = (data.name || "").split(" ")[0] || "there";
+  const firstName = (data.name || "").split(" ")[0];
+  const money = (v) => formatAmount(v, locale);
   const lines = [
-    `You're registered, ${firstName}.`,
+    c.heading(firstName),
     "",
-    `Thanks for booking ${data.course || "your course"}. Here's a summary of your registration.`,
+    `${c.introBefore}${data.course || c.courseFallback}${c.introAfter}`,
     "",
-    "Registration summary",
-    `Course: ${data.course || "—"}`,
-    data["session-date"] ? `Session: ${data["session-date"]}${data.location ? `. ${data.location}` : ""}` : null,
-    `Booked by: ${data.name || "—"} (${data.email || "—"})`,
-    data.company ? `Company: ${data.company}` : null,
-    data.address ? `Address: ${data.address}, ${data.postcode || ""} ${data.city || ""}, ${data.country || ""}` : null,
-    `Seats: ${data.seats || "1"}`,
+    c.summaryTitle,
+    `${c.course}: ${data.course || "—"}`,
+    data["session-date"] ? `${c.session}: ${data["session-date"]}${data.location ? `. ${data.location}` : ""}` : null,
+    `${c.bookedBy}: ${data.name || "—"} (${data.email || "—"})`,
+    data.company ? `${c.company}: ${data.company}` : null,
+    data.address ? `${c.address}: ${data.address}, ${data.postcode || ""} ${data.city || ""}, ${data.country || ""}` : null,
+    `${c.seats}: ${data.seats || "1"}`,
     ...(discountBreakdown
       ? [
-          `Price excl. VAT (MwSt.): ${discountBreakdown.price}`,
-          `Discount: -${discountBreakdown.discount}`,
-          `Total excl. VAT (MwSt.): ${discountBreakdown.total}`,
+          `${c.price}: ${money(discountBreakdown.price)}`,
+          `${c.discount}: -${money(discountBreakdown.discount)}`,
+          `${c.total}: ${money(discountBreakdown.total)}`,
         ]
       : data.total
-        ? [`Total excl. VAT (MwSt.): ${data.total}`]
+        ? [`${c.total}: ${money(data.total)}`]
         : []),
     "",
-    calendarUrl ? `Add to Google Calendar: ${calendarUrl}` : null,
+    calendarUrl ? `${c.calendar}: ${calendarUrl}` : null,
     calendarUrl ? "" : null,
-    attendees.length ? "Attendees:" : null,
+    attendees.length ? `${c.attendees}:` : null,
     ...attendees.map((a) => `- ${a.name || "—"} (${a.email || "—"})`),
     attendees.length ? "" : null,
-    "What happens next?",
-    invoiceAttached ? "- Your invoice is attached to this email as a PDF." : "- Your invoice will follow separately by email.",
-    "- We'll follow up with logistics (joining instructions or venue details) closer to the course date.",
-    "- Questions in the meantime? Just reply to this email.",
+    c.next,
+    `- ${invoiceAttached ? c.invoiceAttached : c.invoiceFollows}`,
+    `- ${c.logistics}`,
+    `- ${c.questions}`,
     "",
-    "Talk soon,",
+    c.signoff,
     "",
     "Russell Hill",
-    "Certified Trainer and Coach",
+    c.role,
     "(FL Guide, AKT, CAL, CEC, CTC)",
     "russ@betterchange-consulting.de",
     "+49 151 1564 9226",

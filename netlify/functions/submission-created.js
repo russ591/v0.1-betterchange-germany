@@ -32,6 +32,10 @@ export const handler = async (event) => {
   }
 
   const data = payload.data;
+  // The booker's language decides the confirmation email's language. The
+  // page sends it as a hidden "locale" field; the German form name is the
+  // fallback signal. Anything else (or nothing) means English.
+  const locale = data.locale === "de" || payload.form_name === "registration-de" ? "de" : "en";
 
   console.log(
     `submission-created: discount-code field received = ${JSON.stringify(data["discount-code"] ?? null)}`
@@ -55,7 +59,7 @@ export const handler = async (event) => {
     ? `generated (${invoiceResult.testMode ? "draft, TEST_MODE" : "finalized"}, id ${invoiceResult.invoiceId})`
     : "skipped or failed — see earlier log lines";
 
-  const emailResults = await sendRegistrationEmails(data, { discountBreakdown, invoiceResult });
+  const emailResults = await sendRegistrationEmails(data, { locale, discountBreakdown, invoiceResult });
 
   return { statusCode: 200, body: JSON.stringify({ invoice: invoiceStatus, ...emailResults }) };
 };
