@@ -211,25 +211,32 @@ const scriptCopy = {
           <span>{t("register.seats")}</span>
           <span id="order-seats">1</span>
         </div>
-        <div class="mt-1 flex items-center justify-between text-[length:var(--text-body)] text-neutral-600">
+        <div class="mt-2 flex items-center justify-between text-[length:var(--text-body)] font-semibold">
           <span>{t("register.subtotal")}</span>
           <span id="order-subtotal">{session.data.price}</span>
         </div>
+        {/* Deductions live in their own pale-lime box so the cascade from
+            subtotal to total reads as three levels (subtotal, what comes
+            off, total) instead of six same-weight rows. Hidden until an
+            offer or a code actually takes something off. */}
         <div
-          id="offer-line"
-          class="mt-1 flex items-center justify-between text-[length:var(--text-body)] text-neutral-600"
+          id="savings-box"
+          class="mt-2 rounded-[0.75rem] bg-lime/15 px-3 py-2.5 text-[length:var(--text-caption)] text-neutral-600 tabular-nums"
           hidden
         >
-          <span>{t("register.offerThreeForTwo")}</span>
-          <span id="order-offer-amount"></span>
-        </div>
-        <div
-          id="discount-code-line"
-          class="mt-1 flex items-center justify-between text-[length:var(--text-body)] text-neutral-600"
-          hidden
-        >
-          <span id="discount-code-label">{t("register.discountCodeLabel")}</span>
-          <span id="order-discount-amount"></span>
+          <p class="mb-1 font-semibold uppercase tracking-[0.04em]">{t("register.yourSavings")}</p>
+          <div id="offer-line" class="flex items-center justify-between" hidden>
+            <span>{t("register.offerThreeForTwo")}</span>
+            <span id="order-offer-amount"></span>
+          </div>
+          <div id="discount-code-line" class="mt-1 flex items-center justify-between" hidden>
+            <span id="discount-code-label">{t("register.discountCodeLabel")}</span>
+            <span id="order-discount-amount"></span>
+          </div>
+          <div class="mt-1.5 flex items-center justify-between font-semibold text-ink">
+            <span>{t("register.totalSaved")}</span>
+            <span id="order-total-saved"></span>
+          </div>
         </div>
         <div class="mt-2 flex items-center justify-between border-t border-neutral-200 pt-2 text-[length:var(--text-h4)] font-bold">
           <span>{t("register.total")}</span>
@@ -594,6 +601,8 @@ const scriptCopy = {
   const discountCodeLineEl = document.getElementById("discount-code-line");
   const discountCodeLabelEl = document.getElementById("discount-code-label");
   const discountAmountEl = document.getElementById("order-discount-amount");
+  const savingsBoxEl = document.getElementById("savings-box");
+  const totalSavedEl = document.getElementById("order-total-saved");
   const totalField = document.getElementById("total-field");
   const discountCodeInput = document.getElementById("discount-code");
   const applyDiscountButton = document.getElementById("apply-discount-code");
@@ -660,15 +669,20 @@ const scriptCopy = {
           : afterOffer * (appliedDiscount.value / 100);
     }
     if (discountAmount > 0) {
+      const codeLabel = `${copy.discountCodeLabel} ${appliedDiscount.code}`;
       discountCodeLabelEl.textContent =
         appliedDiscount.type === "fixed"
-          ? copy.discountCodeLabel
-          : `${copy.discountCodeLabel} (${appliedDiscount.value}${percentSuffix})`;
+          ? codeLabel
+          : `${codeLabel} (${appliedDiscount.value}${percentSuffix})`;
       discountAmountEl.textContent = `-${formatPrice(discountAmount)}`;
       discountCodeLineEl.hidden = false;
     } else {
       discountCodeLineEl.hidden = true;
     }
+
+    const totalSaved = offerAmount + discountAmount;
+    totalSavedEl.textContent = `-${formatPrice(totalSaved)}`;
+    savingsBoxEl.hidden = totalSaved <= 0;
 
     orderTotalEl.textContent = formatPrice(afterOffer - discountAmount);
   }
@@ -712,7 +726,7 @@ const scriptCopy = {
       });
       const result = await res.json();
       if (result.valid) {
-        appliedDiscount = { type: result.discountType, value: result.value };
+        appliedDiscount = { type: result.discountType, value: result.value, code: entered };
         const amountText =
           result.discountType === "fixed"
             ? `${formatPrice(result.value)} ${copy.off}`
