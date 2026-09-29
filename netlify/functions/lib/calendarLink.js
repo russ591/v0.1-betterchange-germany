@@ -9,7 +9,7 @@ function toGoogleCalendarDate(isoString) {
 
 // Returns null for self-paced sessions (no session-date-iso at all) or
 // any other missing/invalid date — the email simply omits the button.
-export function buildGoogleCalendarUrl(data) {
+export function buildGoogleCalendarUrl(data, locale = "en") {
   const startIso = data["session-date-iso"];
   const endIso = data["session-end-date-iso"];
   if (!startIso || !endIso) return null;
@@ -19,7 +19,10 @@ export function buildGoogleCalendarUrl(data) {
     action: "TEMPLATE",
     text: data.course || "Training course",
     dates: `${toGoogleCalendarDate(startIso)}/${toGoogleCalendarDate(endIso)}`,
-    details: `Your registration for ${data.course || "this course"} with Better Change Germany.`,
+    details:
+      locale === "de"
+        ? `Ihre Anmeldung für ${data.course || "diesen Kurs"} bei Better Change Germany.`
+        : `Your registration for ${data.course || "this course"} with Better Change Germany.`,
     location: data.location || "",
   });
 

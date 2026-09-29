@@ -47,7 +47,9 @@ function getTransporter() {
 
 // `invoiceResult` is whatever generateInvoicePdf() returned (or null) —
 // passed straight through as an attachment when present, never re-derived.
-export async function sendRegistrationEmails(data, { discountBreakdown, invoiceResult } = {}) {
+// `locale` ("en" | "de") only affects the booker confirmation; the owner
+// notification stays English regardless.
+export async function sendRegistrationEmails(data, { discountBreakdown, invoiceResult, locale = "en" } = {}) {
   const results = { confirmation: "not attempted", ownerNotification: "not attempted" };
 
   const transporter = getTransporter();
@@ -70,7 +72,7 @@ export async function sendRegistrationEmails(data, { discountBreakdown, invoiceR
       ]
     : [];
   const emailOpts = { invoiceAttached: Boolean(invoiceResult), discountBreakdown };
-  const bookerEmailOpts = { ...emailOpts, calendarUrl: buildGoogleCalendarUrl(data) };
+  const bookerEmailOpts = { ...emailOpts, locale, calendarUrl: buildGoogleCalendarUrl(data, locale) };
 
   if (data.email) {
     try {
@@ -78,7 +80,7 @@ export async function sendRegistrationEmails(data, { discountBreakdown, invoiceR
         from: FROM_ADDRESS,
         to: data.email,
         replyTo: OWNER_ADDRESS,
-        subject: buildRegistrationEmailSubject(data),
+        subject: buildRegistrationEmailSubject(data, locale),
         html: buildRegistrationEmailHtml(data, bookerEmailOpts),
         text: buildRegistrationEmailText(data, bookerEmailOpts),
         attachments,
