@@ -32,6 +32,12 @@ const { session, course, category } = Astro.props;
 const locale = resolveLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 const prefix = locale === "de" ? "/de" : "";
+// Netlify Forms keeps ONE definition per form name at build time, redirect
+// target included, so a name shared by both language pages sends every
+// submission to whichever page was parsed last (the German one). Each
+// locale therefore gets its own form name; submission-created.js accepts
+// both.
+const registrationFormName = locale === "de" ? "registration-de" : "registration";
 const sessionTrainers = await getTrainersForSessions([session]);
 
 const unitPrice = parseFloat(session.data.price.replace(/[^0-9.]/g, "")) || 0;
@@ -357,7 +363,7 @@ const scriptCopy = {
     </p>
 
     <form
-      name="registration"
+      name={registrationFormName}
       method="POST"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
@@ -366,7 +372,7 @@ const scriptCopy = {
       class="min-w-0 space-y-5"
       hidden={isSoldOut}
     >
-      <input type="hidden" name="form-name" value="registration" />
+      <input type="hidden" name="form-name" value={registrationFormName} />
       <input type="hidden" name="course" value={course.data.name} />
       <input type="hidden" name="session-date" value={formatSessionDate(session, course, "long", locale)} />
       <input type="hidden" name="session-date-iso" value={session.data.date?.toISOString() ?? ""} />

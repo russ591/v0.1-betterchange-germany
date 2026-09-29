@@ -15,6 +15,10 @@ const { copy } = Astro.props;
 const locale = resolveLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 const prefix = locale === "de" ? "/de" : "";
+// One form name per locale: Netlify Forms stores a single definition per
+// name (redirect target included), so a shared name sent English
+// submissions to the German thank-you page. See RegisterPageContent.astro.
+const contactFormName = locale === "de" ? "contact-de" : "contact";
 ---
 
 <Breadcrumbs items={[{ label: t("nav.contact") }]} />
@@ -63,14 +67,14 @@ const prefix = locale === "de" ? "/de" : "";
 
     <div class="min-w-0 rounded-[var(--radius-card)] border border-neutral-200 bg-mist-light p-6 sm:p-8">
       <form
-        name="contact"
+        name={contactFormName}
         method="POST"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         action={`${prefix}/thank-you`}
         class="space-y-5"
       >
-        <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="form-name" value={contactFormName} />
         <p class="hidden">
           <label>
             {copy.honeypotLabel} <input name="bot-field" />

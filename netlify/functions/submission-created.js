@@ -23,7 +23,11 @@ export const handler = async (event) => {
     return { statusCode: 200, body: JSON.stringify({ waitlist }) };
   }
 
-  if (payload.form_name !== "registration") {
+  // The English and German registration pages submit under different form
+  // names (Netlify Forms keeps one definition per name, redirect target
+  // included, so a shared name sent everyone to the German thank-you page).
+  // Both carry identical fields and are handled the same way here.
+  if (payload.form_name !== "registration" && payload.form_name !== "registration-de") {
     return { statusCode: 200, body: "ignored: not a registration submission" };
   }
 
