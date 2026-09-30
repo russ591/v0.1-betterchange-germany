@@ -5,7 +5,12 @@
 // does the work. The only file this script ever writes is sync/state.json,
 // and only with --baseline or --record.
 //
-//   npm run sync:check                      diff live .com against sync/state.json
+//   npm run sync:check                      diff the latest .com snapshot (pushed by
+//                                           the .com site to the com-snapshot
+//                                           Netlify Function) against sync/state.json
+//   npm run sync:check -- --api             read the .com REST API directly instead
+//                                           (fallback; .com's anti-bot check blocks
+//                                           most automated networks)
 //   npm run sync:check -- --baseline        record EVERYTHING currently on .com as
 //                                           already seen (first-time setup), and
 //                                           list recent posts that may be missing
@@ -23,11 +28,16 @@
 //                                           (one-time, after --baseline)
 //   npm run sync:check -- --json            machine-readable output
 //
+// Snapshot source (default): GET $COM_SNAPSHOT_URL (defaults to the .de
+// site's com-snapshot function) with the shared secret from $COM_SYNC_SECRET
+// in the X-Sync-Secret header. A snapshot older than 48 hours is reported as
+// a question, so a broken push on the .com side doesn't go unnoticed.
+//
 // Network: Node's fetch only honours HTTPS_PROXY with NODE_USE_ENV_PROXY=1
-// (Node 22.21+); the cloud sandbox needs that. The .com host sits behind
-// SiteGround's anti-bot check, which answers automated requests with an HTML
-// challenge instead of JSON; this script recognises that page and says so
-// rather than pretending the site is empty.
+// (Node 22.21+); the cloud sandbox needs that. In --api mode the .com host
+// sits behind SiteGround's anti-bot check, which answers automated requests
+// with an HTML challenge instead of JSON; this script recognises that page
+// and says so rather than pretending the site is empty.
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
@@ -44,6 +54,9 @@ const POSTS_URL = `${BASE}/wp-json/wp/v2/posts`;
 const TYPES_URL = `${BASE}/wp-json/wp/v2/types`;
 const EVENTS_URL = `${BASE}/wp-json/tribe/events/v1/events`;
 
+const SNAPSHOT_URL = process.env.COM_SNAPSHOT_URL || "https://betterchange-consulting.de/.netlify/functions/com-snapshot";
+const SNAPSHOT_MAX_AGE_HOURS = 48;
+
 const GERMANY = new Set(["germany", "deutschland", "de"]);
 const OWN_TRAINER = /russell\s+hill/i;
 const WEBINAR = /(^|\/)webinar(\/|$)/i;
@@ -57,6 +70,7 @@ const opt = (name) => {
 };
 const MODE = flag("--baseline") ? "baseline" : flag("--record") ? "record" : "check";
 const FROM_DIR = opt("--from-dir");
+const USE_API = flag("--api");
 const SAVE_DIR = opt("--save-dir");
 const APPLY_IDS = flag("--apply-source-ids");
 const JSON_OUT = flag("--json");
@@ -132,6 +146,21 @@ async function fetchAllEvents() {
     url = body.next_rest_url || null;
   }
   return out;
+}
+
+async function loadFromSnapshot() {
+  const secret = process.env.COM_SYNC_SECRET;
+  if (!secret) {
+    throw new Error("COM_SYNC_SECRET is not set; it is the shared secret the com-snapshot function expects in the X-Sync-Secret header (or use --api / --from-dir).");
+  }
+  const res = await fetch(SNAPSHOT_URL, { headers: { Accept: "application/json", "X-Sync-Secret": secret } });
+  const text = await res.text();
+  if (res.status === 401) throw new Error(`${SNAPSHOT_URL} rejected the secret (401); check COM_SYNC_SECRET.`);
+  if (res.status === 404) throw new Error(`${SNAPSHOT_URL} has no snapshot yet (404); the .com snippet has not pushed one.`);
+  if (!res.ok) throw new Error(`${SNAPSHOT_URL} -> HTTP ${res.status}: ${text.slice(0, 200)}`);
+  const snap = JSON.parse(text);
+  const events = Array.isArray(snap.events) ? snap.events : (snap.events && snap.events.events) || [];
+  return { posts: snap.posts || [], events, types: snap.types || {}, extra: snap.extraTypes || snap.extra || {}, snapshot: { generatedAt: snap.generatedAt || null, receivedAt: snap.receivedAt || null, trigger: snap.trigger || null, site: snap.site || null } };
 }
 
 function loadFromDir(dir) {
@@ -331,6 +360,16 @@ async function main() {
   let raw;
   if (FROM_DIR) {
     raw = loadFromDir(resolve(FROM_DIR));
+  } else if (!USE_API) {
+    raw = await loadFromSnapshot();
+    if (SAVE_DIR) {
+      const dir = resolve(SAVE_DIR);
+      mkdirSync(dir, { recursive: true });
+      writeFileSync(join(dir, "posts.json"), JSON.stringify(raw.posts, null, 2));
+      writeFileSync(join(dir, "events.json"), JSON.stringify(raw.events, null, 2));
+      writeFileSync(join(dir, "types.json"), JSON.stringify(raw.types, null, 2));
+      writeFileSync(join(dir, "extra-types.json"), JSON.stringify(raw.extra, null, 2));
+    }
   } else {
     const types = await fetchTypes();
     const [posts, events, extra] = await Promise.all([fetchAllPosts(), fetchAllEvents(), fetchExtraTypePosts(types)]);
@@ -358,7 +397,16 @@ async function main() {
   const sessions = localSessions();
   const courses = localCourses();
 
-  const report = { mode: MODE, generatedAt: new Date().toISOString(), postTypes: publicTypes, resourcesType, newPosts: [], skippedWebinars: 0, newEvents: [], changedEvents: [], removedEvents: [], skippedEvents: [], questions: [], possiblyMissingOnDe: [], sessionMatches: [], counts: {} };
+  const report = { mode: MODE, generatedAt: new Date().toISOString(), source: FROM_DIR ? "dir" : USE_API ? "api" : "snapshot", snapshot: raw.snapshot || null, postTypes: publicTypes, resourcesType, newPosts: [], skippedWebinars: 0, newEvents: [], changedEvents: [], removedEvents: [], skippedEvents: [], questions: [], possiblyMissingOnDe: [], sessionMatches: [], counts: {} };
+
+  // A stale snapshot means the .com snippet has stopped pushing; say so as a
+  // question rather than quietly diffing old data.
+  if (raw.snapshot && raw.snapshot.generatedAt) {
+    const ageHours = (Date.now() - new Date(raw.snapshot.generatedAt).getTime()) / 3_600_000;
+    if (!Number.isFinite(ageHours) || ageHours > SNAPSHOT_MAX_AGE_HOURS) {
+      report.questions.push({ id: "snapshot", title: "Stale .com snapshot", start: raw.snapshot.generatedAt, url: SNAPSHOT_URL, reason: `the latest snapshot was generated ${Number.isFinite(ageHours) ? Math.round(ageHours) + " hours" : "an unknown time"} ago (limit ${SNAPSHOT_MAX_AGE_HOURS}); the snippet on .com may have stopped pushing` });
+    }
+  }
 
   // ---- posts
   for (const p of posts) {
@@ -451,7 +499,7 @@ async function main() {
   }
 
   const c = report.counts;
-  console.log(`sync:check (${MODE}) at ${report.generatedAt}`);
+  console.log(`sync:check (${MODE}) at ${report.generatedAt}, source: ${report.source}${report.snapshot && report.snapshot.generatedAt ? ` (snapshot generated ${report.snapshot.generatedAt}, received ${report.snapshot.receivedAt || "?"}, trigger ${report.snapshot.trigger || "?"})` : ""}`);
   console.log(`  .com: ${c.postsOnCom} posts (${c.webinarsOnCom} webinar announcements, ignored), ${c.eventsOnCom} events (${c.eventsGermanOrOwn} German or Russell's own, skipped; ${c.eventsSyncable} syncable; ${c.eventsUndecided} undecided)`);
   console.log(`  post types on .com: ${report.postTypes.join(", ") || "(unknown)"}; separate "resources" type: ${report.resourcesType || "none found"}`);
   console.log(`  state: ${c.postsInState} posts, ${c.eventsInState} events recorded; ${c.localSessionsWithSourceId} local sessions carry a sourceId (${c.localExternalSessions} external sessions in total)`);
