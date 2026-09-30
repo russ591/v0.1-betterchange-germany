@@ -1,0 +1,8 @@
+{
+  "post": { "name": "Posts", "slug": "post", "rest_base": "posts" },
+  "page": { "name": "Pages", "slug": "page", "rest_base": "pages" },
+  "attachment": { "name": "Media", "slug": "attachment", "rest_base": "media" },
+  "tribe_events": { "name": "Events", "slug": "tribe_events", "rest_base": "tribe_events" },
+  "tribe_venue": { "name": "Venues", "slug": "tribe_venue", "rest_base": "tribe_venue" },
+  "tribe_organizer": { "name": "Organizers", "slug": "tribe_organizer", "rest_base": "tribe_organizer" }
+}
