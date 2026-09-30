@@ -1,11 +1,141 @@
 {
   "version": 1,
-  "baselinedAt": null,
+  "baselinedAt": "2026-09-30T09:18:12.269Z",
   "source": {
     "posts": "https://www.betterchange-consulting.com/wp-json/wp/v2/posts",
     "events": "https://www.betterchange-consulting.com/wp-json/tribe/events/v1/events",
-    "postTypes": []
+    "postTypes": [
+      "post (rest: posts)",
+      "page (rest: pages)",
+      "tribe_events",
+      "tribe_venue",
+      "tribe_organizer"
+    ]
   },
-  "posts": {},
-  "events": {}
+  "posts": {
+    "9001": {
+      "type": "post",
+      "slug": "why-retrospectives-stall",
+      "link": "https://www.betterchange-consulting.com/blog/why-retrospectives-stall/",
+      "date": "2026-09-20T07:00:00",
+      "modified": "2026-09-20T07:00:00",
+      "title": "Why Retrospectives Stall - and What to Do About It",
+      "webinar": false
+    },
+    "9002": {
+      "type": "post",
+      "slug": "webinar-flow-metrics",
+      "link": "https://www.betterchange-consulting.com/webinar/webinar-flow-metrics/",
+      "date": "2026-09-22T07:00:00",
+      "modified": "2026-09-22T07:00:00",
+      "title": "Webinar: Flow Metrics in Practice",
+      "webinar": true
+    },
+    "9003": {
+      "type": "post",
+      "slug": "10-advantages-of-using-sprint-goals",
+      "link": "https://www.betterchange-consulting.com/blog/10-advantages-of-using-sprint-goals/",
+      "date": "2024-07-19T07:00:00",
+      "modified": "2024-07-19T07:00:00",
+      "title": "10 Advantages of Using Sprint Goals",
+      "webinar": false
+    },
+    "9010": {
+      "type": "post",
+      "slug": "kanban-for-leaders",
+      "link": "https://www.betterchange-consulting.com/blog/kanban-for-leaders/",
+      "date": "2026-09-29T07:00:00",
+      "modified": "2026-09-29T07:00:00",
+      "title": "Kanban for Leaders",
+      "webinar": false
+    }
+  },
+  "events": {
+    "5101": {
+      "title": "Certified ScrumMaster (CSM) - Copenhagen",
+      "url": "https://www.betterchange-consulting.com/event/certified-scrummaster-csm-copenhagen-2026-11-04/",
+      "start": "2026-11-04",
+      "end": "2026-11-05",
+      "cost": "from DKK 7,500",
+      "registrationUrl": "https://www.betterchange-consulting.dk/products/csm-copenhagen-nov-2026",
+      "modified": "2026-09-01 10:00:00",
+      "country": "Denmark",
+      "city": "Copenhagen",
+      "online": false,
+      "organizers": [
+        "Bent Myllerup"
+      ],
+      "skipped": null,
+      "question": null
+    },
+    "5102": {
+      "title": "Flight Level 2 Design (FL2D) - Berlin",
+      "url": "https://www.betterchange-consulting.com/event/fl2d-berlin-2026-11-24/",
+      "start": "2026-11-24",
+      "end": "2026-11-25",
+      "cost": "€2,190",
+      "registrationUrl": "https://betterchange-consulting.de/training/register/fl2d-ber-24-11-2026",
+      "modified": "2026-09-01 10:00:00",
+      "country": "Germany",
+      "city": "Berlin",
+      "online": false,
+      "organizers": [
+        "Russell Hill"
+      ],
+      "skipped": "venue in Germany (Russ adds these himself)",
+      "question": null
+    },
+    "5104": {
+      "title": "Flight Levels Introduction (FLIN) - Online",
+      "url": "https://www.betterchange-consulting.com/event/flin-online-2026-12-02/",
+      "start": "2026-12-02",
+      "end": "2026-12-02",
+      "cost": "€350",
+      "registrationUrl": "https://betterchange-consulting.de/training/register/flin-online-02-12-2026",
+      "modified": "2026-09-01 10:00:00",
+      "country": null,
+      "city": null,
+      "online": true,
+      "organizers": [
+        "Russell Hill"
+      ],
+      "skipped": "Russell Hill's own online course (Russ adds these himself)",
+      "question": null
+    },
+    "5105": {
+      "title": "Certified Scrum Product Owner (CSPO) - Milan",
+      "url": "https://www.betterchange-consulting.com/event/cspo-milan-2026-10-15/",
+      "start": "2026-10-15",
+      "end": "2026-10-16",
+      "cost": "€1,100 - €1,400",
+      "registrationUrl": "https://www.betterchange-consulting.it/cspo-milano",
+      "modified": "2026-09-01 10:00:00",
+      "country": null,
+      "city": null,
+      "online": false,
+      "organizers": [
+        "Giuseppe De Simone"
+      ],
+      "skipped": null,
+      "question": "no venue country on .com; cannot tell whether it is in Germany"
+    },
+    "5106": {
+      "title": "Certified ScrumMaster (CSM) - Bologna",
+      "url": "https://www.betterchange-consulting.com/event/csm-bologna-2027-02-09/",
+      "start": "2027-02-09",
+      "end": "2027-02-10",
+      "cost": "€1,100 - €1,400",
+      "registrationUrl": "https://www.betterchange-consulting.it/csm-bologna",
+      "modified": "2026-09-29 10:00:00",
+      "country": "Italy",
+      "city": "Bologna",
+      "online": false,
+      "organizers": [
+        "Giuseppe De Simone"
+      ],
+      "skipped": null,
+      "question": null
+    }
+  },
+  "recordedAt": "2026-09-30T09:18:12.269Z"
 }
