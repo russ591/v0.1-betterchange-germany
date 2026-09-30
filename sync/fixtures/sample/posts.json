@@ -1,0 +1,44 @@
+[
+  {
+    "id": 9001,
+    "date": "2026-09-20T09:00:00",
+    "date_gmt": "2026-09-20T07:00:00",
+    "modified_gmt": "2026-09-20T07:00:00",
+    "slug": "why-retrospectives-stall",
+    "link": "https://www.betterchange-consulting.com/blog/why-retrospectives-stall/",
+    "title": { "rendered": "Why Retrospectives Stall &#8211; and What to Do About It" },
+    "categories": [12],
+    "_embedded": {
+      "author": [{ "name": "Bent Myllerup" }],
+      "wp:term": [[{ "taxonomy": "category", "slug": "scrum", "name": "Scrum" }]]
+    }
+  },
+  {
+    "id": 9002,
+    "date": "2026-09-22T09:00:00",
+    "date_gmt": "2026-09-22T07:00:00",
+    "modified_gmt": "2026-09-22T07:00:00",
+    "slug": "webinar-flow-metrics",
+    "link": "https://www.betterchange-consulting.com/webinar/webinar-flow-metrics/",
+    "title": { "rendered": "Webinar: Flow Metrics in Practice" },
+    "categories": [30],
+    "_embedded": {
+      "author": [{ "name": "Russell Hill" }],
+      "wp:term": [[{ "taxonomy": "category", "slug": "webinar", "name": "Webinar" }]]
+    }
+  },
+  {
+    "id": 9003,
+    "date": "2024-07-19T09:00:00",
+    "date_gmt": "2024-07-19T07:00:00",
+    "modified_gmt": "2024-07-19T07:00:00",
+    "slug": "10-advantages-of-using-sprint-goals",
+    "link": "https://www.betterchange-consulting.com/blog/10-advantages-of-using-sprint-goals/",
+    "title": { "rendered": "10 Advantages of Using Sprint Goals" },
+    "categories": [12],
+    "_embedded": {
+      "author": [{ "name": "Niels Verdonk" }],
+      "wp:term": [[{ "taxonomy": "category", "slug": "scrum", "name": "Scrum" }]]
+    }
+  }
+]

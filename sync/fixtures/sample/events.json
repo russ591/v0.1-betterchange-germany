@@ -1,0 +1,82 @@
+{
+  "events": [
+    {
+      "id": 5101,
+      "title": "Certified ScrumMaster (CSM) &#8211; Copenhagen",
+      "url": "https://www.betterchange-consulting.com/event/certified-scrummaster-csm-copenhagen-2026-11-04/",
+      "modified_utc": "2026-09-01 10:00:00",
+      "start_date": "2026-11-04 09:00:00",
+      "end_date": "2026-11-05 17:00:00",
+      "utc_start_date": "2026-11-04 08:00:00",
+      "utc_end_date": "2026-11-05 16:00:00",
+      "cost": "from DKK 7,000",
+      "website": "https://www.betterchange-consulting.dk/products/csm-copenhagen-nov-2026",
+      "venue": { "id": 71, "venue": "Better Change Copenhagen", "city": "Copenhagen", "country": "Denmark" },
+      "organizer": [{ "id": 3, "organizer": "Bent Myllerup" }],
+      "categories": [{ "slug": "scrum", "name": "Scrum" }]
+    },
+    {
+      "id": 5102,
+      "title": "Flight Level 2 Design (FL2D) &#8211; Berlin",
+      "url": "https://www.betterchange-consulting.com/event/fl2d-berlin-2026-11-24/",
+      "modified_utc": "2026-09-01 10:00:00",
+      "start_date": "2026-11-24 09:00:00",
+      "end_date": "2026-11-25 17:00:00",
+      "utc_start_date": "2026-11-24 08:00:00",
+      "utc_end_date": "2026-11-25 16:00:00",
+      "cost": "€2,190",
+      "website": "https://betterchange-consulting.de/training/register/fl2d-ber-24-11-2026",
+      "venue": { "id": 72, "venue": "Berlin venue", "city": "Berlin", "country": "Germany" },
+      "organizer": [{ "id": 1, "organizer": "Russell Hill" }],
+      "categories": [{ "slug": "flight-levels", "name": "Flight Levels" }]
+    },
+    {
+      "id": 5103,
+      "title": "Certified Agile Leadership 2 (CAL-2) &#8211; Online",
+      "url": "https://www.betterchange-consulting.com/event/cal-2-online-2026-10-26/",
+      "modified_utc": "2026-09-01 10:00:00",
+      "start_date": "2026-10-26 09:00:00",
+      "end_date": "2026-10-29 13:00:00",
+      "utc_start_date": "2026-10-26 08:00:00",
+      "utc_end_date": "2026-10-29 12:00:00",
+      "cost": "€1,800 - €2,100",
+      "website": "https://www.betterchange-consulting.dk/products/cal-2-online-oct-2026",
+      "venue": { "id": 73, "venue": "Online", "city": "", "country": "" },
+      "organizer": [{ "id": 4, "organizer": "Giuseppe De Simone" }],
+      "categories": [{ "slug": "leadership", "name": "Leadership" }]
+    },
+    {
+      "id": 5104,
+      "title": "Flight Levels Introduction (FLIN) &#8211; Online",
+      "url": "https://www.betterchange-consulting.com/event/flin-online-2026-12-02/",
+      "modified_utc": "2026-09-01 10:00:00",
+      "start_date": "2026-12-02 09:00:00",
+      "end_date": "2026-12-02 12:00:00",
+      "utc_start_date": "2026-12-02 08:00:00",
+      "utc_end_date": "2026-12-02 11:00:00",
+      "cost": "€350",
+      "website": "https://betterchange-consulting.de/training/register/flin-online-02-12-2026",
+      "venue": { "id": 73, "venue": "Online", "city": "", "country": "" },
+      "organizer": [{ "id": 1, "organizer": "Russell Hill" }],
+      "categories": [{ "slug": "flight-levels", "name": "Flight Levels" }]
+    },
+    {
+      "id": 5105,
+      "title": "Certified Scrum Product Owner (CSPO) &#8211; Milan",
+      "url": "https://www.betterchange-consulting.com/event/cspo-milan-2026-10-15/",
+      "modified_utc": "2026-09-01 10:00:00",
+      "start_date": "2026-10-15 09:00:00",
+      "end_date": "2026-10-16 17:00:00",
+      "utc_start_date": "2026-10-15 07:00:00",
+      "utc_end_date": "2026-10-16 15:00:00",
+      "cost": "€1,100 - €1,400",
+      "website": "https://www.betterchange-consulting.it/cspo-milano",
+      "venue": [],
+      "organizer": [{ "id": 4, "organizer": "Giuseppe De Simone" }],
+      "categories": [{ "slug": "scrum", "name": "Scrum" }]
+    }
+  ],
+  "rest_url": "https://www.betterchange-consulting.com/wp-json/tribe/events/v1/events?page=1&per_page=50",
+  "total": 5,
+  "total_pages": 1
+}

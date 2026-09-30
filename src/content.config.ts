@@ -81,6 +81,13 @@ const trainingSchedule = defineCollection({
     // even generated for these (see its getStaticPaths filter).
     isExternal: z.boolean().default(false),
     externalUrl: z.string().url().optional(),
+    // Set only by the .com-to-.de sync (docs/sync-runbook.md): the Events
+    // Calendar event id on betterchange-consulting.com this session mirrors,
+    // and that event's page. A session WITHOUT sourceId belongs to Russ and
+    // the sync must never edit or remove it (that is what protects his own
+    // German courses).
+    sourceId: z.string().optional(),
+    sourceUrl: z.string().url().optional(),
   }),
 });
 
@@ -164,6 +171,13 @@ const insightsArticle = defineCollection({
     // punctuation (colons, apostrophes, em-dashes). Falls back to the
     // content id when absent so new articles don't need to set this.
     urlSlug: z.string().optional(),
+    // Set only by the .com-to-.de sync (docs/sync-runbook.md): the WordPress
+    // post id on betterchange-consulting.com this article was rewritten
+    // from, and that post's URL. Set identically on the English and German
+    // entry. An article without sourceId is Russ's own and the sync never
+    // touches it.
+    sourceId: z.string().optional(),
+    sourceUrl: z.string().url().optional(),
     // A handful of articles are chapters of one ongoing story (e.g. the
     // "Agile Mishaps" series: an intro, five numbered mishaps, and a
     // closing piece) rather than standalone posts. seriesOrder is the
