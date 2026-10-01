@@ -12,7 +12,9 @@ Russ only wants to be asked when something is genuinely unclear. Anything unclea
 
 ## How the data gets here: push, not pull
 
-The .com host sits behind SiteGround's anti-bot check, which blocks automated requests from most networks, so the sync never reads the .com API directly. Instead a small snippet installed on the .com site (`docs/com-snapshot-snippet.php`, install steps in `docs/com-snapshot-setup.md`) builds a snapshot once a day and a couple of minutes after any post or event is saved, and POSTs it to the .de site's `com-snapshot` Netlify Function, which keeps the latest and the previous snapshot in Netlify Blobs. `sync:check` reads the latest snapshot from that function by default. The snapshot holds metadata for every published post, full content for posts published in the last 60 days, every upcoming event, and the post-type list, in the shape the WordPress REST API returns.
+The .com host sits behind SiteGround's anti-bot check, which blocks automated requests from most networks, so the sync never reads the .com API directly. Instead a small snippet installed on the .com site (`docs/com-snapshot-snippet.php`, install steps in `docs/com-snapshot-setup.md`) builds a snapshot once a day and a couple of minutes after any post or event is saved, and POSTs it to the .de site's `com-snapshot` Netlify Function, which keeps the latest and the previous snapshot in Netlify Blobs. `sync:check` reads the latest snapshot from that function by default. The snapshot holds metadata for every published post, full content for posts published in the last 60 days, every upcoming event, and the post-type list, in the shape the WordPress REST API returns. Besides blog posts it carries the .com site's other public post types: `resources` (how-to guides and explainers, treated exactly like blog posts) and `fellow` (people, never imported; see "Fellows" below).
+
+Event dates in the snapshot are the site-local `start_date` and `end_date`. The `utc_*` fields are 22:00 the evening before for an event stored at midnight Europe/Berlin and must not be used; the script already reads the local ones.
 
 Both directions are protected by one shared secret:
 
@@ -25,8 +27,11 @@ Both directions are protected by one shared secret:
 
 1. Install the snippet on .com and set the secret on both sides (`docs/com-snapshot-setup.md`). Use "Push now" on the .com dashboard and confirm the dashboard notice reports OK.
 2. Baseline: `npm run sync:check -- --baseline`. This records every post and event in the snapshot as already seen, so the first daily run does not try to import 200 old articles, and prints two information-only lists: recent .com posts that seem to have no counterpart on .de, and existing sessions here that match a .com event.
-3. Give the existing non-German sessions their `sourceId`s: `npm run sync:check -- --baseline --apply-source-ids`. Check the printed matches first; only unambiguous, non-German, non-Russell matches are written. From then on the sync owns those sessions.
-4. Commit `sync/state.json` and the updated session files.
+3. Give the existing non-German sessions their `sourceId`s: `npm run sync:check -- --apply-source-ids` (works in any mode and leaves the state alone). A session matches an event when the session's `externalUrl` is the event's registration link, or when the event resolves to the same course and starts on the same date; the output says which basis matched. Only unambiguous, non-German, non-Russell matches are written. From then on the sync owns those sessions. The command also lists the external sessions that match nothing in the snapshot, for Russ to check whether they still run.
+4. Upcoming events that should be imported by the first daily run rather than treated as already seen: drop them from the state with `npm run sync:check -- --forget <id,id,...>`. The next check then reports them as new (or as questions, if there is no course page for them).
+5. Commit `sync/state.json` and the updated session files.
+
+This was done on 2026-10-01: 8 sessions were linked, and 9 upcoming events with no .de session were forgotten so the first daily run imports them (one of them, CASP, is a standing question).
 
 ## Environment the daily run needs
 
@@ -40,11 +45,14 @@ Both directions are protected by one shared secret:
 
 Run `npm run sync:check`. It compares the latest .com snapshot with `sync/state.json` and prints:
 
-- new posts (non-webinar; webinar announcements are never imported),
-- new, changed (date, price, registration link) and removed non-German events,
-- questions (an event whose location or trainer cannot be determined, or a snapshot older than 48 hours).
+- new posts (non-webinar; webinar announcements are never imported; `resources` entries count as posts),
+- new, changed (date, price, registration link) and removed non-German events, each new event with the `course:` id it resolves to,
+- questions (an event whose location or trainer cannot be determined, an event with no matching .de course page, or a snapshot older than 48 hours),
+- new Fellow profiles on .com (information only, see "Fellows").
 
 If it prints `Nothing to do.`, stop. No branch, no PR, no summary beyond one line.
+
+If it prints `Nothing to sync; information only:` followed by new Fellows, there is no content to sync; see "Fellows" for what to do.
 
 The script makes no content decisions. `--json` gives the same result as machine-readable output.
 
@@ -58,7 +66,7 @@ Only non-German events reach this step. The script already skips events whose ve
 
 **New event**
 
-1. Find the matching course in `src/content/training-courses/` by certification code in the event title (CSM, CSPO, A-CSM, CAL-1, CAL-2, CSP-SM, ICP-ATF, ICP-ACC, FL2D, FL3D, FLSA, FLIN, KMP and so on). No matching .de course page (for example CASP)? Skip the event and raise a question. Never create a course page.
+1. The script has already resolved the course (`course:` in its output) from the certification code in brackets in the event title (CSM, CSPO, A-CSM, CAL 1, CSP-SM, ICP-ATF, KMP 1 and so on), or from the course name for courses without a code (AI for Product Owners, AI for Scrum Masters). An event with no matching .de course page (for example CASP) never reaches this step: the script lists it under questions, and it stays a question until a course page exists. Never create a course page.
 2. Create `src/content/training-schedules/<code>-<city-or-online>-<dd-mm-yyyy>.md` following the existing external sessions (for example `csm-cph-04-11-2026.md`):
 
    ```yaml
@@ -90,7 +98,7 @@ Only ever touch sessions with a `sourceId`. If a change would affect a session w
 
 ## Step 4: articles
 
-Only non-webinar posts reach this step.
+Only non-webinar posts reach this step. A `resources` entry on .com is an article like any other and goes through the same steps; a `fellow` entry never does (see "Fellows").
 
 1. **Language.** If the post is not in English (for example Italian), do not guess. Raise a question and stop for that post.
 2. **Author.** Keep the real .com author if they are a Better Change Fellow with a `coach-profiles` entry (`author: <id>`). Anyone else: raise a question and stop for that post. Never guess an author.
@@ -101,11 +109,17 @@ Only non-webinar posts reach this step.
 7. **Related training.** The related-training block is computed at build time from the article text (`src/lib/relatedTraining.ts`), so nothing to add. If the computed sentence reads badly for this article, add a hand-written `relatedTrainingIntro` on both entries, the German one without direct address.
 8. Build and check the article page in both languages: no `[DE]` placeholders, no em dashes, working image.
 
+## Fellows
+
+The .com site keeps its Fellow profiles as a `fellow` post type. These are people, not articles, and the sync never imports them. A new one is listed in the run's final summary as information ("new Fellow on .com: name, link") so Russ can update the About page and `coach-profiles` by hand.
+
+A run whose only output is new Fellows ("Nothing to sync; information only") still records them, or they would be listed again every day: run `npm run sync:check -- --record` on a `sync/YYYY-MM-DD-state` branch and open a PR that changes only `sync/state.json`. That PR may be merged by the sync once the build passes, exactly like a training-only PR, because it changes nothing on the site.
+
 ## Step 5: state
 
 Update `sync/state.json` in the same PR as the change it records: `npm run sync:check -- --record` after the content changes are made. A rejected PR then means the item is retried or questioned again on the next run, which is intended.
 
-Questions are remembered in the state file too, so a known open question is not raised again until the event or post changes.
+Questions are remembered in the state file too, so a known open question is not raised again until the event or post changes. To make the sync look at something again on purpose (an event or post Russ has answered a question about, or one that was recorded as seen by mistake), drop it from the state with `npm run sync:check -- --forget <id,id,...>`; the next check reports it as new.
 
 ## Step 6: build and PR
 
@@ -115,10 +129,10 @@ Questions are remembered in the state file too, so a known open question is not 
 
 ## Merging
 
-- A **training-only PR** is merged automatically once the build passes, and only if every changed file is one of: `src/content/training-schedules/*.md` carrying a `sourceId`, and `sync/state.json`. If anything else is touched, the PR waits for Russ.
+- A **training-only PR** is merged automatically once the build passes, and only if every changed file is one of: `src/content/training-schedules/*.md` carrying a `sourceId`, and `sync/state.json`. If anything else is touched, the PR waits for Russ. A **state-only PR** (just `sync/state.json`, from a Fellows-only run) falls under the same rule.
 - An **article PR** always waits for Russ.
 - This is the only exception to the CLAUDE.md merge policy. Nothing else is ever merged by the sync.
 
 ## Final summary of a run
 
-One short message: what was synced, which PR(s) were opened and whether the training PR was merged, and the questions for Russ. When there was nothing to do, one line.
+One short message: what was synced, which PR(s) were opened and whether the training PR was merged, the questions for Russ, and any new Fellow on .com (name and link). When there was nothing to do, one line.
