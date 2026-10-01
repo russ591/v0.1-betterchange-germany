@@ -2,7 +2,7 @@
 
 This is what the scheduled daily session follows. Read CLAUDE.md first; every rule there still applies. This runbook only adds the sync-specific steps and the one narrow merge permission described at the end.
 
-Russ only wants to be asked when something is genuinely unclear. Anything unclear is skipped and listed as a question; everything else carries on.
+Russ only wants to be asked when something is genuinely unclear. Anything unclear is skipped and listed as a question; everything else carries on. His answers live in `sync/decisions.json` (see "Decisions"), so a question is asked once and never guessed at.
 
 ## What the sync owns and what it never touches
 
@@ -41,13 +41,25 @@ This was done on 2026-10-01: 8 sessions were linked, and 9 upcoming events with 
 - `NODE_USE_ENV_PROXY=1` when running in the cloud sandbox, so Node's fetch honours the proxy.
 - Network access to the .de site (the snapshot function), Replicate and GitHub. Nothing else: the sync never sends email and never talks to Lexware.
 
+## Decisions: Russ's answers, read on every run
+
+`sync/decisions.json` is where an answered question goes, so the sync applies it from then on and never asks again. `sync:check` reads it on every run. It is keyed by .com id:
+
+- `events.<id>`: `ignore` (a reason; the event is never raised or imported again), `trainer` (a `coach-profiles` id), `trainerName` (display name when there is no profile), `course` (a `training-courses` id, when the title does not resolve on its own), `note`, `decided` (date).
+- `posts.<id>`: `ignore` (a reason), `author` (a `coach-profiles` id), `note`, `decided`.
+- `organizers`: a .com organizer name mapped to the trainer it stands for: a `coach-profiles` id, a display name, or `""` for "no trainer shown". One entry answers the question for every future event from that organizer (for example `"Better Change Italy": "giuseppe-de-simone"` once Russ confirms it).
+
+When Russ answers a question in chat or on a PR, the session that gets the answer records it here, in a PR of its own if nothing else is pending (a decisions-only change waits for Russ like any other PR; it is his answer, so he can approve it in a glance). The daily run itself never writes this file.
+
+Current decisions: the Zagreb CSM (#19677) is run by Nino Zeljko and is imported; CASP (#19412) is ignored for good.
+
 ## Step 1: find out what changed
 
 Run `npm run sync:check`. It compares the latest .com snapshot with `sync/state.json` and prints:
 
 - new posts (non-webinar; webinar announcements are never imported; `resources` entries count as posts),
-- new, changed (date, price, registration link) and removed non-German events, each new event with the `course:` id it resolves to,
-- questions (an event whose location or trainer cannot be determined, an event with no matching .de course page, or a snapshot older than 48 hours),
+- new, changed (date, price, registration link) and removed non-German events, each new event with the `course:` id and the `trainer:` it resolves to (and where the trainer came from: a decision, the organizer, or the event description),
+- questions (an event whose trainer, venue country or .de course page cannot be determined, or a snapshot older than 48 hours),
 - new Fellow profiles on .com (information only, see "Fellows").
 
 If it prints `Nothing to do.`, stop. No branch, no PR, no summary beyond one line.
@@ -58,7 +70,7 @@ The script makes no content decisions. `--json` gives the same result as machine
 
 ## Step 2: branch
 
-Create `sync/YYYY-MM-DD` from the latest `main`. Everything from this run goes there. When a run has both training changes and at least one article, make two branches, `sync/YYYY-MM-DD-training` and `sync/YYYY-MM-DD-articles`, so the two PRs can be handled differently (see "Merging").
+Create `sync/YYYY-MM-DD` from `origin/main` after `git fetch origin main`, never from a local `main` or from another session's branch: the container's checkout can be older than what is on GitHub. Everything from this run goes there. When a run has both training changes and at least one article, make two branches, `sync/YYYY-MM-DD-training` and `sync/YYYY-MM-DD-articles`, so the two PRs can be handled differently (see "Merging").
 
 ## Step 3: training events
 
@@ -88,7 +100,7 @@ Only non-German events reach this step. The script already skips events whose ve
 
    The filename is the registration URL for internal sessions, so keep the date in it accurate even though external sessions have no internal registration page. `isExternal: true` makes the Register button open the .com registration URL in a new tab, exactly as the existing external sessions do.
 3. Show the date and location and the price as given on .com, in its own currency. Do not convert currencies and do not invent an offer.
-4. Trainer: match the organizer name to a `coach-profiles` id. No profile? Use `trainerName`. No organizer at all on .com? The script has already turned that into a question.
+4. Trainer: use what the script printed after `trainer:`. It takes, in this order, Russ's decision for the event, the organizer when it is a coach profile or is mapped under `organizers` in `sync/decisions.json`, and otherwise a "Trainer: Name" line in the event description (the Zagreb events name their trainer there while the organizer is just "Better Change Zagreb"). A resolved profile goes in `trainers`; a name without a profile goes in `trainerName`. When none of these names a person (an organizer like "Better Change Italy" and no trainer in the description), the script has already turned the event into a question: never assign a trainer on precedent.
 
 **Changed event** (date, price, registration link, title, location): update the session file that carries that `sourceId`. If the date changed, rename the file to the new date as well.
 
@@ -119,17 +131,20 @@ A run whose only output is new Fellows ("Nothing to sync; information only") sti
 
 Update `sync/state.json` in the same PR as the change it records: `npm run sync:check -- --record` after the content changes are made. A rejected PR then means the item is retried or questioned again on the next run, which is intended.
 
+`--record` marks a syncable post or event as seen only when something here carries its `sourceId` (or it was already recorded, or the sync will never import it: webinars, Fellows, skipped and ignored events, questions). An event or post the run left out on purpose is listed under "Not recorded as seen" and comes back on the next run, so nothing is lost by skipping it; there is no need to edit the state by hand for that.
+
 Questions are remembered in the state file too, so a known open question is not raised again until the event or post changes. To make the sync look at something again on purpose (an event or post Russ has answered a question about, or one that was recorded as seen by mistake), drop it from the state with `npm run sync:check -- --forget <id,id,...>`; the next check reports it as new.
 
 ## Step 6: build and PR
 
 - `npm run build` must pass (it runs `astro check` first). Run the `[DE]` scan and the em-dash scan from the CLAUDE.md pre-merge checklist on new pages.
+- Run `npm run sync:mergeable` on the branch. It fetches `origin/main`, lists every file the branch changes against it and prints one of `MERGEABLE BY THE SYNC` or `WAITS FOR RUSS`, with the reasons. Paste its output into the PR description. This verdict, not a reading of the diff, decides the "Merging" section below.
 - Open the PR against `main` with a description listing every change, and a **Questions for Russ** section listing everything skipped and why. If there are only questions and no changes, do not open a PR; report the questions in the run's final summary instead.
 - Two PRs when a run has both training changes and articles.
 
 ## Merging
 
-- A **training-only PR** is merged automatically once the build passes, and only if every changed file is one of: `src/content/training-schedules/*.md` carrying a `sourceId`, and `sync/state.json`. If anything else is touched, the PR waits for Russ. A **state-only PR** (just `sync/state.json`, from a Fellows-only run) falls under the same rule.
+- A **training-only PR** is merged by the run itself once the build (the Netlify deploy preview check on the PR) passes, and only if `npm run sync:mergeable` printed `MERGEABLE BY THE SYNC`: every changed file is a `src/content/training-schedules/*.md` carrying a `sourceId`, or `sync/state.json`. If it printed `WAITS FOR RUSS`, the PR waits. A **state-only PR** (just `sync/state.json`, from a Fellows-only run) passes the same check. Do not judge this by eye: the 2026-10-01 run misjudged its own PR as not training-only because it believed `main` lacked the baseline, while the branch was in fact based on the merged `main` and GitHub's file list held nothing but session files and the state.
 - An **article PR** always waits for Russ.
 - This is the only exception to the CLAUDE.md merge policy. Nothing else is ever merged by the sync.
 

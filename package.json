@@ -9,7 +9,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "sync:check": "node scripts/sync-check.mjs"
+    "sync:check": "node scripts/sync-check.mjs",
+    "sync:mergeable": "node scripts/sync-mergeable.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
