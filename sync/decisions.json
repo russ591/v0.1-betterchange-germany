@@ -1,0 +1,16 @@
+{
+  "_about": "Russ's answers to sync questions. sync:check reads this on every run. Events and posts are keyed by their .com id. Event fields: ignore (reason; the event is never raised or imported again), trainer (coach-profiles id), trainerName (display name when there is no profile), course (training-courses id), note. Post fields: ignore (reason), author (coach-profiles id), note. organizers maps a .com organizer name to the trainer it stands for: a coach-profiles id, a display name, or an empty string for 'no trainer shown'.",
+  "events": {
+    "19677": {
+      "trainer": "nino-zeljko",
+      "decided": "2026-10-02",
+      "note": "CSM Zagreb, 23-24 Nov 2026. Russ confirmed Nino Zeljko as the trainer; import it."
+    },
+    "19412": {
+      "ignore": "CASP has no .de course page and will not get one; never raise this event again.",
+      "decided": "2026-10-02"
+    }
+  },
+  "posts": {},
+  "organizers": {}
+}

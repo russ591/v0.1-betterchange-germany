@@ -3,7 +3,8 @@
 // sync and prints it. Makes NO content decisions and writes nothing to the
 // site: the daily sync session (docs/sync-runbook.md) reads this output and
 // does the work. The only file this script ever writes is sync/state.json,
-// and only with --baseline or --record.
+// and only with --baseline, --record or --forget. Russ's answers to earlier
+// questions live in sync/decisions.json and are applied on every run.
 //
 //   npm run sync:check                      diff the latest .com snapshot (pushed by
 //                                           the .com site to the com-snapshot
@@ -49,6 +50,8 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const STATE_PATH = join(ROOT, "sync", "state.json");
+const DECISIONS_PATH = join(ROOT, "sync", "decisions.json");
+const PROFILES_DIR = join(ROOT, "src", "content", "coach-profiles");
 const SESSIONS_DIR = join(ROOT, "src", "content", "training-schedules");
 const ARTICLES_DIR = join(ROOT, "src", "content", "insights-articles");
 const COURSES_DIR = join(ROOT, "src", "content", "training-courses");
@@ -250,21 +253,78 @@ function normaliseEvent(ev) {
     online,
     organizers,
     categories: (ev.categories || []).map((c) => c.slug || c.name).filter(Boolean),
+    descriptionText: stripHtml(ev.description || "").slice(0, 4000),
   };
 }
 
-// The brief's rule: skip Germany; sync online events unless Russell Hill
-// runs them; anything undeterminable is a question, never a guess.
-function classifyEvent(e) {
-  if (e.country && GERMANY.has(e.country.trim().toLowerCase())) return { kind: "skip", reason: "venue in Germany (Russ adds these himself)" };
-  const trainer = e.organizers.join(", ");
-  if (e.online) {
-    if (!trainer) return { kind: "question", reason: "online event with no organizer/trainer on .com; cannot tell whether it is Russell Hill's" };
-    if (OWN_TRAINER.test(trainer)) return { kind: "skip", reason: "Russell Hill's own online course (Russ adds these himself)" };
-    return { kind: "sync" };
+// Who runs an event, in this order: Russ's decision for that event, the
+// organizer name when it is a coach profile (or mapped in decisions.json's
+// "organizers"), then a "Trainer: Name" line in the event description (the
+// Zagreb events name their trainer there while the organizer is just
+// "Better Change Zagreb"). Nothing found means a question, never a guess.
+function resolveTrainer(e, profiles, decisions) {
+  const d = (decisions.events || {})[e.id] || {};
+  const byId = (id) => profiles.find((p) => p.id === id);
+  const byName = (name) => profiles.find((p) => normTitle(p.name) === normTitle(name));
+  if (d.trainer) {
+    const p = byId(d.trainer);
+    return { id: d.trainer, name: p ? p.name : d.trainer, source: p ? "decision" : "decision (no such coach profile!)" };
   }
-  if (!e.country) return { kind: "question", reason: "no venue country on .com; cannot tell whether it is in Germany" };
-  return { kind: "sync" };
+  if (d.trainerName) return { id: null, name: d.trainerName, source: "decision" };
+  const orgMap = decisions.organizers || {};
+  for (const org of e.organizers) {
+    const mapped = Object.entries(orgMap).find(([k]) => normTitle(k) === normTitle(org));
+    if (mapped) {
+      const [, v] = mapped;
+      if (v === "") return { id: null, name: null, source: `organizer "${org}" mapped to no trainer` };
+      const p = byId(v);
+      return p ? { id: p.id, name: p.name, source: `organizer "${org}" mapped in decisions` } : { id: null, name: v, source: `organizer "${org}" mapped in decisions` };
+    }
+    const p = byName(org);
+    if (p) return { id: p.id, name: p.name, source: "organizer" };
+    if (OWN_TRAINER.test(org)) return { id: "russell-hill", name: org, source: "organizer" };
+  }
+  const m = e.descriptionText && e.descriptionText.match(/\b(?:Trainers?|Instructors?|Facilitators?)\s*:\s*((?:[A-ZÀ-Ý][\wÀ-ÿ'.-]*\s?){1,4})/);
+  if (m) {
+    const words = m[1].trim().split(/\s+/);
+    for (let n = words.length; n >= 1; n--) {
+      const p = byName(words.slice(0, n).join(" "));
+      if (p) return { id: p.id, name: p.name, source: "description" };
+    }
+    const name = words.slice(0, Math.min(3, words.length)).join(" ");
+    if (OWN_TRAINER.test(name)) return { id: "russell-hill", name, source: "description" };
+    return { id: null, name, source: "description (no coach profile; use trainerName)" };
+  }
+  return null;
+}
+
+// The brief's rule: skip Germany; sync everything else unless Russell Hill
+// runs it online; an event the sync could import but cannot place (no
+// trainer, no venue country, no .de course page) is a question, never a
+// guess. A decision in sync/decisions.json settles any of these.
+function decideEvent(e, courses, profiles, decisions, importedIds = new Set()) {
+  const d = (decisions.events || {})[e.id] || {};
+  if (d.ignore) return { kind: "skip", reason: `ignored by decision: ${d.ignore}` };
+  if (e.country && GERMANY.has(e.country.trim().toLowerCase())) return { kind: "skip", reason: "venue in Germany (Russ adds these himself)" };
+  const trainer = resolveTrainer(e, profiles, decisions);
+  if (trainer && trainer.id === "russell-hill" && e.online) return { kind: "skip", reason: "Russell Hill's own online course (Russ adds these himself)" };
+  // Already imported (a session here carries its sourceId): trainer and
+  // course were settled when it was created, so only changes matter now.
+  if (importedIds.has(e.id)) return { kind: "sync", course: d.course || courseForEvent(e, courses), trainer };
+  if (!trainer) {
+    const org = e.organizers.join(", ");
+    return { kind: "question", reason: org ? `trainer cannot be determined: organizer "${org}" is not a coach profile and the description names no trainer (answer in sync/decisions.json: trainer, trainerName or organizers)` : `no organizer on .com and the description names no trainer${e.online ? "; cannot tell whether it is Russell Hill's" : ""}` };
+  }
+  if (!e.online && !e.country) return { kind: "question", reason: "no venue country on .com; cannot tell whether it is in Germany" };
+  const course = d.course || courseForEvent(e, courses);
+  if (!course) return { kind: "question", reason: "no matching .de course page for this event (the sync never creates course pages)" };
+  return { kind: "sync", course, trainer };
+}
+
+function trainerLabel(t) {
+  if (!t) return "?";
+  if (!t.name) return `none (${t.source})`;
+  return `${t.name}${t.id ? ` -> ${t.id}` : ""} (${t.source})`;
 }
 
 const codeKey = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -285,16 +345,6 @@ function courseForEvent(e, courses) {
   const bare = normTitle(title.replace(/\([^()]*\)/g, ""));
   const byName = courses.find((c) => bare && normTitle(String(c.name || "").replace(/\([^()]*\)/g, "")) === bare);
   return byName ? byName.id : null;
-}
-
-// classifyEvent plus the course check: an event the sync would otherwise
-// import but has no course page here is a question, never a new page.
-function decideEvent(e, courses) {
-  const cls = classifyEvent(e);
-  if (cls.kind !== "sync") return cls;
-  const course = courseForEvent(e, courses);
-  if (!course) return { kind: "question", reason: "no matching .de course page for this event (the sync never creates course pages)" };
-  return { kind: "sync", course };
 }
 
 const EVENT_FINGERPRINT = ["start", "end", "cost", "registrationUrl", "title", "country", "city"];
@@ -342,6 +392,21 @@ function localCourses() {
     });
 }
 
+function localProfiles() {
+  return readdirSync(PROFILES_DIR)
+    .filter((f) => f.endsWith(".md"))
+    .map((f) => {
+      const { fm } = readFrontmatter(join(PROFILES_DIR, f));
+      return { id: f.replace(/\.md$/, ""), name: fm.name || "" };
+    });
+}
+
+function loadDecisions() {
+  if (!existsSync(DECISIONS_PATH)) return { events: {}, posts: {}, organizers: {} };
+  const d = JSON.parse(readFileSync(DECISIONS_PATH, "utf8"));
+  return { events: d.events || {}, posts: d.posts || {}, organizers: d.organizers || {} };
+}
+
 function normTitle(s) {
   return stripHtml(s).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 }
@@ -360,12 +425,12 @@ function postExistsLocally(post, articles) {
 // and left alone.
 const normUrl = (u) => String(u || "").trim().toLowerCase().replace(/^https?:\/\/(www\.)?/, "").replace(/\/+$/, "").replace(/\/+\?/, "?");
 
-function matchSessionsToEvents(sessions, events, courses) {
+function matchSessionsToEvents(sessions, events, courses, profiles, decisions) {
   const matches = [];
   // Only events the sync could own. A German or Russell's-own event must
   // never be linked to one of Russ's sessions, or the sync would start
   // editing it.
-  events = events.filter((e) => classifyEvent(e).kind !== "skip");
+  events = events.filter((e) => decideEvent(e, courses, profiles, decisions).kind !== "skip");
   for (const s of sessions) {
     if (s.sourceId || !s.date) continue;
     const day = String(s.date).slice(0, 10);
@@ -451,8 +516,12 @@ async function main() {
   const articles = localArticles();
   const sessions = localSessions();
   const courses = localCourses();
+  const profiles = localProfiles();
+  const decisions = loadDecisions();
+  const importedIds = new Set(sessions.map((x) => x.sourceId).filter(Boolean));
+  const decide = (e) => decideEvent(e, courses, profiles, decisions, importedIds);
 
-  const report = { mode: MODE, generatedAt: new Date().toISOString(), source: FROM_DIR ? "dir" : USE_API ? "api" : "snapshot", snapshot: raw.snapshot || null, postTypes: publicTypes, resourcesType, newPosts: [], newFellows: [], skippedWebinars: 0, newEvents: [], changedEvents: [], removedEvents: [], skippedEvents: [], questions: [], possiblyMissingOnDe: [], sessionMatches: [], forgotten: FORGET, counts: {} };
+  const report = { mode: MODE, generatedAt: new Date().toISOString(), source: FROM_DIR ? "dir" : USE_API ? "api" : "snapshot", snapshot: raw.snapshot || null, postTypes: publicTypes, resourcesType, newPosts: [], newFellows: [], skippedWebinars: 0, skippedPostsByDecision: 0, newEvents: [], changedEvents: [], removedEvents: [], skippedEvents: [], questions: [], possiblyMissingOnDe: [], sessionMatches: [], forgotten: FORGET, notRecorded: [], counts: {} };
 
   // A stale snapshot means the .com snippet has stopped pushing; say so as a
   // question rather than quietly diffing old data.
@@ -470,15 +539,20 @@ async function main() {
       continue;
     }
     if (state.posts[p.id]) continue;
+    const d = decisions.posts[p.id] || {};
+    if (d.ignore) {
+      report.skippedPostsByDecision++;
+      continue;
+    }
     if (PROFILE_TYPES.has(p.type)) report.newFellows.push(p);
-    else report.newPosts.push(p);
+    else report.newPosts.push({ ...p, authorDecision: d.author || null });
   }
 
   // ---- events
   const seenNow = new Set();
   for (const e of events) {
     seenNow.add(e.id);
-    const cls = decideEvent(e, courses);
+    const cls = decide(e);
     if (cls.kind === "skip") {
       report.skippedEvents.push({ id: e.id, title: e.title, start: e.start, reason: cls.reason });
       continue;
@@ -491,7 +565,7 @@ async function main() {
       continue;
     }
     const prev = state.events[e.id];
-    if (!prev) report.newEvents.push({ ...e, course: cls.course });
+    if (!prev) report.newEvents.push({ ...e, course: cls.course, trainer: cls.trainer });
     else {
       const ch = eventChanges(prev, e);
       if (ch.length) report.changedEvents.push({ ...e, changes: ch });
@@ -511,25 +585,44 @@ async function main() {
     }
   }
   if (MODE === "baseline" || APPLY_IDS) {
-    report.sessionMatches = matchSessionsToEvents(sessions, events, courses).map((m) => ({
+    report.sessionMatches = matchSessionsToEvents(sessions, events, courses, profiles, decisions).map((m) => ({
       session: m.session.file,
       eventId: m.event ? m.event.id : null,
       eventTitle: m.event ? m.event.title : null,
       basis: m.basis || null,
       ambiguous: m.ambiguous || null,
     }));
-    if (APPLY_IDS) report.counts.sourceIdsWritten = applySourceIds(matchSessionsToEvents(sessions, events, courses));
+    if (APPLY_IDS) report.counts.sourceIdsWritten = applySourceIds(matchSessionsToEvents(sessions, events, courses, profiles, decisions));
   }
 
   // ---- record state
   if (MODE === "baseline" || MODE === "record") {
     const next = { ...state, version: 1, baselinedAt: state.baselinedAt || new Date().toISOString(), recordedAt: new Date().toISOString() };
     next.source.postTypes = publicTypes;
+    // A post or event is recorded as seen only when it was already recorded
+    // (the baseline), when the sync will never import it (webinar, Fellow,
+    // skipped, ignored, question), or when something here carries its
+    // sourceId. A syncable item the session left out (unanswered question,
+    // skipped on purpose) must come back on the next run, not vanish.
+    const articleIds = new Set(localArticles().map((a) => a.sourceId).filter(Boolean));
+    const sessionIds = new Set(localSessions().map((x) => x.sourceId).filter(Boolean));
     next.posts = {};
-    for (const p of posts) next.posts[p.id] = { type: p.type, slug: p.slug, link: p.link, date: p.date, modified: p.modified, title: p.title, webinar: p.webinar };
+    for (const p of posts) {
+      const keep = state.posts[p.id] || p.webinar || PROFILE_TYPES.has(p.type) || (decisions.posts[p.id] || {}).ignore || articleIds.has(p.id);
+      if (!keep) {
+        report.notRecorded.push({ kind: "post", id: p.id, title: p.title });
+        continue;
+      }
+      next.posts[p.id] = { type: p.type, slug: p.slug, link: p.link, date: p.date, modified: p.modified, title: p.title, webinar: p.webinar };
+    }
     next.events = {};
     for (const e of events) {
-      const cls = decideEvent(e, courses);
+      const cls = decide(e);
+      const keep = state.events[e.id] || cls.kind !== "sync" || sessionIds.has(e.id);
+      if (!keep) {
+        report.notRecorded.push({ kind: "event", id: e.id, title: e.title });
+        continue;
+      }
       next.events[e.id] = { title: e.title, url: e.url, start: e.start, end: e.end, cost: e.cost, registrationUrl: e.registrationUrl, modified: e.modified, country: e.country, city: e.city, online: e.online, organizers: e.organizers, skipped: cls.kind === "skip" ? cls.reason : null, question: cls.kind === "question" ? cls.reason : null };
     }
     saveState(next);
@@ -541,8 +634,9 @@ async function main() {
     webinarsOnCom: posts.filter((p) => p.webinar).length,
     eventsOnCom: events.length,
     eventsGermanOrOwn: report.skippedEvents.length,
-    eventsUndecided: events.filter((e) => decideEvent(e, courses).kind === "question").length,
-    eventsSyncable: events.filter((e) => decideEvent(e, courses).kind === "sync").length,
+    eventsUndecided: events.filter((e) => decide(e).kind === "question").length,
+    eventsSyncable: events.filter((e) => decide(e).kind === "sync").length,
+    decisions: Object.keys(decisions.events).length + Object.keys(decisions.posts).length + Object.keys(decisions.organizers).length,
     fellowsOnCom: posts.filter((p) => PROFILE_TYPES.has(p.type)).length,
     postsInState: Object.keys(loadState().posts).length,
     eventsInState: Object.keys(loadState().events).length,
@@ -563,6 +657,7 @@ async function main() {
   console.log(`  .com: ${c.postsOnCom} posts (${c.webinarsOnCom} webinar announcements, ignored; ${c.fellowsOnCom} Fellow profiles, information only), ${c.eventsOnCom} events (${c.eventsGermanOrOwn} German or Russell's own, skipped; ${c.eventsSyncable} syncable; ${c.eventsUndecided} undecided)`);
   console.log(`  post types on .com: ${report.postTypes.join(", ") || "(unknown)"}; separate "resources" type: ${report.resourcesType || "none found"}`);
   console.log(`  state: ${c.postsInState} posts, ${c.eventsInState} events recorded; ${c.localSessionsWithSourceId} local sessions carry a sourceId (${c.localExternalSessions} external sessions in total)`);
+  console.log(`  decisions: ${c.decisions} in sync/decisions.json${report.skippedPostsByDecision ? ` (${report.skippedPostsByDecision} post(s) ignored by decision)` : ""}`);
   if (FORGET.length) console.log(`  forgot ${FORGET.length} id(s) from sync/state.json first: ${FORGET.join(", ")}`);
   if (MODE === "check") {
     if (nothing) {
@@ -575,8 +670,8 @@ async function main() {
       console.log(`\n${title} (${items.length})`);
       for (const i of items) console.log(`  - ${fmt(i)}`);
     };
-    section("New posts (non-webinar; resources count as posts)", report.newPosts, (p) => `#${p.id} ${p.title} [${p.date.slice(0, 10)}${p.author ? `, ${p.author}` : ""}${p.type !== "post" ? `, type ${p.type}` : ""}] ${p.link}`);
-    section("New non-German events", report.newEvents, (e) => `#${e.id} ${e.title} | course: ${e.course} | ${e.start}${e.end && e.end !== e.start ? ` to ${e.end}` : ""} | ${[e.city, e.country].filter(Boolean).join(", ") || (e.online ? "Online" : "?")} | ${e.cost || "no cost given"} | trainer: ${e.organizers.join(", ") || "?"} | ${e.registrationUrl || e.url}`);
+    section("New posts (non-webinar; resources count as posts)", report.newPosts, (p) => `#${p.id} ${p.title} [${p.date.slice(0, 10)}${p.author ? `, ${p.author}` : ""}${p.type !== "post" ? `, type ${p.type}` : ""}]${p.authorDecision ? ` author by decision: ${p.authorDecision} |` : ""} ${p.link}`);
+    section("New non-German events", report.newEvents, (e) => `#${e.id} ${e.title} | course: ${e.course} | ${e.start}${e.end && e.end !== e.start ? ` to ${e.end}` : ""} | ${[e.city, e.country].filter(Boolean).join(", ") || (e.online ? "Online" : "?")} | ${e.cost || "no cost given"} | trainer: ${trainerLabel(e.trainer)} | organizer: ${e.organizers.join(", ") || "-"} | ${e.registrationUrl || e.url}`);
     section("Changed non-German events", report.changedEvents, (e) => `#${e.id} ${e.title}: ${e.changes.map((ch) => `${ch.field} ${ch.from} -> ${ch.to}`).join("; ")}`);
     section("Removed or cancelled non-German events", report.removedEvents, (e) => `#${e.id ?? "?"} ${e.title} | ${e.start}`);
     section("Questions for Russ", report.questions, (q) => `#${q.id} ${q.title} (${q.start}): ${q.reason} ${q.url || ""}`);
@@ -592,6 +687,10 @@ async function main() {
     }
   } else {
     console.log(`\nState ${MODE === "baseline" ? "baselined" : "recorded"} in sync/state.json.`);
+    if (report.notRecorded.length) {
+      console.log(`\nNot recorded as seen, because nothing here carries their sourceId yet; they come back on the next run (${report.notRecorded.length}):`);
+      for (const n of report.notRecorded) console.log(`  - ${n.kind} #${n.id} ${n.title}`);
+    }
     if (report.possiblyMissingOnDe.length) {
       console.log(`\nRecent .com posts (last 6 months, non-webinar) with no obvious counterpart on .de, for information only (${report.possiblyMissingOnDe.length}):`);
       for (const p of report.possiblyMissingOnDe) console.log(`  - #${p.id} ${p.title} [${p.date}] ${p.link}`);
