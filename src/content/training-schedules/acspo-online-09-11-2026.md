@@ -9,4 +9,6 @@ price: €1,300–€1,600
 status: available
 isExternal: true
 externalUrl: https://www.betterchange-consulting.it/event-details/advanced-certified-scrum-product-owner-acspo-202606/
+sourceId: '18321'
+sourceUrl: https://www.betterchange-consulting.com/event/advanced-certified-scrum-product-owner-acspo-it-202606/
 ---

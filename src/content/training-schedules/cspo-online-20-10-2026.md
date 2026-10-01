@@ -10,4 +10,6 @@ price: from €1,095
 status: available
 isExternal: true
 externalUrl: https://www.betterchange-consulting.dk/cart/254600-Certified-Scrum-Product-Owner-CSPO261020?currency=EUR
+sourceId: '19504'
+sourceUrl: https://www.betterchange-consulting.com/event/certified-scrum-product-owner-cspo-13/
 ---

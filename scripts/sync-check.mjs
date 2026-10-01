@@ -227,8 +227,12 @@ function normaliseEvent(ev) {
     id: String(ev.id),
     title,
     url: ev.url || null,
-    start: (ev.utc_start_date || ev.start_date || "").slice(0, 10),
-    end: (ev.utc_end_date || ev.end_date || "").slice(0, 10),
+    // The site-local date, not the UTC one: .com stores events at midnight
+    // Europe/Berlin, so utc_start_date is 22:00 the evening before and would
+    // shift every event back a day (and every synced session file's name
+    // with it).
+    start: (ev.start_date || ev.utc_start_date || "").slice(0, 10),
+    end: (ev.end_date || ev.utc_end_date || "").slice(0, 10),
     cost: ev.cost || (ev.cost_details && ev.cost_details.values && ev.cost_details.values.join("-")) || null,
     registrationUrl: ev.website || null,
     modified: ev.modified_utc || ev.modified || null,

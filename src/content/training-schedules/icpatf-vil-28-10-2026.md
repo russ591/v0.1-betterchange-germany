@@ -9,4 +9,6 @@ price: €1,359
 status: available
 isExternal: true
 externalUrl: https://en.agilecoach.lt/workshops-trainings-certificates/agile-team-facilitation-icp-atf
+sourceId: '19338'
+sourceUrl: https://www.betterchange-consulting.com/event/ic-agile-team-facilitation-icp-atf-10/
 ---
