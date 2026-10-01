@@ -1,11 +1,1928 @@
 {
   "version": 1,
-  "baselinedAt": null,
+  "baselinedAt": "2026-10-01T21:02:36.082Z",
   "source": {
     "posts": "https://www.betterchange-consulting.com/wp-json/wp/v2/posts",
     "events": "https://www.betterchange-consulting.com/wp-json/tribe/events/v1/events",
-    "postTypes": []
+    "postTypes": [
+      "post (rest: posts)",
+      "page (rest: pages)",
+      "elementor_library",
+      "elementor_snippet",
+      "resources",
+      "tribe_venue",
+      "tribe_organizer",
+      "tribe_events",
+      "fellow",
+      "tec_calendar_embed"
+    ]
   },
-  "posts": {},
-  "events": {}
+  "posts": {
+    "11621": {
+      "type": "post",
+      "slug": "important-skills-for-product-owners",
+      "link": "https://www.betterchange-consulting.com/product-owner/important-skills-for-product-owners/",
+      "date": "2022-12-02T13:49:48",
+      "modified": "2024-03-20T15:14:33",
+      "title": "Important skills for Product Owners",
+      "webinar": false
+    },
+    "11648": {
+      "type": "post",
+      "slug": "protecting-the-hedgehogs",
+      "link": "https://www.betterchange-consulting.com/uncategorized/protecting-the-hedgehogs/",
+      "date": "2023-08-12T14:28:04",
+      "modified": "2024-03-20T15:14:32",
+      "title": "Protecting the Hedgehogs",
+      "webinar": false
+    },
+    "11689": {
+      "type": "post",
+      "slug": "the-power-of-systemic-coaching-in-change-management",
+      "link": "https://www.betterchange-consulting.com/coaching/the-power-of-systemic-coaching-in-change-management/",
+      "date": "2023-07-31T10:22:14",
+      "modified": "2024-03-20T15:14:32",
+      "title": "The Power of Systemic Coaching in Change Management",
+      "webinar": false
+    },
+    "11694": {
+      "type": "post",
+      "slug": "mastering-agile-coaching",
+      "link": "https://www.betterchange-consulting.com/coaching/mastering-agile-coaching/",
+      "date": "2022-07-07T10:55:00",
+      "modified": "2024-03-20T15:14:33",
+      "title": "Mastering Agile Coaching",
+      "webinar": false
+    },
+    "11699": {
+      "type": "post",
+      "slug": "perspectives-on-leadership-and-power",
+      "link": "https://www.betterchange-consulting.com/leadership/perspectives-on-leadership-and-power/",
+      "date": "2022-03-08T02:05:00",
+      "modified": "2025-02-23T11:09:17",
+      "title": "Perspectives on leadership and power",
+      "webinar": false
+    },
+    "11771": {
+      "type": "post",
+      "slug": "the-powerful-synergy-of-training-and-coaching",
+      "link": "https://www.betterchange-consulting.com/coaching/the-powerful-synergy-of-training-and-coaching/",
+      "date": "2023-09-19T11:22:32",
+      "modified": "2024-03-20T15:14:32",
+      "title": "The Powerful Synergy of Training and Coaching",
+      "webinar": false
+    },
+    "11794": {
+      "type": "resources",
+      "slug": "what-is-agile",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-agile/",
+      "date": "2022-08-09T14:34:44",
+      "modified": "2023-09-29T14:28:31",
+      "title": "What is Agile?",
+      "webinar": false
+    },
+    "11826": {
+      "type": "resources",
+      "slug": "agile-methodology-and-frameworks",
+      "link": "https://www.betterchange-consulting.com/resources/agile-methodology-and-frameworks/",
+      "date": "2022-09-02T18:38:22",
+      "modified": "2023-09-29T14:26:41",
+      "title": "Agile Methodology and Frameworks",
+      "webinar": false
+    },
+    "11827": {
+      "type": "resources",
+      "slug": "agile-values-and-principles",
+      "link": "https://www.betterchange-consulting.com/resources/agile-values-and-principles/",
+      "date": "2022-09-02T18:45:54",
+      "modified": "2023-09-29T14:26:37",
+      "title": "What is the Agile Manifesto?",
+      "webinar": false
+    },
+    "11828": {
+      "type": "resources",
+      "slug": "agile-vs-scrum",
+      "link": "https://www.betterchange-consulting.com/resources/agile-vs-scrum/",
+      "date": "2023-05-31T18:54:22",
+      "modified": "2023-09-29T14:23:33",
+      "title": "Agile vs. Scrum",
+      "webinar": false
+    },
+    "11829": {
+      "type": "resources",
+      "slug": "definition-of-done",
+      "link": "https://www.betterchange-consulting.com/resources/definition-of-done/",
+      "date": "2022-10-20T18:59:40",
+      "modified": "2024-04-12T10:47:41",
+      "title": "What is the Definition of Done?",
+      "webinar": false
+    },
+    "11830": {
+      "type": "resources",
+      "slug": "dual-track",
+      "link": "https://www.betterchange-consulting.com/resources/dual-track/",
+      "date": "2022-10-08T19:04:54",
+      "modified": "2023-09-29T14:25:59",
+      "title": "What is Dual Track in Agile?",
+      "webinar": false
+    },
+    "11831": {
+      "type": "resources",
+      "slug": "kanban-what-does-it-mean",
+      "link": "https://www.betterchange-consulting.com/resources/kanban-what-does-it-mean/",
+      "date": "2022-12-20T19:30:00",
+      "modified": "2024-11-08T09:27:22",
+      "title": "Kanban - what exactly does it mean?",
+      "webinar": false
+    },
+    "11832": {
+      "type": "post",
+      "slug": "five-common-challenges-to-overcome-when-creating-a-coaching-culture-across-your-organisation",
+      "link": "https://www.betterchange-consulting.com/leadership/five-common-challenges-to-overcome-when-creating-a-coaching-culture-across-your-organisation/",
+      "date": "2023-03-21T19:10:34",
+      "modified": "2024-03-20T15:14:32",
+      "title": "Five common challenges when creating a coaching culture",
+      "webinar": false
+    },
+    "11834": {
+      "type": "post",
+      "slug": "mastering-the-art-of-goal-setting-with-okr",
+      "link": "https://www.betterchange-consulting.com/coaching/mastering-the-art-of-goal-setting-with-okr/",
+      "date": "2023-07-19T19:15:59",
+      "modified": "2024-03-20T15:14:32",
+      "title": "Mastering the Art of Goal Setting with OKR",
+      "webinar": false
+    },
+    "11841": {
+      "type": "resources",
+      "slug": "lean-vs-agile",
+      "link": "https://www.betterchange-consulting.com/resources/lean-vs-agile/",
+      "date": "2023-03-03T08:55:18",
+      "modified": "2023-12-22T10:06:01",
+      "title": "What are Lean and Agile?",
+      "webinar": false
+    },
+    "11844": {
+      "type": "resources",
+      "slug": "planning-poker",
+      "link": "https://www.betterchange-consulting.com/resources/planning-poker/",
+      "date": "2026-07-06T06:57:00",
+      "modified": "2026-07-07T13:19:35",
+      "title": "Relative Estimation with Planning Poker",
+      "webinar": false
+    },
+    "11848": {
+      "type": "resources",
+      "slug": "product-backlog-refinement",
+      "link": "https://www.betterchange-consulting.com/resources/product-backlog-refinement/",
+      "date": "2022-09-02T09:02:00",
+      "modified": "2023-09-29T14:28:26",
+      "title": "What is Product Backlog Refinement?",
+      "webinar": false
+    },
+    "11853": {
+      "type": "resources",
+      "slug": "product-backlog",
+      "link": "https://www.betterchange-consulting.com/resources/product-backlog/",
+      "date": "2022-08-09T09:13:00",
+      "modified": "2023-09-29T14:29:22",
+      "title": "What is the Product Backlog?",
+      "webinar": false
+    },
+    "11855": {
+      "type": "resources",
+      "slug": "product-owner-vs-scrum-master",
+      "link": "https://www.betterchange-consulting.com/resources/product-owner-vs-scrum-master/",
+      "date": "2022-10-08T09:19:00",
+      "modified": "2023-09-29T14:26:33",
+      "title": "Product Owner vs Scrum Master",
+      "webinar": false
+    },
+    "11856": {
+      "type": "resources",
+      "slug": "scrum-events",
+      "link": "https://www.betterchange-consulting.com/resources/scrum-events/",
+      "date": "2022-08-09T09:22:00",
+      "modified": "2023-09-29T14:29:17",
+      "title": "Scrum Events",
+      "webinar": false
+    },
+    "11857": {
+      "type": "resources",
+      "slug": "scrum-meetings",
+      "link": "https://www.betterchange-consulting.com/resources/scrum-meetings/",
+      "date": "2022-09-02T09:24:00",
+      "modified": "2023-09-29T14:28:22",
+      "title": "Scrum Meetings",
+      "webinar": false
+    },
+    "11862": {
+      "type": "resources",
+      "slug": "scrum-accountabilities",
+      "link": "https://www.betterchange-consulting.com/resources/scrum-accountabilities/",
+      "date": "2022-08-09T09:57:00",
+      "modified": "2023-09-29T14:29:13",
+      "title": "Scrum Accountabilities",
+      "webinar": false
+    },
+    "11863": {
+      "type": "resources",
+      "slug": "scrum-roles",
+      "link": "https://www.betterchange-consulting.com/resources/scrum-roles/",
+      "date": "2023-09-21T10:31:00",
+      "modified": "2025-03-31T13:14:44",
+      "title": "Scrum Roles",
+      "webinar": false
+    },
+    "11864": {
+      "type": "resources",
+      "slug": "scrum-v-kanban",
+      "link": "https://www.betterchange-consulting.com/resources/scrum-v-kanban/",
+      "date": "2023-01-12T10:32:00",
+      "modified": "2024-11-08T09:46:57",
+      "title": "Scrum or Kanban?",
+      "webinar": false
+    },
+    "11866": {
+      "type": "resources",
+      "slug": "three-pillars-of-scrum",
+      "link": "https://www.betterchange-consulting.com/resources/three-pillars-of-scrum/",
+      "date": "2022-10-08T10:54:00",
+      "modified": "2023-09-29T14:26:29",
+      "title": "What are the Three Pillars of Scrum?",
+      "webinar": false
+    },
+    "11879": {
+      "type": "post",
+      "slug": "navigating-change-management-in-a-complex-organisational-landscape",
+      "link": "https://www.betterchange-consulting.com/leadership/navigating-change-management-in-a-complex-organisational-landscape/",
+      "date": "2021-08-30T15:42:00",
+      "modified": "2024-03-20T15:14:33",
+      "title": "Navigating Change Management in a Complex Organisational Landscape",
+      "webinar": false
+    },
+    "11978": {
+      "type": "post",
+      "slug": "agile-governance-whats-the-difference",
+      "link": "https://www.betterchange-consulting.com/change-management/agile-governance-whats-the-difference/",
+      "date": "2023-09-25T13:02:22",
+      "modified": "2024-03-20T15:14:32",
+      "title": "Agile Governance - whats the difference?",
+      "webinar": false
+    },
+    "12064": {
+      "type": "resources",
+      "slug": "what-are-story-points",
+      "link": "https://www.betterchange-consulting.com/resources/what-are-story-points/",
+      "date": "2023-04-03T11:47:37",
+      "modified": "2023-09-29T14:24:21",
+      "title": "What are story points?",
+      "webinar": false
+    },
+    "12065": {
+      "type": "resources",
+      "slug": "what-are-user-stories",
+      "link": "https://www.betterchange-consulting.com/resources/what-are-user-stories/",
+      "date": "2022-10-08T11:49:00",
+      "modified": "2023-09-29T14:26:26",
+      "title": "What are user stories?",
+      "webinar": false
+    },
+    "12066": {
+      "type": "resources",
+      "slug": "what-is-a-burndown-chart",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-a-burndown-chart/",
+      "date": "2022-09-02T11:54:00",
+      "modified": "2023-09-29T14:27:53",
+      "title": "Sprint Burndown Chart & Release Burndown Chart",
+      "webinar": false
+    },
+    "12067": {
+      "type": "resources",
+      "slug": "what-is-a-kanban-board",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-a-kanban-board/",
+      "date": "2023-05-31T12:01:00",
+      "modified": "2023-10-31T15:33:34",
+      "title": "What is a Kanban Board?",
+      "webinar": false
+    },
+    "12068": {
+      "type": "resources",
+      "slug": "what-is-a-product-increment",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-a-product-increment/",
+      "date": "2022-09-02T12:03:00",
+      "modified": "2024-04-12T10:26:57",
+      "title": "What is a Product Increment?",
+      "webinar": false
+    },
+    "12069": {
+      "type": "resources",
+      "slug": "what-is-a-product-owner",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-a-product-owner/",
+      "date": "2023-05-31T12:10:00",
+      "modified": "2024-07-02T11:07:02",
+      "title": "What is a Product Owner?",
+      "webinar": false
+    },
+    "12070": {
+      "type": "resources",
+      "slug": "what-is-a-scrum-board",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-a-scrum-board/",
+      "date": "2022-08-09T12:15:00",
+      "modified": "2023-09-29T14:29:02",
+      "title": "What is a Scrum Board?",
+      "webinar": false
+    },
+    "12071": {
+      "type": "resources",
+      "slug": "what-is-a-scrum-master",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-a-scrum-master/",
+      "date": "2022-05-31T12:18:00",
+      "modified": "2024-07-02T11:01:52",
+      "title": "What is a Scrum Master?",
+      "webinar": false
+    },
+    "12072": {
+      "type": "resources",
+      "slug": "what-is-a-scrum-sprint",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-a-scrum-sprint/",
+      "date": "2022-09-02T12:19:00",
+      "modified": "2023-09-29T14:27:40",
+      "title": "What is a Scrum Sprint?",
+      "webinar": false
+    },
+    "12073": {
+      "type": "resources",
+      "slug": "what-is-a-sprint-review-in-scrum",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-a-sprint-review-in-scrum/",
+      "date": "2022-05-31T12:21:00",
+      "modified": "2023-10-27T15:01:15",
+      "title": "What is a Sprint Review in Scrum?",
+      "webinar": false
+    },
+    "12077": {
+      "type": "resources",
+      "slug": "what-is-an-epic-in-agile",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-an-epic-in-agile/",
+      "date": "2022-09-02T12:27:00",
+      "modified": "2024-02-23T15:14:48",
+      "title": "What is an Epic in Agile?",
+      "webinar": false
+    },
+    "12078": {
+      "type": "resources",
+      "slug": "what-is-daily-scrum",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-daily-scrum/",
+      "date": "2022-09-02T12:32:06",
+      "modified": "2023-09-29T14:26:49",
+      "title": "What is Daily Scrum?",
+      "webinar": false
+    },
+    "12080": {
+      "type": "resources",
+      "slug": "what-is-scrum-artifacts",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-scrum-artifacts/",
+      "date": "2022-08-09T12:46:00",
+      "modified": "2024-02-23T15:15:02",
+      "title": "What are Scrum Artifacts?",
+      "webinar": false
+    },
+    "12082": {
+      "type": "resources",
+      "slug": "what-is-scrum-capacity",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-scrum-capacity/",
+      "date": "2022-10-08T12:53:00",
+      "modified": "2023-09-29T14:26:16",
+      "title": "What is Scrum Capacity?",
+      "webinar": false
+    },
+    "12083": {
+      "type": "resources",
+      "slug": "what-is-scrum-velocity",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-scrum-velocity/",
+      "date": "2023-04-03T12:58:00",
+      "modified": "2023-09-29T14:24:14",
+      "title": "What is Scrum Velocity?",
+      "webinar": false
+    },
+    "12084": {
+      "type": "resources",
+      "slug": "what-is-scrum",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-scrum/",
+      "date": "2022-06-10T13:09:53",
+      "modified": "2023-09-29T14:29:26",
+      "title": "What is Scrum?",
+      "webinar": false
+    },
+    "12087": {
+      "type": "resources",
+      "slug": "what-is-sprint-planning",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-sprint-planning/",
+      "date": "2022-08-09T13:11:00",
+      "modified": "2023-09-29T14:28:44",
+      "title": "What is Sprint Planning?",
+      "webinar": false
+    },
+    "12089": {
+      "type": "resources",
+      "slug": "what-is-sprint-retrospective",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-sprint-retrospective/",
+      "date": "2022-09-02T13:15:00",
+      "modified": "2023-09-29T14:26:45",
+      "title": "What is the Sprint Retrospective?",
+      "webinar": false
+    },
+    "12152": {
+      "type": "post",
+      "slug": "embrace-the-complexity-of-team-dynamics-with-the-plausibility-canvas",
+      "link": "https://www.betterchange-consulting.com/coaching/embrace-the-complexity-of-team-dynamics-with-the-plausibility-canvas/",
+      "date": "2023-10-10T18:59:34",
+      "modified": "2024-03-20T15:14:32",
+      "title": "Embrace the complexity of team dynamics with the Plausibility Canvas",
+      "webinar": false
+    },
+    "12190": {
+      "type": "resources",
+      "slug": "what-are-acceptance-criteria",
+      "link": "https://www.betterchange-consulting.com/resources/what-are-acceptance-criteria/",
+      "date": "2023-10-13T08:14:32",
+      "modified": "2023-10-13T10:11:57",
+      "title": "What are Acceptance Criteria",
+      "webinar": false
+    },
+    "12191": {
+      "type": "resources",
+      "slug": "what-is-estimations-in-scrum",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-estimations-in-scrum/",
+      "date": "2023-10-13T08:19:35",
+      "modified": "2023-10-13T10:40:05",
+      "title": "What are Estimations in Scrum",
+      "webinar": false
+    },
+    "12192": {
+      "type": "resources",
+      "slug": "what-is-safe",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-safe/",
+      "date": "2023-10-13T08:24:47",
+      "modified": "2023-10-13T09:16:47",
+      "title": "What is SAFe",
+      "webinar": false
+    },
+    "12194": {
+      "type": "resources",
+      "slug": "the-perfect-scrum-team-size",
+      "link": "https://www.betterchange-consulting.com/resources/the-perfect-scrum-team-size/",
+      "date": "2023-10-13T08:33:21",
+      "modified": "2023-10-13T10:12:44",
+      "title": "The Perfect Scrum Team Size",
+      "webinar": false
+    },
+    "12195": {
+      "type": "resources",
+      "slug": "what-is-an-agile-release-train",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-an-agile-release-train/",
+      "date": "2023-10-13T08:38:07",
+      "modified": "2023-10-13T10:14:13",
+      "title": "What is an Agile Release Train",
+      "webinar": false
+    },
+    "12196": {
+      "type": "resources",
+      "slug": "the-scrum-guide",
+      "link": "https://www.betterchange-consulting.com/resources/the-scrum-guide/",
+      "date": "2023-10-13T13:15:41",
+      "modified": "2024-02-23T15:14:26",
+      "title": "The Scrum Guide",
+      "webinar": false
+    },
+    "12208": {
+      "type": "resources",
+      "slug": "product-owner-vs-scrum-master-2",
+      "link": "https://www.betterchange-consulting.com/resources/product-owner-vs-scrum-master-2/",
+      "date": "2022-10-08T10:30:00",
+      "modified": "2023-10-20T15:45:34",
+      "title": "Product Owner vs Scrum Master",
+      "webinar": false
+    },
+    "12211": {
+      "type": "resources",
+      "slug": "the-scrum-values-a-key-to-agile-excellence",
+      "link": "https://www.betterchange-consulting.com/resources/the-scrum-values-a-key-to-agile-excellence/",
+      "date": "2023-10-13T13:11:28",
+      "modified": "2023-10-13T13:11:30",
+      "title": "The Scrum Values: A Key to Agile Excellence",
+      "webinar": false
+    },
+    "12222": {
+      "type": "resources",
+      "slug": "5-books-every-scrum-professional-should-read",
+      "link": "https://www.betterchange-consulting.com/resources/5-books-every-scrum-professional-should-read/",
+      "date": "2023-10-14T10:34:25",
+      "modified": "2023-10-14T10:35:21",
+      "title": "5 books every scrum professional should read",
+      "webinar": false
+    },
+    "12223": {
+      "type": "resources",
+      "slug": "how-agile-transformation-leads-to-increased-flexibility-in-finance",
+      "link": "https://www.betterchange-consulting.com/resources/how-agile-transformation-leads-to-increased-flexibility-in-finance/",
+      "date": "2023-10-14T10:41:43",
+      "modified": "2023-10-14T10:43:38",
+      "title": "How Agile Transformation Leads to Increased Flexibility in Finance",
+      "webinar": false
+    },
+    "12225": {
+      "type": "resources",
+      "slug": "the-tuckman-model-an-framework-for-high-performing-teams",
+      "link": "https://www.betterchange-consulting.com/resources/the-tuckman-model-an-framework-for-high-performing-teams/",
+      "date": "2023-10-14T10:47:02",
+      "modified": "2024-02-02T13:41:11",
+      "title": "The Tuckman Model: A Framework for High-Performing Teams",
+      "webinar": false
+    },
+    "12226": {
+      "type": "resources",
+      "slug": "best-scrum-tools-to-use-in-2024",
+      "link": "https://www.betterchange-consulting.com/resources/best-scrum-tools-to-use-in-2024/",
+      "date": "2023-10-14T10:55:36",
+      "modified": "2023-10-14T10:55:38",
+      "title": "Best Scrum Tools to use in 2024",
+      "webinar": false
+    },
+    "12227": {
+      "type": "post",
+      "slug": "from-trust-to-triumph-through-the-market-of-skills",
+      "link": "https://www.betterchange-consulting.com/coaching/from-trust-to-triumph-through-the-market-of-skills/",
+      "date": "2023-10-14T15:19:41",
+      "modified": "2025-10-25T15:28:42",
+      "title": "Fostering Team Synergy, Overcoming Dysfunctions, and Building Strong Teams",
+      "webinar": false
+    },
+    "12260": {
+      "type": "resources",
+      "slug": "the-synergy-of-lean-thinking-in-the-agile-landscape",
+      "link": "https://www.betterchange-consulting.com/resources/the-synergy-of-lean-thinking-in-the-agile-landscape/",
+      "date": "2023-10-18T12:40:03",
+      "modified": "2025-03-31T12:47:15",
+      "title": "The Synergy of Lean Thinking in the Agile Landscape",
+      "webinar": false
+    },
+    "12268": {
+      "type": "post",
+      "slug": "developing-your-unique-leadership-style",
+      "link": "https://www.betterchange-consulting.com/leadership/developing-your-unique-leadership-style/",
+      "date": "2023-11-21T15:56:41",
+      "modified": "2025-10-25T15:28:52",
+      "title": "Developing Your Unique Leadership Style",
+      "webinar": false
+    },
+    "12442": {
+      "type": "post",
+      "slug": "management-is-not-leadership",
+      "link": "https://www.betterchange-consulting.com/leadership/management-is-not-leadership/",
+      "date": "2023-10-28T08:50:11",
+      "modified": "2025-10-25T15:28:53",
+      "title": "Management Is Not Leadership",
+      "webinar": false
+    },
+    "12470": {
+      "type": "post",
+      "slug": "maximising-personal-impact-with-agile",
+      "link": "https://www.betterchange-consulting.com/career-boost/maximising-personal-impact-with-agile/",
+      "date": "2023-10-31T14:19:28",
+      "modified": "2024-03-20T15:14:31",
+      "title": "Maximising Personal Impact with Agile",
+      "webinar": false
+    },
+    "12476": {
+      "type": "post",
+      "slug": "me-dership-is-not-leadership-either-a-critical-lens-on-idealised-leadership",
+      "link": "https://www.betterchange-consulting.com/leadership/me-dership-is-not-leadership-either-a-critical-lens-on-idealised-leadership/",
+      "date": "2023-11-01T10:27:29",
+      "modified": "2025-10-25T15:28:53",
+      "title": "Me-dership is not Leadership Either - A Critical Lens on Idealised Leadership",
+      "webinar": false
+    },
+    "12509": {
+      "type": "resources",
+      "slug": "creating-a-teal-organisation-how-to-achieve-a-self-managed-workplace",
+      "link": "https://www.betterchange-consulting.com/resources/creating-a-teal-organisation-how-to-achieve-a-self-managed-workplace/",
+      "date": "2023-11-01T13:17:28",
+      "modified": "2025-03-31T08:08:53",
+      "title": "Creating a Teal Organisation: How to Achieve a Self-Managed Workplace",
+      "webinar": false
+    },
+    "12596": {
+      "type": "resources",
+      "slug": "what-are-cross-functional-teams",
+      "link": "https://www.betterchange-consulting.com/resources/what-are-cross-functional-teams/",
+      "date": "2023-11-29T08:44:49",
+      "modified": "2025-03-31T12:07:33",
+      "title": "What are Cross Functional Teams?",
+      "webinar": false
+    },
+    "12598": {
+      "type": "resources",
+      "slug": "agile-coach-vs-scrum-master",
+      "link": "https://www.betterchange-consulting.com/resources/agile-coach-vs-scrum-master/",
+      "date": "2023-11-29T09:12:50",
+      "modified": "2025-03-31T11:59:25",
+      "title": "Agile Coach vs Scrum Master",
+      "webinar": false
+    },
+    "12600": {
+      "type": "resources",
+      "slug": "what-is-an-agile-organisation",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-an-agile-organisation/",
+      "date": "2023-11-28T12:59:39",
+      "modified": "2025-03-31T09:36:04",
+      "title": "What is an Agile Organisation?",
+      "webinar": false
+    },
+    "12602": {
+      "type": "resources",
+      "slug": "what-is-an-iteration-in-agile",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-an-iteration-in-agile/",
+      "date": "2023-11-29T08:51:37",
+      "modified": "2025-03-31T12:04:17",
+      "title": "What is an Iteration in Agile?",
+      "webinar": false
+    },
+    "12604": {
+      "type": "resources",
+      "slug": "what-is-a-spike-in-scrum",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-a-spike-in-scrum/",
+      "date": "2023-11-29T08:56:45",
+      "modified": "2025-03-31T12:00:11",
+      "title": "What is a Spike in Scrum?",
+      "webinar": false
+    },
+    "12606": {
+      "type": "resources",
+      "slug": "what-is-timeboxing-in-scrum",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-timeboxing-in-scrum/",
+      "date": "2023-11-29T08:12:15",
+      "modified": "2025-03-31T12:18:23",
+      "title": "What is Timeboxing in Scrum?",
+      "webinar": false
+    },
+    "12608": {
+      "type": "resources",
+      "slug": "feedback-loops-in-scrum",
+      "link": "https://www.betterchange-consulting.com/resources/feedback-loops-in-scrum/",
+      "date": "2023-11-29T07:55:23",
+      "modified": "2025-03-31T12:44:30",
+      "title": "Feedback Loops In Scrum",
+      "webinar": false
+    },
+    "12612": {
+      "type": "resources",
+      "slug": "how-to-discover-and-solve-impediments-in-scrum",
+      "link": "https://www.betterchange-consulting.com/resources/how-to-discover-and-solve-impediments-in-scrum/",
+      "date": "2023-11-28T13:06:15",
+      "modified": "2025-03-31T09:38:51",
+      "title": "How To Discover and Solve Impediments in Scrum?",
+      "webinar": false
+    },
+    "12813": {
+      "type": "resources",
+      "slug": "what-is-leadership-development",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-leadership-development/",
+      "date": "2023-12-13T12:35:12",
+      "modified": "2025-03-31T11:50:51",
+      "title": "What Is Leadership Development?",
+      "webinar": false
+    },
+    "12815": {
+      "type": "resources",
+      "slug": "what-is-agile-transformation-2",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-agile-transformation-2/",
+      "date": "2023-12-13T12:38:27",
+      "modified": "2025-03-31T11:50:16",
+      "title": "What Is Agile Transformation?",
+      "webinar": false
+    },
+    "12817": {
+      "type": "resources",
+      "slug": "what-is-agile-project-management",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-agile-project-management/",
+      "date": "2023-12-13T12:41:09",
+      "modified": "2025-03-31T11:48:47",
+      "title": "What Is Agile Project Management?",
+      "webinar": false
+    },
+    "12819": {
+      "type": "resources",
+      "slug": "what-is-agile-leadership",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-agile-leadership/",
+      "date": "2023-12-13T12:44:32",
+      "modified": "2025-03-31T11:47:39",
+      "title": "What Is Agile Leadership?",
+      "webinar": false
+    },
+    "12823": {
+      "type": "resources",
+      "slug": "what-is-self-organizing-teams",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-self-organizing-teams/",
+      "date": "2023-12-13T12:46:12",
+      "modified": "2025-03-31T06:30:32",
+      "title": "What is Self Organizing Teams?",
+      "webinar": false
+    },
+    "12825": {
+      "type": "resources",
+      "slug": "what-is-a-sprint-goal",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-a-sprint-goal/",
+      "date": "2023-12-11T07:52:09",
+      "modified": "2025-03-31T11:51:55",
+      "title": "What Is a Sprint Goal?",
+      "webinar": false
+    },
+    "12827": {
+      "type": "resources",
+      "slug": "what-is-a-kanban-card",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-a-kanban-card/",
+      "date": "2023-12-11T07:48:03",
+      "modified": "2025-03-31T11:52:51",
+      "title": "What Is a Kanban Card?",
+      "webinar": false
+    },
+    "12841": {
+      "type": "post",
+      "slug": "miscommunication-in-software-specifications",
+      "link": "https://www.betterchange-consulting.com/product-owner/miscommunication-in-software-specifications/",
+      "date": "2023-12-19T10:46:06",
+      "modified": "2024-03-20T15:14:31",
+      "title": "Miscommunication in software specifications.",
+      "webinar": false
+    },
+    "12855": {
+      "type": "resources",
+      "slug": "the-scrum-process-explained",
+      "link": "https://www.betterchange-consulting.com/resources/the-scrum-process-explained/",
+      "date": "2023-12-21T13:06:21",
+      "modified": "2025-03-31T06:44:10",
+      "title": "The Scrum Process Explained",
+      "webinar": false
+    },
+    "12856": {
+      "type": "resources",
+      "slug": "what-is-transformational-leadership",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-transformational-leadership/",
+      "date": "2023-12-21T13:07:45",
+      "modified": "2025-03-31T06:31:36",
+      "title": "What is Transformational Leadership?",
+      "webinar": false
+    },
+    "12858": {
+      "type": "resources",
+      "slug": "what-is-a-product-goal",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-a-product-goal/",
+      "date": "2023-12-21T12:45:43",
+      "modified": "2025-03-31T06:24:49",
+      "title": "What is a Product Goal?",
+      "webinar": false
+    },
+    "12860": {
+      "type": "resources",
+      "slug": "five-ways-to-build-consensus",
+      "link": "https://www.betterchange-consulting.com/resources/five-ways-to-build-consensus/",
+      "date": "2023-12-21T13:09:23",
+      "modified": "2025-03-31T06:29:16",
+      "title": "Five Ways to Build Consensus",
+      "webinar": false
+    },
+    "12862": {
+      "type": "resources",
+      "slug": "what-is-evidence-based-management",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-evidence-based-management/",
+      "date": "2023-12-19T14:33:58",
+      "modified": "2025-03-31T06:22:56",
+      "title": "What is Evidence-Based Management?",
+      "webinar": false
+    },
+    "12864": {
+      "type": "resources",
+      "slug": "what-is-change-management",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-change-management/",
+      "date": "2023-12-21T13:02:13",
+      "modified": "2025-03-31T06:25:52",
+      "title": "What is Change Management?",
+      "webinar": false
+    },
+    "12866": {
+      "type": "resources",
+      "slug": "can-the-product-owner-also-be-the-scrum-master",
+      "link": "https://www.betterchange-consulting.com/resources/can-the-product-owner-also-be-the-scrum-master/",
+      "date": "2023-12-21T12:30:32",
+      "modified": "2025-03-31T06:23:53",
+      "title": "Can the Product Owner also be the Scrum Master?",
+      "webinar": false
+    },
+    "12868": {
+      "type": "resources",
+      "slug": "what-is-a-product-vision",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-a-product-vision/",
+      "date": "2023-12-21T13:03:36",
+      "modified": "2025-03-31T06:27:59",
+      "title": "What is a Product Vision?",
+      "webinar": false
+    },
+    "12896": {
+      "type": "post",
+      "slug": "your-strategy-for-asking-powerful-questions",
+      "link": "https://www.betterchange-consulting.com/coaching/your-strategy-for-asking-powerful-questions/",
+      "date": "2023-11-30T08:00:00",
+      "modified": "2025-10-25T15:28:53",
+      "title": "Your Strategy for Asking Powerful Questions",
+      "webinar": false
+    },
+    "12905": {
+      "type": "post",
+      "slug": "have-a-structure-for-your-coaching-conversation",
+      "link": "https://www.betterchange-consulting.com/coaching/have-a-structure-for-your-coaching-conversation/",
+      "date": "2023-10-31T08:00:00",
+      "modified": "2025-10-25T15:28:53",
+      "title": "Have a Structure for Your Coaching Conversation",
+      "webinar": false
+    },
+    "12911": {
+      "type": "post",
+      "slug": "the-art-of-listening-and-unlocking-hidden-potentials",
+      "link": "https://www.betterchange-consulting.com/coaching/the-art-of-listening-and-unlocking-hidden-potentials/",
+      "date": "2023-09-30T07:00:00",
+      "modified": "2025-10-25T15:28:53",
+      "title": "The Art of Listening and Unlocking Hidden Potentials",
+      "webinar": false
+    },
+    "12917": {
+      "type": "post",
+      "slug": "navigating-the-terrain-agile-coaching-vs-systemic-coaching",
+      "link": "https://www.betterchange-consulting.com/coaching/navigating-the-terrain-agile-coaching-vs-systemic-coaching/",
+      "date": "2023-08-31T07:00:00",
+      "modified": "2025-10-25T15:28:53",
+      "title": "Navigating the Terrain - Agile Coaching vs. Systemic Coaching",
+      "webinar": false
+    },
+    "13004": {
+      "type": "post",
+      "slug": "organisational-change-not-a-collective-leap-but-a-sum-of-individual-strides",
+      "link": "https://www.betterchange-consulting.com/change-management/organisational-change-not-a-collective-leap-but-a-sum-of-individual-strides/",
+      "date": "2024-01-03T11:40:49",
+      "modified": "2024-03-20T15:14:30",
+      "title": "Not a collective leap but a sum of individual strides.",
+      "webinar": false
+    },
+    "13152": {
+      "type": "resources",
+      "slug": "what-is-organisational-culture",
+      "link": "https://www.betterchange-consulting.com/resources/what-is-organisational-culture/",
+      "date": "2024-01-09T12:54:55",
+      "modified": "2025-03-31T15:52:09",
+      "title": "What is Organisational Culture?",
+      "webinar": false
+    },
+    "13155": {
+      "type": "post",
+      "slug": "aligning-organisational-culture-with-market-dynamics",
+      "link": "https://www.betterchange-consulting.com/change-management/aligning-organisational-culture-with-market-dynamics/",
+      "date": "2024-01-10T10:40:53",
+      "modified": "2024-03-20T15:14:30",
+      "title": "Aligning Organisational Culture with Market Dynamics",
+      "webinar": false
+    },
+    "13437": {
+      "type": "post",
+      "slug": "what-went-wrong-with-agile",
+      "link": "https://www.betterchange-consulting.com/change-management/what-went-wrong-with-agile/",
+      "date": "2024-01-01T15:02:27",
+      "modified": "2024-06-16T15:11:49",
+      "title": "What went wrong with Agile?",
+      "webinar": false
+    },
+    "13441": {
+      "type": "post",
+      "slug": "agile-mishap-1-do-it-by-the-book",
+      "link": "https://www.betterchange-consulting.com/change-management/agile-mishap-1-do-it-by-the-book/",
+      "date": "2024-01-08T15:11:27",
+      "modified": "2024-03-20T15:14:30",
+      "title": "Agile Mishap #1: Do it by the book!",
+      "webinar": false
+    },
+    "13453": {
+      "type": "post",
+      "slug": "agile-retrospectives-second-edition-a-practical-guide-for-catalyzing-team-learning-and-improvement",
+      "link": "https://www.betterchange-consulting.com/coaching/agile-retrospectives-second-edition-a-practical-guide-for-catalyzing-team-learning-and-improvement/",
+      "date": "2024-02-06T08:42:40",
+      "modified": "2024-03-20T15:14:26",
+      "title": "Agile Retrospectives, Second Edition: A Practical Guide for Catalyzing Team Learning and Improvement",
+      "webinar": false
+    },
+    "13456": {
+      "type": "post",
+      "slug": "agile-mishap-2-all-frameworks-are-wrong-but-mine",
+      "link": "https://www.betterchange-consulting.com/agile-mishaps/agile-mishap-2-all-frameworks-are-wrong-but-mine/",
+      "date": "2024-02-06T16:51:28",
+      "modified": "2024-03-20T15:14:24",
+      "title": "Agile Mishap #2: All frameworks are wrong but mine",
+      "webinar": false
+    },
+    "13739": {
+      "type": "post",
+      "slug": "the-agile-bubble",
+      "link": "https://www.betterchange-consulting.com/agile-mishaps/the-agile-bubble/",
+      "date": "2024-02-21T20:55:51",
+      "modified": "2024-03-24T14:09:00",
+      "title": "Agile mishap #3: The Agile Bubble",
+      "webinar": false
+    },
+    "13830": {
+      "type": "resources",
+      "slug": "the-ultimate-guide-to-building-an-ai-team",
+      "link": "https://www.betterchange-consulting.com/resources/the-ultimate-guide-to-building-an-ai-team/",
+      "date": "2024-02-23T09:44:07",
+      "modified": "2025-03-31T06:21:23",
+      "title": "The Ultimate Guide to Building an AI Team",
+      "webinar": false
+    },
+    "13838": {
+      "type": "resources",
+      "slug": "the-impact-of-ai-in-tech-a-comprehensive-guide",
+      "link": "https://www.betterchange-consulting.com/resources/the-impact-of-ai-in-tech-a-comprehensive-guide/",
+      "date": "2024-02-23T11:48:58",
+      "modified": "2025-03-31T06:18:11",
+      "title": "AI in Tech: A Comprehensive Guide to its impact",
+      "webinar": false
+    },
+    "13844": {
+      "type": "resources",
+      "slug": "the-impact-of-ai-design-on-modern-technology",
+      "link": "https://www.betterchange-consulting.com/resources/the-impact-of-ai-design-on-modern-technology/",
+      "date": "2024-02-23T11:59:28",
+      "modified": "2025-03-31T06:20:10",
+      "title": "The Impact of AI Design on Modern Technology",
+      "webinar": false
+    },
+    "14245": {
+      "type": "post",
+      "slug": "review-humanocracy-creating-organizations-as-amazing-as-the-people-inside-them",
+      "link": "https://www.betterchange-consulting.com/book-reviews/review-humanocracy-creating-organizations-as-amazing-as-the-people-inside-them/",
+      "date": "2024-03-05T19:41:43",
+      "modified": "2024-03-20T15:14:21",
+      "title": "Review: &#8220;Humanocracy: Creating Organizations as Amazing as the People Inside Them&#8221;",
+      "webinar": false
+    },
+    "14568": {
+      "type": "post",
+      "slug": "agile-mishap-4-incompetent-coaches-and-trainers",
+      "link": "https://www.betterchange-consulting.com/agile-mishaps/agile-mishap-4-incompetent-coaches-and-trainers/",
+      "date": "2024-03-24T12:53:05",
+      "modified": "2025-10-25T15:28:53",
+      "title": "Agile Mishap #4: Incompetent Coaches and Trainers",
+      "webinar": false
+    },
+    "14581": {
+      "type": "post",
+      "slug": "book-review-thinking-fast-and-slow-by-daniel-kahneman",
+      "link": "https://www.betterchange-consulting.com/book-reviews/book-review-thinking-fast-and-slow-by-daniel-kahneman/",
+      "date": "2024-03-27T18:58:57",
+      "modified": "2024-04-03T18:08:57",
+      "title": "Book review: Thinking Fast and Slow by Daniel Kahneman",
+      "webinar": false
+    },
+    "14730": {
+      "type": "post",
+      "slug": "humble-inquiry-the-art-of-elevating-your-employees",
+      "link": "https://www.betterchange-consulting.com/leadership/humble-inquiry-the-art-of-elevating-your-employees/",
+      "date": "2024-04-16T05:13:43",
+      "modified": "2024-04-16T05:34:03",
+      "title": "Humble Inquiry - The Art of Elevating Your Employees",
+      "webinar": false
+    },
+    "14780": {
+      "type": "post",
+      "slug": "book-review-rethinking-agile-why-agile-teams-have-nothing-to-do-with-business-agility",
+      "link": "https://www.betterchange-consulting.com/book-reviews/book-review-rethinking-agile-why-agile-teams-have-nothing-to-do-with-business-agility/",
+      "date": "2024-04-19T19:48:03",
+      "modified": "2026-03-11T09:46:24",
+      "title": "Book review: Rethinking Agile: Why Agile Teams Have Nothing to Do with Business Agility",
+      "webinar": false
+    },
+    "14864": {
+      "type": "post",
+      "slug": "exploring-the-versatility-of-flight-levels-in-achieving-organisational-agility",
+      "link": "https://www.betterchange-consulting.com/flight-levels/exploring-the-versatility-of-flight-levels-in-achieving-organisational-agility/",
+      "date": "2024-04-24T20:46:06",
+      "modified": "2024-04-26T10:32:49",
+      "title": "Exploring the Versatility of Flight Levels in Achieving Organisational Agility",
+      "webinar": false
+    },
+    "14885": {
+      "type": "post",
+      "slug": "enhancing-organisational-learning-with-flight-levels-and-the-5-activities",
+      "link": "https://www.betterchange-consulting.com/flight-levels/enhancing-organisational-learning-with-flight-levels-and-the-5-activities/",
+      "date": "2024-04-25T09:20:32",
+      "modified": "2025-07-03T09:29:13",
+      "title": "Enhancing Organisational Learning with Flight Levels and The 5 Activities",
+      "webinar": false
+    },
+    "14902": {
+      "type": "post",
+      "slug": "transforming-team-dynamics-how-a-legal-service-provider-achieved-business-agility",
+      "link": "https://www.betterchange-consulting.com/flight-levels/transforming-team-dynamics-how-a-legal-service-provider-achieved-business-agility/",
+      "date": "2024-04-25T10:12:25",
+      "modified": "2024-05-16T21:43:54",
+      "title": "Transforming Team Dynamics: How a Legal Service Provider Achieved Business Agility",
+      "webinar": false
+    },
+    "15036": {
+      "type": "post",
+      "slug": "the-pitfalls-of-inappropriate-leadership-styles",
+      "link": "https://www.betterchange-consulting.com/leadership/the-pitfalls-of-inappropriate-leadership-styles/",
+      "date": "2024-04-29T14:15:59",
+      "modified": "2024-05-10T10:53:36",
+      "title": "The Pitfalls of Inappropriate Leadership Styles.",
+      "webinar": false
+    },
+    "15160": {
+      "type": "resources",
+      "slug": "how-to-run-a-retrospective",
+      "link": "https://www.betterchange-consulting.com/resources/how-to-run-a-retrospective/",
+      "date": "2024-05-17T11:55:50",
+      "modified": "2025-03-31T06:13:54",
+      "title": "How to Run a Retrospective",
+      "webinar": false
+    },
+    "15776": {
+      "type": "post",
+      "slug": "elevate-your-safe-by-breaking-down-barriers",
+      "link": "https://www.betterchange-consulting.com/uncategorized/elevate-your-safe-by-breaking-down-barriers/",
+      "date": "2024-05-28T11:56:01",
+      "modified": "2024-07-04T08:13:12",
+      "title": "Elevate Your SAFe® By Breaking Down Barriers",
+      "webinar": false
+    },
+    "15812": {
+      "type": "post",
+      "slug": "agile-mindset-amp-culture-employee",
+      "link": "https://www.betterchange-consulting.com/uncategorized/agile-mindset-amp-culture-employee/",
+      "date": "2024-06-10T10:26:36",
+      "modified": "2024-07-04T08:12:37",
+      "title": "Agile Mindset & Culture - Employee",
+      "webinar": false
+    },
+    "15814": {
+      "type": "post",
+      "slug": "agile-mindset-culture-leadership",
+      "link": "https://www.betterchange-consulting.com/uncategorized/agile-mindset-culture-leadership/",
+      "date": "2024-06-14T09:29:28",
+      "modified": "2024-07-04T08:11:40",
+      "title": "Agile Mindset & Culture - Leadership",
+      "webinar": false
+    },
+    "15819": {
+      "type": "post",
+      "slug": "which-competencies-should-an-agile-coach-have",
+      "link": "https://www.betterchange-consulting.com/coaching/which-competencies-should-an-agile-coach-have/",
+      "date": "2024-05-28T04:20:05",
+      "modified": "2024-05-30T08:57:42",
+      "title": "Which Competencies Should an Agile Coach Have?",
+      "webinar": false
+    },
+    "16095": {
+      "type": "post",
+      "slug": "the-unseen-potential-of-scrum-masters-future-leaders-in-a-time-of-uncertainty",
+      "link": "https://www.betterchange-consulting.com/career-boost/the-unseen-potential-of-scrum-masters-future-leaders-in-a-time-of-uncertainty/",
+      "date": "2024-06-04T18:33:15",
+      "modified": "2024-06-04T18:35:53",
+      "title": "The Unseen Potential of Scrum Masters: Future Leaders in a Time of Uncertainty",
+      "webinar": false
+    },
+    "16135": {
+      "type": "post",
+      "slug": "agile-leadership-the-vital-role-of-sensemaking-integrity-presence-and-authenticity",
+      "link": "https://www.betterchange-consulting.com/leadership/agile-leadership-the-vital-role-of-sensemaking-integrity-presence-and-authenticity/",
+      "date": "2024-06-08T05:54:27",
+      "modified": "2024-06-08T05:58:20",
+      "title": "Agile Leadership: The Vital Role of Sensemaking, Integrity, Presence, and Authenticity",
+      "webinar": false
+    },
+    "16143": {
+      "type": "post",
+      "slug": "boogie-and-backlogs-the-hilarious-parallels-between-agile-and-disco",
+      "link": "https://www.betterchange-consulting.com/agile-mishaps/boogie-and-backlogs-the-hilarious-parallels-between-agile-and-disco/",
+      "date": "2024-06-09T17:51:48",
+      "modified": "2024-06-09T17:51:51",
+      "title": "Boogie and Backlogs: The Hilarious Parallels Between Agile and Disco",
+      "webinar": false
+    },
+    "16164": {
+      "type": "post",
+      "slug": "introducing-the-transformation-manifesto",
+      "link": "https://www.betterchange-consulting.com/change-management/introducing-the-transformation-manifesto/",
+      "date": "2024-06-10T19:01:20",
+      "modified": "2024-06-10T19:30:10",
+      "title": "Introducing the Transformation Manifesto",
+      "webinar": false
+    },
+    "16195": {
+      "type": "post",
+      "slug": "agile-mishap-5-the-certification-circus-reflecting-on-the-agile-accreditation-landscape",
+      "link": "https://www.betterchange-consulting.com/agile-mishaps/agile-mishap-5-the-certification-circus-reflecting-on-the-agile-accreditation-landscape/",
+      "date": "2024-06-15T08:31:27",
+      "modified": "2024-06-30T09:47:08",
+      "title": "Agile Mishap #5: The Certification Circus - Reflecting on the Agile Accreditation Landscape",
+      "webinar": false
+    },
+    "16251": {
+      "type": "post",
+      "slug": "despite-all-the-mishaps-show-me-the-better-option",
+      "link": "https://www.betterchange-consulting.com/agile-mishaps/despite-all-the-mishaps-show-me-the-better-option/",
+      "date": "2024-06-30T09:42:38",
+      "modified": "2024-06-30T09:42:41",
+      "title": "Despite All the Mishaps: Show Me the Better Option!",
+      "webinar": false
+    },
+    "16291": {
+      "type": "post",
+      "slug": "scaling-challenges-a-cios-perspective",
+      "link": "https://www.betterchange-consulting.com/uncategorized/scaling-challenges-a-cios-perspective/",
+      "date": "2024-07-04T08:56:34",
+      "modified": "2024-07-04T09:01:06",
+      "title": "Scaling Challenges: A CIO's Perspective",
+      "webinar": false
+    },
+    "16363": {
+      "type": "post",
+      "slug": "mastering-difficult-conversations-a-comprehensive-guide-for-leaders",
+      "link": "https://www.betterchange-consulting.com/leadership/mastering-difficult-conversations-a-comprehensive-guide-for-leaders/",
+      "date": "2024-07-06T09:45:27",
+      "modified": "2024-07-06T09:53:36",
+      "title": "Mastering Difficult Conversations: A Comprehensive Guide for Leaders",
+      "webinar": false
+    },
+    "16663": {
+      "type": "post",
+      "slug": "10-advantages-of-using-sprint-goals",
+      "link": "https://www.betterchange-consulting.com/coaching/10-advantages-of-using-sprint-goals/",
+      "date": "2024-07-19T13:26:31",
+      "modified": "2024-07-19T14:09:53",
+      "title": "10 advantages of using Sprint Goals",
+      "webinar": false
+    },
+    "16832": {
+      "type": "post",
+      "slug": "a-house-renovation-completed-on-time-and-within-budget",
+      "link": "https://www.betterchange-consulting.com/leadership/a-house-renovation-completed-on-time-and-within-budget/",
+      "date": "2024-09-20T12:43:09",
+      "modified": "2024-09-20T13:13:37",
+      "title": "A House Renovation Completed on Time and Within Budget",
+      "webinar": false
+    },
+    "16909": {
+      "type": "post",
+      "slug": "transforming-a-start-up-with-kanban-for-sustainable-growth",
+      "link": "https://www.betterchange-consulting.com/change-management/transforming-a-start-up-with-kanban-for-sustainable-growth/",
+      "date": "2024-10-09T19:04:15",
+      "modified": "2025-04-03T06:50:51",
+      "title": "Transforming a Start-Up with Kanban for Sustainable Growth",
+      "webinar": false
+    },
+    "17280": {
+      "type": "post",
+      "slug": "practical-guide-to-strategy-implementation",
+      "link": "https://www.betterchange-consulting.com/change-management/practical-guide-to-strategy-implementation/",
+      "date": "2025-01-02T09:31:42",
+      "modified": "2025-01-03T18:43:53",
+      "title": "A Practical Guide to Strategy Implementation",
+      "webinar": false
+    },
+    "17300": {
+      "type": "post",
+      "slug": "the-strategy-translation-canvas-turning-vision-into-action",
+      "link": "https://www.betterchange-consulting.com/change-management/the-strategy-translation-canvas-turning-vision-into-action/",
+      "date": "2025-01-19T07:33:00",
+      "modified": "2025-01-03T19:00:45",
+      "title": "The Strategy Translation Canvas: Turning Vision into Action",
+      "webinar": false
+    },
+    "18114": {
+      "type": "post",
+      "slug": "the-need-for-female-competencies-in-leadership",
+      "link": "https://www.betterchange-consulting.com/leadership/the-need-for-female-competencies-in-leadership/",
+      "date": "2025-03-08T10:01:03",
+      "modified": "2025-03-08T11:08:02",
+      "title": "The Need for Female Competencies in Leadership",
+      "webinar": false
+    },
+    "18170": {
+      "type": "post",
+      "slug": "organisational-culture-the-overlooked-key-to-success-with-new-ways-of-working",
+      "link": "https://www.betterchange-consulting.com/change-management/organisational-culture-the-overlooked-key-to-success-with-new-ways-of-working/",
+      "date": "2025-03-15T19:24:18",
+      "modified": "2025-05-28T14:53:07",
+      "title": "Webinar: Organisational Culture – The Overlooked Key to Success with New Ways of Working",
+      "webinar": true
+    },
+    "18372": {
+      "type": "post",
+      "slug": "webinar-discover-how-a-rapid-growing-business-regained-focus",
+      "link": "https://www.betterchange-consulting.com/change-management/webinar-discover-how-a-rapid-growing-business-regained-focus/",
+      "date": "2025-04-15T05:06:44",
+      "modified": "2025-05-28T14:52:37",
+      "title": "Webinar: Discover How a Rapid Growing Business Regained Focus",
+      "webinar": true
+    },
+    "18470": {
+      "type": "post",
+      "slug": "webinar-agile-leadership-the-vital-role-of-sense-making-integrity-and-authenticy",
+      "link": "https://www.betterchange-consulting.com/leadership/webinar-agile-leadership-the-vital-role-of-sense-making-integrity-and-authenticy/",
+      "date": "2025-05-24T13:02:25",
+      "modified": "2025-05-28T14:52:02",
+      "title": "Webinar: Agile Leadership - The Vital Role of Sense-making, Integrity, and Authenticy",
+      "webinar": true
+    },
+    "19047": {
+      "type": "post",
+      "slug": "coaching-what-happens-between-us",
+      "link": "https://www.betterchange-consulting.com/coaching/coaching-what-happens-between-us/",
+      "date": "2025-11-28T14:21:40",
+      "modified": "2025-11-28T14:21:42",
+      "title": "Coaching What Happens Between Us",
+      "webinar": false
+    },
+    "19080": {
+      "type": "post",
+      "slug": "some-reflections-on-the-adoption-of-ai-in-organizations",
+      "link": "https://www.betterchange-consulting.com/uncategorized/some-reflections-on-the-adoption-of-ai-in-organizations/",
+      "date": "2025-12-18T15:50:35",
+      "modified": "2025-12-18T15:54:14",
+      "title": "Some reflections on the adoption of AI in organizations",
+      "webinar": false
+    },
+    "19100": {
+      "type": "post",
+      "slug": "ai-implementation-strategies-the-biggest-challenge-is-not-technological",
+      "link": "https://www.betterchange-consulting.com/ai/ai-implementation-strategies-the-biggest-challenge-is-not-technological/",
+      "date": "2025-12-27T19:08:27",
+      "modified": "2025-12-27T19:31:25",
+      "title": "AI Implementation Strategies: The Biggest Challenge Is Not Technological",
+      "webinar": false
+    },
+    "19121": {
+      "type": "post",
+      "slug": "webinar-the-role-of-flight-levels-in-agile-transformation",
+      "link": "https://www.betterchange-consulting.com/change-management/webinar-the-role-of-flight-levels-in-agile-transformation/",
+      "date": "2025-07-01T10:00:00",
+      "modified": "2026-01-25T16:05:43",
+      "title": "Webinar: The Role of Flight Levels in Agile Transformation",
+      "webinar": true
+    },
+    "19129": {
+      "type": "post",
+      "slug": "webinar-hr-in-the-age-of-disruptive-change-building-people-centred-organisations",
+      "link": "https://www.betterchange-consulting.com/webinar/webinar-hr-in-the-age-of-disruptive-change-building-people-centred-organisations/",
+      "date": "2025-10-29T11:00:00",
+      "modified": "2026-01-25T16:04:12",
+      "title": "Webinar: HR in the age of disruptive change - Building people centred organisations",
+      "webinar": true
+    },
+    "19137": {
+      "type": "post",
+      "slug": "webinar-state-of-agile-a-brutally-honest-conversation",
+      "link": "https://www.betterchange-consulting.com/change-management/webinar-state-of-agile-a-brutally-honest-conversation/",
+      "date": "2025-12-04T11:00:00",
+      "modified": "2026-05-29T06:57:34",
+      "title": "Webinar: State of Agile - A Brutally Honest Conversation",
+      "webinar": true
+    },
+    "19145": {
+      "type": "post",
+      "slug": "webinar-ai-for-product-owners-automate-the-menial-focus-on-meaningful",
+      "link": "https://www.betterchange-consulting.com/webinar/webinar-ai-for-product-owners-automate-the-menial-focus-on-meaningful/",
+      "date": "2026-01-28T21:17:05",
+      "modified": "2026-05-29T06:57:34",
+      "title": "Webinar: AI for Product Owners - Automate the Menial, Focus on Meaningful",
+      "webinar": true
+    },
+    "19171": {
+      "type": "fellow",
+      "slug": "anders-hojgaard-nielsen",
+      "link": "https://www.betterchange-consulting.com/fellows/anders-hojgaard-nielsen/",
+      "date": "2026-02-03T15:35:29",
+      "modified": "2026-02-04T16:30:40",
+      "title": "Anders Højgaard Nielsen",
+      "webinar": false
+    },
+    "19173": {
+      "type": "fellow",
+      "slug": "bent-myllerup",
+      "link": "https://www.betterchange-consulting.com/fellows/bent-myllerup/",
+      "date": "2026-02-03T15:38:33",
+      "modified": "2026-09-16T06:33:57",
+      "title": "Bent Myllerup",
+      "webinar": false
+    },
+    "19175": {
+      "type": "fellow",
+      "slug": "camilla-bergkvist",
+      "link": "https://www.betterchange-consulting.com/fellows/camilla-bergkvist/",
+      "date": "2026-02-03T15:40:04",
+      "modified": "2026-02-05T14:14:52",
+      "title": "Camilla Bergkvist",
+      "webinar": false
+    },
+    "19177": {
+      "type": "fellow",
+      "slug": "garbrand-van-der-molen",
+      "link": "https://www.betterchange-consulting.com/fellows/garbrand-van-der-molen/",
+      "date": "2026-02-03T15:42:41",
+      "modified": "2026-02-05T13:46:21",
+      "title": "Garbrand van der Molen",
+      "webinar": false
+    },
+    "19179": {
+      "type": "fellow",
+      "slug": "giuseppe-de-simone",
+      "link": "https://www.betterchange-consulting.com/fellows/giuseppe-de-simone/",
+      "date": "2026-02-03T15:45:13",
+      "modified": "2026-04-21T13:17:58",
+      "title": "Giuseppe De Simone",
+      "webinar": false
+    },
+    "19181": {
+      "type": "fellow",
+      "slug": "gregor-heidinger",
+      "link": "https://www.betterchange-consulting.com/fellows/gregor-heidinger/",
+      "date": "2026-02-03T15:47:38",
+      "modified": "2026-02-05T13:53:08",
+      "title": "Gregor Heidinger",
+      "webinar": false
+    },
+    "19183": {
+      "type": "fellow",
+      "slug": "heidi-reidel-sorensen",
+      "link": "https://www.betterchange-consulting.com/fellows/heidi-reidel-sorensen/",
+      "date": "2026-02-03T15:49:07",
+      "modified": "2026-02-05T13:55:01",
+      "title": "Heidi Reidel Sørensen",
+      "webinar": false
+    },
+    "19185": {
+      "type": "fellow",
+      "slug": "javier-perez-fernandez",
+      "link": "https://www.betterchange-consulting.com/fellows/javier-perez-fernandez/",
+      "date": "2026-02-03T15:50:52",
+      "modified": "2026-02-03T16:20:34",
+      "title": "Javier Perez Fernandez",
+      "webinar": false
+    },
+    "19187": {
+      "type": "fellow",
+      "slug": "jan-b-olsen",
+      "link": "https://www.betterchange-consulting.com/fellows/jan-b-olsen/",
+      "date": "2026-02-03T15:53:07",
+      "modified": "2026-02-03T16:18:20",
+      "title": "Jan B. Olsen",
+      "webinar": false
+    },
+    "19189": {
+      "type": "fellow",
+      "slug": "jesper-orting",
+      "link": "https://www.betterchange-consulting.com/fellows/jesper-orting/",
+      "date": "2026-02-03T15:58:16",
+      "modified": "2026-02-03T16:13:21",
+      "title": "Jesper Ørting",
+      "webinar": false
+    },
+    "19195": {
+      "type": "fellow",
+      "slug": "kirsten-pallesen",
+      "link": "https://www.betterchange-consulting.com/fellows/kirsten-pallesen/",
+      "date": "2026-02-03T16:01:51",
+      "modified": "2026-02-05T13:59:02",
+      "title": "Kirsten Pallesen",
+      "webinar": false
+    },
+    "19197": {
+      "type": "fellow",
+      "slug": "konrad-pogorzala",
+      "link": "https://www.betterchange-consulting.com/fellows/konrad-pogorzala/",
+      "date": "2026-02-03T16:03:13",
+      "modified": "2026-02-05T14:00:39",
+      "title": "Konrad Pogorzala",
+      "webinar": false
+    },
+    "19199": {
+      "type": "fellow",
+      "slug": "martin-von-weissenberg",
+      "link": "https://www.betterchange-consulting.com/fellows/martin-von-weissenberg/",
+      "date": "2026-02-03T16:04:12",
+      "modified": "2026-02-04T09:36:26",
+      "title": "Martin von Weissenberg",
+      "webinar": false
+    },
+    "19201": {
+      "type": "fellow",
+      "slug": "mogens-villadsen",
+      "link": "https://www.betterchange-consulting.com/fellows/mogens-villadsen/",
+      "date": "2026-02-03T16:05:26",
+      "modified": "2026-02-05T14:02:43",
+      "title": "Mogens Villadsen",
+      "webinar": false
+    },
+    "19203": {
+      "type": "fellow",
+      "slug": "niels-verdonk",
+      "link": "https://www.betterchange-consulting.com/fellows/niels-verdonk/",
+      "date": "2026-02-03T16:06:42",
+      "modified": "2026-02-04T09:41:32",
+      "title": "Niels Verdonk",
+      "webinar": false
+    },
+    "19205": {
+      "type": "fellow",
+      "slug": "nino-zeljko",
+      "link": "https://www.betterchange-consulting.com/fellows/nino-zeljko/",
+      "date": "2026-02-03T16:07:50",
+      "modified": "2026-05-09T06:31:12",
+      "title": "Nino Zeljko",
+      "webinar": false
+    },
+    "19207": {
+      "type": "fellow",
+      "slug": "russell-hill",
+      "link": "https://www.betterchange-consulting.com/fellows/russell-hill/",
+      "date": "2026-02-03T16:09:09",
+      "modified": "2026-02-27T12:52:30",
+      "title": "Russell Hill",
+      "webinar": false
+    },
+    "19210": {
+      "type": "fellow",
+      "slug": "scott-dunn",
+      "link": "https://www.betterchange-consulting.com/fellows/scott-dunn/",
+      "date": "2026-02-03T16:10:18",
+      "modified": "2026-02-05T14:10:42",
+      "title": "Scott Dunn",
+      "webinar": false
+    },
+    "19268": {
+      "type": "post",
+      "slug": "webinar-how-leaders-unconsciously-shape-team-and-organisational-dynamics-a-webinar-on-power-trust-and-authentic-leadership",
+      "link": "https://www.betterchange-consulting.com/webinar/webinar-how-leaders-unconsciously-shape-team-and-organisational-dynamics-a-webinar-on-power-trust-and-authentic-leadership/",
+      "date": "2026-02-07T09:55:22",
+      "modified": "2026-02-07T10:05:00",
+      "title": "Webinar: How Leaders Unconsciously Shape Team and Organisational Dynamics – A Webinar on Power, Trust, and Authentic Leadership",
+      "webinar": true
+    },
+    "19425": {
+      "type": "post",
+      "slug": "webinar-why-organisations-struggle-with-change-and-how-to-build-adaptive-ones",
+      "link": "https://www.betterchange-consulting.com/webinar/webinar-why-organisations-struggle-with-change-and-how-to-build-adaptive-ones/",
+      "date": "2026-04-02T16:25:33",
+      "modified": "2026-04-21T17:44:05",
+      "title": "Webinar: Why Organizations Struggle with Change – and How to Build Adaptive Ones",
+      "webinar": true
+    },
+    "19464": {
+      "type": "post",
+      "slug": "webinar-start-strong-finish-better-ai-for-scrum-events-that-deliver",
+      "link": "https://www.betterchange-consulting.com/webinar/webinar-start-strong-finish-better-ai-for-scrum-events-that-deliver/",
+      "date": "2026-04-19T08:39:24",
+      "modified": "2026-04-19T08:39:31",
+      "title": "Webinar: Start Strong, Finish Better – AI for Scrum Events That Deliver",
+      "webinar": true
+    },
+    "19471": {
+      "type": "post",
+      "slug": "webinar-dare-e-ricevere-feedback-la-competenza-che-cambia-tutto",
+      "link": "https://www.betterchange-consulting.com/webinar/webinar-dare-e-ricevere-feedback-la-competenza-che-cambia-tutto/",
+      "date": "2026-04-21T13:00:32",
+      "modified": "2026-04-22T07:20:44",
+      "title": "Webinar: Dare e ricevere feedback- La competenza che cambia tutto",
+      "webinar": true
+    },
+    "19512": {
+      "type": "post",
+      "slug": "what-happens-when-you-invest-in-your-leadership-a-conversation-with-maja-lovrencic",
+      "link": "https://www.betterchange-consulting.com/webinar/what-happens-when-you-invest-in-your-leadership-a-conversation-with-maja-lovrencic/",
+      "date": "2026-04-27T09:58:47",
+      "modified": "2026-04-27T09:59:04",
+      "title": "What Happens When You Invest in Your Leadership: A Conversation with Maja Lovrenčić",
+      "webinar": true
+    },
+    "19557": {
+      "type": "fellow",
+      "slug": "gregory-keegan",
+      "link": "https://www.betterchange-consulting.com/fellows/gregory-keegan/",
+      "date": "2026-05-18T15:15:01",
+      "modified": "2026-09-16T16:39:17",
+      "title": "Gregory Keegan",
+      "webinar": false
+    },
+    "19684": {
+      "type": "post",
+      "slug": "lightning-lesson-coordination-cost-discovery-for-engineering-leaders",
+      "link": "https://www.betterchange-consulting.com/webinar/lightning-lesson-coordination-cost-discovery-for-engineering-leaders/",
+      "date": "2026-09-23T11:48:41",
+      "modified": "2026-09-23T12:24:26",
+      "title": "Lightning Lesson: Coordination Cost Discovery for Engineering Leaders",
+      "webinar": true
+    }
+  },
+  "events": {
+    "18163": {
+      "title": "Flow Manager (FM)",
+      "url": "https://www.betterchange-consulting.com/event/flow-manager-berlin-20-nov-2025/",
+      "start": "2026-10-06",
+      "end": "2026-10-07",
+      "cost": "€1295",
+      "registrationUrl": "https://www.betterchange-consulting.de/training/kanban/flow-manager",
+      "modified": "2026-05-19 14:07:22",
+      "country": "Germany",
+      "city": "Berlin",
+      "online": false,
+      "organizers": [
+        "Better Change Berlin"
+      ],
+      "skipped": "venue in Germany (Russ adds these himself)",
+      "question": null
+    },
+    "18213": {
+      "title": "Advanced Certified ScrumMaster® (A-CSM®)",
+      "url": "https://www.betterchange-consulting.com/event/advanced-certified-scrum-master-a-csm-se-202611/",
+      "start": "2026-11-02",
+      "end": "2026-11-03",
+      "cost": "19000 SEK – 21000 SEK",
+      "registrationUrl": "https://www.betterchange-consulting.dk/products/256913-Advanced-Certified-ScrumMaster-A",
+      "modified": "2026-08-12 21:43:40",
+      "country": "Sweden",
+      "city": "Stockholm",
+      "online": false,
+      "organizers": [
+        "Better Change Sweden"
+      ],
+      "skipped": null,
+      "question": null
+    },
+    "18321": {
+      "title": "Advanced Certified Scrum Product Owner® (A-CSPO®)",
+      "url": "https://www.betterchange-consulting.com/event/advanced-certified-scrum-product-owner-acspo-it-202606/",
+      "start": "2026-11-09",
+      "end": "2026-11-10",
+      "cost": "€1300 – €1600",
+      "registrationUrl": "https://www.betterchange-consulting.it/event-details/advanced-certified-scrum-product-owner-acspo-202606/",
+      "modified": "2026-05-25 08:33:36",
+      "country": null,
+      "city": "Online",
+      "online": true,
+      "organizers": [
+        "Better Change Italy"
+      ],
+      "skipped": null,
+      "question": null
+    },
+    "18326": {
+      "title": "Certified Scrum Product Owner® (CSPO®)",
+      "url": "https://www.betterchange-consulting.com/event/certified-scrum-product-owner-cspo-it-202610/",
+      "start": "2026-10-15",
+      "end": "2026-10-16",
+      "cost": "€1100 – €1400",
+      "registrationUrl": "https://www.betterchange-consulting.it/event-details/certified-scrum-product-owner-cspo-202610/",
+      "modified": "2026-03-17 13:11:36",
+      "country": "Italy",
+      "city": "Milan",
+      "online": false,
+      "organizers": [
+        "Better Change Italy"
+      ],
+      "skipped": null,
+      "question": null
+    },
+    "19338": {
+      "title": "IC Agile Team Facilitation (ICP-ATF)",
+      "url": "https://www.betterchange-consulting.com/event/ic-agile-team-facilitation-icp-atf-10/",
+      "start": "2026-10-28",
+      "end": "2026-10-29",
+      "cost": "€1359",
+      "registrationUrl": "https://en.agilecoach.lt/workshops-trainings-certificates/agile-team-facilitation-icp-atf",
+      "modified": "2026-05-12 12:33:28",
+      "country": "Lithuania",
+      "city": "Vilnius",
+      "online": false,
+      "organizers": [
+        "Agile Coach Lithuania"
+      ],
+      "skipped": null,
+      "question": null
+    },
+    "19340": {
+      "title": "Certified Agile Leadership (CAL 1)",
+      "url": "https://www.betterchange-consulting.com/event/certified-agile-leadership-cal-1-3/",
+      "start": "2026-11-11",
+      "end": "2026-11-12",
+      "cost": "€1459",
+      "registrationUrl": "https://en.agilecoach.lt/workshops-trainings-certificates/certified-agile-leadership-cal1",
+      "modified": "2026-05-12 11:25:01",
+      "country": "Lithuania",
+      "city": "Vilnius",
+      "online": false,
+      "organizers": [
+        "Agile Coach Lithuania"
+      ],
+      "skipped": null,
+      "question": null
+    },
+    "19504": {
+      "title": "Certified Scrum Product Owner (CSPO)",
+      "url": "https://www.betterchange-consulting.com/event/certified-scrum-product-owner-cspo-13/",
+      "start": "2026-10-20",
+      "end": "2026-10-21",
+      "cost": "from EUR 1095",
+      "registrationUrl": "https://www.betterchange-consulting.dk/cart/254600-Certified-Scrum-Product-Owner-CSPO261020?currency=EUR",
+      "modified": "2026-06-22 13:55:40",
+      "country": null,
+      "city": "Online",
+      "online": true,
+      "organizers": [
+        "Better Change ApS"
+      ],
+      "skipped": null,
+      "question": null
+    },
+    "19506": {
+      "title": "Certified Scrum Master (CSM)",
+      "url": "https://www.betterchange-consulting.com/event/certified-scrum-master-csm-6/",
+      "start": "2026-10-07",
+      "end": "2026-10-08",
+      "cost": "from EUR 1095",
+      "registrationUrl": "https://www.betterchange-consulting.dk/cart/254601-Certified-ScrumMaster-CSM261007?currency=EUR",
+      "modified": "2026-09-16 05:52:10",
+      "country": null,
+      "city": "Online",
+      "online": true,
+      "organizers": [
+        "Better Change ApS"
+      ],
+      "skipped": null,
+      "question": null
+    },
+    "19568": {
+      "title": "Flight Level 2 Design (FL2D)",
+      "url": "https://www.betterchange-consulting.com/event/flight-level-2-design-fl2d-5/",
+      "start": "2026-11-24",
+      "end": "2026-11-25",
+      "cost": "€2190",
+      "registrationUrl": "https://www.betterchange-consulting.de/training/flight-levels/flight-level-2-design-(fl2d)",
+      "modified": "2026-09-01 14:21:29",
+      "country": "Germany",
+      "city": "Berlin",
+      "online": false,
+      "organizers": [
+        "Better Change Berlin"
+      ],
+      "skipped": "venue in Germany (Russ adds these himself)",
+      "question": null
+    },
+    "19572": {
+      "title": "Flight Levels System Architecture (FLSA)",
+      "url": "https://www.betterchange-consulting.com/event/flight-levels-system-architecture-flsa-3/",
+      "start": "2026-10-13",
+      "end": "2026-10-14",
+      "cost": "€2190",
+      "registrationUrl": "https://www.betterchange-consulting.de/training/flight-levels/flight-levels-system-architecture-(flsa)",
+      "modified": "2026-05-19 08:34:57",
+      "country": "Germany",
+      "city": "Berlin",
+      "online": false,
+      "organizers": [
+        "Better Change Berlin"
+      ],
+      "skipped": "venue in Germany (Russ adds these himself)",
+      "question": null
+    },
+    "19574": {
+      "title": "Flight Levels System Architecture (FLSA)",
+      "url": "https://www.betterchange-consulting.com/event/flight-levels-system-architecture-flsa-4/",
+      "start": "2026-12-01",
+      "end": "2026-12-02",
+      "cost": "€2190",
+      "registrationUrl": "https://www.betterchange-consulting.de/training/flight-levels/flight-levels-system-architecture-(flsa)",
+      "modified": "2026-09-24 10:46:03",
+      "country": "Germany",
+      "city": "Berlin",
+      "online": false,
+      "organizers": [
+        "Better Change Berlin"
+      ],
+      "skipped": "venue in Germany (Russ adds these himself)",
+      "question": null
+    },
+    "19582": {
+      "title": "ICAgile Agile Coaching Professional (ICP-ACC)",
+      "url": "https://www.betterchange-consulting.com/event/icagile-agile-coaching-professional-icp-acc-5/",
+      "start": "2026-11-10",
+      "end": "2026-11-12",
+      "cost": "from €1595",
+      "registrationUrl": "https://www.betterchange-consulting.de/training/coaching/icagile-agile-coaching-professional-(icp-acc)",
+      "modified": "2026-05-19 09:21:04",
+      "country": "Germany",
+      "city": "Berlin",
+      "online": false,
+      "organizers": [
+        "Better Change Berlin"
+      ],
+      "skipped": "venue in Germany (Russ adds these himself)",
+      "question": null
+    },
+    "19584": {
+      "title": "Kanban System Design (KMP 1)",
+      "url": "https://www.betterchange-consulting.com/event/kanban-system-design-kmp-1-3/",
+      "start": "2026-12-03",
+      "end": "2026-12-04",
+      "cost": "€1295",
+      "registrationUrl": "https://www.betterchange-consulting.de/training/kanban/kanban-system-design-(kmp1)",
+      "modified": "2026-05-19 10:01:26",
+      "country": "Germany",
+      "city": "Berlin",
+      "online": false,
+      "organizers": [
+        "Better Change Berlin"
+      ],
+      "skipped": "venue in Germany (Russ adds these himself)",
+      "question": null
+    },
+    "19586": {
+      "title": "Kanban System Improvement (KMP 2)",
+      "url": "https://www.betterchange-consulting.com/event/kanban-system-improvement-kmp-2-3/",
+      "start": "2026-12-07",
+      "end": "2026-12-08",
+      "cost": "€1295",
+      "registrationUrl": "https://www.betterchange-consulting.de/training/kanban/kanban-system-improvement-(kmp2)",
+      "modified": "2026-05-19 10:01:06",
+      "country": "Germany",
+      "city": "Berlin",
+      "online": false,
+      "organizers": [
+        "Better Change Berlin"
+      ],
+      "skipped": "venue in Germany (Russ adds these himself)",
+      "question": null
+    },
+    "19612": {
+      "title": "Certified Scrum Master (CSM)",
+      "url": "https://www.betterchange-consulting.com/event/certified-scrum-master-csm-7/",
+      "start": "2026-11-04",
+      "end": "2026-11-05",
+      "cost": "from DKK 7000",
+      "registrationUrl": "https://www.betterchange-consulting.dk/cart/257183-Certified-ScrumMaster-CSM261104",
+      "modified": "2026-06-11 05:45:52",
+      "country": "Denmark",
+      "city": "Copenhagen",
+      "online": false,
+      "organizers": [
+        "Better Change ApS"
+      ],
+      "skipped": null,
+      "question": null
+    },
+    "19643": {
+      "title": "Certified Agile Leadership (CAL-1)",
+      "url": "https://www.betterchange-consulting.com/event/certified-agile-leadership-cal-1-7/",
+      "start": "2026-11-24",
+      "end": "2026-11-25",
+      "cost": "from EUR 1652",
+      "registrationUrl": "https://www.betterchange-consulting.de/training/register/cal1-ber-2026-11",
+      "modified": "2026-08-26 15:45:59",
+      "country": "Germany",
+      "city": "Berlin",
+      "online": false,
+      "organizers": [
+        "Better Change Berlin"
+      ],
+      "skipped": "venue in Germany (Russ adds these himself)",
+      "question": null
+    },
+    "19647": {
+      "title": "Flight Level 3 Design (FL3D)",
+      "url": "https://www.betterchange-consulting.com/event/flight-level-3-design-fl3d-4/",
+      "start": "2026-11-17",
+      "end": "2026-11-18",
+      "cost": "€2190",
+      "registrationUrl": "https://www.betterchange-consulting.de/training/flight-levels/flight-level-3-design-(fl3d)",
+      "modified": "2026-09-01 14:22:05",
+      "country": "Germany",
+      "city": "Berlin",
+      "online": false,
+      "organizers": [
+        "Better Change Berlin"
+      ],
+      "skipped": "venue in Germany (Russ adds these himself)",
+      "question": null
+    },
+    "19730": {
+      "title": "Flight Level 2 Design (FL2D)",
+      "url": "https://www.betterchange-consulting.com/event/flight-level-2-design-fl2d-6/",
+      "start": "2027-01-26",
+      "end": "2027-01-27",
+      "cost": "€2190",
+      "registrationUrl": "https://www.betterchange-consulting.de/training/flight-levels/flight-level-2-design-(fl2d)",
+      "modified": "2026-09-28 09:40:22",
+      "country": "Germany",
+      "city": "Berlin",
+      "online": false,
+      "organizers": [
+        "Better Change Berlin"
+      ],
+      "skipped": "venue in Germany (Russ adds these himself)",
+      "question": null
+    },
+    "19732": {
+      "title": "Flight Level 2 Design (FL2D)",
+      "url": "https://www.betterchange-consulting.com/event/flight-level-2-design-fl2d-7/",
+      "start": "2027-04-27",
+      "end": "2027-04-28",
+      "cost": "€2190",
+      "registrationUrl": "https://www.betterchange-consulting.de/training/flight-levels/flight-level-2-design-(fl2d)",
+      "modified": "2026-09-28 09:40:56",
+      "country": "Germany",
+      "city": "Berlin",
+      "online": false,
+      "organizers": [
+        "Better Change Berlin"
+      ],
+      "skipped": "venue in Germany (Russ adds these himself)",
+      "question": null
+    },
+    "19734": {
+      "title": "Flight Levels System Architecture (FLSA)",
+      "url": "https://www.betterchange-consulting.com/event/flight-levels-system-architecture-flsa-5/",
+      "start": "2027-02-23",
+      "end": "2027-02-24",
+      "cost": "€2190",
+      "registrationUrl": "https://www.betterchange-consulting.de/training/flight-levels/flight-levels-system-architecture-(flsa)",
+      "modified": "2026-09-28 09:41:34",
+      "country": "Germany",
+      "city": "Berlin",
+      "online": false,
+      "organizers": [
+        "Better Change Berlin"
+      ],
+      "skipped": "venue in Germany (Russ adds these himself)",
+      "question": null
+    },
+    "19736": {
+      "title": "Flight Levels System Architecture (FLSA)",
+      "url": "https://www.betterchange-consulting.com/event/flight-levels-system-architecture-flsa-6/",
+      "start": "2027-05-25",
+      "end": "2027-05-26",
+      "cost": "€2190",
+      "registrationUrl": "https://www.betterchange-consulting.de/training/flight-levels/flight-levels-system-architecture-(flsa)",
+      "modified": "2026-09-28 09:42:05",
+      "country": "Germany",
+      "city": "Berlin",
+      "online": false,
+      "organizers": [
+        "Better Change Berlin"
+      ],
+      "skipped": "venue in Germany (Russ adds these himself)",
+      "question": null
+    },
+    "19738": {
+      "title": "Flight Level 3 Design (FL3D)",
+      "url": "https://www.betterchange-consulting.com/event/flight-level-3-design-fl3d-5/",
+      "start": "2027-04-06",
+      "end": "2027-04-07",
+      "cost": "€2190",
+      "registrationUrl": "https://www.betterchange-consulting.de/training/flight-levels/flight-level-3-design-(fl3d)",
+      "modified": "2026-09-28 09:42:40",
+      "country": "Germany",
+      "city": "Berlin",
+      "online": false,
+      "organizers": [
+        "Better Change Berlin"
+      ],
+      "skipped": "venue in Germany (Russ adds these himself)",
+      "question": null
+    },
+    "19740": {
+      "title": "Flight Level 3 Design (FL3D)",
+      "url": "https://www.betterchange-consulting.com/event/flight-level-3-design-fl3d-6/",
+      "start": "2027-06-29",
+      "end": "2027-06-30",
+      "cost": "€2190",
+      "registrationUrl": "https://www.betterchange-consulting.de/training/flight-levels/flight-level-3-design-(fl3d)",
+      "modified": "2026-09-28 09:43:12",
+      "country": "Germany",
+      "city": "Berlin",
+      "online": false,
+      "organizers": [
+        "Better Change Berlin"
+      ],
+      "skipped": "venue in Germany (Russ adds these himself)",
+      "question": null
+    }
+  },
+  "recordedAt": "2026-10-01T21:02:53.403Z"
 }

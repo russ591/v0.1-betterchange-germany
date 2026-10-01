@@ -25,7 +25,11 @@
 //   npm run sync:check -- --apply-source-ids
 //                                           write sourceId/sourceUrl into existing
 //                                           session files that match a .com event
-//                                           (one-time, after --baseline)
+//                                           (same registration URL, or same course
+//                                           and start date); works in any mode
+//   npm run sync:check -- --forget 123,456  drop these post/event ids from
+//                                           sync/state.json first, so they count as
+//                                           new again on this and later runs
 //   npm run sync:check -- --json            machine-readable output
 //
 // Snapshot source (default): GET $COM_SNAPSHOT_URL (defaults to the .de
@@ -60,6 +64,9 @@ const SNAPSHOT_MAX_AGE_HOURS = 48;
 const GERMANY = new Set(["germany", "deutschland", "de"]);
 const OWN_TRAINER = /russell\s+hill/i;
 const WEBINAR = /(^|\/)webinar(\/|$)/i;
+// Post types that are people, not articles. Never imported; a new one is
+// listed in the run summary so Russ can update the About page.
+const PROFILE_TYPES = new Set(["fellow"]);
 
 // ---------------------------------------------------------------- args ----
 const args = process.argv.slice(2);
@@ -74,6 +81,7 @@ const USE_API = flag("--api");
 const SAVE_DIR = opt("--save-dir");
 const APPLY_IDS = flag("--apply-source-ids");
 const JSON_OUT = flag("--json");
+const FORGET = (opt("--forget") || "").split(",").map((x) => x.trim()).filter(Boolean);
 
 // --------------------------------------------------------------- fetch ----
 class ChallengeError extends Error {}
@@ -227,8 +235,12 @@ function normaliseEvent(ev) {
     id: String(ev.id),
     title,
     url: ev.url || null,
-    start: (ev.utc_start_date || ev.start_date || "").slice(0, 10),
-    end: (ev.utc_end_date || ev.end_date || "").slice(0, 10),
+    // The site-local date, not the UTC one: .com stores events at midnight
+    // Europe/Berlin, so utc_start_date is 22:00 the evening before and would
+    // shift every event back a day (and every synced session file's name
+    // with it).
+    start: (ev.start_date || ev.utc_start_date || "").slice(0, 10),
+    end: (ev.end_date || ev.utc_end_date || "").slice(0, 10),
     cost: ev.cost || (ev.cost_details && ev.cost_details.values && ev.cost_details.values.join("-")) || null,
     registrationUrl: ev.website || null,
     modified: ev.modified_utc || ev.modified || null,
@@ -253,6 +265,36 @@ function classifyEvent(e) {
   }
   if (!e.country) return { kind: "question", reason: "no venue country on .com; cannot tell whether it is in Germany" };
   return { kind: "sync" };
+}
+
+const codeKey = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+
+// Which .de course an event belongs to: the certification code in brackets in
+// its title ("Certified Scrum Master (CSM)", "Kanban System Design (KMP 1)"),
+// or, for courses without a code ("AI for Product Owners"), the course name
+// itself. null when there is no such course page here; the sync never
+// creates one, so that event becomes a question.
+function courseForEvent(e, courses) {
+  const title = String(e.title || "");
+  const bracketed = [...title.matchAll(/\(([^()]+)\)/g)].map((m) => codeKey(m[1].replace(/[®™]/g, "")));
+  for (const code of bracketed) {
+    if (!code) continue;
+    const hit = courses.find((c) => [c.code, c.certification].filter(Boolean).some((x) => codeKey(x) === code));
+    if (hit) return hit.id;
+  }
+  const bare = normTitle(title.replace(/\([^()]*\)/g, ""));
+  const byName = courses.find((c) => bare && normTitle(String(c.name || "").replace(/\([^()]*\)/g, "")) === bare);
+  return byName ? byName.id : null;
+}
+
+// classifyEvent plus the course check: an event the sync would otherwise
+// import but has no course page here is a question, never a new page.
+function decideEvent(e, courses) {
+  const cls = classifyEvent(e);
+  if (cls.kind !== "sync") return cls;
+  const course = courseForEvent(e, courses);
+  if (!course) return { kind: "question", reason: "no matching .de course page for this event (the sync never creates course pages)" };
+  return { kind: "sync", course };
 }
 
 const EVENT_FINGERPRINT = ["start", "end", "cost", "registrationUrl", "title", "country", "city"];
@@ -311,25 +353,31 @@ function postExistsLocally(post, articles) {
   return articles.some((a) => a.slug === post.slug || a.urlSlug === post.slug || normTitle(a.title) === t || a.sourceId === post.id);
 }
 
-// Matches an existing session to a .com event by course code in the event
-// title and the same start date. Reported, and only written with
-// --apply-source-ids.
+// Matches an existing session to a .com event by the same registration URL
+// (the session's externalUrl against the event's "website" field), or by the
+// same course and the same start date. Reported, and only written with
+// --apply-source-ids. One candidate is a match; more than one is ambiguous
+// and left alone.
+const normUrl = (u) => String(u || "").trim().toLowerCase().replace(/^https?:\/\/(www\.)?/, "").replace(/\/+$/, "").replace(/\/+\?/, "?");
+
 function matchSessionsToEvents(sessions, events, courses) {
-  const byId = Object.fromEntries(courses.map((c) => [c.id, c]));
   const matches = [];
-  // Only events the sync would own. A German or Russell's-own event must
+  // Only events the sync could own. A German or Russell's-own event must
   // never be linked to one of Russ's sessions, or the sync would start
   // editing it.
-  events = events.filter((e) => classifyEvent(e).kind === "sync");
+  events = events.filter((e) => classifyEvent(e).kind !== "skip");
   for (const s of sessions) {
     if (s.sourceId || !s.date) continue;
-    const course = byId[s.course];
-    if (!course) continue;
-    const codes = [course.code, course.certification].filter(Boolean).map((c) => c.toLowerCase().replace(/[^a-z0-9]/g, ""));
     const day = String(s.date).slice(0, 10);
-    const candidates = events.filter((e) => e.start === day && codes.some((c) => e.title.toLowerCase().replace(/[^a-z0-9]/g, "").includes(c)));
-    if (candidates.length === 1) matches.push({ session: s, event: candidates[0] });
-    else if (candidates.length > 1) matches.push({ session: s, ambiguous: candidates.map((c) => c.id) });
+    const url = normUrl(s.externalUrl);
+    const candidates = [];
+    for (const e of events) {
+      const byUrl = Boolean(url) && normUrl(e.registrationUrl) === url;
+      const byDate = e.start === day && courseForEvent(e, courses) === s.course;
+      if (byUrl || byDate) candidates.push({ event: e, basis: byUrl && byDate ? "url+date" : byUrl ? "url" : "date" });
+    }
+    if (candidates.length === 1) matches.push({ session: s, event: candidates[0].event, basis: candidates[0].basis });
+    else if (candidates.length > 1) matches.push({ session: s, ambiguous: candidates.map((c) => `${c.event.id} (${c.basis})`) });
   }
   return matches;
 }
@@ -393,11 +441,18 @@ async function main() {
   const resourcesType = Object.keys(raw.types || {}).find((k) => /resource/i.test(k)) || null;
 
   const state = loadState();
+  if (FORGET.length) {
+    for (const id of FORGET) {
+      delete state.posts[id];
+      delete state.events[id];
+    }
+    saveState(state);
+  }
   const articles = localArticles();
   const sessions = localSessions();
   const courses = localCourses();
 
-  const report = { mode: MODE, generatedAt: new Date().toISOString(), source: FROM_DIR ? "dir" : USE_API ? "api" : "snapshot", snapshot: raw.snapshot || null, postTypes: publicTypes, resourcesType, newPosts: [], skippedWebinars: 0, newEvents: [], changedEvents: [], removedEvents: [], skippedEvents: [], questions: [], possiblyMissingOnDe: [], sessionMatches: [], counts: {} };
+  const report = { mode: MODE, generatedAt: new Date().toISOString(), source: FROM_DIR ? "dir" : USE_API ? "api" : "snapshot", snapshot: raw.snapshot || null, postTypes: publicTypes, resourcesType, newPosts: [], newFellows: [], skippedWebinars: 0, newEvents: [], changedEvents: [], removedEvents: [], skippedEvents: [], questions: [], possiblyMissingOnDe: [], sessionMatches: [], forgotten: FORGET, counts: {} };
 
   // A stale snapshot means the .com snippet has stopped pushing; say so as a
   // question rather than quietly diffing old data.
@@ -414,14 +469,16 @@ async function main() {
       report.skippedWebinars++;
       continue;
     }
-    if (!state.posts[p.id]) report.newPosts.push(p);
+    if (state.posts[p.id]) continue;
+    if (PROFILE_TYPES.has(p.type)) report.newFellows.push(p);
+    else report.newPosts.push(p);
   }
 
   // ---- events
   const seenNow = new Set();
   for (const e of events) {
     seenNow.add(e.id);
-    const cls = classifyEvent(e);
+    const cls = decideEvent(e, courses);
     if (cls.kind === "skip") {
       report.skippedEvents.push({ id: e.id, title: e.title, start: e.start, reason: cls.reason });
       continue;
@@ -434,7 +491,7 @@ async function main() {
       continue;
     }
     const prev = state.events[e.id];
-    if (!prev) report.newEvents.push(e);
+    if (!prev) report.newEvents.push({ ...e, course: cls.course });
     else {
       const ch = eventChanges(prev, e);
       if (ch.length) report.changedEvents.push({ ...e, changes: ch });
@@ -448,7 +505,7 @@ async function main() {
   if (MODE === "baseline") {
     const cutoff = Date.now() - 183 * 86_400_000;
     for (const p of posts) {
-      if (p.webinar) continue;
+      if (p.webinar || PROFILE_TYPES.has(p.type)) continue;
       if (new Date(p.date).getTime() < cutoff) continue;
       if (!postExistsLocally(p, articles)) report.possiblyMissingOnDe.push({ id: p.id, title: p.title, date: p.date.slice(0, 10), link: p.link });
     }
@@ -458,6 +515,7 @@ async function main() {
       session: m.session.file,
       eventId: m.event ? m.event.id : null,
       eventTitle: m.event ? m.event.title : null,
+      basis: m.basis || null,
       ambiguous: m.ambiguous || null,
     }));
     if (APPLY_IDS) report.counts.sourceIdsWritten = applySourceIds(matchSessionsToEvents(sessions, events, courses));
@@ -471,7 +529,7 @@ async function main() {
     for (const p of posts) next.posts[p.id] = { type: p.type, slug: p.slug, link: p.link, date: p.date, modified: p.modified, title: p.title, webinar: p.webinar };
     next.events = {};
     for (const e of events) {
-      const cls = classifyEvent(e);
+      const cls = decideEvent(e, courses);
       next.events[e.id] = { title: e.title, url: e.url, start: e.start, end: e.end, cost: e.cost, registrationUrl: e.registrationUrl, modified: e.modified, country: e.country, city: e.city, online: e.online, organizers: e.organizers, skipped: cls.kind === "skip" ? cls.reason : null, question: cls.kind === "question" ? cls.reason : null };
     }
     saveState(next);
@@ -483,41 +541,55 @@ async function main() {
     webinarsOnCom: posts.filter((p) => p.webinar).length,
     eventsOnCom: events.length,
     eventsGermanOrOwn: report.skippedEvents.length,
-    eventsUndecided: events.filter((e) => classifyEvent(e).kind === "question").length,
-    eventsSyncable: events.filter((e) => classifyEvent(e).kind === "sync").length,
+    eventsUndecided: events.filter((e) => decideEvent(e, courses).kind === "question").length,
+    eventsSyncable: events.filter((e) => decideEvent(e, courses).kind === "sync").length,
+    fellowsOnCom: posts.filter((p) => PROFILE_TYPES.has(p.type)).length,
     postsInState: Object.keys(loadState().posts).length,
     eventsInState: Object.keys(loadState().events).length,
     localSessionsWithSourceId: localSessions().filter((s) => s.sourceId).length,
     localExternalSessions: sessions.filter((s) => s.isExternal === "true").length,
   };
 
-  const nothing = MODE === "check" && !report.newPosts.length && !report.newEvents.length && !report.changedEvents.length && !report.removedEvents.length && !report.questions.length;
+  const nothingToSync = !report.newPosts.length && !report.newEvents.length && !report.changedEvents.length && !report.removedEvents.length && !report.questions.length;
+  const nothing = MODE === "check" && nothingToSync && !report.newFellows.length;
 
   if (JSON_OUT) {
-    console.log(JSON.stringify({ ...report, nothingToDo: nothing }, null, 2));
+    console.log(JSON.stringify({ ...report, nothingToSync: MODE === "check" && nothingToSync, nothingToDo: nothing }, null, 2));
     return;
   }
 
   const c = report.counts;
   console.log(`sync:check (${MODE}) at ${report.generatedAt}, source: ${report.source}${report.snapshot && report.snapshot.generatedAt ? ` (snapshot generated ${report.snapshot.generatedAt}, received ${report.snapshot.receivedAt || "?"}, trigger ${report.snapshot.trigger || "?"})` : ""}`);
-  console.log(`  .com: ${c.postsOnCom} posts (${c.webinarsOnCom} webinar announcements, ignored), ${c.eventsOnCom} events (${c.eventsGermanOrOwn} German or Russell's own, skipped; ${c.eventsSyncable} syncable; ${c.eventsUndecided} undecided)`);
+  console.log(`  .com: ${c.postsOnCom} posts (${c.webinarsOnCom} webinar announcements, ignored; ${c.fellowsOnCom} Fellow profiles, information only), ${c.eventsOnCom} events (${c.eventsGermanOrOwn} German or Russell's own, skipped; ${c.eventsSyncable} syncable; ${c.eventsUndecided} undecided)`);
   console.log(`  post types on .com: ${report.postTypes.join(", ") || "(unknown)"}; separate "resources" type: ${report.resourcesType || "none found"}`);
   console.log(`  state: ${c.postsInState} posts, ${c.eventsInState} events recorded; ${c.localSessionsWithSourceId} local sessions carry a sourceId (${c.localExternalSessions} external sessions in total)`);
+  if (FORGET.length) console.log(`  forgot ${FORGET.length} id(s) from sync/state.json first: ${FORGET.join(", ")}`);
   if (MODE === "check") {
     if (nothing) {
       console.log("\nNothing to do.");
       return;
     }
+    if (nothingToSync) console.log("\nNothing to sync; information only:");
     const section = (title, items, fmt) => {
       if (!items.length) return;
       console.log(`\n${title} (${items.length})`);
       for (const i of items) console.log(`  - ${fmt(i)}`);
     };
-    section("New posts (non-webinar)", report.newPosts, (p) => `#${p.id} ${p.title} [${p.date.slice(0, 10)}${p.author ? `, ${p.author}` : ""}] ${p.link}`);
-    section("New non-German events", report.newEvents, (e) => `#${e.id} ${e.title} | ${e.start}${e.end && e.end !== e.start ? ` to ${e.end}` : ""} | ${[e.city, e.country].filter(Boolean).join(", ") || (e.online ? "Online" : "?")} | ${e.cost || "no cost given"} | trainer: ${e.organizers.join(", ") || "?"} | ${e.registrationUrl || e.url}`);
+    section("New posts (non-webinar; resources count as posts)", report.newPosts, (p) => `#${p.id} ${p.title} [${p.date.slice(0, 10)}${p.author ? `, ${p.author}` : ""}${p.type !== "post" ? `, type ${p.type}` : ""}] ${p.link}`);
+    section("New non-German events", report.newEvents, (e) => `#${e.id} ${e.title} | course: ${e.course} | ${e.start}${e.end && e.end !== e.start ? ` to ${e.end}` : ""} | ${[e.city, e.country].filter(Boolean).join(", ") || (e.online ? "Online" : "?")} | ${e.cost || "no cost given"} | trainer: ${e.organizers.join(", ") || "?"} | ${e.registrationUrl || e.url}`);
     section("Changed non-German events", report.changedEvents, (e) => `#${e.id} ${e.title}: ${e.changes.map((ch) => `${ch.field} ${ch.from} -> ${ch.to}`).join("; ")}`);
     section("Removed or cancelled non-German events", report.removedEvents, (e) => `#${e.id ?? "?"} ${e.title} | ${e.start}`);
     section("Questions for Russ", report.questions, (q) => `#${q.id} ${q.title} (${q.start}): ${q.reason} ${q.url || ""}`);
+    section("New Fellows on .com (information only, never imported; update the About page by hand)", report.newFellows, (p) => `${p.title} [${p.date.slice(0, 10)}] ${p.link}`);
+    if (APPLY_IDS) {
+      console.log(`\nExisting sessions matched to .com events (${report.sessionMatches.filter((m) => m.eventId).length} matched, ${report.sessionMatches.filter((m) => m.ambiguous).length} ambiguous), ${c.sourceIdsWritten} sourceIds written:`);
+      for (const m of report.sessionMatches) console.log(`  - ${m.session} -> ${m.eventId ? `#${m.eventId} ${m.eventTitle} (matched by ${m.basis})` : `ambiguous: ${m.ambiguous.join(", ")}`}`);
+      const unmatched = sessions.filter((s) => s.isExternal === "true" && !s.sourceId && !report.sessionMatches.some((m) => m.session === s.file));
+      if (unmatched.length) {
+        console.log(`\nExternal sessions with no .com event in the snapshot (${unmatched.length}; check whether they still run):`);
+        for (const s of unmatched) console.log(`  - ${s.file} | ${s.course} | ${String(s.date).slice(0, 10)} | ${s.location || "?"} | ${s.externalUrl || ""}`);
+      }
+    }
   } else {
     console.log(`\nState ${MODE === "baseline" ? "baselined" : "recorded"} in sync/state.json.`);
     if (report.possiblyMissingOnDe.length) {
@@ -526,7 +598,7 @@ async function main() {
     } else if (MODE === "baseline") console.log("\nNo recent non-webinar .com posts look missing on .de.");
     if (report.sessionMatches.length) {
       console.log(`\nExisting sessions matched to .com events (${report.sessionMatches.filter((m) => m.eventId).length} matched, ${report.sessionMatches.filter((m) => m.ambiguous).length} ambiguous)${APPLY_IDS ? `, ${c.sourceIdsWritten} sourceIds written` : ", not written (add --apply-source-ids)"}:`);
-      for (const m of report.sessionMatches) console.log(`  - ${m.session} -> ${m.eventId ? `#${m.eventId} ${m.eventTitle}` : `ambiguous: ${m.ambiguous.join(", ")}`}`);
+      for (const m of report.sessionMatches) console.log(`  - ${m.session} -> ${m.eventId ? `#${m.eventId} ${m.eventTitle} (matched by ${m.basis})` : `ambiguous: ${m.ambiguous.join(", ")}`}`);
     }
     if (report.questions.length) {
       console.log(`\nEvents that need a decision before they can ever sync (${report.questions.length}):`);
