@@ -156,8 +156,15 @@ function bc_sync_trim_post(array $p, string $type): array
         'author'       => $p['author'] ?? null,
         'lang'         => $p['lang'] ?? ($p['language'] ?? null),
         'hasContent'   => (bool) $recent,
+        // Word count of the full text for every post, so the .de sync can
+        // tell a webinar announcement from a write-up even for posts whose
+        // text is outside the content window.
+        'wordCount'    => str_word_count(wp_strip_all_tags((string) ($p['content']['rendered'] ?? get_post_field('post_content', (int) ($p['id'] ?? 0))))),
         '_embedded'    => [
-            'author'  => $author ? [['name' => $author['name'] ?? null, 'slug' => $author['slug'] ?? null, 'link' => $author['link'] ?? null]] : [],
+            // The embedded author object comes back without a name on this
+            // site (internal REST requests from cron carry no user), so the
+            // display name is looked up directly.
+            'author'  => [['name' => ($author['name'] ?? null) ?: (get_the_author_meta('display_name', (int) ($p['author'] ?? 0)) ?: null), 'slug' => $author['slug'] ?? null, 'link' => $author['link'] ?? null]],
             'wp:term' => bc_sync_trim_terms($embedded),
             'wp:featuredmedia' => $media ? [['source_url' => $media['source_url'] ?? null, 'alt_text' => $media['alt_text'] ?? null]] : [],
         ],

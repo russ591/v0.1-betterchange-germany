@@ -68,7 +68,7 @@ If it says FAILED:
 
 When `docs/com-snapshot-snippet.php` changes in the .de repository, the copy on .com has to be replaced by hand: .com WordPress admin, Snippets, open "Better Change: push snapshot to .de", replace the whole code box with the new file (again without a second `<?php` line), save, then Dashboard, "Push now", and check the notice says OK. The .de sync only sees the new data once that push has landed.
 
-Changes so far: 2026-10-02, the event's "Trainer" additional field is forwarded (as `trainer`, plus the raw `custom_fields`, which also carries "2nd Trainer"), because the organizer on .com is usually a company name and the .de sync needs the person. Later the same day, Elementor template types were excluded from what the snippet sends; this one is optional to install, since the .de script ignores them anyway.
+Changes so far: 2026-10-02, the event's "Trainer" additional field is forwarded (as `trainer`, plus the raw `custom_fields`, which also carries "2nd Trainer"), because the organizer on .com is usually a company name and the .de sync needs the person. Later the same day, Elementor template types were excluded from what the snippet sends, every post got a `wordCount` (so the .de sync can tell a webinar announcement from a write-up even for posts whose text is outside the 60-day content window), and the author's display name is looked up directly, because the embedded author object came back without a name. Install this version: without it, every imported article is an author question.
 
 ## What the snippet sends
 

@@ -31,6 +31,9 @@
 //   npm run sync:check -- --forget 123,456  drop these post/event ids from
 //                                           sync/state.json first, so they count as
 //                                           new again on this and later runs
+//   npm run sync:check -- --webinars        list every Webinar-category post with
+//                                           how the announcement/write-up rule
+//                                           classifies it and whether .de has it
 //   npm run sync:check -- --json            machine-readable output
 //
 // Snapshot source (default): GET $COM_SNAPSHOT_URL (defaults to the .de
@@ -67,6 +70,18 @@ const SNAPSHOT_MAX_AGE_HOURS = 48;
 const GERMANY = new Set(["germany", "deutschland", "de"]);
 const OWN_TRAINER = /russell\s+hill/i;
 const WEBINAR = /(^|\/)webinar(\/|$)/i;
+// A webinar post is skipped only when it is an announcement or sign-up page
+// for a session: a date later than the post's own date, a registration
+// link, and little text beyond that. Write-ups and recaps are articles.
+const WEBINAR_WRITEUP_MIN_WORDS = 400;
+const REGISTRATION = /\b(register(?:ed|ing)?|registration|sign[ -]?up|save your (?:seat|spot)|reserve your (?:seat|spot|place)|book your (?:seat|spot|place)|secure your (?:seat|spot|place)|join us live|tickets?)\b/i;
+const REGISTRATION_HOSTS = /(eventbrite|zoom\.us\/(?:webinar|meeting)|lu\.ma|hubspot|typeform|forms\.gle|ticket)/i;
+const MONTHS = "january|february|march|april|may|june|july|august|september|october|november|december";
+const DATE_PATTERNS = [
+  new RegExp(`\\b(\\d{1,2})(?:st|nd|rd|th)?\\s+(${MONTHS})\\.?,?\\s+(\\d{4})\\b`, "gi"),
+  new RegExp(`\\b(${MONTHS})\\s+(\\d{1,2})(?:st|nd|rd|th)?,?\\s+(\\d{4})\\b`, "gi"),
+  /\b(\d{4})-(\d{2})-(\d{2})\b/g,
+];
 // Post types that are people, not articles. Never imported; a new one is
 // listed in the run summary so Russ can update the About page.
 const PROFILE_TYPES = new Set(["fellow"]);
@@ -88,6 +103,7 @@ const USE_API = flag("--api");
 const SAVE_DIR = opt("--save-dir");
 const APPLY_IDS = flag("--apply-source-ids");
 const JSON_OUT = flag("--json");
+const WEBINARS = flag("--webinars");
 const FORGET = (opt("--forget") || "").split(",").map((x) => x.trim()).filter(Boolean);
 
 // --------------------------------------------------------------- fetch ----
@@ -203,12 +219,41 @@ function postCategories(post) {
   return cats;
 }
 
+// The first date in a text that lies after `after` (the post's own date),
+// as YYYY-MM-DD, or null. Announcements name the session's date; recaps
+// name past ones, if any.
+function firstDateAfter(text, after) {
+  const afterMs = new Date(after).getTime();
+  const monthIndex = (m) => MONTHS.split("|").indexOf(String(m).toLowerCase());
+  let best = null;
+  for (const [i, re] of DATE_PATTERNS.entries()) {
+    re.lastIndex = 0;
+    for (const m of text.matchAll(re)) {
+      let y, mo, d;
+      if (i === 0) [d, mo, y] = [Number(m[1]), monthIndex(m[2]), Number(m[3])];
+      else if (i === 1) [mo, d, y] = [monthIndex(m[1]), Number(m[2]), Number(m[3])];
+      else [y, mo, d] = [Number(m[1]), Number(m[2]) - 1, Number(m[3])];
+      if (mo < 0 || !d || !y) continue;
+      const t = Date.UTC(y, mo, d);
+      if (Number.isFinite(afterMs) && t > afterMs + 86_400_000 && (best === null || t < best)) best = t;
+    }
+  }
+  return best === null ? null : new Date(best).toISOString().slice(0, 10);
+}
+
 function normalisePost(post, typeSlug = "post") {
   const cats = postCategories(post);
   const link = post.link || "";
   const isWebinar = WEBINAR.test(new URL(link, BASE).pathname) || cats.some((c) => /webinar/i.test(c.slug));
   const author = post._embedded && post._embedded.author && post._embedded.author[0];
+  const html = post.content && typeof post.content.rendered === "string" ? post.content.rendered : null;
+  const text = html === null ? null : stripHtml(html);
+  const words = text === null ? (Number.isFinite(post.wordCount) ? post.wordCount : null) : text ? text.split(/\s+/).length : 0;
   return {
+    words,
+    hasContent: html !== null,
+    registration: text === null ? null : REGISTRATION.test(text) || REGISTRATION_HOSTS.test(html),
+    upcomingDate: text === null ? null : firstDateAfter(text, post.date_gmt || post.date),
     id: String(post.id),
     type: typeSlug,
     title: stripHtml(post.title && post.title.rendered),
@@ -221,6 +266,22 @@ function normalisePost(post, typeSlug = "post") {
     lang: post.lang || post.language || null,
     webinar: isWebinar,
   };
+}
+
+// Announcement, write-up or unsure, for a webinar-category post. A decision
+// (`webinar: "writeup"` or `"announcement"` in sync/decisions.json) settles
+// it; otherwise the content decides, and anything in between is a question.
+function classifyWebinar(p, decision) {
+  if (!p.webinar) return null;
+  if (decision.webinar === "writeup" || decision.webinar === "announcement") return { kind: decision.webinar, reason: "by decision" };
+  if (p.words === null) return { kind: "unsure", reason: "its text is not in the snapshot (older than the content window), so announcement and write-up cannot be told apart" };
+  const signals = [];
+  if (p.upcomingDate) signals.push(`names a later date (${p.upcomingDate})`);
+  if (p.registration) signals.push("has registration wording or a sign-up link");
+  const short = p.words < WEBINAR_WRITEUP_MIN_WORDS;
+  if (short && signals.length) return { kind: "announcement", reason: `${p.words} words, ${signals.join(", ")}` };
+  if (!short && !signals.length) return { kind: "writeup", reason: `${p.words} words, no later date, no sign-up link` };
+  return { kind: "unsure", reason: `${p.words} words${signals.length ? ", " + signals.join(", ") : ", no later date and no sign-up link"}` };
 }
 
 function venueOf(ev) {
@@ -587,7 +648,7 @@ async function main() {
   const sessionBySourceId = Object.fromEntries(sessions.filter((x) => x.sourceId).map((x) => [x.sourceId, x]));
   const decide = (e) => decideEvent(e, courses, profiles, decisions, importedIds);
 
-  const report = { mode: MODE, generatedAt: new Date().toISOString(), source: FROM_DIR ? "dir" : USE_API ? "api" : "snapshot", snapshot: raw.snapshot || null, postTypes: publicTypes, resourcesType, newPosts: [], newFellows: [], skippedWebinars: 0, skippedPostsByDecision: 0, newEvents: [], changedEvents: [], removedEvents: [], skippedEvents: [], questions: [], possiblyMissingOnDe: [], sessionMatches: [], forgotten: FORGET, notRecorded: [], trainerMismatches: [], counts: {} };
+  const report = { mode: MODE, generatedAt: new Date().toISOString(), source: FROM_DIR ? "dir" : USE_API ? "api" : "snapshot", snapshot: raw.snapshot || null, postTypes: publicTypes, resourcesType, newPosts: [], newFellows: [], skippedWebinars: 0, skippedPostsByDecision: 0, webinarWriteups: 0, newEvents: [], changedEvents: [], removedEvents: [], skippedEvents: [], questions: [], possiblyMissingOnDe: [], sessionMatches: [], forgotten: FORGET, notRecorded: [], trainerMismatches: [], counts: {} };
 
   // A stale snapshot means the .com snippet has stopped pushing; say so as a
   // question rather than quietly diffing old data.
@@ -600,18 +661,26 @@ async function main() {
 
   // ---- posts
   for (const p of posts) {
-    if (p.webinar) {
+    const d = decisions.posts[p.id] || {};
+    const web = classifyWebinar(p, d);
+    if (web && web.kind === "announcement") {
       report.skippedWebinars++;
       continue;
     }
-    if (state.posts[p.id]) continue;
-    const d = decisions.posts[p.id] || {};
+    const prev = state.posts[p.id];
+    if (prev && !prev.question) continue;
     if (d.ignore) {
       report.skippedPostsByDecision++;
       continue;
     }
+    if (web && web.kind === "unsure") {
+      // Raised once; again only when the post itself changes.
+      if (!prev || prev.modified !== p.modified) report.questions.push({ id: p.id, title: p.title, start: p.date.slice(0, 10), url: p.link, reason: `webinar post: cannot tell an announcement from a write-up (${web.reason}); answer in sync/decisions.json with webinar: "writeup" or "announcement", or ignore` });
+      continue;
+    }
+    if (web) report.webinarWriteups++;
     if (PROFILE_TYPES.has(p.type)) report.newFellows.push(p);
-    else report.newPosts.push({ ...p, authorDecision: d.author || null });
+    else report.newPosts.push({ ...p, authorDecision: d.author || null, webinarNote: web ? `webinar write-up (${web.reason})` : null });
   }
 
   // ---- events
@@ -657,7 +726,8 @@ async function main() {
   if (MODE === "baseline") {
     const cutoff = Date.now() - 183 * 86_400_000;
     for (const p of posts) {
-      if (p.webinar || PROFILE_TYPES.has(p.type)) continue;
+      const web = classifyWebinar(p, decisions.posts[p.id] || {});
+      if ((web && web.kind !== "writeup") || PROFILE_TYPES.has(p.type)) continue;
       if (new Date(p.date).getTime() < cutoff) continue;
       if (!postExistsLocally(p, articles)) report.possiblyMissingOnDe.push({ id: p.id, title: p.title, date: p.date.slice(0, 10), link: p.link });
     }
@@ -686,12 +756,16 @@ async function main() {
     const sessionIds = new Set(localSessions().map((x) => x.sourceId).filter(Boolean));
     next.posts = {};
     for (const p of posts) {
-      const keep = state.posts[p.id] || p.webinar || PROFILE_TYPES.has(p.type) || (decisions.posts[p.id] || {}).ignore || articleIds.has(p.id);
+      const d = decisions.posts[p.id] || {};
+      const web = classifyWebinar(p, d);
+      const prev = state.posts[p.id];
+      const question = web && web.kind === "unsure" ? web.reason : null;
+      const keep = (prev && !prev.question) || question || (web && web.kind === "announcement") || PROFILE_TYPES.has(p.type) || d.ignore || articleIds.has(p.id);
       if (!keep) {
         report.notRecorded.push({ kind: "post", id: p.id, title: p.title });
         continue;
       }
-      next.posts[p.id] = { type: p.type, slug: p.slug, link: p.link, date: p.date, modified: p.modified, title: p.title, webinar: p.webinar };
+      next.posts[p.id] = { type: p.type, slug: p.slug, link: p.link, date: p.date, modified: p.modified, title: p.title, webinar: p.webinar, question };
     }
     next.events = {};
     for (const e of events) {
@@ -711,6 +785,7 @@ async function main() {
     ...report.counts,
     postsOnCom: posts.length,
     webinarsOnCom: posts.filter((p) => p.webinar).length,
+    webinarAnnouncements: report.skippedWebinars,
     eventsOnCom: events.length,
     eventsGermanOrOwn: report.skippedEvents.length,
     eventsUndecided: events.filter((e) => decide(e).kind === "question").length,
@@ -723,6 +798,16 @@ async function main() {
     localExternalSessions: sessions.filter((s) => s.isExternal === "true").length,
   };
 
+  if (WEBINARS) {
+    console.log(`Webinar-category posts on .com (${posts.filter((p) => p.webinar).length}); rule: announcement = under ${WEBINAR_WRITEUP_MIN_WORDS} words with a later date or sign-up wording, write-up = ${WEBINAR_WRITEUP_MIN_WORDS}+ words without either, anything else is a question`);
+    for (const p of posts.filter((p) => p.webinar)) {
+      const w = classifyWebinar(p, decisions.posts[p.id] || {});
+      const local = articles.find((a) => a.sourceId === p.id || a.slug === p.slug || a.urlSlug === p.slug || normTitle(a.title) === normTitle(p.title) || normTitle(a.title) === normTitle(p.title.replace(/^webinar:\s*/i, "")));
+      console.log(`  - #${p.id} | ${p.date.slice(0, 10)} | ${p.title} | ${p.words === null ? "text not in snapshot" : `${p.words} words`} | sign-up: ${p.registration === null ? "?" : p.registration ? "yes" : "no"} | later date: ${p.upcomingDate || "none"} | ${w.kind} (${w.reason}) | on .de: ${local ? local.file : "no"} | in state: ${state.posts[p.id] ? "yes" : "no"} | ${p.link}`);
+    }
+    return;
+  }
+
   const nothingToSync = !report.newPosts.length && !report.newEvents.length && !report.changedEvents.length && !report.removedEvents.length && !report.questions.length && !report.trainerMismatches.length;
   const nothing = MODE === "check" && nothingToSync && !report.newFellows.length;
 
@@ -733,7 +818,7 @@ async function main() {
 
   const c = report.counts;
   console.log(`sync:check (${MODE}) at ${report.generatedAt}, source: ${report.source}${report.snapshot && report.snapshot.generatedAt ? ` (snapshot generated ${report.snapshot.generatedAt}, received ${report.snapshot.receivedAt || "?"}, trigger ${report.snapshot.trigger || "?"})` : ""}`);
-  console.log(`  .com: ${c.postsOnCom} posts (${c.webinarsOnCom} webinar announcements, ignored; ${c.fellowsOnCom} Fellow profiles, information only), ${c.eventsOnCom} events (${c.eventsGermanOrOwn} German or Russell's own, skipped; ${c.eventsSyncable} syncable; ${c.eventsUndecided} undecided)`);
+  console.log(`  .com: ${c.postsOnCom} posts (${c.webinarsOnCom} in the Webinar category, of which ${c.webinarAnnouncements} announcements, ignored; ${c.fellowsOnCom} Fellow profiles, information only), ${c.eventsOnCom} events (${c.eventsGermanOrOwn} German or Russell's own, skipped; ${c.eventsSyncable} syncable; ${c.eventsUndecided} undecided)`);
   console.log(`  post types on .com: ${report.postTypes.join(", ") || "(unknown)"}; separate "resources" type: ${report.resourcesType || "none found"}`);
   console.log(`  state: ${c.postsInState} posts, ${c.eventsInState} events recorded; ${c.localSessionsWithSourceId} local sessions carry a sourceId (${c.localExternalSessions} external sessions in total)`);
   console.log(`  decisions: ${c.decisions} in sync/decisions.json${report.skippedPostsByDecision ? ` (${report.skippedPostsByDecision} post(s) ignored by decision)` : ""}`);
@@ -749,7 +834,7 @@ async function main() {
       console.log(`\n${title} (${items.length})`);
       for (const i of items) console.log(`  - ${fmt(i)}`);
     };
-    section("New posts (non-webinar; resources count as posts)", report.newPosts, (p) => `#${p.id} ${p.title} [${p.date.slice(0, 10)}${p.author ? `, ${p.author}` : ""}${p.type !== "post" ? `, type ${p.type}` : ""}]${p.authorDecision ? ` author by decision: ${p.authorDecision} |` : ""} ${p.link}`);
+    section("New posts (non-webinar; resources count as posts)", report.newPosts, (p) => `#${p.id} ${p.title} [${p.date.slice(0, 10)}${p.author ? `, ${p.author}` : ""}${p.type !== "post" ? `, type ${p.type}` : ""}]${p.webinarNote ? ` ${p.webinarNote} |` : ""}${p.authorDecision ? ` author by decision: ${p.authorDecision} |` : ""} ${p.link}`);
     section("New non-German events", report.newEvents, (e) => `#${e.id} ${e.title} | course: ${e.course} | ${e.start}${e.end && e.end !== e.start ? ` to ${e.end}` : ""} | ${[e.city, e.country].filter(Boolean).join(", ") || (e.online ? "Online" : "?")} | ${e.cost || "no cost given"} | trainer: ${trainerLabel(e.trainer)} | organizer: ${e.organizers.join(", ") || "-"} | ${e.registrationUrl || e.url}`);
     section("Changed non-German events", report.changedEvents, (e) => `#${e.id} ${e.title}: ${e.changes.map((ch) => `${ch.field} ${ch.from} -> ${ch.to}`).join("; ")}`);
     section("Synced sessions whose trainer differs from .com (update the session file)", report.trainerMismatches, (m) => `${m.session}: trainers ${m.local.length ? m.local.join(", ") : "(none)"}${m.localName ? ` / trainerName ${m.localName}` : ""} here, but .com (${m.source}) says ${m.com.join(", ")} | #${m.id} ${m.title} ${m.start}`);
