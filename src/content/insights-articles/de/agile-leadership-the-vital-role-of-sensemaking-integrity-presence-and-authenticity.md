@@ -83,4 +83,6 @@ bodyHtml: |-
 
   <li>Welche Herausforderungen könnten auftreten, und wie ließen sie sich meistern?</li>
   </ul>
+
+  <p><strong>Weiterführende Lektüre:</strong> Diese Ideen hat Bent auch in einem Webinar vorgestellt, <a href="/de/insights/webinar-agile-leadership-the-vital-role-of-sense-making-integrity-and-authenticity">Agile Leadership - The Vital Role of Sense-making, Integrity, and Authenticity</a>; die Aufzeichnung ist dort eingebettet.</p>
 ---

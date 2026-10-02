@@ -70,5 +70,7 @@ bodyHtml: |-
   <li>What challenges might you face, and how can you overcome them?</li>
   </ul>
 
+  <p><strong>Related reading:</strong> I also presented these ideas in a webinar, <a href="/insights/agile-leadership-the-vital-role-of-sense-making-integrity-and-authenticity">Agile Leadership - The Vital Role of Sense-making, Integrity, and Authenticity</a>; the recording is on that page.</p>
+
   <p>Thank you for reading. Feel free to reach out with your thoughts or questions!</p>
 ---
