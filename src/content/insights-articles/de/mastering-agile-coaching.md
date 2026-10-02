@@ -39,7 +39,9 @@ bodyHtml: |-
 
   <h2>Auf dem Weg zum Master Agile Coach</h2>
 
-  <p>Seit über einem Jahrzehnt werden Agile Coaches in professionellen Coaching-Techniken geschult, und im <a href="https://www.betterchange-consulting.com/front/trainings/professional-agile-coaching/">ICAgile Professional Coaching (ICP-ACC)</a>-Training werden die Grundlagen systemischen Coachings sowie einige fortgeschrittene Techniken vermittelt. Am wichtigsten: Das geschieht durch praktisches Üben während des dreitägigen Trainings. Ebenfalls behandelt wird, wann Coaching nicht die Antwort ist, und wie die Balance zwischen reinem Coaching ohne Agenda für die gecoachte Person und Agile Coaching mit einer Agenda für die gecoachte Person gehalten wird.</p>
+  <p>Seit über einem Jahrzehnt werden Agile Coaches in professionellen Coaching-Techniken geschult, und im <a href="/de/training/coaching/icp-acc">ICAgile Agile Coaching Professional (ICP-ACC)</a>-Training werden die Grundlagen systemischen Coachings sowie einige fortgeschrittene Techniken vermittelt. Am wichtigsten: Das geschieht durch praktisches Üben während des dreitägigen Trainings. Ebenfalls behandelt wird, wann Coaching nicht die Antwort ist, und wie die Balance zwischen reinem Coaching ohne Agenda für die gecoachte Person und Agile Coaching mit einer Agenda für die gecoachte Person gehalten wird.</p>
 
   <p>Das Training behandelt auch verschiedene Aspekte, ein professioneller Agile Coach zu sein. Dazu gehören das Verständnis organisatorischer Dynamik, wie sich Teams über die Zeit entwickeln, das Aufsetzen von Coaching-Vereinbarungen, sowie Struktur und Disziplin in der eigenen Agile-Coaching-Praxis.</p>
+
+  <p>Mehr zum Training und die nächsten Termine stehen auf der <a href="/de/training/coaching/icp-acc">ICP-ACC-Kursseite</a>.</p>
 ---
