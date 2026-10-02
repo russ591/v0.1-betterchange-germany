@@ -26,9 +26,9 @@ bodyHtml: |-
 
   <h2>Let us help you become a master Agile coach</h2>
 
-  <p>We have been educating Agile coaches in professional coaching techniques for more than a decade and in our <a href="https://www.betterchange-consulting.com/front/trainings/professional-agile-coaching/">ICAgile Professional Coachning (ICP-ACC)</a> training, we will take you through the fundamentals of Systemic coaching and some of the advanced techniques as well. Most importantly, we will do this by making you practice it throughout this three day training.<br>We will also address when coaching is not the answer and how you balance between being a pure coach with no agenda for the coachee and an Agile coach having an agenda for the coachee.</p>
+  <p>We have been educating Agile coaches in professional coaching techniques for more than a decade and in our <a href="/training/coaching/icagile-agile-coaching-professional-(icp-acc)">ICAgile Agile Coaching Professional (ICP-ACC)</a> training, we will take you through the fundamentals of Systemic coaching and some of the advanced techniques as well. Most importantly, we will do this by making you practice it throughout this three day training.<br>We will also address when coaching is not the answer and how you balance between being a pure coach with no agenda for the coachee and an Agile coach having an agenda for the coachee.</p>
 
   <p>The training will also take you through various aspects of being a professional Agile Coach. These include understanding organisational dynamics, how teams develop over time, setting up coaching agreements as well as getting a structure and disciplin into your Agile coaching practices.</p>
 
-  <p>Read further and register for the training <a href="https://www.betterchange-consulting.com/front/trainings/professional-agile-coaching/">here</a>.</p>
+  <p>Read more about the training and the next dates on the <a href="/training/coaching/icagile-agile-coaching-professional-(icp-acc)">ICP-ACC course page</a>.</p>
 ---
