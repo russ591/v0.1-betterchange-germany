@@ -12,8 +12,9 @@
       "cost": "from DKK 7,000",
       "website": "https://www.betterchange-consulting.dk/products/csm-copenhagen-nov-2026",
       "venue": { "id": 71, "venue": "Better Change Copenhagen", "city": "Copenhagen", "country": "Denmark" },
-      "organizer": [{ "id": 3, "organizer": "Bent Myllerup" }],
-      "categories": [{ "slug": "scrum", "name": "Scrum" }]
+      "organizer": [{ "id": 3, "organizer": "Better Change ApS" }],
+      "categories": [{ "slug": "scrum", "name": "Scrum" }],
+      "trainer": "Bent Myllerup"
     },
     {
       "id": 5102,

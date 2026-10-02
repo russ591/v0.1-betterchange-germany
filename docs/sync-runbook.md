@@ -21,7 +21,7 @@ Both directions are protected by one shared secret:
 - On .com: the `BC_SYNC_SECRET` constant in `wp-config.php`.
 - On Netlify and in the daily run's environment: `COM_SYNC_SECRET`.
 
-`sync:check` treats a snapshot older than 48 hours as a question ("Stale .com snapshot"), so a broken snippet is noticed the same day. Two fallbacks exist for the script: `--api` reads the .com REST API directly, and `--from-dir <dir>` reads responses saved earlier with `--save-dir`.
+`sync:check` treats a snapshot older than 48 hours as a question ("Stale .com snapshot"), so a broken snippet is noticed the same day. When the snippet in this repository changes (it did on 2026-10-02 to forward the Trainer field), Russ pastes the new version into the snippet on .com and pushes once by hand (`docs/com-snapshot-setup.md`, "Updating the snippet"); until then the snapshot lacks the new data. Two fallbacks exist for the script: `--api` reads the .com REST API directly, and `--from-dir <dir>` reads responses saved earlier with `--save-dir`.
 
 ## Before the first run (one-time setup)
 
@@ -58,7 +58,8 @@ Current decisions: the Zagreb CSM (#19677) is run by Nino Zeljko and is imported
 Run `npm run sync:check`. It compares the latest .com snapshot with `sync/state.json` and prints:
 
 - new posts (non-webinar; webinar announcements are never imported; `resources` entries count as posts),
-- new, changed (date, price, registration link) and removed non-German events, each new event with the `course:` id and the `trainer:` it resolves to (and where the trainer came from: a decision, the organizer, or the event description),
+- new, changed (date, price, registration link) and removed non-German events, each new event with the `course:` id and the `trainer:` it resolves to (and where the trainer came from: a decision, the Trainer field, the organizer, or the event description),
+- synced sessions whose `trainers` no longer match the Trainer field on .com,
 - questions (an event whose trainer, venue country or .de course page cannot be determined, or a snapshot older than 48 hours),
 - new Fellow profiles on .com (information only, see "Fellows").
 
@@ -100,9 +101,11 @@ Only non-German events reach this step. The script already skips events whose ve
 
    The filename is the registration URL for internal sessions, so keep the date in it accurate even though external sessions have no internal registration page. `isExternal: true` makes the Register button open the .com registration URL in a new tab, exactly as the existing external sessions do.
 3. Show the date and location and the price as given on .com, in its own currency. Do not convert currencies and do not invent an offer.
-4. Trainer: use what the script printed after `trainer:`. It takes, in this order, Russ's decision for the event, the organizer when it is a coach profile or is mapped under `organizers` in `sync/decisions.json`, and otherwise a "Trainer: Name" line in the event description (the Zagreb events name their trainer there while the organizer is just "Better Change Zagreb"). A resolved profile goes in `trainers`; a name without a profile goes in `trainerName`. When none of these names a person (an organizer like "Better Change Italy" and no trainer in the description), the script has already turned the event into a question: never assign a trainer on precedent.
+4. Trainer: use what the script printed after `trainer:`. It takes, in this order, Russ's decision for the event, the event's **"Trainer" field on .com** (The Events Calendar's additional field, which the snippet forwards as `trainer`; several names separated by commas are all taken), the organizer when it is a coach profile or is mapped under `organizers` in `sync/decisions.json`, and otherwise a "Trainer: Name" line in the event description. Every name is mapped to its `coach-profiles` id (Giuseppe De Simone becomes `giuseppe-de-simone`) and goes in `trainers`. A name with no profile on .de is a question, not a `trainerName` guess; so is an event with none of these. Never assign a trainer on precedent. Russ fills the Trainer field on .com as the normal answer; `trainerName` in `sync/decisions.json` is for the rare trainer who will never get a profile.
 
 **Changed event** (date, price, registration link, title, location): update the session file that carries that `sourceId`. If the date changed, rename the file to the new date as well.
+
+**Trainer differs from .com** (the "Synced sessions whose trainer differs" list): set the session's `trainers` to the ids the script printed, which come from the Trainer field on .com. This is a training-only change like any other.
 
 **Removed or cancelled event**: delete the session file that carries that `sourceId`. If the event still exists on .com but is marked cancelled or postponed in its title, treat it as removed.
 

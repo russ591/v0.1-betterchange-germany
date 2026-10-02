@@ -64,6 +64,12 @@ If it says FAILED:
 - The Dashboard notice always shows the last result. The .de sync raises a question if the newest snapshot is more than 48 hours old, so a broken push is noticed within a day.
 - To stop the push, deactivate the snippet in Snippets. To change the secret, change it in both places and push once by hand.
 
+## Updating the snippet
+
+When `docs/com-snapshot-snippet.php` changes in the .de repository, the copy on .com has to be replaced by hand: .com WordPress admin, Snippets, open "Better Change: push snapshot to .de", replace the whole code box with the new file (again without a second `<?php` line), save, then Dashboard, "Push now", and check the notice says OK. The .de sync only sees the new data once that push has landed.
+
+Changes so far: 2026-10-02, the event's "Trainer" additional field is forwarded (as `trainer`, plus the raw `custom_fields`), because the organizer on .com is usually a company name and the .de sync needs the person.
+
 ## What the snippet sends
 
-Metadata for every published post (title, date, link, categories, author), the full text of posts published in the last 60 days, every upcoming event with its dates, venue, price and registration link, the same for any other public post type, and the list of post types. Nothing about users, comments, settings or anything unpublished. The snippet never changes anything on .com.
+Metadata for every published post (title, date, link, categories, author), the full text of posts published in the last 60 days, every upcoming event with its dates, venue, price, registration link and Trainer field, the same for any other public post type, and the list of post types. Nothing about users, comments, settings or anything unpublished. The snippet never changes anything on .com.

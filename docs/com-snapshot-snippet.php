@@ -236,7 +236,38 @@ function bc_sync_trim_event(array $e): array
         ] : [],
         'organizer'      => $organizers,
         'categories'     => $categories,
+        'custom_fields'  => $e['custom_fields'] ?? null,
+        'trainer'        => bc_sync_event_trainer($e),
     ];
+}
+
+// The "Trainer" additional field (The Events Calendar Pro). Read by its label
+// so the meta key (_ecp_custom_N) does not matter, with the REST
+// custom_fields block as the fallback in either shape it comes in. The .de
+// sync takes the trainer from here first, before the organizer and the
+// description.
+function bc_sync_event_trainer(array $e): ?string
+{
+    $id = (int) ($e['id'] ?? 0);
+    if ($id && function_exists('tribe_get_custom_field')) {
+        $v = tribe_get_custom_field('Trainer', $id);
+        if (is_string($v) && trim($v) !== '') {
+            return trim(wp_strip_all_tags($v));
+        }
+    }
+    foreach ((array) ($e['custom_fields'] ?? []) as $k => $v) {
+        if (is_array($v)) {
+            $label = (string) ($v['label'] ?? ($v['name'] ?? ''));
+            $value = $v['value'] ?? '';
+        } else {
+            $label = (string) $k;
+            $value = $v;
+        }
+        if (is_string($value) && trim($value) !== '' && preg_match('/trainer/i', $label)) {
+            return trim(wp_strip_all_tags($value));
+        }
+    }
+    return null;
 }
 
 function bc_sync_collect_events(): array
