@@ -53,6 +53,10 @@ When Russ answers a question in chat or on a PR, the session that gets the answe
 
 Current decisions: the Zagreb CSM (#19677) is run by Nino Zeljko and is imported; CASP (#19412) is ignored for good.
 
+## Step 0: finish what an earlier run left open
+
+Before anything else, look for open pull requests from earlier sync runs (branches named `sync/...`). For each one that `npm run sync:mergeable` judges `MERGEABLE BY THE SYNC` (run it on that PR's head against `origin/main`) and whose checks have all passed, merge it now, then fetch `origin/main` again so this run builds on it. A sync PR whose checks failed, or that waits for Russ, is left alone and mentioned in the final summary. This catches the case where a previous run gave up waiting for the Netlify deploy preview (see "Merging").
+
 ## Step 1: find out what changed
 
 Run `npm run sync:check`. It compares the latest .com snapshot with `sync/state.json` and prints:
@@ -147,10 +151,14 @@ Questions are remembered in the state file too, so a known open question is not 
 
 ## Merging
 
-- A **training-only PR** is merged by the run itself once the build (the Netlify deploy preview check on the PR) passes, and only if `npm run sync:mergeable` printed `MERGEABLE BY THE SYNC`: every changed file is a `src/content/training-schedules/*.md` carrying a `sourceId`, or `sync/state.json`. If it printed `WAITS FOR RUSS`, the PR waits. A **state-only PR** (just `sync/state.json`, from a Fellows-only run) passes the same check. Do not judge this by eye: the 2026-10-01 run misjudged its own PR as not training-only because it believed `main` lacked the baseline, while the branch was in fact based on the merged `main` and GitHub's file list held nothing but session files and the state.
+- A **training-only PR** is merged by the run itself once the PR's checks pass, and only if `npm run sync:mergeable` printed `MERGEABLE BY THE SYNC`: every changed file is a `src/content/training-schedules/*.md` carrying a `sourceId`, or `sync/state.json`. If it printed `WAITS FOR RUSS`, the PR waits. A **state-only PR** (just `sync/state.json`, from a Fellows-only run) passes the same check. Do not judge this by eye: the 2026-10-01 run misjudged its own PR as not training-only because it believed `main` lacked the baseline, while the branch was in fact based on the merged `main` and GitHub's file list held nothing but session files and the state.
+- **Waiting for the checks.** The PR's check is the Netlify deploy preview, which can sit in the queue behind a production build. Poll the PR's checks about once a minute for up to 20 minutes.
+  - A check **fails**: do not merge. Report the failure in the final summary with the check's name and link, and leave the PR open for Russ.
+  - The checks **pass** within 20 minutes: merge.
+  - The checks are **still pending after 20 minutes**, the local `npm run build` passed and `sync:mergeable` said `MERGEABLE BY THE SYNC`: merge anyway, and say in the final summary that the PR was merged before the deploy preview finished. The 2026-10-02 run left PR 47 unmerged after 8 minutes of "in progress" for this reason; the next run's Step 0 would have merged it, but waiting is the better outcome.
 - An **article PR** always waits for Russ.
 - This is the only exception to the CLAUDE.md merge policy. Nothing else is ever merged by the sync.
 
 ## Final summary of a run
 
-One short message: what was synced, which PR(s) were opened and whether the training PR was merged, the questions for Russ, and any new Fellow on .com (name and link). When there was nothing to do, one line.
+One short message: what was synced, which PR(s) were opened and whether the training PR was merged (and whether that happened before the deploy preview finished, or an earlier run's PR was merged in Step 0), any check that failed, the questions for Russ, and any new Fellow on .com (name and link). When there was nothing to do, one line.
