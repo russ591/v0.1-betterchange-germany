@@ -25,7 +25,8 @@
       "date": "2022-12-02T13:49:48",
       "modified": "2024-03-20T15:14:33",
       "title": "Important skills for Product Owners",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11648": {
       "type": "post",
@@ -34,7 +35,8 @@
       "date": "2023-08-12T14:28:04",
       "modified": "2024-03-20T15:14:32",
       "title": "Protecting the Hedgehogs",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11689": {
       "type": "post",
@@ -43,7 +45,8 @@
       "date": "2023-07-31T10:22:14",
       "modified": "2024-03-20T15:14:32",
       "title": "The Power of Systemic Coaching in Change Management",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11694": {
       "type": "post",
@@ -52,7 +55,8 @@
       "date": "2022-07-07T10:55:00",
       "modified": "2024-03-20T15:14:33",
       "title": "Mastering Agile Coaching",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11699": {
       "type": "post",
@@ -61,7 +65,8 @@
       "date": "2022-03-08T02:05:00",
       "modified": "2025-02-23T11:09:17",
       "title": "Perspectives on leadership and power",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11771": {
       "type": "post",
@@ -70,7 +75,8 @@
       "date": "2023-09-19T11:22:32",
       "modified": "2024-03-20T15:14:32",
       "title": "The Powerful Synergy of Training and Coaching",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11794": {
       "type": "resources",
@@ -79,7 +85,8 @@
       "date": "2022-08-09T14:34:44",
       "modified": "2023-09-29T14:28:31",
       "title": "What is Agile?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11826": {
       "type": "resources",
@@ -88,7 +95,8 @@
       "date": "2022-09-02T18:38:22",
       "modified": "2023-09-29T14:26:41",
       "title": "Agile Methodology and Frameworks",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11827": {
       "type": "resources",
@@ -97,7 +105,8 @@
       "date": "2022-09-02T18:45:54",
       "modified": "2023-09-29T14:26:37",
       "title": "What is the Agile Manifesto?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11828": {
       "type": "resources",
@@ -106,7 +115,8 @@
       "date": "2023-05-31T18:54:22",
       "modified": "2023-09-29T14:23:33",
       "title": "Agile vs. Scrum",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11829": {
       "type": "resources",
@@ -115,7 +125,8 @@
       "date": "2022-10-20T18:59:40",
       "modified": "2024-04-12T10:47:41",
       "title": "What is the Definition of Done?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11830": {
       "type": "resources",
@@ -124,7 +135,8 @@
       "date": "2022-10-08T19:04:54",
       "modified": "2023-09-29T14:25:59",
       "title": "What is Dual Track in Agile?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11831": {
       "type": "resources",
@@ -133,7 +145,8 @@
       "date": "2022-12-20T19:30:00",
       "modified": "2024-11-08T09:27:22",
       "title": "Kanban - what exactly does it mean?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11832": {
       "type": "post",
@@ -142,16 +155,18 @@
       "date": "2023-03-21T19:10:34",
       "modified": "2024-03-20T15:14:32",
       "title": "Five common challenges when creating a coaching culture",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11834": {
       "type": "post",
       "slug": "mastering-the-art-of-goal-setting-with-okr",
-      "link": "https://www.betterchange-consulting.com/coaching/mastering-the-art-of-goal-setting-with-okr/",
+      "link": "https://www.betterchange-consulting.com/leadership/mastering-the-art-of-goal-setting-with-okr/",
       "date": "2023-07-19T19:15:59",
       "modified": "2024-03-20T15:14:32",
       "title": "Mastering the Art of Goal Setting with OKR",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11841": {
       "type": "resources",
@@ -160,7 +175,8 @@
       "date": "2023-03-03T08:55:18",
       "modified": "2023-12-22T10:06:01",
       "title": "What are Lean and Agile?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11844": {
       "type": "resources",
@@ -169,7 +185,8 @@
       "date": "2026-07-06T06:57:00",
       "modified": "2026-07-07T13:19:35",
       "title": "Relative Estimation with Planning Poker",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11848": {
       "type": "resources",
@@ -178,7 +195,8 @@
       "date": "2022-09-02T09:02:00",
       "modified": "2023-09-29T14:28:26",
       "title": "What is Product Backlog Refinement?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11853": {
       "type": "resources",
@@ -187,7 +205,8 @@
       "date": "2022-08-09T09:13:00",
       "modified": "2023-09-29T14:29:22",
       "title": "What is the Product Backlog?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11855": {
       "type": "resources",
@@ -196,7 +215,8 @@
       "date": "2022-10-08T09:19:00",
       "modified": "2023-09-29T14:26:33",
       "title": "Product Owner vs Scrum Master",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11856": {
       "type": "resources",
@@ -205,7 +225,8 @@
       "date": "2022-08-09T09:22:00",
       "modified": "2023-09-29T14:29:17",
       "title": "Scrum Events",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11857": {
       "type": "resources",
@@ -214,7 +235,8 @@
       "date": "2022-09-02T09:24:00",
       "modified": "2023-09-29T14:28:22",
       "title": "Scrum Meetings",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11862": {
       "type": "resources",
@@ -223,7 +245,8 @@
       "date": "2022-08-09T09:57:00",
       "modified": "2023-09-29T14:29:13",
       "title": "Scrum Accountabilities",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11863": {
       "type": "resources",
@@ -232,7 +255,8 @@
       "date": "2023-09-21T10:31:00",
       "modified": "2025-03-31T13:14:44",
       "title": "Scrum Roles",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11864": {
       "type": "resources",
@@ -241,7 +265,8 @@
       "date": "2023-01-12T10:32:00",
       "modified": "2024-11-08T09:46:57",
       "title": "Scrum or Kanban?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11866": {
       "type": "resources",
@@ -250,7 +275,8 @@
       "date": "2022-10-08T10:54:00",
       "modified": "2023-09-29T14:26:29",
       "title": "What are the Three Pillars of Scrum?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11879": {
       "type": "post",
@@ -259,16 +285,18 @@
       "date": "2021-08-30T15:42:00",
       "modified": "2024-03-20T15:14:33",
       "title": "Navigating Change Management in a Complex Organisational Landscape",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "11978": {
       "type": "post",
       "slug": "agile-governance-whats-the-difference",
-      "link": "https://www.betterchange-consulting.com/change-management/agile-governance-whats-the-difference/",
+      "link": "https://www.betterchange-consulting.com/leadership/agile-governance-whats-the-difference/",
       "date": "2023-09-25T13:02:22",
       "modified": "2024-03-20T15:14:32",
       "title": "Agile Governance - whats the difference?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12064": {
       "type": "resources",
@@ -277,7 +305,8 @@
       "date": "2023-04-03T11:47:37",
       "modified": "2023-09-29T14:24:21",
       "title": "What are story points?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12065": {
       "type": "resources",
@@ -286,7 +315,8 @@
       "date": "2022-10-08T11:49:00",
       "modified": "2023-09-29T14:26:26",
       "title": "What are user stories?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12066": {
       "type": "resources",
@@ -295,7 +325,8 @@
       "date": "2022-09-02T11:54:00",
       "modified": "2023-09-29T14:27:53",
       "title": "Sprint Burndown Chart & Release Burndown Chart",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12067": {
       "type": "resources",
@@ -304,7 +335,8 @@
       "date": "2023-05-31T12:01:00",
       "modified": "2023-10-31T15:33:34",
       "title": "What is a Kanban Board?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12068": {
       "type": "resources",
@@ -313,7 +345,8 @@
       "date": "2022-09-02T12:03:00",
       "modified": "2024-04-12T10:26:57",
       "title": "What is a Product Increment?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12069": {
       "type": "resources",
@@ -322,7 +355,8 @@
       "date": "2023-05-31T12:10:00",
       "modified": "2024-07-02T11:07:02",
       "title": "What is a Product Owner?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12070": {
       "type": "resources",
@@ -331,7 +365,8 @@
       "date": "2022-08-09T12:15:00",
       "modified": "2023-09-29T14:29:02",
       "title": "What is a Scrum Board?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12071": {
       "type": "resources",
@@ -340,7 +375,8 @@
       "date": "2022-05-31T12:18:00",
       "modified": "2024-07-02T11:01:52",
       "title": "What is a Scrum Master?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12072": {
       "type": "resources",
@@ -349,7 +385,8 @@
       "date": "2022-09-02T12:19:00",
       "modified": "2023-09-29T14:27:40",
       "title": "What is a Scrum Sprint?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12073": {
       "type": "resources",
@@ -358,7 +395,8 @@
       "date": "2022-05-31T12:21:00",
       "modified": "2023-10-27T15:01:15",
       "title": "What is a Sprint Review in Scrum?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12077": {
       "type": "resources",
@@ -367,7 +405,8 @@
       "date": "2022-09-02T12:27:00",
       "modified": "2024-02-23T15:14:48",
       "title": "What is an Epic in Agile?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12078": {
       "type": "resources",
@@ -376,7 +415,8 @@
       "date": "2022-09-02T12:32:06",
       "modified": "2023-09-29T14:26:49",
       "title": "What is Daily Scrum?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12080": {
       "type": "resources",
@@ -385,7 +425,8 @@
       "date": "2022-08-09T12:46:00",
       "modified": "2024-02-23T15:15:02",
       "title": "What are Scrum Artifacts?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12082": {
       "type": "resources",
@@ -394,7 +435,8 @@
       "date": "2022-10-08T12:53:00",
       "modified": "2023-09-29T14:26:16",
       "title": "What is Scrum Capacity?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12083": {
       "type": "resources",
@@ -403,7 +445,8 @@
       "date": "2023-04-03T12:58:00",
       "modified": "2023-09-29T14:24:14",
       "title": "What is Scrum Velocity?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12084": {
       "type": "resources",
@@ -412,7 +455,8 @@
       "date": "2022-06-10T13:09:53",
       "modified": "2023-09-29T14:29:26",
       "title": "What is Scrum?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12087": {
       "type": "resources",
@@ -421,7 +465,8 @@
       "date": "2022-08-09T13:11:00",
       "modified": "2023-09-29T14:28:44",
       "title": "What is Sprint Planning?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12089": {
       "type": "resources",
@@ -430,7 +475,8 @@
       "date": "2022-09-02T13:15:00",
       "modified": "2023-09-29T14:26:45",
       "title": "What is the Sprint Retrospective?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12152": {
       "type": "post",
@@ -439,7 +485,8 @@
       "date": "2023-10-10T18:59:34",
       "modified": "2024-03-20T15:14:32",
       "title": "Embrace the complexity of team dynamics with the Plausibility Canvas",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12190": {
       "type": "resources",
@@ -448,7 +495,8 @@
       "date": "2023-10-13T08:14:32",
       "modified": "2023-10-13T10:11:57",
       "title": "What are Acceptance Criteria",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12191": {
       "type": "resources",
@@ -457,7 +505,8 @@
       "date": "2023-10-13T08:19:35",
       "modified": "2023-10-13T10:40:05",
       "title": "What are Estimations in Scrum",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12192": {
       "type": "resources",
@@ -466,7 +515,8 @@
       "date": "2023-10-13T08:24:47",
       "modified": "2023-10-13T09:16:47",
       "title": "What is SAFe",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12194": {
       "type": "resources",
@@ -475,7 +525,8 @@
       "date": "2023-10-13T08:33:21",
       "modified": "2023-10-13T10:12:44",
       "title": "The Perfect Scrum Team Size",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12195": {
       "type": "resources",
@@ -484,7 +535,8 @@
       "date": "2023-10-13T08:38:07",
       "modified": "2023-10-13T10:14:13",
       "title": "What is an Agile Release Train",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12196": {
       "type": "resources",
@@ -493,7 +545,8 @@
       "date": "2023-10-13T13:15:41",
       "modified": "2024-02-23T15:14:26",
       "title": "The Scrum Guide",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12208": {
       "type": "resources",
@@ -502,7 +555,8 @@
       "date": "2022-10-08T10:30:00",
       "modified": "2023-10-20T15:45:34",
       "title": "Product Owner vs Scrum Master",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12211": {
       "type": "resources",
@@ -511,7 +565,8 @@
       "date": "2023-10-13T13:11:28",
       "modified": "2023-10-13T13:11:30",
       "title": "The Scrum Values: A Key to Agile Excellence",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12222": {
       "type": "resources",
@@ -520,7 +575,8 @@
       "date": "2023-10-14T10:34:25",
       "modified": "2023-10-14T10:35:21",
       "title": "5 books every scrum professional should read",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12223": {
       "type": "resources",
@@ -529,7 +585,8 @@
       "date": "2023-10-14T10:41:43",
       "modified": "2023-10-14T10:43:38",
       "title": "How Agile Transformation Leads to Increased Flexibility in Finance",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12225": {
       "type": "resources",
@@ -538,7 +595,8 @@
       "date": "2023-10-14T10:47:02",
       "modified": "2024-02-02T13:41:11",
       "title": "The Tuckman Model: A Framework for High-Performing Teams",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12226": {
       "type": "resources",
@@ -547,7 +605,8 @@
       "date": "2023-10-14T10:55:36",
       "modified": "2023-10-14T10:55:38",
       "title": "Best Scrum Tools to use in 2024",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12227": {
       "type": "post",
@@ -556,7 +615,8 @@
       "date": "2023-10-14T15:19:41",
       "modified": "2025-10-25T15:28:42",
       "title": "Fostering Team Synergy, Overcoming Dysfunctions, and Building Strong Teams",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12260": {
       "type": "resources",
@@ -565,7 +625,8 @@
       "date": "2023-10-18T12:40:03",
       "modified": "2025-03-31T12:47:15",
       "title": "The Synergy of Lean Thinking in the Agile Landscape",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12268": {
       "type": "post",
@@ -574,7 +635,8 @@
       "date": "2023-11-21T15:56:41",
       "modified": "2025-10-25T15:28:52",
       "title": "Developing Your Unique Leadership Style",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12442": {
       "type": "post",
@@ -583,7 +645,8 @@
       "date": "2023-10-28T08:50:11",
       "modified": "2025-10-25T15:28:53",
       "title": "Management Is Not Leadership",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12470": {
       "type": "post",
@@ -592,7 +655,8 @@
       "date": "2023-10-31T14:19:28",
       "modified": "2024-03-20T15:14:31",
       "title": "Maximising Personal Impact with Agile",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12476": {
       "type": "post",
@@ -601,7 +665,8 @@
       "date": "2023-11-01T10:27:29",
       "modified": "2025-10-25T15:28:53",
       "title": "Me-dership is not Leadership Either - A Critical Lens on Idealised Leadership",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12509": {
       "type": "resources",
@@ -610,7 +675,8 @@
       "date": "2023-11-01T13:17:28",
       "modified": "2025-03-31T08:08:53",
       "title": "Creating a Teal Organisation: How to Achieve a Self-Managed Workplace",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12596": {
       "type": "resources",
@@ -619,7 +685,8 @@
       "date": "2023-11-29T08:44:49",
       "modified": "2025-03-31T12:07:33",
       "title": "What are Cross Functional Teams?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12598": {
       "type": "resources",
@@ -628,7 +695,8 @@
       "date": "2023-11-29T09:12:50",
       "modified": "2025-03-31T11:59:25",
       "title": "Agile Coach vs Scrum Master",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12600": {
       "type": "resources",
@@ -637,7 +705,8 @@
       "date": "2023-11-28T12:59:39",
       "modified": "2025-03-31T09:36:04",
       "title": "What is an Agile Organisation?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12602": {
       "type": "resources",
@@ -646,7 +715,8 @@
       "date": "2023-11-29T08:51:37",
       "modified": "2025-03-31T12:04:17",
       "title": "What is an Iteration in Agile?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12604": {
       "type": "resources",
@@ -655,7 +725,8 @@
       "date": "2023-11-29T08:56:45",
       "modified": "2025-03-31T12:00:11",
       "title": "What is a Spike in Scrum?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12606": {
       "type": "resources",
@@ -664,7 +735,8 @@
       "date": "2023-11-29T08:12:15",
       "modified": "2025-03-31T12:18:23",
       "title": "What is Timeboxing in Scrum?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12608": {
       "type": "resources",
@@ -673,7 +745,8 @@
       "date": "2023-11-29T07:55:23",
       "modified": "2025-03-31T12:44:30",
       "title": "Feedback Loops In Scrum",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12612": {
       "type": "resources",
@@ -682,7 +755,8 @@
       "date": "2023-11-28T13:06:15",
       "modified": "2025-03-31T09:38:51",
       "title": "How To Discover and Solve Impediments in Scrum?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12813": {
       "type": "resources",
@@ -691,7 +765,8 @@
       "date": "2023-12-13T12:35:12",
       "modified": "2025-03-31T11:50:51",
       "title": "What Is Leadership Development?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12815": {
       "type": "resources",
@@ -700,7 +775,8 @@
       "date": "2023-12-13T12:38:27",
       "modified": "2025-03-31T11:50:16",
       "title": "What Is Agile Transformation?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12817": {
       "type": "resources",
@@ -709,7 +785,8 @@
       "date": "2023-12-13T12:41:09",
       "modified": "2025-03-31T11:48:47",
       "title": "What Is Agile Project Management?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12819": {
       "type": "resources",
@@ -718,7 +795,8 @@
       "date": "2023-12-13T12:44:32",
       "modified": "2025-03-31T11:47:39",
       "title": "What Is Agile Leadership?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12823": {
       "type": "resources",
@@ -727,7 +805,8 @@
       "date": "2023-12-13T12:46:12",
       "modified": "2025-03-31T06:30:32",
       "title": "What is Self Organizing Teams?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12825": {
       "type": "resources",
@@ -736,7 +815,8 @@
       "date": "2023-12-11T07:52:09",
       "modified": "2025-03-31T11:51:55",
       "title": "What Is a Sprint Goal?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12827": {
       "type": "resources",
@@ -745,7 +825,8 @@
       "date": "2023-12-11T07:48:03",
       "modified": "2025-03-31T11:52:51",
       "title": "What Is a Kanban Card?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12841": {
       "type": "post",
@@ -754,7 +835,8 @@
       "date": "2023-12-19T10:46:06",
       "modified": "2024-03-20T15:14:31",
       "title": "Miscommunication in software specifications.",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12855": {
       "type": "resources",
@@ -763,7 +845,8 @@
       "date": "2023-12-21T13:06:21",
       "modified": "2025-03-31T06:44:10",
       "title": "The Scrum Process Explained",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12856": {
       "type": "resources",
@@ -772,7 +855,8 @@
       "date": "2023-12-21T13:07:45",
       "modified": "2025-03-31T06:31:36",
       "title": "What is Transformational Leadership?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12858": {
       "type": "resources",
@@ -781,7 +865,8 @@
       "date": "2023-12-21T12:45:43",
       "modified": "2025-03-31T06:24:49",
       "title": "What is a Product Goal?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12860": {
       "type": "resources",
@@ -790,7 +875,8 @@
       "date": "2023-12-21T13:09:23",
       "modified": "2025-03-31T06:29:16",
       "title": "Five Ways to Build Consensus",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12862": {
       "type": "resources",
@@ -799,7 +885,8 @@
       "date": "2023-12-19T14:33:58",
       "modified": "2025-03-31T06:22:56",
       "title": "What is Evidence-Based Management?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12864": {
       "type": "resources",
@@ -808,7 +895,8 @@
       "date": "2023-12-21T13:02:13",
       "modified": "2025-03-31T06:25:52",
       "title": "What is Change Management?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12866": {
       "type": "resources",
@@ -817,7 +905,8 @@
       "date": "2023-12-21T12:30:32",
       "modified": "2025-03-31T06:23:53",
       "title": "Can the Product Owner also be the Scrum Master?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12868": {
       "type": "resources",
@@ -826,7 +915,8 @@
       "date": "2023-12-21T13:03:36",
       "modified": "2025-03-31T06:27:59",
       "title": "What is a Product Vision?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12896": {
       "type": "post",
@@ -835,7 +925,8 @@
       "date": "2023-11-30T08:00:00",
       "modified": "2025-10-25T15:28:53",
       "title": "Your Strategy for Asking Powerful Questions",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12905": {
       "type": "post",
@@ -844,7 +935,8 @@
       "date": "2023-10-31T08:00:00",
       "modified": "2025-10-25T15:28:53",
       "title": "Have a Structure for Your Coaching Conversation",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12911": {
       "type": "post",
@@ -853,7 +945,8 @@
       "date": "2023-09-30T07:00:00",
       "modified": "2025-10-25T15:28:53",
       "title": "The Art of Listening and Unlocking Hidden Potentials",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "12917": {
       "type": "post",
@@ -862,7 +955,8 @@
       "date": "2023-08-31T07:00:00",
       "modified": "2025-10-25T15:28:53",
       "title": "Navigating the Terrain - Agile Coaching vs. Systemic Coaching",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "13004": {
       "type": "post",
@@ -871,7 +965,8 @@
       "date": "2024-01-03T11:40:49",
       "modified": "2024-03-20T15:14:30",
       "title": "Not a collective leap but a sum of individual strides.",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "13152": {
       "type": "resources",
@@ -880,16 +975,18 @@
       "date": "2024-01-09T12:54:55",
       "modified": "2025-03-31T15:52:09",
       "title": "What is Organisational Culture?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "13155": {
       "type": "post",
       "slug": "aligning-organisational-culture-with-market-dynamics",
-      "link": "https://www.betterchange-consulting.com/change-management/aligning-organisational-culture-with-market-dynamics/",
+      "link": "https://www.betterchange-consulting.com/leadership/aligning-organisational-culture-with-market-dynamics/",
       "date": "2024-01-10T10:40:53",
       "modified": "2024-03-20T15:14:30",
       "title": "Aligning Organisational Culture with Market Dynamics",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "13437": {
       "type": "post",
@@ -898,7 +995,8 @@
       "date": "2024-01-01T15:02:27",
       "modified": "2024-06-16T15:11:49",
       "title": "What went wrong with Agile?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "13441": {
       "type": "post",
@@ -907,7 +1005,8 @@
       "date": "2024-01-08T15:11:27",
       "modified": "2024-03-20T15:14:30",
       "title": "Agile Mishap #1: Do it by the book!",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "13453": {
       "type": "post",
@@ -916,7 +1015,8 @@
       "date": "2024-02-06T08:42:40",
       "modified": "2024-03-20T15:14:26",
       "title": "Agile Retrospectives, Second Edition: A Practical Guide for Catalyzing Team Learning and Improvement",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "13456": {
       "type": "post",
@@ -925,7 +1025,8 @@
       "date": "2024-02-06T16:51:28",
       "modified": "2024-03-20T15:14:24",
       "title": "Agile Mishap #2: All frameworks are wrong but mine",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "13739": {
       "type": "post",
@@ -934,7 +1035,8 @@
       "date": "2024-02-21T20:55:51",
       "modified": "2024-03-24T14:09:00",
       "title": "Agile mishap #3: The Agile Bubble",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "13830": {
       "type": "resources",
@@ -943,7 +1045,8 @@
       "date": "2024-02-23T09:44:07",
       "modified": "2025-03-31T06:21:23",
       "title": "The Ultimate Guide to Building an AI Team",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "13838": {
       "type": "resources",
@@ -952,7 +1055,8 @@
       "date": "2024-02-23T11:48:58",
       "modified": "2025-03-31T06:18:11",
       "title": "AI in Tech: A Comprehensive Guide to its impact",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "13844": {
       "type": "resources",
@@ -961,25 +1065,28 @@
       "date": "2024-02-23T11:59:28",
       "modified": "2025-03-31T06:20:10",
       "title": "The Impact of AI Design on Modern Technology",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "14245": {
       "type": "post",
       "slug": "review-humanocracy-creating-organizations-as-amazing-as-the-people-inside-them",
-      "link": "https://www.betterchange-consulting.com/book-reviews/review-humanocracy-creating-organizations-as-amazing-as-the-people-inside-them/",
+      "link": "https://www.betterchange-consulting.com/change-management/review-humanocracy-creating-organizations-as-amazing-as-the-people-inside-them/",
       "date": "2024-03-05T19:41:43",
       "modified": "2024-03-20T15:14:21",
       "title": "Review: &#8220;Humanocracy: Creating Organizations as Amazing as the People Inside Them&#8221;",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "14568": {
       "type": "post",
       "slug": "agile-mishap-4-incompetent-coaches-and-trainers",
-      "link": "https://www.betterchange-consulting.com/agile-mishaps/agile-mishap-4-incompetent-coaches-and-trainers/",
+      "link": "https://www.betterchange-consulting.com/coaching/agile-mishap-4-incompetent-coaches-and-trainers/",
       "date": "2024-03-24T12:53:05",
       "modified": "2025-10-25T15:28:53",
       "title": "Agile Mishap #4: Incompetent Coaches and Trainers",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "14581": {
       "type": "post",
@@ -988,7 +1095,8 @@
       "date": "2024-03-27T18:58:57",
       "modified": "2024-04-03T18:08:57",
       "title": "Book review: Thinking Fast and Slow by Daniel Kahneman",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "14730": {
       "type": "post",
@@ -997,16 +1105,18 @@
       "date": "2024-04-16T05:13:43",
       "modified": "2024-04-16T05:34:03",
       "title": "Humble Inquiry - The Art of Elevating Your Employees",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "14780": {
       "type": "post",
       "slug": "book-review-rethinking-agile-why-agile-teams-have-nothing-to-do-with-business-agility",
-      "link": "https://www.betterchange-consulting.com/book-reviews/book-review-rethinking-agile-why-agile-teams-have-nothing-to-do-with-business-agility/",
+      "link": "https://www.betterchange-consulting.com/flight-levels/book-review-rethinking-agile-why-agile-teams-have-nothing-to-do-with-business-agility/",
       "date": "2024-04-19T19:48:03",
       "modified": "2026-03-11T09:46:24",
       "title": "Book review: Rethinking Agile: Why Agile Teams Have Nothing to Do with Business Agility",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "14864": {
       "type": "post",
@@ -1015,7 +1125,8 @@
       "date": "2024-04-24T20:46:06",
       "modified": "2024-04-26T10:32:49",
       "title": "Exploring the Versatility of Flight Levels in Achieving Organisational Agility",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "14885": {
       "type": "post",
@@ -1024,7 +1135,8 @@
       "date": "2024-04-25T09:20:32",
       "modified": "2025-07-03T09:29:13",
       "title": "Enhancing Organisational Learning with Flight Levels and The 5 Activities",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "14902": {
       "type": "post",
@@ -1033,7 +1145,8 @@
       "date": "2024-04-25T10:12:25",
       "modified": "2024-05-16T21:43:54",
       "title": "Transforming Team Dynamics: How a Legal Service Provider Achieved Business Agility",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "15036": {
       "type": "post",
@@ -1042,7 +1155,8 @@
       "date": "2024-04-29T14:15:59",
       "modified": "2024-05-10T10:53:36",
       "title": "The Pitfalls of Inappropriate Leadership Styles.",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "15160": {
       "type": "resources",
@@ -1051,7 +1165,8 @@
       "date": "2024-05-17T11:55:50",
       "modified": "2025-03-31T06:13:54",
       "title": "How to Run a Retrospective",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "15776": {
       "type": "post",
@@ -1060,7 +1175,8 @@
       "date": "2024-05-28T11:56:01",
       "modified": "2024-07-04T08:13:12",
       "title": "Elevate Your SAFe® By Breaking Down Barriers",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "15812": {
       "type": "post",
@@ -1069,7 +1185,8 @@
       "date": "2024-06-10T10:26:36",
       "modified": "2024-07-04T08:12:37",
       "title": "Agile Mindset & Culture - Employee",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "15814": {
       "type": "post",
@@ -1078,25 +1195,28 @@
       "date": "2024-06-14T09:29:28",
       "modified": "2024-07-04T08:11:40",
       "title": "Agile Mindset & Culture - Leadership",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "15819": {
       "type": "post",
       "slug": "which-competencies-should-an-agile-coach-have",
-      "link": "https://www.betterchange-consulting.com/coaching/which-competencies-should-an-agile-coach-have/",
+      "link": "https://www.betterchange-consulting.com/uncategorized/which-competencies-should-an-agile-coach-have/",
       "date": "2024-05-28T04:20:05",
       "modified": "2024-05-30T08:57:42",
       "title": "Which Competencies Should an Agile Coach Have?",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "16095": {
       "type": "post",
       "slug": "the-unseen-potential-of-scrum-masters-future-leaders-in-a-time-of-uncertainty",
-      "link": "https://www.betterchange-consulting.com/career-boost/the-unseen-potential-of-scrum-masters-future-leaders-in-a-time-of-uncertainty/",
+      "link": "https://www.betterchange-consulting.com/leadership/the-unseen-potential-of-scrum-masters-future-leaders-in-a-time-of-uncertainty/",
       "date": "2024-06-04T18:33:15",
       "modified": "2024-06-04T18:35:53",
       "title": "The Unseen Potential of Scrum Masters: Future Leaders in a Time of Uncertainty",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "16135": {
       "type": "post",
@@ -1105,7 +1225,8 @@
       "date": "2024-06-08T05:54:27",
       "modified": "2024-06-08T05:58:20",
       "title": "Agile Leadership: The Vital Role of Sensemaking, Integrity, Presence, and Authenticity",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "16143": {
       "type": "post",
@@ -1114,16 +1235,18 @@
       "date": "2024-06-09T17:51:48",
       "modified": "2024-06-09T17:51:51",
       "title": "Boogie and Backlogs: The Hilarious Parallels Between Agile and Disco",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "16164": {
       "type": "post",
       "slug": "introducing-the-transformation-manifesto",
-      "link": "https://www.betterchange-consulting.com/change-management/introducing-the-transformation-manifesto/",
+      "link": "https://www.betterchange-consulting.com/leadership/introducing-the-transformation-manifesto/",
       "date": "2024-06-10T19:01:20",
       "modified": "2024-06-10T19:30:10",
       "title": "Introducing the Transformation Manifesto",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "16195": {
       "type": "post",
@@ -1132,7 +1255,8 @@
       "date": "2024-06-15T08:31:27",
       "modified": "2024-06-30T09:47:08",
       "title": "Agile Mishap #5: The Certification Circus - Reflecting on the Agile Accreditation Landscape",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "16251": {
       "type": "post",
@@ -1141,7 +1265,8 @@
       "date": "2024-06-30T09:42:38",
       "modified": "2024-06-30T09:42:41",
       "title": "Despite All the Mishaps: Show Me the Better Option!",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "16291": {
       "type": "post",
@@ -1150,7 +1275,8 @@
       "date": "2024-07-04T08:56:34",
       "modified": "2024-07-04T09:01:06",
       "title": "Scaling Challenges: A CIO's Perspective",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "16363": {
       "type": "post",
@@ -1159,16 +1285,18 @@
       "date": "2024-07-06T09:45:27",
       "modified": "2024-07-06T09:53:36",
       "title": "Mastering Difficult Conversations: A Comprehensive Guide for Leaders",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "16663": {
       "type": "post",
       "slug": "10-advantages-of-using-sprint-goals",
-      "link": "https://www.betterchange-consulting.com/coaching/10-advantages-of-using-sprint-goals/",
+      "link": "https://www.betterchange-consulting.com/product-owner/10-advantages-of-using-sprint-goals/",
       "date": "2024-07-19T13:26:31",
       "modified": "2024-07-19T14:09:53",
       "title": "10 advantages of using Sprint Goals",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "16832": {
       "type": "post",
@@ -1177,16 +1305,18 @@
       "date": "2024-09-20T12:43:09",
       "modified": "2024-09-20T13:13:37",
       "title": "A House Renovation Completed on Time and Within Budget",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "16909": {
       "type": "post",
       "slug": "transforming-a-start-up-with-kanban-for-sustainable-growth",
-      "link": "https://www.betterchange-consulting.com/change-management/transforming-a-start-up-with-kanban-for-sustainable-growth/",
+      "link": "https://www.betterchange-consulting.com/leadership/transforming-a-start-up-with-kanban-for-sustainable-growth/",
       "date": "2024-10-09T19:04:15",
       "modified": "2025-04-03T06:50:51",
       "title": "Transforming a Start-Up with Kanban for Sustainable Growth",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "17280": {
       "type": "post",
@@ -1195,7 +1325,8 @@
       "date": "2025-01-02T09:31:42",
       "modified": "2025-01-03T18:43:53",
       "title": "A Practical Guide to Strategy Implementation",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "17300": {
       "type": "post",
@@ -1204,7 +1335,8 @@
       "date": "2025-01-19T07:33:00",
       "modified": "2025-01-03T19:00:45",
       "title": "The Strategy Translation Canvas: Turning Vision into Action",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "18114": {
       "type": "post",
@@ -1213,16 +1345,18 @@
       "date": "2025-03-08T10:01:03",
       "modified": "2025-03-08T11:08:02",
       "title": "The Need for Female Competencies in Leadership",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "18170": {
       "type": "post",
       "slug": "organisational-culture-the-overlooked-key-to-success-with-new-ways-of-working",
-      "link": "https://www.betterchange-consulting.com/change-management/organisational-culture-the-overlooked-key-to-success-with-new-ways-of-working/",
+      "link": "https://www.betterchange-consulting.com/leadership/organisational-culture-the-overlooked-key-to-success-with-new-ways-of-working/",
       "date": "2025-03-15T19:24:18",
       "modified": "2025-05-28T14:53:07",
       "title": "Webinar: Organisational Culture – The Overlooked Key to Success with New Ways of Working",
-      "webinar": true
+      "webinar": true,
+      "question": "210 words, no later date and no sign-up link"
     },
     "18372": {
       "type": "post",
@@ -1231,7 +1365,8 @@
       "date": "2025-04-15T05:06:44",
       "modified": "2025-05-28T14:52:37",
       "title": "Webinar: Discover How a Rapid Growing Business Regained Focus",
-      "webinar": true
+      "webinar": true,
+      "question": "369 words, no later date and no sign-up link"
     },
     "18470": {
       "type": "post",
@@ -1240,16 +1375,18 @@
       "date": "2025-05-24T13:02:25",
       "modified": "2025-05-28T14:52:02",
       "title": "Webinar: Agile Leadership - The Vital Role of Sense-making, Integrity, and Authenticy",
-      "webinar": true
+      "webinar": true,
+      "question": "283 words, no later date and no sign-up link"
     },
     "19047": {
       "type": "post",
       "slug": "coaching-what-happens-between-us",
-      "link": "https://www.betterchange-consulting.com/coaching/coaching-what-happens-between-us/",
+      "link": "https://www.betterchange-consulting.com/leadership/coaching-what-happens-between-us/",
       "date": "2025-11-28T14:21:40",
       "modified": "2025-11-28T14:21:42",
       "title": "Coaching What Happens Between Us",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19080": {
       "type": "post",
@@ -1258,16 +1395,18 @@
       "date": "2025-12-18T15:50:35",
       "modified": "2025-12-18T15:54:14",
       "title": "Some reflections on the adoption of AI in organizations",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19100": {
       "type": "post",
       "slug": "ai-implementation-strategies-the-biggest-challenge-is-not-technological",
-      "link": "https://www.betterchange-consulting.com/ai/ai-implementation-strategies-the-biggest-challenge-is-not-technological/",
+      "link": "https://www.betterchange-consulting.com/change-management/ai-implementation-strategies-the-biggest-challenge-is-not-technological/",
       "date": "2025-12-27T19:08:27",
       "modified": "2025-12-27T19:31:25",
       "title": "AI Implementation Strategies: The Biggest Challenge Is Not Technological",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19121": {
       "type": "post",
@@ -1276,34 +1415,38 @@
       "date": "2025-07-01T10:00:00",
       "modified": "2026-01-25T16:05:43",
       "title": "Webinar: The Role of Flight Levels in Agile Transformation",
-      "webinar": true
+      "webinar": true,
+      "question": "304 words, no later date and no sign-up link"
     },
     "19129": {
       "type": "post",
       "slug": "webinar-hr-in-the-age-of-disruptive-change-building-people-centred-organisations",
-      "link": "https://www.betterchange-consulting.com/webinar/webinar-hr-in-the-age-of-disruptive-change-building-people-centred-organisations/",
+      "link": "https://www.betterchange-consulting.com/leadership/webinar-hr-in-the-age-of-disruptive-change-building-people-centred-organisations/",
       "date": "2025-10-29T11:00:00",
       "modified": "2026-01-25T16:04:12",
       "title": "Webinar: HR in the age of disruptive change - Building people centred organisations",
-      "webinar": true
+      "webinar": true,
+      "question": "382 words, no later date and no sign-up link"
     },
     "19137": {
       "type": "post",
       "slug": "webinar-state-of-agile-a-brutally-honest-conversation",
-      "link": "https://www.betterchange-consulting.com/change-management/webinar-state-of-agile-a-brutally-honest-conversation/",
+      "link": "https://www.betterchange-consulting.com/leadership/webinar-state-of-agile-a-brutally-honest-conversation/",
       "date": "2025-12-04T11:00:00",
       "modified": "2026-05-29T06:57:34",
       "title": "Webinar: State of Agile - A Brutally Honest Conversation",
-      "webinar": true
+      "webinar": true,
+      "question": null
     },
     "19145": {
       "type": "post",
       "slug": "webinar-ai-for-product-owners-automate-the-menial-focus-on-meaningful",
-      "link": "https://www.betterchange-consulting.com/webinar/webinar-ai-for-product-owners-automate-the-menial-focus-on-meaningful/",
+      "link": "https://www.betterchange-consulting.com/leadership/webinar-ai-for-product-owners-automate-the-menial-focus-on-meaningful/",
       "date": "2026-01-28T21:17:05",
       "modified": "2026-05-29T06:57:34",
       "title": "Webinar: AI for Product Owners - Automate the Menial, Focus on Meaningful",
-      "webinar": true
+      "webinar": true,
+      "question": "373 words, no later date and no sign-up link"
     },
     "19171": {
       "type": "fellow",
@@ -1312,7 +1455,8 @@
       "date": "2026-02-03T15:35:29",
       "modified": "2026-02-04T16:30:40",
       "title": "Anders Højgaard Nielsen",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19173": {
       "type": "fellow",
@@ -1321,7 +1465,8 @@
       "date": "2026-02-03T15:38:33",
       "modified": "2026-09-16T06:33:57",
       "title": "Bent Myllerup",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19175": {
       "type": "fellow",
@@ -1330,7 +1475,8 @@
       "date": "2026-02-03T15:40:04",
       "modified": "2026-02-05T14:14:52",
       "title": "Camilla Bergkvist",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19177": {
       "type": "fellow",
@@ -1339,7 +1485,8 @@
       "date": "2026-02-03T15:42:41",
       "modified": "2026-02-05T13:46:21",
       "title": "Garbrand van der Molen",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19179": {
       "type": "fellow",
@@ -1348,7 +1495,8 @@
       "date": "2026-02-03T15:45:13",
       "modified": "2026-04-21T13:17:58",
       "title": "Giuseppe De Simone",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19181": {
       "type": "fellow",
@@ -1357,7 +1505,8 @@
       "date": "2026-02-03T15:47:38",
       "modified": "2026-02-05T13:53:08",
       "title": "Gregor Heidinger",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19183": {
       "type": "fellow",
@@ -1366,7 +1515,8 @@
       "date": "2026-02-03T15:49:07",
       "modified": "2026-02-05T13:55:01",
       "title": "Heidi Reidel Sørensen",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19185": {
       "type": "fellow",
@@ -1375,7 +1525,8 @@
       "date": "2026-02-03T15:50:52",
       "modified": "2026-02-03T16:20:34",
       "title": "Javier Perez Fernandez",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19187": {
       "type": "fellow",
@@ -1384,7 +1535,8 @@
       "date": "2026-02-03T15:53:07",
       "modified": "2026-02-03T16:18:20",
       "title": "Jan B. Olsen",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19189": {
       "type": "fellow",
@@ -1393,7 +1545,8 @@
       "date": "2026-02-03T15:58:16",
       "modified": "2026-02-03T16:13:21",
       "title": "Jesper Ørting",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19195": {
       "type": "fellow",
@@ -1402,7 +1555,8 @@
       "date": "2026-02-03T16:01:51",
       "modified": "2026-02-05T13:59:02",
       "title": "Kirsten Pallesen",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19197": {
       "type": "fellow",
@@ -1411,7 +1565,8 @@
       "date": "2026-02-03T16:03:13",
       "modified": "2026-02-05T14:00:39",
       "title": "Konrad Pogorzala",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19199": {
       "type": "fellow",
@@ -1420,7 +1575,8 @@
       "date": "2026-02-03T16:04:12",
       "modified": "2026-02-04T09:36:26",
       "title": "Martin von Weissenberg",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19201": {
       "type": "fellow",
@@ -1429,7 +1585,8 @@
       "date": "2026-02-03T16:05:26",
       "modified": "2026-02-05T14:02:43",
       "title": "Mogens Villadsen",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19203": {
       "type": "fellow",
@@ -1438,7 +1595,8 @@
       "date": "2026-02-03T16:06:42",
       "modified": "2026-02-04T09:41:32",
       "title": "Niels Verdonk",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19205": {
       "type": "fellow",
@@ -1447,7 +1605,8 @@
       "date": "2026-02-03T16:07:50",
       "modified": "2026-05-09T06:31:12",
       "title": "Nino Zeljko",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19207": {
       "type": "fellow",
@@ -1456,7 +1615,8 @@
       "date": "2026-02-03T16:09:09",
       "modified": "2026-02-27T12:52:30",
       "title": "Russell Hill",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19210": {
       "type": "fellow",
@@ -1465,52 +1625,58 @@
       "date": "2026-02-03T16:10:18",
       "modified": "2026-02-05T14:10:42",
       "title": "Scott Dunn",
-      "webinar": false
+      "webinar": false,
+      "question": null
     },
     "19268": {
       "type": "post",
       "slug": "webinar-how-leaders-unconsciously-shape-team-and-organisational-dynamics-a-webinar-on-power-trust-and-authentic-leadership",
-      "link": "https://www.betterchange-consulting.com/webinar/webinar-how-leaders-unconsciously-shape-team-and-organisational-dynamics-a-webinar-on-power-trust-and-authentic-leadership/",
+      "link": "https://www.betterchange-consulting.com/leadership/webinar-how-leaders-unconsciously-shape-team-and-organisational-dynamics-a-webinar-on-power-trust-and-authentic-leadership/",
       "date": "2026-02-07T09:55:22",
       "modified": "2026-02-07T10:05:00",
       "title": "Webinar: How Leaders Unconsciously Shape Team and Organisational Dynamics – A Webinar on Power, Trust, and Authentic Leadership",
-      "webinar": true
+      "webinar": true,
+      "question": "353 words, no later date and no sign-up link"
     },
     "19425": {
       "type": "post",
       "slug": "webinar-why-organisations-struggle-with-change-and-how-to-build-adaptive-ones",
-      "link": "https://www.betterchange-consulting.com/webinar/webinar-why-organisations-struggle-with-change-and-how-to-build-adaptive-ones/",
+      "link": "https://www.betterchange-consulting.com/leadership/webinar-why-organisations-struggle-with-change-and-how-to-build-adaptive-ones/",
       "date": "2026-04-02T16:25:33",
       "modified": "2026-04-21T17:44:05",
       "title": "Webinar: Why Organizations Struggle with Change – and How to Build Adaptive Ones",
-      "webinar": true
+      "webinar": true,
+      "question": null
     },
     "19464": {
       "type": "post",
       "slug": "webinar-start-strong-finish-better-ai-for-scrum-events-that-deliver",
-      "link": "https://www.betterchange-consulting.com/webinar/webinar-start-strong-finish-better-ai-for-scrum-events-that-deliver/",
+      "link": "https://www.betterchange-consulting.com/product-owner/webinar-start-strong-finish-better-ai-for-scrum-events-that-deliver/",
       "date": "2026-04-19T08:39:24",
       "modified": "2026-04-19T08:39:31",
       "title": "Webinar: Start Strong, Finish Better – AI for Scrum Events That Deliver",
-      "webinar": true
+      "webinar": true,
+      "question": null
     },
     "19471": {
       "type": "post",
       "slug": "webinar-dare-e-ricevere-feedback-la-competenza-che-cambia-tutto",
-      "link": "https://www.betterchange-consulting.com/webinar/webinar-dare-e-ricevere-feedback-la-competenza-che-cambia-tutto/",
+      "link": "https://www.betterchange-consulting.com/product-owner/webinar-dare-e-ricevere-feedback-la-competenza-che-cambia-tutto/",
       "date": "2026-04-21T13:00:32",
       "modified": "2026-04-22T07:20:44",
       "title": "Webinar: Dare e ricevere feedback- La competenza che cambia tutto",
-      "webinar": true
+      "webinar": true,
+      "question": null
     },
     "19512": {
       "type": "post",
       "slug": "what-happens-when-you-invest-in-your-leadership-a-conversation-with-maja-lovrencic",
-      "link": "https://www.betterchange-consulting.com/webinar/what-happens-when-you-invest-in-your-leadership-a-conversation-with-maja-lovrencic/",
+      "link": "https://www.betterchange-consulting.com/product-owner/what-happens-when-you-invest-in-your-leadership-a-conversation-with-maja-lovrencic/",
       "date": "2026-04-27T09:58:47",
       "modified": "2026-04-27T09:59:04",
       "title": "What Happens When You Invest in Your Leadership: A Conversation with Maja Lovrenčić",
-      "webinar": true
+      "webinar": true,
+      "question": null
     },
     "19557": {
       "type": "fellow",
@@ -1519,7 +1685,18 @@
       "date": "2026-05-18T15:15:01",
       "modified": "2026-09-16T16:39:17",
       "title": "Gregory Keegan",
-      "webinar": false
+      "webinar": false,
+      "question": null
+    },
+    "19684": {
+      "type": "post",
+      "slug": "lightning-lesson-coordination-cost-discovery-for-engineering-leaders",
+      "link": "https://www.betterchange-consulting.com/product-owner/lightning-lesson-coordination-cost-discovery-for-engineering-leaders/",
+      "date": "2026-09-23T11:48:41",
+      "modified": "2026-09-23T12:24:26",
+      "title": "Lightning Lesson: Coordination Cost Discovery for Engineering Leaders",
+      "webinar": true,
+      "question": null
     }
   },
   "events": {
@@ -2068,5 +2245,5 @@
       "question": null
     }
   },
-  "recordedAt": "2026-10-02T07:04:44.039Z"
+  "recordedAt": "2026-10-02T07:37:04.312Z"
 }
