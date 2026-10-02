@@ -59,7 +59,7 @@ bodyHtml: |-
 
   <h2><strong>Das Potenzial des eigenen Teams freisetzen</strong></h2>
 
-  <p>Für alle, die die "Market of Skills"-Übung mit ihrem Team umsetzen möchten, steht ein Moderationsleitfaden zur Verfügung. Um Zugang zu dieser wertvollen Ressource zu erhalten, genügt es, das eingebettete Formular in diesem Beitrag auszufüllen.</p>
+  <p>Für alle, die die "Market of Skills"-Übung mit ihrem Team umsetzen möchten, steht ein Moderationsleitfaden zur Verfügung. Ein Exemplar gibt es auf Anfrage über die <a href="/de/contact">Kontaktseite</a>.</p>
 
   <h2><strong>Das Ergebnis: Ein starkes, zusammenhängendes Team</strong></h2>
 

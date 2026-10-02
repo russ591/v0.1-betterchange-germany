@@ -45,7 +45,7 @@ bodyHtml: |-
 
   <h2>Try It Out Yourself</h2>
 
-  <p>Are you ready to embrace the world of plausibility and unlock the true potential of your Agile coaching? Don't miss out on the chance to supercharge your coaching efforts with the Plausibility Canvas. Fill the form above to receive your copy and embark on a journey towards greater effectiveness and success in the world of Agile coaching.</p>
+  <p>Are you ready to embrace the world of plausibility and unlock the true potential of your Agile coaching? Don't miss out on the chance to supercharge your coaching efforts with the Plausibility Canvas. To receive your copy, send a short request through the <a href="/contact">contact page</a>, and embark on a journey towards greater effectiveness and success in the world of Agile coaching.</p>
   <p>
 
   </p>
