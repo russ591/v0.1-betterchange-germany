@@ -4,7 +4,7 @@ date: '2026-10-07T01:00:00Z'
 format: live-online
 location: Online
 trainers:
-  - niels-verdonk
+  - bent-myllerup
   - nino-zeljko
 price: from €1,095
 status: available

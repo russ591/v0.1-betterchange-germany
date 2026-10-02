@@ -65,7 +65,7 @@ function bc_sync_post_types(): array
 {
     $types = ['post', 'tribe_events'];
     foreach (get_post_types(['public' => true, 'show_in_rest' => true, '_builtin' => false], 'objects') as $slug => $obj) {
-        if (strpos($slug, 'tribe_') === 0 || $slug === 'attachment') {
+        if (strpos($slug, 'tribe_') === 0 || strpos($slug, 'elementor_') === 0 || strpos($slug, 'tec_') === 0 || $slug === 'attachment') {
             continue;
         }
         $types[] = $slug;
