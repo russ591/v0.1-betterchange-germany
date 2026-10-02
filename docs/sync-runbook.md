@@ -6,8 +6,9 @@ Russ only wants to be asked when something is genuinely unclear. Anything unclea
 
 ## What the sync owns and what it never touches
 
-- The sync may create, edit and remove **only** content that carries a `sourceId`: training sessions in `src/content/training-schedules/` and articles in `src/content/insights-articles/` (English) and `src/content/insights-articles/de/` (German).
-- Anything **without** a `sourceId` belongs to Russ. Never edit or remove it. This is what protects his own German courses and his own articles.
+- betterchange-consulting.com is the source of truth for every **external** training session (`isExternal: true` in `src/content/training-schedules/`, the sessions whose Register button opens a sister site). The sync owns all of them, whether or not they carry a `sourceId`: it creates them from .com events, keeps them in step, and removes any that has no upcoming event on .com. This decision dates from 2026-10-02, when six external sessions with no .com counterpart were removed.
+- Articles are owned only when they carry a `sourceId`: `src/content/insights-articles/` (English) and `src/content/insights-articles/de/` (German).
+- Every session with the internal .de registration (no `isExternal`: the German courses and Russ's own online courses) and every article without a `sourceId` belongs to Russ. Never edit or remove those.
 - Never touch registration, Lexware or email code (`src/components/pages/RegisterPageContent.astro`, anything under `netlify/functions/` including the `com-snapshot` function). Never change `LEXWARE_TEST_MODE` or any other environment variable. Never merge anything to main except the one case in "Merging" below.
 
 ## How the data gets here: push, not pull
@@ -64,6 +65,7 @@ Run `npm run sync:check`. It compares the latest .com snapshot with `sync/state.
 - new posts (`resources` entries count as posts; a Webinar-category post is included when it is a write-up or recap with real content, and skipped only when it is an announcement or sign-up page for a session, see "Webinar posts"),
 - new, changed (date, price, registration link) and removed non-German events, each new event with the `course:` id and the `trainer:` it resolves to (and where the trainer came from: a decision, the Trainer field, the organizer, or the event description),
 - synced sessions whose `trainers` no longer match the Trainer field on .com,
+- external sessions to remove (no upcoming .com event), external sessions that match a .com event but lack a `sourceId`, and past external sessions to delete as housekeeping,
 - questions (an event whose trainer, venue country or .de course page cannot be determined, a webinar post that cannot be told apart from an announcement, a snapshot older than 48 hours),
 - new Fellow profiles on .com (information only, see "Fellows").
 
@@ -111,9 +113,13 @@ Only non-German events reach this step. The script already skips events whose ve
 
 **Trainer differs from .com** (the "Synced sessions whose trainer differs" list): set the session's `trainers` to the ids the script printed, which come from the Trainer field on .com. This is a training-only change like any other.
 
-**Removed or cancelled event**: delete the session file that carries that `sourceId`. If the event still exists on .com but is marked cancelled or postponed in its title, treat it as removed.
+**Removed or cancelled event** (an event whose date is still ahead has disappeared from .com): delete the session file that carries that `sourceId`. If the event still exists on .com but is marked cancelled or postponed in its title, treat it as removed.
 
-Only ever touch sessions with a `sourceId`. If a change would affect a session without one, raise a question instead.
+**External session to remove**: an external session that has no upcoming .com event, with or without a `sourceId`. Delete the file; .com is the source of truth. **External session matching a .com event without a sourceId**: add `sourceId` and `sourceUrl` (or run `npm run sync:check -- --apply-source-ids`).
+
+**Past external sessions**: the .com snapshot only holds upcoming events, so a session whose date has passed drops out of it. The script never reports that as a cancellation. It lists such sessions under "Past external sessions to delete"; delete them in the same training PR as plain housekeeping, with no mention in the questions. (The site stops listing them on its own on the day they pass, so nothing is visible either way.)
+
+Only ever touch external sessions and sessions with a `sourceId`. A session with the internal registration is Russ's: if a change would affect one, raise a question instead.
 
 ## Webinar posts
 
@@ -157,7 +163,7 @@ Questions are remembered in the state file too, so a known open question is not 
 
 ## Merging
 
-- A **training-only PR** is merged by the run itself once the PR's checks pass, and only if `npm run sync:mergeable` printed `MERGEABLE BY THE SYNC`: every changed file is a `src/content/training-schedules/*.md` carrying a `sourceId`, or `sync/state.json`. If it printed `WAITS FOR RUSS`, the PR waits. A **state-only PR** (just `sync/state.json`, from a Fellows-only run) passes the same check. Do not judge this by eye: the 2026-10-01 run misjudged its own PR as not training-only because it believed `main` lacked the baseline, while the branch was in fact based on the merged `main` and GitHub's file list held nothing but session files and the state.
+- A **training-only PR** is merged by the run itself once the PR's checks pass, and only if `npm run sync:mergeable` printed `MERGEABLE BY THE SYNC`: every changed file is a `src/content/training-schedules/*.md` the sync owns (external, or carrying a `sourceId`), or `sync/state.json`. If it printed `WAITS FOR RUSS`, the PR waits. A **state-only PR** (just `sync/state.json`, from a Fellows-only run) passes the same check. Do not judge this by eye: the 2026-10-01 run misjudged its own PR as not training-only because it believed `main` lacked the baseline, while the branch was in fact based on the merged `main` and GitHub's file list held nothing but session files and the state.
 - **Waiting for the checks.** The PR's check is the Netlify deploy preview, which can sit in the queue behind a production build. Poll the PR's checks about once a minute for up to 20 minutes.
   - A check **fails**: do not merge. Report the failure in the final summary with the check's name and link, and leave the PR open for Russ.
   - The checks **pass** within 20 minutes: merge.

@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 // Decides, mechanically, whether the current sync branch may be merged by
 // the sync itself under the CLAUDE.md merge policy: every file changed
-// against origin/main must be a training-session data file carrying a
-// sourceId, or sync/state.json. Anything else means the PR waits for Russ.
+// against origin/main must be a training-session data file the sync owns
+// (an external session, isExternal: true, or one carrying a sourceId), or
+// sync/state.json. Anything else means the PR waits for Russ.
 //
 //   npm run sync:mergeable                 judge HEAD against origin/main
 //   npm run sync:mergeable -- <base> <head>  judge any range (for example a
@@ -48,9 +49,12 @@ try {
     });
 
   const problems = [];
-  const hasSourceId = (ref, path) => {
+  // A session the sync owns: external (its Register button opens another
+  // site; .com is the source of truth for these) or carrying a sourceId.
+  const syncOwned = (ref, path) => {
     try {
-      return /^sourceId:\s*\S/m.test(git("show", `${ref}:${path}`));
+      const text = git("show", `${ref}:${path}`);
+      return /^sourceId:\s*\S/m.test(text) || /^isExternal:\s*true\s*$/m.test(text);
     } catch {
       return false;
     }
@@ -62,13 +66,13 @@ try {
       continue;
     }
     if (f.status === "D") {
-      if (!hasSourceId(mergeBase, f.path)) problems.push(`${f.path}: deleted, but it carried no sourceId (Russ's own session)`);
+      if (!syncOwned(mergeBase, f.path)) problems.push(`${f.path}: deleted, but it is neither external nor carries a sourceId (Russ's own session)`);
     } else if (f.status === "R") {
-      if (!hasSourceId(mergeBase, f.from) || !hasSourceId(head, f.path)) problems.push(`${f.from} -> ${f.path}: renamed, but it carries no sourceId`);
-    } else if (!hasSourceId(head, f.path)) {
-      problems.push(`${f.path}: carries no sourceId`);
+      if (!syncOwned(mergeBase, f.from) || !syncOwned(head, f.path)) problems.push(`${f.from} -> ${f.path}: renamed, but it is neither external nor carries a sourceId`);
+    } else if (!syncOwned(head, f.path)) {
+      problems.push(`${f.path}: neither external nor carries a sourceId`);
     }
-    if (f.status === "M" && !hasSourceId(mergeBase, f.path)) problems.push(`${f.path}: modified, but it carried no sourceId before (Russ's own session)`);
+    if (f.status === "M" && !syncOwned(mergeBase, f.path)) problems.push(`${f.path}: modified, but it was neither external nor carried a sourceId before (Russ's own session)`);
   }
 
   console.log(`changed files (${changed.length}):`);
@@ -83,7 +87,7 @@ try {
     for (const p of problems) console.log(`  - ${p}`);
     process.exit(1);
   }
-  console.log("\nMERGEABLE BY THE SYNC: training-only (synced session files with a sourceId, plus sync/state.json). Merge once the build passes.");
+  console.log("\nMERGEABLE BY THE SYNC: training-only (external or sourceId-carrying session files, plus sync/state.json). Merge once the build passes.");
 } catch (e) {
   console.error(`sync:mergeable could not judge: ${String(e.stderr || e.message).trim()}`);
   process.exit(2);
