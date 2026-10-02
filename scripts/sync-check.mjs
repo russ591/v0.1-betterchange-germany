@@ -70,6 +70,10 @@ const WEBINAR = /(^|\/)webinar(\/|$)/i;
 // Post types that are people, not articles. Never imported; a new one is
 // listed in the run summary so Russ can update the About page.
 const PROFILE_TYPES = new Set(["fellow"]);
+// Post types that are site plumbing (Elementor templates, pages, calendar
+// internals), not content. Dropped before anything looks at them.
+const IGNORED_TYPES = new Set(["page", "attachment", "elementor_library", "elementor_snippet", "tribe_venue", "tribe_organizer", "tribe_events", "tec_calendar_embed"]);
+const isIgnoredType = (slug) => IGNORED_TYPES.has(slug) || /^(elementor_|wp_|tribe_|tec_)/.test(slug);
 
 // ---------------------------------------------------------------- args ----
 const args = process.argv.slice(2);
@@ -224,16 +228,24 @@ function venueOf(ev) {
   return v && typeof v === "object" ? v : null;
 }
 
-// The "Trainer" additional field of The Events Calendar, as the snippet
-// forwards it: a resolved `trainer` string, or the raw `custom_fields` block
-// (an object keyed by label, or a list of {label, value}).
+// The "Trainer" additional fields of The Events Calendar, as the snippet
+// forwards them: the raw `custom_fields` block (on .com an object keyed by
+// meta key, each {label, value}; "Trainer" and "2nd Trainer" both count, and
+// a plain label-keyed object or a list of {label, value} are accepted too),
+// with the snippet's resolved `trainer` string as the fallback. Several
+// trainers come back joined with commas.
 function trainerFieldOf(ev) {
-  if (typeof ev.trainer === "string" && ev.trainer.trim()) return stripHtml(ev.trainer);
   const cf = ev.custom_fields;
-  const entries = Array.isArray(cf) ? cf.map((x) => [x && (x.label || x.name || x.key) || "", x && x.value]) : cf && typeof cf === "object" ? Object.entries(cf) : [];
-  for (const [label, value] of entries) {
-    if (/trainer/i.test(String(label)) && typeof value === "string" && value.trim()) return stripHtml(value);
-  }
+  const entries = Array.isArray(cf)
+    ? cf.map((x) => [x && (x.label || x.name || x.key) || "", x && x.value])
+    : cf && typeof cf === "object"
+      ? Object.entries(cf).map(([k, v]) => (v && typeof v === "object" ? [v.label || k, v.value] : [k, v]))
+      : [];
+  const names = entries
+    .filter(([label, value]) => /trainer/i.test(String(label)) && typeof value === "string" && value.trim())
+    .map(([, value]) => stripHtml(value));
+  if (names.length) return names.join(", ");
+  if (typeof ev.trainer === "string" && ev.trainer.trim()) return stripHtml(ev.trainer);
   return null;
 }
 
@@ -548,7 +560,10 @@ async function main() {
   }
 
   const posts = raw.posts.map((p) => normalisePost(p, "post"));
-  for (const [slug, t] of Object.entries(raw.extra || {})) for (const item of t.items || []) posts.push(normalisePost(item, slug));
+  for (const [slug, t] of Object.entries(raw.extra || {})) {
+    if (isIgnoredType(slug)) continue;
+    for (const item of t.items || []) posts.push(normalisePost(item, slug));
+  }
   const events = raw.events.map(normaliseEvent);
   const publicTypes = Object.entries(raw.types || {})
     .filter(([slug, t]) => !["attachment", "nav_menu_item", "wp_block", "wp_template", "wp_template_part", "wp_navigation", "wp_font_family", "wp_font_face", "wp_global_styles"].includes(slug))
