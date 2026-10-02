@@ -408,6 +408,16 @@ function resolveTrainer(e, profiles, decisions) {
   return null;
 }
 
+// betterchange-consulting.com is the source of truth for every external
+// session (isExternal: true, the ones whose Register button opens another
+// site). The sync owns all of them, with or without a sourceId: one with no
+// upcoming .com event is removed. Sessions with the internal .de
+// registration (German courses, Russ's own online courses) are never
+// touched. A session whose date has passed simply drops out of the .com
+// snapshot (it only holds upcoming events); that is housekeeping, not a
+// cancellation.
+const isExternalSession = (s) => s.isExternal === "true";
+
 // The brief's rule: skip Germany; sync everything else unless Russell Hill
 // runs it online; an event the sync could import but cannot place (no
 // trainer, no venue country, no .de course page) is a question, never a
@@ -648,7 +658,11 @@ async function main() {
   const sessionBySourceId = Object.fromEntries(sessions.filter((x) => x.sourceId).map((x) => [x.sourceId, x]));
   const decide = (e) => decideEvent(e, courses, profiles, decisions, importedIds);
 
-  const report = { mode: MODE, generatedAt: new Date().toISOString(), source: FROM_DIR ? "dir" : USE_API ? "api" : "snapshot", snapshot: raw.snapshot || null, postTypes: publicTypes, resourcesType, newPosts: [], newFellows: [], skippedWebinars: 0, skippedPostsByDecision: 0, webinarWriteups: 0, newEvents: [], changedEvents: [], removedEvents: [], skippedEvents: [], questions: [], possiblyMissingOnDe: [], sessionMatches: [], forgotten: FORGET, notRecorded: [], trainerMismatches: [], counts: {} };
+  const report = { mode: MODE, generatedAt: new Date().toISOString(), source: FROM_DIR ? "dir" : USE_API ? "api" : "snapshot", snapshot: raw.snapshot || null, postTypes: publicTypes, resourcesType, newPosts: [], newFellows: [], skippedWebinars: 0, skippedPostsByDecision: 0, webinarWriteups: 0, newEvents: [], changedEvents: [], removedEvents: [], skippedEvents: [], questions: [], possiblyMissingOnDe: [], sessionMatches: [], forgotten: FORGET, notRecorded: [], trainerMismatches: [], sessionsToRemove: [], expiredSessions: [], sessionsToLink: [], counts: {} };
+
+  // "Today" for the upcoming/past split is the day the snapshot was built:
+  // the .com snippet keeps every event starting on or after that day.
+  const today = (raw.snapshot && raw.snapshot.generatedAt ? new Date(raw.snapshot.generatedAt) : new Date()).toISOString().slice(0, 10);
 
   // A stale snapshot means the .com snippet has stopped pushing; say so as a
   // question rather than quietly diffing old data.
@@ -718,8 +732,36 @@ async function main() {
       if (ch.length) report.changedEvents.push({ ...e, changes: ch });
     }
   }
+  // An event that is in the state but not in the snapshot has either been
+  // cancelled on .com (its date is still ahead) or has simply taken place
+  // (its date has passed; the snapshot only holds upcoming events).
   for (const [id, prev] of Object.entries(state.events)) {
-    if (!seenNow.has(id) && !prev.skipped && !prev.question) report.removedEvents.push({ id, ...prev });
+    if (seenNow.has(id) || prev.skipped || prev.question) continue;
+    if (prev.start && prev.start < today) continue; // expired, handled below with the session files
+    report.removedEvents.push({ id, ...prev });
+  }
+
+  // Every external session is the sync's: one whose .com event is gone or
+  // that matches no .com event at all is removed. Past dates are
+  // housekeeping, listed separately and never as a cancellation.
+  const liveEventIds = new Set(events.filter((e) => decide(e).kind !== "skip").map((e) => e.id));
+  const links = matchSessionsToEvents(sessions, events, courses, profiles, decisions);
+  for (const s of sessions) {
+    if (!isExternalSession(s)) continue;
+    const day = String(s.date || "").slice(0, 10);
+    const entry = { session: s.file, date: day, course: s.course, location: s.location || null, sourceId: s.sourceId || null };
+    if (day && day < today) {
+      report.expiredSessions.push(entry);
+      continue;
+    }
+    if (s.sourceId) {
+      if (!liveEventIds.has(s.sourceId)) report.sessionsToRemove.push({ ...entry, reason: `its .com event #${s.sourceId} is no longer an upcoming event on .com` });
+      continue;
+    }
+    const link = links.find((m) => m.session.file === s.file);
+    if (link && link.event) report.sessionsToLink.push({ ...entry, eventId: link.event.id, eventTitle: link.event.title, basis: link.basis });
+    else if (link && link.ambiguous) report.questions.push({ id: s.file, title: s.file, start: day, url: s.externalUrl || null, reason: `external session matches more than one .com event (${link.ambiguous.join(", ")}); add the right sourceId by hand` });
+    else report.sessionsToRemove.push({ ...entry, reason: "no upcoming .com event matches it (same registration link, or same course and date)" });
   }
 
   // ---- baseline extras: possibly-missing recent posts, session matches
@@ -795,7 +837,7 @@ async function main() {
     postsInState: Object.keys(loadState().posts).length,
     eventsInState: Object.keys(loadState().events).length,
     localSessionsWithSourceId: localSessions().filter((s) => s.sourceId).length,
-    localExternalSessions: sessions.filter((s) => s.isExternal === "true").length,
+    localExternalSessions: sessions.filter(isExternalSession).length,
   };
 
   if (WEBINARS) {
@@ -808,7 +850,7 @@ async function main() {
     return;
   }
 
-  const nothingToSync = !report.newPosts.length && !report.newEvents.length && !report.changedEvents.length && !report.removedEvents.length && !report.questions.length && !report.trainerMismatches.length;
+  const nothingToSync = !report.newPosts.length && !report.newEvents.length && !report.changedEvents.length && !report.removedEvents.length && !report.questions.length && !report.trainerMismatches.length && !report.sessionsToRemove.length && !report.expiredSessions.length && !report.sessionsToLink.length;
   const nothing = MODE === "check" && nothingToSync && !report.newFellows.length;
 
   if (JSON_OUT) {
@@ -839,14 +881,17 @@ async function main() {
     section("Changed non-German events", report.changedEvents, (e) => `#${e.id} ${e.title}: ${e.changes.map((ch) => `${ch.field} ${ch.from} -> ${ch.to}`).join("; ")}`);
     section("Synced sessions whose trainer differs from .com (update the session file)", report.trainerMismatches, (m) => `${m.session}: trainers ${m.local.length ? m.local.join(", ") : "(none)"}${m.localName ? ` / trainerName ${m.localName}` : ""} here, but .com (${m.source}) says ${m.com.join(", ")} | #${m.id} ${m.title} ${m.start}`);
     section("Removed or cancelled non-German events", report.removedEvents, (e) => `#${e.id ?? "?"} ${e.title} | ${e.start}`);
+    section("External sessions to remove (no upcoming .com event; .com is the source of truth)", report.sessionsToRemove, (x) => `${x.session} | ${x.course} | ${x.date} | ${x.location || "?"}${x.sourceId ? ` | sourceId ${x.sourceId}` : ""}: ${x.reason}`);
+    section("External sessions matching a .com event without a sourceId (add it, or run --apply-source-ids)", report.sessionsToLink, (x) => `${x.session} -> #${x.eventId} ${x.eventTitle} (matched by ${x.basis})`);
+    section("Past external sessions to delete (housekeeping, their dates have passed; not a cancellation)", report.expiredSessions, (x) => `${x.session} | ${x.course} | ${x.date} | ${x.location || "?"}`);
     section("Questions for Russ", report.questions, (q) => `#${q.id} ${q.title} (${q.start}): ${q.reason} ${q.url || ""}`);
     section("New Fellows on .com (information only, never imported; update the About page by hand)", report.newFellows, (p) => `${p.title} [${p.date.slice(0, 10)}] ${p.link}`);
     if (APPLY_IDS) {
       console.log(`\nExisting sessions matched to .com events (${report.sessionMatches.filter((m) => m.eventId).length} matched, ${report.sessionMatches.filter((m) => m.ambiguous).length} ambiguous), ${c.sourceIdsWritten} sourceIds written:`);
       for (const m of report.sessionMatches) console.log(`  - ${m.session} -> ${m.eventId ? `#${m.eventId} ${m.eventTitle} (matched by ${m.basis})` : `ambiguous: ${m.ambiguous.join(", ")}`}`);
-      const unmatched = sessions.filter((s) => s.isExternal === "true" && !s.sourceId && !report.sessionMatches.some((m) => m.session === s.file));
+      const unmatched = sessions.filter((s) => isExternalSession(s) && !s.sourceId && !report.sessionMatches.some((m) => m.session === s.file));
       if (unmatched.length) {
-        console.log(`\nExternal sessions with no .com event in the snapshot (${unmatched.length}; check whether they still run):`);
+        console.log(`\nExternal sessions with no .com event in the snapshot (${unmatched.length}; .com is the source of truth, so these are removed):`);
         for (const s of unmatched) console.log(`  - ${s.file} | ${s.course} | ${String(s.date).slice(0, 10)} | ${s.location || "?"} | ${s.externalUrl || ""}`);
       }
     }
