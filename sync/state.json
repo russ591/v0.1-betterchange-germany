@@ -1716,8 +1716,8 @@
       "organizers": [
         "Better Change Italy"
       ],
-      "skipped": null,
-      "question": "no matching .de course page for this event (the sync never creates course pages)"
+      "skipped": "ignored by decision: CASP has no .de course page and will not get one; never raise this event again.",
+      "question": null
     },
     "19504": {
       "title": "Certified Scrum Product Owner (CSPO)",
@@ -1957,6 +1957,23 @@
       "skipped": "venue in Germany (Russ adds these himself)",
       "question": null
     },
+    "19677": {
+      "title": "Certified Scrum Master (CSM)",
+      "url": "https://www.betterchange-consulting.com/event/certified-scrum-master-z-23-11-2026/",
+      "start": "2026-11-23",
+      "end": "2026-11-24",
+      "cost": "€900 – €1000",
+      "registrationUrl": "https://www.betterchange-consulting.com/event/certified-scrum-master-z-23-11-2026/",
+      "modified": "2026-09-18 14:11:03",
+      "country": "Croatia",
+      "city": "Zagreb",
+      "online": false,
+      "organizers": [
+        "Better Change Zagreb"
+      ],
+      "skipped": null,
+      "question": null
+    },
     "19730": {
       "title": "Flight Level 2 Design (FL2D)",
       "url": "https://www.betterchange-consulting.com/event/flight-level-2-design-fl2d-6/",
@@ -2058,7 +2075,24 @@
       ],
       "skipped": "venue in Germany (Russ adds these himself)",
       "question": null
+    },
+    "19745": {
+      "title": "Certified Agile Leader® 1 (CAL 1™)",
+      "url": "https://www.betterchange-consulting.com/event/certified-agile-leader-1-cal-1/",
+      "start": "2027-12-08",
+      "end": "2027-12-09",
+      "cost": "€1500 – €1800",
+      "registrationUrl": "https://www.betterchange-consulting.it/event-details/certified-agile-leader-1-cal1-italiano-202706/",
+      "modified": "2026-10-01 21:37:44",
+      "country": null,
+      "city": "Online",
+      "online": true,
+      "organizers": [
+        "Better Change Italy"
+      ],
+      "skipped": null,
+      "question": "trainer cannot be determined: organizer \"Better Change Italy\" is not a coach profile and the description names no trainer (answer in sync/decisions.json: trainer, trainerName or organizers)"
     }
   },
-  "recordedAt": "2026-10-01T21:35:05.293Z"
+  "recordedAt": "2026-10-02T05:41:03.357Z"
 }
