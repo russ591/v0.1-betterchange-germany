@@ -224,6 +224,19 @@ function venueOf(ev) {
   return v && typeof v === "object" ? v : null;
 }
 
+// The "Trainer" additional field of The Events Calendar, as the snippet
+// forwards it: a resolved `trainer` string, or the raw `custom_fields` block
+// (an object keyed by label, or a list of {label, value}).
+function trainerFieldOf(ev) {
+  if (typeof ev.trainer === "string" && ev.trainer.trim()) return stripHtml(ev.trainer);
+  const cf = ev.custom_fields;
+  const entries = Array.isArray(cf) ? cf.map((x) => [x && (x.label || x.name || x.key) || "", x && x.value]) : cf && typeof cf === "object" ? Object.entries(cf) : [];
+  for (const [label, value] of entries) {
+    if (/trainer/i.test(String(label)) && typeof value === "string" && value.trim()) return stripHtml(value);
+  }
+  return null;
+}
+
 function normaliseEvent(ev) {
   const v = venueOf(ev);
   const organizers = (Array.isArray(ev.organizer) ? ev.organizer : ev.organizer ? [ev.organizer] : [])
@@ -254,46 +267,70 @@ function normaliseEvent(ev) {
     organizers,
     categories: (ev.categories || []).map((c) => c.slug || c.name).filter(Boolean),
     descriptionText: stripHtml(ev.description || "").slice(0, 4000),
+    trainerField: trainerFieldOf(ev),
   };
 }
 
 // Who runs an event, in this order: Russ's decision for that event, the
-// organizer name when it is a coach profile (or mapped in decisions.json's
-// "organizers"), then a "Trainer: Name" line in the event description (the
-// Zagreb events name their trainer there while the organizer is just
-// "Better Change Zagreb"). Nothing found means a question, never a guess.
+// event's "Trainer" field on .com, the organizer when it is a coach profile
+// (or mapped in decisions.json's "organizers"), then a "Trainer: Name" line
+// in the event description. Every name must be a coach profile here; a name
+// without one is reported as unmatched and becomes a question, never a
+// trainerName guess. Nothing found at all is a question too.
+// Returns { ids, names, unmatched, source } or null.
 function resolveTrainer(e, profiles, decisions) {
   const d = (decisions.events || {})[e.id] || {};
   const byId = (id) => profiles.find((p) => p.id === id);
   const byName = (name) => profiles.find((p) => normTitle(p.name) === normTitle(name));
+  const fromNames = (text, source) => {
+    const names = String(text).split(/\s*(?:,|;|&|\band\b|\/|\n)\s*/).map((x) => x.trim()).filter(Boolean);
+    const out = { ids: [], names: [], unmatched: [], source };
+    for (const n of names) {
+      const p = byName(n) || (OWN_TRAINER.test(n) ? byId("russell-hill") : null);
+      if (p) {
+        out.ids.push(p.id);
+        out.names.push(p.name);
+      } else out.unmatched.push(n);
+    }
+    return out;
+  };
   if (d.trainer) {
-    const p = byId(d.trainer);
-    return { id: d.trainer, name: p ? p.name : d.trainer, source: p ? "decision" : "decision (no such coach profile!)" };
+    const ids = Array.isArray(d.trainer) ? d.trainer : [d.trainer];
+    const out = { ids: [], names: [], unmatched: [], source: "decision" };
+    for (const id of ids) {
+      const p = byId(id);
+      if (p) {
+        out.ids.push(p.id);
+        out.names.push(p.name);
+      } else out.unmatched.push(`${id} (no such coach profile)`);
+    }
+    return out;
   }
-  if (d.trainerName) return { id: null, name: d.trainerName, source: "decision" };
+  if (d.trainerName) return { ids: [], names: [d.trainerName], unmatched: [], source: "decision (trainerName)" };
+  if (e.trainerField) return fromNames(e.trainerField, "Trainer field");
   const orgMap = decisions.organizers || {};
   for (const org of e.organizers) {
     const mapped = Object.entries(orgMap).find(([k]) => normTitle(k) === normTitle(org));
     if (mapped) {
       const [, v] = mapped;
-      if (v === "") return { id: null, name: null, source: `organizer "${org}" mapped to no trainer` };
+      if (v === "") return { ids: [], names: [], unmatched: [], source: `organizer "${org}" mapped to no trainer` };
       const p = byId(v);
-      return p ? { id: p.id, name: p.name, source: `organizer "${org}" mapped in decisions` } : { id: null, name: v, source: `organizer "${org}" mapped in decisions` };
+      return p ? { ids: [p.id], names: [p.name], unmatched: [], source: `organizer "${org}" mapped in decisions` } : { ids: [], names: [v], unmatched: [], source: `organizer "${org}" mapped in decisions` };
     }
     const p = byName(org);
-    if (p) return { id: p.id, name: p.name, source: "organizer" };
-    if (OWN_TRAINER.test(org)) return { id: "russell-hill", name: org, source: "organizer" };
+    if (p) return { ids: [p.id], names: [p.name], unmatched: [], source: "organizer" };
+    if (OWN_TRAINER.test(org)) return { ids: ["russell-hill"], names: [org], unmatched: [], source: "organizer" };
   }
   const m = e.descriptionText && e.descriptionText.match(/\b(?:Trainers?|Instructors?|Facilitators?)\s*:\s*((?:[A-ZÀ-Ý][\wÀ-ÿ'.-]*\s?){1,4})/);
   if (m) {
     const words = m[1].trim().split(/\s+/);
     for (let n = words.length; n >= 1; n--) {
       const p = byName(words.slice(0, n).join(" "));
-      if (p) return { id: p.id, name: p.name, source: "description" };
+      if (p) return { ids: [p.id], names: [p.name], unmatched: [], source: "description" };
     }
     const name = words.slice(0, Math.min(3, words.length)).join(" ");
-    if (OWN_TRAINER.test(name)) return { id: "russell-hill", name, source: "description" };
-    return { id: null, name, source: "description (no coach profile; use trainerName)" };
+    if (OWN_TRAINER.test(name)) return { ids: ["russell-hill"], names: [name], unmatched: [], source: "description" };
+    return { ids: [], names: [], unmatched: [name], source: "description" };
   }
   return null;
 }
@@ -307,14 +344,16 @@ function decideEvent(e, courses, profiles, decisions, importedIds = new Set()) {
   if (d.ignore) return { kind: "skip", reason: `ignored by decision: ${d.ignore}` };
   if (e.country && GERMANY.has(e.country.trim().toLowerCase())) return { kind: "skip", reason: "venue in Germany (Russ adds these himself)" };
   const trainer = resolveTrainer(e, profiles, decisions);
-  if (trainer && trainer.id === "russell-hill" && e.online) return { kind: "skip", reason: "Russell Hill's own online course (Russ adds these himself)" };
+  if (trainer && trainer.ids.includes("russell-hill") && e.online) return { kind: "skip", reason: "Russell Hill's own online course (Russ adds these himself)" };
   // Already imported (a session here carries its sourceId): trainer and
-  // course were settled when it was created, so only changes matter now.
+  // course were settled when it was created; a trainer that now differs is
+  // reported separately, not re-questioned.
   if (importedIds.has(e.id)) return { kind: "sync", course: d.course || courseForEvent(e, courses), trainer };
   if (!trainer) {
     const org = e.organizers.join(", ");
-    return { kind: "question", reason: org ? `trainer cannot be determined: organizer "${org}" is not a coach profile and the description names no trainer (answer in sync/decisions.json: trainer, trainerName or organizers)` : `no organizer on .com and the description names no trainer${e.online ? "; cannot tell whether it is Russell Hill's" : ""}` };
+    return { kind: "question", reason: `trainer cannot be determined: no Trainer field on .com, ${org ? `organizer "${org}" is not a coach profile` : "no organizer"}, and the description names no trainer (fill the Trainer field on .com, or answer in sync/decisions.json: trainer, trainerName or organizers)` };
   }
+  if (trainer.unmatched.length) return { kind: "question", reason: `trainer "${trainer.unmatched.join('", "')}" (from the ${trainer.source}) has no coach profile on .de (add the profile, or answer in sync/decisions.json: trainer or trainerName)` };
   if (!e.online && !e.country) return { kind: "question", reason: "no venue country on .com; cannot tell whether it is in Germany" };
   const course = d.course || courseForEvent(e, courses);
   if (!course) return { kind: "question", reason: "no matching .de course page for this event (the sync never creates course pages)" };
@@ -323,8 +362,9 @@ function decideEvent(e, courses, profiles, decisions, importedIds = new Set()) {
 
 function trainerLabel(t) {
   if (!t) return "?";
-  if (!t.name) return `none (${t.source})`;
-  return `${t.name}${t.id ? ` -> ${t.id}` : ""} (${t.source})`;
+  const parts = t.names.map((n, i) => `${n}${t.ids[i] ? ` -> ${t.ids[i]}` : ""}`);
+  if (t.unmatched.length) parts.push(`${t.unmatched.join(", ")} (no profile!)`);
+  return `${parts.join(", ") || "none"} (${t.source})`;
 }
 
 const codeKey = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -357,9 +397,19 @@ function readFrontmatter(path) {
   const text = readFileSync(path, "utf8");
   const m = text.match(/^---\n([\s\S]*?)\n---/);
   const fm = {};
+  let listKey = null;
   if (m) for (const line of m[1].split("\n")) {
     const mm = line.match(/^([A-Za-z][A-Za-z0-9_-]*):\s*(.*)$/);
-    if (mm) fm[mm[1]] = mm[2].replace(/^['"]|['"]$/g, "");
+    if (mm) {
+      fm[mm[1]] = mm[2].replace(/^['"]|['"]$/g, "");
+      listKey = mm[2] === "" ? mm[1] : null;
+      continue;
+    }
+    const li = listKey && line.match(/^\s+-\s*(.+?)\s*$/);
+    if (li) {
+      if (!Array.isArray(fm[listKey])) fm[listKey] = [];
+      fm[listKey].push(li[1].replace(/^['"]|['"]$/g, ""));
+    }
   }
   return { fm, text };
 }
@@ -519,9 +569,10 @@ async function main() {
   const profiles = localProfiles();
   const decisions = loadDecisions();
   const importedIds = new Set(sessions.map((x) => x.sourceId).filter(Boolean));
+  const sessionBySourceId = Object.fromEntries(sessions.filter((x) => x.sourceId).map((x) => [x.sourceId, x]));
   const decide = (e) => decideEvent(e, courses, profiles, decisions, importedIds);
 
-  const report = { mode: MODE, generatedAt: new Date().toISOString(), source: FROM_DIR ? "dir" : USE_API ? "api" : "snapshot", snapshot: raw.snapshot || null, postTypes: publicTypes, resourcesType, newPosts: [], newFellows: [], skippedWebinars: 0, skippedPostsByDecision: 0, newEvents: [], changedEvents: [], removedEvents: [], skippedEvents: [], questions: [], possiblyMissingOnDe: [], sessionMatches: [], forgotten: FORGET, notRecorded: [], counts: {} };
+  const report = { mode: MODE, generatedAt: new Date().toISOString(), source: FROM_DIR ? "dir" : USE_API ? "api" : "snapshot", snapshot: raw.snapshot || null, postTypes: publicTypes, resourcesType, newPosts: [], newFellows: [], skippedWebinars: 0, skippedPostsByDecision: 0, newEvents: [], changedEvents: [], removedEvents: [], skippedEvents: [], questions: [], possiblyMissingOnDe: [], sessionMatches: [], forgotten: FORGET, notRecorded: [], trainerMismatches: [], counts: {} };
 
   // A stale snapshot means the .com snippet has stopped pushing; say so as a
   // question rather than quietly diffing old data.
@@ -564,8 +615,20 @@ async function main() {
       if (!prev || !prev.question || eventChanges(prev, e).length) report.questions.push({ id: e.id, title: e.title, start: e.start, url: e.url, reason: cls.reason });
       continue;
     }
+    const local = sessionBySourceId[e.id];
+    if (local && cls.trainer && cls.trainer.unmatched.length) {
+      report.questions.push({ id: e.id, title: e.title, start: e.start, url: e.url, reason: `imported as ${local.file}, but .com now names trainer "${cls.trainer.unmatched.join('", "')}" (${cls.trainer.source}), who has no coach profile on .de` });
+    } else if (local && cls.trainer && cls.trainer.ids.length) {
+      const have = Array.isArray(local.trainers) ? local.trainers : local.trainers ? [local.trainers] : [];
+      const want = cls.trainer.ids;
+      if (have.length !== want.length || have.some((id) => !want.includes(id))) {
+        report.trainerMismatches.push({ id: e.id, title: e.title, start: e.start, session: local.file, local: have, localName: local.trainerName || null, com: want, source: cls.trainer.source });
+      }
+    }
     const prev = state.events[e.id];
-    if (!prev) report.newEvents.push({ ...e, course: cls.course, trainer: cls.trainer });
+    // An event recorded as an open question that can now be placed (the
+    // Trainer field was filled in, a decision was added) is new, not changed.
+    if (!prev || prev.question) report.newEvents.push({ ...e, course: cls.course, trainer: cls.trainer });
     else {
       const ch = eventChanges(prev, e);
       if (ch.length) report.changedEvents.push({ ...e, changes: ch });
@@ -618,7 +681,8 @@ async function main() {
     next.events = {};
     for (const e of events) {
       const cls = decide(e);
-      const keep = state.events[e.id] || cls.kind !== "sync" || sessionIds.has(e.id);
+      const prev = state.events[e.id];
+      const keep = (prev && !prev.question) || cls.kind !== "sync" || sessionIds.has(e.id);
       if (!keep) {
         report.notRecorded.push({ kind: "event", id: e.id, title: e.title });
         continue;
@@ -644,7 +708,7 @@ async function main() {
     localExternalSessions: sessions.filter((s) => s.isExternal === "true").length,
   };
 
-  const nothingToSync = !report.newPosts.length && !report.newEvents.length && !report.changedEvents.length && !report.removedEvents.length && !report.questions.length;
+  const nothingToSync = !report.newPosts.length && !report.newEvents.length && !report.changedEvents.length && !report.removedEvents.length && !report.questions.length && !report.trainerMismatches.length;
   const nothing = MODE === "check" && nothingToSync && !report.newFellows.length;
 
   if (JSON_OUT) {
@@ -673,6 +737,7 @@ async function main() {
     section("New posts (non-webinar; resources count as posts)", report.newPosts, (p) => `#${p.id} ${p.title} [${p.date.slice(0, 10)}${p.author ? `, ${p.author}` : ""}${p.type !== "post" ? `, type ${p.type}` : ""}]${p.authorDecision ? ` author by decision: ${p.authorDecision} |` : ""} ${p.link}`);
     section("New non-German events", report.newEvents, (e) => `#${e.id} ${e.title} | course: ${e.course} | ${e.start}${e.end && e.end !== e.start ? ` to ${e.end}` : ""} | ${[e.city, e.country].filter(Boolean).join(", ") || (e.online ? "Online" : "?")} | ${e.cost || "no cost given"} | trainer: ${trainerLabel(e.trainer)} | organizer: ${e.organizers.join(", ") || "-"} | ${e.registrationUrl || e.url}`);
     section("Changed non-German events", report.changedEvents, (e) => `#${e.id} ${e.title}: ${e.changes.map((ch) => `${ch.field} ${ch.from} -> ${ch.to}`).join("; ")}`);
+    section("Synced sessions whose trainer differs from .com (update the session file)", report.trainerMismatches, (m) => `${m.session}: trainers ${m.local.length ? m.local.join(", ") : "(none)"}${m.localName ? ` / trainerName ${m.localName}` : ""} here, but .com (${m.source}) says ${m.com.join(", ")} | #${m.id} ${m.title} ${m.start}`);
     section("Removed or cancelled non-German events", report.removedEvents, (e) => `#${e.id ?? "?"} ${e.title} | ${e.start}`);
     section("Questions for Russ", report.questions, (q) => `#${q.id} ${q.title} (${q.start}): ${q.reason} ${q.url || ""}`);
     section("New Fellows on .com (information only, never imported; update the About page by hand)", report.newFellows, (p) => `${p.title} [${p.date.slice(0, 10)}] ${p.link}`);
