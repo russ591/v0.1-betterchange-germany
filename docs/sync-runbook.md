@@ -46,7 +46,7 @@ This was done on 2026-10-01: 8 sessions were linked, and 9 upcoming events with 
 `sync/decisions.json` is where an answered question goes, so the sync applies it from then on and never asks again. `sync:check` reads it on every run. It is keyed by .com id:
 
 - `events.<id>`: `ignore` (a reason; the event is never raised or imported again), `trainer` (a `coach-profiles` id), `trainerName` (display name when there is no profile), `course` (a `training-courses` id, when the title does not resolve on its own), `note`, `decided` (date).
-- `posts.<id>`: `ignore` (a reason), `author` (a `coach-profiles` id), `note`, `decided`.
+- `posts.<id>`: `ignore` (a reason), `author` (a `coach-profiles` id), `webinar` (`"writeup"` or `"announcement"`, settling the webinar rule for that post), `note`, `decided`.
 - `organizers`: a .com organizer name mapped to the trainer it stands for: a `coach-profiles` id, a display name, or `""` for "no trainer shown". One entry answers the question for every future event from that organizer (for example `"Better Change Italy": "giuseppe-de-simone"` once Russ confirms it).
 
 When Russ answers a question in chat or on a PR, the session that gets the answer records it here, in a PR of its own if nothing else is pending (a decisions-only change waits for Russ like any other PR; it is his answer, so he can approve it in a glance). The daily run itself never writes this file.
@@ -61,10 +61,10 @@ Before anything else, look for open pull requests from earlier sync runs (branch
 
 Run `npm run sync:check`. It compares the latest .com snapshot with `sync/state.json` and prints:
 
-- new posts (non-webinar; webinar announcements are never imported; `resources` entries count as posts),
+- new posts (`resources` entries count as posts; a Webinar-category post is included when it is a write-up or recap with real content, and skipped only when it is an announcement or sign-up page for a session, see "Webinar posts"),
 - new, changed (date, price, registration link) and removed non-German events, each new event with the `course:` id and the `trainer:` it resolves to (and where the trainer came from: a decision, the Trainer field, the organizer, or the event description),
 - synced sessions whose `trainers` no longer match the Trainer field on .com,
-- questions (an event whose trainer, venue country or .de course page cannot be determined, or a snapshot older than 48 hours),
+- questions (an event whose trainer, venue country or .de course page cannot be determined, a webinar post that cannot be told apart from an announcement, a snapshot older than 48 hours),
 - new Fellow profiles on .com (information only, see "Fellows").
 
 If it prints `Nothing to do.`, stop. No branch, no PR, no summary beyond one line.
@@ -115,12 +115,18 @@ Only non-German events reach this step. The script already skips events whose ve
 
 Only ever touch sessions with a `sourceId`. If a change would affect a session without one, raise a question instead.
 
+## Webinar posts
+
+The Webinar category on .com holds two kinds of post. An **announcement** (a sign-up page for a coming session: a date later than the post's own, registration wording or a sign-up link, little text beyond that) is never imported. A **write-up** or recap of a session with real content (the Lightning Lesson on coordination cost, the Maja Lovrenčić conversation) is an article like any other and goes through Step 4 with its Webinar category kept. The script decides from the post text: under 400 words with a later date or sign-up wording is an announcement; 400 words or more without either is a write-up; anything in between, or a post whose text is outside the snapshot's content window, is a question, never a silent skip. Russ settles a question with `webinar: "writeup"` or `"announcement"` (or `ignore`) in `sync/decisions.json`. `npm run sync:check -- --webinars` lists every Webinar-category post with its classification and whether .de already has it.
+
+Before 2026-10-02 every Webinar-category post was skipped; the 13 that existed then were baselined as seen, and 11 of them already have a .de article from before the sync. Only the Lightning Lesson (#19684) was released for import; the Italian feedback webinar (#19471) is left in the baseline.
+
 ## Step 4: articles
 
-Only non-webinar posts reach this step. A `resources` entry on .com is an article like any other and goes through the same steps; a `fellow` entry never does (see "Fellows").
+Only posts that are articles reach this step: blog posts, `resources` entries, and webinar write-ups (see "Webinar posts"). A `fellow` entry never does (see "Fellows").
 
 1. **Language.** If the post is not in English (for example Italian), do not guess. Raise a question and stop for that post.
-2. **Author.** Keep the real .com author if they are a Better Change Fellow with a `coach-profiles` entry (`author: <id>`). Anyone else: raise a question and stop for that post. Never guess an author.
+2. **Author.** Keep the real .com author if they are a Better Change Fellow with a `coach-profiles` entry (`author: <id>`); the script prints `author by decision:` when Russ has answered in `sync/decisions.json`. Anyone else, or no author name in the snapshot: raise a question and stop for that post. Never guess an author. (Snapshots before the 2026-10-02 snippet update carry no author names at all, because an internal REST request from cron embeds the author without one; the updated snippet looks the display name up directly.)
 3. **English rewrite.** Rewrite the post in English following the house style in CLAUDE.md: no em dashes, clean HTML in `bodyHtml`, a real excerpt, a `metaDescription`, `readTimeMinutes`. Choose `primaryCategory` and `categories` from the existing set only (Scrum, Agile, Change Management, Leadership, Coaching, Flight Levels, Kanban, AI, Product Development, plus content types Blog and Webinar). Keep the .com publication date as `date`.
 4. **German translation** into `src/content/insights-articles/de/<same-slug>.md` following the German house rules in CLAUDE.md: no direct address (no "Sie", no "du"), colon-form gender-inclusive language, English loanwords for Scrum and agile terms, the English title kept on the German page, no em dashes, German price format, "Product Development" as "Produktentwicklung" and "AI" as "KI" in categories. Write the German excerpt and metaDescription too.
 5. **Source fields.** Set `sourceId` (the .com post id, as a string) and `sourceUrl` (the .com post URL) identically on both entries.
@@ -138,7 +144,7 @@ A run whose only output is new Fellows ("Nothing to sync; information only") sti
 
 Update `sync/state.json` in the same PR as the change it records: `npm run sync:check -- --record` after the content changes are made. A rejected PR then means the item is retried or questioned again on the next run, which is intended.
 
-`--record` marks a syncable post or event as seen only when something here carries its `sourceId` (or it was already recorded, or the sync will never import it: webinars, Fellows, skipped and ignored events, questions). An event or post the run left out on purpose is listed under "Not recorded as seen" and comes back on the next run, so nothing is lost by skipping it; there is no need to edit the state by hand for that.
+`--record` marks a syncable post or event as seen only when something here carries its `sourceId` (or it was already recorded, or the sync will never import it: webinar announcements, Fellows, skipped and ignored events, questions). An event or post the run left out on purpose is listed under "Not recorded as seen" and comes back on the next run, so nothing is lost by skipping it; there is no need to edit the state by hand for that.
 
 Questions are remembered in the state file too, so a known open question is not raised again until the event or post changes. To make the sync look at something again on purpose (an event or post Russ has answered a question about, or one that was recorded as seen by mistake), drop it from the state with `npm run sync:check -- --forget <id,id,...>`; the next check reports it as new.
 

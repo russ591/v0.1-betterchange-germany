@@ -1,5 +1,5 @@
 {
-  "_about": "Russ's answers to sync questions. sync:check reads this on every run. Events and posts are keyed by their .com id. Event fields: ignore (reason; the event is never raised or imported again), trainer (coach-profiles id), trainerName (display name when there is no profile), course (training-courses id), note. Post fields: ignore (reason), author (coach-profiles id), note. organizers maps a .com organizer name to the trainer it stands for: a coach-profiles id, a display name, or an empty string for 'no trainer shown'.",
+  "_about": "Russ's answers to sync questions. sync:check reads this on every run. Events and posts are keyed by their .com id. Event fields: ignore (reason; the event is never raised or imported again), trainer (coach-profiles id), trainerName (display name when there is no profile), course (training-courses id), note. Post fields: ignore (reason), author (coach-profiles id), webinar ('writeup' or 'announcement', settling the webinar rule for that post), note. organizers maps a .com organizer name to the trainer it stands for: a coach-profiles id, a display name, or an empty string for 'no trainer shown'.",
   "events": {
     "19677": {
       "trainer": "nino-zeljko",
@@ -11,6 +11,12 @@
       "decided": "2026-10-02"
     }
   },
-  "posts": {},
+  "posts": {
+    "19684": {
+      "author": "giuseppe-de-simone",
+      "decided": "2026-10-02",
+      "note": "Lightning Lesson: Coordination Cost Discovery for Engineering Leaders. A write-up of a past session, not an announcement; Russ wants it on .de as an article. Author confirmed by Russ."
+    }
+  },
   "organizers": {}
 }
