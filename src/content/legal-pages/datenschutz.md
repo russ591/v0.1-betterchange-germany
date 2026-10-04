@@ -2,7 +2,7 @@
 title: Datenschutzerklärung
 ---
 
-Stand: April 2026<br />
+Stand: Oktober 2026<br />
 Informationen gemäß DSGVO (Art. 13, 14)
 
 ## 1. Datenschutz auf einen Blick
@@ -31,7 +31,7 @@ Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit
 
 ### Analyse-Tools und Tools von Drittanbietern
 
-Diese Website setzt keine Analyse-Tools oder vergleichbare Tools von Drittanbietern ein. Ihr Surf-Verhalten wird nicht statistisch ausgewertet.
+Zur Erstellung anonymer Nutzungsstatistiken werten wir die Server-Logdaten unseres Hosters Netlify aus (Netlify Web Analytics, siehe Abschnitt 2). Dabei werden keine Cookies gesetzt und keine Skripte in Ihrem Browser ausgeführt. Darüber hinaus setzt diese Website keine Analyse-Tools oder vergleichbaren Tools von Drittanbietern ein.
 
 ## 2. Hosting und Content Delivery Networks (CDN)
 
@@ -45,6 +45,12 @@ Unser Hoster wird Ihre Daten nur insoweit verarbeiten, wie dies zur Erfüllung s
 
 Wir setzen folgenden Hoster ein:<br />
 Netlify, Inc., 44 Montgomery Street, Suite 300, San Francisco, CA 94104, USA.
+
+### Netlify Web Analytics
+
+Zur Erstellung von Nutzungsstatistiken verwenden wir Netlify Web Analytics, eine Funktion unseres Hosters. Die Auswertung erfolgt ausschließlich serverseitig auf Grundlage der Zugriffsprotokolle des Content Delivery Networks von Netlify, die auch die IP-Adressen der Besucher enthalten. Daraus werden Seitenaufrufe, die Zahl eindeutiger Besucher (anhand der IP-Adresse ermittelt), die am häufigsten aufgerufenen Seiten, verweisende Websites, ungefähre Standorte sowie aufgerufene, nicht vorhandene Seiten (Fehler 404) abgeleitet. Es werden keine Cookies gesetzt, keine Skripte in Ihrem Browser ausgeführt und es erfolgt kein Zugriff auf Ihr Endgerät.
+
+Die Statistiken dienen allein dazu, die Nutzung der Website in anonymer Form zu verstehen und unser Angebot zu verbessern. Rechtsgrundlage ist unser berechtigtes Interesse an der Analyse und Verbesserung unseres Online-Angebots (Art. 6 Abs. 1 lit. f DSGVO). Netlify bewahrt die Analysedaten in dem von uns genutzten Tarif 30 Tage lang auf. Die Verarbeitung erfolgt durch Netlify als unseren Auftragsverarbeiter im Rahmen des oben beschriebenen Hostings.
 
 ## 3. Allgemeine Hinweise und Pflichtinformationen
 
@@ -106,7 +112,7 @@ Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht 
 
 Diese Website verwendet keine Cookies und keine vergleichbaren Technologien (z. B. lokale Speicherung im Browser) zu Analyse-, Marketing- oder Tracking-Zwecken. Es findet keine Einbindung von Diensten Dritter statt, die Cookies setzen würden.
 
-Sollte sich dies zukünftig ändern, etwa durch die Einbindung von Analyse-Diensten, werden wir Sie vorab um Ihre Einwilligung bitten und diese Datenschutzerklärung entsprechend aktualisieren.
+Auch für die in Abschnitt 2 beschriebenen Nutzungsstatistiken (Netlify Web Analytics) werden keine Cookies gesetzt und keine Daten auf Ihrem Endgerät gespeichert. Sollten wir zukünftig Dienste einsetzen, die eine Einwilligung erfordern, werden wir Sie vorab um Ihre Einwilligung bitten und diese Datenschutzerklärung entsprechend aktualisieren.
 
 ### Recht auf Einschränkung der Verarbeitung
 
