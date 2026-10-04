@@ -13,6 +13,8 @@ formats:
   - self-paced
 priceFrom: €1,890
 specialOfferText: '🎁 Offer: 3 seats for the price of 2'
+includedExtra:
+  - Flight Levels Introduction (FLIN) included
 languages:
   - English
   - German

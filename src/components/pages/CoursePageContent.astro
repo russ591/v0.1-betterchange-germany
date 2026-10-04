@@ -12,7 +12,9 @@ import CTABanner from "@/components/CTABanner.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
-import { getFormatDetails, formatIcons } from "@/data/formatDetails";
+import { getFormatDetails, formatIcons, type TrainingFormat } from "@/data/formatDetails";
+import CourseFaq from "@/components/CourseFaq.astro";
+import LanguageTag from "@/components/LanguageTag.astro";
 import { translateOffer } from "@/data/offerCopy";
 import { translateLevel } from "@/data/levelIcons";
 import { formatSessionDate } from "@/lib/dates";
@@ -77,6 +79,13 @@ const isSelfPacedEligible = course.data.formats.includes("self-paced") && course
 // this is genuinely the next scheduled trainer-led session.
 const nextTrainerLed = upcomingWithTrainers.find(({ session }) => session.data.format !== "self-paced");
 const selfPacedEntry = upcomingWithTrainers.find(({ session }) => session.data.format === "self-paced");
+// Every format's shared "Included" list plus this course's own extras
+// (course.data.includedExtra, e.g. "FLIN included" on FL2D/FL3D/FLSA).
+const withExtras = (format: TrainingFormat) => [...formatDetails[format].included, ...course.data.includedExtra];
+// The two-card layout folds in-person and live-online into one trainer-led
+// card; its Included list follows the next scheduled trainer-led format.
+const trainerLedFormat: TrainingFormat =
+  nextTrainerLed?.session.data.format ?? (course.data.formats.includes("in-person") ? "in-person" : "live-online");
 // A format can be a real, bookable option (per course.data.formats) without
 // currently having any public session on the calendar -- e.g. live-online
 // is available for private/in-house delivery on several courses but isn't
@@ -221,6 +230,7 @@ const scheduledFormats = new Set(upcoming.map((s) => s.data.format));
                   <div class="flex items-center justify-between gap-3">
                     <span class="flex flex-wrap items-center gap-2 font-bold">
                       {isSelfPaced ? t("badge.selfPaced") : formatSessionDate(session, course, "long", locale)}
+                      {!isSelfPaced && <LanguageTag session={session} />}
                       {isNextAvailable && (
                         <span class="rounded-[var(--radius-pill)] bg-lime px-2 py-0.5 text-[length:var(--text-caption)] font-semibold text-ink">
                           {t("schedule.nextAvailableDate")}
@@ -327,12 +337,23 @@ const scheduledFormats = new Set(upcoming.map((s) => s.data.format));
             <h3 class="text-[length:var(--text-h4)]">{t("course.trainerLedTitle")}</h3>
             <p class="text-[length:var(--text-small)] leading-relaxed text-neutral-600">{t("course.trainerLedDescription")}</p>
           </div>
+          <div class="flex flex-col gap-3">
+            <p class="eyebrow">{t("course.included")}</p>
+            <div class="flex flex-wrap gap-2">
+              {withExtras(trainerLedFormat).map((item) => (
+                <span class="inline-flex items-center rounded-[var(--radius-pill)] border border-neutral-300 bg-neutral-50 px-3 py-1 text-[length:var(--text-caption)] font-medium text-neutral-700">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
           {nextTrainerLed && (
             <div class="mt-auto flex flex-col gap-3 rounded-[var(--radius-card)] border border-neutral-200 bg-mist-light p-4">
               <div class="flex items-center justify-between gap-3">
                 <Badge format={nextTrainerLed.session.data.format} />
                 <span class="text-[length:var(--text-caption)] text-neutral-500">
                   {formatSessionDate(nextTrainerLed.session, course, "long", locale)}
+                  <LanguageTag session={nextTrainerLed.session} class="ml-1.5" />
                 </span>
               </div>
               <p class="text-[length:var(--text-caption)] text-neutral-500">{nextTrainerLed.session.data.location}</p>
@@ -367,6 +388,16 @@ const scheduledFormats = new Set(upcoming.map((s) => s.data.format));
             <p class="text-[length:var(--text-small)] leading-relaxed text-neutral-600">
               {formatDetails["self-paced"].description} {formatDetails["self-paced"].chooseIf}
             </p>
+          </div>
+          <div class="flex flex-col gap-3">
+            <p class="eyebrow">{t("course.included")}</p>
+            <div class="flex flex-wrap gap-2">
+              {withExtras("self-paced").map((item) => (
+                <span class="inline-flex items-center rounded-[var(--radius-pill)] border border-neutral-300 bg-neutral-50 px-3 py-1 text-[length:var(--text-caption)] font-medium text-neutral-700">
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
           {selfPacedEntry && (
             <div class="mt-auto flex flex-col gap-3 rounded-[var(--radius-card)] border border-lime/40 bg-surface p-4">
@@ -436,7 +467,7 @@ const scheduledFormats = new Set(upcoming.map((s) => s.data.format));
                 <div class="flex flex-col gap-3 border-t border-neutral-100 pt-5">
                   <p class="eyebrow">{t("course.included")}</p>
                   <div class="flex flex-wrap gap-2">
-                    {details.included.map((item) => (
+                    {withExtras(format).map((item) => (
                       <span class="inline-flex items-center rounded-[var(--radius-pill)] border border-neutral-300 bg-neutral-50 px-3 py-1 text-[length:var(--text-caption)] font-medium text-neutral-700">
                         {item}
                       </span>
@@ -460,6 +491,8 @@ const scheduledFormats = new Set(upcoming.map((s) => s.data.format));
     )
   }
 </Section>
+
+<CourseFaq course={course} category={category} upcoming={upcoming} />
 
 {
   relatedCourses.length > 0 && (

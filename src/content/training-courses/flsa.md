@@ -12,6 +12,8 @@ formats:
   - live-online
   - self-paced
 priceFrom: €1,890
+includedExtra:
+  - Flight Levels Introduction (FLIN) included
 languages:
   - English
   - German

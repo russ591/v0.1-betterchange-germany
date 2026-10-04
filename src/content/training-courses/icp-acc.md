@@ -4,7 +4,7 @@ code: ICPACC
 urlSlug: "icagile-agile-coaching-professional-(icp-acc)"
 category: coaching
 level: Advanced
-durationText: "2 days ·\_4 x ½ days"
+durationText: "3 days ·\_6 x ½ days"
 durationDays: 3
 certification: ICP-ACC
 formats:

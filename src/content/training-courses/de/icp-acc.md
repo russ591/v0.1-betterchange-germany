@@ -7,16 +7,14 @@
 # only its displayed text is translated, via translateLevel().
 # category/code/certification/formats/priceFrom/durationDays/sortOrder
 # stay identical to the English entry (language-neutral facts/lookup
-# keys). durationText mirrors the English entry's "2 days · 4 x ½ days"
-# verbatim, even though durationDays is 3 -- an existing mismatch in the
-# English source data, not something this translation pass introduces or
-# corrects. metaTitle/metaDescription aren't covered by this draft and
+# keys). durationText matches the English entry: 3 days in person, 6 half
+# days online (durationDays 3), corrected in October 2026.
 # stay "[DE]" placeholder pending their own pass.
 name: 'ICAgile Agile Coaching Professional (ICP-ACC)'
 code: ICPACC
 category: de/coaching
 level: Advanced
-durationText: "2 Tage ·\_4 x ½ Tage"
+durationText: "3 Tage ·\_6 x ½ Tage"
 durationDays: 3
 certification: ICP-ACC
 formats:

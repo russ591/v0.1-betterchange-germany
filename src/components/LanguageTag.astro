@@ -1,0 +1,27 @@
+---
+// Small label shown next to a session's date when the session is not run
+// in English ("In German" / "Auf Deutsch"). English is the default and
+// gets no label, so most sessions render nothing here.
+import type { CollectionEntry } from "astro:content";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+
+interface Props {
+  session: CollectionEntry<"training-schedules">;
+  class?: string;
+}
+
+const { session, class: className = "" } = Astro.props;
+const t = useTranslations(resolveLocale(Astro.currentLocale));
+const language = session.data.language;
+const label = language === "de" ? t("schedule.language.de") : null;
+---
+
+{
+  label && (
+    <span
+      class={`inline-flex shrink-0 items-center whitespace-nowrap rounded-[var(--radius-pill)] bg-neutral-100 px-2 py-0.5 text-[length:var(--text-caption)] font-semibold text-neutral-600 ${className}`}
+    >
+      {label}
+    </span>
+  )
+}
