@@ -46,6 +46,33 @@
   to = "/training/register/thank-you"
   status = 301
 
+# --- Old Wix URL patterns still being requested ---------------------------
+# From Netlify Web Analytics' "top resources not found" (Oct 2026). Wix
+# published course dates under /event-details/<slug> and the article hub
+# under /blog. The one event URL still seeing traffic was the Berlin FL3D
+# date of 27 Jan 2026, long past, so it goes to the FL3D course page; any
+# other old event URL goes to the training hub. The specific rule must stay
+# above the wildcard.
+[[redirects]]
+  from = "/event-details/flight-level-3-design-fl3d-berlin-27-jan-2026"
+  to = "/training/flight-levels/flight-level-3-design-(fl3d)/"
+  status = 301
+
+[[redirects]]
+  from = "/event-details/*"
+  to = "/training/"
+  status = 301
+
+[[redirects]]
+  from = "/blog"
+  to = "/insights/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/insights/"
+  status = 301
+
 # --- Renamed session files ----------------------------------------------
 # The Berlin FL3D and FL2D sessions in November 2026 swapped dates after
 # their files were created (FL3D is 17-18 Nov, FL2D is 24-25 Nov), and the
