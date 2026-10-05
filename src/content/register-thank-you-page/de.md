@@ -13,7 +13,7 @@ body: "Eine Bestätigungs-E-Mail ist unterwegs. Die Rechnung folgt separat per E
 nextStepsHeading: "Wie geht es weiter?"
 steps:
   - "Eine Bestätigungs-E-Mail mit den Anmeldedaten folgt."
-  - "Logistik-Infos, Zugangsdaten oder der Veranstaltungsort folgen rechtzeitig vor Kursbeginn."
+  - "Logistik-Infos, Zugangsdaten oder der Veranstaltungsort folgen rechtzeitig vor Kursbeginn. Bei einem Selbstlernkurs folgt der Zugangslink, sobald die Zahlung eingegangen ist."
   - "Die Rechnung folgt separat per E-Mail, innerhalb von 2 Werktagen."
 buttonLabel: "Zurück zur Trainingsübersicht"
 ---

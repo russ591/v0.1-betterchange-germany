@@ -63,6 +63,24 @@ for (const locale of ["en", "de"]) {
     writeFileSync(`${stem}.html`, buildRegistrationEmailHtml(data, opts));
     writeFileSync(`${stem}.txt`, `Subject: ${buildRegistrationEmailSubject(data, locale)}\n\n${buildRegistrationEmailText(data, opts)}\n`);
   }
+  // A self-paced booking: no session date, so no calendar button, and the
+  // "what happens next" list promises the access link on payment instead
+  // of logistics before the course.
+  const selfPaced = {
+    ...data,
+    location: "Online",
+    seats: "1",
+    total: "€1,890",
+    "session-date": locale === "de" ? "Jederzeit verfügbar" : "Start anytime",
+    "session-date-iso": "",
+    "session-end-date-iso": "",
+    "attendee-name-2": undefined,
+    "attendee-email-2": undefined,
+  };
+  const selfPacedOpts = { invoiceAttached: true, discountBreakdown: null, calendarUrl: buildGoogleCalendarUrl(selfPaced, locale), locale };
+  const stem = join(outDir, `booker-${locale}-self-paced`);
+  writeFileSync(`${stem}.html`, buildRegistrationEmailHtml(selfPaced, selfPacedOpts));
+  writeFileSync(`${stem}.txt`, `Subject: ${buildRegistrationEmailSubject(selfPaced, locale)}\n\n${buildRegistrationEmailText(selfPaced, selfPacedOpts)}\n`);
 }
 writeFileSync(join(outDir, "owner-notification.html"), buildOwnerNotificationHtml(sample.de, { discountBreakdown }));
 writeFileSync(join(outDir, "owner-notification.txt"), buildOwnerNotificationText(sample.de, { discountBreakdown }));

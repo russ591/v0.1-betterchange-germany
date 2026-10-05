@@ -49,6 +49,7 @@ const BOOKER_COPY = {
     invoiceAttached: "Your invoice is attached to this email as a PDF.",
     invoiceFollows: "Your invoice will follow separately by email.",
     logistics: "We'll follow up with logistics (joining instructions or venue details) closer to the course date.",
+    accessLink: "Your access link will be sent by email as soon as your payment has been received.",
     questions: "Questions in the meantime? Just reply to this email.",
     signoff: "Talk soon,",
     role: "Certified Trainer and Coach",
@@ -75,6 +76,7 @@ const BOOKER_COPY = {
     invoiceAttached: "Ihre Rechnung finden Sie als PDF im Anhang dieser E-Mail.",
     invoiceFollows: "Ihre Rechnung erhalten Sie separat per E-Mail.",
     logistics: "Rechtzeitig vor dem Kurstermin senden wir Ihnen alle organisatorischen Details (Einwahldaten bzw. Informationen zum Veranstaltungsort).",
+    accessLink: "Ihren Zugangslink erhalten Sie per E-Mail, sobald Ihre Zahlung eingegangen ist.",
     questions: "Haben Sie in der Zwischenzeit Fragen? Antworten Sie einfach auf diese E-Mail.",
     signoff: "Herzliche Grüße",
     role: "Zertifizierter Trainer und Coach",
@@ -83,6 +85,15 @@ const BOOKER_COPY = {
 
 function bookerCopy(locale) {
   return BOOKER_COPY[locale === "de" ? "de" : "en"];
+}
+
+// A self-paced booking has no session date (the registration page leaves
+// "session-date-iso" empty, which is also why calendarLink.js returns null
+// for it). There is no course date to send logistics ahead of: the access
+// link goes out once payment has arrived, so the "what happens next" list
+// says that instead.
+function nextStepLogistics(data, c) {
+  return data["session-date-iso"] ? c.logistics : c.accessLink;
 }
 
 // Amounts arrive in en-GB form ("€2,190": the hidden total field and
@@ -171,7 +182,7 @@ export function buildRegistrationEmailHtml(data, { invoiceAttached = false, disc
                 <p style="margin:0 0 12px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#737373;">${c.next}</p>
                 <ul style="margin:0 0 28px;padding-left:20px;color:#525252;font-size:15px;line-height:1.7;">
                   <li>${invoiceAttached ? c.invoiceAttached : c.invoiceFollows}</li>
-                  <li>${c.logistics}</li>
+                  <li>${nextStepLogistics(data, c)}</li>
                   <li>${c.questions}</li>
                 </ul>
 
@@ -389,7 +400,7 @@ export function buildRegistrationEmailText(data, { invoiceAttached = false, disc
     attendees.length ? "" : null,
     c.next,
     `- ${invoiceAttached ? c.invoiceAttached : c.invoiceFollows}`,
-    `- ${c.logistics}`,
+    `- ${nextStepLogistics(data, c)}`,
     `- ${c.questions}`,
     "",
     c.signoff,

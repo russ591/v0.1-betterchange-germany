@@ -107,10 +107,14 @@ families:
         question: "Muss FLIN vorher absolviert werden?"
         answer: >-
           Ja. Der Selbstlernkurs Flight Levels Introduction (FLIN) ist
-          Voraussetzung für FL2D, FL3D und FLSA. Bei der Buchung eines dieser Kurse
-          ist FLIN bereits enthalten: Der Zugangslink kommt per E-Mail, zusammen
-          mit der Bestätigung, dass der Kurs stattfindet. FLIN ist auch einzeln
-          buchbar.
+          Voraussetzung für FL2D, FL3D und FLSA und bei der Buchung eines dieser
+          Kurse bereits enthalten. Bei einem Präsenz- oder Live-Online-Kurs kommt
+          der FLIN-Zugangslink per E-Mail zusammen mit der Bestätigung, dass der
+          Kurs stattfindet, in der Regel etwa zwei Wochen vor Kursbeginn, bei
+          genügend Anmeldungen auch früher. Bei einem Selbstlernkurs kommt der
+          FLIN-Link zusammen mit dem Zugangslink zum Kurs, sobald die Zahlung
+          eingegangen ist. FLIN ist auch einzeln buchbar; der Zugangslink wird
+          dann versendet, sobald die Zahlung eingegangen ist.
       - id: order
         question: "In welcher Reihenfolge sind die Kurse sinnvoll?"
         answer: >-
@@ -124,7 +128,8 @@ families:
           Ja. Alle Flight-Levels-Kurse (FLIN, FL2D, FL3D und FLSA) gibt es auch als
           Selbstlernkurs online, mit regelmäßigen Check-ins mit dem Trainer und
           zeitlich unbegrenztem Zugang. Der Zugangslink kommt per E-Mail, sobald die
-          Zahlung eingegangen ist.
+          Zahlung eingegangen ist (bei FL2D, FL3D und FLSA zusammen mit dem
+          FLIN-Zugangslink).
   - id: kanban-university
     courses: [kmp1, kmp2, flow-manager]
     questions:
