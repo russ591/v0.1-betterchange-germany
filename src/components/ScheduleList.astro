@@ -22,6 +22,7 @@
 import type { CollectionEntry } from "astro:content";
 import { Image } from "astro:assets";
 import Badge from "@/components/Badge.astro";
+import LanguageTag from "@/components/LanguageTag.astro";
 import TrainerChip from "@/components/TrainerChip.astro";
 import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
@@ -245,7 +246,10 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
                   the next-date link never splits from its arrow. */}
               <div class="mt-3 flex items-center justify-between gap-3 border-t border-neutral-100 pt-3 text-[length:var(--text-small)]">
                 <div class="min-w-0">
-                  <p class="font-semibold">{formatSessionDate(row.session, row.course, "long", locale)}</p>
+                  <p class="flex flex-wrap items-center gap-x-2 gap-y-1 font-semibold">
+                    {formatSessionDate(row.session, row.course, "long", locale)}
+                    <LanguageTag session={row.session} />
+                  </p>
                   <p class="text-neutral-500">{row.session.data.location}</p>
                 </div>
                 {row.session.data.status === "sold-out" ? (
@@ -342,6 +346,7 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
                   </td>
                   <td class="whitespace-nowrap px-4 py-4 font-medium sm:px-5">
                     {formatSessionDate(row.session, row.course, "long", locale)}
+                    <LanguageTag session={row.session} class="ml-2" />
                     {row.next && (
                       <a
                         href={registrationHref(row.next, prefix)}

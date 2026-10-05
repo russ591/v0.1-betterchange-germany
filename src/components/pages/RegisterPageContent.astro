@@ -8,6 +8,7 @@ import type { CollectionEntry } from "astro:content";
 import { Image } from "astro:assets";
 import Section from "@/components/Section.astro";
 import Badge from "@/components/Badge.astro";
+import LanguageTag from "@/components/LanguageTag.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import TrainerChip from "@/components/TrainerChip.astro";
 import { formatSessionDate } from "@/lib/dates";
@@ -177,8 +178,9 @@ const scriptCopy = {
         </div>
         <div class="flex items-center justify-between">
           <dt class="text-neutral-500">{t("schedule.date")}</dt>
-          <dd class="font-semibold">
+          <dd class="flex flex-wrap items-center justify-end gap-2 font-semibold">
             {formatSessionDate(session, course, "long", locale)}
+            <LanguageTag session={session} />
           </dd>
         </div>
         <div class="flex items-center justify-between">

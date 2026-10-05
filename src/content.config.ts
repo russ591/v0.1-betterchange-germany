@@ -40,6 +40,10 @@ const trainingCourse = defineCollection({
     priceFrom: z.string().optional(),
     specialOfferText: z.string().optional(),
     languages: z.array(z.string()).default([]),
+    // Extra "Included" items for this course, appended to every format's
+    // shared list from src/data/formatDetails.ts (e.g. the FLIN line on the
+    // three advanced Flight Levels courses). Per locale, like all copy here.
+    includedExtra: z.array(z.string()).default([]),
     whoIsThisFor: z.array(z.string()),
     whatYoullLearn: z.array(z.string()),
     summary: z.string(),
@@ -73,6 +77,10 @@ const trainingSchedule = defineCollection({
     price: z.string(),
     offer: z.string().optional(),
     notes: z.string().optional(),
+    // Language the session is run in. English is the default and shows no
+    // label; anything else gets a small tag next to the date everywhere the
+    // date appears (LanguageTag.astro).
+    language: z.enum(["en", "de"]).default("en"),
     status: z.enum(["available", "sold-out", "tbc"]).default("available"),
     // Sessions run by a sister site (e.g. betterchange-consulting.dk/.it)
     // that aren't fulfilled through our own registration flow at all --
@@ -412,7 +420,31 @@ const notFoundPage = defineCollection({
   }),
 });
 
+// Course page FAQs: one YAML file per locale with Russ's approved wording
+// (docs/course-faqs-final.md) and the display rules as data, evaluated by
+// CourseFaq.astro. Edit the YAML to change a question; the component never
+// hard-codes text.
+const faqQuestion = z.object({
+  id: z.string(),
+  question: z.string(),
+  answer: z.string(),
+  formats: z.array(z.enum(["in-person", "live-online", "self-paced"])).optional(),
+  onlyCategories: z.array(z.string()).optional(),
+  excludeCategories: z.array(z.string()).optional(),
+  onlyCourses: z.array(z.string()).optional(),
+});
+const courseFaqs = defineCollection({
+  loader: glob({ pattern: "*.yaml", base: "./src/content/course-faqs" }),
+  schema: z.object({
+    heading: z.string(),
+    general: z.array(faqQuestion),
+    families: z.array(z.object({ id: z.string(), courses: z.array(z.string()), questions: z.array(faqQuestion) })),
+    partnerNote: z.string(),
+  }),
+});
+
 export const collections = {
+  "course-faqs": courseFaqs,
   "training-categories": trainingCategory,
   "training-courses": trainingCourse,
   "training-schedules": trainingSchedule,

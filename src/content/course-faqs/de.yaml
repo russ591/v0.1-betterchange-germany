@@ -1,0 +1,166 @@
+heading: Häufige Fragen
+
+# Gleiche Regeln wie en.yaml: nur auf Kursseiten mit mindestens einem über
+# betterchange-consulting.de buchbaren Termin (inklusive Selbstlernkurs).
+# Text ist die freigegebene Fassung aus docs/course-faqs-final.md; wörtlich
+# beibehalten.
+general:
+  - id: vat
+    question: "Sind die Preise inklusive Mehrwertsteuer?"
+    answer: >-
+      Nein. Alle Preise verstehen sich zuzüglich Mehrwertsteuer. Die deutsche MwSt.
+      (derzeit 19 %) wird auf der Rechnung ausgewiesen.
+  - id: payment
+    question: "Wie wird bezahlt? Kann der Arbeitgeber die Rechnung übernehmen?"
+    answer: >-
+      Eine Vorauszahlung ist nicht nötig. Direkt nach der Anmeldung kommt die
+      Rechnung mit ausgewiesener MwSt. per E-Mail, auf Wunsch auf das Unternehmen
+      ausgestellt. Das Zahlungsziel beträgt in der Regel 30 Tage. Beginnt der Kurs
+      früher, ist die Zahlung eine Woche vor Kursbeginn fällig, bei Buchungen in
+      der letzten Woche vor dem Kurs sofort. Bezahlt wird per Überweisung.
+  - id: cancellation
+    question: "Was gilt, wenn die Teilnahme doch nicht möglich ist?"
+    answer: >-
+      Bis 14 Tage vor Kursbeginn ist die Stornierung kostenlos. Zwischen 8 und 14
+      Tagen vorher fallen 50 % der Kursgebühr an, innerhalb von 7 Tagen vor
+      Kursbeginn die volle Gebühr. Stornierungen erfolgen per E-Mail.
+  - id: rebooking
+    question: "Ist eine Umbuchung möglich?"
+    answer: >-
+      Ja. Eine Umbuchung auf einen anderen Termin desselben Kurses ist kostenlos,
+      sofern Plätze frei sind.
+  - id: substitute
+    question: "Kann ein:e Kolleg:in den Platz übernehmen?"
+    answer: >-
+      Ja, ohne zusätzliche Kosten. Bei einem kurzfristigen Ausfall, etwa durch
+      Krankheit, ist eine Vertretung ausdrücklich erwünscht. Es genügt, Name und
+      E-Mail-Adresse der Vertretung mitzuteilen; die Buchung wird angepasst und die
+      Teilnahmeinformationen gehen direkt an die neue Person.
+  - id: course-cancelled
+    question: "Kann ein Kurs abgesagt werden?"
+    answer: >-
+      Das kommt gelegentlich vor. Ob ein Kurs stattfindet, wird 14 Tage vor
+      Beginn entschieden, und im Fall einer Absage gibt es dann sofort Bescheid. Bei
+      einer Absage besteht die Wahl zwischen einem Platz an einem späteren Termin
+      und der vollständigen Erstattung bereits gezahlter Beträge.
+  - id: language
+    question: "In welcher Sprache findet der Kurs statt?"
+    answer: >-
+      Die Kurse finden auf Englisch statt, sofern beim jeweiligen Termin nichts
+      anderes angegeben ist.
+  - id: times
+    formats: [in-person]
+    question: "Wie sind die Kurszeiten? Ist das Mittagessen inklusive?"
+    answer: >-
+      Präsenzkurse laufen in der Regel von 9:00 bis 17:00 Uhr, sofern beim Termin
+      nichts anderes angegeben ist. Getränke gibt es den ganzen Tag über, das
+      Mittagessen ist nicht inklusive; eine ausreichende Mittagspause ist
+      eingeplant. Die Details zum Veranstaltungsort kommen rechtzeitig vor
+      Kursbeginn per E-Mail.
+  - id: online
+    formats: [live-online]
+    question: "Wie laufen die Live-Online-Kurse ab?"
+    answer: >-
+      Online-Kurse finden in der Regel an vier halben Tagen statt, live und
+      trainergeführt, mit Google Meet für Video und Miro als gemeinsamem Whiteboard,
+      sofern beim Termin nichts anderes angegeben ist. Die Einwahldaten kommen
+      vorab per E-Mail. Benötigt werden ein Laptop oder Computer mit Kamera und
+      Mikrofon sowie eine stabile Internetverbindung; ein zweiter Bildschirm
+      erleichtert die Arbeit in Miro spürbar.
+  - id: certificate
+    excludeCategories: [scaling]
+    question: "Gibt es ein Zertifikat, und ist es im Preis enthalten?"
+    answer: >-
+      Ja. Der Zertifizierungsnachweis der jeweiligen Zertifizierungsstelle (Flight
+      Levels Academy, Kanban University, Scrum Alliance oder ICAgile) und alle
+      Kursunterlagen sind im Preis enthalten.
+  - id: private
+    question: "Ist der Kurs auch als Inhouse-Training möglich?"
+    answer: >-
+      Ja. Jeder Kurs ist auch als exklusives Training für eine Organisation
+      möglich: in Berlin, vor Ort im Unternehmen oder online, zugeschnitten auf den
+      jeweiligen Kontext. Anfragen laufen über die Kontaktseite.
+  - id: discount-flight-levels
+    onlyCategories: [flight-levels]
+    question: "Gibt es Rabatt bei mehreren Buchungen?"
+    answer: >-
+      Ja. Bei allen Flight-Levels-Kursen gilt 3 für 2: Wer drei Plätze für
+      denselben Kurs bucht, vor Ort oder online, zahlt nur zwei. Das gilt auch für
+      FLIN als Einzelbuchung.
+  - id: discount-other
+    excludeCategories: [flight-levels]
+    question: "Gibt es Rabatt bei mehreren Buchungen?"
+    answer: >-
+      Derzeit nicht. Für größere Gruppen ist ein exklusives Inhouse-Training oft
+      die bessere Lösung (siehe oben).
+
+families:
+  - id: flight-levels
+    courses: [flin, fl2d, fl3d, flsa]
+    questions:
+      - id: exam
+        question: "Gibt es eine Prüfung?"
+        answer: >-
+          Nein. Das Zertifikat der Flight Levels Academy gibt es nach Abschluss des
+          Kurses.
+      - id: flin-first
+        question: "Muss FLIN vorher absolviert werden?"
+        answer: >-
+          Ja. Der Selbstlernkurs Flight Levels Introduction (FLIN) ist
+          Voraussetzung für FL2D, FL3D und FLSA. Bei der Buchung eines dieser Kurse
+          ist FLIN bereits enthalten: Der Zugangslink kommt per E-Mail, zusammen
+          mit der Bestätigung, dass der Kurs stattfindet. FLIN ist auch einzeln
+          buchbar.
+      - id: order
+        question: "In welcher Reihenfolge sind die Kurse sinnvoll?"
+        answer: >-
+          Empfohlen ist der Einstieg mit FL2D, danach FL3D oder FLSA in beliebiger
+          Reihenfolge. Die Reihenfolge ist allerdings weniger entscheidend als oft
+          angenommen: Jeder Kurs steht für sich, und FLIN als gemeinsame Grundlage
+          ist bei der ersten Buchung bereits dabei.
+      - id: self-paced
+        question: "Ist auch ein Selbstlernkurs möglich?"
+        answer: >-
+          Ja. Alle Flight-Levels-Kurse (FLIN, FL2D, FL3D und FLSA) gibt es auch als
+          Selbstlernkurs online, mit regelmäßigen Check-ins mit dem Trainer und
+          zeitlich unbegrenztem Zugang. Der Zugangslink kommt per E-Mail, sobald die
+          Zahlung eingegangen ist.
+  - id: kanban-university
+    courses: [kmp1, kmp2, flow-manager]
+    questions:
+      - id: certification
+        question: "Welche Zertifizierung gibt es?"
+        answer: >-
+          Nach Abschluss von KMP1 gibt es ein Zertifikat der Kanban University. Mit
+          dem zusätzlichen Abschluss von KMP2 folgt die vollständige Zertifizierung
+          als Kanban Management Professional (KMP).
+      - id: kmp1-first
+        question: "Ist KMP1 Voraussetzung für KMP2?"
+        answer: >-
+          Ja, KMP1 muss vor KMP2 abgeschlossen sein.
+  - id: scrum-alliance
+    courses: [csm, cspo, a-csm, a-cspo, csp-sm, cal-1, cal-2]
+    questions:
+      - id: exam
+        question: "Gibt es eine Prüfung?"
+        answer: >-
+          Für CSM ja: Nach dem Kurs folgt ein kurzer Online-Test der Scrum Alliance,
+          zwei Versuche sind inklusive. CSPO, CAL-1 und CAL-2 haben keine Prüfung;
+          die Zertifizierung erfolgt mit Abschluss des Kurses.
+  - id: icagile
+    courses: [icp-acc, icp-atf, icp-cat]
+    questions:
+      - id: exam
+        question: "Gibt es eine Prüfung?"
+        answer: >-
+          Nein. Das ICAgile-Zertifikat gibt es nach Abschluss des Kurses.
+      - id: icp-acc-duration
+        onlyCourses: [icp-acc]
+        question: "Wie lange dauert ICP-ACC?"
+        answer: >-
+          Vor Ort drei Tage, online sechs halbe Tage.
+
+partnerNote: >-
+  Termine, die über eine Partnerseite gebucht werden (etwa in Dänemark oder
+  Italien), werden von Fellows aus dem Better-Change-Netzwerk durchgeführt.
+  Buchungs-, Zahlungs- und Stornobedingungen stehen auf der jeweiligen Seite.

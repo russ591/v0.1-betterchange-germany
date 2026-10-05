@@ -53,11 +53,12 @@ export const en = {
   "schedule.waysToJoin": "Ways to join",
   "schedule.pickFormat": "Pick a format below",
   "schedule.paymentNote":
-    "No upfront payment needed. A VAT invoice (Rechnung) will be sent via email and you can pay by bank transfer or with card.",
+    "No upfront payment needed. A VAT invoice (Rechnung) will be sent via email and you can pay by bank transfer.",
   "schedule.filterDiscipline": "Discipline",
   // Sold-out sessions point at the next bookable date of the same course
   "schedule.nextDate": "Next date",
   // "Book 6-7 Apr 2027" -- the date goes in between
+  "schedule.language.de": "In German",
   "schedule.nextAvailablePrefix": "Next available",
   "schedule.nextAvailableSuffix": "",
   "schedule.nextAvailableDate": "Next available date",
@@ -350,6 +351,7 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "schedule.letUsKnow": "Kontakt aufnehmen",
   "schedule.filterDiscipline": "Disziplin",
   "schedule.nextDate": "Nächster Termin",
+  "schedule.language.de": "Auf Deutsch",
   "schedule.nextAvailablePrefix": "Nächster Termin:",
   "schedule.nextAvailableSuffix": "",
   // Never had a sold-out session before this pair was needed
@@ -369,7 +371,7 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "schedule.waysToJoin": "Teilnahmemöglichkeiten",
   "schedule.pickFormat": "Format auswählen",
   "schedule.paymentNote":
-    "Keine Vorauszahlung nötig. Eine Rechnung mit ausgewiesener MwSt. wird per E-Mail zugestellt; die Zahlung ist per Überweisung oder Karte möglich.",
+    "Keine Vorauszahlung nötig. Eine Rechnung mit ausgewiesener MwSt. wird per E-Mail zugestellt; die Zahlung erfolgt per Überweisung.",
   "schedule.noSessionsForCourse": "Für diesen Kurs sind derzeit keine Termine geplant.",
   "schedule.noSessionsFilter": "Für diese Filterkombination sind derzeit keine Termine verfügbar.",
 

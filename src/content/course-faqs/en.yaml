@@ -1,0 +1,168 @@
+heading: Frequently asked questions
+
+# Shown only on course pages with at least one date booked through
+# betterchange-consulting.de (internal registration, including self-paced).
+# `formats` limits a question to courses offering that format;
+# `onlyCategories` / `excludeCategories` match the course's category id;
+# `onlyCourses` matches course ids. Text is the approved wording from
+# docs/course-faqs-final.md; keep it verbatim.
+general:
+  - id: vat
+    question: "Does the price include VAT?"
+    answer: >-
+      No. Prices are shown excluding VAT. German VAT (currently 19%) is added on the
+      invoice.
+  - id: payment
+    question: "How do I pay? Can my employer pay?"
+    answer: >-
+      There's no upfront payment. When you register, you receive a VAT invoice by
+      email straight away, and it can be made out to your company. The invoice is
+      normally payable within 30 days. If the course starts sooner than that,
+      payment is due one week before the course; if you book within the last week,
+      it's due on receipt. Payment is by bank transfer.
+  - id: cancellation
+    question: "What if I can't attend after all?"
+    answer: >-
+      Cancellation is free up to 14 days before the course starts. Between 8 and 14
+      days before, 50% of the course fee applies; within 7 days of the start, the
+      full fee is due. Cancellations need to be sent by email.
+  - id: rebooking
+    question: "Can I move to a different date instead?"
+    answer: >-
+      Yes. You can switch to another date of the same course free of charge, as
+      long as there's a seat.
+  - id: substitute
+    question: "Can I send a colleague in my place?"
+    answer: >-
+      Yes, and at no extra cost. If you have to drop out at short notice, through
+      illness for example, we'd actively encourage you to send a colleague instead.
+      Just let us know their name and email address so we can update the booking
+      and send them the joining details.
+  - id: course-cancelled
+    question: "Could the course be cancelled?"
+    answer: >-
+      It does happen sometimes. Whether a course goes ahead is decided 14 days
+      before it starts, and you'll hear from us then if it can't. If a course is
+      cancelled, you can choose between a place on a later date or a full refund of
+      anything you've paid.
+  - id: language
+    question: "What language is the course in?"
+    answer: >-
+      Courses run in English unless the course date says otherwise.
+  - id: times
+    formats: [in-person]
+    question: "What are the times? Is lunch included?"
+    answer: >-
+      Courses usually run from 09:00 to 17:00, unless the course date says
+      otherwise. Drinks are provided throughout the day; lunch isn't included, but
+      there's a proper lunch break. The venue details arrive by email in good time
+      before the course.
+  - id: online
+    formats: [live-online]
+    question: "How do the live online courses work?"
+    answer: >-
+      Online courses usually run over four half-days, live and trainer-led, using
+      Google Meet for video and Miro as a shared whiteboard, unless the course date
+      says otherwise. Joining instructions arrive by email before the course. All
+      you need is a laptop or desktop with a camera and microphone and a stable
+      internet connection; a second screen makes working in Miro noticeably easier.
+  - id: certificate
+    excludeCategories: [scaling]
+    question: "Do I get a certificate? Is it included in the price?"
+    answer: >-
+      Yes. The certification credential from the certifying body (Flight Levels
+      Academy, Kanban University, Scrum Alliance or ICAgile) and all course
+      materials are included in the price.
+  - id: private
+    question: "Can you run this course just for our team?"
+    answer: >-
+      Yes. Every course can run as private training for your organisation, in
+      Berlin, at your premises or online, and adapted to your context. Get in touch
+      through the contact page.
+  - id: discount-flight-levels
+    onlyCategories: [flight-levels]
+    question: "Is there a discount for booking several places?"
+    answer: >-
+      Yes. On every Flight Levels course, three places cost the price of two: book
+      three places on the same course, in person or online, and pay for two. The
+      offer also applies to FLIN when bought on its own.
+  - id: discount-other
+    excludeCategories: [flight-levels]
+    question: "Is there a discount for booking several places?"
+    answer: >-
+      Not at the moment. For larger groups, a private course for your team is often
+      the better option (see above).
+
+# Shown on every page of the family, including pages whose dates are all
+# booked through partner sites. No family block for SAFe or the AI courses.
+families:
+  - id: flight-levels
+    courses: [flin, fl2d, fl3d, flsa]
+    questions:
+      - id: exam
+        question: "Is there an exam?"
+        answer: >-
+          No. You receive your Flight Levels Academy certificate once you've
+          completed the course.
+      - id: flin-first
+        question: "Do I need to do FLIN first?"
+        answer: >-
+          Yes, completing the self-paced Flight Levels Introduction (FLIN) is
+          required before FL2D, FL3D or FLSA. It's included when you book any of
+          those courses: you'll receive an email with your FLIN access link when
+          the email confirming that the course will go ahead is sent. FLIN can also
+          be bought on its own.
+      - id: order
+        question: "In which order should I take the courses?"
+        answer: >-
+          We'd suggest starting with FL2D, then FL3D or FLSA in whichever order
+          suits you. Honestly, though, the order matters less than you might think:
+          each course stands on its own, and FLIN, the shared foundation, comes free
+          with whichever you book first.
+      - id: self-paced
+        question: "Can I study at my own pace?"
+        answer: >-
+          Yes. Every Flight Levels course (FLIN, FL2D, FL3D and FLSA) is also
+          available as a self-paced online course, with trainer check-ins along the
+          way and unlimited access to the material. You'll receive an email with
+          your access link as soon as payment has been received.
+  - id: kanban-university
+    courses: [kmp1, kmp2, flow-manager]
+    questions:
+      - id: certification
+        question: "What certification do I get?"
+        answer: >-
+          You receive a Kanban University certificate when you complete KMP1. Once
+          you've also completed KMP2, you're awarded the full Kanban Management
+          Professional (KMP) certification.
+      - id: kmp1-first
+        question: "Do I need KMP1 before KMP2?"
+        answer: >-
+          Yes, KMP1 needs to be completed before you take KMP2.
+  - id: scrum-alliance
+    courses: [csm, cspo, a-csm, a-cspo, csp-sm, cal-1, cal-2]
+    questions:
+      - id: exam
+        question: "Is there an exam?"
+        answer: >-
+          For CSM, yes: a short online test with Scrum Alliance after the course,
+          with two attempts included. CSPO, CAL-1 and CAL-2 have no exam; you're
+          certified on completing the course.
+  - id: icagile
+    courses: [icp-acc, icp-atf, icp-cat]
+    questions:
+      - id: exam
+        question: "Is there an exam?"
+        answer: >-
+          No. You receive your ICAgile certificate once you've completed the course.
+      - id: icp-acc-duration
+        onlyCourses: [icp-acc]
+        question: "How long is ICP-ACC?"
+        answer: >-
+          Three days in person, or six half-days when run online.
+
+# Shown on any course page with one or more partner-site (external) dates.
+partnerNote: >-
+  Dates marked as booked through a partner site (for example in Denmark or Italy)
+  are run by Fellows from the Better Change network. Their booking, payment and
+  cancellation terms are set out on that site.
