@@ -31,10 +31,9 @@ Der Anbieter behält sich vor, Referenten auszutauschen oder das Programm gering
 
 Alle angegebenen Preise verstehen sich zuzüglich der gesetzlichen Mehrwertsteuer (derzeit 19 %). Die Mehrwertsteuer wird in der Rechnung gesondert ausgewiesen.
 
-### Zahlungsmethoden
+### Zahlung
 
-- Kreditkarte: Zahlung erfolgt bei Buchung über den Zahlungsdienstleister Stripe. Der Betrag wird sofort belastet.
-- Rechnung (SEPA-Überweisung): Bei Auswahl der Zahlungsart Rechnung ist der Rechnungsbetrag innerhalb von 30 Tagen nach Rechnungsdatum ohne Abzug zu überweisen.
+Die Zahlung erfolgt auf Rechnung per Überweisung (SEPA). Eine Vorauszahlung bei Buchung ist nicht erforderlich. Der Rechnungsbetrag ist innerhalb von 30 Tagen nach Rechnungsdatum ohne Abzug zu überweisen.
 
 Bei Zahlungsverzug ist der Anbieter berechtigt, Verzugszinsen in Höhe von 9 Prozentpunkten über dem Basiszinssatz gemäß § 288 BGB zu berechnen.
 
@@ -72,7 +71,7 @@ Widerrufsbelehrung: Sie können Ihren Vertrag innerhalb von 14 Tagen ohne Angabe
 
 ## § 7 Rechnungsstellung
 
-Rechnungen werden automatisch per E-Mail an die bei der Buchung angegebene Rechnungsadresse versandt. Bei Kreditkartenzahlung erfolgt die Rechnungsausstellung unmittelbar nach Buchung. Bei Zahlung per Rechnung wird die Rechnung mit der Buchungsbestätigung versandt.
+Rechnungen werden automatisch per E-Mail an die bei der Buchung angegebene Rechnungsadresse versandt. Die Rechnung wird zusammen mit der Buchungsbestätigung versandt.
 
 Alle Rechnungen enthalten die gesetzlich vorgeschriebenen Angaben gemäß § 14 UStG einschließlich USt-IdNr. des Anbieters. Für EU-Unternehmenskunden mit Reverse-Charge-Hinweis.
 
