@@ -9,9 +9,7 @@ general:
     question: "Sind die Preise inklusive Mehrwertsteuer?"
     answer: >-
       Nein. Alle Preise verstehen sich zuzüglich Mehrwertsteuer. Die deutsche MwSt.
-      (derzeit 19 %) wird auf der Rechnung ausgewiesen. Unternehmen aus anderen
-      EU-Ländern mit gültiger USt-IdNr. erhalten eine Rechnung im
-      Reverse-Charge-Verfahren.
+      (derzeit 19 %) wird auf der Rechnung ausgewiesen.
   - id: payment
     question: "Wie wird bezahlt? Kann der Arbeitgeber die Rechnung übernehmen?"
     answer: >-
@@ -29,9 +27,8 @@ general:
   - id: rebooking
     question: "Ist eine Umbuchung möglich?"
     answer: >-
-      Ja. Bis 7 Tage vor Kursbeginn ist eine Umbuchung auf einen anderen Termin
-      desselben Kurses kostenlos, sofern Plätze frei sind. Jede weitere Umbuchung
-      kostet €50 zzgl. MwSt.
+      Ja. Eine Umbuchung auf einen anderen Termin desselben Kurses ist kostenlos,
+      sofern Plätze frei sind.
   - id: substitute
     question: "Kann ein:e Kolleg:in den Platz übernehmen?"
     answer: >-
@@ -42,7 +39,7 @@ general:
   - id: course-cancelled
     question: "Kann ein Kurs abgesagt werden?"
     answer: >-
-      Das ist selten, kommt aber vor. Ob ein Kurs stattfindet, wird 14 Tage vor
+      Das kommt gelegentlich vor. Ob ein Kurs stattfindet, wird 14 Tage vor
       Beginn entschieden, und im Fall einer Absage gibt es dann sofort Bescheid. Bei
       einer Absage besteht die Wahl zwischen einem Platz an einem späteren Termin
       und der vollständigen Erstattung bereits gezahlter Beträge.
@@ -89,7 +86,7 @@ general:
     answer: >-
       Ja. Bei allen Flight-Levels-Kursen gilt 3 für 2: Wer drei Plätze für
       denselben Kurs bucht, vor Ort oder online, zahlt nur zwei. Das gilt auch für
-      FLIN als Einzelbuchung. Weitere Rabatte gibt es derzeit nicht.
+      FLIN als Einzelbuchung.
   - id: discount-other
     excludeCategories: [flight-levels]
     question: "Gibt es Rabatt bei mehreren Buchungen?"
@@ -111,8 +108,9 @@ families:
         answer: >-
           Ja. Der Selbstlernkurs Flight Levels Introduction (FLIN) ist
           Voraussetzung für FL2D, FL3D und FLSA. Bei der Buchung eines dieser Kurse
-          ist FLIN bereits enthalten: Der Zugangslink kommt per E-Mail, sobald die
-          Zahlung eingegangen ist. FLIN ist auch einzeln buchbar.
+          ist FLIN bereits enthalten: Der Zugangslink kommt per E-Mail, zusammen
+          mit der Bestätigung, dass der Kurs stattfindet. FLIN ist auch einzeln
+          buchbar.
       - id: order
         question: "In welcher Reihenfolge sind die Kurse sinnvoll?"
         answer: >-

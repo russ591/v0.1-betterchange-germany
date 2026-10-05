@@ -11,8 +11,7 @@ general:
     question: "Does the price include VAT?"
     answer: >-
       No. Prices are shown excluding VAT. German VAT (currently 19%) is added on the
-      invoice. Companies elsewhere in the EU with a valid VAT ID are invoiced under
-      the reverse-charge rules.
+      invoice.
   - id: payment
     question: "How do I pay? Can my employer pay?"
     answer: >-
@@ -30,9 +29,8 @@ general:
   - id: rebooking
     question: "Can I move to a different date instead?"
     answer: >-
-      Yes. You can switch to another date of the same course free of charge up to 7
-      days before the start, as long as there's a seat. Any further change costs €50
-      plus VAT.
+      Yes. You can switch to another date of the same course free of charge, as
+      long as there's a seat.
   - id: substitute
     question: "Can I send a colleague in my place?"
     answer: >-
@@ -43,7 +41,7 @@ general:
   - id: course-cancelled
     question: "Could the course be cancelled?"
     answer: >-
-      It's rare, but it can happen. Whether a course goes ahead is decided 14 days
+      It does happen sometimes. Whether a course goes ahead is decided 14 days
       before it starts, and you'll hear from us then if it can't. If a course is
       cancelled, you can choose between a place on a later date or a full refund of
       anything you've paid.
@@ -87,8 +85,7 @@ general:
     answer: >-
       Yes. On every Flight Levels course, three places cost the price of two: book
       three places on the same course, in person or online, and pay for two. The
-      offer also applies to FLIN when bought on its own. There are no other
-      discounts at the moment.
+      offer also applies to FLIN when bought on its own.
   - id: discount-other
     excludeCategories: [flight-levels]
     question: "Is there a discount for booking several places?"
@@ -112,8 +109,9 @@ families:
         answer: >-
           Yes, completing the self-paced Flight Levels Introduction (FLIN) is
           required before FL2D, FL3D or FLSA. It's included when you book any of
-          those courses: you'll receive an email with your FLIN access link as soon
-          as payment has been received. FLIN can also be bought on its own.
+          those courses: you'll receive an email with your FLIN access link when
+          the email confirming that the course will go ahead is sent. FLIN can also
+          be bought on its own.
       - id: order
         question: "In which order should I take the courses?"
         answer: >-
