@@ -8,8 +8,8 @@
 import type { Locale } from "@/lib/i18n";
 
 const SELF_PACED_RE = /^Self-paced online version of (.+)\.$/;
-const FLIN_NOTE_EN = "Self-paced online course. Included free when booked alongside FL2D, FL3D or FLSA.";
-const FLIN_NOTE_DE = "Selbstlernkurs (online). Kostenlos inklusive bei gleichzeitiger Buchung von FL2D, FL3D oder FLSA.";
+const FLIN_NOTE_EN = "Self-paced online course. Included free with every FL2D, FL3D or FLSA booking.";
+const FLIN_NOTE_DE = "Selbstlernkurs (online). Kostenlos inklusive bei jeder Buchung von FL2D, FL3D oder FLSA.";
 
 export function translateNotes(notes: string, locale: Locale): string {
   if (locale !== "de") return notes;

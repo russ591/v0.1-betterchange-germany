@@ -108,10 +108,14 @@ families:
         question: "Do I need to do FLIN first?"
         answer: >-
           Yes, completing the self-paced Flight Levels Introduction (FLIN) is
-          required before FL2D, FL3D or FLSA. It's included when you book any of
-          those courses: you'll receive an email with your FLIN access link when
-          the email confirming that the course will go ahead is sent. FLIN can also
-          be bought on its own.
+          required before FL2D, FL3D or FLSA, and it's included when you book any
+          of those courses. For an in-person or live online course, you'll receive
+          an email with your FLIN access link when the email confirming that the
+          course will go ahead is sent, usually about two weeks before the start,
+          or earlier once there are enough bookings. For a self-paced course, the
+          FLIN link arrives together with your course access link as soon as your
+          payment has been received. FLIN can also be bought on its own; the
+          access link is then sent as soon as payment has been received.
       - id: order
         question: "In which order should I take the courses?"
         answer: >-
@@ -125,7 +129,8 @@ families:
           Yes. Every Flight Levels course (FLIN, FL2D, FL3D and FLSA) is also
           available as a self-paced online course, with trainer check-ins along the
           way and unlimited access to the material. You'll receive an email with
-          your access link as soon as payment has been received.
+          your access link as soon as payment has been received (for FL2D, FL3D
+          and FLSA together with your FLIN access link).
   - id: kanban-university
     courses: [kmp1, kmp2, flow-manager]
     questions:

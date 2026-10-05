@@ -6,7 +6,7 @@ body: A confirmation email is on its way to you. You'll receive your invoice sep
 nextStepsHeading: What happens next?
 steps:
   - You'll receive a confirmation email with your registration details.
-  - We'll follow up with logistics, joining instructions or venue details, closer to the course date.
+  - We'll follow up with logistics, joining instructions or venue details, closer to the course date. For a self-paced course, your access link follows as soon as payment has been received.
   - Your invoice will follow separately by email, within 2 business days.
 buttonLabel: Back to training overview
 ---
