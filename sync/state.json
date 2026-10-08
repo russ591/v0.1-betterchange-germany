@@ -1700,23 +1700,6 @@
     }
   },
   "events": {
-    "18163": {
-      "title": "Flow Manager (FM)",
-      "url": "https://www.betterchange-consulting.com/event/flow-manager-berlin-20-nov-2025/",
-      "start": "2026-10-06",
-      "end": "2026-10-07",
-      "cost": "€1295",
-      "registrationUrl": "https://www.betterchange-consulting.de/training/kanban/flow-manager",
-      "modified": "2026-05-19 14:07:22",
-      "country": "Germany",
-      "city": "Berlin",
-      "online": false,
-      "organizers": [
-        "Better Change Berlin"
-      ],
-      "skipped": "venue in Germany (Russ adds these himself)",
-      "question": null
-    },
     "18213": {
       "title": "Advanced Certified ScrumMaster® (A-CSM®)",
       "url": "https://www.betterchange-consulting.com/event/advanced-certified-scrum-master-a-csm-se-202611/",
@@ -1912,23 +1895,6 @@
       "cost": "from EUR 1095",
       "registrationUrl": "https://www.betterchange-consulting.dk/cart/254600-Certified-Scrum-Product-Owner-CSPO261020?currency=EUR",
       "modified": "2026-06-22 13:55:40",
-      "country": null,
-      "city": "Online",
-      "online": true,
-      "organizers": [
-        "Better Change ApS"
-      ],
-      "skipped": null,
-      "question": null
-    },
-    "19506": {
-      "title": "Certified Scrum Master (CSM)",
-      "url": "https://www.betterchange-consulting.com/event/certified-scrum-master-csm-6/",
-      "start": "2026-10-07",
-      "end": "2026-10-08",
-      "cost": "from EUR 1095",
-      "registrationUrl": "https://www.betterchange-consulting.dk/cart/254601-Certified-ScrumMaster-CSM261007?currency=EUR",
-      "modified": "2026-09-16 05:52:10",
       "country": null,
       "city": "Online",
       "online": true,
@@ -2345,7 +2311,24 @@
       ],
       "skipped": null,
       "question": null
+    },
+    "19775": {
+      "title": "Free Webinar - Ask Me Anything: le tue sfide professionali, con risposte in diretta",
+      "url": "https://www.betterchange-consulting.com/event/ask-me-anything-202610/",
+      "start": "2026-10-28",
+      "end": "2026-10-28",
+      "cost": "Free",
+      "registrationUrl": "https://www.betterchange-consulting.dk/cart/252778-Free-Webinar-Dare-e-ricevere-feedback-la",
+      "modified": "2026-10-06 09:41:01",
+      "country": null,
+      "city": "Online",
+      "online": true,
+      "organizers": [
+        "Better Change Italy"
+      ],
+      "skipped": null,
+      "question": "no matching .de course page for this event (the sync never creates course pages)"
     }
   },
-  "recordedAt": "2026-10-03T05:41:55.727Z"
+  "recordedAt": "2026-10-08T05:41:16.592Z"
 }
