@@ -415,8 +415,9 @@ function resolveTrainer(e, profiles, decisions) {
 // upcoming .com event is removed. Sessions with the internal .de
 // registration (German courses, Russ's own online courses) are never
 // touched. A session whose date has passed simply drops out of the .com
-// snapshot (it only holds upcoming events); that is housekeeping, not a
-// cancellation.
+// snapshot (it only holds upcoming events): it is neither a cancellation
+// nor something to delete. Past session files stay as a record of what was
+// scheduled; the site hides them by date (src/lib/dates.ts).
 const isExternalSession = (s) => s.isExternal === "true";
 
 // Webinars and other free events on .com (an "Ask Me Anything", a free
@@ -668,7 +669,7 @@ async function main() {
   const sessionBySourceId = Object.fromEntries(sessions.filter((x) => x.sourceId).map((x) => [x.sourceId, x]));
   const decide = (e) => decideEvent(e, courses, profiles, decisions, importedIds);
 
-  const report = { mode: MODE, generatedAt: new Date().toISOString(), source: FROM_DIR ? "dir" : USE_API ? "api" : "snapshot", snapshot: raw.snapshot || null, postTypes: publicTypes, resourcesType, newPosts: [], newFellows: [], skippedWebinars: 0, skippedPostsByDecision: 0, webinarWriteups: 0, newEvents: [], changedEvents: [], removedEvents: [], skippedEvents: [], questions: [], possiblyMissingOnDe: [], sessionMatches: [], forgotten: FORGET, notRecorded: [], trainerMismatches: [], sessionsToRemove: [], expiredSessions: [], sessionsToLink: [], counts: {} };
+  const report = { mode: MODE, generatedAt: new Date().toISOString(), source: FROM_DIR ? "dir" : USE_API ? "api" : "snapshot", snapshot: raw.snapshot || null, postTypes: publicTypes, resourcesType, newPosts: [], newFellows: [], skippedWebinars: 0, skippedPostsByDecision: 0, webinarWriteups: 0, newEvents: [], changedEvents: [], removedEvents: [], skippedEvents: [], questions: [], possiblyMissingOnDe: [], sessionMatches: [], forgotten: FORGET, notRecorded: [], trainerMismatches: [], sessionsToRemove: [], sessionsToLink: [], counts: {} };
 
   // "Today" for the upcoming/past split is the day the snapshot was built:
   // the .com snippet keeps every event starting on or after that day.
@@ -747,23 +748,20 @@ async function main() {
   // (its date has passed; the snapshot only holds upcoming events).
   for (const [id, prev] of Object.entries(state.events)) {
     if (seenNow.has(id) || prev.skipped || prev.question) continue;
-    if (prev.start && prev.start < today) continue; // expired, handled below with the session files
+    if (prev.start && prev.start < today) continue; // it has taken place; nothing to do
     report.removedEvents.push({ id, ...prev });
   }
 
   // Every external session is the sync's: one whose .com event is gone or
-  // that matches no .com event at all is removed. Past dates are
-  // housekeeping, listed separately and never as a cancellation.
+  // that matches no .com event at all is removed. A past session is left
+  // alone: its file stays as a record and the site hides it by date.
   const liveEventIds = new Set(events.filter((e) => decide(e).kind !== "skip").map((e) => e.id));
   const links = matchSessionsToEvents(sessions, events, courses, profiles, decisions);
   for (const s of sessions) {
     if (!isExternalSession(s)) continue;
     const day = String(s.date || "").slice(0, 10);
     const entry = { session: s.file, date: day, course: s.course, location: s.location || null, sourceId: s.sourceId || null };
-    if (day && day < today) {
-      report.expiredSessions.push(entry);
-      continue;
-    }
+    if (day && day < today) continue;
     if (s.sourceId) {
       if (!liveEventIds.has(s.sourceId)) report.sessionsToRemove.push({ ...entry, reason: `its .com event #${s.sourceId} is no longer an upcoming event on .com` });
       continue;
@@ -861,7 +859,7 @@ async function main() {
     return;
   }
 
-  const nothingToSync = !report.newPosts.length && !report.newEvents.length && !report.changedEvents.length && !report.removedEvents.length && !report.questions.length && !report.trainerMismatches.length && !report.sessionsToRemove.length && !report.expiredSessions.length && !report.sessionsToLink.length;
+  const nothingToSync = !report.newPosts.length && !report.newEvents.length && !report.changedEvents.length && !report.removedEvents.length && !report.questions.length && !report.trainerMismatches.length && !report.sessionsToRemove.length && !report.sessionsToLink.length;
   const nothing = MODE === "check" && nothingToSync && !report.newFellows.length;
 
   if (JSON_OUT) {
@@ -894,7 +892,6 @@ async function main() {
     section("Removed or cancelled non-German events", report.removedEvents, (e) => `#${e.id ?? "?"} ${e.title} | ${e.start}`);
     section("External sessions to remove (no upcoming .com event; .com is the source of truth)", report.sessionsToRemove, (x) => `${x.session} | ${x.course} | ${x.date} | ${x.location || "?"}${x.sourceId ? ` | sourceId ${x.sourceId}` : ""}: ${x.reason}`);
     section("External sessions matching a .com event without a sourceId (add it, or run --apply-source-ids)", report.sessionsToLink, (x) => `${x.session} -> #${x.eventId} ${x.eventTitle} (matched by ${x.basis})`);
-    section("Past external sessions to delete (housekeeping, their dates have passed; not a cancellation)", report.expiredSessions, (x) => `${x.session} | ${x.course} | ${x.date} | ${x.location || "?"}`);
     section("Questions for Russ", report.questions, (q) => `#${q.id} ${q.title} (${q.start}): ${q.reason} ${q.url || ""}`);
     section("New Fellows on .com (information only, never imported; update the About page by hand)", report.newFellows, (p) => `${p.title} [${p.date.slice(0, 10)}] ${p.link}`);
     if (APPLY_IDS) {

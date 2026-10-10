@@ -53,27 +53,44 @@ export function formatSessionDate(
   return formatter.format(date);
 }
 
-// A session stays listed through its own start day and drops off the day
-// after -- comparing against the exact stored start instant (e.g. the
-// 08:00 UTC every session date carries) would remove it from listings
-// while the course is still running that same day, which reads as
-// premature. Self-paced sessions have no date and are always available.
+// Registration for a dated session closes at the end of the day before it
+// starts (Russ, 2026-10-10): on the start day itself it is too late, so the
+// session must no longer be listed anywhere. The site is rebuilt by the
+// nightly build at 22:00 UTC (netlify/functions/nightly-rebuild.js, schedule
+// in netlify.toml), which is the evening before in Europe/Berlin all year,
+// so the cutoff is placed in that evening: a session drops out of any build
+// that runs at or after 18:00 UTC on the day before its start day. A
+// daytime build on the day before (a merge, say) still lists it, which is
+// the "up until the night before" Russ asked for.
+//
+// Past sessions keep their files: the data stays as a record of what was
+// scheduled, only the listings (and the registration form) go. Nothing
+// deletes a session because its date has passed.
 //
 // This is a static build: the comparison only re-runs when the site is
-// actually rebuilt (see .github/workflows/nightly-rebuild.yml), not
-// continuously -- a session that's crossed this cutoff will keep showing
-// as available on the live site until the next build picks it up.
-// Deliberately takes only the session -- every call site passes these
-// functions directly as an Array.prototype.filter callback, which also
-// hands the callback an index and the array; a second `now` parameter
-// here would silently collide with that index instead of ever being the
-// Date it looks like.
-function isPastListingCutoff(session: CollectionEntry<"training-schedules">): boolean {
-  if (!session.data.date) return false;
-  const cutoff = new Date(session.data.date);
-  cutoff.setUTCDate(cutoff.getUTCDate() + 1);
+// built, not on every visit. Deliberately takes only the session: every
+// call site passes these functions directly as an Array.prototype.filter
+// callback, which also hands the callback an index and the array; a second
+// `now` parameter here would silently collide with that index instead of
+// ever being the Date it looks like.
+const LISTING_CUTOFF_HOURS_BEFORE_START_DAY = 6;
+
+export function listingCutoff(start: Date): Date {
+  const cutoff = new Date(start);
   cutoff.setUTCHours(0, 0, 0, 0);
-  return new Date() >= cutoff;
+  cutoff.setUTCHours(cutoff.getUTCHours() - LISTING_CUTOFF_HOURS_BEFORE_START_DAY);
+  return cutoff;
+}
+
+// True once registration has closed: the listing cutoff has passed. Self-
+// paced sessions have no date and never close.
+export function isRegistrationClosed(session: CollectionEntry<"training-schedules">): boolean {
+  if (!session.data.date) return false;
+  return new Date() >= listingCutoff(session.data.date);
+}
+
+function isPastListingCutoff(session: CollectionEntry<"training-schedules">): boolean {
+  return isRegistrationClosed(session);
 }
 
 // For a "full schedule" or a single course's own session list, where

@@ -11,7 +11,7 @@ import Badge from "@/components/Badge.astro";
 import LanguageTag from "@/components/LanguageTag.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import TrainerChip from "@/components/TrainerChip.astro";
-import { formatSessionDate } from "@/lib/dates";
+import { formatSessionDate, isRegistrationClosed } from "@/lib/dates";
 import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
 import { toPathSegment } from "@/lib/urlSlug";
@@ -43,7 +43,11 @@ const sessionTrainers = await getTrainersForSessions([session]);
 
 const unitPrice = parseFloat(session.data.price.replace(/[^0-9.]/g, "")) || 0;
 const hasBulkOffer = /seats? for the price of/i.test(session.data.offer ?? "");
-const isSoldOut = session.data.status === "sold-out";
+// A date whose registration has closed (the listing cutoff in
+// src/lib/dates.ts: the evening before it starts) gets the same closed box
+// as a sold-out one: the page still exists, nothing links to it any more,
+// and anyone arriving with an old link sees the next date instead of a form.
+const isSoldOut = session.data.status === "sold-out" || isRegistrationClosed(session);
 // The sold-out box offers the course's next bookable date before the
 // waitlist (Option C of the sold-out treatment).
 const nextSession = isSoldOut ? await nextAvailableSession(session) : undefined;
