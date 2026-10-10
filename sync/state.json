@@ -1887,23 +1887,6 @@
       "skipped": "ignored by decision: CASP has no .de course page and will not get one; never raise this event again.",
       "question": null
     },
-    "19504": {
-      "title": "Certified Scrum Product Owner (CSPO)",
-      "url": "https://www.betterchange-consulting.com/event/certified-scrum-product-owner-cspo-13/",
-      "start": "2026-10-20",
-      "end": "2026-10-21",
-      "cost": "from EUR 1095",
-      "registrationUrl": "https://www.betterchange-consulting.dk/cart/254600-Certified-Scrum-Product-Owner-CSPO261020?currency=EUR",
-      "modified": "2026-06-22 13:55:40",
-      "country": null,
-      "city": "Online",
-      "online": true,
-      "organizers": [
-        "Better Change ApS"
-      ],
-      "skipped": null,
-      "question": null
-    },
     "19524": {
       "title": "Certified ScrumMaster® (CSM®)",
       "url": "https://www.betterchange-consulting.com/event/certified-scrummaster-csm-it-202611/",
@@ -2330,5 +2313,5 @@
       "question": "no matching .de course page for this event (the sync never creates course pages)"
     }
   },
-  "recordedAt": "2026-10-08T05:41:16.592Z"
+  "recordedAt": "2026-10-10T05:41:16.105Z"
 }
