@@ -6,7 +6,7 @@ Russ only wants to be asked when something is genuinely unclear. Anything unclea
 
 ## What the sync owns and what it never touches
 
-- betterchange-consulting.com is the source of truth for every **external** training session (`isExternal: true` in `src/content/training-schedules/`, the sessions whose Register button opens a sister site). The sync owns all of them, whether or not they carry a `sourceId`: it creates them from .com events, keeps them in step, and removes any that has no upcoming event on .com. This decision dates from 2026-10-02, when six external sessions with no .com counterpart were removed.
+- betterchange-consulting.com is the source of truth for every **external** training session (`isExternal: true` in `src/content/training-schedules/`, the sessions whose Register button opens a sister site). The sync owns all of them, whether or not they carry a `sourceId`: it creates them from .com events, keeps them in step, and removes any that has no upcoming event on .com. This decision dates from 2026-10-02, when six external sessions with no .com counterpart were removed. "No upcoming event" only ever means an event whose date is still ahead; a session that has already taken place is left alone (see "Past sessions stay").
 - Articles are owned only when they carry a `sourceId`: `src/content/insights-articles/` (English) and `src/content/insights-articles/de/` (German).
 - Every session with the internal .de registration (no `isExternal`: the German courses and Russ's own online courses) and every article without a `sourceId` belongs to Russ. Never edit or remove those.
 - Never touch registration, Lexware or email code (`src/components/pages/RegisterPageContent.astro`, anything under `netlify/functions/` including the `com-snapshot` function). Never change `LEXWARE_TEST_MODE` or any other environment variable. Never merge anything to main except the one case in "Merging" below.
@@ -65,7 +65,7 @@ Run `npm run sync:check`. It compares the latest .com snapshot with `sync/state.
 - new posts (`resources` entries count as posts; a Webinar-category post is included when it is a write-up or recap with real content, and skipped only when it is an announcement or sign-up page for a session, see "Webinar posts"),
 - new, changed (date, price, registration link) and removed non-German events, each new event with the `course:` id and the `trainer:` it resolves to (and where the trainer came from: a decision, the Trainer field, the organizer, or the event description),
 - synced sessions whose `trainers` no longer match the Trainer field on .com,
-- external sessions to remove (no upcoming .com event), external sessions that match a .com event but lack a `sourceId`, and past external sessions to delete as housekeeping,
+- external sessions to remove (no upcoming .com event, date still ahead) and external sessions that match a .com event but lack a `sourceId`,
 - questions (an event whose trainer, venue country or .de course page cannot be determined, a webinar post that cannot be told apart from an announcement, a snapshot older than 48 hours),
 - new Fellow profiles on .com (information only, see "Fellows").
 
@@ -117,7 +117,7 @@ Only non-German training events reach this step. The script already skips events
 
 **External session to remove**: an external session that has no upcoming .com event, with or without a `sourceId`. Delete the file; .com is the source of truth. **External session matching a .com event without a sourceId**: add `sourceId` and `sourceUrl` (or run `npm run sync:check -- --apply-source-ids`).
 
-**Past external sessions**: the .com snapshot only holds upcoming events, so a session whose date has passed drops out of it. The script never reports that as a cancellation. It lists such sessions under "Past external sessions to delete"; delete them in the same training PR as plain housekeeping, with no mention in the questions. (The site stops listing them on its own on the day they pass, so nothing is visible either way.)
+**Past sessions stay.** The .com snapshot only holds upcoming events, so a session whose date has passed drops out of it. That is neither a cancellation nor a reason to delete anything: the session file stays in the repository as a record of what was scheduled, and the site hides it by date on its own (`src/lib/dates.ts`: a session leaves every listing, and its registration page shows a closed notice with the next date and no waitlist, from the nightly build on the evening before its start day). The script says nothing about past sessions. Decided by Russ on 2026-10-10, after a run had opened a PR only to delete a past session.
 
 Only ever touch external sessions and sessions with a `sourceId`. A session with the internal registration is Russ's: if a change would affect one, raise a question instead.
 
