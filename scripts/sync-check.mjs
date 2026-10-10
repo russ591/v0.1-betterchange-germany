@@ -339,6 +339,7 @@ function normaliseEvent(ev) {
     online,
     organizers,
     categories: (ev.categories || []).map((c) => c.slug || c.name).filter(Boolean),
+    free: /^\s*(free|gratis|kostenlos|0([.,]0+)?)\s*$/i.test(String(ev.cost || "")) || Boolean(ev.cost_details && Array.isArray(ev.cost_details.values) && ev.cost_details.values.length && ev.cost_details.values.every((v) => Number(String(v).replace(",", ".")) === 0)),
     descriptionText: stripHtml(ev.description || "").slice(0, 4000),
     trainerField: trainerFieldOf(ev),
   };
@@ -418,6 +419,14 @@ function resolveTrainer(e, profiles, decisions) {
 // cancellation.
 const isExternalSession = (s) => s.isExternal === "true";
 
+// Webinars and other free events on .com (an "Ask Me Anything", a free
+// webinar) are not training and never go on .de: decided by Russ on
+// 2026-10-09. Recognised by the Webinar category, a free price, or
+// "webinar" in the title; skipped outright, never a question.
+function isWebinarEvent(e) {
+  return e.categories.some((c) => /webinar/i.test(c)) || e.free || /\bwebinar\b|ask me anything/i.test(e.title);
+}
+
 // The brief's rule: skip Germany; sync everything else unless Russell Hill
 // runs it online; an event the sync could import but cannot place (no
 // trainer, no venue country, no .de course page) is a question, never a
@@ -426,6 +435,7 @@ function decideEvent(e, courses, profiles, decisions, importedIds = new Set()) {
   const d = (decisions.events || {})[e.id] || {};
   if (d.ignore) return { kind: "skip", reason: `ignored by decision: ${d.ignore}` };
   if (e.country && GERMANY.has(e.country.trim().toLowerCase())) return { kind: "skip", reason: "venue in Germany (Russ adds these himself)" };
+  if (isWebinarEvent(e)) return { kind: "skip", reason: "webinar or free event, not a training (never included on .de)" };
   const trainer = resolveTrainer(e, profiles, decisions);
   if (trainer && trainer.ids.includes("russell-hill") && e.online) return { kind: "skip", reason: "Russell Hill's own online course (Russ adds these himself)" };
   // Already imported (a session here carries its sourceId): trainer and
@@ -829,7 +839,8 @@ async function main() {
     webinarsOnCom: posts.filter((p) => p.webinar).length,
     webinarAnnouncements: report.skippedWebinars,
     eventsOnCom: events.length,
-    eventsGermanOrOwn: report.skippedEvents.length,
+    eventsGermanOrOwn: report.skippedEvents.filter((x) => !/webinar or free event/.test(x.reason)).length,
+    eventsWebinar: report.skippedEvents.filter((x) => /webinar or free event/.test(x.reason)).length,
     eventsUndecided: events.filter((e) => decide(e).kind === "question").length,
     eventsSyncable: events.filter((e) => decide(e).kind === "sync").length,
     decisions: Object.keys(decisions.events).length + Object.keys(decisions.posts).length + Object.keys(decisions.organizers).length,
@@ -860,7 +871,7 @@ async function main() {
 
   const c = report.counts;
   console.log(`sync:check (${MODE}) at ${report.generatedAt}, source: ${report.source}${report.snapshot && report.snapshot.generatedAt ? ` (snapshot generated ${report.snapshot.generatedAt}, received ${report.snapshot.receivedAt || "?"}, trigger ${report.snapshot.trigger || "?"})` : ""}`);
-  console.log(`  .com: ${c.postsOnCom} posts (${c.webinarsOnCom} in the Webinar category, of which ${c.webinarAnnouncements} announcements, ignored; ${c.fellowsOnCom} Fellow profiles, information only), ${c.eventsOnCom} events (${c.eventsGermanOrOwn} German or Russell's own, skipped; ${c.eventsSyncable} syncable; ${c.eventsUndecided} undecided)`);
+  console.log(`  .com: ${c.postsOnCom} posts (${c.webinarsOnCom} in the Webinar category, of which ${c.webinarAnnouncements} announcements, ignored; ${c.fellowsOnCom} Fellow profiles, information only), ${c.eventsOnCom} events (${c.eventsGermanOrOwn} German or Russell's own and ${c.eventsWebinar} webinars or free events, skipped; ${c.eventsSyncable} syncable; ${c.eventsUndecided} undecided)`);
   console.log(`  post types on .com: ${report.postTypes.join(", ") || "(unknown)"}; separate "resources" type: ${report.resourcesType || "none found"}`);
   console.log(`  state: ${c.postsInState} posts, ${c.eventsInState} events recorded; ${c.localSessionsWithSourceId} local sessions carry a sourceId (${c.localExternalSessions} external sessions in total)`);
   console.log(`  decisions: ${c.decisions} in sync/decisions.json${report.skippedPostsByDecision ? ` (${report.skippedPostsByDecision} post(s) ignored by decision)` : ""}`);

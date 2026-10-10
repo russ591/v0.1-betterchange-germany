@@ -81,7 +81,7 @@ Create `sync/YYYY-MM-DD` from `origin/main` after `git fetch origin main`, never
 
 ## Step 3: training events
 
-Only non-German events reach this step. The script already skips events whose venue is in Germany, and online events run by Russell Hill; Russ adds those to both sites himself.
+Only non-German training events reach this step. The script already skips events whose venue is in Germany, online events run by Russell Hill (Russ adds those to both sites himself), and webinars and other free events (the Webinar category on .com, a free price, or "webinar" in the title): those are not training and never go on .de, so they are neither imported nor raised as a question. Russ decided this on 2026-10-09 for the Italian "Free Webinar: Ask Me Anything" (#19775).
 
 **New event**
 
