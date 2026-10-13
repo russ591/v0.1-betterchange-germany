@@ -67,14 +67,16 @@ const deHref = translations?.de ?? currentPath;
       <Logo size="medium" />
     </a>
 
-    <nav aria-label="Primary" class="hidden items-center gap-8 lg:flex">
+    {/* Nav and right-hand gaps tighten from 960 to 1279px so the country name
+        always fits beside EN/DE and Contact; full spacing returns at xl. */}
+    <nav aria-label="Primary" class="hidden items-center gap-4 min-[1100px]:gap-6 lg:flex xl:gap-8">
       {
         navLinks
           .filter((link) => !link.mobileOnly)
           .map((link) => {
             const href = link.translated ? `${prefix}${link.href}` : link.href;
             const isActive = href === "/" ? currentPath === "/" : currentPath.startsWith(href);
-            const linkClass = `flex items-center gap-1 border-b-2 pb-1 text-sm font-medium transition-colors hover:text-ink ${
+            const linkClass = `flex items-center gap-1 whitespace-nowrap border-b-2 pb-1 text-[0.8125rem] font-medium transition-colors hover:text-ink min-[1100px]:text-sm ${
               isActive ? "border-lime text-ink" : "border-transparent text-neutral-600"
             }`;
 
@@ -111,11 +113,11 @@ const deHref = translations?.de ?? currentPath;
       }
     </nav>
 
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-3 lg:gap-2 min-[1100px]:gap-3">
       {/* "Which site" sits before the EN/DE toggle, set apart by a thin
           divider, so the two read as site + language, not two versions of
           one control. Desktop only; the mobile menu has its own section. */}
-      <div class="hidden items-center gap-3 lg:flex">
+      <div class="hidden items-center gap-2 min-[1100px]:gap-3 lg:flex">
         <SiteSwitcherDesktop />
         <div class="h-5 w-px bg-neutral-300" aria-hidden="true"></div>
       </div>
@@ -146,7 +148,7 @@ const deHref = translations?.de ?? currentPath;
 
       <a
         href={`${prefix}/contact`}
-        class="hidden items-center gap-1.5 rounded-[var(--radius-pill)] bg-lime px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-lime/85 sm:inline-flex"
+        class="hidden items-center gap-1.5 whitespace-nowrap rounded-[var(--radius-pill)] bg-lime px-5 py-2.5 text-sm font-semibold lg:px-4 min-[1100px]:px-5 text-ink transition-colors hover:bg-lime/85 sm:inline-flex"
       >
         {t("nav.contactCta")}
         <span aria-hidden="true">→</span>

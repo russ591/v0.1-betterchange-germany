@@ -1,6 +1,8 @@
 ---
 // "Which site" switcher in the desktop header (lg and up), before the EN/DE
-// language toggle. Unlike the Services/Training hover menus it is a real
+// language toggle. The trigger is a map pin + the country name ("Germany" /
+// "Deutschland"), always with the name: never icon-only and never "DE", so it
+// can't be mistaken for a language control. Unlike the Services/Training hover menus it is a real
 // disclosure: a button with aria-expanded that opens on click or Enter,
 // closes on Escape, on an outside click and when focus leaves it, and keeps
 // the closed panel `invisible` so its links can't be tabbed to. The panel is
@@ -25,12 +27,24 @@ const { current, live, soon } = groupNetworkSites(locale);
     aria-expanded="false"
     aria-controls="site-switcher-panel"
     aria-label={`${t("network.heading")}: ${current.label}`}
-    class="group flex items-center gap-1.5 rounded-[var(--radius-control)] px-1 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors hover:text-ink aria-expanded:text-ink"
+    class="group flex items-center gap-1.5 rounded-[var(--radius-control)] px-1 py-1.5 text-sm font-semibold min-[1100px]:text-[length:var(--text-small)] text-neutral-700 transition-colors hover:text-ink aria-expanded:text-ink"
   >
-    <NetworkFlag flagSvg={current.flagSvg} isGlobe={current.isGlobe} />
-    {/* Label is dropped to just the flag at lg (the row is tight there) and
-        shown from xl up; sr-only keeps it in the accessibility tree. */}
-    <span class="sr-only xl:not-sr-only">{current.label}</span>
+    {/* A map pin, not a flag: a flag next to the country name read as a second
+        language control beside EN/DE. The country name is always shown. */}
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      class="h-4 w-4 shrink-0"
+    >
+      <path d="M12 21.5s-7-5.4-7-11.2a7 7 0 0 1 14 0c0 5.8-7 11.2-7 11.2Z"></path>
+      <circle cx="12" cy="10.3" r="2.5"></circle>
+    </svg>
+    <span class="whitespace-nowrap">{current.label}</span>
     <svg
       viewBox="0 0 24 24"
       fill="none"
