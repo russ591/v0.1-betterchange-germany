@@ -1,0 +1,63 @@
+---
+// The "Better Change around the world" section at the bottom of the mobile
+// menu (see Header.astro), below the EN/DE toggle. Same list as the desktop
+// switcher (src/data/networkSites.ts), laid out as full-width rows with a
+// 44px minimum touch target. The header bar itself has no room for a
+// switcher, so there is none there. Domains are left out of the rows, as in
+// the approved mockup: "International & Denmark" fits on one line at 360px.
+import NetworkFlag from "@/components/NetworkFlag.astro";
+import { groupNetworkSites } from "@/data/networkSites";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const { current, live, soon } = groupNetworkSites(locale);
+
+const row = "flex min-h-11 items-center gap-3 rounded-[var(--radius-control)] px-3 text-[length:var(--text-small)]";
+---
+
+<div class="mt-4 border-t border-neutral-200 pt-4" role="group" aria-labelledby="site-switcher-mobile-heading">
+  <p
+    id="site-switcher-mobile-heading"
+    class="px-3 pb-1.5 text-[0.6875rem] font-semibold uppercase tracking-[0.07em] text-neutral-500"
+  >
+    {t("network.heading")}
+  </p>
+  <ul class="flex flex-col gap-0.5">
+    <li aria-current="true" class={`${row} bg-neutral-100 font-semibold text-ink`}>
+      <NetworkFlag flagSvg={current.flagSvg} isGlobe={current.isGlobe} />
+      <span class="min-w-0 flex-1">{current.label}</span>
+      <span class="flex shrink-0 items-center gap-1 text-[length:var(--text-caption)] font-medium">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="h-3 w-3">
+          <path d="m5 12 5 5 9-10"></path>
+        </svg>
+        {t("network.youreHere")}
+      </span>
+    </li>
+    {
+      live.map((site) => (
+        <li>
+          <a href={site.url} target="_blank" rel="noopener" class={`${row} text-neutral-700 active:bg-mist-light`}>
+            <NetworkFlag flagSvg={site.flagSvg} isGlobe={site.isGlobe} />
+            <span class="min-w-0 flex-1 font-medium">{site.label}</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="h-3.5 w-3.5 shrink-0 text-neutral-500">
+              <path d="M7 17 17 7M8 7h9v9"></path>
+            </svg>
+            <span class="sr-only">{t("network.opensNewTab")}</span>
+          </a>
+        </li>
+      ))
+    }
+    {
+      soon.map((site) => (
+        <li aria-disabled="true" class={`${row} text-neutral-400`}>
+          <NetworkFlag flagSvg={site.flagSvg} isGlobe={site.isGlobe} muted />
+          <span class="min-w-0 flex-1">{site.label}</span>
+          <span class="shrink-0 whitespace-nowrap rounded-[var(--radius-pill)] border border-dashed border-neutral-300 px-2 py-0.5 text-[0.65625rem] font-semibold text-neutral-500">
+            {t("network.comingSoon")}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</div>

@@ -5,6 +5,8 @@ import TrainingMegaMenuDesktop from "@/components/TrainingMegaMenuDesktop.astro"
 import TrainingMegaMenuMobile from "@/components/TrainingMegaMenuMobile.astro";
 import ServicesDropdownDesktop from "@/components/ServicesDropdownDesktop.astro";
 import ServicesDropdownMobile from "@/components/ServicesDropdownMobile.astro";
+import SiteSwitcherDesktop from "@/components/SiteSwitcherDesktop.astro";
+import SiteSwitcherMobile from "@/components/SiteSwitcherMobile.astro";
 import { resolveLocale, useTranslations } from "@/i18n/utils";
 import { localeOfId } from "@/lib/i18n";
 import { mobileNavIcons } from "@/data/mobileNavIcons";
@@ -110,6 +112,14 @@ const deHref = translations?.de ?? currentPath;
     </nav>
 
     <div class="flex items-center gap-3">
+      {/* "Which site" sits before the EN/DE toggle, set apart by a thin
+          divider, so the two read as site + language, not two versions of
+          one control. Desktop only; the mobile menu has its own section. */}
+      <div class="hidden items-center gap-3 lg:flex">
+        <SiteSwitcherDesktop />
+        <div class="h-5 w-px bg-neutral-300" aria-hidden="true"></div>
+      </div>
+
       <div
         class="hidden items-center gap-0.5 rounded-[var(--radius-pill)] border border-neutral-300 p-0.5 text-xs font-semibold sm:flex"
         aria-label={t("nav.langSwitcherLabel")}
@@ -150,7 +160,7 @@ const deHref = translations?.de ?? currentPath;
         </summary>
         <nav
           aria-label="Primary mobile"
-          class="absolute inset-x-0 top-full flex flex-col gap-1 border-b border-neutral-200 bg-surface px-6 py-4 shadow-card"
+          class="absolute inset-x-0 top-full flex max-h-[calc(100dvh-4.5rem)] flex-col gap-1 overflow-y-auto overscroll-contain border-b border-neutral-200 bg-surface px-6 py-4 shadow-card"
         >
           {
             navLinks.map((link) => {
@@ -190,6 +200,7 @@ const deHref = translations?.de ?? currentPath;
               DE
             </a>
           </div>
+          <SiteSwitcherMobile />
         </nav>
       </details>
     </div>

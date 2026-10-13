@@ -20,6 +20,16 @@ export const en = {
   "nav.contactCta": "Contact us",
   "nav.menu": "Menu",
   "nav.langSwitcherLabel": "Language",
+  // "Better Change around the world" site switcher, footer card and About
+  // callout; the list itself lives in src/data/networkSites.ts.
+  "network.heading": "Better Change around the world",
+  "network.comingSoon": "Coming soon",
+  "network.youreHere": "You're here",
+  "network.opensNewTab": "(opens in a new tab)",
+  "network.footerHeading": "Better Change worldwide",
+  "network.footerText": "An international network of coaches and trainers. This is its German home.",
+  "network.thisSite": "this site",
+  "network.soonTag": "soon",
 
   "breadcrumb.home": "Home",
 
@@ -330,6 +340,14 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "nav.contactCta": "Kontakt",
   "nav.menu": "Menü",
   "nav.langSwitcherLabel": "Sprache",
+  "network.heading": "Better Change weltweit",
+  "network.comingSoon": "Demnächst",
+  "network.youreHere": "Aktuelle Seite",
+  "network.opensNewTab": "(öffnet in neuem Tab)",
+  "network.footerHeading": "Better Change weltweit",
+  "network.footerText": "Ein internationales Netzwerk von Coaches und Trainer:innen. Diese Seite ist sein deutsches Zuhause.",
+  "network.thisSite": "diese Seite",
+  "network.soonTag": "demnächst",
   "breadcrumb.home": "Startseite",
 
   "footer.tagline":

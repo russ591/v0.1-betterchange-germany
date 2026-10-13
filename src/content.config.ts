@@ -355,6 +355,11 @@ const aboutPage = defineCollection({
     approachEyebrow: z.string(),
     approachHeading: z.string(),
     approachParagraphs: z.array(z.string()),
+    // Callout near the top of the page. `networkNoteBody` carries a `{com}`
+    // token where the betterchange-consulting.com link goes, so the copy can
+    // stay in content while the link comes from src/data/networkSites.ts.
+    networkNoteHeading: z.string(),
+    networkNoteBody: z.string(),
     stats: z.array(z.object({ label: z.string(), value: z.string(), description: z.string() })),
     peopleEyebrow: z.string(),
     teamHeading: z.string(),

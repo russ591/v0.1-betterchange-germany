@@ -13,6 +13,7 @@ import TeamCard from "@/components/TeamCard.astro";
 import CTABanner from "@/components/CTABanner.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { getNetworkSite } from "@/data/networkSites";
 
 interface Props {
   copy: CollectionEntry<"about-page">["data"];
@@ -23,6 +24,11 @@ const { copy, team } = Astro.props;
 const locale = resolveLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 const prefix = locale === "de" ? "/de" : "";
+
+// The callout's copy is content; the one link in it (the .com domain) is
+// slotted in at its `{com}` token so the URL stays in the shared site list.
+const com = getNetworkSite("com", locale);
+const [noteBefore, noteAfter] = copy.networkNoteBody.split("{com}");
 ---
 
 <Breadcrumbs items={[{ label: t("nav.about") }]} />
@@ -34,6 +40,18 @@ const prefix = locale === "de" ? "/de" : "";
   <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
     {copy.heroBody}
   </p>
+  <div
+    class="mt-8 max-w-2xl rounded-[var(--radius-card)] border border-l-4 border-neutral-200 border-l-lime bg-surface p-5 text-[length:var(--text-small)] leading-relaxed text-neutral-600"
+  >
+    <strong class="font-semibold text-ink">{copy.networkNoteHeading}</strong>
+    {noteBefore}<a
+      href={com.url}
+      target="_blank"
+      rel="noopener"
+      class="whitespace-nowrap border-b border-lime font-semibold text-ink hover:bg-lime/30"
+      >{com.domain}<span aria-hidden="true"> ↗</span><span class="sr-only"> {t("network.opensNewTab")}</span></a
+    >{noteAfter}
+  </div>
 </Section>
 
 <Section eyebrow={copy.approachEyebrow} heading={copy.approachHeading}>
