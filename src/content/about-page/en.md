@@ -10,7 +10,7 @@ approachParagraphs:
   - "Our network spans Europe. We work bilingually in English and German, deliver in person and online, and bring 30+ years of combined practitioner experience to every engagement."
   - "We are not a large consultancy. We are a deliberately small, high-quality network, which means you always work with people who know their craft."
 networkNoteHeading: Part of an international network.
-networkNoteBody: "Better Change is a network of coaches and trainers with Fellows across Europe and beyond. Its original home, covering international and Danish training, is {com}. This site is its German home, alongside sites for Italy and the Netherlands, with Spain and Sweden on the way."
+networkNoteBody: "Better Change is a network of coaches and trainers with Fellows across Europe and beyond. Its original home, covering international and Danish training, is [betterchange-consulting.com](com). This site is its German home, alongside sites for [Italy](it) and [the Netherlands](nl), with Spain and Sweden on the way."
 stats:
   - label: Languages
     value: "DE+"
