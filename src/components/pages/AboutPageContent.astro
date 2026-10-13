@@ -13,6 +13,7 @@ import TeamCard from "@/components/TeamCard.astro";
 import CTABanner from "@/components/CTABanner.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { getNetworkSite, type NetworkSite } from "@/data/networkSites";
 
 interface Props {
   copy: CollectionEntry<"about-page">["data"];
@@ -23,6 +24,19 @@ const { copy, team } = Astro.props;
 const locale = resolveLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 const prefix = locale === "de" ? "/de" : "";
+
+// The callout's copy is content; its links are written `[text](key)` and
+// resolved against the shared site list (src/data/networkSites.ts), so URLs
+// live in one place and the German copy can word its link text its own way.
+const noteBody = copy.networkNoteBody;
+const noteParts: { text: string; site?: NetworkSite }[] = [];
+let noteCursor = 0;
+for (const match of noteBody.matchAll(/\[([^\]]+)\]\(([a-z]+)\)/g)) {
+  if (match.index! > noteCursor) noteParts.push({ text: noteBody.slice(noteCursor, match.index) });
+  noteParts.push({ text: match[1], site: getNetworkSite(match[2], locale) });
+  noteCursor = match.index! + match[0].length;
+}
+if (noteCursor < noteBody.length) noteParts.push({ text: noteBody.slice(noteCursor) });
 ---
 
 <Breadcrumbs items={[{ label: t("nav.about") }]} />
@@ -34,6 +48,25 @@ const prefix = locale === "de" ? "/de" : "";
   <p class="mt-6 max-w-2xl text-[length:var(--text-body)] text-neutral-600">
     {copy.heroBody}
   </p>
+  <div
+    class="mt-8 max-w-2xl rounded-[var(--radius-card)] border border-l-4 border-neutral-200 border-l-lime bg-surface p-5 text-[length:var(--text-small)] leading-relaxed text-neutral-600"
+  >
+    <strong class="font-semibold text-ink">{copy.networkNoteHeading}</strong>
+    {
+      noteParts.map((part) =>
+        part.site?.url ? (
+          <a
+            href={part.site.url}
+            target="_blank"
+            rel="noopener"
+            class="border-b border-lime font-semibold text-ink hover:bg-lime/30"
+          >{part.text}<span aria-hidden="true">&nbsp;↗</span><span class="sr-only"> {t("network.opensNewTab")}</span></a>
+        ) : (
+          part.text
+        )
+      )
+    }
+  </div>
 </Section>
 
 <Section eyebrow={copy.approachEyebrow} heading={copy.approachHeading}>

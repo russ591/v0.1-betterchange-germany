@@ -355,6 +355,12 @@ const aboutPage = defineCollection({
     approachEyebrow: z.string(),
     approachHeading: z.string(),
     approachParagraphs: z.array(z.string()),
+    // Callout near the top of the page. In `networkNoteBody`, `[text](key)`
+    // links `text` to the site with that key in src/data/networkSites.ts
+    // (opens in a new tab), so the copy stays in content and the URLs stay
+    // in the shared site list. A key whose site isn't live renders as plain text.
+    networkNoteHeading: z.string(),
+    networkNoteBody: z.string(),
     stats: z.array(z.object({ label: z.string(), value: z.string(), description: z.string() })),
     peopleEyebrow: z.string(),
     teamHeading: z.string(),

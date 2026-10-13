@@ -1,0 +1,58 @@
+---
+// "Better Change worldwide" card for the dark footer (see Footer.astro).
+// Same list as the header switcher (src/data/networkSites.ts): the current
+// site marked "(this site)", live sites as links that open in a new tab,
+// coming-soon entries greyed out with a small "soon" tag and no link.
+// One column at every width: two columns only fit at 360px if "International
+// & Denmark" wraps, and in the desktop card they wrapped it with the link
+// underline on the second line only.
+import NetworkFlag from "@/components/NetworkFlag.astro";
+import { groupNetworkSites } from "@/data/networkSites";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const { current, live, soon } = groupNetworkSites(locale);
+---
+
+<div class="rounded-[var(--radius-card)] border border-neutral-700 bg-neutral-900 p-4">
+  <p class="flex items-center gap-2 text-[length:var(--text-small)] font-semibold text-surface">
+    <span aria-hidden="true" class="blob-dot h-2.5 w-2.5 shrink-0 bg-lime"></span>
+    {t("network.footerHeading")}
+  </p>
+  <p class="mb-4 mt-1.5 text-[length:var(--text-small)] leading-relaxed text-neutral-400">{t("network.footerText")}</p>
+  <ul class="flex flex-col gap-2.5 text-[length:var(--text-small)]">
+    <li aria-current="true" class="flex items-center gap-2 text-surface">
+      <NetworkFlag flagSvg={current.flagSvg} isGlobe={current.isGlobe} tone="dark" />
+      <span>{current.label} <span class="text-neutral-400">({t("network.thisSite")})</span></span>
+    </li>
+    {
+      live.map((site) => (
+        <li class="flex items-center gap-2">
+          <NetworkFlag flagSvg={site.flagSvg} isGlobe={site.isGlobe} tone="dark" />
+          <a
+            href={site.url}
+            target="_blank"
+            rel="noopener"
+            class="border-b border-lime font-semibold text-surface hover:text-lime"
+          >
+            {site.label}
+            <span aria-hidden="true">↗</span>
+            <span class="sr-only">{t("network.opensNewTab")}</span>
+          </a>
+        </li>
+      ))
+    }
+    {
+      soon.map((site) => (
+        <li aria-disabled="true" class="flex items-center gap-2 text-neutral-500">
+          <NetworkFlag flagSvg={site.flagSvg} isGlobe={site.isGlobe} muted tone="dark" />
+          <span>{site.label}</span>
+          <span class="whitespace-nowrap rounded-[var(--radius-pill)] border border-dashed border-neutral-600 px-1.5 py-px text-[0.625rem] text-neutral-400">
+            {t("network.soonTag")}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</div>

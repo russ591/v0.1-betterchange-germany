@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Logo from "@/components/Logo.astro";
+import NetworkSitesFooter from "@/components/NetworkSitesFooter.astro";
 import { resolveLocale, useTranslations } from "@/i18n/utils";
 import { localeOfId, baseSlug } from "@/lib/i18n";
 
@@ -17,8 +18,8 @@ const year = new Date().getFullYear();
 
 <footer class="bg-ink">
   <div class="mx-auto max-w-6xl px-6 py-16">
-    <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-      <div class="lg:col-span-2">
+    <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.1fr_0.7fr_0.7fr_1.3fr]">
+      <div>
         <a href={prefix || "/"}>
           <Logo tone="light" />
         </a>
@@ -49,6 +50,8 @@ const year = new Date().getFullYear();
           <li><a href={`${prefix}/contact`} class="text-neutral-400 hover:text-surface">{t("nav.contact")}</a></li>
         </ul>
       </div>
+
+      <NetworkSitesFooter />
     </div>
 
     <div

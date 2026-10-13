@@ -1,0 +1,163 @@
+---
+// "Which site" switcher in the desktop header (lg and up), before the EN/DE
+// language toggle. Unlike the Services/Training hover menus it is a real
+// disclosure: a button with aria-expanded that opens on click or Enter,
+// closes on Escape, on an outside click and when focus leaves it, and keeps
+// the closed panel `invisible` so its links can't be tabbed to. The panel is
+// absolutely positioned, so opening it never shifts the header. Panel
+// styling matches ServicesDropdownDesktop.astro.
+//
+// The "Coming soon" entries are plain elements, not links: greyed out, not
+// focusable, aria-disabled. The current site is a highlighted, non-link row.
+// Live sites open in a new tab. All entries come from src/data/networkSites.ts.
+import NetworkFlag from "@/components/NetworkFlag.astro";
+import { groupNetworkSites } from "@/data/networkSites";
+import { resolveLocale, useTranslations } from "@/i18n/utils";
+
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const { current, live, soon } = groupNetworkSites(locale);
+---
+
+<div class="relative" data-site-switcher>
+  <button
+    type="button"
+    aria-expanded="false"
+    aria-controls="site-switcher-panel"
+    aria-label={`${t("network.heading")}: ${current.label}`}
+    class="group flex items-center gap-1.5 rounded-[var(--radius-control)] px-1 py-1.5 text-[length:var(--text-small)] font-semibold text-neutral-700 transition-colors hover:text-ink aria-expanded:text-ink"
+  >
+    <NetworkFlag flagSvg={current.flagSvg} isGlobe={current.isGlobe} />
+    {/* Label is dropped to just the flag at lg (the row is tight there) and
+        shown from xl up; sr-only keeps it in the accessibility tree. */}
+    <span class="sr-only xl:not-sr-only">{current.label}</span>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      aria-hidden="true"
+      class="h-3.5 w-3.5 shrink-0 transition-transform group-aria-expanded:rotate-180"
+    >
+      <path d="m6 9 6 6 6-6"></path>
+    </svg>
+  </button>
+
+  <div
+    id="site-switcher-panel"
+    data-panel
+    role="group"
+    aria-labelledby="site-switcher-heading"
+    class="invisible absolute right-[-0.5rem] top-full z-50 pt-3 opacity-0 transition-opacity duration-150 data-[open]:visible data-[open]:opacity-100"
+  >
+    <div class="w-[19rem] rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-2.5 shadow-card-hover">
+      <p
+        id="site-switcher-heading"
+        class="px-2.5 pb-1.5 pt-2 text-[0.6875rem] font-semibold uppercase tracking-[0.07em] text-neutral-500"
+      >
+        {t("network.heading")}
+      </p>
+
+      <ul>
+        <li
+          aria-current="true"
+          class="flex items-center gap-2.5 rounded-[var(--radius-control)] bg-neutral-100 px-2.5 py-2 text-[length:var(--text-small)] font-semibold"
+        >
+          <NetworkFlag flagSvg={current.flagSvg} isGlobe={current.isGlobe} />
+          <span class="min-w-0 flex-1 leading-tight">
+            {/* "You're here" shares the label's line so the domain below keeps the full row width. */}
+            <span class="flex items-baseline justify-between gap-2">
+              <span>{current.label}</span>
+              <span class="flex shrink-0 items-center gap-1 text-[length:var(--text-caption)] text-ink">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="h-3 w-3 self-center">
+                  <path d="m5 12 5 5 9-10"></path>
+                </svg>
+                {t("network.youreHere")}
+              </span>
+            </span>
+            <span class="block text-[length:var(--text-caption)] font-normal text-neutral-500">{current.domain}</span>
+          </span>
+        </li>
+        {
+          live.map((site) => (
+            <li>
+              <a
+                href={site.url}
+                target="_blank"
+                rel="noopener"
+                class="flex items-center gap-2.5 rounded-[var(--radius-control)] px-2.5 py-2 text-[length:var(--text-small)] text-ink transition-colors hover:bg-mist-light"
+              >
+                <NetworkFlag flagSvg={site.flagSvg} isGlobe={site.isGlobe} />
+                <span class="min-w-0 flex-1 leading-tight">
+                  {site.label}
+                  <span class="block text-[length:var(--text-caption)] text-neutral-500">{site.domain}</span>
+                </span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="h-3.5 w-3.5 shrink-0 text-neutral-500">
+                  <path d="M7 17 17 7M8 7h9v9"></path>
+                </svg>
+                <span class="sr-only">{t("network.opensNewTab")}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="mx-1 my-1.5 h-px bg-neutral-200" aria-hidden="true"></div>
+
+      <p class="px-2.5 pb-1.5 pt-2 text-[0.6875rem] font-semibold uppercase tracking-[0.07em] text-neutral-500">
+        {t("network.comingSoon")}
+      </p>
+      <ul>
+        {
+          soon.map((site) => (
+            <li
+              aria-disabled="true"
+              class="flex items-center gap-2.5 px-2.5 py-2 text-[length:var(--text-small)] text-neutral-400"
+            >
+              <NetworkFlag flagSvg={site.flagSvg} isGlobe={site.isGlobe} muted />
+              <span class="min-w-0 flex-1">{site.label}</span>
+              <span class="shrink-0 whitespace-nowrap rounded-[var(--radius-pill)] border border-dashed border-neutral-300 px-2 py-0.5 text-[0.65625rem] font-semibold text-neutral-500">
+                {t("network.comingSoon")}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-site-switcher]").forEach((root) => {
+    const button = root.querySelector<HTMLButtonElement>("button[aria-expanded]");
+    const panel = root.querySelector<HTMLElement>("[data-panel]");
+    if (!button || !panel) return;
+
+    const isOpen = () => button.getAttribute("aria-expanded") === "true";
+    const setOpen = (open: boolean, returnFocus = false) => {
+      button.setAttribute("aria-expanded", String(open));
+      panel.toggleAttribute("data-open", open);
+      if (!open && returnFocus) button.focus();
+    };
+
+    button.addEventListener("click", () => setOpen(!isOpen()));
+    // Choosing a site opens it in a new tab; tidy the panel away here.
+    panel.addEventListener("click", (event) => {
+      if ((event.target as Element).closest("a")) setOpen(false);
+    });
+    root.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && isOpen()) {
+        event.stopPropagation();
+        setOpen(false, true);
+      }
+    });
+    document.addEventListener("click", (event) => {
+      if (isOpen() && !root.contains(event.target as Node)) setOpen(false);
+    });
+    // Tabbing out of the panel (or the button) closes it too.
+    root.addEventListener("focusout", (event) => {
+      const next = event.relatedTarget as Node | null;
+      if (isOpen() && next && !root.contains(next)) setOpen(false);
+    });
+  });
+</script>

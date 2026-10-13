@@ -1,0 +1,24 @@
+---
+// One flag (or the globe for International & Denmark) from the shared list in
+// src/data/networkSites.ts. Inline SVG rather than emoji flags, which Windows
+// renders as letter pairs. Decorative: every row carries the country name as
+// text. `muted` is the greyscale, reduced-opacity look of a "coming soon"
+// entry; `tone="dark"` swaps the hairline outline for the dark footer.
+interface Props {
+  flagSvg: string;
+  isGlobe: boolean;
+  muted?: boolean;
+  tone?: "light" | "dark";
+}
+
+const { flagSvg, isGlobe, muted = false, tone = "light" } = Astro.props;
+
+const base = "inline-flex shrink-0 items-center justify-center [&>svg]:h-full [&>svg]:w-full";
+const shape = isGlobe
+  ? `h-[18px] w-[18px] ${tone === "dark" ? "text-neutral-300" : "text-neutral-600"}`
+  : `h-3 w-[18px] overflow-hidden rounded-[2px] outline outline-1 -outline-offset-1 ${
+      tone === "dark" ? "outline-white/20" : "outline-black/15"
+    }`;
+---
+
+<span aria-hidden="true" class={`${base} ${shape} ${muted ? "opacity-55 grayscale" : ""}`} set:html={flagSvg} />
