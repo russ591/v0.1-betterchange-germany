@@ -1734,23 +1734,6 @@
       "skipped": null,
       "question": null
     },
-    "18326": {
-      "title": "Certified Scrum Product Owner® (CSPO®)",
-      "url": "https://www.betterchange-consulting.com/event/certified-scrum-product-owner-cspo-it-202610/",
-      "start": "2026-10-15",
-      "end": "2026-10-16",
-      "cost": "€1100 – €1400",
-      "registrationUrl": "https://www.betterchange-consulting.it/event-details/certified-scrum-product-owner-cspo-202610/",
-      "modified": "2026-03-17 13:11:36",
-      "country": "Italy",
-      "city": "Milan",
-      "online": false,
-      "organizers": [
-        "Better Change Italy"
-      ],
-      "skipped": null,
-      "question": null
-    },
     "18808": {
       "title": "IC Agile Team Facilitation (ICP-ATF)",
       "url": "https://www.betterchange-consulting.com/event/ic-agile-team-facilitation-icp-atf-9/",
@@ -1836,23 +1819,6 @@
       "skipped": null,
       "question": null
     },
-    "19338": {
-      "title": "IC Agile Team Facilitation (ICP-ATF)",
-      "url": "https://www.betterchange-consulting.com/event/ic-agile-team-facilitation-icp-atf-10/",
-      "start": "2026-10-28",
-      "end": "2026-10-29",
-      "cost": "€1359",
-      "registrationUrl": "https://en.agilecoach.lt/workshops-trainings-certificates/agile-team-facilitation-icp-atf",
-      "modified": "2026-05-12 12:33:28",
-      "country": "Lithuania",
-      "city": "Vilnius",
-      "online": false,
-      "organizers": [
-        "Agile Coach Lithuania"
-      ],
-      "skipped": null,
-      "question": null
-    },
     "19340": {
       "title": "Certified Agile Leadership (CAL 1)",
       "url": "https://www.betterchange-consulting.com/event/certified-agile-leadership-cal-1-3/",
@@ -1929,23 +1895,6 @@
       "cost": "€2190",
       "registrationUrl": "https://www.betterchange-consulting.de/training/flight-levels/flight-level-2-design-(fl2d)",
       "modified": "2026-10-02 06:45:08",
-      "country": "Germany",
-      "city": "Berlin",
-      "online": false,
-      "organizers": [
-        "Better Change Berlin"
-      ],
-      "skipped": "venue in Germany (Russ adds these himself)",
-      "question": null
-    },
-    "19572": {
-      "title": "Flight Levels System Architecture (FLSA)",
-      "url": "https://www.betterchange-consulting.com/event/flight-levels-system-architecture-flsa-3/",
-      "start": "2026-10-13",
-      "end": "2026-10-14",
-      "cost": "€2190",
-      "registrationUrl": "https://www.betterchange-consulting.de/training/flight-levels/flight-levels-system-architecture-(flsa)",
-      "modified": "2026-05-19 08:34:57",
       "country": "Germany",
       "city": "Berlin",
       "online": false,
@@ -2309,9 +2258,9 @@
       "organizers": [
         "Better Change Italy"
       ],
-      "skipped": null,
-      "question": "no matching .de course page for this event (the sync never creates course pages)"
+      "skipped": "webinar or free event, not a training (never included on .de)",
+      "question": null
     }
   },
-  "recordedAt": "2026-10-10T05:41:16.105Z"
+  "recordedAt": "2026-10-21T05:41:15.045Z"
 }
