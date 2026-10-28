@@ -1836,23 +1836,6 @@
       "skipped": null,
       "question": null
     },
-    "19412": {
-      "title": "Certified Agile Scaling Practitioner (CASP)",
-      "url": "https://www.betterchange-consulting.com/event/certified-agile-scaling-practitioner-casp-2026/",
-      "start": "2026-11-05",
-      "end": "2026-11-06",
-      "cost": "€1100 – €1400",
-      "registrationUrl": "https://www.betterchange-consulting.it/event-details/certified-agile-scaling-practitioner-casp-italiano-2026/",
-      "modified": "2026-03-20 15:40:14",
-      "country": null,
-      "city": "Online",
-      "online": true,
-      "organizers": [
-        "Better Change Italy"
-      ],
-      "skipped": "ignored by decision: CASP has no .de course page and will not get one; never raise this event again.",
-      "question": null
-    },
     "19524": {
       "title": "Certified ScrumMaster® (CSM®)",
       "url": "https://www.betterchange-consulting.com/event/certified-scrummaster-csm-it-202611/",
@@ -1992,11 +1975,11 @@
     "19612": {
       "title": "Certified Scrum Master (CSM)",
       "url": "https://www.betterchange-consulting.com/event/certified-scrum-master-csm-7/",
-      "start": "2026-11-04",
-      "end": "2026-11-05",
+      "start": "2027-02-03",
+      "end": "2027-02-04",
       "cost": "from DKK 7000",
-      "registrationUrl": "https://www.betterchange-consulting.dk/cart/257183-Certified-ScrumMaster-CSM261104",
-      "modified": "2026-06-11 05:45:52",
+      "registrationUrl": "https://www.betterchange-consulting.dk/cart/257183-Certified-ScrumMaster-CSM270203",
+      "modified": "2026-10-27 15:36:52",
       "country": "Denmark",
       "city": "Copenhagen",
       "online": false,
@@ -2262,5 +2245,5 @@
       "question": null
     }
   },
-  "recordedAt": "2026-10-21T05:41:15.045Z"
+  "recordedAt": "2026-10-28T05:41:33.141Z"
 }
