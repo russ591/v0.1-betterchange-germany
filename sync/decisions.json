@@ -16,6 +16,10 @@
       "author": "giuseppe-de-simone",
       "decided": "2026-10-02",
       "note": "Lightning Lesson: Coordination Cost Discovery for Engineering Leaders. A write-up of a past session, not an announcement; Russ wants it on .de as an article. Author confirmed by Russ."
+    },
+    "19791": {
+      "ignore": "Lightning Lesson: Keep Stakeholders Aligned Without Adding More Meetings. Not an article that belongs in insights; never import or raise it again.",
+      "decided": "2026-10-29"
     }
   },
   "organizers": {}
