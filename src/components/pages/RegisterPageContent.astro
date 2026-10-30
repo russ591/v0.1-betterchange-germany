@@ -11,7 +11,7 @@ import Badge from "@/components/Badge.astro";
 import LanguageTag from "@/components/LanguageTag.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import TrainerChip from "@/components/TrainerChip.astro";
-import { formatSessionDate, isRegistrationClosed } from "@/lib/dates";
+import { formatSessionDate, isCancelled, isRegistrationClosed } from "@/lib/dates";
 import { certificationLogos } from "@/data/certifications";
 import { courseBadges } from "@/data/courseBadges";
 import { toPathSegment } from "@/lib/urlSlug";
@@ -49,7 +49,8 @@ const hasBulkOffer = /seats? for the price of/i.test(session.data.offer ?? "");
 // waitlist: a waitlist for a date that has already started makes no sense.
 // It shows a closed notice and, when there is one, the next bookable date.
 // A sold-out date that is still ahead keeps its waitlist as before.
-const isPast = isRegistrationClosed(session);
+const isCancelledDate = isCancelled(session);
+const isPast = isCancelledDate || isRegistrationClosed(session);
 const isSoldOut = session.data.status === "sold-out" && !isPast;
 const isClosed = isSoldOut || isPast;
 // The sold-out box offers the course's next bookable date before the
@@ -288,7 +289,7 @@ const scriptCopy = {
       isPast && (
         <div class="min-w-0 rounded-[var(--radius-card)] bg-de-red/10 p-4">
           <p class="font-semibold text-de-red">{t("register.soldOutHeading")}</p>
-          <p class="mt-1 text-[length:var(--text-small)] text-neutral-600">{t("register.pastBody")}</p>
+          <p class="mt-1 text-[length:var(--text-small)] text-neutral-600">{t(isCancelledDate ? "register.cancelledBody" : "register.pastBody")}</p>
           {nextSession && (
             <>
               <p class="mt-2 text-[length:var(--text-small)] text-neutral-600">

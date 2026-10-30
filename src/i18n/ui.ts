@@ -290,6 +290,7 @@ export const en = {
   "register.soldOutBodySuffix":
     "are no longer being taken. Join the waitlist and we'll email you personally if a place becomes available.",
   "register.pastBody": "This date has already started, so bookings are no longer being taken.",
+  "register.cancelledBody": "This date will not go ahead, so bookings are no longer being taken.",
   "register.pastNextDateBody": "The next date can be booked instead.",
   "register.joinWaitlist": "Join the waitlist",
   "register.waitlistJoining": "Joining…",
@@ -593,6 +594,7 @@ const deOverrides: Partial<Record<UIKey, string>> = {
   "register.soldOutBodySuffix":
     "werden keine Anmeldungen mehr angenommen. Über die Warteliste gibt es eine persönliche Benachrichtigung per E-Mail, falls doch noch ein Platz frei wird.",
   "register.pastBody": "Dieser Termin hat bereits begonnen, Anmeldungen sind nicht mehr möglich.",
+  "register.cancelledBody": "Dieser Termin findet nicht statt, Anmeldungen sind nicht mehr möglich.",
   "register.pastNextDateBody": "Stattdessen lässt sich der nächste Termin buchen.",
   "register.joinWaitlist": "Zur Warteliste",
   "register.waitlistJoining": "Wird hinzugefügt…",

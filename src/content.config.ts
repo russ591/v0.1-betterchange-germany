@@ -81,7 +81,10 @@ const trainingSchedule = defineCollection({
     // label; anything else gets a small tag next to the date everywhere the
     // date appears (LanguageTag.astro).
     language: z.enum(["en", "de"]).default("en"),
-    status: z.enum(["available", "sold-out", "tbc"]).default("available"),
+    // "cancelled": the date will not go ahead. The file stays as a record,
+    // every listing hides it (src/lib/dates.ts) and its registration page
+    // shows a cancelled notice with no form and no waitlist.
+    status: z.enum(["available", "sold-out", "tbc", "cancelled"]).default("available"),
     // Sessions run by a sister site (e.g. betterchange-consulting.dk/.it)
     // that aren't fulfilled through our own registration flow at all --
     // the register button sends people to externalUrl in a new tab
