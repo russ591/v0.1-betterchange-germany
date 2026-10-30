@@ -89,8 +89,14 @@ export function isRegistrationClosed(session: CollectionEntry<"training-schedule
   return new Date() >= listingCutoff(session.data.date);
 }
 
+// A cancelled date (status: cancelled) is delisted at once, whatever its
+// date; its file stays as a record like a past one.
+export function isCancelled(session: CollectionEntry<"training-schedules">): boolean {
+  return session.data.status === "cancelled";
+}
+
 function isPastListingCutoff(session: CollectionEntry<"training-schedules">): boolean {
-  return isRegistrationClosed(session);
+  return isCancelled(session) || isRegistrationClosed(session);
 }
 
 // For a "full schedule" or a single course's own session list, where
