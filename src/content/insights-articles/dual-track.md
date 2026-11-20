@@ -12,7 +12,7 @@ authorName: Jakob Verner Christensen
 excerpt: Dual Track Agile separates discovery, the work of figuring out what to build, from delivery, the work of building it. Running both tracks simultaneously sounds complicated, but it solves a real problem that single-track teams constantly bump into.
 featured: false
 imageUrl: /insights/dual-track.webp
-metaTitle: 'Dual Track Agile: Discover and Deliver at the Same Time | Better Chang'
+metaTitle: "Dual Track Agile: Discover and Deliver"
 metaDescription: Dual Track Agile separates discovery, the work of figuring out what to build, from delivery, the work of building it. Running both tracks...
 bodyHtml: |-
   <p>In standard Agile development, a team tends to discover and deliver sequentially: figure out what to build, then build it. The problem is that in complex products, "figuring out what to build" is never really finished. By the time the delivery track completes something, the discovery that should inform the next piece of work has often not been done yet, or was done too early and is already stale.</p>

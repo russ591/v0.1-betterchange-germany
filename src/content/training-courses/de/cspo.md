@@ -7,8 +7,9 @@
 # only its displayed text is translated, via translateLevel().
 # category/code/certification/formats/priceFrom/durationDays/sortOrder
 # stay identical to the English entry (language-neutral facts/lookup
-# keys). metaTitle/metaDescription aren't covered by this draft and stay
-# "[DE]" placeholder pending their own pass.
+# keys). metaTitle/metaDescription are German search copy from the SEO
+# pass (2026-11), not part of the translation draft; the length limits are
+# enforced by scripts/check-meta-lengths.mjs.
 name: 'Certified Scrum Product Owner (CSPO)'
 code: CSPO
 category: de/scrum
@@ -40,6 +41,6 @@ whatYoullLearn:
   - 'Was einen Product Owner, der einen Backlog verwaltet, von einem unterscheidet, der ein Produkt verantwortet'
 summary: 'Eine Produktvision entwickeln, die Team und Stakeholder wirklich ausrichtet, und die Fähigkeiten in Backlog-Refinement und Priorisierung aufbauen, um sie zu untermauern, einschließlich User Stories, mit denen das Team ohne ständige Rückfragen arbeiten kann. Behandelt wird die Rolle des Product Owners in Sprint Planning, Review und Retrospektive, wie Feedback-Schleifen Delivery-Entscheidungen leiten, und wie Stakeholdern konstruktiv Nein gesagt wird. Für alle, die erstmals Produktverantwortung übernehmen, oder aus Business Analysis oder Projektmanagement in agile Umsetzung wechseln, die grundlegende Product-Owner-Zertifizierung der Scrum Alliance.'
 sortOrder: 3
-metaTitle: '[DE] CSPO Certified Scrum Product Owner Training | Better Change'
-metaDescription: '[DE] Scrum Alliance CSPO training in person and online. Learn product ownership skills to maximise team output and deliver real business value.'
+metaTitle: "CSPO Certified Scrum Product Owner Training"
+metaDescription: "Certified Scrum Product Owner (CSPO), Scrum-Alliance-zertifiziert. Zwei Tage in Präsenz oder vier halbe Tage online. Produktvision und Priorisierung."
 ---

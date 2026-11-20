@@ -12,7 +12,7 @@ authorName: Martin von Weissenberg
 excerpt: A Scrum Board is a visual representation of the Sprint Backlog, the work the team has committed to and where each item currently stands. Used well, it drives the Daily Scrum and keeps the team self-organised.
 featured: false
 imageUrl: /insights/what-is-a-scrum-board.webp
-metaTitle: 'The Scrum Board: A Tool for the Team, Not a Reporting Dashboard | Bett'
+metaTitle: "The Scrum Board: A Team Tool, Not a Dashboard"
 metaDescription: A Scrum Board is a visual representation of the Sprint Backlog, the work the team has committed to and where each item currently stands. Used well, it...
 bodyHtml: |-
   <p>The Scrum Board is one of the most widely used tools in Agile practice and one of the most frequently misused. The misuse typically looks like this: the board exists, the team updates it, but nobody actually uses it to make decisions or have conversations. It becomes a record rather than a communication device.</p>

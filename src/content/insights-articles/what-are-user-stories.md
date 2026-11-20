@@ -13,7 +13,7 @@ author: javier-perez-fernandez
 excerpt: User Stories are not a requirements format. They are a conversation starter. The distinction sounds minor but it changes how you write them, how you use them, and how much value your team actually gets from them.
 featured: false
 imageUrl: /insights/what-are-user-stories.webp
-metaTitle: 'User Stories: The Clue Is in the Name | Better Change Consulting'
+metaTitle: "User Stories - the Clue Is in the Name"
 metaDescription: User Stories are not a requirements format. They are a conversation starter. The distinction sounds minor but it changes how you write them, how you...
 bodyHtml: |-
   <p>There is a common misconception embedded in how many teams use User Stories. They treat them as a way of writing better requirements, more structured, more standardised, easier to track in a tool. That interpretation is understandable but fundamentally misses what User Stories are for.</p>

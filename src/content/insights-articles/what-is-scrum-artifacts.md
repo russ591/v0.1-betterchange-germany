@@ -12,7 +12,7 @@ authorName: Jakob Verner Christensen
 excerpt: The Product Backlog, Sprint Backlog, and Product Increment are the three artefacts of Scrum. They exist to create transparency, a shared understanding of what is being built, what is being worked on, and what has been delivered.
 featured: false
 imageUrl: /insights/what-is-scrum-artifacts.webp
-metaTitle: 'Scrum''s Three Artefacts: What They Are and Why They Matter | Better Ch'
+metaTitle: "Scrum's Three Artefacts Explained"
 metaDescription: The Product Backlog, Sprint Backlog, and Product Increment are the three artefacts of Scrum. They exist to create transparency, a shared understanding...
 bodyHtml: |-
   <p>Scrum's three artefacts are easy to name and surprisingly easy to misuse. The Product Backlog becomes a dumping ground. The Sprint Backlog becomes a task list with no connection to a goal. The Increment becomes a milestone rather than a commitment to quality. Understanding what each artefact is actually for helps you use them as designed rather than as decoration.</p>

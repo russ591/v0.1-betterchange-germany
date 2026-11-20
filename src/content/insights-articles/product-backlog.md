@@ -11,7 +11,7 @@ author: javier-perez-fernandez
 excerpt: The Product Backlog in Scrum is a prioritised list of what is needed to improve or develop a product or service. Through this, it maps out the items the Scrum Team must deliver.
 featured: false
 imageUrl: /insights/product-backlog.webp
-metaTitle: What is the Product Backlog? | Better Change Consulting
+metaTitle: "What is the Product Backlog?"
 metaDescription: The Product Backlog in Scrum is a prioritised list of what is needed to improve or develop a product or service. Through this, it maps out the items...
 bodyHtml: |-
   <p>The Product Backlog in Scrum is a prioritised list of what is needed to improve or develop a product or service. Through this, it maps out the items the Scrum Team must deliver. The most important items are shown at the top of the Product Backlog so the team knows what they need to deliver first. Work is pulled from the list by the team during the Sprint Planning meeting.</p>

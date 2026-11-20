@@ -30,6 +30,6 @@ whatYoullLearn:
   - How to report on flow performance to senior leadership in a way that drives useful decisions
 summary: Learn the specific responsibilities of a Flow Manager within a Kanban-based organisation, monitoring and responding to flow problems across a whole system, not just within a single team. You'll use visualisation and metrics to have productive conversations with both teams and leadership, manage demand, capacity and prioritisation across multiple concurrent teams, and resolve the systemic blockers no single team can fix alone. Built for managers and team leads directly accountable for cross-team delivery performance, this practical course carries Kanban University certification.
 sortOrder: 1
-metaTitle: Flow Manager Training | Kanban University | Better Change
-metaDescription: Flow Manager training with Kanban University certification. Learn to manage and optimise flow across teams. Berlin and online delivery.
+metaTitle: "Flow Manager Training, In Person and Online"
+metaDescription: "Flow Manager (FM), certified by Kanban University. Two days in person or four half days online. Manage and improve flow across teams and value streams."
 ---

@@ -12,7 +12,7 @@ author: mogens-villadsen
 excerpt: Change management is the structured approach to helping organisations move from their current state to a desired future one. It covers people, processes, and systems, and it fails more often than it succeeds.
 featured: false
 imageUrl: /insights/what-is-change-management.webp
-metaTitle: What Is Change Management? A Practical Guide to Navigating Organisatio
+metaTitle: "What Is Change Management? A Practical Guide"
 metaDescription: Change management is the structured approach to helping organisations move from their current state to a desired future one. It covers people,...
 bodyHtml: |-
   <p>Change management is the structured set of processes, tools, and techniques an organisation uses to manage the people side of change. It addresses the full scope of what is needed to move from a current state to a desired future state: preparing people, building support, managing resistance, and creating the conditions for change to take hold and sustain.</p>

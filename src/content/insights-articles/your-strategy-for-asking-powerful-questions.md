@@ -12,7 +12,7 @@ author: bent-myllerup
 excerpt: Most coaches think about what to ask. The better skill is knowing what kind of question to ask, and when. Karl Tomm's four-quadrant model gives you a strategic framework rather than a deck of cards to memorise.
 featured: false
 imageUrl: /insights/your-strategy-for-asking-powerful-questions.webp
-metaTitle: 'The Question Behind the Question: Karl Tomm''s Map for Coaches | Better'
+metaTitle: "Karl Tomm's Map of Questions for Coaches"
 metaDescription: Most coaches think about what to ask. The better skill is knowing what kind of question to ask, and when. Karl Tomm's four-quadrant model gives you a...
 bodyHtml: |-
   <p>This is the fifth post in a series on Systemic Coaching in the context of Agile and change management. The earlier posts covered the nature of systemic coaching, how it differs from agile coaching, the practice of listening, and how to structure a coaching conversation. This one is about the question, specifically, the logic behind choosing the right kind.</p>

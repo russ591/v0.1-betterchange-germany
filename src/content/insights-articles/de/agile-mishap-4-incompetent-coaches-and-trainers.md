@@ -27,7 +27,8 @@ author: bent-myllerup
 excerpt: "Auf der Suche nach dem, was mit Agile schiefgelaufen ist, muss ein kritisches Problem angesprochen werden, das seine Umsetzung plagt: die Verbreitung unfähiger Coaches und Trainer:innen."
 featured: false
 imageUrl: /insights/agile-mishap-4-incompetent-coaches-and-trainers.webp
-metaDescription: "Auf der Suche nach dem, was mit Agile schiefgelaufen ist, muss ein kritisches Problem angesprochen werden, das seine Umsetzung plagt: die Verbreitung unfähiger Coaches und Trainer:innen."
+metaTitle: "Agile Mishap #4: Inkompetente Coaches"
+metaDescription: "Teil 4 der Serie: Wie unfähige Coaches und Trainer:innen mit fehlender Expertise Agile-Transformationen belasten und was daran schiefgeht."
 bodyHtml: |-
   <p>Auf der Suche nach dem, was mit Agile schiefgelaufen ist, muss ein kritisches Problem angesprochen werden, das seine Umsetzung plagt: die Verbreitung unfähiger Coaches und Trainer:innen. Diese Personen, betraut mit der Aufgabe, Organisationen durch Agile-Transformationen zu führen, fehlt es oft an der nötigen Expertise und Erfahrung, um bedeutsamen Wandel voranzutreiben. Es lohnt sich zu untersuchen, warum dieses Phänomen fortbesteht und welche schädliche Wirkung es auf die Agile-Einführung hat.</p>
 

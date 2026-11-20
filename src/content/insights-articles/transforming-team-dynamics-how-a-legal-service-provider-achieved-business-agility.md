@@ -12,7 +12,7 @@ author: russell-hill
 excerpt: An online legal services company grew from 50 to 350 people in three years and hit a wall. Technical outages were frequent, priorities were unclear, and coordination between teams had broken down. Here is how Flight Levels changed the picture.
 featured: false
 imageUrl: /insights/transforming-team-dynamics-how-a-legal-service-provider-achieved-business-agility.webp
-metaTitle: 'From 50 to 350 People and Everything Started Breaking: A Flight Levels'
+metaTitle: "50 to 350 People: A Flight Levels Case Study"
 metaDescription: An online legal services company grew from 50 to 350 people in three years and hit a wall. Technical outages were frequent, priorities were unclear,...
 bodyHtml: |-
   <p>The company had done everything right in the early years. Profitable within twelve months. Headcount tripled in three years. Strong culture. Good product. And then, as tends to happen when informal coordination systems are asked to scale beyond their design capacity, things started breaking.</p>

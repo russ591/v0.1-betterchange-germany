@@ -7,8 +7,9 @@
 # only its displayed text is translated, via translateLevel().
 # category/code/certification/formats/priceFrom/durationDays/sortOrder
 # stay identical to the English entry (language-neutral facts/lookup
-# keys). metaTitle/metaDescription aren't covered by this draft and stay
-# "[DE]" placeholder pending their own pass.
+# keys). metaTitle/metaDescription are German search copy from the SEO
+# pass (2026-11), not part of the translation draft; the length limits are
+# enforced by scripts/check-meta-lengths.mjs.
 name: 'Flight Level 3 Design (FL3D)'
 code: FL3D
 category: de/flight-levels
@@ -44,6 +45,6 @@ whatYoullLearn:
   - 'Wie ein gesundes FL3-System in der Praxis aussieht und wie es über die anfängliche Gestaltung hinaus erhalten bleibt'
 summary: 'Flight-Level-3-Systeme gestalten, die langfristige strategische Absichten direkt mit der täglichen operativen Arbeit auf Flight Level 2 verbinden, damit im Vorstand gesetzte Prioritäten tatsächlich bestimmen, woran Teams als Nächstes arbeiten. Es wird vermittelt, wie Portfolio-Reviews durchgeführt werden, die echte Entscheidungen statt Status-Updates hervorbringen, wie strategische Initiativen sequenziert werden, ohne Engpässe zu schaffen, und wie verhindert wird, dass die Organisation an zu vielen Dingen gleichzeitig arbeitet. Für erfahrene Führungskräfte, Portfolio-Coaches und FL2D-Absolvent:innen, die Koordination mit Strategie verbinden wollen, der natürliche nächste Schritt nach Flight Level 2 Design.'
 sortOrder: 3
-metaTitle: '[DE] FL3D Flight Level 3 Design Workshop | Berlin & Online'
-metaDescription: '[DE] Certified Flight Level 3 Design training in Berlin and online. Master strategic execution and connect organisational goals with operational flow.'
+metaTitle: "FL3D Flight Level 3 Design, Berlin und online"
+metaDescription: "Flight Level 3 Design (FL3D), Zertifikat der Flight Levels Academy. Zwei Tage in Berlin, online oder im eigenen Tempo. Strategie und Umsetzung verbinden."
 ---

@@ -12,7 +12,7 @@ author: niels-verdonk
 excerpt: A WhatsApp message that counts how long you have been waiting instead of how long you have left. A small, telling example of what happens when developers build exactly what was specified, and the specification missed what the user actually needed.
 featured: false
 imageUrl: /insights/miscommunication-in-software-specifications.webp
-metaTitle: Why Developers Build the Wrong Thing, and How User Stories Help | Bet
+metaTitle: "Why Teams Build the Wrong Thing: User Stories"
 metaDescription: A WhatsApp message that counts how long you have been waiting instead of how long you have left. A small, telling example of what happens when...
 bodyHtml: |-
   <p>A customer contacts support via WhatsApp. While waiting to be connected to a human, they receive a series of messages updating them on their wait time. The messages read: "You have been waiting 1 minute." Then "You have been waiting 2 minutes." Then "You have been waiting 3 minutes."</p>

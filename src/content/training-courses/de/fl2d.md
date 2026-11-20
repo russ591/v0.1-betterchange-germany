@@ -7,8 +7,8 @@
 # only its displayed text is translated, via translateLevel().
 # category/code/certification/formats/priceFrom/durationDays/sortOrder
 # stay identical to the English entry (language-neutral facts/lookup
-# keys). specialOfferText/metaTitle/metaDescription aren't covered by
-# this draft and stay "[DE]" placeholder pending their own pass.
+# keys). specialOfferText isn't covered by this draft and stays a "[DE]"
+# placeholder (it isn't rendered anywhere). metaTitle/metaDescription are German search copy (SEO pass, 2026-11).
 name: 'Flight Level 2 Design (FL2D)'
 code: FL2D
 category: de/flight-levels
@@ -45,6 +45,6 @@ whatYoullLearn:
   - 'Wie ein gut funktionierendes FL2-System nach sechs Monaten aussieht und wie sich erkennen lässt, ob es funktioniert'
 summary: 'Flight-Level-2-Koordinationssysteme gestalten, die teamübergreifende Arbeit wirklich sichtbar machen, Abhängigkeiten aufdecken, Prioritäten abstimmen und die tägliche Umsetzung mit der Organisationsstrategie verbinden, ganz ohne teure Reorganisation. Es werden die Koordinationsmeetings, Visualisierungen und Nachschub-Rhythmen vermittelt, die ein FL2-System am Laufen halten, egal ob als Manager:in, die mehrere Teams koordiniert, als Scrum Master auf dem Weg zu breiterer organisatorischer Verbesserung, oder als Coach, der über die Teamebene hinausgehen will. Praxisnah und hochgradig anwendbar, direkt aufbauend auf den Konzepten aus Flight Levels Introduction (FLIN).'
 sortOrder: 2
-metaTitle: '[DE] FL2D Flight Level 2 Design Workshop | Berlin & Online'
-metaDescription: '[DE] Certified Flight Level 2 Design training in Berlin and online. Learn to design FL2 coordination systems and achieve true business agility. Delivered by a Flight Levels Guide.'
+metaTitle: "FL2D Flight Level 2 Design, Berlin und online"
+metaDescription: "Flight Level 2 Design (FL2D), Zertifikat der Flight Levels Academy. Zwei Tage in Berlin, online oder im eigenen Tempo. Teamarbeit sichtbar machen."
 ---

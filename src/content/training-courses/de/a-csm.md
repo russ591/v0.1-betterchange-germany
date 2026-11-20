@@ -7,8 +7,9 @@
 # only its displayed text is translated, via translateLevel().
 # category/code/certification/formats/priceFrom/durationDays/sortOrder
 # stay identical to the English entry (language-neutral facts/lookup
-# keys). metaTitle/metaDescription aren't covered by this draft and stay
-# "[DE]" placeholder pending their own pass.
+# keys). metaTitle/metaDescription are German search copy from the SEO
+# pass (2026-11), not part of the translation draft; the length limits are
+# enforced by scripts/check-meta-lengths.mjs.
 name: 'Advanced Certified Scrum Master (A-CSM)'
 code: ACSM
 category: de/scrum
@@ -40,6 +41,6 @@ whatYoullLearn:
   - 'Wie die eigene Coaching-Wirkung gemessen und die eigene Entwicklung nach dem Kurs fortgesetzt wird'
 summary: 'Von Moderation zu echtem Coaching wechseln, mit fortgeschrittenen Techniken für schwierige Meetings, strittige Retrospektiven und den Konflikt, der zu echter Teamdynamik gehört. Vermittelt wird, wie Scrum-Master-Verantwortung über mehrere Teams hinweg skaliert wird, wie mit hochrangigen Stakeholdern umgegangen wird, und wie eine sich selbst tragende Teamkultur aufgebaut wird, die nicht von der eigenen Anwesenheit im Raum abhängt. Für Certified Scrum Master mit mindestens einem Jahr Praxis, die sich auf Moderationsebene festgefahren fühlen, die fortgeschrittene Zertifizierung der Scrum Alliance für Praktiker:innen, die tiefer gehen wollen.'
 sortOrder: 2
-metaTitle: '[DE] A-CSM Advanced Certified Scrum Master | Better Change'
-metaDescription: '[DE] Advance your Scrum Master practice with A-CSM training. Scrum Alliance certified. In-person and online delivery available.'
+metaTitle: "A-CSM Advanced Certified Scrum Master Kurs"
+metaDescription: "Advanced Certified Scrum Master (A-CSM), Scrum-Alliance-zertifiziert. Zwei Tage in Präsenz oder vier halbe Tage online. Teams coachen, Rolle ausweiten."
 ---

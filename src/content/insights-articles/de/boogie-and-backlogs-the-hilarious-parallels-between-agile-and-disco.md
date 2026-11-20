@@ -22,7 +22,8 @@ author: bent-myllerup
 excerpt: "Das Jahr, in dem der Autor ein munterer Zwölfjähriger war, in Schlaghosen zu den pulsierenden Beats von Disco tanzte. Ein Jahr voller Glitzer, Grooves und herrlicher Pannen."
 featured: false
 imageUrl: /insights/boogie-and-backlogs-the-hilarious-parallels-between-agile-and-disco.webp
-metaDescription: "Das Jahr, in dem der Autor ein munterer Zwölfjähriger war, in Schlaghosen zu den pulsierenden Beats von Disco tanzte. Ein Jahr voller Glitzer, Grooves und herrlicher Pannen."
+metaTitle: "Agile und Disco: Überraschende Parallelen"
+metaDescription: "Was Discomusik und Agile gemeinsam haben: eine augenzwinkernde Reise durch das Jahr 1978, vom Glitzer bis zum Backlog."
 bodyHtml: |-
   <p>Ah, 1978! Das Jahr, in dem der Autor ein munterer Zwölfjähriger war, in Schlaghosen zu den pulsierenden Beats von Disco tanzte. Ein Jahr voller Glitzer, Grooves und herrlicher Pannen. Und beim Rückblick auf diese funky Zeiten lässt sich eine Parallele zwischen der mitreißenden Welt der Discomusik und dem dynamischen Reich der Agile-Methodik kaum vermeiden. Eine Reise voller schillernder Entdeckungen und köstlicher Scrums beginnt.</p>
 

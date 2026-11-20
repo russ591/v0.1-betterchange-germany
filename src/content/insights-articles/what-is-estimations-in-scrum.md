@@ -11,7 +11,7 @@ authorName: Jakob Verner Christensen
 excerpt: Estimation in Scrum is not about predicting the future with precision. It is about having useful conversations about complexity, surfacing unknowns, and making the work manageable. Planning Poker is the most widely used technique. Here is why it works.
 featured: false
 imageUrl: /insights/what-is-estimations-in-scrum.webp
-metaTitle: 'Estimation in Scrum: What It''s For, How to Do It, and When to Question'
+metaTitle: "Estimation in Scrum: Why, How and When Not"
 metaDescription: Estimation in Scrum is not about predicting the future with precision. It is about having useful conversations about complexity, surfacing unknowns,...
 bodyHtml: |-
   <p>Estimation is one of the most discussed and most misunderstood parts of Scrum. Teams spend significant time on it, debate it at length, and often find that the estimates they produce bear a loose relationship to how long things actually take. This leads some teams to abandon estimation entirely. It leads others to double down on precision in ways that produce false confidence rather than useful information.</p>

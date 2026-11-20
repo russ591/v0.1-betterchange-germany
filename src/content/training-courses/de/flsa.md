@@ -7,8 +7,9 @@
 # only its displayed text is translated, via translateLevel().
 # category/code/certification/formats/priceFrom/durationDays/sortOrder
 # stay identical to the English entry (language-neutral facts/lookup
-# keys). metaTitle/metaDescription aren't covered by this draft and stay
-# "[DE]" placeholder pending their own pass.
+# keys). metaTitle/metaDescription are German search copy from the SEO
+# pass (2026-11), not part of the translation draft; the length limits are
+# enforced by scripts/check-meta-lengths.mjs.
 name: 'Flight Levels System Architecture (FLSA)'
 code: FLSA
 category: de/flight-levels
@@ -44,6 +45,6 @@ whatYoullLearn:
   - 'Wie organisatorische Agilität über die Zeit erhalten bleibt, während sich Strategie, Struktur und Menschen verändern'
 summary: 'Eine systemische Sicht auf die Organisation einnehmen und eine Flight-Levels-Architektur gestalten, die Strategie, Koordination und Umsetzung gleichzeitig adressiert, statt nur eine Ebene isoliert zu optimieren. Es wird vermittelt, wie Transformationsmaßnahmen sequenziert werden, ohne die Organisation zu überfordern, wie die für nachhaltigen Wandel nötige Führungsfähigkeit aufgebaut wird, und wie sich nach sechs Monaten beurteilen lässt, ob ein Flight-Levels-System tatsächlich funktioniert. Für erfahrene Transformationssponsor:innen, erfahrene Flight-Levels-Coaches und Praktiker:innen, die auf FL2- oder FL3-Ebene gearbeitet haben und das vollständige architektonische Bild wollen, der fortgeschrittenste Kurs im Flight-Levels-Curriculum.'
 sortOrder: 4
-metaTitle: '[DE] FLSA Flight Levels System Architecture | Berlin & Online'
-metaDescription: '[DE] Certified Flight Levels System Architecture training in Berlin and online. Design organisation-wide agility pragmatically and cost-effectively.'
+metaTitle: "FLSA Flight Levels Architektur in Berlin"
+metaDescription: "Flight Levels System Architecture (FLSA), Zertifikat der Flight Levels Academy. Zwei Tage in Berlin, online oder im eigenen Tempo. Agilität gestalten."
 ---

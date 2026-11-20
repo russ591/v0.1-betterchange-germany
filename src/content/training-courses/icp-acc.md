@@ -31,6 +31,6 @@ whatYoullLearn:
   - How to build a sustainable coaching practice, whether internal or as an independent consultant
 summary: Learn the difference between coaching, mentoring, teaching and facilitation, and, more importantly, when to use each, through core professional coaching competencies including active listening, powerful questioning and sustained presence. You'll practise navigating resistance and building genuine trust with coachees in complex environments, and learn to recognise your own coaching blind spots rather than defaulting to advice-giving. Built for Scrum Masters, consultants and change agents ready to shift from advice to building lasting capability, ICP-ACC is ICAgile's flagship coaching certification.
 sortOrder: 1
-metaTitle: ICP-ACC Agile Coaching Training Berlin | Better Change
-metaDescription: ICAgile ICP-ACC certified agile coaching training in Berlin and online. Develop coaching skills to guide teams and organisations through change.
+metaTitle: "ICP-ACC Agile Coaching in Berlin and Online"
+metaDescription: "Agile Coaching Professional (ICP-ACC), ICAgile certified. Three days in Berlin or six half days online. Learn when to coach, mentor, teach or facilitate."
 ---

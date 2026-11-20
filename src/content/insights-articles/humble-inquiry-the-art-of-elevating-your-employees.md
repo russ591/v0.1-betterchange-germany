@@ -12,7 +12,7 @@ author: bent-myllerup
 excerpt: 'Effective leadership is often associated with qualities such as decisiveness, confidence, and assertiveness. However, there''s another, often overlooked trait that can be equally - if not more - valuable in driving organisational success: humble inquiry.'
 featured: true
 imageUrl: /insights/humble-inquiry-the-art-of-elevating-your-employees.webp
-metaTitle: Humble Inquiry - The Art of Elevating Your Employees | Better Change C
+metaTitle: "Humble Inquiry: Elevating Your Employees"
 metaDescription: Effective leadership is often associated with qualities such as decisiveness, confidence, and assertiveness. However, there's another, often overlooked...
 bodyHtml: |-
   <p>Effective leadership is often associated with qualities such as decisiveness, confidence, and assertiveness. However, there's another, often overlooked trait that can be equally - if not more - valuable in driving organisational success: humble inquiry. Drawing on insights from organisational psychologists like Edgar Schein and researchers like Mats Alvesson and Stefan Sveningsson, in this blog post, we'll explore the concept of humble inquiry and its profound implications for leadership and organisational dynamics.</p>

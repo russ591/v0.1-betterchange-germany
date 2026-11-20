@@ -7,8 +7,9 @@
 # only its displayed text is translated, via translateLevel().
 # category/code/certification/formats/priceFrom/durationDays/sortOrder
 # stay identical to the English entry (language-neutral facts/lookup
-# keys). metaTitle/metaDescription aren't covered by this draft and stay
-# "[DE]" placeholder pending their own pass.
+# keys). metaTitle/metaDescription are German search copy from the SEO
+# pass (2026-11), not part of the translation draft; the length limits are
+# enforced by scripts/check-meta-lengths.mjs.
 name: 'SAFe for Teams (SAFe-SP)'
 code: SAFETEAMS
 category: de/scaling
@@ -40,6 +41,6 @@ whatYoullLearn:
   - 'Wie zu kontinuierlicher Verbesserung sowohl auf Teamebene als auch im gesamten Agile Release Train beigetragen wird'
 summary: 'Genau verstehen, wo das eigene Team im größeren Scaled Agile Framework steht, die Rollen, Events und Artefakte, die regeln, wie Arbeit durch einen Agile Release Train fließt, und wie Iterationen als Teil eines koordinierten Programme Increments geplant und umgesetzt werden. Vermittelt wird, wie Abhängigkeiten zu anderen Teams erkannt und gemanagt werden, wie produktiv am PI-Planning teilgenommen wird, und wie Hindernisse über den ART gemeldet werden, damit Blockaden nicht still die Geschwindigkeit killen. Für Teammitglieder und Scrum Master, die in eine SAFe-Umgebung eingeführt werden, SAFe for Teams führt zur SAFe-Practitioner(SP)-Zertifizierung von Scaled Agile.'
 sortOrder: 2
-metaTitle: '[DE] SAFe for Teams Training | SAFe Practitioner | Better Change'
-metaDescription: '[DE] SAFe for Teams (SP) certified training in Berlin and online. Learn how to work effectively within a SAFe Agile Release Train.'
+metaTitle: "SAFe for Teams Training, SP-Zertifizierung"
+metaDescription: "SAFe for Teams (SAFe-SP), Weg zum SAFe Practitioner von Scaled Agile. Zwei Tage in Präsenz oder vier halbe Tage online. Die Rolle des Teams verstehen."
 ---

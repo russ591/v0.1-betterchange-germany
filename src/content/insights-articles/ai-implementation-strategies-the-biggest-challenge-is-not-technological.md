@@ -13,7 +13,7 @@ author: javier-perez-fernandez
 excerpt: Most organisations treat AI adoption as an engineering problem. That framing almost guarantees limited results. Whether an initiative succeeds is determined far more by how people respond to uncertainty than by the quality of the technology.
 featured: false
 imageUrl: /insights/ai-implementation-strategies-the-biggest-challenge-is-not-technological.webp
-metaTitle: Your Biggest AI Challenge Isn't Technical. It's Cultural. | Change Consulting
+metaTitle: "Your Biggest AI Challenge Is Cultural"
 metaDescription: Most organisations treat AI adoption as an engineering problem. That framing almost guarantees limited results. Whether an initiative succeeds is...
 bodyHtml: |-
   <p>This is a perspective shaped by direct experience rather than theory. Having worked with organisations at various stages of AI adoption, the pattern I keep seeing is this: the technical challenges get solved. The human challenges do not.</p>

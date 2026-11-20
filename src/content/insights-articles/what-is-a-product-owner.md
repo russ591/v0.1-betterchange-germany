@@ -13,7 +13,7 @@ author: heidi-reidel-sorensen
 excerpt: The Product Owner is accountable for the value the Scrum Team delivers. In practice, that means managing one of the most demanding roles in the framework, part business strategist, part customer advocate, part decision-maker under pressure.
 featured: false
 imageUrl: /insights/what-is-a-product-owner.webp
-metaTitle: 'The Product Owner: Running a Business Within a Business | Better Chang'
+metaTitle: "What Is a Product Owner? The Role Explained"
 metaDescription: The Product Owner is accountable for the value the Scrum Team delivers. In practice, that means managing one of the most demanding roles in the...
 bodyHtml: |-
   <p>The Product Owner role in Scrum is deceptively simple to describe and genuinely difficult to do well. In the Scrum Guide, the accountabilities are clear: own the Product Backlog, make decisions about what the team works on and in what order, and maximise the value of the product resulting from the team's work.</p>

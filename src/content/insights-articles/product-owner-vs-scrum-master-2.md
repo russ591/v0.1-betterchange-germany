@@ -12,7 +12,7 @@ author: joanne-perold
 excerpt: Two roles that are often confused in Scrum are the Product Owner and the Scrum Master . Although the two collaborate and interact with each other.
 featured: false
 imageUrl: /insights/product-owner-vs-scrum-master-2.webp
-metaTitle: Product Owner vs Scrum Master | Better Change Consulting
+metaTitle: "Product Owner vs Scrum Master"
 metaDescription: Two roles that are often confused in Scrum are the Product Owner and the Scrum Master . Although the two collaborate and interact with each other.
 bodyHtml: |-
   <p>Two roles that are often confused in Scrum are the <a href="https://www.betterchange-consulting.com/resources/what-is-a-product-owner-2/">Product Owner</a> and the <a href="https://www.betterchange-consulting.com/resources/what-is-a-scrum-master/">Scrum Master</a>. Although the two collaborate and interact with each other, they perform unique tasks and it is helpful to understand the difference between them. A Scrum Master leads the Agile team and supports the Product Owner in establishing Scrum as outlined by the Scrum Guide. Whereas, the Product Owner manages the Product Backlog and ensures the company gains maximum value from the product.</p>

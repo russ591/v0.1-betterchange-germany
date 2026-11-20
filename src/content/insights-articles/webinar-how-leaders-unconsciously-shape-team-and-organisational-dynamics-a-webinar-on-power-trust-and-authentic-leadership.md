@@ -14,8 +14,8 @@ author: bent-myllerup
 excerpt: Your behaviour as a leader shapes your team's culture whether you intend it to or not. This webinar with Bent Myllerup and Giuseppe De Simone examines the psychodynamics of leadership, the part most leadership development programmes quietly skip.
 featured: false
 imageUrl: /insights/webinar-how-leaders-unconsciously-shape-team-and-organisational-dynamics-a-webinar-on-power-trust-and-authentic-leadership.webp
-metaTitle: 'Webinar Recording: The Hidden Ways Leaders Shape the Teams Around Them'
-metaDescription: Your behaviour as a leader shapes your team's culture whether you intend it to or not. This webinar with Bent Myllerup and Giuseppe De Simone examines the psychodynamics of leadership, the part most leadership development programmes quietly skip.
+metaTitle: "How Leaders Unconsciously Shape Their Teams"
+metaDescription: "A leader's behaviour shapes team culture whether intended or not. A webinar with Bent Myllerup and Giuseppe De Simone on the psychodynamics of leadership."
 bodyHtml: |-
   <p>Most leadership advice focuses on what to do: communicate clearly, delegate effectively, set direction. This webinar focuses on something less comfortable but arguably more important, what is actually happening between you and your team, regardless of your intentions.</p>
 

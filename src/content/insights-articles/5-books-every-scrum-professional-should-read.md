@@ -12,7 +12,7 @@ author: bent-myllerup
 excerpt: The Agile and Scrum frameworks have gained significant traction in the business world, revolutionizing how projects are managed and products are delivered. To stay competitive, professionals need to invest in continuous learning.
 featured: false
 imageUrl: /insights/5-books-every-scrum-professional-should-read.webp
-metaTitle: 5 books every scrum professional should read | Better Change Consultin
+metaTitle: "5 books every scrum professional should read"
 metaDescription: The Agile and Scrum frameworks have gained significant traction in the business world, revolutionizing how projects are managed and products are...
 bodyHtml: |-
   <p>The Agile and Scrum frameworks have gained significant traction in the business world, revolutionizing how projects are managed and products are delivered. To stay competitive, professionals need to invest in continuous learning. Books remain a cornerstone for this purpose. Today, we'll unveil the best books on Scrum that you shouldn't miss, aiming to help you sharpen your Scrum skills and methodologies.</p>

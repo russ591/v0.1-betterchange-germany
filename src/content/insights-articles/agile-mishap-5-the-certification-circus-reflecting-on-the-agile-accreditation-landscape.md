@@ -13,7 +13,7 @@ author: bent-myllerup
 excerpt: 'A full disclosure upfront: Bent Myllerup is a Certified Scrum Trainer who has spent twelve years certifying people in Agile. Which makes this critique of the certification industry both more uncomfortable to write and more worth reading.'
 featured: false
 imageUrl: /insights/agile-mishap-5-the-certification-circus-reflecting-on-the-agile-accreditation-landscape.webp
-metaTitle: 'Agile Mishap #5: The Certification Circus | Better Change Consulting'
+metaTitle: "Agile Mishap #5: The Certification Circus"
 metaDescription: 'A full disclosure upfront: Bent Myllerup is a Certified Scrum Trainer who has spent twelve years certifying people in Agile. Which makes this critique...'
 bodyHtml: |-
   <p>Let me be transparent before launching into this: I am a Certified Scrum Trainer. For the past twelve years, part of my business has involved certifying people in Agile practices. I have skin in the game, which is precisely why I feel entitled, and obligated, to say some of this out loud.</p>

@@ -11,7 +11,7 @@ author: konrad-pogorzala
 excerpt: A Kanban board is more than sticky notes in columns. Understanding how the board supports flow management, not just task tracking, is what separates teams that get real results from teams that just have a tidy wall.
 featured: false
 imageUrl: /insights/what-is-a-kanban-board.webp
-metaTitle: 'Kanban Boards: More Than Sticky Notes in Columns | Better Change Consu'
+metaTitle: "Kanban Boards: More Than Sticky Notes"
 metaDescription: A Kanban board is more than sticky notes in columns. Understanding how the board supports flow management, not just task tracking, is what separates...
 bodyHtml: |-
   <p>The Kanban board is the most visible element of the Kanban Method. It is also the most commonly oversimplified. Walk into most offices where teams describe themselves as "using Kanban" and you will find a board divided into To Do, Doing, and Done, with cards moving from left to right. That is a good start. It is not, by itself, a Kanban board in the proper sense.</p>

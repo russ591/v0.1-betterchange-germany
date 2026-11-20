@@ -15,7 +15,7 @@ author: bent-myllerup
 excerpt: Agile is not dead. But it has been badly misused, cynically marketed, and routinely applied in ways that contradict its own principles. This post opens a series examining what actually went wrong, and why it matters.
 featured: false
 imageUrl: /insights/what-went-wrong-with-agile.webp
-metaTitle: What Went Wrong with Agile? An Honest Reckoning | Better Change Consul
+metaTitle: "What Went Wrong with Agile? An Honest Look"
 metaDescription: Agile is not dead. But it has been badly misused, cynically marketed, and routinely applied in ways that contradict its own principles. This post opens...
 bodyHtml: |-
   <p>A recurring claim on LinkedIn holds that Agile is dead. This is nonsense, but the kind of nonsense that contains a signal worth examining. The people making the claim are usually promoting some successor framework, which tells you something about their motives. It does not tell you they are entirely wrong about the symptoms.</p>

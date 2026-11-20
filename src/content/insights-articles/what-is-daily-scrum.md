@@ -11,7 +11,7 @@ authorName: Martin von Weissenberg
 excerpt: The Daily Scrum is Scrum's most misunderstood event. Not a status meeting, not three mandatory questions. Done well, it keeps the Sprint on track. Done badly, it is fifteen minutes nobody needs.
 featured: false
 imageUrl: /insights/what-is-daily-scrum.webp
-metaTitle: 'The Daily Scrum: Fifteen Minutes That Can Make or Break a Sprint | Bet'
+metaTitle: "The Daily Scrum: Fifteen Minutes That Matter"
 metaDescription: The Daily Scrum is Scrum's most misunderstood event. Not a status meeting, not three mandatory questions. Done well, it keeps the Sprint on track. Done...
 bodyHtml: |-
   <p>The Daily Scrum has a complicated reputation. Teams that use it well say it is the most valuable fifteen minutes of their day. Teams that use it badly say it is a pointless ritual where everyone reports what they did yesterday to a Scrum Master taking notes. Both experiences are common. The difference is almost entirely in how the event is understood and facilitated.</p>

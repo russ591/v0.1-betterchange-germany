@@ -28,7 +28,8 @@ author: garbrand-van-der-molen
 excerpt: "Die am meisten übersehene Erkenntnis in Cameron und Quinns klassischem Werk zu Organisationskultur ist nicht das Competing Values Framework, es ist der Anhang. Das eigentliche Werkzeug für Change Agents ist das Management Skills Assessment Instrument, das Transformation persönlich macht."
 featured: false
 imageUrl: /insights/organisational-change-not-a-collective-leap-but-a-sum-of-individual-strides.webp
-metaDescription: "Die am meisten übersehene Erkenntnis in Cameron und Quinns klassischem Werk zu Organisationskultur ist nicht das Competing Values Framework, es ist der Anhang. Das eigentliche Werkzeug für Change Agents ist das Management Skills Assessment Instrument, das Transformation persönlich macht."
+metaTitle: "Organisationaler Wandel: Person für Person"
+metaDescription: "Das eigentliche Werkzeug für Change Agents steckt im Anhang von Cameron und Quinns Kulturbuch: das Management Skills Assessment Instrument."
 bodyHtml: |-
   <p>"Diagnosing and Changing Organisational Culture" von Kim Cameron und Robert Quinn ist ein Buch, das die meisten Change Agents nur durch seinen ersten Abschnitt kennen und nicht bis zum Ende gelesen haben. Das Competing Values Framework, vier kulturelle Quadranten, ein diagnostisches Instrument, eine Karte davon, wo die Organisation steht und wohin sie muss, ist genuin wertvoll und zu Recht bekannt. Aber das nützlichste Material steckt in den Anhängen, die selten diskutiert werden.</p>
 

@@ -12,8 +12,8 @@ author: russell-hill
 excerpt: Ask ten people what Kanban means and you'll get at least three different answers, and they'll all be correct. The confusion is baked in, because the word genuinely refers to three distinct things.
 featured: false
 imageUrl: /insights/kanban-what-does-it-mean.webp
-metaTitle: 'Kanban: One Word, Three Completely Different Meanings | Better Change'
-metaDescription: Ask ten people what Kanban means and you'll get at least three different answers, and they'll all be correct. The confusion is baked in, because the...
+metaTitle: "What Kanban Means: One Word, Three Meanings"
+metaDescription: "Kanban is a Japanese word, a Toyota pull system and a method for knowledge work. What each meaning is, and how to tell which one people mean."
 bodyHtml: |-
   <p>The word "Kanban" is used in three separate ways, and the fact that they are rarely distinguished clearly is the source of a lot of confusion in Agile circles. Here is what each one actually means.</p>
 

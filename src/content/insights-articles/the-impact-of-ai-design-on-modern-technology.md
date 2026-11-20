@@ -12,7 +12,7 @@ author: mogens-villadsen
 excerpt: Every AI system you interact with was shaped by design choices made before deployment. Those choices determine what the system does, how it behaves in edge cases, and how much you can trust its outputs.
 featured: false
 imageUrl: /insights/the-impact-of-ai-design-on-modern-technology.webp
-metaTitle: 'AI Design: The Principles That Shape Every System You Interact With |'
+metaTitle: "AI Design: Principles Behind Every System"
 metaDescription: Every AI system you interact with was shaped by design choices made before deployment. Those choices determine what the system does, how it behaves in...
 bodyHtml: |-
   <p>Every AI system you interact with, recommendation algorithms, virtual assistants, diagnostic tools, content moderation, was shaped by a series of design choices made before it was deployed. Those choices determine not just what the system does but how it behaves in edge cases, who it serves well and who it serves poorly, and how much you can trust its outputs.</p>

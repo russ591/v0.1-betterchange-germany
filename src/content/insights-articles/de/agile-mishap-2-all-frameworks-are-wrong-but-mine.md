@@ -24,7 +24,8 @@ author: bent-myllerup
 excerpt: "In einer Serie von Blogbeiträgen wird die Frage untersucht: Wenn Agile nicht tot ist, was ging dann schief? Ist die wachsende Zahl an Agile-Frameworks aufgefallen, die in den letzten Jahren entstanden sind?"
 featured: false
 imageUrl: /insights/agile-mishap-2-all-frameworks-are-wrong-but-mine.webp
-metaDescription: "In einer Serie von Blogbeiträgen wird die Frage untersucht: Wenn Agile nicht tot ist, was ging dann schief? Ist die wachsende Zahl an Agile-Frameworks aufgefallen, die in den letzten Jahren entstanden sind?"
+metaTitle: "Agile Mishap #2: Nur mein Framework stimmt"
+metaDescription: "Warum der Markt mit Agile-Frameworks überflutet ist: Ein Krieg der Frameworks, in dem jede Seite den eigenen Ansatz als den besten anpreist."
 bodyHtml: |-
   <p><em>In einer Serie von Blogbeiträgen wird die Frage untersucht: Wenn Agile nicht tot ist, was ging dann schief? Wer den einleitenden Beitrag (Was ging schief mit Agile?) noch nicht gelesen hat, sollte dort zuerst weiterlesen.</em></p>
 

@@ -19,7 +19,8 @@ author: bent-myllerup
 excerpt: "Die meisten Coaches denken darüber nach, was sie fragen sollen. Die bessere Fähigkeit ist zu wissen, welche Art von Frage wann gestellt werden sollte. Karl Tomms Vier-Quadranten-Modell bietet ein strategisches Framework statt eines auswendig zu lernenden Kartenspiels."
 featured: false
 imageUrl: /insights/your-strategy-for-asking-powerful-questions.webp
-metaDescription: "Die meisten Coaches denken darüber nach, was sie fragen sollen. Die bessere Fähigkeit ist zu wissen, welche Art von Frage wann gestellt werden sollte. Karl Tomms Vier-Quadranten-Modell bietet ein strategisches Framework statt eines auswendig zu lernenden Kartenspiels."
+metaTitle: "Powerful Questions: Karl Tomms Fragenmodell"
+metaDescription: "Karl Tomms Vier-Quadranten-Modell hilft Coaches zu wissen, welche Art von Frage wann sinnvoll ist, statt Fragen auswendig zu lernen."
 bodyHtml: |-
   <p>Dies ist der fünfte Beitrag einer Serie zu systemischem Coaching im Kontext von Agile und Change Management. Die vorherigen Beiträge behandelten das Wesen systemischen Coachings, wie es sich von Agile Coaching unterscheidet, die Praxis des Zuhörens, und wie ein Coaching-Gespräch strukturiert wird. Dieser handelt von der Frage, genauer von der Logik hinter der Wahl der richtigen Art.</p>
 

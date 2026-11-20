@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "node scripts/check-meta-lengths.mjs && astro check && astro build",
+    "check:meta": "node scripts/check-meta-lengths.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "sync:check": "node scripts/sync-check.mjs",

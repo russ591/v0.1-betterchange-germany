@@ -18,7 +18,8 @@ author: jan-b-olsen
 excerpt: "Zwischen zwei Dritteln und drei Vierteln großer Organisationen tun sich schwer damit, strategische Pläne in operative Realität zu übersetzen. Die Pläne sind oft gut. An der Umsetzung scheitert es. Ein strukturierter Ansatz für diese Lücke."
 featured: false
 imageUrl: /insights/practical-guide-to-strategy-implementation.webp
-metaDescription: "Zwischen zwei Dritteln und drei Vierteln großer Organisationen tun sich schwer damit, strategische Pläne in operative Realität zu übersetzen. Die Pläne sind oft gut. An der Umsetzung scheitert es. Ein strukturierter Ansatz für diese Lücke."
+metaTitle: "Strategie umsetzen: Warum es oft scheitert"
+metaDescription: "Viele große Organisationen tun sich schwer, strategische Pläne in operative Realität zu übersetzen. Ein strukturierter Ansatz in vier Phasen."
 bodyHtml: |-
   <p>Die Strategiearbeit ist abgeschlossen. Die Präsentation ist geschliffen. Das Führungsteam ist abgestimmt. Und dann, still, ändert sich nichts.</p>
 

@@ -12,7 +12,7 @@ author: bent-myllerup
 excerpt: Management and leadership are not the same activity, and treating them as interchangeable has real consequences. This post opens a series on what leadership actually requires, starting with the distinction that most organisations still do not make clearly enough.
 featured: true
 imageUrl: /insights/management-is-not-leadership.webp
-metaTitle: Management Is Not Leadership, and Confusing the Two Costs Organisatio
+metaTitle: "Management Is Not Leadership: Why It Matters"
 metaDescription: Management and leadership are not the same activity, and treating them as interchangeable has real consequences. This post opens a series on what...
 bodyHtml: |-
   <p>This is the first post in a series on what leadership is and what it is not. The second is <em>Me-dership Is Not Leadership Either</em> and the third is <em>Developing Your Unique Leadership Style</em>.</p>

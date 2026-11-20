@@ -14,7 +14,7 @@ author: bent-myllerup
 excerpt: 'This is the final blog post in my series about mishaps in applying Agile. Agile mishap #1: Do it by the book! Agile mishap #2: All frameworks are wrong but mine Agile mishap #3: The Agile...'
 featured: false
 imageUrl: /insights/despite-all-the-mishaps-show-me-the-better-option.webp
-metaTitle: 'Despite All the Mishaps: Show Me the Better Option! | Better Change Co'
+metaTitle: "Despite the Mishaps: Show Me a Better Option"
 metaDescription: 'This is the final blog post in my series about mishaps in applying Agile. Agile mishap #1: Do it by the book! Agile mishap #2: All frameworks are wrong...'
 bodyHtml: |-
   <p>This is the final blog post in my series about mishaps in applying Agile. If you have not read the other posts, I suggest you address those before moving on. Here is the complete list:</p>

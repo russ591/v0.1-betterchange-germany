@@ -13,7 +13,7 @@ author: mogens-villadsen
 excerpt: Mogens Ejby Villadsen has spent twenty years helping organisations improve how teams work. His central conviction, that performance lives in the interactions between people, not in individual capability, shapes everything he does.
 featured: false
 imageUrl: /insights/coaching-what-happens-between-us.webp
-metaTitle: 'Mogens Ejby Villadsen: Why Team Performance Is Mostly About the Space'
+metaTitle: "Team Performance Lives Between People"
 metaDescription: Mogens Ejby Villadsen has spent twenty years helping organisations improve how teams work. His central conviction, that performance lives in the...
 bodyHtml: |-
   <p>"Team performance is mostly about what happens between us." It is how Mogens Ejby Villadsen begins almost any conversation about what makes teams work. Not individual talent, not process design, not tooling. The space between people. How they align, communicate, misunderstand each other, and find their way back.</p>
