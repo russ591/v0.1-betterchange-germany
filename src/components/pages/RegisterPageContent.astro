@@ -21,7 +21,7 @@ import { nextAvailableSession } from "@/lib/nextSession";
 import { registrationHref } from "@/lib/registrationLink";
 import { translateOffer } from "@/data/offerCopy";
 import { translateNotes } from "@/data/notesCopy";
-import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { resolveLocale, useTranslations, withSlash } from "@/i18n/utils";
 
 interface Props {
   session: CollectionEntry<"training-schedules">;
@@ -114,9 +114,9 @@ const scriptCopy = {
 
 <Breadcrumbs
   items={[
-    { label: t("nav.training"), href: `${prefix}/training` },
-    { label: category.data.name, href: `${prefix}/training/${categorySlug}` },
-    { label: course.data.name, href: `${prefix}/training/${categorySlug}/${courseSlug}` },
+    { label: t("nav.training"), href: withSlash(`${prefix}/training`) },
+    { label: category.data.name, href: withSlash(`${prefix}/training/${categorySlug}`) },
+    { label: course.data.name, href: withSlash(`${prefix}/training/${categorySlug}/${courseSlug}`) },
     { label: t("register.eyebrow") },
   ]}
 />
@@ -124,7 +124,7 @@ const scriptCopy = {
 <Section eyebrow={t("register.eyebrow")} class="bg-mist-light">
   <h1 class="text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">{course.data.name}</h1>
   <p class="mt-4 text-[length:var(--text-small)] text-neutral-500">
-    <a href={`${prefix}/training/${categorySlug}/${courseSlug}`} class="hover:underline">
+    <a href={withSlash(`${prefix}/training/${categorySlug}/${courseSlug}`)} class="hover:underline">
       {t("register.backToCourse")}
     </a>
   </p>
@@ -401,7 +401,7 @@ const scriptCopy = {
       method="POST"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
-      action={`${prefix}/training/register/thank-you`}
+      action={withSlash(`${prefix}/training/register/thank-you`)}
       id="registration-form"
       class="min-w-0 space-y-5"
       hidden={isClosed}

@@ -7,6 +7,7 @@
 // PriceSpecification; anything else is left out rather than guessed.
 import type { CollectionEntry } from "astro:content";
 import type { Locale } from "@/lib/i18n";
+import { withSlash } from "@/lib/withSlash";
 
 const COURSE_MODE = { "in-person": "Onsite", "live-online": "Online", "self-paced": "Online" } as const;
 
@@ -95,7 +96,7 @@ export function buildCourseSchema({ course, sessions, site, locale }: Options) {
           ...priceFields(session.data.price),
           url: session.data.isExternal
             ? session.data.externalUrl!
-            : new URL(`${prefix}/training/register/${session.id}`, site).toString(),
+            : new URL(withSlash(`${prefix}/training/register/${session.id}`), site).toString(),
           ...(session.data.status !== "tbc" && {
             availability: session.data.status === "sold-out" ? "https://schema.org/SoldOut" : "https://schema.org/InStock",
           }),

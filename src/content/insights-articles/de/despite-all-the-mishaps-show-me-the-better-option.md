@@ -38,17 +38,17 @@ bodyHtml: |-
   <p>Dies ist der letzte Blogbeitrag der Serie über Pannen bei der Anwendung von Agile. Wer die anderen Beiträge noch nicht gelesen hat, sollte das vorher tun. Hier die vollständige Liste:</p>
 
   <ul>
-  <li><a href="/de/insights/what-went-wrong-with-agile">Was ging schief mit Agile?</a></li>
+  <li><a href="/de/insights/what-went-wrong-with-agile/">Was ging schief mit Agile?</a></li>
 
-  <li><a href="/de/insights/agile-mishap-1-do-it-by-the-book">Agile-Panne #1: Es nach Lehrbuch machen!</a></li>
+  <li><a href="/de/insights/agile-mishap-1-do-it-by-the-book/">Agile-Panne #1: Es nach Lehrbuch machen!</a></li>
 
-  <li><a href="/de/insights/agile-mishap-2-all-frameworks-are-wrong-but-mine">Agile-Panne #2: Alle Frameworks sind falsch, außer meinem</a></li>
+  <li><a href="/de/insights/agile-mishap-2-all-frameworks-are-wrong-but-mine/">Agile-Panne #2: Alle Frameworks sind falsch, außer meinem</a></li>
 
-  <li><a href="/de/insights/the-agile-bubble">Agile-Panne #3: Die Agile-Blase</a></li>
+  <li><a href="/de/insights/the-agile-bubble/">Agile-Panne #3: Die Agile-Blase</a></li>
 
-  <li><a href="/de/insights/agile-mishap-4-incompetent-coaches-and-trainers">Agile-Panne #4: Unfähige Coaches und Trainer:innen</a></li>
+  <li><a href="/de/insights/agile-mishap-4-incompetent-coaches-and-trainers/">Agile-Panne #4: Unfähige Coaches und Trainer:innen</a></li>
 
-  <li><a href="/de/insights/agile-mishap-5-the-certification-circus-reflecting-on-the-agile-accreditation-landscape">Agile-Panne #5: Der Zertifizierungszirkus</a></li>
+  <li><a href="/de/insights/agile-mishap-5-the-certification-circus-reflecting-on-the-agile-accreditation-landscape/">Agile-Panne #5: Der Zertifizierungszirkus</a></li>
   </ul>
 
   <h3>Einführung</h3>

@@ -1,4 +1,5 @@
 import type { CollectionEntry } from "astro:content";
+import { withSlash } from "@/lib/withSlash";
 
 // A session run by a sister site (isExternal: true) has no internal
 // /training/register/[session] page at all (see that page's own
@@ -8,7 +9,7 @@ import type { CollectionEntry } from "astro:content";
 // "/de" or "" -- training-schedules isn't locale-split, so the session id
 // itself is identical either way, only the internal path gets the prefix.
 export function registrationHref(session: CollectionEntry<"training-schedules">, prefix = ""): string {
-  return session.data.isExternal ? session.data.externalUrl! : `${prefix}/training/register/${session.id}`;
+  return session.data.isExternal ? session.data.externalUrl! : withSlash(`${prefix}/training/register/${session.id}`);
 }
 
 // Spread onto the <a> so an external registration link opens in its own

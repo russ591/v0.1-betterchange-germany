@@ -6,7 +6,7 @@ import { courseBadges } from "@/data/courseBadges";
 import { translateLevel } from "@/data/levelIcons";
 import { toPathSegment } from "@/lib/urlSlug";
 import { baseSlug } from "@/lib/i18n";
-import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { resolveLocale, useTranslations, withSlash } from "@/i18n/utils";
 
 // Consolidates the live site's four course-card variants (discipline list,
 // schedule table row, "related courses" card, profile-page course card)
@@ -26,7 +26,7 @@ const { course, categorySlug, variant = "card" } = Astro.props;
 const locale = resolveLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 const prefix = locale === "de" ? "/de" : "";
-const href = `${prefix}/training/${baseSlug(categorySlug)}/${toPathSegment(course.data.urlSlug ?? baseSlug(course.id))}`;
+const href = withSlash(`${prefix}/training/${baseSlug(categorySlug)}/${toPathSegment(course.data.urlSlug ?? baseSlug(course.id))}`);
 const badge = courseBadges[baseSlug(course.id)];
 ---
 

@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "node scripts/check-meta-lengths.mjs && astro check && astro build",
+    "build": "npm run check:meta && npm run test:slash && astro check && astro build && npm run check:links",
     "check:meta": "node scripts/check-meta-lengths.mjs",
+    "test:slash": "node --experimental-strip-types --test scripts/check-with-slash.mjs",
+    "check:links": "node scripts/check-internal-links.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "sync:check": "node scripts/sync-check.mjs",

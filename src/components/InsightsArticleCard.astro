@@ -2,7 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import { toPathSegment } from "@/lib/urlSlug";
 import { localeOfId, baseSlug } from "@/lib/i18n";
-import { useTranslations } from "@/i18n/utils";
+import { useTranslations, withSlash } from "@/i18n/utils";
 
 interface Props {
   article: CollectionEntry<"insights-articles">;
@@ -27,7 +27,7 @@ const { title, date, readTimeMinutes, excerpt, primaryCategory, imageUrl } = art
 // English fallback list, or vice versa.
 const articleLocale = localeOfId(article.id);
 const articlePrefix = articleLocale === "de" ? "/de" : "";
-const href = `${articlePrefix}/insights/${toPathSegment(article.data.urlSlug ?? baseSlug(article.id))}`;
+const href = withSlash(`${articlePrefix}/insights/${toPathSegment(article.data.urlSlug ?? baseSlug(article.id))}`);
 const t = useTranslations(articleLocale);
 
 // Real article photography exists for most articles (migrated from the Wix

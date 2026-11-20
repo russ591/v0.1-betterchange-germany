@@ -12,7 +12,7 @@ import StatCallout from "@/components/StatCallout.astro";
 import TeamCard from "@/components/TeamCard.astro";
 import CTABanner from "@/components/CTABanner.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
-import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { resolveLocale, useTranslations, withSlash } from "@/i18n/utils";
 import { getNetworkSite, type NetworkSite } from "@/data/networkSites";
 
 interface Props {
@@ -95,5 +95,5 @@ if (noteCursor < noteBody.length) noteParts.push({ text: noteBody.slice(noteCurs
   heading={t("cta.closingHeading")}
   body={t("cta.closingBody")}
   ctaLabel={t("schedule.getInTouch")}
-  ctaHref={`${prefix}/contact`}
+  ctaHref={withSlash(`${prefix}/contact`)}
 />

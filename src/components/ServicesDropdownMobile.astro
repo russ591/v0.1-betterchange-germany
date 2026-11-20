@@ -12,7 +12,7 @@
 // hover-trigger link gives for free.
 import { getServices } from "@/data/services";
 import { servicesNavIcons } from "@/data/servicesNavIcons";
-import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { resolveLocale, useTranslations, withSlash } from "@/i18n/utils";
 
 interface Props {
   /** Raw <svg> path/shape markup for the row's own icon, matching every
@@ -29,10 +29,10 @@ const services = getServices(locale);
 // Same English-only fallback as ServicesDropdownDesktop.astro -- see that
 // component's comment for why these 4 aren't `${prefix}`-prefixed.
 const hrefs: Record<string, string> = {
-  training: "/services/training",
-  coaching: "/services/coaching",
-  consulting: "/services/consulting",
-  facilitation: "/services/facilitation",
+  training: "/services/training/",
+  coaching: "/services/coaching/",
+  consulting: "/services/consulting/",
+  facilitation: "/services/facilitation/",
 };
 ---
 
@@ -63,7 +63,7 @@ const hrefs: Record<string, string> = {
   </summary>
   <div class="-mx-6 mb-2 flex flex-col gap-0.5 bg-mist-light px-6 pb-3 pt-1">
     <a
-      href={`${prefix}/services`}
+      href={withSlash(`${prefix}/services`)}
       class="border-b border-neutral-200 py-2.5 text-[length:var(--text-small)] font-semibold text-ink"
     >
       {t("megaMenu.servicesHome")}

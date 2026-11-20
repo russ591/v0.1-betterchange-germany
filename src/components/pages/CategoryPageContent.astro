@@ -17,7 +17,7 @@ import { levelIcons, levelPillClasses, translateLevel } from "@/data/levelIcons"
 import { germanizePrice } from "@/lib/prices";
 import { toPathSegment } from "@/lib/urlSlug";
 import { baseSlug } from "@/lib/i18n";
-import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { resolveLocale, useTranslations, withSlash } from "@/i18n/utils";
 import MeetTheTrainers from "@/components/MeetTheTrainers.astro";
 import LanguageTag from "@/components/LanguageTag.astro";
 import { formatSessionDate } from "@/lib/dates";
@@ -57,7 +57,7 @@ const berlinDates = upcomingWithCourse
   .slice(0, 3);
 ---
 
-<Breadcrumbs items={[{ label: t("nav.training"), href: `${prefix}/training` }, { label: category.data.name }]} />
+<Breadcrumbs items={[{ label: t("nav.training"), href: withSlash(`${prefix}/training`) }, { label: category.data.name }]} />
 
 <Section class="bg-mist-light">
   <div class="grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-start">
@@ -118,7 +118,7 @@ const berlinDates = upcomingWithCourse
         {
           courses.map((course) => (
             <a
-              href={`${prefix}/training/${categorySlug}/${toPathSegment(course.data.urlSlug ?? baseSlug(course.id))}`}
+              href={withSlash(`${prefix}/training/${categorySlug}/${toPathSegment(course.data.urlSlug ?? baseSlug(course.id))}`)}
               class="flex items-center justify-between gap-3 border-b border-neutral-100 px-5 py-3.5 transition-colors last:border-0 hover:bg-mist-light"
             >
               <div class="flex min-w-0 items-center gap-3">
@@ -178,7 +178,7 @@ const berlinDates = upcomingWithCourse
                 ))}
               </ul>
               <a
-                href={`${prefix}/training?topic=${categorySlug}#schedule`}
+                href={withSlash(`${prefix}/training?topic=${categorySlug}#schedule`)}
                 class="mt-3 inline-block text-[length:var(--text-small)] font-semibold text-ink"
               >
                 {t("schedule.fullSchedule")} <span aria-hidden="true">&rarr;</span>
@@ -206,7 +206,7 @@ const berlinDates = upcomingWithCourse
           const badge = courseBadges[baseSlug(course.id)];
           return (
             <a
-              href={`${prefix}/training/${categorySlug}/${toPathSegment(course.data.urlSlug ?? baseSlug(course.id))}`}
+              href={withSlash(`${prefix}/training/${categorySlug}/${toPathSegment(course.data.urlSlug ?? baseSlug(course.id))}`)}
               class="flex flex-col gap-5 rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6 shadow-card transition-shadow hover:shadow-card-hover sm:flex-row sm:items-start"
             >
               {course.data.level && (
@@ -276,9 +276,9 @@ const berlinDates = upcomingWithCourse
   />
   <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
     <p class="text-[length:var(--text-small)] text-neutral-600">
-      {t("schedule.preferInHouse")} <a href={`${prefix}/contact`} class="font-semibold text-ink underline">{t("schedule.letUsKnow")}</a>.
+      {t("schedule.preferInHouse")} <a href={withSlash(`${prefix}/contact`)} class="font-semibold text-ink underline">{t("schedule.letUsKnow")}</a>.
     </p>
-    <a href={`${prefix}/training#schedule`} class="rounded-[var(--radius-control)] border border-ink px-4 py-2.5 text-sm font-semibold text-ink">
+    <a href={withSlash(`${prefix}/training#schedule`)} class="rounded-[var(--radius-control)] border border-ink px-4 py-2.5 text-sm font-semibold text-ink">
       {t("schedule.seeAllScheduled")} &rarr;
     </a>
   </div>
@@ -288,5 +288,5 @@ const berlinDates = upcomingWithCourse
   tone="light"
   heading={t("cta.categoryClosingHeading")}
   ctaLabel={t("cta.getStarted")}
-  ctaHref={`${prefix}/contact`}
+  ctaHref={withSlash(`${prefix}/contact`)}
 />
