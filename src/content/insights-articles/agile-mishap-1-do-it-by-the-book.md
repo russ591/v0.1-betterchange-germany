@@ -15,7 +15,7 @@ author: bent-myllerup
 excerpt: 'In a series of blog posts I am discussing the question: What went wrong with Agile? When I started applying Agile methodologies in 2006 there was one dominant framework.'
 featured: false
 imageUrl: /insights/agile-mishap-1-do-it-by-the-book.webp
-metaTitle: 'Agile Mishap #1: Do it by the book! | Better Change Consulting'
+metaTitle: "Agile Mishap #1: Do it by the book!"
 metaDescription: 'In a series of blog posts I am discussing the question: What went wrong with Agile? When I started applying Agile methodologies in 2006 there was one...'
 bodyHtml: |-
   <p><em>In a series of blog posts I am discussing the question: What went wrong with Agile? If you have not read the introduction blog post already (<a href="/insights/what-went-wrong-with-agile-an-honest-reckoning/">What went wrong with Agile?</a>) I suggest you go there first before continuing reading here.</em></p>

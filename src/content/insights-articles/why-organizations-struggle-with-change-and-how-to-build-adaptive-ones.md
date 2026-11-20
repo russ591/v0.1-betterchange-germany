@@ -14,7 +14,7 @@ author: nino-zeljko
 excerpt: Tired of change initiatives that fizzle out? This webinar with Nino Zeljko explores why organizations struggle with change, and how to build genuinely adaptive ones.
 featured: false
 imageUrl: /insights/why-organizations-struggle-with-change-and-how-to-build-adaptive-ones.webp
-metaTitle: 'Webinar Recording: Why Organizations Struggle with Change and How to Build Adaptive Ones'
+metaTitle: "Why Organizations Struggle with Change"
 metaDescription: Tired of change initiatives that fizzle out? This webinar with Nino Zeljko explores why organizations struggle with change, and how to build adaptive ones.
 bodyHtml: |-
   <p><strong>Tired of change initiatives that fizzle out?</strong> In this webinar, we cut through the noise and explore why so many organizations fail at change, and what actually works.</p>

@@ -31,6 +31,6 @@ whatYoullLearn:
   - How to communicate product strategy upwards to leadership and downwards to delivery teams
 summary: Develop and communicate a compelling product vision and strategy, and learn to use data and user research to make product decisions with real confidence rather than instinct alone. You'll cover advanced stakeholder alignment in complex, politically-charged environments, roadmapping that balances short-term delivery against long-term direction, and how to manage a portfolio of competing priorities without losing strategic focus. Designed for experienced Product Owners who find themselves doing backlog administration rather than product thinking, A-CSPO is the Scrum Alliance's advanced Product Owner credential.
 sortOrder: 4
-metaTitle: A-CSPO Advanced Certified Scrum Product Owner | Better Change
-metaDescription: Scrum Alliance A-CSPO training for experienced Product Owners. Deepen your practice with advanced product strategy and stakeholder skills.
+metaTitle: "A-CSPO Advanced Scrum Product Owner Course"
+metaDescription: "Advanced Certified Scrum Product Owner (A-CSPO), certified by Scrum Alliance. Two days in person or four half days online. Sharpen product strategy."
 ---

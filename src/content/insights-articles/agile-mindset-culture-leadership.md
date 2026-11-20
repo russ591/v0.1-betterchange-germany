@@ -13,7 +13,7 @@ author: jesper-orting
 excerpt: The Scaled Agile Framework is a capable tool for large-scale coordination. But SAFe implementations fail at a predictable rate when the leaders sponsoring them continue to behave in fundamentally un-agile ways. The framework is not the variable. Leadership behaviour is.
 featured: false
 imageUrl: /insights/agile-mindset-culture-leadership.webp
-metaTitle: SAFe Won't Save You If Your Leaders Aren't Actually Agile | Better Cha
+metaTitle: "SAFe Won't Save Leaders Who Aren't Agile"
 metaDescription: The Scaled Agile Framework is a capable tool for large-scale coordination. But SAFe implementations fail at a predictable rate when the leaders...
 bodyHtml: |-
   <p>The Scaled Agile Framework promises a great deal: faster delivery, improved quality, better cross-team coordination, and cultural transformation at scale. Organisations invest significantly in its implementation. Training, tooling, coaching, ceremonies. And then, six months in, the promised improvements have not materialised, the teams are exhausted, and the leadership team is wondering what went wrong.</p>

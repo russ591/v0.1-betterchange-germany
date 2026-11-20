@@ -19,6 +19,9 @@ import { toPathSegment } from "@/lib/urlSlug";
 import { baseSlug } from "@/lib/i18n";
 import { resolveLocale, useTranslations, withSlash } from "@/i18n/utils";
 import MeetTheTrainers from "@/components/MeetTheTrainers.astro";
+import LanguageTag from "@/components/LanguageTag.astro";
+import { formatSessionDate } from "@/lib/dates";
+import { registrationHref } from "@/lib/registrationLink";
 
 interface Props {
   category: CollectionEntry<"training-categories">;
@@ -38,6 +41,20 @@ const prefix = locale === "de" ? "/de" : "";
 const categorySlug = baseSlug(category.id);
 
 const logo = category.data.certificationBody ? certificationLogos[category.data.certificationBody] : undefined;
+
+// The next Berlin dates for the "In Berlin" card: dated, in-person, booked
+// through this site, bookable (status available). `upcomingWithCourse` is already sorted by
+// date and already leaves out past, closed and cancelled sessions, so the
+// card never shows a date the schedule below it doesn't. No dates, no list.
+const berlinDates = upcomingWithCourse
+  .filter(
+    ({ session }) =>
+      session.data.format === "in-person" &&
+      !session.data.isExternal &&
+      /berlin/i.test(session.data.location) &&
+      session.data.status === "available"
+  )
+  .slice(0, 3);
 ---
 
 <Breadcrumbs items={[{ label: t("nav.training"), href: withSlash(`${prefix}/training`) }, { label: category.data.name }]} />
@@ -47,7 +64,7 @@ const logo = category.data.certificationBody ? certificationLogos[category.data.
     <div class="min-w-0">
       <p class="eyebrow">{t("training.eyebrowLabel")}</p>
       <h1 class="mt-4 text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)]">
-        {category.data.name}
+        {category.data.heading ?? category.data.name}
       </h1>
       <p class="mt-4 max-w-2xl text-[length:var(--text-h4)] font-medium text-neutral-700">
         {category.data.tagline}
@@ -129,6 +146,50 @@ const logo = category.data.certificationBody ? certificationLogos[category.data.
     </div>
   </div>
 </Section>
+
+{
+  category.data.berlinHeading && category.data.berlinBody && (
+    <Section class="!py-10 sm:!py-12">
+      <div class="rounded-[var(--radius-card)] border border-l-4 border-neutral-200 border-l-lime bg-surface p-6 shadow-card sm:p-8">
+        <p class="eyebrow">{t("training.berlinEyebrow")}</p>
+        <h2 class="mt-3 text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)]">{category.data.berlinHeading}</h2>
+        <p class="mt-4 max-w-3xl text-[length:var(--text-body)] text-neutral-600">{category.data.berlinBody}</p>
+        {
+          berlinDates.length > 0 && (
+            <div class="mt-6 border-t border-neutral-200 pt-5">
+              <p class="text-[length:var(--text-small)] font-semibold">{t("training.berlinNextDates")}</p>
+              <ul class="mt-2 divide-y divide-neutral-100">
+                {berlinDates.map(({ session, course }) => (
+                  <li>
+                    <a
+                      href={registrationHref(session, prefix)}
+                      class="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-3 text-[length:var(--text-small)] transition-colors hover:text-neutral-600 sm:grid sm:grid-cols-[1fr_13rem_auto]"
+                    >
+                      <span class="font-semibold">{course.data.name}</span>
+                      <span class="flex items-center gap-2 text-neutral-600">
+                        {formatSessionDate(session, course, "long", locale)}
+                        <LanguageTag session={session} />
+                      </span>
+                      <span class="font-semibold">
+                        {t("schedule.register")} <span aria-hidden="true">&rarr;</span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={withSlash(`${prefix}/training?topic=${categorySlug}#schedule`)}
+                class="mt-3 inline-block text-[length:var(--text-small)] font-semibold text-ink"
+              >
+                {t("schedule.fullSchedule")} <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          )
+        }
+      </div>
+    </Section>
+  )
+}
 
 <Section
   eyebrow={`${courses.length} ${courses.length === 1 ? t("training.courseSingular") : t("training.coursePlural")}`}

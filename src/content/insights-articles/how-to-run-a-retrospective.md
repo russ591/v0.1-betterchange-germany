@@ -14,7 +14,7 @@ author: mogens-villadsen
 excerpt: Most retrospectives produce a list of actions nobody implements. The problem is usually not effort. It is structure. Here is a five-step approach that turns retrospectives from a ritual into a genuine improvement engine.
 featured: false
 imageUrl: /insights/how-to-run-a-retrospective.webp
-metaTitle: How to Run a Retrospective That Actually Changes Things | Better Chang
+metaTitle: "A Retrospective That Actually Changes Things"
 metaDescription: Most retrospectives produce a list of actions nobody implements. The problem is usually not effort. It is structure. Here is a five-step approach that...
 bodyHtml: |-
   <p>The retrospective is one of Scrum's five events and arguably the most important one for long-term team performance. It is also the event most commonly skimped on, rushed through, or quietly dropped when sprints get busy. This is understandable but counterproductive. The retrospective is precisely where the team builds the capacity to improve everything else.</p>

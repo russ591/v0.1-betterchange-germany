@@ -14,7 +14,7 @@ author: bent-myllerup
 excerpt: Agile has been declared dead more times than anyone can count. Yet its principles, adaptability, collaboration, and customer focus, are more relevant than ever.
 featured: false
 imageUrl: /insights/webinar-state-of-agile-a-brutally-honest-conversation.webp
-metaTitle: 'Webinar: State of Agile - A Brutally Honest Conversation | Better Chan'
+metaTitle: "State of Agile: A Brutally Honest Talk"
 metaDescription: Agile has been declared dead more times than anyone can count. Yet its principles, adaptability, collaboration, and customer focus, are more relevant...
 bodyHtml: |-
   <p>Agile has been declared dead more times than anyone can count. Yet its principles, adaptability, collaboration, and customer focus, are more relevant than ever. The problem isn’t Agile itself, but how it’s been misapplied, commercialised, and diluted by dogma, incompetence, and hype.</p>

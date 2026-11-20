@@ -1,5 +1,5 @@
 ---
-metaDescription: Better Change is a European network of practitioners, not a large consultancy. Training, coaching, consulting and facilitation, built around your actual situation.
+metaDescription: "A European network of practitioners, not a large consultancy. Training, coaching, consulting and facilitation built around your situation."
 heroEyebrow: What we do
 heroHeading: Real support, from people who've done the work
 heroBody: Better Change is a European network of practitioners, not a large consultancy. Training, coaching, consulting and facilitation, built around your actual situation.

@@ -13,7 +13,7 @@ author: jesper-orting
 excerpt: Employee resistance to SAFe and agile transformations is rarely about stubbornness or ignorance. It is a rational response to change that is poorly explained, inadequately supported, and often experienced as something done to people rather than with them.
 featured: false
 imageUrl: /insights/agile-mindset-culture-employee.webp
-metaTitle: 'When Employees Resist Agile: The Reasons Are More Rational Than You Th'
+metaTitle: "Why Employees Resist Agile: The Real Reasons"
 metaDescription: Employee resistance to SAFe and agile transformations is rarely about stubbornness or ignorance. It is a rational response to change that is poorly...
 bodyHtml: |-
   <p>It is tempting, when an agile transformation runs into resistance, to frame the problem as a people problem: people who do not understand the framework, who are attached to old ways of working, who are insufficiently committed to the change. This framing is rarely accurate and almost always counterproductive.</p>

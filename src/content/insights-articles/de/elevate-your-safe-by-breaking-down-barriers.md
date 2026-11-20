@@ -24,7 +24,8 @@ author: jesper-orting
 excerpt: "Auf dem Weg zu organisatorischer Agilität gilt das Scaled Agile Framework (SAFe®) vor allem als Fahrplan für Erfolg. Doch wenn Organisationen es nicht schaffen, echte funktionsübergreifende Teams zu entwickeln und hierarchische Barrieren abzubauen, bleibt das volle Potenzial ungenutzt."
 featured: false
 imageUrl: /insights/elevate-your-safe-by-breaking-down-barriers.webp
-metaDescription: "Auf dem Weg zu organisatorischer Agilität gilt das Scaled Agile Framework (SAFe®) vor allem als Fahrplan für Erfolg. Doch wenn Organisationen es nicht schaffen, echte funktionsübergreifende Teams zu entwickeln und hierarchische Barrieren abzubauen, bleibt das volle Potenzial ungenutzt."
+metaTitle: "SAFe stärken: Hierarchien abbauen"
+metaDescription: "SAFe entfaltet sein Potenzial nur mit echten funktionsübergreifenden Teams. Wie hierarchische Barrieren die Einführung bremsen und was hilft."
 bodyHtml: |-
   <h2>Auswirkung hierarchischer Grenzen auf die SAFe®-Einführung</h2>
 

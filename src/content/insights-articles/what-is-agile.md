@@ -12,7 +12,7 @@ author: mogens-villadsen
 excerpt: Agile is one of the most used and least understood terms in modern business. It is not a methodology, not a set of tools, and not a synonym for Scrum.
 featured: false
 imageUrl: /insights/what-is-agile.webp
-metaTitle: What Is Agile? Beyond the Buzzword | Better Change Consulting
+metaTitle: "What Is Agile? Beyond the Buzzword"
 metaDescription: Agile is one of the most used and least understood terms in modern business. It is not a methodology, not a set of tools, and not a synonym for Scrum.
 bodyHtml: |-
   <p>The word "agile" refers to the ability of a system to adapt and respond quickly to change. In the context of product development and organisational work, Agile (capitalised) refers to a philosophy and set of values that shape how teams approach complex, uncertain work.</p>

@@ -5,7 +5,7 @@
 # added in the draft's follow-up "New" table (small eyebrow labels missed in
 # the original extraction). Stat "value"s are short factual badges (not
 # prose) and stay identical to the English entry.
-metaDescription: "Better Change ist ein europäisches Netzwerk erfahrener Trainer:innen und Coaching-Praktiker:innen. Wir bieten Kanban-, Flight Levels- und Scrum-Training, Team- und Leadership-Coaching sowie organisatorische Transformation an, auf Englisch und Deutsch."
+metaDescription: "Ein europäisches Netzwerk von Trainer:innen und Coaches. Kanban-, Flight-Levels- und Scrum-Training, Coaching und Transformation, auf Englisch und Deutsch."
 heroEyebrow: "Training, Coaching & Consulting · Berlin & Europa"
 heroHeadingLead: "Wir helfen Organisationen,"
 heroHeadingTrail: "besser zu werden"

@@ -12,7 +12,7 @@ author: jan-b-olsen
 excerpt: A strategy sitting in a deck is an aspiration, not a plan. The Strategy Translation Canvas breaks strategic intent into specific, owned, measurable actions that connect to the work being done every day.
 featured: false
 imageUrl: /insights/the-strategy-translation-canvas-turning-vision-into-action.webp
-metaTitle: 'The Strategy Translation Canvas: A Tool for Closing the Gap Between Vi'
+metaTitle: "Strategy Translation Canvas: Vision to Action"
 metaDescription: A strategy sitting in a deck is an aspiration, not a plan. The Strategy Translation Canvas breaks strategic intent into specific, owned, measurable...
 bodyHtml: |-
   <p>Last month, a colleague threw up his hands in a meeting. "We've got this great strategy," he said, "but six months in and we can't seem to make it real." I have heard some version of this more times than I can count. The strategy is not the problem. The translation of strategy into execution is the problem, and it is almost always where the gap lives.</p>

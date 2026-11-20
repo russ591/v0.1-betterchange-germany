@@ -7,8 +7,9 @@
 # only its displayed text is translated, via translateLevel().
 # category/code/certification/formats/priceFrom/durationDays/sortOrder
 # stay identical to the English entry (language-neutral facts/lookup
-# keys). metaTitle/metaDescription aren't covered by this draft and stay
-# "[DE]" placeholder pending their own pass.
+# keys). metaTitle/metaDescription are German search copy from the SEO
+# pass (2026-11), not part of the translation draft; the length limits are
+# enforced by scripts/check-meta-lengths.mjs.
 name: 'Kanban System Improvement (KMP 2)'
 code: KMP2
 category: de/kanban
@@ -40,6 +41,6 @@ whatYoullLearn:
   - 'Wie eine Kultur datengetriebener Verbesserung aufgebaut wird, die über einzelne Teammitglieder hinaus Bestand hat'
 summary: 'Flow-Metriken, Cycle Time, Durchsatz und Work Item Age nutzen, um genau zu diagnostizieren, wo ein bestehendes Kanban-System an Grenzen stößt, und dann WIP-Limits und Regeln evidenzbasiert weiterentwickeln, statt zu raten. Vermittelt wird, wie ein Service Delivery Review durchgeführt wird, der Daten in produktive Stakeholder-Gespräche verwandelt, wie Monte-Carlo-Simulationen für probabilistische Prognosen genutzt werden, und wie Cumulative-Flow-Diagramme gelesen werden, um Probleme zu erkennen, bevor sie zu Krisen werden. Für KMP1-Absolvent:innen, deren Kanban-System schon eine Weile läuft und bereit für systematische, evolutionäre Verbesserung ist, die fortgeschrittene Zertifizierung der Kanban University.'
 sortOrder: 3
-metaTitle: '[DE] KMP2 Kanban System Improvement Training | Berlin & Online'
-metaDescription: '[DE] Kanban University certified KMP2 training in Berlin and online. Deepen your Kanban practice with advanced improvement techniques.'
+metaTitle: "KMP2 Kanban-Training in Berlin und online"
+metaDescription: "Kanban System Improvement (KMP2), zertifiziert von der Kanban University. Zwei Tage in Berlin oder vier halbe Tage online. Mit Flow-Metriken verbessern."
 ---

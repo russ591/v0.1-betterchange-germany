@@ -14,7 +14,7 @@ author: bent-myllerup
 excerpt: 'In a series of blog posts I am discussing the question: If it is not dead then what went wrong with Agile? Have you noticed the increasing numbers of Agile frameworks that have emerged over the past years?'
 featured: false
 imageUrl: /insights/agile-mishap-2-all-frameworks-are-wrong-but-mine.webp
-metaTitle: 'Agile Mishap #2: All frameworks are wrong but mine | Better Change Con'
+metaTitle: "Agile Mishap #2: Only My Framework Is Right"
 metaDescription: 'In a series of blog posts I am discussing the question: If it is not dead then what went wrong with Agile? Have you noticed the increasing numbers of...'
 bodyHtml: |-
   <p><em>In a series of blog posts I am discussing the question: If it is not dead then what went wrong with Agile? If you have not read the introduction blog post already (<a href="/insights/what-went-wrong-with-agile-an-honest-reckoning/">What went wrong with Agile?</a>) I suggest you go there first before continuing reading here.</em></p>

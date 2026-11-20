@@ -23,7 +23,8 @@ author: bent-myllerup
 excerpt: "Agile ist nicht tot. Aber es wurde stark missbraucht, zynisch vermarktet, und routinemäßig auf Weisen angewendet, die seinen eigenen Prinzipien widersprechen. Dieser Beitrag eröffnet eine Serie, die untersucht, was tatsächlich schiefging, und warum das wichtig ist."
 featured: false
 imageUrl: /insights/what-went-wrong-with-agile.webp
-metaDescription: "Agile ist nicht tot. Aber es wurde stark missbraucht, zynisch vermarktet, und routinemäßig auf Weisen angewendet, die seinen eigenen Prinzipien widersprechen. Dieser Beitrag eröffnet eine Serie, die untersucht, was tatsächlich schiefging, und warum das wichtig ist."
+metaTitle: "Was ging schief mit Agile? Eine Bilanz"
+metaDescription: "Agile ist nicht tot, wurde aber stark missbraucht und zynisch vermarktet. Auftakt einer Serie dazu, was schiefging und warum das wichtig ist."
 bodyHtml: |-
   <p>Eine wiederkehrende Behauptung auf LinkedIn lautet, Agile sei tot. Das ist Unsinn, aber die Art von Unsinn, die ein Signal enthält, das eine Untersuchung wert ist. Wer diese Behauptung aufstellt, bewirbt meist ein Nachfolge-Framework, was etwas über die eigenen Motive verrät. Es bedeutet nicht, dass die Symptome völlig falsch beschrieben werden.</p>
 

@@ -12,7 +12,7 @@ author: niels-verdonk
 excerpt: In the ever-evolving realm of business management, the amalgamation of Lean Thinking with Agile Product Development has become a catalyst for organizations striving to achieve operational excellence and deliver unparalleled value to their customers.
 featured: false
 imageUrl: /insights/the-synergy-of-lean-thinking-in-the-agile-landscape.webp
-metaTitle: The Synergy of Lean Thinking in the Agile Landscape | Better Change Co
+metaTitle: "Lean Thinking in the Agile Landscape"
 metaDescription: In the ever-evolving realm of business management, the amalgamation of Lean Thinking with Agile Product Development has become a catalyst for...
 bodyHtml: |-
   <p>In the ever-evolving realm of business management, the amalgamation of Lean Thinking with Agile Product Development has become a catalyst for organizations striving to achieve operational excellence and deliver unparalleled value to their customers. Originating from the Toyota Production System, Lean Thinking embodies a philosophy of continuous improvement, waste reduction, and customer-centric value delivery. When integrated with Agile principles, Lean Thinking fosters a holistic approach to product development, optimizing processes, and delivering value to customers.</p>

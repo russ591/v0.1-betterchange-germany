@@ -13,7 +13,7 @@ author: jesper-orting
 excerpt: In the pursuit of organisational agility, the Scaled Agile Framework (SAFe®) above all is thought to offer a roadmap for success. However, when organisations fail to cultivate true cross-functional teams and struggle to minimise hierarchical barriers.
 featured: false
 imageUrl: /insights/elevate-your-safe-by-breaking-down-barriers.webp
-metaTitle: Elevate Your SAFe® By Breaking Down Barriers | Better Change Consultin
+metaTitle: "Elevate Your SAFe® By Breaking Down Barriers"
 metaDescription: In the pursuit of organisational agility, the Scaled Agile Framework (SAFe®) above all is thought to offer a roadmap for success. However, when...
 bodyHtml: |-
   <h2>Impact of Hierarchical Boundaries on SAFe® Scaled Agile Framework Adoption</h2>

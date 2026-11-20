@@ -11,7 +11,7 @@ author: bent-myllerup
 excerpt: Do you often find yourself in situations where you're trying to influence an team's direction, only to be met with unpredictable outcomes? The world of Agile coaching is a complex and ever-changing landscape, and success can sometimes seem elusive.
 featured: false
 imageUrl: /insights/embrace-the-complexity-of-team-dynamics-with-the-plausibility-canvas.webp
-metaTitle: Embrace the complexity of team dynamics with the Plausibility Canvas |
+metaTitle: "Team Dynamics and the Plausibility Canvas"
 metaDescription: Do you often find yourself in situations where you're trying to influence an team's direction, only to be met with unpredictable outcomes? The world of...
 bodyHtml: |-
   <p>Do you often find yourself in situations where you're trying to influence an team's direction, only to be met with unpredictable outcomes? If so, you're not alone. The world of Agile coaching is a complex and ever-changing landscape, and success can sometimes seem elusive. But fear not, because we have a tool that can help you navigate this complexity and increase your chances of achieving your coaching goals. Welcome to the world of the Plausibility Canvas.</p>

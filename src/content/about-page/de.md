@@ -3,7 +3,7 @@
 # One em dash in the draft's first approach paragraph converted to a comma
 # per CLAUDE.md house style. teamBody's translation was added in a later
 # round of the same draft file.
-metaDescription: "Better Change ist ein europäisches Netzwerk aus Agile Coaches, Trainer:innen und Berater:innen, die es selbst gemacht haben und wissen, was zu tun ist, wenn sich die Realität nicht an das Drehbuch hält."
+metaDescription: "Ein europäisches Netzwerk aus Agile Coaches, Trainer:innen und Berater:innen mit Praxiserfahrung, die wissen, was zu tun ist, wenn Theorie nicht reicht."
 heroEyebrow: "Über Better Change"
 heroHeading: "Praktiker:innen, keine Theoretiker:innen"
 heroBody: "Better Change ist ein europäisches Netzwerk aus Agile Coaches, Trainer:innen und Berater:innen, die es selbst gemacht haben und wissen, was zu tun ist, wenn sich die Realität nicht an das Drehbuch hält."

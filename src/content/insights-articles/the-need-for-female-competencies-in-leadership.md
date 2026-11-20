@@ -12,7 +12,7 @@ author: bent-myllerup
 excerpt: 'Leadership selection has a persistent bias problem: we promote confidence and mistake it for competence. The traits that actually drive results, empathy, humility, clear communication, are more commonly found in women. That needs to change.'
 featured: true
 imageUrl: /insights/the-need-for-female-competencies-in-leadership.webp
-metaTitle: Why the Best Leaders Think Differently, and What We Can Learn from Fe
+metaTitle: "Female Competencies in Leadership"
 metaDescription: 'Leadership selection has a persistent bias problem: we promote confidence and mistake it for competence. The traits that actually drive results,...'
 bodyHtml: |-
   <p>There is a telling body of research, much of it assembled by organisational psychologist Tomas Chamorro-Premuzic, which points to an uncomfortable pattern in how we choose leaders. We consistently confuse confidence with competence. We select people who <em>project</em> authority and overlook people who actually have it. The result is a persistent over-representation of a particular type: assertive, self-promoting, and frequently wrong.</p>

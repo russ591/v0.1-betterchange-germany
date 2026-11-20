@@ -20,7 +20,8 @@ author: gregor-heidinger
 excerpt: "Agile-Methodik beginnt meist mit kleinen Teams, die sich auf Beiträge zum Projekt konzentrieren. Typischerweise entsteht schließlich der Bedarf an langfristigen, funktionsübergreifenden Teams."
 featured: false
 imageUrl: /insights/what-is-an-agile-release-train.webp
-metaDescription: "Agile-Methodik beginnt meist mit kleinen Teams, die sich auf Beiträge zum Projekt konzentrieren. Typischerweise entsteht schließlich der Bedarf an langfristigen, funktionsübergreifenden Teams."
+metaTitle: "Agile Release Train: Prinzipien und Rollen"
+metaDescription: "Ein Agile Release Train bündelt langfristige, funktionsübergreifende Teams für einen Wertstrom. Prinzipien, Rollen und warum er starke Teams braucht."
 bodyHtml: |-
   <p><a href="https://www.betterchange-consulting.com/resources/agile-methodology-and-frameworks/">Agile-Methodik</a> beginnt meist mit kleinen Teams, die sich auf Beiträge zum Projekt konzentrieren. Typischerweise entsteht schließlich der Bedarf an langfristigen, funktionsübergreifenden Teams, die sich auf die Lieferung von Wert in einem bestimmten Wertstrom oder einer Reihe von Wertströmen konzentrieren. Dann wird ein Agile Release Train etabliert. Agile Release Trains sind mehrere Agile-Teams, die auf ein gemeinsames Ziel ausgerichtet sind.</p>
 

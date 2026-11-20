@@ -19,7 +19,8 @@ author: jesper-orting
 excerpt: "Widerstand von Mitarbeitenden gegen SAFe und agile Transformationen hat selten mit Sturheit oder Unwissenheit zu tun. Es ist eine rationale Reaktion auf Wandel, der schlecht erklärt, unzureichend unterstützt und oft als etwas erlebt wird, das mit Menschen geschieht statt mit ihnen gemeinsam."
 featured: false
 imageUrl: /insights/agile-mindset-culture-employee.webp
-metaDescription: "Widerstand von Mitarbeitenden gegen SAFe und agile Transformationen hat selten mit Sturheit oder Unwissenheit zu tun. Es ist eine rationale Reaktion auf Wandel, der schlecht erklärt, unzureichend unterstützt und oft als etwas erlebt wird, das mit Menschen geschieht statt mit ihnen gemeinsam."
+metaTitle: "Widerstand gegen Agile: Gründe und Auswege"
+metaDescription: "Widerstand von Mitarbeitenden gegen agile Transformationen ist meist eine rationale Reaktion auf schlecht erklärten Wandel. Was wirklich hilft."
 bodyHtml: |-
   <p>Es ist verlockend, wenn eine agile Transformation auf Widerstand stößt, das Problem als Menschenproblem zu rahmen: Menschen, die das Framework nicht verstehen, die an alten Arbeitsweisen hängen, die dem Wandel nicht genug verpflichtet sind. Diese Rahmung ist selten zutreffend und fast immer kontraproduktiv.</p>
 

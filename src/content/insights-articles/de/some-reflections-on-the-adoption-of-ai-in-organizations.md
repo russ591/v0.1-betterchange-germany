@@ -20,7 +20,8 @@ author: javier-perez-fernandez
 excerpt: "Nach dem Besuch mehrerer KI-Adoptions-Events der Madrider Handelskammer blieb Javier Perez Fernandez ein durchgehendes Gefühl: Das wichtigste Gespräch fand nicht statt. Hier sind die Herausforderungen, die Organisationen seiner Ansicht nach ehrlich angehen müssen."
 featured: false
 imageUrl: /insights/some-reflections-on-the-adoption-of-ai-in-organizations.webp
-metaDescription: "Nach dem Besuch mehrerer KI-Adoptions-Events der Madrider Handelskammer blieb Javier Perez Fernandez ein durchgehendes Gefühl: Das wichtigste Gespräch fand nicht statt. Hier sind die Herausforderungen, die Organisationen seiner Ansicht nach ehrlich angehen müssen."
+metaTitle: "KI-Events in Madrid: Was ungesagt blieb"
+metaDescription: "Nach mehreren KI-Events der Madrider Handelskammer blieb ein Gefühl: Der schwierigste Teil der KI-Einführung wurde kaum besprochen."
 bodyHtml: |-
   <p>Die besuchten KI-Adoptions-Events waren größtenteils gut organisiert und wirklich interessant. Gute Vorträge, überzeugende Anwendungsfälle, spürbare Begeisterung über das Mögliche. Am Ende blieb bei den meisten dasselbe nagende Gefühl: Der schwierigste Teil der KI-Einführung wurde kaum thematisiert.</p>
 

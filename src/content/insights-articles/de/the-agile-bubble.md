@@ -24,7 +24,8 @@ author: bent-myllerup
 excerpt: "In einer Serie von Blogbeiträgen wird die Frage untersucht: Wenn Agile nicht tot ist, was ging dann schief? 2019 gab es die Gelegenheit, zwei Konferenzen hintereinander zu besuchen."
 featured: false
 imageUrl: /insights/the-agile-bubble.webp
-metaDescription: "In einer Serie von Blogbeiträgen wird die Frage untersucht: Wenn Agile nicht tot ist, was ging dann schief? 2019 gab es die Gelegenheit, zwei Konferenzen hintereinander zu besuchen."
+metaTitle: "Agile Mishap #3: Die Agile-Blase"
+metaDescription: "Die Agile-Blase: Warum die Agile-Community vor allem um sich selbst kreist, im Vergleich von Agile 2019 und der Academy of Management."
 bodyHtml: |-
   <p><em>In einer Serie von Blogbeiträgen wird die Frage untersucht: Wenn Agile nicht tot ist, was ging dann schief? Wer den einleitenden Beitrag (Was ging schief mit Agile?) noch nicht gelesen hat, sollte dort zuerst weiterlesen.</em></p>
 

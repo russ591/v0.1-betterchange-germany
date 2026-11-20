@@ -20,7 +20,8 @@ author: bent-myllerup
 excerpt: "In letzter Zeit gibt es ein bedauerliches Muster, Scrum Master zu entlassen, besonders in Finanzinstituten. An der Oberfläche mag das wie eine Kostensenkungsmaßnahme wirken."
 featured: false
 imageUrl: /insights/the-unseen-potential-of-scrum-masters-future-leaders-in-a-time-of-uncertainty.webp
-metaDescription: "In letzter Zeit gibt es ein bedauerliches Muster, Scrum Master zu entlassen, besonders in Finanzinstituten. An der Oberfläche mag das wie eine Kostensenkungsmaßnahme wirken."
+metaTitle: "Scrum Master als künftige Führungskräfte"
+metaDescription: "Scrum Master werden gerade in Finanzinstituten entlassen. Warum die Rolle mehr kann und Scrum Master künftige Führungskräfte sein können."
 bodyHtml: |-
   <h3>Einführung</h3>
 

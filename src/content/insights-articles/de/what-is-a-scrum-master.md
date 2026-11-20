@@ -25,7 +25,8 @@ author: niels-verdonk
 excerpt: "Der Scrum Master ist verantwortlich für die Wirksamkeit des Scrum-Teams, was ihn zu einem Coach, Change Agent und Hindernisbeseitiger macht, nicht zu einer Moderationsperson mit schickem Titel. Was die Rolle tatsächlich beinhaltet."
 featured: false
 imageUrl: /insights/what-is-a-scrum-master.webp
-metaDescription: "Der Scrum Master ist verantwortlich für die Wirksamkeit des Scrum-Teams, was ihn zu einem Coach, Change Agent und Hindernisbeseitiger macht, nicht zu einer Moderationsperson mit schickem Titel. Was die Rolle tatsächlich beinhaltet."
+metaTitle: "Was ist ein Scrum Master? Die Rolle erklärt"
+metaDescription: "Der Scrum Master ist für die Wirksamkeit des Scrum-Teams verantwortlich: Coach, Change Agent und Hindernisbeseitiger, nicht nur Moderation."
 bodyHtml: |-
   <p>Das häufigste Missverständnis über die Scrum-Master-Rolle ist, dass es dabei primär um Moderation geht. Moderation ist Teil der Aufgabe, ein wichtiger Teil, aber den Scrum Master auf eine moderierende Person zu reduzieren, verkennt, was die Accountability tatsächlich erfordert.</p>
 

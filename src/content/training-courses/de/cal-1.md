@@ -7,8 +7,9 @@
 # only its displayed text is translated, via translateLevel().
 # category/code/certification/formats/priceFrom/durationDays/sortOrder
 # stay identical to the English entry (language-neutral facts/lookup
-# keys). metaTitle/metaDescription aren't covered by this draft and stay
-# "[DE]" placeholder pending their own pass.
+# keys). metaTitle/metaDescription are German search copy from the SEO
+# pass (2026-11), not part of the translation draft; the length limits are
+# enforced by scripts/check-meta-lengths.mjs.
 name: 'Certified Agile Leader 1 (CAL-1)'
 code: CAL1
 category: de/leadership
@@ -40,6 +41,6 @@ whatYoullLearn:
   - 'Wie schwierige Gespräche mit Teams und anderen Führungskräften über Tempo, Qualität und Prioritäten geführt werden'
 summary: 'Verstehen, was agile Führung im täglichen Verhalten tatsächlich bedeutet, weit über Buzzwords hinaus, und wie das eigene Führungsverhalten bestimmt, ob die umgebenden agilen Teams erfolgreich sind oder still ins Stocken geraten. Vermittelt wird der Wechsel von der Verwaltung von Aufgaben und Ressourcen zur Befähigung von Menschen und Systemen, wie Bedingungen geschaffen werden, unter denen Teams sich wirklich selbst organisieren können, und wie erkannt wird, wenn die eigenen Führungsgewohnheiten die angestrebte Agilität untergraben. Für Führungskräfte, Manager:innen und Vorstände, die agile Teams sponsern oder mit ihnen arbeiten, die Basiszertifizierung der Scrum Alliance in agiler Führung.'
 sortOrder: 1
-metaTitle: '[DE] CAL-1 Certified Agile Leader Training | Better Change'
-metaDescription: '[DE] Scrum Alliance CAL-1 certified agile leadership training in Berlin and online. Build the leadership foundation for organisational agility.'
+metaTitle: "CAL-1 Agile Leadership, Berlin und online"
+metaDescription: "Certified Agile Leader 1 (CAL-1), Scrum-Alliance-zertifiziert. Zwei Tage in Berlin oder vier halbe Tage online. Führung für agile Teams wirksam gestalten."
 ---

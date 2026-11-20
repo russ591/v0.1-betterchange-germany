@@ -31,6 +31,6 @@ whatYoullLearn:
   - What the typical first steps look like when an organisation decides to adopt Flight Levels thinking
 summary: Get a clear, lightweight introduction to what Flight Levels is, where it came from, and the organisational problem it's actually designed to solve, the three levels of organisational agility, and what tends to go wrong at each one. It's designed as an entertaining, low-commitment way to explore the core ideas before committing to a deeper workshop, whether you're brand new to Flight Levels, preparing for FL2D or FL3D, or simply want to understand whether it applies to your own organisation. Self-paced and online, it's the prerequisite for every other Flight Levels course we run.
 sortOrder: 1
-metaTitle: FLIN Flight Levels Introduction | Self-Paced Online Course
-metaDescription: Start your Flight Levels journey with this self-paced online course. Learn the foundational concepts before tackling FL2D or FL3D. Enrol anytime.
+metaTitle: "FLIN Flight Levels Introduction, Online"
+metaDescription: "Learn the Flight Levels basics online at your own pace, in English or German. €99, or included when you book FL2D, FL3D or FLSA. Start any time."
 ---

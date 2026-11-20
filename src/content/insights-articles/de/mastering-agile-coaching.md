@@ -25,7 +25,8 @@ author: bent-myllerup
 excerpt: "Laut dem State of Agile Coaching Report 2021 haben nur 19 % der Menschen, die sich selbst als Agile Coach betrachten, eine Master-Level-Zertifizierung in diesem Bereich."
 featured: false
 imageUrl: /insights/mastering-agile-coaching.webp
-metaDescription: "Laut dem State of Agile Coaching Report 2021 haben nur 19 % der Menschen, die sich selbst als Agile Coach betrachten, eine Master-Level-Zertifizierung in diesem Bereich."
+metaTitle: "Agile Coach werden: Was Mastery erfordert"
+metaDescription: "Nur 19 % der Menschen, die sich Agile Coach nennen, haben laut State of Agile Coaching Report 2021 eine Master-Level-Zertifizierung. Was es braucht."
 bodyHtml: |-
   <p>Laut dem State of <a href="https://resources.scrumalliance.org/Article/state-agile-coaching-report">Agile Coaching Report 2021</a> haben nur 19 % der Menschen, die sich selbst als Agile Coach betrachten, eine Master-Level-Zertifizierung in diesem Bereich. Die Kompetenzen von Menschen lassen sich nicht blind anhand ihrer Abzeichensammlung bewerten, aber in diesen Zahlen steckt ein Körnchen Wahrheit. Es besteht ein potenzielles Risiko, den Ruf des Berufs Agile Coaching zu schädigen, wenn die Zahlen so niedrig sind wie angegeben.</p>
 

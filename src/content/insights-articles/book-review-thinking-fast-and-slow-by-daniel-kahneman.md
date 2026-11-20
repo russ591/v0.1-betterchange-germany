@@ -12,7 +12,7 @@ author: joanne-perold
 excerpt: Daniel Kahneman's Nobel Prize-winning work on human judgement has never been more relevant. In a world awash with data, AI, and algorithmic recommendations, understanding how our own thinking is wired, and where it reliably misleads us, is foundational.
 featured: false
 imageUrl: /insights/book-review-thinking-fast-and-slow-by-daniel-kahneman.webp
-metaTitle: 'Book Review: Thinking, Fast and Slow. Still the Most Useful Book Abou'
+metaTitle: "Book Review: Thinking, Fast and Slow"
 metaDescription: Daniel Kahneman's Nobel Prize-winning work on human judgement has never been more relevant. In a world awash with data, AI, and algorithmic...
 bodyHtml: |-
   <p>Daniel Kahneman passed away in 2024, but the work that earned him the Nobel Prize for Economics in 2002, conducted with his long-time collaborator Amos Tversky, has not aged a day. <em>Thinking, Fast and Slow</em> remains the most thorough, readable account of how human decision-making actually works, as opposed to how we like to think it works.</p>

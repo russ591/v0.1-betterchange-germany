@@ -23,7 +23,8 @@ author: giuseppe-de-simone
 excerpt: "Wie sieht Wachstum als Führungskraft von innen tatsächlich aus? Giuseppe De Simone spricht mit Maja Lovrenčić, Coach und Führungskraft bei Avery Dennison, über den Wechsel vom Feuerlöschen zum Gestalten."
 featured: false
 imageUrl: /insights/what-happens-when-you-invest-in-your-leadership-a-conversation-with-maja-lovrencic.webp
-metaDescription: "Wie sieht Wachstum als Führungskraft von innen tatsächlich aus? Giuseppe De Simone spricht mit Maja Lovrenčić, Coach und Führungskraft bei Avery Dennison, über den Wechsel vom Feuerlöschen zum Gestalten."
+metaTitle: "In Führung investieren: Maja Lovrenčić"
+metaDescription: "Giuseppe De Simone im Gespräch mit Maja Lovrenčić von Avery Dennison: Wie sich Wachstum als Führungskraft anfühlt, vom Feuerlöschen zum Gestalten."
 bodyHtml: |-
   <h2>Wie sieht Wachstum als Führungskraft von innen tatsächlich aus?</h2>
   <p>Maja Lovrenčić ist Coach und Führungskraft bei Avery Dennison.</p>

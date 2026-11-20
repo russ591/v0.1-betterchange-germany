@@ -12,7 +12,7 @@ author: mogens-villadsen
 excerpt: Story points are assigned to user stories or backlog items, which are small, manageable pieces of work that the team commits to completing within a sprint.
 featured: false
 imageUrl: /insights/what-is-scrum-velocity.webp
-metaTitle: What is Scrum Velocity? | Better Change Consulting
+metaTitle: "What is Scrum Velocity?"
 metaDescription: Story points are assigned to user stories or backlog items, which are small, manageable pieces of work that the team commits to completing within a sprint.
 bodyHtml: |-
   <p>Story points are assigned to user stories or backlog items, which are small, manageable pieces of work that the team commits to completing within a sprint. Each story point represents a relative measure of complexity and effort required to complete a user story, rather than an absolute measure of time.</p>

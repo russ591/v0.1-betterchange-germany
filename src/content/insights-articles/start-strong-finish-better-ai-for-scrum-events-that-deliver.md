@@ -15,8 +15,8 @@ author: giuseppe-de-simone
 excerpt: Tired of sprints that start slow or end without impact? This webinar with Giuseppe De Simone and Gregory Keegan shows how AI can transform your sprint planning, retrospectives, and coaching conversations.
 featured: false
 imageUrl: /insights/start-strong-finish-better-ai-for-scrum-events-that-deliver.webp
-metaTitle: 'Webinar Recording: Start Strong, Finish Better: AI for Scrum Events That Deliver'
-metaDescription: Tired of sprints that start slow or end without impact? This webinar shows how AI can transform your sprint planning, retrospectives, and coaching conversations.
+metaTitle: "AI for Scrum Events That Deliver"
+metaDescription: "Sprints that start slow or end without impact? A webinar on using AI in sprint planning, retrospectives and coaching conversations."
 bodyHtml: |-
   <p><strong>Tired of sprints that start slow or end without impact?</strong> In this webinar, we cut through the hype and show you how AI can transform your sprint planning, retrospectives, and coaching conversations. Watch the recording to explore:</p>
   <ul>

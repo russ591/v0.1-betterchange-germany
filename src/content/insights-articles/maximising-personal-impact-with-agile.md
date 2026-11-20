@@ -12,7 +12,7 @@ author: mogens-villadsen
 excerpt: Most people manage their careers the way organisations used to manage projects, long planning cycles, limited feedback, changes discovered late. Agile thinking applied to personal development fixes those same weaknesses, with better results.
 featured: false
 imageUrl: /insights/maximising-personal-impact-with-agile.webp
-metaTitle: Applying Agile Thinking to Your Own Career (It Works Better Than You'd
+metaTitle: "Applying Agile Thinking to Your Own Career"
 metaDescription: Most people manage their careers the way organisations used to manage projects, long planning cycles, limited feedback, changes discovered late. Agile...
 bodyHtml: |-
   <p>Most people manage their careers the way organisations used to manage projects: set a plan at the start of the year, work toward it for twelve months, review at the end, and repeat. The approach has the same weaknesses that made waterfall project management unpopular in software: it optimises for executing a plan rather than for learning and adapting, and it discovers errors, wrong direction, wrong timing, wrong assumptions, expensively late.</p>

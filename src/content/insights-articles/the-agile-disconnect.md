@@ -11,7 +11,7 @@ author: jesper-orting
 excerpt: At Better Change, we understand the immense potential of the Scaled Agile Framework (SAFe®) to empower large organisations on their journey towards business agility. Yet, a critical factor often overlooked is leadership's active promotion and embodiment of Agile principles.
 featured: false
 imageUrl: /insights/the-agile-disconnect.webp
-metaTitle: The Agile Disconnect | Better Change Consulting
+metaTitle: "The Agile Disconnect"
 metaDescription: At Better Change, we understand the immense potential of the Scaled Agile Framework (SAFe®) to empower large organisations on their journey towards...
 bodyHtml: |-
   <h2>Elevate Your SAFe® and Start <a href="https://www.betterchange-consulting.com/leadership/agile-leadership-the-vital-role-of-sensemaking-integrity-presence-and-authenticity/">Leading by Example</a> for <a href="http://www.scaledagileframework.com">SAFe®</a> Success</h2>

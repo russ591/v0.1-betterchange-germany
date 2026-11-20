@@ -12,7 +12,7 @@ author: joanne-perold
 excerpt: Alyssa is brilliant, driven, and has built a successful software company. She is also quietly running her team into the ground. Her story illustrates what Goleman's research on leadership styles has shown for decades.
 featured: false
 imageUrl: /insights/the-pitfalls-of-inappropriate-leadership-styles.webp
-metaTitle: 'The Pacesetter Trap: What Happens When One Leadership Style Runs Every'
+metaTitle: "The Pacesetter Trap in Leadership"
 metaDescription: Alyssa is brilliant, driven, and has built a successful software company. She is also quietly running her team into the ground. Her story illustrates...
 bodyHtml: |-
   <p>Alyssa is the founder and managing director of a software company specialising in HR and payroll solutions. She works harder than anyone else in the building. During critical project phases she is in before anyone arrives and out after everyone has left. She sets an extraordinary standard by example and expects the team to match it.</p>

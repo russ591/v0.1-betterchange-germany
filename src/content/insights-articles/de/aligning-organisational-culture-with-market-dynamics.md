@@ -24,7 +24,8 @@ author: garbrand-van-der-molen
 excerpt: "Die Kultur, die frühe Anwender:innen gewinnt, ist oft unvereinbar mit dem, was der Mainstream verlangt. Geoffrey Moore beschrieb die Marktkluft. Dieser Beitrag untersucht den kulturellen Wandel, der nötig ist, um sie zu überqueren, und warum Führungskräfte ihn oft zu spät bemerken."
 featured: false
 imageUrl: /insights/aligning-organisational-culture-with-market-dynamics.webp
-metaDescription: "Die Kultur, die frühe Anwender:innen gewinnt, ist oft unvereinbar mit dem, was der Mainstream verlangt. Geoffrey Moore beschrieb die Marktkluft. Dieser Beitrag untersucht den kulturellen Wandel, der nötig ist, um sie zu überqueren, und warum Führungskräfte ihn oft zu spät bemerken."
+metaTitle: "Kultur im Marktwandel: Die Kluft überqueren"
+metaDescription: "Die Kultur, die frühe Anwender:innen gewinnt, passt oft nicht zum Mainstream. Welcher kulturelle Wandel nötig ist, um die Marktkluft zu überqueren."
 bodyHtml: |-
   <p>Geoffrey Moores <em>Crossing the Chasm</em> beschrieb eine Lücke im Produktadoptionszyklus, an der viele ansonsten vielversprechende Produkte scheitern: die Distanz zwischen frühen Anwender:innen, die raue Kanten tolerieren und Neuheit schätzen, und dem Mainstream-Markt, der Verlässlichkeit, Integration und Vorhersehbarkeit schätzt. Die Erkenntnis war tiefgreifend und hat sich gut gehalten.</p>
 

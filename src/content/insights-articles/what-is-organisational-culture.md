@@ -12,7 +12,7 @@ author: garbrand-van-der-molen
 excerpt: Organisational culture encompasses the shared values, beliefs, and practices that define how individuals within an organization interact and work together. It reflects the company's identity, influences decision-making, and shapes employee behaviour.
 featured: true
 imageUrl: /insights/what-is-organisational-culture.webp
-metaTitle: What is Organisational Culture? | Better Change Consulting
+metaTitle: "What is Organisational Culture?"
 metaDescription: Organisational culture encompasses the shared values, beliefs, and practices that define how individuals within an organization interact and work...
 bodyHtml: |-
   <p>Organisational culture encompasses the shared values, beliefs, and practices that define how individuals within an organization interact and work together. It reflects the company's identity, influences decision-making, and shapes employee behaviour.</p>

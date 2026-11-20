@@ -25,7 +25,8 @@ author: bent-myllerup
 excerpt: "Synergie ist die Magie, die eine Gruppe von Individuen in ein leistungsstarkes Team verwandelt. Sie entspringt dem gemeinsamen Ziel oder Zweck, der Teammitglieder verbindet."
 featured: false
 imageUrl: /insights/from-trust-to-triumph-through-the-market-of-skills.webp
-metaDescription: "Synergie ist die Magie, die eine Gruppe von Individuen in ein leistungsstarkes Team verwandelt. Sie entspringt dem gemeinsamen Ziel oder Zweck, der Teammitglieder verbindet."
+metaTitle: "Team-Synergie: Dysfunktionen überwinden"
+metaDescription: "Wie aus Individuen ein leistungsstarkes Team wird: Team-Synergie, Dysfunktionen angehen und Vertrauen aufbauen, bis zum Market of Skills."
 bodyHtml: |-
   <h2><strong>Team-Synergie: Das Fundament des Erfolgs</strong></h2>
 

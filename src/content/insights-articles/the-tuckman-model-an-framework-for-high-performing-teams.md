@@ -14,7 +14,7 @@ author: niels-verdonk
 excerpt: Bruce Tuckman's model of team development is more than fifty years old and still more useful than most of what has replaced it. Here is what the four stages actually mean, and how to navigate each of them.
 featured: false
 imageUrl: /insights/the-tuckman-model-an-framework-for-high-performing-teams.webp
-metaTitle: 'Forming, Storming, Norming, Performing: Tuckman''s Map Through Team Dev'
+metaTitle: "Forming, Storming, Norming, Performing"
 metaDescription: Bruce Tuckman's model of team development is more than fifty years old and still more useful than most of what has replaced it. Here is what the four...
 bodyHtml: |-
   <p>In 1965, psychologist Bruce Tuckman published a paper reviewing research on small group behaviour and proposed that teams consistently move through four stages of development. He called them Forming, Storming, Norming, and Performing. Twelve years later he added a fifth, Adjourning, to account for what happens when a team's work is complete.</p>

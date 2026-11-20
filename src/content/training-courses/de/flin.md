@@ -6,9 +6,7 @@
 # (used by src/data/levelIcons.ts for icons/pill colours) -- only its
 # displayed text is translated, via translateLevel(). category/code/
 # certification/formats/priceFrom/durationDays/sortOrder stay identical to
-# the English entry (language-neutral facts/lookup keys). metaTitle/
-# metaDescription aren't covered by this draft and stay "[DE]" placeholder
-# pending their own pass.
+# the English entry (language-neutral facts/lookup keys). metaTitle/metaDescription are German search copy (SEO pass, 2026-11).
 name: 'Flight Levels Introduction (FLIN)'
 code: FLIN
 category: de/flight-levels
@@ -40,6 +38,6 @@ whatYoullLearn:
   - 'Wie typische erste Schritte aussehen, wenn eine Organisation sich für Flight-Levels-Denken entscheidet'
 summary: 'Klare, leicht zugängliche Einführung in Flight Levels, was es ist, woher es kommt, welches organisatorische Problem es tatsächlich lösen soll, die drei Ebenen organisatorischer Agilität und was auf jeder davon typischerweise schiefläuft. Der Kurs ist als unterhaltsamer, risikoarmer Einstieg gedacht, um die Kernideen zu erkunden, bevor man sich auf einen tieferen Workshop einlässt, egal ob man ganz neu bei Flight Levels ist, sich auf FL2D oder FL3D vorbereitet oder einfach verstehen möchte, ob es für die eigene Organisation relevant ist. Selbstlernkurs, online, und die Voraussetzung für jeden weiteren Flight-Levels-Kurs.'
 sortOrder: 1
-metaTitle: '[DE] FLIN Flight Levels Introduction | Self-Paced Online Course'
-metaDescription: '[DE] Start your Flight Levels journey with this self-paced online course. Learn the foundational concepts before tackling FL2D or FL3D. Enrol anytime.'
+metaTitle: "FLIN Flight Levels Einführung, online"
+metaDescription: "Flight-Levels-Grundlagen online im eigenen Tempo, auf Deutsch oder Englisch. €99, bei Buchung von FL2D, FL3D oder FLSA inklusive. Start jederzeit."
 ---

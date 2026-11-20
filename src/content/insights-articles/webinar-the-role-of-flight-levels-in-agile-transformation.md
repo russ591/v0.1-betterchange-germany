@@ -15,7 +15,7 @@ author: konrad-pogorzala
 excerpt: In this recorded webinar, Konrad Pogorzala shows how Flight Levels create alignment and transparency across organisational levels, from operational teams to executive leadership. Practical, case-study-grounded, and worth your time.
 featured: false
 imageUrl: /insights/webinar-the-role-of-flight-levels-in-agile-transformation.webp
-metaTitle: 'Webinar Recording: Flight Levels in Action, Konrad Pogorzala at Agile'
+metaTitle: "Flight Levels in Action: Konrad Pogorzala"
 metaDescription: In this recorded webinar, Konrad Pogorzala shows how Flight Levels create alignment and transparency across organisational levels, from operational...
 bodyHtml: |-
   <p>Flight Levels is often described in abstract terms, a thinking model, a coordination framework, a way of connecting strategy with execution. In this webinar, hosted by Agile Boston, Konrad Pogorzala brings it down to earth.</p>

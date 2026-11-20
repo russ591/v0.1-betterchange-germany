@@ -7,8 +7,9 @@
 # only its displayed text is translated, via translateLevel().
 # category/code/certification/formats/priceFrom/durationDays/sortOrder
 # stay identical to the English entry (language-neutral facts/lookup
-# keys). metaTitle/metaDescription aren't covered by this draft and stay
-# "[DE]" placeholder pending their own pass.
+# keys). metaTitle/metaDescription are German search copy from the SEO
+# pass (2026-11), not part of the translation draft; the length limits are
+# enforced by scripts/check-meta-lengths.mjs.
 name: 'Enterprise Scale Kanban (ESK)'
 code: ESK
 category: de/kanban
@@ -40,6 +41,6 @@ whatYoullLearn:
   - 'Wie unternehmensweites Kanban-Denken mit Flight-Levels-Systemdesign verbunden wird'
 summary: 'Ein Kanban-System gestalten, das mehrere Teams, Abteilungen und Wertströme umfasst, und den Fluss strategischer Arbeit von der Idee bis zur Umsetzung managen, ohne einzelnen Teams unterwegs schweren Prozess aufzuzwingen. Vermittelt wird Portfolio Kanban, wie Flight-Levels-Denken Strategie, Koordination und operative Umsetzung verbindet, und wie Portfolio-Reviews durchgeführt werden, die echte Entscheidungen statt Status-Theater hervorbringen. Für Führungskräfte und KMP2-Absolvent:innen, die bereit sind, Kanban-Prinzipien auf Portfolio- und Unternehmensebene anzuwenden, die Zertifizierung der Kanban University für flussbasierte Skalierung.'
 sortOrder: 4
-metaTitle: '[DE] Enterprise Scale Kanban (ESK) Training | Berlin & Online'
-metaDescription: '[DE] Enterprise Scale Kanban training in Berlin and online. Apply Kanban portfolio thinking across your organisation with Kanban University certification.'
+metaTitle: "Enterprise Scale Kanban (ESK) Training"
+metaDescription: "Enterprise Scale Kanban (ESK), zertifiziert von der Kanban University. Zwei Tage in Präsenz oder vier halbe Tage online. Kanban teamübergreifend skalieren."
 ---

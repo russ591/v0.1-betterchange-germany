@@ -19,7 +19,8 @@ author: bent-myllerup
 excerpt: "Eine offene Vorbemerkung: Bent Myllerup ist Certified Scrum Trainer und zertifiziert seit zwölf Jahren Menschen in Agile. Das macht diese Kritik an der Zertifizierungsbranche unbequemer zu schreiben und lesenswerter zugleich."
 featured: false
 imageUrl: /insights/agile-mishap-5-the-certification-circus-reflecting-on-the-agile-accreditation-landscape.webp
-metaDescription: "Eine offene Vorbemerkung: Bent Myllerup ist Certified Scrum Trainer und zertifiziert seit zwölf Jahren Menschen in Agile. Das macht diese Kritik an der Zertifizierungsbranche unbequemer zu schreiben und lesenswerter zugleich."
+metaTitle: "Agile Mishap #5: Der Zertifizierungszirkus"
+metaDescription: "Ein Certified Scrum Trainer kritisiert offen die Zertifizierungsbranche: Wo die Idee vernünftig war und wo der Markt sie verzerrt hat."
 bodyHtml: |-
   <p>Vorab zur Transparenz: Der Autor ist Certified Scrum Trainer. Seit zwölf Jahren gehört das Zertifizieren von Menschen in agilen Praktiken zum eigenen Geschäft. Es steht also eigenes Interesse auf dem Spiel, genau deshalb fühlt sich der Autor berechtigt, und verpflichtet, einiges davon offen auszusprechen.</p>
 

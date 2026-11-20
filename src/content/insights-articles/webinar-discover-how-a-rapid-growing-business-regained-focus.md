@@ -15,7 +15,7 @@ author: russell-hill
 excerpt: In this webinar our fellow, Russell Hill shares the journey of an online legal services company that experienced a major outage - a 'black week' - due to rapid growth and technical debt.
 featured: false
 imageUrl: /insights/webinar-discover-how-a-rapid-growing-business-regained-focus.webp
-metaTitle: 'Webinar: Discover How a Rapid Growing Business Regained Focus | Better'
+metaTitle: "How a Fast-Growing Business Regained Focus"
 metaDescription: In this webinar our fellow, Russell Hill shares the journey of an online legal services company that experienced a major outage - a 'black week' - due...
 bodyHtml: |-
   <p dir="auto">In this webinar our fellow, Russell Hill shares the journey of an online legal services company that experienced a major outage - a 'black week' - due to rapid growth and technical debt. Through a series of foundational workshops and visualisation techniques, the company was able to enhance transparency, improve coordination, and reduce outages to virtually zero within a few months.</p>

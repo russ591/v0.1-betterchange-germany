@@ -24,7 +24,8 @@ author: niels-verdonk
 excerpt: "Eine WhatsApp-Nachricht, die zählt, wie lange schon gewartet wurde, statt wie lange noch zu warten ist. Ein kleines, aufschlussreiches Beispiel dafür, was passiert, wenn Entwickler:innen genau das bauen, was spezifiziert wurde, und die Spezifikation verfehlte, was tatsächlich gebraucht wurde."
 featured: false
 imageUrl: /insights/miscommunication-in-software-specifications.webp
-metaDescription: "Eine WhatsApp-Nachricht, die zählt, wie lange schon gewartet wurde, statt wie lange noch zu warten ist. Ein kleines, aufschlussreiches Beispiel dafür, was passiert, wenn Entwickler:innen genau das bauen, was spezifiziert wurde, und die Spezifikation verfehlte, was tatsächlich gebraucht wurde."
+metaTitle: "User Stories: Missverständnisse vermeiden"
+metaDescription: "Wenn Entwickler:innen genau bauen, was spezifiziert wurde, und die Spezifikation verfehlt, was gebraucht wird: wie bessere User Stories helfen."
 bodyHtml: |-
   <p>Ein Kunde kontaktiert den Support per WhatsApp. Während er darauf wartet, mit einem Menschen verbunden zu werden, erhält er eine Reihe von Nachrichten mit Updates zu seiner Wartezeit. Die Nachrichten lauten: "Sie warten seit 1 Minute." Dann "Sie warten seit 2 Minuten." Dann "Sie warten seit 3 Minuten."</p>
 

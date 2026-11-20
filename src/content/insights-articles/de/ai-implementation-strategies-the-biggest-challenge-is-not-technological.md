@@ -20,7 +20,8 @@ author: javier-perez-fernandez
 excerpt: "Die meisten Organisationen behandeln die KI-Einführung als technisches Problem. Dieser Rahmen garantiert fast zwangsläufig begrenzte Ergebnisse. Ob eine Initiative gelingt, hängt weit mehr davon ab, wie Menschen mit Unsicherheit umgehen, als von der Qualität der Technologie."
 featured: false
 imageUrl: /insights/ai-implementation-strategies-the-biggest-challenge-is-not-technological.webp
-metaDescription: "Die meisten Organisationen behandeln die KI-Einführung als technisches Problem. Dieser Rahmen garantiert fast zwangsläufig begrenzte Ergebnisse. Ob eine Initiative gelingt, hängt weit mehr davon ab, wie Menschen mit Unsicherheit umgehen, als von der Qualität der Technologie."
+metaTitle: "KI-Einführung: Die Hürde ist die Kultur"
+metaDescription: "Die meisten Organisationen behandeln KI-Einführung als Technikproblem. Ob sie gelingt, hängt mehr vom Umgang mit Unsicherheit ab als von der Technologie."
 bodyHtml: |-
   <p>Dies ist eine Perspektive, die aus direkter Erfahrung entstanden ist, nicht aus Theorie. Nach der Arbeit mit Organisationen in verschiedenen Phasen der KI-Einführung zeigt sich immer wieder dasselbe Muster: Die technischen Herausforderungen werden gelöst. Die menschlichen nicht.</p>
 

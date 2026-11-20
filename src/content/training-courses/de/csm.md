@@ -7,8 +7,9 @@
 # only its displayed text is translated, via translateLevel().
 # category/code/certification/formats/priceFrom/durationDays/sortOrder
 # stay identical to the English entry (language-neutral facts/lookup
-# keys). metaTitle/metaDescription aren't covered by this draft and stay
-# "[DE]" placeholder pending their own pass.
+# keys). metaTitle/metaDescription are German search copy from the SEO
+# pass (2026-11), not part of the translation draft; the length limits are
+# enforced by scripts/check-meta-lengths.mjs.
 name: 'Certified Scrum Master (CSM)'
 code: CSM
 category: de/scrum
@@ -40,6 +41,6 @@ whatYoullLearn:
   - 'Was einen großartigen Scrum Master von jemandem unterscheidet, der nur die Zeremonien durchführt'
 summary: 'Eine solide Grundlage im Scrum-Framework und im vollen Umfang der Scrum-Master-Rolle erhalten, Servant Leadership, Coaching und das Beseitigen von Hindernissen, nicht nur das Durchführen der Zeremonien. Vermittelt wird, wie effektive Sprints, Reviews, Retrospektiven und Plannings moderiert werden, wie der Fokus des Teams geschützt wird, und wie Teams durch die frühen Phasen der Scrum-Einführung gecoacht werden. Egal ob neu in der Rolle, aus traditioneller Umsetzung kommend, oder bisher informell Scrum praktizierend, CSM ist die weltweit anerkannteste Scrum-Zertifizierung und der Standardeinstieg in die Scrum-Master-Laufbahn.'
 sortOrder: 1
-metaTitle: '[DE] CSM Certified Scrum Master Training | Berlin & Online'
-metaDescription: '[DE] Scrum Alliance certified CSM training. Become a Certified Scrum Master in 2 days. Online and in-person options with experienced trainers.'
+metaTitle: "CSM Certified Scrum Master Training"
+metaDescription: "Certified Scrum Master (CSM), Scrum-Alliance-zertifiziert. Zwei Tage in Präsenz oder vier halbe Tage online. Scrum und die Scrum-Master-Rolle verstehen."
 ---

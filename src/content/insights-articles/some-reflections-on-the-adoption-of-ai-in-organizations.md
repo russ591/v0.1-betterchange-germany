@@ -13,7 +13,7 @@ author: javier-perez-fernandez
 excerpt: 'After attending several AI adoption events organised by the Madrid Chamber of Commerce, Javier Perez Fernandez left with a consistent feeling: the most important conversation was not happening. Here are the challenges he believes organisations need to address honestly.'
 featured: false
 imageUrl: /insights/some-reflections-on-the-adoption-of-ai-in-organizations.webp
-metaTitle: What the AI Adoption Events in Madrid Didn't Talk About | Better Chang
+metaTitle: "AI Adoption in Madrid: What Wasn't Said"
 metaDescription: 'After attending several AI adoption events organised by the Madrid Chamber of Commerce, Javier Perez Fernandez left with a consistent feeling: the most...'
 bodyHtml: |-
   <p>The AI adoption events I attended were, in most respects, well-organised and genuinely interesting. Good presentations, compelling use cases, enthusiastic energy about what is possible. I left most of them with the same nagging feeling: the hardest part of AI adoption was barely being discussed.</p>

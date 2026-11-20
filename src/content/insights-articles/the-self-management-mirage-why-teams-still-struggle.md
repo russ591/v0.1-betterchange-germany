@@ -11,7 +11,7 @@ author: jesper-orting
 excerpt: The allure of self-managing teams is undeniable. The promise of empowered, autonomous teams driving innovation and efficiency is a siren song for many organisations. However, the reality can be far less enchanting.
 featured: false
 imageUrl: /insights/the-self-management-mirage-why-teams-still-struggle.webp
-metaTitle: 'The Self-Management Mirage: Why Teams Still Struggle | Better Change C'
+metaTitle: "The Self-Management Mirage in Teams"
 metaDescription: The allure of self-managing teams is undeniable. The promise of empowered, autonomous teams driving innovation and efficiency is a siren song for many...
 bodyHtml: |-
   <p>The allure of self-managing teams is undeniable. The promise of empowered, autonomous teams driving innovation and efficiency is a siren song for many organisations. However, the reality can be far less enchanting. Many companies struggle to achieve the promised nirvana, leaving leaders grappling with the question: why aren't our self-managing teams living up to the hype?</p>
