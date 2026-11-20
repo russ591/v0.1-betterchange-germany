@@ -23,7 +23,7 @@ import { registrationHref, registrationLinkAttrs } from "@/lib/registrationLink"
 import { toPathSegment } from "@/lib/urlSlug";
 import TrainerChip from "@/components/TrainerChip.astro";
 import { baseSlug } from "@/lib/i18n";
-import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { resolveLocale, useTranslations, withSlash } from "@/i18n/utils";
 import type { TrainerEntry } from "@/lib/trainers";
 import { nextAvailableSession } from "@/lib/nextSession";
 
@@ -97,8 +97,8 @@ const scheduledFormats = new Set(upcoming.map((s) => s.data.format));
 
 <Breadcrumbs
   items={[
-    { label: t("nav.training"), href: `${prefix}/training` },
-    { label: category.data.name, href: `${prefix}/training/${categorySlug}` },
+    { label: t("nav.training"), href: withSlash(`${prefix}/training`) },
+    { label: category.data.name, href: withSlash(`${prefix}/training/${categorySlug}`) },
     { label: course.data.name },
   ]}
 />
@@ -208,7 +208,7 @@ const scheduledFormats = new Set(upcoming.map((s) => s.data.format));
             <div class="p-6 text-center">
               <p class="text-[length:var(--text-small)] text-neutral-600">{t("schedule.noSessionsForCourse")}</p>
               <a
-                href={`${prefix}/contact`}
+                href={withSlash(`${prefix}/contact`)}
                 class="mt-4 inline-flex items-center justify-center gap-1.5 rounded-[var(--radius-control)] bg-ink px-4 py-2.5 text-sm font-semibold text-surface transition-colors hover:bg-neutral-800"
               >
                 {t("schedule.getInTouch")} <span aria-hidden="true">→</span>
@@ -376,7 +376,7 @@ const scheduledFormats = new Set(upcoming.map((s) => s.data.format));
               </div>
             </div>
           )}
-          <a href={`${prefix}/training#schedule`} class="text-center text-[length:var(--text-small)] font-semibold text-ink underline">
+          <a href={withSlash(`${prefix}/training#schedule`)} class="text-center text-[length:var(--text-small)] font-semibold text-ink underline">
             {t("schedule.seeAllScheduled")} →
           </a>
         </div>
@@ -424,7 +424,7 @@ const scheduledFormats = new Set(upcoming.map((s) => s.data.format));
             </div>
           )}
           <a
-            href={`${prefix}/training/${categorySlug}/${courseSlug}/self-paced`}
+            href={withSlash(`${prefix}/training/${categorySlug}/${courseSlug}/self-paced`)}
             class="text-center text-[length:var(--text-small)] font-semibold text-ink underline"
           >
             {t("course.findOutMore")} →
@@ -459,7 +459,7 @@ const scheduledFormats = new Set(upcoming.map((s) => s.data.format));
                     {!isScheduled && ` ${t("course.onRequestNote")}`}
                   </p>
                   {!isScheduled && (
-                    <a href={`${prefix}/contact`} class="text-[length:var(--text-small)] font-semibold text-ink underline">
+                    <a href={withSlash(`${prefix}/contact`)} class="text-[length:var(--text-small)] font-semibold text-ink underline">
                       {t("schedule.getInTouch")} →
                     </a>
                   )}
@@ -485,7 +485,7 @@ const scheduledFormats = new Set(upcoming.map((s) => s.data.format));
   {
     course.data.formats.length > 1 && (
       <p class="mt-8 text-center text-[length:var(--text-small)] text-neutral-500">
-        {t("course.notSureFormat")} <a href={`${prefix}/contact`} class="font-semibold text-ink underline">{t("schedule.getInTouch")}</a>{" "}
+        {t("course.notSureFormat")} <a href={withSlash(`${prefix}/contact`)} class="font-semibold text-ink underline">{t("schedule.getInTouch")}</a>{" "}
         {t("course.notSureFormatTrailing")}
       </p>
     )
@@ -510,5 +510,5 @@ const scheduledFormats = new Set(upcoming.map((s) => s.data.format));
   tone="light"
   heading={`${t("cta.moreCoursesInPrefix")} ${category.data.name}`}
   ctaLabel={t("cta.viewDiscipline")}
-  ctaHref={`${prefix}/training/${categorySlug}`}
+  ctaHref={withSlash(`${prefix}/training/${categorySlug}`)}
 />

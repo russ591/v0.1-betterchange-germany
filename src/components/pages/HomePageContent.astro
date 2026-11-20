@@ -12,7 +12,7 @@ import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
 import CTABanner from "@/components/CTABanner.astro";
 import { getServices, serviceIcons } from "@/data/services";
 import { certificationLogos } from "@/data/certifications";
-import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { resolveLocale, useTranslations, withSlash } from "@/i18n/utils";
 
 interface Props {
   copy: CollectionEntry<"home-page">["data"];
@@ -39,10 +39,10 @@ const services = getServices(locale);
 // yet, so those cards point at the English URL regardless of locale rather
 // than the usual `${prefix}` treatment, which would 404 on this page specifically.
 const serviceHrefs: Record<string, string> = {
-  training: `${prefix}/training`,
-  coaching: "/services/coaching",
-  consulting: "/services/consulting",
-  facilitation: "/services/facilitation",
+  training: withSlash(`${prefix}/training`),
+  coaching: "/services/coaching/",
+  consulting: "/services/consulting/",
+  facilitation: "/services/facilitation/",
 };
 
 const clients = [
@@ -78,8 +78,8 @@ const clients = [
         </h1>
         <p class="mt-6 max-w-lg text-[length:var(--text-body)] text-neutral-600">{copy.heroBody}</p>
         <div class="mt-8 flex flex-wrap gap-4">
-          <Button href={`${prefix}/training#schedule`} variant="primary">{t("cta.seeAllTraining")}</Button>
-          <Button href={`${prefix}/services`} variant="secondary">{t("cta.ourServices")}</Button>
+          <Button href={withSlash(`${prefix}/training#schedule`)} variant="primary">{t("cta.seeAllTraining")}</Button>
+          <Button href={withSlash(`${prefix}/services`)} variant="secondary">{t("cta.ourServices")}</Button>
         </div>
       </div>
 
@@ -146,7 +146,7 @@ const clients = [
 <Section eyebrow={copy.upcomingEyebrow} heading={copy.upcomingHeading} class="border-t border-neutral-200 bg-mist-light">
   <ScheduleList rows={upcomingWithCourse} id="home-schedule" showTrainer={false} />
   <div class="mt-6 text-right">
-    <Button href={`${prefix}/training#schedule`} variant="link" class="group">{t("schedule.fullSchedule")}</Button>
+    <Button href={withSlash(`${prefix}/training#schedule`)} variant="link" class="group">{t("schedule.fullSchedule")}</Button>
   </div>
 </Section>
 
@@ -179,7 +179,7 @@ const clients = [
     }
   </div>
   <div class="mt-8 flex flex-wrap items-center gap-6">
-    <Button href={`${prefix}/about`} variant="primary">{t("cta.meetFullTeam")}</Button>
+    <Button href={withSlash(`${prefix}/about`)} variant="primary">{t("cta.meetFullTeam")}</Button>
     <p class="max-w-md text-[length:var(--text-small)] text-neutral-300">{copy.teamBody}</p>
   </div>
 
@@ -197,8 +197,8 @@ const clients = [
     {featuredArticles.map((article) => <InsightsArticleCard article={article} />)}
   </div>
   <div class="mt-6 text-right">
-    <Button href={`${prefix}/insights`} variant="link" class="group">{t("cta.viewAllInsights")}</Button>
+    <Button href={withSlash(`${prefix}/insights`)} variant="link" class="group">{t("cta.viewAllInsights")}</Button>
   </div>
 </Section>
 
-<CTABanner tone="light" heading={t("cta.closingHeading")} body={t("cta.closingBody")} ctaLabel={t("schedule.getInTouch")} ctaHref={`${prefix}/contact`} />
+<CTABanner tone="light" heading={t("cta.closingHeading")} body={t("cta.closingBody")} ctaLabel={t("schedule.getInTouch")} ctaHref={withSlash(`${prefix}/contact`)} />

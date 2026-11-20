@@ -7,7 +7,7 @@ import ServicesDropdownDesktop from "@/components/ServicesDropdownDesktop.astro"
 import ServicesDropdownMobile from "@/components/ServicesDropdownMobile.astro";
 import SiteSwitcherDesktop from "@/components/SiteSwitcherDesktop.astro";
 import SiteSwitcherMobile from "@/components/SiteSwitcherMobile.astro";
-import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { resolveLocale, useTranslations, withSlash } from "@/i18n/utils";
 import { localeOfId } from "@/lib/i18n";
 import { mobileNavIcons } from "@/data/mobileNavIcons";
 
@@ -37,7 +37,7 @@ const navLinks = [
   { href: "/contact", label: t("nav.contact"), translated: true, mobileOnly: true, icon: "contact" as const },
 ];
 
-const currentPath = Astro.url.pathname;
+const currentPath = withSlash(Astro.url.pathname);
 
 const categories = (await getCollection("training-categories", (c) => localeOfId(c.id) === locale)).sort(
   (a, b) => a.data.order - b.data.order
@@ -57,13 +57,13 @@ const categoriesWithCourses = categories.map((category) => ({
 // visitor at the homepage and losing their place. The EN link in
 // particular should never need a fallback at all on an English page (we're
 // already on it), which the old "/" default got wrong.
-const enHref = translations?.en ?? currentPath;
-const deHref = translations?.de ?? currentPath;
+const enHref = withSlash(translations?.en ?? currentPath);
+const deHref = withSlash(translations?.de ?? currentPath);
 ---
 
 <header class="sticky top-0 z-50 border-b border-neutral-200 bg-surface/90 backdrop-blur">
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
-    <a href={prefix || "/"}>
+    <a href={withSlash(prefix)}>
       <Logo size="medium" />
     </a>
 
@@ -74,7 +74,7 @@ const deHref = translations?.de ?? currentPath;
         navLinks
           .filter((link) => !link.mobileOnly)
           .map((link) => {
-            const href = link.translated ? `${prefix}${link.href}` : link.href;
+            const href = withSlash(link.translated ? `${prefix}${link.href}` : link.href);
             const isActive = href === "/" ? currentPath === "/" : currentPath.startsWith(href);
             const linkClass = `flex items-center gap-1 whitespace-nowrap border-b-2 pb-1 text-[0.8125rem] font-medium transition-colors hover:text-ink min-[1100px]:text-sm ${
               isActive ? "border-lime text-ink" : "border-transparent text-neutral-600"
@@ -147,7 +147,7 @@ const deHref = translations?.de ?? currentPath;
       </div>
 
       <a
-        href={`${prefix}/contact`}
+        href={withSlash(`${prefix}/contact`)}
         class="hidden items-center gap-1.5 whitespace-nowrap rounded-[var(--radius-pill)] bg-lime px-5 py-2.5 text-sm font-semibold lg:px-4 min-[1100px]:px-5 text-ink transition-colors hover:bg-lime/85 sm:inline-flex"
       >
         {t("nav.contactCta")}
@@ -166,7 +166,7 @@ const deHref = translations?.de ?? currentPath;
         >
           {
             navLinks.map((link) => {
-              const href = link.translated ? `${prefix}${link.href}` : link.href;
+              const href = withSlash(link.translated ? `${prefix}${link.href}` : link.href);
               return link.mega === "training" ? (
                 <TrainingMegaMenuMobile categoriesWithCourses={categoriesWithCourses} icon={mobileNavIcons[link.icon]} />
               ) : link.mega === "services" ? (

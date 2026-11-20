@@ -5,7 +5,7 @@
 import type { CollectionEntry } from "astro:content";
 import Section from "@/components/Section.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
-import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { resolveLocale, useTranslations, withSlash } from "@/i18n/utils";
 
 interface Props {
   copy: CollectionEntry<"contact-page">["data"];
@@ -71,7 +71,7 @@ const contactFormName = locale === "de" ? "contact-de" : "contact";
         method="POST"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
-        action={`${prefix}/thank-you`}
+        action={withSlash(`${prefix}/thank-you`)}
         class="space-y-5"
       >
         <input type="hidden" name="form-name" value={contactFormName} />

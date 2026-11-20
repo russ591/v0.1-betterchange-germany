@@ -13,7 +13,7 @@ import { germanizePrice } from "@/lib/prices";
 import { registrationHref, registrationLinkAttrs } from "@/lib/registrationLink";
 import { toPathSegment } from "@/lib/urlSlug";
 import { baseSlug } from "@/lib/i18n";
-import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { resolveLocale, useTranslations, withSlash } from "@/i18n/utils";
 import type { TrainerEntry } from "@/lib/trainers";
 
 interface Props {
@@ -34,9 +34,9 @@ const details = getFormatDetails(locale)["self-paced"];
 
 <Breadcrumbs
   items={[
-    { label: t("nav.training"), href: `${prefix}/training` },
-    { label: category.data.name, href: `${prefix}/training/${categorySlug}` },
-    { label: course.data.name, href: `${prefix}/training/${categorySlug}/${courseSlug}` },
+    { label: t("nav.training"), href: withSlash(`${prefix}/training`) },
+    { label: category.data.name, href: withSlash(`${prefix}/training/${categorySlug}`) },
+    { label: course.data.name, href: withSlash(`${prefix}/training/${categorySlug}/${courseSlug}`) },
     { label: t("selfPaced.breadcrumbLabel") },
   ]}
 />

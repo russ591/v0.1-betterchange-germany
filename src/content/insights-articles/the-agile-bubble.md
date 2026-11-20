@@ -17,7 +17,7 @@ imageUrl: /insights/the-agile-bubble.webp
 metaTitle: 'Agile mishap #3: The Agile Bubble | Better Change Consulting'
 metaDescription: 'In a series of blog posts I am discussing the question: If it is not dead then what went wrong with Agile? In 2019, I had the experience of attending...'
 bodyHtml: |-
-  <p><em>In a series of blog posts I am discussing the question: If it is not dead then what went wrong with Agile? If you have not read the introduction blog post already (<a href="/insights/what-went-wrong-with-agile-an-honest-reckoning">What went wrong with Agile?</a>) I suggest you go there first before continuing reading here.</em></p>
+  <p><em>In a series of blog posts I am discussing the question: If it is not dead then what went wrong with Agile? If you have not read the introduction blog post already (<a href="/insights/what-went-wrong-with-agile-an-honest-reckoning/">What went wrong with Agile?</a>) I suggest you go there first before continuing reading here.</em></p>
 
   <p>In 2019, I had the experience of attending two conferences in a row. The first conference was Agile 2019 in Washington DC, and the second was the Academy of Management (AOM 2019) in Boston. The theme of the latter was "Understanding the Inclusive Organization," and I attended it as part of my master's education in management development.</p>
 
@@ -33,5 +33,5 @@ bodyHtml: |-
 
   <p>The outside world boasts many great thinkers, philosophers, scientists, scholars, and consultants who engage daily with complex and adaptive systems. You can find them in various universities and business schools around the globe. Just be curious and reach out. The only thing you risk is becoming wiser.</p>
 
-  <p>I hope this blog post gave you some food for thought. In my next blog post we will address <a href="/insights/agile-mishap-4:-incompetent-coaches-and-trainers">Agile Mishap #4: Incompetent Coaches And Trainers</a>.</p>
+  <p>I hope this blog post gave you some food for thought. In my next blog post we will address <a href="/insights/agile-mishap-4:-incompetent-coaches-and-trainers/">Agile Mishap #4: Incompetent Coaches And Trainers</a>.</p>
 ---

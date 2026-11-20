@@ -1,4 +1,5 @@
 ---
+import { withSlash } from "@/i18n/utils";
 import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import CoursePageContent from "@/components/pages/CoursePageContent.astro";
@@ -47,7 +48,7 @@ const courseSchema = {
       "@type": "Offer",
       price: parseFloat(session.data.price.replace(/[^0-9.]/g, "")) || undefined,
       priceCurrency: "EUR",
-      url: session.data.isExternal ? session.data.externalUrl! : new URL(`/training/register/${session.id}`, Astro.site).toString(),
+      url: session.data.isExternal ? session.data.externalUrl! : new URL(withSlash(`/training/register/${session.id}`), Astro.site).toString(),
       availability: "https://schema.org/InStock",
     },
   })),

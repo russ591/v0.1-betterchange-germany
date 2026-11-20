@@ -19,7 +19,7 @@ import InsightsArticleCard from "@/components/InsightsArticleCard.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { toPathSegment } from "@/lib/urlSlug";
 import { localeOfId, baseSlug } from "@/lib/i18n";
-import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { resolveLocale, useTranslations, withSlash } from "@/i18n/utils";
 
 interface Props {
   articles: {
@@ -35,7 +35,7 @@ const t = useTranslations(locale);
 
 const articleHref = (article: CollectionEntry<"insights-articles">) => {
   const articlePrefix = localeOfId(article.id) === "de" ? "/de" : "";
-  return `${articlePrefix}/insights/${toPathSegment(article.data.urlSlug ?? baseSlug(article.id))}`;
+  return withSlash(`${articlePrefix}/insights/${toPathSegment(article.data.urlSlug ?? baseSlug(article.id))}`);
 };
 
 const initials = (name: string) =>

@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import Logo from "@/components/Logo.astro";
 import NetworkSitesFooter from "@/components/NetworkSitesFooter.astro";
-import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { resolveLocale, useTranslations, withSlash } from "@/i18n/utils";
 import { localeOfId, baseSlug } from "@/lib/i18n";
 
 const locale = resolveLocale(Astro.currentLocale);
@@ -20,7 +20,7 @@ const year = new Date().getFullYear();
   <div class="mx-auto max-w-6xl px-6 py-16">
     <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.1fr_0.7fr_0.7fr_1.3fr]">
       <div>
-        <a href={prefix || "/"}>
+        <a href={withSlash(prefix)}>
           <Logo tone="light" />
         </a>
         <p class="mt-4 max-w-sm text-[length:var(--text-small)] text-neutral-400">{t("footer.tagline")}</p>
@@ -32,7 +32,7 @@ const year = new Date().getFullYear();
           {
             categories.map((category) => (
               <li>
-                <a href={`${prefix}/training/${baseSlug(category.id)}`} class="text-neutral-400 hover:text-surface">
+                <a href={withSlash(`${prefix}/training/${baseSlug(category.id)}`)} class="text-neutral-400 hover:text-surface">
                   {category.data.name}
                 </a>
               </li>
@@ -44,10 +44,10 @@ const year = new Date().getFullYear();
       <div>
         <p class="eyebrow text-lime">{t("footer.companyHeading")}</p>
         <ul class="mt-4 space-y-2 text-[length:var(--text-small)]">
-          <li><a href={`${prefix}/services`} class="text-neutral-400 hover:text-surface">{t("nav.services")}</a></li>
-          <li><a href={`${prefix}/about`} class="text-neutral-400 hover:text-surface">{t("nav.about")}</a></li>
-          <li><a href={`${prefix}/insights`} class="text-neutral-400 hover:text-surface">{t("nav.insights")}</a></li>
-          <li><a href={`${prefix}/contact`} class="text-neutral-400 hover:text-surface">{t("nav.contact")}</a></li>
+          <li><a href={withSlash(`${prefix}/services`)} class="text-neutral-400 hover:text-surface">{t("nav.services")}</a></li>
+          <li><a href={withSlash(`${prefix}/about`)} class="text-neutral-400 hover:text-surface">{t("nav.about")}</a></li>
+          <li><a href={withSlash(`${prefix}/insights`)} class="text-neutral-400 hover:text-surface">{t("nav.insights")}</a></li>
+          <li><a href={withSlash(`${prefix}/contact`)} class="text-neutral-400 hover:text-surface">{t("nav.contact")}</a></li>
         </ul>
       </div>
 
@@ -59,9 +59,9 @@ const year = new Date().getFullYear();
     >
       <p>&copy; {year} Better Change. {t("footer.rights")}</p>
       <div class="flex gap-6">
-        <a href="/impressum" class="hover:text-surface">Impressum</a>
-        <a href="/datenschutz" class="hover:text-surface">Datenschutz</a>
-        <a href="/agb" class="hover:text-surface">AGB</a>
+        <a href="/impressum/" class="hover:text-surface">Impressum</a>
+        <a href="/datenschutz/" class="hover:text-surface">Datenschutz</a>
+        <a href="/agb/" class="hover:text-surface">AGB</a>
       </div>
     </div>
   </div>

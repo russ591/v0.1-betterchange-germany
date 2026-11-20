@@ -1,5 +1,5 @@
 ---
-import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { resolveLocale, useTranslations, withSlash } from "@/i18n/utils";
 
 interface Crumb {
   label: string;
@@ -23,7 +23,7 @@ const breadcrumbSchema = {
     "@type": "ListItem",
     position: i + 1,
     name: item.label,
-    item: new URL(item.href ?? Astro.url.pathname, Astro.site).toString(),
+    item: new URL(withSlash(item.href ?? Astro.url.pathname), Astro.site).toString(),
   })),
 };
 ---

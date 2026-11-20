@@ -1,7 +1,7 @@
 ---
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import { resolveLocale } from "@/i18n/utils";
+import { resolveLocale, withSlash } from "@/i18n/utils";
 import "@/styles/global.css";
 
 interface Props {
@@ -21,10 +21,15 @@ interface Props {
   translations?: Partial<Record<"en" | "de", string>>;
 }
 
-const { title, description, ogImage = "/og-image.png", jsonLd, noindex = false, translations } = Astro.props;
+const { title, description, ogImage = "/og-image.png", jsonLd, noindex = false, translations: rawTranslations } = Astro.props;
+// Every page's translations go through withSlash here, so hreflang and the language switcher
+// always point at the final (trailing-slash) URL, whatever a page passes in.
+const translations = rawTranslations
+  ? (Object.fromEntries(Object.entries(rawTranslations).map(([lang, href]) => [lang, withSlash(href)])) as typeof rawTranslations)
+  : undefined;
 const locale = resolveLocale(Astro.currentLocale);
 const pageTitle = `${title} · Better Change`;
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const canonicalUrl = new URL(withSlash(Astro.url.pathname), Astro.site);
 const ogImageUrl = new URL(ogImage, Astro.site);
 const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 

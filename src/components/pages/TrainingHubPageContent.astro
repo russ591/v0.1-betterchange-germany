@@ -11,7 +11,7 @@ import { certificationLogos } from "@/data/certifications";
 import { categoryIcons } from "@/data/categoryIcons";
 import MeetTheTrainers from "@/components/MeetTheTrainers.astro";
 import { baseSlug } from "@/lib/i18n";
-import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { resolveLocale, useTranslations, withSlash } from "@/i18n/utils";
 import type { TrainerEntry } from "@/lib/trainers";
 
 interface Props {
@@ -45,7 +45,7 @@ const prefix = locale === "de" ? "/de" : "";
     // using the usual ${prefix} treatment, which would 404 on /de/training.
     locale === "en" && (
       <p class="mt-3">
-        <a href="/services/training" class="text-sm font-semibold text-ink hover:underline">
+        <a href="/services/training/" class="text-sm font-semibold text-ink hover:underline">
           {t("training.readMoreAboutApproach")} <span aria-hidden="true">→</span>
         </a>
       </p>
@@ -76,7 +76,7 @@ const prefix = locale === "de" ? "/de" : "";
         const categoryCourses = courses.filter((c) => c.data.category.id === category.id);
         return (
           <a
-            href={`${prefix}/training/${slug}`}
+            href={withSlash(`${prefix}/training/${slug}`)}
             class="flex flex-col rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-6 shadow-card transition-shadow hover:shadow-card-hover"
           >
             {categoryIcons[slug] && (
@@ -110,7 +110,7 @@ const prefix = locale === "de" ? "/de" : "";
     emptyMessage={t("schedule.noSessions")}
   />
   <p class="mt-6 text-[length:var(--text-small)] text-neutral-600">
-    {t("schedule.preferInHouse")} <a href={`${prefix}/contact`} class="font-semibold text-ink underline">{t("schedule.letUsKnow")}</a>.
+    {t("schedule.preferInHouse")} <a href={withSlash(`${prefix}/contact`)} class="font-semibold text-ink underline">{t("schedule.letUsKnow")}</a>.
   </p>
 </Section>
 
@@ -135,7 +135,7 @@ const prefix = locale === "de" ? "/de" : "";
       <h2 class="text-[length:var(--text-h3)]">{copy.inHouseHeading}</h2>
       <p class="mt-4 max-w-2xl text-[length:var(--text-body)] text-neutral-300">{copy.inHouseBody}</p>
     </div>
-    <Button href={`${prefix}/contact`} variant="primary" class="shrink-0">{t("cta.talkToUs")}</Button>
+    <Button href={withSlash(`${prefix}/contact`)} variant="primary" class="shrink-0">{t("cta.talkToUs")}</Button>
   </div>
 </Section>
 
@@ -183,4 +183,4 @@ const prefix = locale === "de" ? "/de" : "";
   </div>
 </Section>
 
-<CTABanner tone="light" heading={t("cta.closingHeading")} body={t("cta.closingBody")} ctaLabel={t("schedule.getInTouch")} ctaHref={`${prefix}/contact`} />
+<CTABanner tone="light" heading={t("cta.closingHeading")} body={t("cta.closingBody")} ctaLabel={t("schedule.getInTouch")} ctaHref={withSlash(`${prefix}/contact`)} />

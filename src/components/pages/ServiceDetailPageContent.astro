@@ -19,7 +19,7 @@ import ServiceIconCardGrid from "@/components/ServiceIconCardGrid.astro";
 import ServiceOfferCards from "@/components/ServiceOfferCards.astro";
 import ServiceAtAGlanceRow from "@/components/ServiceAtAGlanceRow.astro";
 import { getServices, serviceIcons, serviceDetailCta } from "@/data/services";
-import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { resolveLocale, useTranslations, withSlash } from "@/i18n/utils";
 
 interface Props {
   service: CollectionEntry<"services">;
@@ -47,7 +47,7 @@ const blocks: Block[] = [
 ];
 ---
 
-<Breadcrumbs items={[{ label: t("nav.services"), href: `${prefix}/services` }, { label: grid.name }]} />
+<Breadcrumbs items={[{ label: t("nav.services"), href: withSlash(`${prefix}/services`) }, { label: grid.name }]} />
 
 <Section eyebrow={t("nav.services")} class="bg-mist-light">
   <span aria-hidden="true" class="blob-dot flex h-11 w-11 items-center justify-center bg-lime" set:html={serviceIcons[service.data.icon]} />
@@ -111,5 +111,5 @@ const blocks: Block[] = [
   heading={t("cta.closingHeading")}
   body={t("cta.closingBody")}
   ctaLabel={t("schedule.getInTouch")}
-  ctaHref={`${prefix}/contact`}
+  ctaHref={withSlash(`${prefix}/contact`)}
 />

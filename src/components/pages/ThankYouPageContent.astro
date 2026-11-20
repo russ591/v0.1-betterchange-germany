@@ -6,7 +6,7 @@ import type { CollectionEntry } from "astro:content";
 import Section from "@/components/Section.astro";
 import Button from "@/components/Button.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
-import { resolveLocale } from "@/i18n/utils";
+import { resolveLocale, withSlash } from "@/i18n/utils";
 
 interface Props {
   copy: CollectionEntry<"thank-you-page">["data"];
@@ -27,6 +27,6 @@ const prefix = locale === "de" ? "/de" : "";
     {copy.body}
   </p>
   <div class="mt-8">
-    <Button href={prefix || "/"} variant="primary">{copy.buttonLabel}</Button>
+    <Button href={withSlash(prefix)} variant="primary">{copy.buttonLabel}</Button>
   </div>
 </Section>

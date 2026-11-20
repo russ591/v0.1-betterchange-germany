@@ -30,7 +30,7 @@ import { formatSessionDate } from "@/lib/dates";
 import { registrationHref, registrationLinkAttrs } from "@/lib/registrationLink";
 import { toPathSegment } from "@/lib/urlSlug";
 import { baseSlug } from "@/lib/i18n";
-import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { resolveLocale, useTranslations, withSlash } from "@/i18n/utils";
 import { getTrainersForSessions, type TrainerEntry } from "@/lib/trainers";
 import { nextAvailableSession } from "@/lib/nextSession";
 
@@ -87,7 +87,7 @@ const enriched = await Promise.all(
       ? row.session.data.location.split(",").pop()!.trim()
       : row.session.data.location;
     const trainers = showTrainer ? await getTrainersForSessions([row.session]) : [];
-    const coursePath = `${prefix}/training/${baseSlug(row.category.id)}/${toPathSegment(row.course.data.urlSlug ?? baseSlug(row.course.id))}`;
+    const coursePath = withSlash(`${prefix}/training/${baseSlug(row.category.id)}/${toPathSegment(row.course.data.urlSlug ?? baseSlug(row.course.id))}`);
     // A closed row points at the course's next bookable date (the course
     // and registration pages carry the same pointer in their own form).
     const next = row.session.data.status === "sold-out" ? await nextAvailableSession(row.session) : undefined;
@@ -419,7 +419,7 @@ const chevron = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stro
     <div class="rounded-[var(--radius-card)] border border-neutral-200 bg-surface p-10 text-center">
       <p class="text-[length:var(--text-small)] text-neutral-600">{emptyMessage}</p>
       <a
-        href={`${prefix}/contact`}
+        href={withSlash(`${prefix}/contact`)}
         class="mt-4 inline-flex items-center justify-center gap-1.5 rounded-[var(--radius-control)] bg-ink px-4 py-2.5 text-sm font-semibold text-surface transition-colors hover:bg-neutral-800"
       >
         {t("schedule.getInTouch")} <span aria-hidden="true">→</span>

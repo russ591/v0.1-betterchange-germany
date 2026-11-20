@@ -46,12 +46,12 @@ bodyHtml: |-
   <p><strong>Mehr erfahren</strong></p>
   <p>Interessiert daran, die eigenen Führungsfähigkeiten weiterzuentwickeln und Agile Leadership in der eigenen Organisation anzuwenden? Die Trainingsprogramme bei Better Change vermitteln die dafür nötigen Fähigkeiten und Kenntnisse:</p>
   <ul>
-  <li><a href="/de/training/leadership/cal-1">Certified Agile Leader 1 (CAL-1)</a></li>
-  <li><a href="/de/training/leadership/cal-2">Certified Agile Leader 2 (CAL-2)</a></li>
+  <li><a href="/de/training/leadership/cal-1/">Certified Agile Leader 1 (CAL-1)</a></li>
+  <li><a href="/de/training/leadership/cal-2/">Certified Agile Leader 2 (CAL-2)</a></li>
   </ul>
-  <p>Das Webinar erwähnt das Humble-Inquiry-Cheat-Sheet. Ein Exemplar gibt es auf Anfrage über die <a href="/de/contact">Kontaktseite</a>.</p>
+  <p>Das Webinar erwähnt das Humble-Inquiry-Cheat-Sheet. Ein Exemplar gibt es auf Anfrage über die <a href="/de/contact/">Kontaktseite</a>.</p>
   <p><strong>Weiterführende Inhalte</strong></p>
-  <p>Für einen tieferen Einblick in die Rolle von Führung in der Organisationskultur, siehe das verwandte Webinar <a href="/de/insights/organisational-culture-the-overlooked-key-to-success-with-new-ways-of-working">Organisational Culture: The Overlooked Key to Success with New Ways of Working</a>.</p>
+  <p>Für einen tieferen Einblick in die Rolle von Führung in der Organisationskultur, siehe das verwandte Webinar <a href="/de/insights/organisational-culture-the-overlooked-key-to-success-with-new-ways-of-working/">Organisational Culture: The Overlooked Key to Success with New Ways of Working</a>.</p>
   <p><strong>Weiterführende Lektüre</strong></p>
-  <p>Die Ideen aus diesem Webinar hat Bent im Artikel <a href="/de/insights/agile-leadership-the-vital-role-of-sensemaking-integrity-presence-and-authenticity">Agile Leadership: The Vital Role of Sensemaking, Integrity, Presence, and Authenticity</a> ausführlich beschrieben.</p>
+  <p>Die Ideen aus diesem Webinar hat Bent im Artikel <a href="/de/insights/agile-leadership-the-vital-role-of-sensemaking-integrity-presence-and-authenticity/">Agile Leadership: The Vital Role of Sensemaking, Integrity, Presence, and Authenticity</a> ausführlich beschrieben.</p>
 ---

@@ -38,3 +38,7 @@ export function metaOrFallback(value: string | undefined, fallback: string, maxL
   }
   return fallback;
 }
+
+// Internal page links end in "/" (see src/lib/withSlash.ts); re-exported here
+// next to the other i18n helpers so templates import everything from one place.
+export { withSlash } from "@/lib/withSlash";

@@ -9,7 +9,7 @@
 import type { CollectionEntry } from "astro:content";
 import Section from "@/components/Section.astro";
 import Button from "@/components/Button.astro";
-import { resolveLocale } from "@/i18n/utils";
+import { resolveLocale, withSlash } from "@/i18n/utils";
 
 interface Props {
   copy: CollectionEntry<"not-found-page">["data"];
@@ -28,8 +28,8 @@ const prefix = locale === "de" ? "/de" : "";
     {copy.body}
   </p>
   <div class="mt-8 flex flex-wrap gap-4">
-    <Button href={prefix || "/"} variant="primary">{copy.backHomeLabel}</Button>
-    <Button href={`${prefix}/training`} variant="secondary">{copy.seeTrainingLabel}</Button>
-    <Button href={`${prefix}/contact`} variant="secondary">{copy.contactLabel}</Button>
+    <Button href={withSlash(prefix)} variant="primary">{copy.backHomeLabel}</Button>
+    <Button href={withSlash(`${prefix}/training`)} variant="secondary">{copy.seeTrainingLabel}</Button>
+    <Button href={withSlash(`${prefix}/contact`)} variant="secondary">{copy.contactLabel}</Button>
   </div>
 </Section>

@@ -20,7 +20,7 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { baseSlug } from "@/lib/i18n";
 import { isUpcomingOrSelfPaced } from "@/lib/dates";
 import type { TrainingSignal } from "@/lib/relatedTraining";
-import { resolveLocale, useTranslations } from "@/i18n/utils";
+import { resolveLocale, useTranslations, withSlash } from "@/i18n/utils";
 
 interface Props {
   article: CollectionEntry<"insights-articles">;
@@ -72,8 +72,8 @@ for (const cat of relatedCategories) {
 const maxCount = Math.max(0, ...[...categoryCounts.values()].map((e) => e.n));
 const leaders = [...categoryCounts.entries()].filter(([, e]) => e.n === maxCount);
 const focusCategories = leaders.length > 2 ? leaders.slice(0, 1) : leaders;
-const scheduleHref = `${prefix}/training#schedule`;
-const focusHref = `${prefix}/training?topic=${focusCategories.map(([slug]) => slug).join(",")}#schedule`;
+const scheduleHref = withSlash(`${prefix}/training#schedule`);
+const focusHref = withSlash(`${prefix}/training?topic=${focusCategories.map(([slug]) => slug).join(",")}#schedule`);
 const focusNames = focusCategories.map(([, e]) => e.name);
 const focusLabel =
   focusNames.length <= 1
@@ -84,7 +84,7 @@ const railLabel = "text-[length:var(--text-caption)] font-semibold uppercase tra
 const railMore = "mt-3 inline-block text-[length:var(--text-caption)] font-semibold text-ink hover:underline";
 ---
 
-<Breadcrumbs items={[{ label: t("nav.insights"), href: `${prefix}/insights` }, { label: article.data.title }]} />
+<Breadcrumbs items={[{ label: t("nav.insights"), href: withSlash(`${prefix}/insights`) }, { label: article.data.title }]} />
 
 <Section
   eyebrow={article.data.primaryCategory || t("nav.insights")}
@@ -126,7 +126,7 @@ const railMore = "mt-3 inline-block text-[length:var(--text-caption)] font-semib
                   <InsightsArticleCard article={a} variant="compact" />
                 ))}
               </div>
-              <a href={`${prefix}/insights`} class={railMore}>{t("profile.seeAllArticles")} →</a>
+              <a href={withSlash(`${prefix}/insights`)} class={railMore}>{t("profile.seeAllArticles")} →</a>
             </div>
           )}
           {relatedCourses.length > 0 && (
