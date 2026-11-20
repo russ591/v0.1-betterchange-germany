@@ -12,7 +12,7 @@ author: bent-myllerup
 excerpt: Difficult conversations are not a test of courage. They are a test of preparation, clarity, and emotional composure. Most leaders avoid them or handle them badly. Here is a structured approach that makes them more productive and less damaging.
 featured: true
 imageUrl: /insights/mastering-difficult-conversations-a-comprehensive-guide-for-leaders.webp
-metaTitle: 'Difficult Conversations: A Leader''s Practical Guide to Saying the Hard'
+metaTitle: "Difficult Conversations: A Leader's Guide"
 metaDescription: Difficult conversations are not a test of courage. They are a test of preparation, clarity, and emotional composure. Most leaders avoid them or handle...
 bodyHtml: |-
   <p>A difficult conversation is usually about feedback on undesired behaviour or an unwanted situation. Before anything else, get clear on your motives. Feedback often says as much about the person giving it as the person receiving it, and if you go in with unclear intentions, the conversation will reflect that.</p>

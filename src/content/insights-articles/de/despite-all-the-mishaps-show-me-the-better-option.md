@@ -32,7 +32,8 @@ author: bent-myllerup
 excerpt: "Der letzte Beitrag der Serie über Pannen bei der Anwendung von Agile. Trotz allem bleibt Agile der wesentliche Ansatz für Organisationen, die relevant und erfolgreich bleiben wollen."
 featured: false
 imageUrl: /insights/despite-all-the-mishaps-show-me-the-better-option.webp
-metaDescription: "Der letzte Beitrag der Serie über Pannen bei der Anwendung von Agile. Trotz allem bleibt Agile der wesentliche Ansatz für Organisationen, die relevant und erfolgreich bleiben wollen."
+metaTitle: "Agile trotz Pannen: Die bessere Option"
+metaDescription: "Letzter Beitrag der Serie über Agile-Pannen: Warum Agile trotz allem der wesentliche Ansatz für relevante, erfolgreiche Organisationen bleibt."
 bodyHtml: |-
   <p>Dies ist der letzte Blogbeitrag der Serie über Pannen bei der Anwendung von Agile. Wer die anderen Beiträge noch nicht gelesen hat, sollte das vorher tun. Hier die vollständige Liste:</p>
 

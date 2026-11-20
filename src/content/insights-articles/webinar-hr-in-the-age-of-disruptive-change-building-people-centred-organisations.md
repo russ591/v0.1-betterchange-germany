@@ -14,7 +14,7 @@ author: giuseppe-de-simone
 excerpt: Most HR functions know what agile means in theory. Far fewer have figured out what it means for how they actually work. This webinar with Giuseppe De Simone examines what genuinely agile HR looks like.
 featured: false
 imageUrl: /insights/webinar-hr-in-the-age-of-disruptive-change-building-people-centred-organisations.webp
-metaTitle: 'Webinar Recording: What HR Looks Like When It''s Actually Agile | Bette'
+metaTitle: "What HR Looks Like When It's Actually Agile"
 metaDescription: Most HR functions know what agile means in theory. Far fewer have figured out what it means for how they actually work. This webinar with Giuseppe De...
 bodyHtml: |-
   <p>Agile transformation in organisations tends to focus on product teams, delivery pipelines, and leadership behaviour. HR is frequently the last function to change, and sometimes the one most actively perpetuating the patterns the transformation is trying to move away from: annual performance cycles, fixed job descriptions, hierarchical approval processes, and hiring criteria optimised for compliance rather than capability.</p>

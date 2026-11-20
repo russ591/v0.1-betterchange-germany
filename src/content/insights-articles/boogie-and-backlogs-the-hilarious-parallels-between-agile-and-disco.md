@@ -12,7 +12,7 @@ author: bent-myllerup
 excerpt: The year I was a sprightly 12-year-old, rocking my bell-bottoms and boogying down to the pulsating beats of disco. It was a year of glitter, grooves, and glorious gaffes.
 featured: false
 imageUrl: /insights/boogie-and-backlogs-the-hilarious-parallels-between-agile-and-disco.webp
-metaTitle: 'Boogie and Backlogs: The Hilarious Parallels Between Agile and Disco |'
+metaTitle: "Boogie and Backlogs: Agile and Disco"
 metaDescription: The year I was a sprightly 12-year-old, rocking my bell-bottoms and boogying down to the pulsating beats of disco. It was a year of glitter, grooves,...
 bodyHtml: |-
   <p>Ah, 1978! The year I was a sprightly 12-year-old, rocking my bell-bottoms and boogying down to the pulsating beats of disco. It was a year of glitter, grooves, and glorious gaffes. And as I look back on those funky times, I can't help but draw a parallel between the exhilarating world of disco music and the dynamic realm of Agile methodology. Bear with me, dear reader, as we embark on a journey of dazzling discoveries and scrumptious scrums.</p>

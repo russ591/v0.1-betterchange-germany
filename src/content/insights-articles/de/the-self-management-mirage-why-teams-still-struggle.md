@@ -24,7 +24,8 @@ author: jesper-orting
 excerpt: "Die Anziehungskraft selbstorganisierter Teams ist unbestreitbar. Das Versprechen ermächtigter, autonomer Teams, die Innovation und Effizienz vorantreiben, ist für viele Organisationen verlockend. Die Realität kann jedoch deutlich weniger verlockend sein."
 featured: false
 imageUrl: /insights/the-self-management-mirage-why-teams-still-struggle.webp
-metaDescription: "Die Anziehungskraft selbstorganisierter Teams ist unbestreitbar. Das Versprechen ermächtigter, autonomer Teams, die Innovation und Effizienz vorantreiben, ist für viele Organisationen verlockend. Die Realität kann jedoch deutlich weniger verlockend sein."
+metaTitle: "Selbstorganisierte Teams: Warum es hakt"
+metaDescription: "Selbstorganisation verspricht ermächtigte, autonome Teams, doch viele tun sich damit schwer. Hindernisse und der Weg zu nachhaltiger Selbstorganisation."
 bodyHtml: |-
   <p>Die Anziehungskraft selbstorganisierter Teams ist unbestreitbar. Das Versprechen ermächtigter, autonomer Teams, die Innovation und Effizienz vorantreiben, ist für viele Organisationen verlockend. Die Realität kann jedoch deutlich weniger verlockend sein. Viele Unternehmen tun sich schwer, das versprochene Nirwana zu erreichen, und Führungskräfte fragen sich: Warum entsprechen unsere selbstorganisierten Teams nicht dem Hype?</p>
 

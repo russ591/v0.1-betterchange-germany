@@ -12,7 +12,8 @@ author: giuseppe-de-simone
 excerpt: "Eine einfache Mapping-Übung macht aus „Koordination fühlt sich teuer an“ eine Zahl. In einem Beispiel sanken die Koordinationskosten von 38 auf 2, nachdem Teamgrenzen am Ergebnis ausgerichtet wurden."
 featured: false
 imageUrl: /insights/lightning-lesson-coordination-cost-discovery-for-engineering-leaders.webp
-metaDescription: "Wie teamübergreifende Abhängigkeiten sichtbar werden, ihre Koordinationskosten bewertet und Teamgrenzen am Ergebnis ausgerichtet werden, mit Praxisbeispiel und Einschränkungen."
+metaTitle: "Lightning Lesson: Koordinationskosten"
+metaDescription: "Wie teamübergreifende Abhängigkeiten sichtbar werden, ihre Koordinationskosten bewertet und Teamgrenzen am Ergebnis ausgerichtet werden, mit Beispiel."
 sourceId: '19684'
 sourceUrl: https://www.betterchange-consulting.com/product-owner/lightning-lesson-coordination-cost-discovery-for-engineering-leaders/
 bodyHtml: |-

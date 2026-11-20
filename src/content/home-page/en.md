@@ -1,5 +1,5 @@
 ---
-metaDescription: Better Change is a European network of experienced trainers and coaching practitioners. We deliver Kanban, Flight Levels and Scrum training, team and leadership coaching, and organisational transformation, in English and German.
+metaDescription: "A European network of trainers and coaches: Kanban, Flight Levels and Scrum training, team and leadership coaching, transformation. English and German."
 heroEyebrow: training, coaching & Consulting · Berlin & Europe
 heroHeadingLead: We help organisations change
 heroHeadingTrail: for the better

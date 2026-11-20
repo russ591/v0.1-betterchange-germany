@@ -8,9 +8,7 @@
 # category/code/formats/priceFrom/durationDays/sortOrder stay identical to
 # the English entry (language-neutral facts/lookup keys). No
 # `certification` field, matching the live English page -- it's
-# intentionally absent, not a missing translation. metaTitle/
-# metaDescription aren't covered by this draft and stay "[DE]" placeholder
-# pending their own pass.
+# intentionally absent, not a missing translation. metaTitle/metaDescription are German search copy (SEO pass, 2026-11).
 name: 'AI for Scrum Masters'
 code: AISM
 category: de/scrum
@@ -41,6 +39,6 @@ whatYoullLearn:
   - 'Was das Aufkommen von KI für die langfristige Relevanz und Entwicklung der Scrum-Master-Rolle bedeutet'
 summary: 'Herausfinden, welche KI-Tools für Scrum Master wirklich nützlich sind und welche größtenteils nur Lärm, und lernen, damit effektivere Retrospektiven zu gestalten und Sprint-Zusammenfassungen, Berichte und Stakeholder-Kommunikation schneller zu entwerfen. Behandelt werden praktische Prompting-Techniken für die tägliche Moderationsarbeit, wo KI menschliches Urteilsvermögen im Coaching nicht ersetzen kann und sollte, und wie neue Tools schnell ausprobiert werden, ohne viel Zeit oder Budget zu binden. Ein eintägiger, praxisnaher Kurs für CSMs und A-CSMs, die neugierig auf KI sind, aber nicht wissen, wo sie anfangen sollen, mit Scrum-Alliance-Zertifizierung.'
 sortOrder: 14
-metaTitle: '[DE] AI for Scrum Masters | Better Change Consulting'
-metaDescription: '[DE] Learn how to use AI tools as a Scrum Master. Practical techniques for retrospectives, facilitation, and sprint management. Scrum Alliance certified.'
+metaTitle: "KI für Scrum Master: Praxistraining"
+metaDescription: "Eintägiger Praxiskurs für CSMs und A-CSMs, Scrum-Alliance-zertifiziert. KI für Retrospektiven, Sprint-Zusammenfassungen und Stakeholder-Updates nutzen."
 ---

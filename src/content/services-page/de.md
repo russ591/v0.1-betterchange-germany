@@ -6,7 +6,7 @@
 # out to be stale. metaDescription reuses heroBody's translation since both
 # fields are the same English sentence in services-page/en.md. Em dashes in
 # the draft's step bodies converted to commas per CLAUDE.md's house style.
-metaDescription: "Better Change ist ein europäisches Netzwerk von Praktiker:innen, keine große Unternehmensberatung. Training, Coaching, Consulting und Facilitation, ausgerichtet an der tatsächlichen Situation."
+metaDescription: "Ein europäisches Netzwerk von Praktiker:innen, keine große Unternehmensberatung. Training, Coaching, Consulting und Facilitation, passend zur Situation."
 heroEyebrow: "Was wir tun"
 heroHeading: "Echte Unterstützung von Menschen, die es selbst gemacht haben"
 heroBody: "Better Change ist ein europäisches Netzwerk von Praktiker:innen, keine große Unternehmensberatung. Training, Coaching, Consulting und Facilitation, ausgerichtet an der tatsächlichen Situation."

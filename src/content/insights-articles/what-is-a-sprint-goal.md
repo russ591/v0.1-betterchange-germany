@@ -12,7 +12,7 @@ author: mogens-villadsen
 excerpt: A sprint goal is a crucial component of Agile methodology . It provides a clear and concise focus for the team during a sprint, which is a short, time-boxed period for completing a set of tasks .
 featured: false
 imageUrl: /insights/what-is-a-sprint-goal.webp
-metaTitle: What Is a Sprint Goal? | Better Change Consulting
+metaTitle: "What Is a Sprint Goal?"
 metaDescription: A sprint goal is a crucial component of Agile methodology . It provides a clear and concise focus for the team during a sprint, which is a short,...
 bodyHtml: |-
   A sprint goal is a crucial component of <a href="https://www.betterchange-consulting.com/resources/what-is-agile/">Agile methodology</a>. It provides a clear and concise focus for the team during a sprint, which is a <a href="https://www.betterchange-consulting.com/resources/what-is-a-scrum-sprint/">short, time-boxed period for completing a set of tasks</a>. By aligning efforts towards a common objective, sprint goals <a href="https://www.betterchange-consulting.com/front/training/agile-team-facilitation/">enhance team collaboration, drive productivity</a>, and ultimately contribute to the success of the project.

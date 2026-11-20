@@ -12,7 +12,7 @@ author: russell-hill
 excerpt: Flight Levels is a thinking model for organisational agility, not a process framework. Its five key activities, define outcomes, visualise, create focus, establish interactions, improve, are what translate the thinking into actual change.
 featured: false
 imageUrl: /insights/enhancing-organisational-learning-with-flight-levels-and-the-5-activities.webp
-metaTitle: 'Flight Levels in Practice: The Five Activities That Make It Work | Bet'
+metaTitle: "Flight Levels in Practice: The 5 Activities"
 metaDescription: Flight Levels is a thinking model for organisational agility, not a process framework. Its five key activities, define outcomes, visualise, create...
 bodyHtml: |-
   <p>When organisations talk about becoming more agile, they usually mean one of two things: faster delivery at the team level, or better strategic responsiveness at the leadership level. Flight Levels addresses both. But its real contribution is the layer in between: the coordination layer that connects strategic intent with operational activity and is, in most organisations, where the most significant improvements are available.</p>

@@ -36,6 +36,6 @@ whatYoullLearn:
   - What a well-functioning FL2 system looks like after six months, and how to know if yours is working
 summary: Design Flight Level 2 coordination systems that make cross-team work genuinely visible, surfacing dependencies, aligning priorities, and connecting day-to-day delivery to organisational strategy, all without a costly reorganisation. You'll learn to run the coordination meetings, visualisations, and replenishment cadences that keep an FL2 system working, whether you're a manager coordinating multiple teams, a Scrum Master moving into broader organisational improvement, or a coach ready to go beyond the team level. It's hands-on and highly practical, building directly on the concepts introduced in Flight Levels Introduction (FLIN).
 sortOrder: 2
-metaTitle: FL2D Flight Level 2 Design Workshop | Berlin & Online
-metaDescription: Certified Flight Level 2 Design training in Berlin and online. Learn to design FL2 coordination systems and achieve true business agility. Delivered by a Flight Levels Guide.
+metaTitle: "FL2D Flight Level 2 Design in Berlin, Online"
+metaDescription: "Flight Level 2 Design (FL2D), certified by Flight Levels Academy. Two days in Berlin, four half days online or self-paced. Make cross-team work visible."
 ---

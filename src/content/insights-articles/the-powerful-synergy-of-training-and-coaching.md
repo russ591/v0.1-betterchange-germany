@@ -12,7 +12,7 @@ author: niels-verdonk
 excerpt: Training gives people frameworks and vocabulary. Coaching helps them apply those frameworks in their specific context. Neither alone produces the lasting change that both together can achieve, and most organisations systematically underinvest in the combination.
 featured: false
 imageUrl: /insights/the-powerful-synergy-of-training-and-coaching.webp
-metaTitle: Training Without Coaching Is Theory. Coaching Without Training Is Gues
+metaTitle: "Training and Coaching Work Better Together"
 metaDescription: Training gives people frameworks and vocabulary. Coaching helps them apply those frameworks in their specific context. Neither alone produces the...
 bodyHtml: |-
   <p>The case for Agile training is reasonably well understood. Teams learn the terminology, the frameworks, the values and principles. They come back from the training with a shared vocabulary and a basic understanding of the practices. And then, in a significant proportion of cases, the gap between what they learned and what they actually do at work remains stubbornly wide.</p>

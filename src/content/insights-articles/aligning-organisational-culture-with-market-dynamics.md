@@ -13,7 +13,7 @@ author: garbrand-van-der-molen
 excerpt: The culture that wins early adopters is often incompatible with what the mainstream demands. Geoffrey Moore described the market chasm. This piece examines the cultural shift required to cross it, and why leaders miss it until it's too late.
 featured: false
 imageUrl: /insights/aligning-organisational-culture-with-market-dynamics.webp
-metaTitle: The Culture That Got You Here Probably Won't Get You There | Better Ch
+metaTitle: "The Culture That Got You Here Won't Do"
 metaDescription: The culture that wins early adopters is often incompatible with what the mainstream demands. Geoffrey Moore described the market chasm. This piece...
 bodyHtml: |-
   <p>Geoffrey Moore's <em>Crossing the Chasm</em> described a gap in the product adoption lifecycle that many otherwise promising products fail to bridge: the distance between early adopters, who tolerate rough edges and value novelty, and the mainstream market, which values reliability, integration, and predictability. The insight was profound and has held up well.</p>

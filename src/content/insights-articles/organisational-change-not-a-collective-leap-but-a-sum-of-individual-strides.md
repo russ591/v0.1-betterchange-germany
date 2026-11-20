@@ -13,7 +13,7 @@ author: garbrand-van-der-molen
 excerpt: The most overlooked insight in Cameron and Quinn's classic work on organisational culture is not the Competing Values Framework. It is the appendix. The real tool for change agents is the Management Skills Assessment Instrument, which makes transformation personal.
 featured: false
 imageUrl: /insights/organisational-change-not-a-collective-leap-but-a-sum-of-individual-strides.webp
-metaTitle: Organisational Change Doesn't Happen Collectively. It Happens Person
+metaTitle: "Organisational Change Is Person by Person"
 metaDescription: The most overlooked insight in Cameron and Quinn's classic work on organisational culture is not the Competing Values Framework. It is the appendix....
 bodyHtml: |-
   <p class="font_8">"Diagnosing and Changing Organisational Culture" by Kim Cameron and Robert Quinn is a book that most change agents know by its first section and have not read to the end. The Competing Values Framework, four cultural quadrants, a diagnostic instrument, a map of where your organisation is and where it needs to go, is genuinely valuable and rightly well-known. But the most useful material is in the appendixes, which are rarely discussed.</p>

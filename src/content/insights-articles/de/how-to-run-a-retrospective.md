@@ -20,7 +20,8 @@ author: mogens-villadsen
 excerpt: "Die meisten Retrospektiven erzeugen eine Liste von Maßnahmen, die niemand umsetzt. Das Problem liegt meist nicht am Einsatz, sondern an der Struktur. Ein Fünf-Schritte-Ansatz, der Retrospektiven von einem Ritual zu einem echten Verbesserungsmotor macht."
 featured: false
 imageUrl: /insights/how-to-run-a-retrospective.webp
-metaDescription: "Die meisten Retrospektiven erzeugen eine Liste von Maßnahmen, die niemand umsetzt. Das Problem liegt meist nicht am Einsatz, sondern an der Struktur. Ein Fünf-Schritte-Ansatz, der Retrospektiven von einem Ritual zu einem echten Verbesserungsmotor macht."
+metaTitle: "Retrospektive: Methoden, die etwas ändern"
+metaDescription: "Die meisten Retrospektiven enden mit Maßnahmen, die niemand umsetzt. Ein Ansatz in fünf Schritten, der aus der Retro echte Verbesserung macht."
 bodyHtml: |-
   <p>Die Retrospektive ist eines der fünf Scrum-Events und wohl das wichtigste für die langfristige Teamleistung. Sie ist auch das Event, das am häufigsten knapp gehalten, durchgehetzt oder still fallengelassen wird, wenn Sprints hektisch werden. Das ist verständlich, aber kontraproduktiv, denn genau in der Retrospektive baut das Team die Fähigkeit auf, alles andere zu verbessern.</p>
 

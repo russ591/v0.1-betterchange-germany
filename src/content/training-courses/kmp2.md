@@ -31,6 +31,6 @@ whatYoullLearn:
   - How to build a culture of data-led improvement that outlasts any individual team member
 summary: Use flow metrics, cycle time, throughput, and work item age, to diagnose exactly where an existing Kanban system is breaking down, then evolve WIP limits and policies based on evidence rather than guesswork. You'll learn to run a Service Delivery Review that turns data into productive stakeholder conversations, use Monte Carlo simulations for probabilistic forecasting, and read cumulative flow diagrams to catch problems before they become crises. Built for KMP1 holders whose Kanban system has been running for a while and is ready for systematic, evolutionary improvement, KMP2 is Kanban University's advanced certification.
 sortOrder: 3
-metaTitle: KMP2 Kanban System Improvement Training | Berlin & Online
-metaDescription: Kanban University certified KMP2 training in Berlin and online. Deepen your Kanban practice with advanced improvement techniques.
+metaTitle: "KMP2 Kanban Training in Berlin and Online"
+metaDescription: "Kanban System Improvement (KMP2), certified by Kanban University. Two days in Berlin or four half days online. Use flow metrics to improve a live system."
 ---

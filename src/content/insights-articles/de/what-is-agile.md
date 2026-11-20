@@ -22,7 +22,8 @@ author: mogens-villadsen
 excerpt: "Agile ist einer der meistgenutzten und am wenigsten verstandenen Begriffe im modernen Geschäftsleben. Es ist keine Methodik, kein Werkzeugset, und kein Synonym für Scrum."
 featured: false
 imageUrl: /insights/what-is-agile.webp
-metaDescription: "Agile ist einer der meistgenutzten und am wenigsten verstandenen Begriffe im modernen Geschäftsleben. Es ist keine Methodik, kein Werkzeugset, und kein Synonym für Scrum."
+metaTitle: "Was ist Agile? Mehr als ein Schlagwort"
+metaDescription: "Agile ist keine Methodik, kein Werkzeugset und kein Synonym für Scrum, sondern eine Philosophie und ein Wertesystem. Was Agile tatsächlich ist."
 bodyHtml: |-
   <p>Das Wort "agil" bezeichnet die Fähigkeit eines Systems, sich schnell anzupassen und auf Wandel zu reagieren. Im Kontext von Produktentwicklung und organisatorischer Arbeit bezeichnet Agile (großgeschrieben) eine Philosophie und ein Wertesystem, das prägt, wie Teams komplexe, unsichere Arbeit angehen.</p>
 

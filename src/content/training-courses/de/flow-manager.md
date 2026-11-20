@@ -7,8 +7,9 @@
 # only its displayed text is translated, via translateLevel().
 # category/code/certification/formats/priceFrom/durationDays/sortOrder
 # stay identical to the English entry (language-neutral facts/lookup
-# keys). metaTitle/metaDescription aren't covered by this draft and stay
-# "[DE]" placeholder pending their own pass.
+# keys). metaTitle/metaDescription are German search copy from the SEO
+# pass (2026-11), not part of the translation draft; the length limits are
+# enforced by scripts/check-meta-lengths.mjs.
 name: 'Flow Manager (FM)'
 code: FlowMgr
 category: de/kanban
@@ -40,6 +41,6 @@ whatYoullLearn:
   - 'Wie Flow-Performance so an die Führung berichtet wird, dass es nützliche Entscheidungen ermöglicht'
 summary: 'Die spezifischen Verantwortlichkeiten eines Flow Managers innerhalb einer Kanban-basierten Organisation kennenlernen, Flow-Probleme über ein gesamtes System hinweg erkennen und darauf reagieren, nicht nur innerhalb eines einzelnen Teams. Visualisierung und Metriken werden genutzt, um produktive Gespräche mit Teams und Führung zu führen, Nachfrage, Kapazität und Priorisierung über mehrere gleichzeitige Teams hinweg zu managen, und systemische Blockaden zu lösen, die kein einzelnes Team allein beheben kann. Für Manager:innen und Teamleitungen mit direkter Verantwortung für teamübergreifende Delivery-Performance, dieser praxisnahe Kurs führt zur Kanban-University-Zertifizierung.'
 sortOrder: 1
-metaTitle: '[DE] Flow Manager Training | Kanban University | Better Change'
-metaDescription: '[DE] Flow Manager training with Kanban University certification. Learn to manage and optimise flow across teams. Berlin and online delivery.'
+metaTitle: "Flow Manager Training, Präsenz und online"
+metaDescription: "Flow Manager (FM), zertifiziert von der Kanban University. Zwei Tage in Präsenz oder vier halbe Tage online. Flow über Teams und Wertströme hinweg steuern."
 ---

@@ -19,7 +19,8 @@ author: mogens-villadsen
 excerpt: "In Scrum bezeichnen Akzeptanzkriterien eine Reihe von Bedingungen oder Anforderungen, die eine User Story erfüllen muss, um von der Product-Owner-Person, Nutzenden, Kund:innen oder anderen Stakeholdern als vollständig oder akzeptabel betrachtet zu werden."
 featured: false
 imageUrl: /insights/what-are-acceptance-criteria.webp
-metaDescription: "In Scrum bezeichnen Akzeptanzkriterien eine Reihe von Bedingungen oder Anforderungen, die eine User Story erfüllen muss, um von der Product-Owner-Person, Nutzenden, Kund:innen oder anderen Stakeholdern als vollständig oder akzeptabel betrachtet zu werden."
+metaTitle: "Akzeptanzkriterien: Definition und Beispiele"
+metaDescription: "Akzeptanzkriterien sind Bedingungen, die eine User Story erfüllen muss, um als vollständig zu gelten. Warum sie nützen, mit Beispielen."
 bodyHtml: |-
   <p>In Scrum bezeichnen Akzeptanzkriterien eine Reihe von Bedingungen oder Anforderungen, die eine User Story erfüllen muss, um von der Product-Owner-Person, Nutzenden, Kund:innen oder anderen Stakeholdern als vollständig oder akzeptabel betrachtet zu werden. Akzeptanzkriterien werden von der Product-Owner-Person in Zusammenarbeit mit dem Entwicklungsteam definiert.</p>
 

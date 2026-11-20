@@ -13,7 +13,7 @@ author: niels-verdonk
 excerpt: Sprint Goals are one of Scrum's most underused elements. Teams skip them, treat them as afterthoughts, or confuse them with task lists. Here is why that is a mistake, and what your team actually gains when you use them properly.
 featured: false
 imageUrl: /insights/10-advantages-of-using-sprint-goals.webp
-metaTitle: Ten Reasons Sprint Goals Are Worth the Effort | Better Change Consulti
+metaTitle: "Ten Reasons Sprint Goals Are Worth the Effort"
 metaDescription: Sprint Goals are one of Scrum's most underused elements. Teams skip them, treat them as afterthoughts, or confuse them with task lists. Here is why...
 bodyHtml: |-
   <p>Sprint Goals are defined in the Scrum Guide and included in every Sprint Planning discussion. They are also, in many teams, quietly set aside when the planning gets busy, replaced by a list of tasks that serves as a de facto goal. This is worth resisting.</p>

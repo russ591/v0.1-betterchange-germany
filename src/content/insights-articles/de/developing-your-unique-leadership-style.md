@@ -22,7 +22,8 @@ author: bent-myllerup
 excerpt: "Dies ist der dritte und letzte Beitrag der Mini-Serie über Management und Führung. Zur Serie gehören außerdem: Management ist nicht Führung und Me-dership ist auch nicht Führung."
 featured: false
 imageUrl: /insights/developing-your-unique-leadership-style.webp
-metaDescription: "Dies ist der dritte und letzte Beitrag der Mini-Serie über Management und Führung. Zur Serie gehören außerdem: Management ist nicht Führung und Me-dership ist auch nicht Führung."
+metaTitle: "Den eigenen Führungsstil entwickeln"
+metaDescription: "Statt Vorbilder zu kopieren: Wie sich ein Führungsstil entwickeln lässt, der zu den eigenen Werten und Stärken passt. Teil 3 der Serie."
 bodyHtml: |-
   <p><em>Dies ist der dritte und letzte Beitrag der Mini-Serie über Management und Führung. Zur Serie gehören außerdem: Management ist nicht Führung und Me-dership ist auch nicht Führung, eine kritische Sicht auf idealisierte Führung.</em></p>
 

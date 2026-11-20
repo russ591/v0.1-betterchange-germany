@@ -12,7 +12,7 @@ author: joanne-perold
 excerpt: Scrum has five events. Most teams run three of them reasonably well and shortchange the other two. Understanding what each event is actually for, not just the mechanics, makes the whole system function more effectively.
 featured: false
 imageUrl: /insights/scrum-events.webp
-metaTitle: 'Scrum''s Five Events: What They Are, What They''re For, and How They Con'
+metaTitle: "Scrum's Five Events and How They Connect"
 metaDescription: Scrum has five events. Most teams run three of them reasonably well and shortchange the other two. Understanding what each event is actually for, not...
 bodyHtml: |-
   <p>The five Scrum events are not a collection of required meetings. They are a system, designed to create inspect-and-adapt opportunities at the right frequency for each level of the work. Understanding them as a system rather than as individual ceremonies changes how you approach each one.</p>

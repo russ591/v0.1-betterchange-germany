@@ -15,7 +15,7 @@ author: giuseppe-de-simone
 excerpt: What does leadership growth really look like from the inside? Giuseppe De Simone talks with Maja Lovrenčić, Coach and Leader at Avery Dennison, about the shift from firefighting to designing.
 featured: false
 imageUrl: /insights/what-happens-when-you-invest-in-your-leadership-a-conversation-with-maja-lovrencic.webp
-metaTitle: 'Webinar Recording: What Happens When You Invest in Your Leadership'
+metaTitle: "Invest in Your Leadership: Maja Lovrenčić"
 metaDescription: What does leadership growth really look like from the inside? Giuseppe De Simone talks with Maja Lovrenčić about the shift from firefighting to designing.
 bodyHtml: |-
   <h2>What does leadership growth really look like from the inside?</h2>

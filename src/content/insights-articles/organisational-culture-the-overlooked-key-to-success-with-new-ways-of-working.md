@@ -13,7 +13,7 @@ author: bent-myllerup
 excerpt: Without a conscious effort to address culture, new approaches risk losing their effectiveness – or failing entirely. This is a challenge we often encounter, and one that many consultants struggle to address.
 featured: false
 imageUrl: /insights/organisational-culture-the-overlooked-key-to-success-with-new-ways-of-working.webp
-metaTitle: 'Webinar: Organisational Culture – The Overlooked Key to Success with N'
+metaTitle: "Organisational Culture: The Overlooked Key"
 metaDescription: Without a conscious effort to address culture, new approaches risk losing their effectiveness – or failing entirely. This is a challenge we often...
 bodyHtml: |-
   <p>Without a conscious effort to address culture, new approaches risk losing their effectiveness – or failing entirely. This is a challenge we often encounter, and one that many consultants struggle to address.</p>

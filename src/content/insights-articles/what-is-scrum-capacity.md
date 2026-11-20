@@ -11,7 +11,7 @@ author: konrad-pogorzala
 excerpt: 'Capacity planning answers one question: given who is available and for how long, how much work can this team realistically commit to? Getting this right is the foundation of realistic Sprint commitments and sustainable pace.'
 featured: false
 imageUrl: /insights/what-is-scrum-capacity.webp
-metaTitle: 'Scrum Capacity Planning: How Much Can the Team Actually Do This Sprint'
+metaTitle: "Scrum Capacity Planning: What Fits a Sprint?"
 metaDescription: 'Capacity planning answers one question: given who is available and for how long, how much work can this team realistically commit to? Getting this...'
 bodyHtml: |-
   <p>Capacity in Scrum refers to the total development time available for a given Sprint. It is calculated from the number of team members, the number of working days in the Sprint, the hours available per day, and the adjustments needed for planned and unplanned absences. The output is a realistic picture of how much work the team can take on, not how much they would like to take on, or how much stakeholders would like them to take on.</p>

@@ -7,8 +7,9 @@
 # only its displayed text is translated, via translateLevel().
 # category/code/certification/formats/priceFrom/durationDays/sortOrder
 # stay identical to the English entry (language-neutral facts/lookup
-# keys). metaTitle/metaDescription aren't covered by this draft and stay
-# "[DE]" placeholder pending their own pass.
+# keys). metaTitle/metaDescription are German search copy from the SEO
+# pass (2026-11), not part of the translation draft; the length limits are
+# enforced by scripts/check-meta-lengths.mjs.
 name: 'Agile Team Facilitation (ICP-ATF)'
 code: ICPATF
 category: de/coaching
@@ -40,6 +41,6 @@ whatYoullLearn:
   - 'Wie eine Reihe verbundener Workshops gestaltet wird, die aufeinander aufbauen und zu einem größeren Ergebnis führen'
 summary: 'Über Agenda-Management hinaus zu echter, zielgerichteter Gruppen-Facilitation wechseln, Workshops gestalten, die zuverlässig ihr beabsichtigtes Ergebnis erreichen, nicht nur pünktlich enden. Vermittelt werden Techniken für Gruppen unterschiedlicher Größe, Energielevel und Konfliktdynamik, wie mit schwierigen Dynamiken wie Schweigen, Dominanz und Widerstand umgegangen wird, ohne den Raum zu verlieren, und wie psychologische Sicherheit geschaffen wird, die Teilnehmende dazu bringt, zu sagen, was sie wirklich denken. Für Scrum Master, Coaches und Berater:innen, deren Meetings derzeit abdriften oder sich ziehen, die Facilitation-Zertifizierung von ICAgile für agile Teams.'
 sortOrder: 2
-metaTitle: '[DE] ICP-ATF Agile Team Facilitation Training | Better Change'
-metaDescription: '[DE] ICAgile certified facilitation training. Learn to design and run impactful workshops for agile teams. In-person Berlin and online options.'
+metaTitle: "ICP-ATF Agile Team Facilitation Training"
+metaDescription: "Agile Team Facilitation (ICP-ATF), zertifiziert von ICAgile. Zwei Tage in Präsenz oder vier halbe Tage online. Workshops gestalten, die ihr Ziel erreichen."
 ---

@@ -13,7 +13,7 @@ author: jesper-orting
 excerpt: A CIO kicks off a major scaling programme. Six months later, the new ceremonies are running, the teams are trained, and the results are... roughly where they were before. This is not an unusual story.
 featured: false
 imageUrl: /insights/scaling-challenges-a-cios-perspective.webp
-metaTitle: Six Months Into Your Scaling Initiative, and the Benefits Still Haven
+metaTitle: "Scaling Initiative: Why Benefits Don't Appear"
 metaDescription: A CIO kicks off a major scaling programme. Six months later, the new ceremonies are running, the teams are trained, and the results are... roughly...
 bodyHtml: |-
   <p>Consider a scenario that plays out regularly in large organisations. A CIO invests in a scaling initiative, SAFe, LeSS, or some custom variant, with clear expectations of improved delivery speed, better cross-team coordination, and more responsive IT. The launch is ambitious, the training is thorough, and the teams are initially engaged.</p>

@@ -35,6 +35,6 @@ whatYoullLearn:
   - How to sustain organisational agility over time as strategy, structure, and people change
 summary: Take a systemic view of your organisation and design a Flight Levels architecture that addresses strategy, coordination, and delivery simultaneously, rather than optimising one level in isolation. You'll learn how to sequence transformation interventions so they don't overwhelm the organisation, build the leadership capability a sustainable change effort depends on, and assess whether a Flight Levels system is actually working six months in. Aimed at senior transformation sponsors, experienced Flight Levels coaches, and practitioners who've worked at FL2 or FL3 and want the full architectural picture, this is the most advanced course in the Flight Levels curriculum.
 sortOrder: 4
-metaTitle: FLSA Flight Levels System Architecture | Berlin & Online
-metaDescription: Certified Flight Levels System Architecture training in Berlin and online. Design organisation-wide agility pragmatically and cost-effectively.
+metaTitle: "FLSA Flight Levels Architecture in Berlin"
+metaDescription: "Flight Levels System Architecture (FLSA), certified by Flight Levels Academy. Two days in Berlin, online or self-paced. Design organisation-wide agility."
 ---

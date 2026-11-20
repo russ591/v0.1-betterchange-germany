@@ -22,7 +22,8 @@ author: mogens-villadsen
 excerpt: "Ein Hausrenovierungsprojekt mit Familie und Freund:innen als Arbeitskräften ist eine Koordinationsherausforderung, die die meisten Projektmanager:innen nervös machen würde. Ein 20-minütiges Brainstorming und eine Wand voller Sticky Notes waren die gesamte benötigte Management-Infrastruktur."
 featured: true
 imageUrl: /insights/a-house-renovation-completed-on-time-and-within-budget.webp
-metaDescription: "Ein Hausrenovierungsprojekt mit Familie und Freund:innen als Arbeitskräften ist eine Koordinationsherausforderung, die die meisten Projektmanager:innen nervös machen würde. Ein 20-minütiges Brainstorming und eine Wand voller Sticky Notes waren die gesamte benötigte Management-Infrastruktur."
+metaTitle: "Kanban im Alltag: Hausrenovierung mit Board"
+metaDescription: "Wie ein Kanban-Board an der Küchenwand eine Hausrenovierung mit Familie und Freund:innen koordinierte, pünktlich und im Budget."
 bodyHtml: |-
   <p>Als meine Frau und ich unser neues Zuhause übernahmen, war die Liste der Dinge, die vor dem Einzug erledigt werden mussten, beträchtlich. Die verfügbare Arbeitskraft war willig, aber uneinheitlich: Familie und Freund:innen mit unterschiedlichen Fähigkeiten, unterschiedlich viel verfügbarer Zeit, und ohne jeglichen Projektmanagement-Hintergrund. Sie zu koordinieren fühlte sich wie ein Problem an, das leicht schiefgehen konnte.</p>
 

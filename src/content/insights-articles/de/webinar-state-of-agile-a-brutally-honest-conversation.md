@@ -21,7 +21,8 @@ author: bent-myllerup
 excerpt: "Agile wurde häufiger für tot erklärt, als sich zählen lässt. Trotzdem sind seine Prinzipien, Anpassungsfähigkeit, Zusammenarbeit und Kundenfokus, relevanter denn je."
 featured: false
 imageUrl: /insights/webinar-state-of-agile-a-brutally-honest-conversation.webp
-metaDescription: "Agile wurde häufiger für tot erklärt, als sich zählen lässt. Trotzdem sind seine Prinzipien, Anpassungsfähigkeit, Zusammenarbeit und Kundenfokus, relevanter denn je."
+metaTitle: "State of Agile: Ein ehrliches Gespräch"
+metaDescription: "Agile wurde oft für tot erklärt. Warum seine Prinzipien relevanter sind denn je und wie Dogma, Inkompetenz und Hype es verwässert haben."
 bodyHtml: |-
   <p>Agile wurde häufiger für tot erklärt, als sich zählen lässt. Trotzdem sind seine Prinzipien, Anpassungsfähigkeit, Zusammenarbeit und Kundenfokus, relevanter denn je. Das Problem ist nicht Agile selbst, sondern wie es fehlangewendet, kommerzialisiert und durch Dogma, Inkompetenz und Hype verwässert wurde.</p>
   <p>In diesem offenen Gespräch, moderiert von <a href="https://www.meetup.com/agilitylab/">Agility Lab Copenhagen</a>, geht es unter anderem um:</p>

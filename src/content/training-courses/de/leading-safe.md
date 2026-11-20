@@ -7,8 +7,9 @@
 # only its displayed text is translated, via translateLevel().
 # category/code/certification/formats/priceFrom/durationDays/sortOrder
 # stay identical to the English entry (language-neutral facts/lookup
-# keys). metaTitle/metaDescription aren't covered by this draft and stay
-# "[DE]" placeholder pending their own pass.
+# keys). metaTitle/metaDescription are German search copy from the SEO
+# pass (2026-11), not part of the translation draft; the length limits are
+# enforced by scripts/check-meta-lengths.mjs.
 name: 'Leading SAFe 6 (SAFe-SA)'
 code: LEADINGSAFE
 category: de/scaling
@@ -40,6 +41,6 @@ whatYoullLearn:
   - 'Wie die Geschäftsergebnisse einer SAFe-Umsetzung gemessen und glaubwürdig an den Vorstand berichtet werden'
 summary: 'Das Scaled Agile Framework aus Führungsperspektive verstehen, wie Programme-Increment(PI)-Planning als Maschinenraum der SAFe-Umsetzung funktioniert, und wie Agile Release Trains strukturiert und tatsächlich geführt werden. Vermittelt wird, wie Strategie, Portfoliomanagement und Umsetzung innerhalb eines SAFe-Betriebsmodells ausgerichtet werden, wie eine Koalition von Führungskräften aufgebaut wird, die die Transformation über Zeit vorantreibt, und wie deren Geschäftsergebnisse glaubwürdig an den Vorstand berichtet werden. Für Business- und Technologie-Führungskräfte, die eine SAFe-Transformation sponsern, Leading SAFe 6 führt zur SAFe-Agilist(SA)-Zertifizierung von Scaled Agile.'
 sortOrder: 1
-metaTitle: '[DE] Leading SAFe 6 Training | SAFe Agile Certification | Better Change'
-metaDescription: '[DE] Leading SAFe 6 certified training in Berlin and online. Gain SAFe Agilist (SA) certification and learn to lead SAFe transformations.'
+metaTitle: "Leading SAFe 6 Training, SA-Zertifizierung"
+metaDescription: "Leading SAFe 6 (SAFe-SA), Weg zur SAFe-Agilist-Zertifizierung von Scaled Agile. Zwei Tage in Präsenz oder vier halbe Tage online. SAFe-Wandel führen."
 ---

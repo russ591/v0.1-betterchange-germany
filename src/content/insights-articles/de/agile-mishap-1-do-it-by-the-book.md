@@ -23,7 +23,8 @@ author: bent-myllerup
 excerpt: "In einer Serie von Blogbeiträgen wird die Frage untersucht: Was ging schief mit Agile? Als 2006 begonnen wurde, Agile-Methodiken anzuwenden, gab es ein dominantes Framework."
 featured: false
 imageUrl: /insights/agile-mishap-1-do-it-by-the-book.webp
-metaDescription: "In einer Serie von Blogbeiträgen wird die Frage untersucht: Was ging schief mit Agile? Als 2006 begonnen wurde, Agile-Methodiken anzuwenden, gab es ein dominantes Framework."
+metaTitle: "Agile Mishap #1: Alles streng nach Lehrbuch"
+metaDescription: "Teil 1 der Serie, was bei Agile schiefging: Warum die Forderung nach Scrum strikt nach Lehrbuch scheitert, wenn es keinen Sinn ergibt."
 bodyHtml: |-
   <p><em>In einer Serie von Blogbeiträgen wird die Frage untersucht: Was ging schief mit Agile? Wer den einleitenden Beitrag (Was ging schief mit Agile?) noch nicht gelesen hat, sollte dort zuerst weiterlesen.</em></p>
 

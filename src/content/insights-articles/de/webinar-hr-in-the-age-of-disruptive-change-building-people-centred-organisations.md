@@ -21,7 +21,8 @@ author: giuseppe-de-simone
 excerpt: "Die meisten HR-Funktionen wissen theoretisch, was agil bedeutet. Deutlich weniger haben herausgefunden, was das für die eigene Arbeitsweise bedeutet. Dieses Webinar mit Giuseppe De Simone zeigt, wie wirklich agiles HR aussieht."
 featured: false
 imageUrl: /insights/webinar-hr-in-the-age-of-disruptive-change-building-people-centred-organisations.webp
-metaDescription: "Die meisten HR-Funktionen wissen theoretisch, was agil bedeutet. Deutlich weniger haben herausgefunden, was das für die eigene Arbeitsweise bedeutet. Dieses Webinar mit Giuseppe De Simone zeigt, wie wirklich agiles HR aussieht."
+metaTitle: "Agiles HR: Wie es wirklich aussieht"
+metaDescription: "Webinar mit Giuseppe De Simone: Wie wirklich agiles HR aussieht, wenn Agile die eigene Arbeitsweise verändert und nicht nur Theorie bleibt."
 bodyHtml: |-
   <p>Agile Transformation in Organisationen konzentriert sich meist auf Produktteams, Delivery-Pipelines und Führungsverhalten. HR ist oft die letzte Funktion, die sich verändert, und manchmal diejenige, die die Muster, von denen sich die Transformation eigentlich lösen will, am aktivsten fortsetzt: jährliche Leistungszyklen, feste Stellenbeschreibungen, hierarchische Freigabeprozesse und Einstellungskriterien, die eher auf Compliance als auf Fähigkeit optimiert sind.</p>
 

@@ -21,7 +21,8 @@ author: bent-myllerup
 excerpt: "Wirksame Führung wird oft mit Entschlossenheit, Selbstbewusstsein und Durchsetzungsvermögen verbunden. Es gibt jedoch eine weitere, oft übersehene Eigenschaft, die für organisatorischen Erfolg ebenso, wenn nicht sogar wertvoller sein kann: Humble Inquiry."
 featured: true
 imageUrl: /insights/humble-inquiry-the-art-of-elevating-your-employees.webp
-metaDescription: "Wirksame Führung wird oft mit Entschlossenheit, Selbstbewusstsein und Durchsetzungsvermögen verbunden. Es gibt jedoch eine weitere, oft übersehene Eigenschaft, die für organisatorischen Erfolg ebenso, wenn nicht sogar wertvoller sein kann: Humble Inquiry."
+metaTitle: "Humble Inquiry: Demütig fragen als Führung"
+metaDescription: "Humble Inquiry ist eine oft übersehene Führungsqualität: demütiges Fragen. Was sie bringt, wie sie sich anwenden lässt und praktische Tipps."
 bodyHtml: |-
   <p>Wirksame Führung wird oft mit Entschlossenheit, Selbstbewusstsein und Durchsetzungsvermögen verbunden. Es gibt jedoch eine weitere, oft übersehene Eigenschaft, die für organisatorischen Erfolg ebenso, wenn nicht sogar wertvoller sein kann: Humble Inquiry. Aufbauend auf Erkenntnissen von Organisationspsycholog:innen wie Edgar Schein und Forscher:innen wie Mats Alvesson und Stefan Sveningsson wird in diesem Beitrag das Konzept von Humble Inquiry und seine tiefgreifenden Implikationen für Führung und organisatorische Dynamik untersucht.</p>
 

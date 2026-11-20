@@ -21,7 +21,8 @@ author: jesper-orting
 excerpt: "Das Scaled Agile Framework ist ein leistungsfähiges Werkzeug für groß angelegte Koordination. Aber SAFe-Einführungen scheitern vorhersehbar häufig, wenn die sponsernden Führungskräfte weiterhin grundlegend unagil handeln. Nicht das Framework ist die Variable. Führungsverhalten ist es."
 featured: false
 imageUrl: /insights/agile-mindset-culture-leadership.webp
-metaDescription: "Das Scaled Agile Framework ist ein leistungsfähiges Werkzeug für groß angelegte Koordination. Aber SAFe-Einführungen scheitern vorhersehbar häufig, wenn die sponsernden Führungskräfte weiterhin grundlegend unagil handeln. Nicht das Framework ist die Variable. Führungsverhalten ist es."
+metaTitle: "SAFe scheitert ohne agile Führungskräfte"
+metaDescription: "SAFe-Einführungen scheitern oft, wenn Führungskräfte weiter unagil handeln. Nicht das Framework ist die Variable, sondern das Führungsverhalten."
 bodyHtml: |-
   <p>Das Scaled Agile Framework verspricht viel: schnellere Lieferung, bessere Qualität, verbesserte teamübergreifende Koordination und kulturellen Wandel im großen Maßstab. Organisationen investieren erheblich in seine Einführung, Training, Tooling, Coaching, Zeremonien. Und dann, sechs Monate später, sind die versprochenen Verbesserungen nicht eingetreten, die Teams sind erschöpft, und das Führungsteam fragt sich, was schiefgelaufen ist.</p>
 

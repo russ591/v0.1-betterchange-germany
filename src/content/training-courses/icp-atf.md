@@ -31,6 +31,6 @@ whatYoullLearn:
   - How to design a series of connected workshops that build on each other towards a larger outcome
 summary: Move beyond agenda management to genuine, purposeful group facilitation, designing workshops that reliably achieve their intended outcome, not just run to time. You'll learn techniques for groups of different sizes, energy levels and conflict, how to handle difficult dynamics like silence, dominance and resistance without losing the room, and how to create the psychological safety that gets participants saying what they actually think. Built for Scrum Masters, coaches and consultants whose meetings currently drift or drag, ICP-ATF is ICAgile's certification in agile team facilitation.
 sortOrder: 2
-metaTitle: ICP-ATF Agile Team Facilitation Training | Better Change
-metaDescription: ICAgile certified facilitation training. Learn to design and run impactful workshops for agile teams. In-person Berlin and online options.
+metaTitle: "ICP-ATF Agile Team Facilitation Training"
+metaDescription: "Agile Team Facilitation (ICP-ATF), certified by ICAgile. Two days in person or four half days online. Design workshops that reliably reach their outcome."
 ---

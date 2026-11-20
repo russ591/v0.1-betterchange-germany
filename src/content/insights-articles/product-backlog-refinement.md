@@ -11,7 +11,7 @@ authorName: Martin von Weissenberg
 excerpt: Backlog Refinement is the ongoing work that makes Sprint Planning possible. Teams that do it consistently tend to have shorter, more focused planning sessions and fewer mid-Sprint surprises.
 featured: false
 imageUrl: /insights/product-backlog-refinement.webp
-metaTitle: 'Product Backlog Refinement: The Work That Makes Sprint Planning Possib'
+metaTitle: "Product Backlog Refinement Explained"
 metaDescription: Backlog Refinement is the ongoing work that makes Sprint Planning possible. Teams that do it consistently tend to have shorter, more focused planning...
 bodyHtml: |-
   <p>Product Backlog Refinement does not appear in the Scrum Guide as one of the five events. This is sometimes taken to mean it is optional, which is a mistake. The Scrum Guide describes it as an ongoing activity, not a discrete event, and its consistent absence from teams' working rhythm is one of the most reliable predictors of poor Sprint Planning and messy Sprints.</p>

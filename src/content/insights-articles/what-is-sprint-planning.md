@@ -12,7 +12,7 @@ author: niels-verdonk
 excerpt: Sprint Planning is the first event which kicks off the start of each Sprint. It initiates the Sprint by setting a goal, defining the work that needs to be completed.
 featured: false
 imageUrl: /insights/what-is-sprint-planning.webp
-metaTitle: What is Sprint Planning? | Better Change Consulting
+metaTitle: "What is Sprint Planning?"
 metaDescription: Sprint Planning is the first event which kicks off the start of each Sprint. It initiates the Sprint by setting a goal, defining the work that needs to...
 bodyHtml: |-
   <p>Sprint Planning is the first event which kicks off the start of each Sprint. It initiates the Sprint by setting a goal, defining the work that needs to be completed, and outlining how it will be carried out by the whole Scrum Team. </p>

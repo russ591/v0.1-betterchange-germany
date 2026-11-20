@@ -8,9 +8,7 @@
 # category/code/formats/priceFrom/durationDays/sortOrder stay identical to
 # the English entry (language-neutral facts/lookup keys). No
 # `certification` field, matching the live English page -- it's
-# intentionally absent, not a missing translation. metaTitle/
-# metaDescription aren't covered by this draft and stay "[DE]" placeholder
-# pending their own pass.
+# intentionally absent, not a missing translation. metaTitle/metaDescription are German search copy (SEO pass, 2026-11).
 name: 'AI for Product Owners'
 code: AIPO
 category: de/scrum
@@ -41,6 +39,6 @@ whatYoullLearn:
   - 'Was das Aufkommen von KI für die langfristige Form und Erwartungen an die Product-Owner-Rolle bedeutet'
 summary: 'Lernen, mit KI das Schreiben von User Stories zu beschleunigen, ohne den menschlichen Kontext zu verlieren, der Stories nützlich macht, und KI-gestützte Techniken für Backlog-Refinement, Priorisierung und Lückenanalyse anzuwenden. Es werden praktische Prompting-Frameworks speziell für die Product-Owner-Rolle entwickelt, gelernt, KI-Tools zu unterscheiden, die Produktdenken unterstützen, von solchen, die es leise ersetzen, und gezeigt, wie KI schrittweise in den bestehenden Workflow integriert wird, ohne den Team-Rhythmus zu stören. Ein eintägiger, praxisnaher Kurs für CSPOs und A-CSPOs, die neugierig auf KI sind, aber nicht wissen, wo sie anfangen sollen, mit Scrum-Alliance-Zertifizierung.'
 sortOrder: 15
-metaTitle: '[DE] AI for Product Owners | Better Change Consulting'
-metaDescription: '[DE] Use AI to manage your backlog and communicate with stakeholders more effectively. Practical Scrum Alliance certified training for Product Owners.'
+metaTitle: "KI für Product Owner: Praxistraining"
+metaDescription: "Eintägiger Praxiskurs für CSPOs und A-CSPOs, von der Scrum Alliance zertifiziert. KI für User Stories, Backlog Refinement und Priorisierung nutzen."
 ---
