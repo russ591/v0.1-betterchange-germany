@@ -7,8 +7,9 @@
 # only its displayed text is translated, via translateLevel().
 # category/code/certification/formats/priceFrom/durationDays/sortOrder
 # stay identical to the English entry (language-neutral facts/lookup
-# keys). metaTitle/metaDescription aren't covered by this draft and stay
-# "[DE]" placeholder pending their own pass.
+# keys). metaTitle/metaDescription are German search copy from the SEO
+# pass (2026-11), not part of the translation draft; the length limits are
+# enforced by scripts/check-meta-lengths.mjs.
 name: 'Advanced Certified Scrum Product Owner (A-CSPO)'
 code: ACSPO
 category: de/scrum
@@ -40,6 +41,6 @@ whatYoullLearn:
   - 'Wie Produktstrategie nach oben zur Führung und nach unten zu Umsetzungsteams kommuniziert wird'
 summary: 'Eine überzeugende Produktvision und -strategie entwickeln und kommunizieren, und lernen, Daten und Nutzerforschung für Produktentscheidungen mit echtem Vertrauen statt reinem Bauchgefühl zu nutzen. Behandelt wird fortgeschrittene Stakeholder-Abstimmung in komplexen, politisch aufgeladenen Umgebungen, Roadmapping, das kurzfristige Umsetzung mit langfristiger Ausrichtung balanciert, und wie ein Portfolio konkurrierender Prioritäten gemanagt wird, ohne den strategischen Fokus zu verlieren. Für erfahrene Product Owner, die sich bei Backlog-Verwaltung statt Produktdenken wiederfinden, die fortgeschrittene Product-Owner-Zertifizierung der Scrum Alliance.'
 sortOrder: 4
-metaTitle: '[DE] A-CSPO Advanced Certified Scrum Product Owner | Better Change'
-metaDescription: '[DE] Scrum Alliance A-CSPO training for experienced Product Owners. Deepen your practice with advanced product strategy and stakeholder skills.'
+metaTitle: "A-CSPO Advanced Scrum Product Owner Kurs"
+metaDescription: "Advanced Certified Scrum Product Owner (A-CSPO), Scrum-Alliance-zertifiziert. Zwei Tage in Präsenz oder vier halbe Tage online. Produktstrategie schärfen."
 ---

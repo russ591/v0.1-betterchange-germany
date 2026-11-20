@@ -12,7 +12,7 @@ author: mogens-villadsen
 excerpt: Governance and agility are widely treated as opposing forces. They are not, but governance designed to control people rather than enable them does undermine agility. The difference matters, and it starts at the top.
 featured: false
 imageUrl: /insights/agile-governance-whats-the-difference.webp
-metaTitle: 'Agile Governance: Enough Structure to Enable, Not Enough to Control |'
+metaTitle: "Agile Governance: Enough Structure to Enable"
 metaDescription: Governance and agility are widely treated as opposing forces. They are not, but governance designed to control people rather than enable them does...
 bodyHtml: |-
   <p>There is a question worth asking about why organisations accumulate governance. Some of it serves a genuine purpose: accountability, transparency, risk management, compliance. A great deal of it accretes over time as a response to individual failures, a process added here, an approval gate there, without anyone stepping back to ask whether the cumulative effect is creating more value than it costs.</p>

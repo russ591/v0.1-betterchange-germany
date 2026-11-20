@@ -22,7 +22,8 @@ author: bent-myllerup
 excerpt: "Dies ist der zweite Beitrag einer Serie darüber, was Führung ist und was nicht. Der dritte und letzte Beitrag, \"Den eigenen Führungsstil entwickeln\", ist ebenfalls verfügbar."
 featured: false
 imageUrl: /insights/me-dership-is-not-leadership-either-a-critical-lens-on-idealised-leadership.webp
-metaDescription: "Dies ist der zweite Beitrag einer Serie darüber, was Führung ist und was nicht. Der dritte und letzte Beitrag, \"Den eigenen Führungsstil entwickeln\", ist ebenfalls verfügbar."
+metaTitle: "Me-dership: Wenn Führung egoistisch wird"
+metaDescription: "Teil 2 der Serie über Führung: Me-dership, die egoistische Version von Führung, und was Führung stattdessen ausmacht."
 bodyHtml: |-
   <p><em>Dies ist der zweite Beitrag einer Serie darüber, was Führung ist und was nicht. Der erste Beitrag ist "Management ist nicht Führung", der dritte und letzte "Den eigenen Führungsstil entwickeln".</em></p>
 

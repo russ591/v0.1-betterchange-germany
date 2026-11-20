@@ -20,7 +20,8 @@ author: mogens-villadsen
 excerpt: "Das Agile Manifest hat verändert, wie Software gebaut wird. Dieses Transformation-Manifest ist ein persönlicher Versuch zu formulieren, was erfolgreichen organisatorischen Wandel tatsächlich antreibt, mit Entschuldigung an Sutherland und Schwaber für die Anmaßung."
 featured: false
 imageUrl: /insights/introducing-the-transformation-manifesto.webp
-metaDescription: "Das Agile Manifest hat verändert, wie Software gebaut wird. Dieses Transformation-Manifest ist ein persönlicher Versuch zu formulieren, was erfolgreichen organisatorischen Wandel tatsächlich antreibt, mit Entschuldigung an Sutherland und Schwaber für die Anmaßung."
+metaTitle: "Das Transformation-Manifest für Change Agents"
+metaDescription: "Ein persönlicher Versuch zu formulieren, was erfolgreichen organisatorischen Wandel antreibt, vom Experimentieren bis zur psychologischen Sicherheit."
 bodyHtml: |-
   <p>Vorab sei gesagt: Ein Transformation-Manifest vorzuschlagen, fühlt sich ein bisschen an wie einen Schnurrbart auf die Mona Lisa zu malen. Das Agile Manifest ist eine genuin sorgfältige Arbeit, über Zeit verfeinert von Menschen, die sich das Recht erarbeitet hatten, es zu schreiben. Was folgt, ist deutlich bescheidener, eine Destillation von Beobachtungen aus Jahren der Arbeit mit Organisationen, die versuchen, ihre Arbeitsweise zu verändern.</p>
 

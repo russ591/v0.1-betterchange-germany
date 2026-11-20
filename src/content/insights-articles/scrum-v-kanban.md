@@ -12,8 +12,8 @@ author: russell-hill
 excerpt: Scrum or Kanban? It is the most common question in Agile training, and the wrong one. The Kanban Method is not a delivery framework competing with Scrum. It is a change management approach that works alongside whatever your teams do now.
 featured: false
 imageUrl: /insights/scrum-v-kanban.webp
-metaTitle: 'Scrum vs Kanban: Why the Question Is Based on a Flawed Premise | Bette'
-metaDescription: Scrum or Kanban? It is the most common question in Agile training, and the wrong one. The Kanban Method is not a delivery framework competing with Scrum. It is a change management approach that works alongside whatever your teams do now.
+metaTitle: "Scrum vs Kanban: Why the Question Is Flawed"
+metaDescription: "Scrum or Kanban is the wrong question. The Kanban Method is not a delivery framework competing with Scrum but a change approach that works alongside it."
 bodyHtml: |-
   <p>The Scrum vs Kanban question comes up in almost every training session. It is entirely understandable, both appear on job descriptions, both involve boards and cards and some notion of iteration, and the agile world does a poor job of explaining how they relate. So let us be direct about it.</p>
 

@@ -14,7 +14,7 @@ author: russell-hill
 excerpt: A 45-person start-up in targeted advertising had tried Scrum for two years and concluded it was useless. The solution wasn't more Agile theory. It was focus on the organisational challenges, and deliberately push the approach to the back seat.
 featured: false
 imageUrl: /insights/transforming-a-start-up-with-kanban-for-sustainable-growth.webp
-metaTitle: The Start-Up That Said Agile Didn't Work, and Then Changed Its Mind |
+metaTitle: "The Start-Up That Said Agile Didn't Work"
 metaDescription: A 45-person start-up in targeted advertising had tried Scrum for two years and concluded it was useless. The solution wasn't more Agile theory. It was...
 bodyHtml: |-
   <p class="font_8">The first thing you hear, in situations like this, is usually a version of: "We tried agile. It didn't work here." This company, a targeted advertising start-up that had recently been acquired and was doubling its headcount, had tried Scrum for two years. They had the ceremonies, the roles, and the tickets in Jira. What they didn't have was any of the benefits. So they'd stopped.</p>

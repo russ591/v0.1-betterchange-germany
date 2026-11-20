@@ -12,7 +12,7 @@
 # metaDescription reuses heroBody's translation verbatim, per explicit
 # instruction, even though the English metaDescription (still listing only
 # Flight Levels/Kanban/Scrum/leadership) is stale relative to heroBody's.
-metaDescription: "Praxisnahes, zertifizierungsreifes Training in Flight Levels, Kanban, Scrum, Coaching, Leadership und Scaling. Vor Ort in Berlin, live online oder im eigenen Tempo."
+metaDescription: "Praxisnahes, zertifizierungsreifes Training in Flight Levels, Kanban, Scrum, Coaching, Leadership und Scaling. In Berlin, online oder im eigenen Tempo."
 heroEyebrow: "Better Change Training Academy"
 heroHeading: "Training, das wirklich hängen bleibt"
 heroBody: "Praxisnahes, zertifizierungsreifes Training in Flight Levels, Kanban, Scrum, Coaching, Leadership und Scaling. Vor Ort in Berlin, live online oder im eigenen Tempo."

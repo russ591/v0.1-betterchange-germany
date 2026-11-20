@@ -10,8 +10,7 @@
 # keys). durationText mirrors the English entry's "2 days · 4 x ½ days"
 # verbatim, even though durationDays is 3 -- an existing mismatch in the
 # English source data, not something this translation pass introduces or
-# corrects. metaTitle/metaDescription aren't covered by this draft and
-# stay "[DE]" placeholder pending their own pass.
+# corrects. metaTitle/metaDescription are German search copy (SEO pass, 2026-11).
 name: 'Coaching Agile Transformations (ICP-CAT)'
 code: ICPCAT
 category: de/coaching
@@ -43,6 +42,6 @@ whatYoullLearn:
   - 'Die ethischen und systemischen Prinzipien hinter der ICP-CAT-Zertifizierung und wie sie in der Praxis gezeigt werden'
 summary: 'Die Komplexität organisationsweiten agilen Wandels navigieren, wo Coaching-Fähigkeiten auf Teamebene allein nicht ausreichen und Transformation systemisch über mehrere Ebenen des Unternehmens gleichzeitig geführt werden muss. Coaching Agile Transformations baut die Frameworks und das Urteilsvermögen auf, die für groß angelegte Veränderungsvorhaben nötig sind, von der Diagnose, wo eine Organisation tatsächlich steht, bis zur Aufrechterhaltung von Momentum, wenn die anfängliche Energie eines Transformationsprogramms nachlässt. Für erfahrene Coaches und Führungskräfte, die organisationsweite Transformation steuern, die Zertifizierung von ICAgile für Coaching von Wandel im großen Maßstab.'
 sortOrder: 3
-metaTitle: '[DE] ICP-CAT Coaching Agile Transformations | Better Change'
-metaDescription: '[DE] ICAgile ICP-CAT training for coaches leading organisational transformation. In-person and online delivery.'
+metaTitle: "ICP-CAT Coaching Agile Transformations"
+metaDescription: "Coaching Agile Transformations (ICP-CAT), zertifiziert von ICAgile. In Präsenz oder live online. Organisationsweiten agilen Wandel systemisch steuern."
 ---

@@ -12,7 +12,8 @@ author: giuseppe-de-simone
 excerpt: A simple mapping exercise turns "coordination feels expensive" into a number. In one example, redesigning team boundaries around the outcome cut the cost from 38 to 2.
 featured: false
 imageUrl: /insights/lightning-lesson-coordination-cost-discovery-for-engineering-leaders.webp
-metaDescription: How to make cross-team dependencies visible, score their coordination cost, and redesign team boundaries around outcomes, with a worked example and its caveats.
+metaTitle: "Lightning Lesson: Coordination Cost Discovery"
+metaDescription: "How to make cross-team dependencies visible, score their coordination cost and redesign team boundaries around outcomes, with a worked example."
 sourceId: '19684'
 sourceUrl: https://www.betterchange-consulting.com/product-owner/lightning-lesson-coordination-cost-discovery-for-engineering-leaders/
 bodyHtml: |-

@@ -13,7 +13,7 @@ author: mogens-villadsen
 excerpt: Renovating a house with family and friends as your workforce is a coordination challenge that would make most project managers nervous. A 20-minute brainstorm and a wall of sticky notes turned out to be all the management infrastructure needed.
 featured: true
 imageUrl: /insights/a-house-renovation-completed-on-time-and-within-budget.webp
-metaTitle: How a Kanban Board on a Kitchen Wall Renovated Our House on Time and o
+metaTitle: "A Kanban Board Renovated Our House on Time"
 metaDescription: Renovating a house with family and friends as your workforce is a coordination challenge that would make most project managers nervous. A 20-minute...
 bodyHtml: |-
   <p>When my wife and I took over our new home, the list of things that needed doing before we could move in was substantial. The workforce we had available was willing but varied: family and friends with different skills, different amounts of available time, and no project management background whatsoever. Coordinating them felt like a problem that could easily go wrong.</p>

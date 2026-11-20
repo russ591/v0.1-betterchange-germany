@@ -12,7 +12,7 @@ author: jan-b-olsen
 excerpt: 'OKRs, Objectives and Key Results, are a goal-setting system built on a counterintuitive premise: if you are always hitting your goals, they are too easy.'
 featured: false
 imageUrl: /insights/mastering-the-art-of-goal-setting-with-okr.webp
-metaTitle: 'OKRs: Ambitious Goals, Honest Numbers, and Why 70% Is Actually Fine |'
+metaTitle: "OKRs: Ambitious Goals, Honest Numbers"
 metaDescription: 'OKRs, Objectives and Key Results, are a goal-setting system built on a counterintuitive premise: if you are always hitting your goals, they are too easy.'
 bodyHtml: |-
   <p>OKRs were developed by Andy Grove at Intel in the 1970s, borrowed by John Doerr when he was an engineer there, and introduced by Doerr to Google in 1999. Google adopted them as a startup and never stopped using them. That trajectory, from a semiconductor manufacturer to the internet's most successful advertising business, is a reasonable indication that the system has something useful going for it regardless of industry.</p>

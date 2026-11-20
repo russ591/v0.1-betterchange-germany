@@ -19,7 +19,8 @@ author: mogens-villadsen
 excerpt: "Mogens Ejby Villadsen hilft seit zwanzig Jahren Organisationen dabei, die Zusammenarbeit in Teams zu verbessern. Seine zentrale Überzeugung, dass Leistung in der Interaktion zwischen Menschen entsteht, nicht in individueller Fähigkeit, prägt seine gesamte Arbeit."
 featured: false
 imageUrl: /insights/coaching-what-happens-between-us.webp
-metaDescription: "Mogens Ejby Villadsen hilft seit zwanzig Jahren Organisationen dabei, die Zusammenarbeit in Teams zu verbessern. Seine zentrale Überzeugung, dass Leistung in der Interaktion zwischen Menschen entsteht, nicht in individueller Fähigkeit, prägt seine gesamte Arbeit."
+metaTitle: "Teamleistung entsteht zwischen den Menschen"
+metaDescription: "Leistung entsteht in der Interaktion zwischen Menschen, nicht in individueller Fähigkeit: wie Mogens Ejby Villadsen Teams begleitet."
 bodyHtml: |-
   <p>"Teamleistung hat vor allem damit zu tun, was zwischen uns passiert." So beginnt Mogens Ejby Villadsen fast jedes Gespräch darüber, was Teams funktionieren lässt. Nicht individuelles Talent, nicht Prozessdesign, nicht Tooling, sondern der Raum zwischen Menschen. Wie sie sich abstimmen, kommunizieren, sich missverstehen und wieder zueinander finden.</p>
 

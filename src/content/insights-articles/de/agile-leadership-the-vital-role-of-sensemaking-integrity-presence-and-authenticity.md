@@ -26,7 +26,8 @@ author: bent-myllerup
 excerpt: "Beim Regional Scrum Gathering in Gent am 6. und 7. Juni 2024 wurde über die entscheidenden Elemente agiler Führung gesprochen."
 featured: true
 imageUrl: /insights/agile-leadership-the-vital-role-of-sensemaking-integrity-presence-and-authenticity.webp
-metaDescription: "Beim Regional Scrum Gathering in Gent am 6. und 7. Juni 2024 wurde über die entscheidenden Elemente agiler Führung gesprochen."
+metaTitle: "Agile Führung: Sensemaking und Integrität"
+metaDescription: "Agile Führung braucht Sensemaking, Integrität und Präsenz. Aus einem Vortrag beim Regional Scrum Gathering in Gent im Juni 2024."
 bodyHtml: |-
   <h2>Einführung</h2>
 

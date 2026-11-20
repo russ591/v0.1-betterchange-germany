@@ -12,7 +12,7 @@ author: jan-b-olsen
 excerpt: Between two thirds and three quarters of large organisations struggle to turn their strategic plans into operational reality. The plans are often good. The implementation is where things fall apart. Here is a structured approach to the gap.
 featured: false
 imageUrl: /insights/practical-guide-to-strategy-implementation.webp
-metaTitle: Why Most Strategies Fail Between the Slides and the Doing | Better Cha
+metaTitle: "Why Strategies Fail Between Slides and Doing"
 metaDescription: Between two thirds and three quarters of large organisations struggle to turn their strategic plans into operational reality. The plans are often good....
 bodyHtml: |-
   <p>The strategy work is finished. The deck is polished. The leadership team is aligned. And then, quietly, nothing changes.</p>

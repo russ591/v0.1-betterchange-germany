@@ -24,7 +24,8 @@ author: russell-hill
 excerpt: "In diesem Webinar teilt Better-Change-Fellow Russell Hill die Geschichte eines Online-Rechtsdienstleisters, der aufgrund schnellen Wachstums und technischer Schulden eine schwere Störung erlebte, eine \"schwarze Woche\"."
 featured: false
 imageUrl: /insights/webinar-discover-how-a-rapid-growing-business-regained-focus.webp
-metaDescription: "In diesem Webinar teilt Better-Change-Fellow Russell Hill die Geschichte eines Online-Rechtsdienstleisters, der aufgrund schnellen Wachstums und technischer Schulden eine schwere Störung erlebte, eine \"schwarze Woche\"."
+metaTitle: "Schnelles Wachstum und Fokus: Webinar"
+metaDescription: "Webinar mit Russell Hill: Wie ein Online-Rechtsdienstleister nach einer schweren Störung durch Workshops und Visualisierung wieder Fokus gewann."
 bodyHtml: |-
   <p>In diesem Webinar teilt Better-Change-Fellow Russell Hill die Geschichte eines Online-Rechtsdienstleisters, der aufgrund schnellen Wachstums und technischer Schulden eine schwere Störung erlebte, eine "schwarze Woche". Durch eine Reihe grundlegender Workshops und Visualisierungstechniken konnte das Unternehmen die Transparenz verbessern, die Koordination stärken und Ausfälle innerhalb weniger Monate auf nahezu null reduzieren.</p>
   <p><strong>Zentrale Erkenntnisse:</strong></p>

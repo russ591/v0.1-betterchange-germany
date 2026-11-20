@@ -10,7 +10,7 @@ author: mogens-villadsen
 excerpt: Scrum, a highly popular and effective framework for project management, has revolutionized the way teams collaborate and deliver value. Scrum is an iterative and incremental framework that enables teams to successfully manage complex projects by promoting...
 featured: false
 imageUrl: /insights/the-scrum-process-explained.webp
-metaTitle: The Scrum Process Explained | Better Change Consulting
+metaTitle: "The Scrum Process Explained"
 metaDescription: Scrum, a highly popular and effective framework for project management, has revolutionized the way teams collaborate and deliver value. Scrum is an...
 bodyHtml: |-
   Scrum, a highly popular and effective framework for project management, has revolutionized the way teams collaborate and deliver value. In this article, we will take a deep dive into the Scrum process, exploring its basic principles, key roles, and essential artifacts.

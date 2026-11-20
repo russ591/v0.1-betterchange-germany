@@ -21,7 +21,8 @@ author: bent-myllerup
 excerpt: "Ohne bewusste Auseinandersetzung mit Kultur laufen neue Ansätze Gefahr, ihre Wirksamkeit zu verlieren oder ganz zu scheitern. Eine Herausforderung, die häufig auftritt, und mit der viele Berater:innen zu kämpfen haben."
 featured: false
 imageUrl: /insights/organisational-culture-the-overlooked-key-to-success-with-new-ways-of-working.webp
-metaDescription: "Ohne bewusste Auseinandersetzung mit Kultur laufen neue Ansätze Gefahr, ihre Wirksamkeit zu verlieren oder ganz zu scheitern. Eine Herausforderung, die häufig auftritt, und mit der viele Berater:innen zu kämpfen haben."
+metaTitle: "Organisationskultur: Der übersehene Schlüssel"
+metaDescription: "Ohne bewusste Auseinandersetzung mit Kultur verlieren neue Arbeitsweisen ihre Wirkung oder scheitern ganz, eine häufige Herausforderung in der Beratung."
 bodyHtml: |-
   <p>Ohne bewusste Auseinandersetzung mit Kultur laufen neue Ansätze Gefahr, ihre Wirksamkeit zu verlieren oder ganz zu scheitern. Dies ist eine Herausforderung, die häufig auftritt, und mit der sich viele Berater:innen schwertun.</p>
 

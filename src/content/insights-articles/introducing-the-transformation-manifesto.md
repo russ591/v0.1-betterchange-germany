@@ -14,7 +14,7 @@ author: mogens-villadsen
 excerpt: The Agile Manifesto changed how we build software. This Transformation Manifesto is a personal attempt to articulate what actually drives successful organisational change, with apologies to Sutherland and Schwaber for the impertinence.
 featured: false
 imageUrl: /insights/introducing-the-transformation-manifesto.webp
-metaTitle: A Modest Manifesto for People Who Actually Change Things | Better Chan
+metaTitle: "A Modest Manifesto for Change Makers"
 metaDescription: The Agile Manifesto changed how we build software. This Transformation Manifesto is a personal attempt to articulate what actually drives successful...
 bodyHtml: |-
   <p>I should say upfront that proposing a Transformation Manifesto feels a bit like drawing a moustache on the Mona Lisa. The Agile Manifesto is a genuinely careful piece of work, refined over time by people who had earned the right to write it. What follows is far more modest, a distillation of observations from years of working with organisations trying to change the way they work.</p>

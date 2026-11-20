@@ -11,7 +11,7 @@ author: bent-myllerup
 excerpt: Introduction At the Regional Scrum Gathering in Ghent on June 6th and 7th, 2024, I had the privilege of presenting on the critical elements of agile leadership.
 featured: true
 imageUrl: /insights/agile-leadership-the-vital-role-of-sensemaking-integrity-presence-and-authenticity.webp
-metaTitle: 'Agile Leadership: The Vital Role of Sensemaking, Integrity, Presence,'
+metaTitle: "Agile Leadership: Sensemaking and Integrity"
 metaDescription: Introduction At the Regional Scrum Gathering in Ghent on June 6th and 7th, 2024, I had the privilege of presenting on the critical elements of agile...
 bodyHtml: |-
   <h2><strong>Introduction</strong></h2>

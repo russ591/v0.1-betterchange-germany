@@ -12,7 +12,7 @@ authorName: Jakob Verner Christensen
 excerpt: The Product Increment is the sum of everything completed so far, every Sprint's delivered work, combined into something usable. It is the most important artefact in Scrum because it is the evidence that the team is delivering value, not...
 featured: false
 imageUrl: /insights/what-is-a-product-increment.webp
-metaTitle: 'The Product Increment: Scrum''s Most Important Artefact | Better Change'
+metaTitle: "The Product Increment: Scrum's Key Artefact"
 metaDescription: The Product Increment is the sum of everything completed so far, every Sprint's delivered work, combined into something usable. It is the most...
 bodyHtml: |-
   <p>The Product Increment is the cumulative sum of all Product Backlog Items completed in the current Sprint and all previous Sprints. It is defined by one critical constraint: work cannot be considered part of an Increment unless it fully meets the team's Definition of Done. If it is not done, it is not in the Increment, regardless of how close to finished it might be.</p>

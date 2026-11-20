@@ -13,7 +13,7 @@ author: joanne-perold
 excerpt: The first version of Agile Retrospectives was my guide for running retrospectives for a decade. Imagine my excitement when Esther and Diana let me know that they were going to do a second edition and that...
 featured: false
 imageUrl: /insights/agile-retrospectives-second-edition-a-practical-guide-for-catalyzing-team-learning-and-improvement.webp
-metaTitle: 'Agile Retrospectives, Second Edition: A Practical Guide for Catalyzing'
+metaTitle: "Agile Retrospectives, Second Edition"
 metaDescription: The first version of Agile Retrospectives was my guide for running retrospectives for a decade. Imagine my excitement when Esther and Diana let me know...
 bodyHtml: |-
   <p>The first version of Agile Retrospectives was my guide for running retrospectives for a decade. Imagine my excitement when Esther and Diana let me know that they were going to do a second edition and that they had been joined by the fabulous David Horowitz. I was lucky enough to be a reviewer and I’m so excited by the new edition. </p>

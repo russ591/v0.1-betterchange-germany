@@ -9,7 +9,7 @@
 # stay identical to the English entry (language-neutral facts/lookup
 # keys). durationText matches the English entry: 3 days in person, 6 half
 # days online (durationDays 3), corrected in October 2026.
-# stay "[DE]" placeholder pending their own pass.
+# metaTitle/metaDescription are German search copy (SEO pass, 2026-11).
 name: 'ICAgile Agile Coaching Professional (ICP-ACC)'
 code: ICPACC
 category: de/coaching
@@ -41,6 +41,6 @@ whatYoullLearn:
   - 'Wie eine nachhaltige Coaching-Praxis aufgebaut wird, intern oder als unabhängige:r Berater:in'
 summary: 'Den Unterschied zwischen Coaching, Mentoring, Lehren und Facilitation lernen, und vor allem, wann was eingesetzt wird, durch zentrale professionelle Coaching-Kompetenzen wie aktives Zuhören, kraftvolles Fragen und anhaltende Präsenz. Geübt wird der Umgang mit Widerstand und der Aufbau echten Vertrauens mit Coachees in komplexen Umgebungen, sowie das Erkennen eigener Coaching-blinder-Flecken statt automatisch Ratschläge zu geben. Für Scrum Master, Berater:innen und Change Agents, die bereit sind, von Ratschlägen zum Aufbau nachhaltiger Fähigkeit zu wechseln, die Flaggschiff-Coaching-Zertifizierung von ICAgile.'
 sortOrder: 1
-metaTitle: '[DE] ICP-ACC Agile Coaching Training Berlin | Better Change'
-metaDescription: '[DE] ICAgile ICP-ACC certified agile coaching training in Berlin and online. Develop coaching skills to guide teams and organisations through change.'
+metaTitle: "ICP-ACC Agile Coaching in Berlin und online"
+metaDescription: "Agile Coaching Professional (ICP-ACC), ICAgile-zertifiziert. Drei Tage in Berlin oder sechs halbe Tage online. Coaching und Facilitation unterscheiden."
 ---

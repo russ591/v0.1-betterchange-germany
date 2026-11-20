@@ -14,7 +14,7 @@ author: bent-myllerup
 excerpt: 'In a series of blog posts I am discussing the question: If it is not dead then what went wrong with Agile? In 2019, I had the experience of attending two conferences in a row.'
 featured: false
 imageUrl: /insights/the-agile-bubble.webp
-metaTitle: 'Agile mishap #3: The Agile Bubble | Better Change Consulting'
+metaTitle: "Agile mishap #3: The Agile Bubble"
 metaDescription: 'In a series of blog posts I am discussing the question: If it is not dead then what went wrong with Agile? In 2019, I had the experience of attending...'
 bodyHtml: |-
   <p><em>In a series of blog posts I am discussing the question: If it is not dead then what went wrong with Agile? If you have not read the introduction blog post already (<a href="/insights/what-went-wrong-with-agile-an-honest-reckoning">What went wrong with Agile?</a>) I suggest you go there first before continuing reading here.</em></p>

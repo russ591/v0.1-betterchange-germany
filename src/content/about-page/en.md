@@ -1,5 +1,5 @@
 ---
-metaDescription: Better Change is a European network of agile coaches, trainers, and consultants who have done the work themselves, and know what to do when the real world does not follow the manual.
+metaDescription: "A European network of agile coaches, trainers and consultants who have done the work themselves and know what to do when the manual runs out."
 heroEyebrow: About Better Change
 heroHeading: Practitioners, not theorists
 heroBody: Better Change is a European network of agile coaches, trainers, and consultants who have done the work themselves, and know what to do when the real world does not follow the manual.

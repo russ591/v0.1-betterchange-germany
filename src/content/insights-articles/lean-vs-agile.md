@@ -12,7 +12,7 @@ author: joanne-perold
 excerpt: Lean and Agile are regularly conflated, used interchangeably, or treated as competing philosophies. They are none of those things. Understanding what distinguishes them makes you better at using both.
 featured: false
 imageUrl: /insights/lean-vs-agile.webp
-metaTitle: 'Lean vs Agile: What They Share, Where They Differ, and Why It Actually'
+metaTitle: "Lean vs Agile: Shared Ground and Differences"
 metaDescription: Lean and Agile are regularly conflated, used interchangeably, or treated as competing philosophies. They are none of those things. Understanding what...
 bodyHtml: |-
   <p>Lean and Agile are both responses to a similar problem, the gap between the pace at which organisations need to deliver value and the pace at which traditional management approaches actually deliver it. Both reject excessive bureaucracy, both emphasise responsiveness, and both put the customer at the centre. The similarities are real, and they explain why the two are so often confused.</p>

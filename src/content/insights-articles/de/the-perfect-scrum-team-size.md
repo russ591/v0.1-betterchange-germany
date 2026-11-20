@@ -23,7 +23,8 @@ author: mogens-villadsen
 excerpt: "Die Suche nach einem leistungsstarken Scrum-Team beginnt oft mit einer grundlegenden Frage: Was ist die perfekte Scrum-Teamgröße? Es geht nicht nur darum, die richtigen Rollen zu besetzen."
 featured: false
 imageUrl: /insights/the-perfect-scrum-team-size.webp
-metaDescription: "Die Suche nach einem leistungsstarken Scrum-Team beginnt oft mit einer grundlegenden Frage: Was ist die perfekte Scrum-Teamgröße? Es geht nicht nur darum, die richtigen Rollen zu besetzen."
+metaTitle: "Scrum-Teamgröße: Wie groß ist ideal?"
+metaDescription: "Die ideale Scrum-Teamgröße hängt von Kommunikation, Zusammenarbeit und Produktivität ab, nicht nur von den besetzten Rollen."
 bodyHtml: |-
   <p><a href="https://www.betterchange-consulting.com/resources/scrum-accountabilities/">Die Suche nach einem leistungsstarken Scrum-Team</a> beginnt oft mit einer grundlegenden Frage: Was ist die perfekte Scrum-Teamgröße? Es geht nicht nur darum, die richtigen Rollen zu besetzen, es geht auch darum sicherzustellen, dass Kommunikation effizient fließt, Zusammenarbeit hoch bleibt, und Produktivität nicht nachlässt.</p>
 

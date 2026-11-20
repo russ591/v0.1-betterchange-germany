@@ -12,7 +12,7 @@ author: jan-b-olsen
 excerpt: Story points are a relative measure of effort and complexity, not hours, not days, not a commitment. Teams that misunderstand this tend to use them badly. Here is what story points actually are and why Planning Poker works.
 featured: false
 imageUrl: /insights/what-are-story-points.webp
-metaTitle: 'Story Points: What They Are, What They''re Not, and How to Use Them Wel'
+metaTitle: "Story Points: What They Are, How to Use Them"
 metaDescription: Story points are a relative measure of effort and complexity, not hours, not days, not a commitment. Teams that misunderstand this tend to use them...
 bodyHtml: |-
   <p>Story points are a unit used by Scrum teams to estimate the relative effort required to complete a backlog item. The critical word is <em>relative</em>. Story points are not hours. They are not days. They are not a prediction of how long something will take. They are a measure of complexity and effort compared to other items the team has estimated.</p>

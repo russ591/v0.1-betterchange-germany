@@ -11,7 +11,7 @@ author: bent-myllerup
 excerpt: Chris Mowles describes power as the currency of organisational life. It flows through formal hierarchies, informal networks, and unspoken agreements. The German sociologist Norbert Elias argued that power isn’t a fixed possession.
 featured: true
 imageUrl: /insights/perspectives-on-leadership-and-power.webp
-metaTitle: Perspectives on leadership and power | Better Change Consulting
+metaTitle: "Perspectives on leadership and power"
 metaDescription: Chris Mowles describes power as the currency of organisational life. It flows through formal hierarchies, informal networks, and unspoken agreements....
 bodyHtml: |-
   <p><a href="https://www.linkedin.com/in/chris-mowles-966b592/">Chris Mowles</a> describes power as the currency of organisational life. It flows through formal hierarchies, informal networks, and unspoken agreements. The German sociologist Norbert Elias argued that power isn’t a fixed possession, but rather a dynamic relationship - a balance (or imbalance) between different actors. He famously noted in 1969 that “the master has power over the slave, but the slave also has power over the master due to the services the slave provides and the master’s dependence on them.” In other words, power is always shifting. It is not something leaders own outright; it is something that exists in the tension between people.</p>

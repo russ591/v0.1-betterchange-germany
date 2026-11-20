@@ -11,7 +11,7 @@ authorName: Raffaela Hampf
 excerpt: Agile is not one thing. It is a philosophy implemented through many different frameworks. Understanding what the Manifesto actually says, and how Scrum and Kanban translate it, is the foundation for using any of them well.
 featured: false
 imageUrl: /insights/agile-methodology-and-frameworks.webp
-metaTitle: 'Agile Methodology and Frameworks: What the Umbrella Actually Covers |'
+metaTitle: "Agile Methodology and Frameworks Explained"
 metaDescription: Agile is not one thing. It is a philosophy implemented through many different frameworks. Understanding what the Manifesto actually says, and how...
 bodyHtml: |-
   <p>Agile is one of those words that means everything and nothing depending on who is using it. In some organisations it means Scrum. In others it means Kanban. In others it refers to a general posture of iterative working, continuous improvement, or customer responsiveness. All of these usages have some legitimacy, which is exactly what creates the confusion.</p>

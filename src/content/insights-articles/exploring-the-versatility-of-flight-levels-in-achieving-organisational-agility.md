@@ -12,7 +12,7 @@ author: russell-hill
 excerpt: Flight Levels is frequently described alongside Scrum and SAFe as an agile framework. It isn't, and the distinction is important. It's a thinking model for designing the coordination systems your organisation actually needs.
 featured: false
 imageUrl: /insights/exploring-the-versatility-of-flight-levels-in-achieving-organisational-agility.webp
-metaTitle: Why Flight Levels Isn't a Framework, and Why That Matters | Better Ch
+metaTitle: "Flight Levels Is Not a Framework"
 metaDescription: Flight Levels is frequently described alongside Scrum and SAFe as an agile framework. It isn't, and the distinction is important. It's a thinking...
 bodyHtml: |-
   <p>Klaus Leopold's book <em>Rethinking Agile</em> starts from a provocative premise: agile teams have nothing to do with business agility. Team-level improvements, however well executed, do not automatically translate into organisational agility. The two things are genuinely different problems. Flight Levels is the thinking model Leopold developed to address that gap.</p>

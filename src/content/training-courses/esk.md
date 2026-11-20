@@ -31,6 +31,6 @@ whatYoullLearn:
   - How to connect enterprise Kanban thinking to Flight Levels systems design
 summary: Design a Kanban system that spans multiple teams, departments and value streams, managing the flow of strategic work from idea through to delivery without imposing heavy process on individual teams along the way. You'll learn Portfolio Kanban, how Flight Levels thinking connects strategy, coordination and operational delivery, and how to run portfolio-level reviews that produce genuine decisions rather than status theatre. Built for leaders and KMP2 holders ready to apply Kanban principles at portfolio and enterprise level, ESK is Kanban University's certification for flow-based scaling.
 sortOrder: 4
-metaTitle: Enterprise Scale Kanban (ESK) Training | Berlin & Online
-metaDescription: Enterprise Scale Kanban training in Berlin and online. Apply Kanban portfolio thinking across your organisation with Kanban University certification.
+metaTitle: "Enterprise Scale Kanban (ESK) Training"
+metaDescription: "Enterprise Scale Kanban (ESK), certified by Kanban University. Two days in person or four half days online. Run Kanban across teams and value streams."
 ---

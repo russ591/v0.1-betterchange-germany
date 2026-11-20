@@ -11,7 +11,7 @@ author: bent-myllerup
 excerpt: According to the State of Agile Coaching Report 2021 only 19% of people who consider themselves to be Agile Coaches has a master level certification in this area.
 featured: false
 imageUrl: /insights/mastering-agile-coaching.webp
-metaTitle: Mastering Agile Coaching | Better Change Consulting
+metaTitle: "Mastering Agile Coaching"
 metaDescription: According to the State of Agile Coaching Report 2021 only 19% of people who consider themselves to be Agile Coaches has a master level certification in...
 bodyHtml: |-
   <p>According to the State of <a href="https://resources.scrumalliance.org/Article/state-agile-coaching-report">Agile Coaching Report 2021</a> only 19% of people who consider themselves to be Agile Coaches has a master level certification in this area. We do not believe that you blindly can evaluate people’s competences based on their collection of badges, but we think there lies a degree of truth within the numbers. We see it as a potential risk of damaging the reputation of the profession of Agile Coaching when the numbers are as low as indicated.</p>

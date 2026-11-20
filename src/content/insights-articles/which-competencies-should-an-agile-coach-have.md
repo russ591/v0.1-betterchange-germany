@@ -12,7 +12,7 @@ author: bent-myllerup
 excerpt: Most Agile coaches know frameworks well. The ones who create durable change also understand human dynamics, trust, status, psychodynamics, and the irrational ways people actually behave. Process knowledge is necessary. It is not sufficient.
 featured: false
 imageUrl: /insights/which-competencies-should-an-agile-coach-have.webp
-metaTitle: What an Agile Coach Actually Needs to Be Good At | Better Change Consu
+metaTitle: "Agile Coach Competencies: What Matters Most"
 metaDescription: Most Agile coaches know frameworks well. The ones who create durable change also understand human dynamics, trust, status, psychodynamics, and the...
 bodyHtml: |-
   <p>Agile coaching is sometimes described as "helping people see reality through Agile and Lean perspectives." That is a reasonable starting point, but it understates the challenge. Helping people change their paradigms, habits, and roles requires an understanding of human nature that no framework guide contains.</p>
