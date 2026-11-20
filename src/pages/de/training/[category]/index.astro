@@ -35,8 +35,8 @@ const slug = baseSlug(category.id);
 ---
 
 <BaseLayout
-  title={category.data.name}
-  description={category.data.tagline}
+  title={category.data.metaTitle ?? category.data.name}
+  description={category.data.metaDescription ?? category.data.tagline}
   translations={{ en: `/training/${slug}`, de: `/de/training/${slug}` }}
 >
   <CategoryPageContent category={category} courses={courses} upcomingWithCourse={upcomingWithCourse} categoryTrainers={categoryTrainers} />
