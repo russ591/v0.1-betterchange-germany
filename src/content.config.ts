@@ -21,6 +21,17 @@ const trainingCategory = defineCollection({
     videoUrl: z.string().optional(),
     videoTitle: z.string().optional(),
     order: z.number(),
+    // Search copy for the category page; both fall back to name / tagline.
+    // 45 and 155 characters at most (scripts/check-meta-lengths.mjs).
+    metaTitle: z.string().optional(),
+    metaDescription: z.string().optional(),
+    // The page's single H1 when it should say more than the short category
+    // name ("Kanban Training in Berlin and Online"); falls back to name.
+    heading: z.string().optional(),
+    // Optional "In Berlin" card under the intro: heading, paragraph, and the
+    // next Berlin dates for the category (computed, never listed here).
+    berlinHeading: z.string().optional(),
+    berlinBody: z.string().optional(),
   }),
 });
 

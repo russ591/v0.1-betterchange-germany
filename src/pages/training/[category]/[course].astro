@@ -6,6 +6,7 @@ import { toPathSegment } from "@/lib/urlSlug";
 import { localeOfId, baseSlug } from "@/lib/i18n";
 import { getTrainersForSessions } from "@/lib/trainers";
 import { isUpcomingOrSelfPaced } from "@/lib/dates";
+import { buildCourseSchema } from "@/lib/courseSchema";
 
 export async function getStaticPaths() {
   const courses = await getCollection("training-courses", (c) => localeOfId(c.id) === "en");
@@ -28,30 +29,7 @@ const upcomingWithTrainers = await Promise.all(
   upcoming.map(async (session) => ({ session, trainers: await getTrainersForSessions([session]) }))
 );
 
-const courseModeByFormat = { "in-person": "Onsite", "live-online": "Online", "self-paced": "Online" } as const;
-const courseSchema = {
-  "@context": "https://schema.org",
-  "@type": "Course",
-  name: course.data.name,
-  description: course.data.summary,
-  provider: { "@type": "Organization", name: "Better Change", sameAs: Astro.site?.toString() },
-  ...(course.data.certification && { educationalCredentialAwarded: course.data.certification }),
-  hasCourseInstance: upcoming.map((session) => ({
-    "@type": "CourseInstance",
-    courseMode: courseModeByFormat[session.data.format],
-    ...(session.data.date && { startDate: session.data.date.toISOString().slice(0, 10) }),
-    ...(session.data.format === "in-person" && {
-      location: { "@type": "Place", name: session.data.location },
-    }),
-    offers: {
-      "@type": "Offer",
-      price: parseFloat(session.data.price.replace(/[^0-9.]/g, "")) || undefined,
-      priceCurrency: "EUR",
-      url: session.data.isExternal ? session.data.externalUrl! : new URL(`/training/register/${session.id}`, Astro.site).toString(),
-      availability: "https://schema.org/InStock",
-    },
-  })),
-};
+const courseSchema = buildCourseSchema({ course, sessions: upcoming, site: Astro.site, locale: "en" });
 
 const categorySlug = baseSlug(category.id);
 const courseSlug = toPathSegment(course.data.urlSlug ?? baseSlug(course.id));
