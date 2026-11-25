@@ -1707,9 +1707,36 @@
       "title": "Lightning Lesson: Keep Stakeholders Aligned Without Adding More Meetings",
       "webinar": true,
       "question": "1255 words, has registration wording or a sign-up link"
+    },
+    "19849": {
+      "type": "post",
+      "slug": "lightning-lesson-find-out-where-work-waits-when-ai-speeds-up-development",
+      "link": "https://www.betterchange-consulting.com/webinar/lightning-lesson-find-out-where-work-waits-when-ai-speeds-up-development/",
+      "date": "2026-11-24T10:59:02",
+      "modified": "2026-11-24T11:00:58",
+      "title": "Lightning Lesson: Find Out Where Work Waits When AI Speeds Up Development",
+      "webinar": true,
+      "question": "1626 words, names a later date (2027-03-12)"
     }
   },
   "events": {
+    "18220": {
+      "title": "Certified ScrumMaster® (CSM®)",
+      "url": "https://www.betterchange-consulting.com/event/certified-scrum-master-csm-it-202703/",
+      "start": "2027-03-16",
+      "end": "2027-03-17",
+      "cost": "€1100 – €1400",
+      "registrationUrl": "https://www.betterchange-consulting.it/event-details/certified-scrummaster-csm-in-italiano-202703/",
+      "modified": "2026-11-24 10:19:01",
+      "country": "Italy",
+      "city": "Milan",
+      "online": false,
+      "organizers": [
+        "Better Change Italy"
+      ],
+      "skipped": null,
+      "question": null
+    },
     "18808": {
       "title": "IC Agile Team Facilitation (ICP-ATF)",
       "url": "https://www.betterchange-consulting.com/event/ic-agile-team-facilitation-icp-atf-9/",
@@ -1761,6 +1788,23 @@
       "skipped": null,
       "question": null
     },
+    "19036": {
+      "title": "Better Agile Coaching",
+      "url": "https://www.betterchange-consulting.com/event/better-agile-coaching-202706/",
+      "start": "2027-06-21",
+      "end": "2027-06-22",
+      "cost": "€1100 – €1400",
+      "registrationUrl": "https://www.betterchange-consulting.it/event-details/better-agile-coaching-in-italiano-202706/",
+      "modified": "2026-11-24 10:29:53",
+      "country": null,
+      "city": "Online",
+      "online": true,
+      "organizers": [
+        "Better Change Italy"
+      ],
+      "skipped": null,
+      "question": "no matching .de course page for this event (the sync never creates course pages)"
+    },
     "19038": {
       "title": "AI for Scrum Masters",
       "url": "https://www.betterchange-consulting.com/event/ai-for-sm-202605/",
@@ -1780,12 +1824,12 @@
     },
     "19044": {
       "title": "AI for Product Owners",
-      "url": "https://www.betterchange-consulting.com/event/ai-for-po-202605/",
-      "start": "2026-11-20",
-      "end": "2026-11-20",
-      "cost": "€250 – €350",
-      "registrationUrl": "https://www.betterchange-consulting.it/event-details/ai-for-po-italiano-202605/",
-      "modified": "2026-04-27 13:37:17",
+      "url": "https://www.betterchange-consulting.com/event/ai-for-po-202707/",
+      "start": "2027-05-19",
+      "end": "2027-05-19",
+      "cost": "€350",
+      "registrationUrl": "https://www.betterchange-consulting.it/event-details/ai-for-product-owners-in-italiano-202705/",
+      "modified": "2026-11-24 10:26:46",
       "country": null,
       "city": "Online",
       "online": true,
@@ -1810,40 +1854,6 @@
         "Better Change Italy"
       ],
       "skipped": null,
-      "question": null
-    },
-    "19526": {
-      "title": "Certified Scrum Product Owner® (CSPO®)",
-      "url": "https://www.betterchange-consulting.com/event/certified-scrum-product-owner-cspo-it-202611/",
-      "start": "2026-11-18",
-      "end": "2026-11-19",
-      "cost": "€1100 – €1400",
-      "registrationUrl": "https://www.betterchange-consulting.it/event-details/certified-scrum-product-owner-cspo-italiano-202611/",
-      "modified": "2026-04-27 13:39:41",
-      "country": null,
-      "city": "Online",
-      "online": true,
-      "organizers": [
-        "Better Change Italy"
-      ],
-      "skipped": null,
-      "question": null
-    },
-    "19568": {
-      "title": "Flight Level 2 Design (FL2D)",
-      "url": "https://www.betterchange-consulting.com/event/flight-level-2-design-fl2d-5/",
-      "start": "2026-11-24",
-      "end": "2026-11-25",
-      "cost": "€2190",
-      "registrationUrl": "https://www.betterchange-consulting.de/training/flight-levels/flight-level-2-design-(fl2d)",
-      "modified": "2026-10-02 06:45:08",
-      "country": "Germany",
-      "city": "Berlin",
-      "online": false,
-      "organizers": [
-        "Better Change Berlin"
-      ],
-      "skipped": "venue in Germany (Russ adds these himself)",
       "question": null
     },
     "19574": {
@@ -1899,12 +1909,12 @@
     },
     "19608": {
       "title": "Advanced Certified Scrum Product Owner® (A-CSPO®)",
-      "url": "https://www.betterchange-consulting.com/event/advanced-certified-scrum-product-owner-a-cspo-english-202612/",
-      "start": "2026-12-03",
-      "end": "2026-12-04",
+      "url": "https://www.betterchange-consulting.com/event/advanced-certified-scrum-product-owner-a-cspo-english-202706/",
+      "start": "2027-06-01",
+      "end": "2027-06-02",
       "cost": "SEK 19000 – SEK 21000",
-      "registrationUrl": "https://www.betterchange-consulting.dk/products/256910-Advanced-Certified-Product-Owner-A",
-      "modified": "2026-06-05 08:22:18",
+      "registrationUrl": "https://www.betterchange-consulting.dk/cart/256910-Advanced-Certified-Product-Owner-A",
+      "modified": "2026-11-24 09:48:30",
       "country": "Sweden",
       "city": "Stockholm",
       "online": false,
@@ -1963,40 +1973,6 @@
         "Better Change Berlin"
       ],
       "skipped": "venue in Germany (Russ adds these himself)",
-      "question": null
-    },
-    "19647": {
-      "title": "Flight Level 3 Design (FL3D)",
-      "url": "https://www.betterchange-consulting.com/event/flight-level-3-design-fl3d-4/",
-      "start": "2026-11-17",
-      "end": "2026-11-18",
-      "cost": "€2190",
-      "registrationUrl": "https://www.betterchange-consulting.de/training/flight-levels/flight-level-3-design-(fl3d)",
-      "modified": "2026-09-01 14:22:05",
-      "country": "Germany",
-      "city": "Berlin",
-      "online": false,
-      "organizers": [
-        "Better Change Berlin"
-      ],
-      "skipped": "venue in Germany (Russ adds these himself)",
-      "question": null
-    },
-    "19677": {
-      "title": "Certified Scrum Master (CSM)",
-      "url": "https://www.betterchange-consulting.com/event/certified-scrum-master-z-23-11-2026/",
-      "start": "2026-11-23",
-      "end": "2026-11-24",
-      "cost": "€900 – €1000",
-      "registrationUrl": "https://www.betterchange-consulting.com/event/certified-scrum-master-z-23-11-2026/",
-      "modified": "2026-09-18 14:11:03",
-      "country": "Croatia",
-      "city": "Zagreb",
-      "online": false,
-      "organizers": [
-        "Better Change Zagreb"
-      ],
-      "skipped": null,
       "question": null
     },
     "19730": {
@@ -2168,7 +2144,109 @@
       ],
       "skipped": null,
       "question": null
+    },
+    "19834": {
+      "title": "Advanced Certified ScrumMaster® (A-CSM®)",
+      "url": "https://www.betterchange-consulting.com/event/advanced-certified-scrummaster-a-csm-2704/",
+      "start": "2027-04-27",
+      "end": "2027-04-28",
+      "cost": "19000 SEK – 21000 SEK",
+      "registrationUrl": "https://www.betterchange-consulting.dk/cart/265859-Advanced-Certified-ScrumMaster-A",
+      "modified": "2026-11-24 10:06:34",
+      "country": "Sweden",
+      "city": "Stockholm",
+      "online": false,
+      "organizers": [
+        "Better Change Sweden"
+      ],
+      "skipped": null,
+      "question": null
+    },
+    "19837": {
+      "title": "Certified Scrum Product Owner® (CSPO®)",
+      "url": "https://www.betterchange-consulting.com/event/certified-scrum-product-owner-cspo-202703/",
+      "start": "2027-03-18",
+      "end": "2027-03-19",
+      "cost": "€1100 – €1400",
+      "registrationUrl": "https://www.betterchange-consulting.it/event-details/certified-scrum-product-owner-cspo-in-italiano-202703/",
+      "modified": "2026-11-24 10:20:24",
+      "country": "Italy",
+      "city": "Milan",
+      "online": false,
+      "organizers": [
+        "Better Change Italy"
+      ],
+      "skipped": null,
+      "question": null
+    },
+    "19839": {
+      "title": "Certified Scrum Product Owner® (CSPO®)",
+      "url": "https://www.betterchange-consulting.com/event/certified-scrum-product-owner-cspo-202705/",
+      "start": "2027-05-17",
+      "end": "2027-05-18",
+      "cost": "€1100 – €1400",
+      "registrationUrl": "https://www.betterchange-consulting.it/event-details/certified-scrum-product-owner-cspo-in-italiano-202705/",
+      "modified": "2026-11-24 10:23:12",
+      "country": null,
+      "city": "Online",
+      "online": true,
+      "organizers": [
+        "Better Change Italy"
+      ],
+      "skipped": null,
+      "question": null
+    },
+    "19841": {
+      "title": "Certified ScrumMaster® (CSM®)",
+      "url": "https://www.betterchange-consulting.com/event/certified-scrummaster-csm-202705/",
+      "start": "2027-05-10",
+      "end": "2027-05-11",
+      "cost": "€1100 – €1400",
+      "registrationUrl": "https://www.betterchange-consulting.it/event-details/certified-scrummaster-csm-in-italiano-202705/",
+      "modified": "2026-11-24 10:24:01",
+      "country": null,
+      "city": "Online",
+      "online": true,
+      "organizers": [
+        "Better Change Italy"
+      ],
+      "skipped": null,
+      "question": null
+    },
+    "19843": {
+      "title": "AI for Scrum Masters",
+      "url": "https://www.betterchange-consulting.com/event/ai-for-scrum-masters-202705/",
+      "start": "2027-05-12",
+      "end": "2027-05-12",
+      "cost": "€350",
+      "registrationUrl": "https://www.betterchange-consulting.it/event-details/ai-for-scrum-masters-in-italiano-202705/",
+      "modified": "2026-11-24 10:25:16",
+      "country": null,
+      "city": "Online",
+      "online": true,
+      "organizers": [
+        "Better Change Italy"
+      ],
+      "skipped": null,
+      "question": null
+    },
+    "19846": {
+      "title": "Advanced Certified Scrum Product Owner® (A-CSPO®)",
+      "url": "https://www.betterchange-consulting.com/event/advanced-certified-scrum-product-owner-a-cspo-202706/",
+      "start": "2027-06-07",
+      "end": "2027-06-08",
+      "cost": "€1300 – €1600",
+      "registrationUrl": "https://www.betterchange-consulting.it/event-details/advanced-certified-scrum-product-owner-a-cspo-in-italiano-202706/",
+      "modified": "2026-11-24 10:28:35",
+      "country": null,
+      "city": "Online",
+      "online": true,
+      "organizers": [
+        "Better Change Italy"
+      ],
+      "skipped": null,
+      "question": null
     }
   },
-  "recordedAt": "2026-11-14T05:40:57.147Z"
+  "recordedAt": "2026-11-25T06:40:59.679Z"
 }
